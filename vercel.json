@@ -1,5 +1,6 @@
 {
+  "outputDirectory": "SRC",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/SRC/$1" }
+    { "source": "/(.*)", "destination": "/$1" }
   ]
 }
