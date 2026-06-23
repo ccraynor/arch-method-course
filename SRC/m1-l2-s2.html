@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Worked example: an expert reads all 16 MRHN scope items and organizes them into four workflow-based buckets, demonstrating why workflow logic produces more coherent architecture than topic-based grouping.">
+  <title>Worked Example: Bucket Scope Items — Lesson 1.2 — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l2-s2 -- Worked Example: Bucket Scope Items
+       Phase 1, Step 2.
+       All color values use CSS tokens. No hard-coded hex values.
+       ================================================================ */
+
+    .worked-example__meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 0 0.25rem;
+    }
+
+    .screen-type-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    .time-estimate {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 3px;
+      padding: 0.125rem 0.5rem;
+    }
+
+    .lesson-label {
+      display: block;
+      margin: 0 0 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-link);
+    }
+
+    .worked-example__title {
+      margin: 0 0 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    .step-badge {
+      display: inline-block;
+      margin: 0 0 0.875rem;
+      padding: 0.25rem 0.625rem;
+      background: var(--color-bg-page);
+      border: 1.5px solid var(--color-text-link);
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-link);
+    }
+
+    .scenario-context {
+      display: flex;
+      align-items: baseline;
+      gap: 0.375rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border-left: 3px solid var(--color-border-strong);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      margin: 0 0 1.5rem;
+    }
+
+    .scenario-label {
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+    }
+
+    /* ---- Two-column layout ---- */
+    .worked-example__layout {
+      display: grid;
+      grid-template-columns: 1fr 20rem;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .worked-example__layout { grid-template-columns: 1fr; }
+    }
+
+    /* ---- Left column ---- */
+    .worked-example__content {
+      display: flex;
+      flex-direction: column;
+      gap: 2.25rem;
+    }
+
+    .example-step {
+      display: grid;
+      grid-template-columns: 2.75rem 1fr;
+      gap: 0 1rem;
+    }
+
+    .step-marker {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 0.125rem;
+    }
+
+    .step-marker span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      background: var(--color-text-link);
+      color: var(--color-text-inverse);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .step-body { min-width: 0; }
+
+    .step-heading {
+      margin: 0.25rem 0 0.625rem;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+    }
+
+    .step-content {
+      margin: 0 0 0.875rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    .step-content:last-child { margin-bottom: 0; }
+
+    /* ---- SI survey table (Step 01) ---- */
+    .si-survey {
+      margin: 0 0 0.875rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .si-survey__header {
+      padding: 0.5rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border-bottom: 1px solid var(--color-border-default);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+    }
+
+    .si-survey-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    .si-survey-table th {
+      text-align: left;
+      padding: 0.4375rem 0.75rem;
+      background: var(--color-bg-subtle);
+      border-bottom: 1px solid var(--color-border-default);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-text-secondary);
+    }
+
+    .si-survey-table td {
+      padding: 0.4375rem 0.75rem;
+      border-bottom: 1px solid var(--color-border-default);
+      color: var(--color-text-primary);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .si-survey-table tr:last-child td { border-bottom: none; }
+
+    .si-code {
+      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro',
+                   Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+      font-weight: 700;
+      color: var(--color-text-link);
+      white-space: nowrap;
+    }
+
+    /* ---- Contrast block (Step 02: topic vs. workflow) ---- */
+    .contrast-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: 0 0 0.875rem;
+    }
+
+    @media (max-width: 640px) {
+      .contrast-pair { grid-template-columns: 1fr; }
+    }
+
+    .contrast-block {
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .contrast-block__header {
+      padding: 0.4375rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .contrast-block--avoid .contrast-block__header {
+      background: var(--color-warning-bg);
+      color: var(--color-warning-text);
+      border-bottom: 1px solid var(--color-warning-border);
+    }
+
+    .contrast-block--prefer .contrast-block__header {
+      background: var(--color-success-bg);
+      color: var(--color-success-text);
+      border-bottom: 1px solid var(--color-success-border);
+    }
+
+    .contrast-block__body {
+      padding: 0.625rem 0.75rem;
+      background: var(--color-bg-page);
+    }
+
+    .contrast-block__label {
+      display: block;
+      margin: 0 0 0.375rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+    }
+
+    .contrast-list {
+      margin: 0;
+      padding-left: 1.125rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .contrast-list li {
+      font-size: 0.8125rem;
+      color: var(--color-text-primary);
+      line-height: 1.5;
+    }
+
+    .contrast-list li.contrast-item--faded {
+      color: var(--color-text-secondary);
+      font-style: italic;
+    }
+
+    /* ---- Bucket cards (Steps 03-06) ---- */
+    .bucket-card {
+      margin: 0 0 0.875rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .bucket-card:last-child { margin-bottom: 0; }
+
+    .bucket-card__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.625rem 1rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+    }
+
+    .bucket-card__title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      min-width: 0;
+    }
+
+    .bucket-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.625rem;
+      height: 1.625rem;
+      border-radius: 50%;
+      background: var(--color-text-inverse);
+      color: var(--color-brand-navy);
+      font-size: 0.75rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .bucket-name {
+      font-size: 0.9375rem;
+      font-weight: 700;
+    }
+
+    .bucket-count {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.125rem 0.5rem;
+      border-radius: 2rem;
+      background: rgba(255,255,255,0.18);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-inverse);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .bucket-card__body {
+      padding: 0.875rem 1rem;
+    }
+
+    .bucket-rationale {
+      margin: 0 0 0.875rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border-left: 3px solid var(--color-border-strong);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    .bucket-rationale__label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+      margin: 0 0 0.25rem;
+    }
+
+    .bucket-si-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .si-entry {
+      display: grid;
+      grid-template-columns: 3.5rem 1fr;
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .si-entry:last-child { border-bottom: none; }
+
+    .si-entry__id {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      background: var(--color-bg-subtle);
+      border-right: 1px solid var(--color-border-default);
+      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro',
+                   Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--color-text-link);
+    }
+
+    .si-entry__body {
+      padding: 0.5rem 0.75rem;
+      background: var(--color-bg-page);
+    }
+
+    .si-entry__desc {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      line-height: 1.4;
+      margin: 0 0 0.1875rem;
+    }
+
+    .si-entry__reason {
+      display: block;
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Flag for thin bucket (Step 06) */
+    .bucket-flag {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin: 0.875rem 0 0;
+      padding: 0.5rem 0.75rem;
+      background: var(--color-warning-bg);
+      border: 1px solid var(--color-warning-border);
+      border-radius: 4px;
+      font-size: 0.8125rem;
+      color: var(--color-warning-text);
+      line-height: 1.55;
+    }
+
+    .bucket-flag__icon {
+      flex-shrink: 0;
+      margin-top: 0.0625rem;
+    }
+
+    .bucket-flag__text strong { font-weight: 700; }
+
+    /* ---- Right column: think-aloud ---- */
+    .worked-example__think-aloud {
+      position: sticky;
+      top: 1.5rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 900px) {
+      .worked-example__think-aloud { position: static; }
+    }
+
+    .think-aloud__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--color-border-default);
+      background: var(--color-bg-page);
+    }
+
+    .think-aloud__heading {
+      margin: 0;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .think-aloud__list {
+      padding: 0.875rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .annotation-item {
+      display: grid;
+      grid-template-columns: 1.625rem 1fr;
+      gap: 0 0.625rem;
+      align-items: start;
+    }
+
+    .annotation-marker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      border: 1.5px solid var(--color-border-strong);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+      margin-top: 0.0625rem;
+    }
+
+    .annotation-text {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    .btn--toggle {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.625rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 4px;
+      background: var(--color-bg-page);
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn--toggle:hover {
+      background: var(--color-bg-subtle);
+      color: var(--color-text-primary);
+    }
+
+    .btn--toggle:focus-visible {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 2px;
+    }
+
+    /* ---- Summary: the four-bucket map ---- */
+    .bucket-map-summary {
+      margin: 0.875rem 0 0;
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .bucket-map-summary__header {
+      padding: 0.4375rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border-bottom: 1px solid var(--color-border-default);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+    }
+
+    .bucket-summary-row {
+      display: grid;
+      grid-template-columns: 7rem 1fr auto;
+      gap: 0 0.75rem;
+      align-items: center;
+      padding: 0.5rem 0.875rem;
+      border-bottom: 1px solid var(--color-border-default);
+      font-size: 0.875rem;
+    }
+
+    .bucket-summary-row:last-child { border-bottom: none; }
+
+    .bucket-summary-row:nth-child(even) {
+      background: var(--color-bg-subtle);
+    }
+
+    .bucket-summary__num {
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      font-size: 0.8125rem;
+    }
+
+    .bucket-summary__name {
+      color: var(--color-text-primary);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .bucket-summary__count {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* High contrast */
+    @media (prefers-contrast: more) {
+      .scenario-context { border-left-color: var(--color-border-strong); }
+      .si-survey { border-color: var(--color-border-strong); }
+      .si-survey__header { border-bottom-color: var(--color-border-strong); }
+      .si-survey-table td { border-bottom-color: var(--color-border-strong); }
+      .contrast-block { border-color: var(--color-border-strong); }
+      .bucket-card { border-color: var(--color-border-strong); }
+      .bucket-si-list, .si-entry { border-color: var(--color-border-strong); }
+      .si-entry__id { border-right-color: var(--color-border-strong); }
+      .bucket-rationale { border-left-color: var(--color-border-strong); }
+      .worked-example__think-aloud { border-color: var(--color-border-strong); }
+      .annotation-marker { border-color: var(--color-text-primary); color: var(--color-text-primary); }
+      .bucket-map-summary { border-color: var(--color-border-strong); }
+      .bucket-map-summary__header,
+      .bucket-summary-row { border-bottom-color: var(--color-border-strong); }
+      .step-badge { border-color: var(--color-border-strong); color: var(--color-text-primary); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.2</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">2</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">2</span> of <span id="pt-screen-total">6</span></span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary"
+              aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel"
+              aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer"
+              aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory"
+              aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel"
+              aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <article class="worked-example" aria-labelledby="example-title">
+
+        <header class="worked-example__header">
+          <div class="worked-example__meta">
+            <span class="screen-type-label">Worked Example</span>
+            <span class="time-estimate"
+                  aria-label="Estimated reading time: 18 to 22 minutes">
+              18&ndash;22 min
+            </span>
+          </div>
+          <p class="lesson-label" aria-label="Lesson 1.2">Lesson 1.2</p>
+          <h1 id="example-title" class="worked-example__title">
+            Bucketing Scope Items: Reading 16 Items and Organizing by Workflow Logic
+          </h1>
+          <span class="step-badge">Step 2</span>
+          <div class="scenario-context" role="note" aria-label="Scenario context">
+            <span class="scenario-label">Scenario:</span>
+            Meridian Regional Health Network -- all 16 scope items (SI-01 through
+            SI-16) are declared and documented. An expert now reads the full set
+            and organizes them into four named buckets using workflow sequence as
+            the organizing axis rather than subject-matter topic.
+          </div>
+        </header>
+
+        <div class="worked-example__layout">
+
+          <!-- ====================================================
+               Left column
+               ==================================================== -->
+          <div class="worked-example__content">
+
+            <!-- Step 01: Survey all 16 items first -->
+            <div class="example-step" id="step-1">
+              <div class="step-marker" aria-label="Step 1">
+                <span aria-hidden="true">01</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">
+                  Read All 16 Scope Items Before Assigning Any to a Bucket
+                </h2>
+                <p class="step-content">
+                  Before grouping a single item, I read all 16 as a set. The
+                  first pass is observational: I am not making decisions yet.
+                  I am building a picture of the full scope so that when I do
+                  group items, I am grouping within the whole -- not organizing
+                  partial information into categories that will need to be
+                  restructured when the rest of the set appears.
+                </p>
+                <p class="step-content">
+                  The complete MRHN scope item set, carrying forward from
+                  Step 1.5:
+                </p>
+
+                <div class="si-survey"
+                     role="region"
+                     aria-label="All 16 MRHN scope items">
+                  <div class="si-survey__header">
+                    MRHN Scope Items -- SI-01 through SI-16 (declared in Step 1.5)
+                  </div>
+                  <table class="si-survey-table"
+                         aria-label="Complete list of 16 MRHN scope items">
+                    <thead>
+                      <tr>
+                        <th scope="col" style="width:4.5rem;">ID</th>
+                        <th scope="col">Scope Item</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code class="si-code">SI-01</code></td>
+                        <td>IR-2024 Tier 1 protocol execution -- independent, no escalation required</td>
+                      </tr>
+                      <tr>
+                        <td><code class="si-code">SI-02</code></td>
+                        <td>IR-2024 Tier 2 protocol execution -- within role authority</td>
+                      </tr>
+                      <tr>
+                        <td><code class="si-code">SI-03</code></td>
+                        <td>System isolation decisions -- role-bounded, no supervisor required</td>
+                      </tr>
+                      <tr>
+                        <td><code class="si-code">SI-04</code></td>
+                        <td>Real-time SIEM event log documentation during active incident</td>
+                      </tr>
+                      <tr>
+                        <td><code class="si-code">SI-05</code></td>
+                        <td>Clinical leadership communication using Meridian approved templates</td>
+                      </tr>
+                      <tr>
+                        <td><code class="si-code">SI-06</code></td>
+                        <td>Escalation protocol -- recognizing when a decision requires supervisor involvement</td>
+                      </tr>
+                      <tr>
+                        <td><code class="si-code">SI-07</code></td>
+                        <td>Post-incident OCR-compliant documentation and breach reporting procedure</td>
+                      </tr>
+                      <tr>
+                        <td><code class="si-code">SI-08</code></td>
+                        <td>Threat classification -- Tier 1 vs. Tier 2 identification from SIEM alerts</td>
+                      </tr>
+                      <tr>
+                        <td><code class="si-code">SI-09</code></td>
+                        <td>Evidence preservation -- maintaining chain of custody during active incident response</td>
+                      </tr>
+                      <tr>
+                        <td><code class="si-code">SI-10</code></td>
+                        <td>HIPAA breach notification timeline -- managing the 72-hour OCR reporting window</td>
+                      </tr>
+                      <tr>
+                        <td><code class="si-code">SI-11</code></td>
+                        <td>Network segmentation decisions -- isolating affected systems to limit lateral spread</td>
+                      </tr>
+                      <tr>
+                        <td><code class="si-code">SI-12</code></td>
+                        <td>Recovery verification -- confirming system integrity before restoring to production</td>
+                      </tr>
+                      <tr>
+                        <td><code class="si-code">SI-13</code></td>
+                        <td>Post-incident lessons learned -- documenting what happened and what to change</td>
+                      </tr>
+                      <tr>
+                        <td><code class="si-code">SI-14</code></td>
+                        <td>IR-2024 protocol deviation documentation -- recording when steps cannot be followed as written</td>
+                      </tr>
+                      <tr>
+                        <td><code class="si-code">SI-15</code></td>
+                        <td>Vendor and third-party system notification during active incident</td>
+                      </tr>
+                      <tr>
+                        <td><code class="si-code">SI-16</code></td>
+                        <td>Incident severity reclassification -- upgrading from Tier 1 to Tier 2 mid-response</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="step-content">
+                  After reading the full set, two things are clear: (1) these
+                  items span the entire incident response lifecycle, and (2) many
+                  of them only make sense in relation to each other -- SI-16
+                  (reclassification) leads to SI-06 (escalation), which changes
+                  the protocol from SI-01 to SI-02. That sequencing is the
+                  organizing logic I will use for bucketing.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 02: Reject topic-based, adopt workflow-based -->
+            <div class="example-step" id="step-2">
+              <div class="step-marker" aria-label="Step 2">
+                <span aria-hidden="true">02</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">
+                  Choose the Organizing Axis: Workflow Sequence, Not Topic Familiarity
+                </h2>
+                <p class="step-content">
+                  The first instinct when bucketing content is to group by
+                  topic -- "all the documentation items," "all the protocol
+                  items," "all the communication items." That instinct produces
+                  structurally weak architecture. Here is the contrast:
+                </p>
+
+                <div class="contrast-pair" aria-label="Topic-based versus workflow-based grouping comparison">
+
+                  <div class="contrast-block contrast-block--avoid"
+                       role="region"
+                       aria-label="Topic-based grouping: avoid this approach">
+                    <div class="contrast-block__header">
+                      <svg aria-hidden="true" focusable="false" width="11" height="11"
+                           viewBox="0 0 11 11" fill="none" style="margin-right:0.3rem;vertical-align:middle;">
+                        <circle cx="5.5" cy="5.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M3.5 3.5l4 4M7.5 3.5l-4 4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round"/>
+                      </svg>
+                      Topic-Based Grouping -- Avoid
+                    </div>
+                    <div class="contrast-block__body">
+                      <span class="contrast-block__label">What this produces:</span>
+                      <ul class="contrast-list">
+                        <li>Protocol Knowledge (SI-01, SI-02, SI-08, SI-16)</li>
+                        <li>Technical Actions (SI-03, SI-09, SI-11, SI-12)</li>
+                        <li>Communication (SI-05, SI-06, SI-15)</li>
+                        <li>Documentation (SI-04, SI-07, SI-10, SI-13, SI-14)</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="contrast-block contrast-block--prefer"
+                       role="region"
+                       aria-label="Workflow-based grouping: preferred approach">
+                    <div class="contrast-block__header">
+                      <svg aria-hidden="true" focusable="false" width="11" height="11"
+                           viewBox="0 0 11 11" fill="none" style="margin-right:0.3rem;vertical-align:middle;">
+                        <circle cx="5.5" cy="5.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M3 5.5l1.75 1.75 3.25-3.25" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      Workflow-Based Grouping -- Preferred
+                    </div>
+                    <div class="contrast-block__body">
+                      <span class="contrast-block__label">What this produces:</span>
+                      <ul class="contrast-list">
+                        <li>Threat Recognition and Triage (5 items)</li>
+                        <li>Containment and Control (4 items)</li>
+                        <li>Active Response Execution (4 items)</li>
+                        <li>Post-Incident Close-Out (3 items)</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                </div>
+
+                <p class="step-content">
+                  The problem with topic-based grouping is structural: it puts
+                  SI-04 (real-time SIEM documentation) and SI-07 (post-incident
+                  OCR documentation) in the same bucket because they are both
+                  documentation tasks. But SI-04 happens during active
+                  containment and SI-07 happens after the incident is closed.
+                  A course organized by topic would require learners to learn
+                  both documentation behaviors together and then apply them at
+                  different points in the workflow -- exactly the integration
+                  gap that stress-testing will later flag.
+                </p>
+                <p class="step-content">
+                  Workflow-based grouping puts every scope item in the phase of
+                  the response cycle where it actually occurs. Learners practice
+                  each bucket in the sequence they will execute it, with
+                  prerequisites established before they are needed. The
+                  architecture mirrors the work.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 03: Bucket 1 -->
+            <div class="example-step" id="step-3">
+              <div class="step-marker" aria-label="Step 3">
+                <span aria-hidden="true">03</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">
+                  Bucket 1: Threat Recognition and Triage
+                </h2>
+                <p class="step-content">
+                  The first workflow phase is the entry gate to everything that
+                  follows. Before any containment action can be taken, a
+                  responder must classify the incident, determine which protocol
+                  applies, and confirm whether they are authorized to execute
+                  it alone. All five items in Bucket 1 answer the same question:
+                  <em>what is this incident and am I the right person to handle it?</em>
+                </p>
+
+                <div class="bucket-card"
+                     role="region"
+                     aria-label="Bucket 1: Threat Recognition and Triage, 5 scope items">
+                  <div class="bucket-card__header">
+                    <div class="bucket-card__title-group">
+                      <span class="bucket-num" aria-hidden="true">1</span>
+                      <span class="bucket-name">Threat Recognition and Triage</span>
+                    </div>
+                    <span class="bucket-count" aria-label="5 scope items">5 items</span>
+                  </div>
+                  <div class="bucket-card__body">
+                    <div class="bucket-rationale">
+                      <span class="bucket-rationale__label">Grouping rationale</span>
+                      All five items are decisions that must be resolved in the
+                      first minutes of an incident, before any physical or
+                      technical response action begins. They share a common
+                      prerequisite structure: you cannot execute Tier 1 protocol
+                      (SI-01) without first classifying the threat (SI-08), and
+                      you cannot stay on Tier 1 if reclassification occurs
+                      (SI-16), which triggers the escalation check (SI-06) and
+                      potentially upgrades the response to Tier 2 (SI-02).
+                    </div>
+                    <div class="bucket-si-list"
+                         role="list"
+                         aria-label="Scope items in Bucket 1">
+                      <div class="si-entry" role="listitem">
+                        <div class="si-entry__id" aria-label="SI-08">SI-08</div>
+                        <div class="si-entry__body">
+                          <span class="si-entry__desc">Threat classification -- Tier 1 vs. Tier 2 from SIEM alerts</span>
+                          <span class="si-entry__reason">Entry point of triage; every subsequent decision depends on this call</span>
+                        </div>
+                      </div>
+                      <div class="si-entry" role="listitem">
+                        <div class="si-entry__id" aria-label="SI-01">SI-01</div>
+                        <div class="si-entry__body">
+                          <span class="si-entry__desc">IR-2024 Tier 1 protocol execution -- independent, no escalation</span>
+                          <span class="si-entry__reason">Activated immediately after Tier 1 classification; role-authorized solo execution</span>
+                        </div>
+                      </div>
+                      <div class="si-entry" role="listitem">
+                        <div class="si-entry__id" aria-label="SI-16">SI-16</div>
+                        <div class="si-entry__body">
+                          <span class="si-entry__desc">Incident severity reclassification -- upgrading Tier 1 to Tier 2 mid-response</span>
+                          <span class="si-entry__reason">Occurs during triage when initial classification was wrong or conditions changed</span>
+                        </div>
+                      </div>
+                      <div class="si-entry" role="listitem">
+                        <div class="si-entry__id" aria-label="SI-06">SI-06</div>
+                        <div class="si-entry__body">
+                          <span class="si-entry__desc">Escalation protocol -- recognizing when a decision requires supervisor involvement</span>
+                          <span class="si-entry__reason">Triggered by reclassification (SI-16) or initial Tier 2 determination; precedes Tier 2 execution</span>
+                        </div>
+                      </div>
+                      <div class="si-entry" role="listitem">
+                        <div class="si-entry__id" aria-label="SI-02">SI-02</div>
+                        <div class="si-entry__body">
+                          <span class="si-entry__desc">IR-2024 Tier 2 protocol execution -- within role authority</span>
+                          <span class="si-entry__reason">Activated after escalation check confirms Tier 2 and role authorization; still role-bounded (PC-3)</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 04: Bucket 2 -->
+            <div class="example-step" id="step-4">
+              <div class="step-marker" aria-label="Step 4">
+                <span aria-hidden="true">04</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">
+                  Bucket 2: Containment and Control
+                </h2>
+                <p class="step-content">
+                  Once the incident is classified and the appropriate protocol
+                  is activated, the responder moves into containment: stopping
+                  the spread, isolating affected systems, preserving evidence,
+                  and notifying affected external parties. All four items in
+                  Bucket 2 are physical or operational actions executed in the
+                  containment window, which begins immediately after triage
+                  and ends when active spread is stopped.
+                </p>
+
+                <div class="bucket-card"
+                     role="region"
+                     aria-label="Bucket 2: Containment and Control, 4 scope items">
+                  <div class="bucket-card__header">
+                    <div class="bucket-card__title-group">
+                      <span class="bucket-num" aria-hidden="true">2</span>
+                      <span class="bucket-name">Containment and Control</span>
+                    </div>
+                    <span class="bucket-count" aria-label="4 scope items">4 items</span>
+                  </div>
+                  <div class="bucket-card__body">
+                    <div class="bucket-rationale">
+                      <span class="bucket-rationale__label">Grouping rationale</span>
+                      All four items share a critical constraint: PC-3
+                      (role-bounded authority). Each action must be executable
+                      within the responder's role without supervisor sign-off.
+                      The grouping is not just workflow position -- it is
+                      constraint coherence. Every item in this bucket is
+                      governed by the same binding rule.
+                    </div>
+                    <div class="bucket-si-list"
+                         role="list"
+                         aria-label="Scope items in Bucket 2">
+                      <div class="si-entry" role="listitem">
+                        <div class="si-entry__id" aria-label="SI-03">SI-03</div>
+                        <div class="si-entry__body">
+                          <span class="si-entry__desc">System isolation decisions -- role-bounded, no supervisor required</span>
+                          <span class="si-entry__reason">First containment action; must be executable without delay to limit spread</span>
+                        </div>
+                      </div>
+                      <div class="si-entry" role="listitem">
+                        <div class="si-entry__id" aria-label="SI-11">SI-11</div>
+                        <div class="si-entry__body">
+                          <span class="si-entry__desc">Network segmentation decisions -- isolating affected systems to limit lateral spread</span>
+                          <span class="si-entry__reason">Follows or runs concurrent with system isolation; broader scope than SI-03</span>
+                        </div>
+                      </div>
+                      <div class="si-entry" role="listitem">
+                        <div class="si-entry__id" aria-label="SI-09">SI-09</div>
+                        <div class="si-entry__body">
+                          <span class="si-entry__desc">Evidence preservation -- maintaining chain of custody during active incident response</span>
+                          <span class="si-entry__reason">Must begin during containment to be legally defensible; cannot be retroactive</span>
+                        </div>
+                      </div>
+                      <div class="si-entry" role="listitem">
+                        <div class="si-entry__id" aria-label="SI-15">SI-15</div>
+                        <div class="si-entry__body">
+                          <span class="si-entry__desc">Vendor and third-party system notification during active incident</span>
+                          <span class="si-entry__reason">External containment action; runs concurrently with internal isolation when third-party systems are affected</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 05: Bucket 3 -->
+            <div class="example-step" id="step-5">
+              <div class="step-marker" aria-label="Step 5">
+                <span aria-hidden="true">05</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">
+                  Bucket 3: Active Response Execution
+                </h2>
+                <p class="step-content">
+                  While containment is ongoing -- and after active spread is
+                  stopped but before the incident is formally closed -- a
+                  responder carries concurrent obligations: real-time
+                  documentation, communication upward to clinical leadership,
+                  managing the regulatory notification clock, and recording
+                  any deviations from the written protocol. These four items
+                  happen while the incident is still active.
+                </p>
+                <p class="step-content">
+                  The placement of SI-10 (HIPAA breach notification timeline)
+                  here rather than in post-incident close-out requires explicit
+                  rationale. The 72-hour OCR notification clock starts at the
+                  point of discovery, not at the point of containment. Managing
+                  that clock is a live obligation during active response, not
+                  a post-closure task.
+                </p>
+
+                <div class="bucket-card"
+                     role="region"
+                     aria-label="Bucket 3: Active Response Execution, 4 scope items">
+                  <div class="bucket-card__header">
+                    <div class="bucket-card__title-group">
+                      <span class="bucket-num" aria-hidden="true">3</span>
+                      <span class="bucket-name">Active Response Execution</span>
+                    </div>
+                    <span class="bucket-count" aria-label="4 scope items">4 items</span>
+                  </div>
+                  <div class="bucket-card__body">
+                    <div class="bucket-rationale">
+                      <span class="bucket-rationale__label">Grouping rationale</span>
+                      All four items are concurrent obligations during active
+                      incident response. None can be deferred to post-incident
+                      close-out without legal or operational consequence. They
+                      are also the highest-constraint items in the scope set:
+                      SI-04 is governed by PC-4, SI-05 by PC-5, SI-10 by
+                      RC-1 and RC-3, and SI-14 directly by RC-2 (IR-2024
+                      compliance).
+                    </div>
+                    <div class="bucket-si-list"
+                         role="list"
+                         aria-label="Scope items in Bucket 3">
+                      <div class="si-entry" role="listitem">
+                        <div class="si-entry__id" aria-label="SI-04">SI-04</div>
+                        <div class="si-entry__body">
+                          <span class="si-entry__desc">Real-time SIEM event log documentation during active incident</span>
+                          <span class="si-entry__reason">Continuous obligation from incident start; log accuracy depends on real-time entry, not memory</span>
+                        </div>
+                      </div>
+                      <div class="si-entry" role="listitem">
+                        <div class="si-entry__id" aria-label="SI-05">SI-05</div>
+                        <div class="si-entry__body">
+                          <span class="si-entry__desc">Clinical leadership communication using Meridian approved templates</span>
+                          <span class="si-entry__reason">Upward communication obligation; triggered once incident is confirmed, before close-out</span>
+                        </div>
+                      </div>
+                      <div class="si-entry" role="listitem">
+                        <div class="si-entry__id" aria-label="SI-10">SI-10</div>
+                        <div class="si-entry__body">
+                          <span class="si-entry__desc">HIPAA breach notification timeline -- managing the 72-hour OCR reporting window</span>
+                          <span class="si-entry__reason">Clock starts at discovery; placed here because tracking begins during active response, not after closure</span>
+                        </div>
+                      </div>
+                      <div class="si-entry" role="listitem">
+                        <div class="si-entry__id" aria-label="SI-14">SI-14</div>
+                        <div class="si-entry__body">
+                          <span class="si-entry__desc">IR-2024 protocol deviation documentation -- recording when steps cannot be followed as written</span>
+                          <span class="si-entry__reason">Must be recorded as deviations occur, not reconstructed after; binds to RC-2 compliance</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 06: Bucket 4 -->
+            <div class="example-step" id="step-6">
+              <div class="step-marker" aria-label="Step 6">
+                <span aria-hidden="true">06</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">
+                  Bucket 4: Post-Incident Close-Out
+                </h2>
+                <p class="step-content">
+                  After containment is complete and the active incident is
+                  formally closed, three obligations remain. They share a
+                  common prerequisite: containment must be verified before
+                  any of them begin. SI-07 and SI-13 are documentation;
+                  SI-12 is a verification action that unlocks system
+                  restoration. This bucket is the smallest in the set, which
+                  requires a documented rationale and a Step 3 balance check.
+                </p>
+
+                <div class="bucket-card"
+                     role="region"
+                     aria-label="Bucket 4: Post-Incident Close-Out, 3 scope items">
+                  <div class="bucket-card__header">
+                    <div class="bucket-card__title-group">
+                      <span class="bucket-num" aria-hidden="true">4</span>
+                      <span class="bucket-name">Post-Incident Close-Out</span>
+                    </div>
+                    <span class="bucket-count" aria-label="3 scope items">3 items</span>
+                  </div>
+                  <div class="bucket-card__body">
+                    <div class="bucket-rationale">
+                      <span class="bucket-rationale__label">Grouping rationale</span>
+                      All three items require containment to be confirmed before
+                      they begin. SI-12 (recovery verification) is the physical
+                      gate: you cannot restore systems to production without
+                      confirming integrity. SI-07 (OCR documentation) and SI-13
+                      (lessons learned) both depend on having a complete incident
+                      record to draw from -- which cannot exist until the incident
+                      is closed and all active response documentation is
+                      consolidated.
+                    </div>
+                    <div class="bucket-si-list"
+                         role="list"
+                         aria-label="Scope items in Bucket 4">
+                      <div class="si-entry" role="listitem">
+                        <div class="si-entry__id" aria-label="SI-12">SI-12</div>
+                        <div class="si-entry__body">
+                          <span class="si-entry__desc">Recovery verification -- confirming system integrity before restoring to production</span>
+                          <span class="si-entry__reason">Technical gate action; must be completed before any system restoration; opens the close-out phase</span>
+                        </div>
+                      </div>
+                      <div class="si-entry" role="listitem">
+                        <div class="si-entry__id" aria-label="SI-07">SI-07</div>
+                        <div class="si-entry__body">
+                          <span class="si-entry__desc">Post-incident OCR-compliant documentation and breach reporting procedure</span>
+                          <span class="si-entry__reason">Formal regulatory documentation; requires complete incident record; governed by RC-1 and RC-3</span>
+                        </div>
+                      </div>
+                      <div class="si-entry" role="listitem">
+                        <div class="si-entry__id" aria-label="SI-13">SI-13</div>
+                        <div class="si-entry__body">
+                          <span class="si-entry__desc">Post-incident lessons learned -- documenting what happened and what to change</span>
+                          <span class="si-entry__reason">Organizational learning output; depends on full incident record and completed close-out documentation</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="bucket-flag"
+                         role="note"
+                         aria-label="Balance flag for Step 3">
+                      <svg class="bucket-flag__icon"
+                           aria-hidden="true"
+                           focusable="false"
+                           width="16" height="16"
+                           viewBox="0 0 16 16"
+                           fill="none">
+                        <path d="M8 2L14 13H2L8 2Z"
+                              stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 6v3.5M8 11.5v.5"
+                              stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round"/>
+                      </svg>
+                      <span class="bucket-flag__text">
+                        <strong>Step 3 balance flag:</strong> Bucket 4 contains
+                        3 items -- the smallest bucket in the set. This does
+                        not require merging with Bucket 3. The items share
+                        a distinct prerequisite (containment confirmation) that
+                        separates them clearly from active execution. However,
+                        the balance evaluation in Step 3 will confirm whether
+                        3 items provide sufficient learning content to justify
+                        a standalone bucket against the project constraints.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Four-bucket summary -->
+                <p class="step-content" style="margin-top:1rem;">
+                  The complete MRHN Bucket Map -- four buckets, 16 scope items
+                  assigned, workflow sequence established:
+                </p>
+                <div class="bucket-map-summary"
+                     role="region"
+                     aria-label="Complete MRHN Bucket Map summary">
+                  <div class="bucket-map-summary__header">
+                    MRHN Bucket Map -- Step 2 Complete
+                  </div>
+                  <div class="bucket-summary-row">
+                    <span class="bucket-summary__num">Bucket 1</span>
+                    <span class="bucket-summary__name">Threat Recognition and Triage</span>
+                    <span class="bucket-summary__count">SI-08, 01, 16, 06, 02 &bull; 5 items</span>
+                  </div>
+                  <div class="bucket-summary-row">
+                    <span class="bucket-summary__num">Bucket 2</span>
+                    <span class="bucket-summary__name">Containment and Control</span>
+                    <span class="bucket-summary__count">SI-03, 11, 09, 15 &bull; 4 items</span>
+                  </div>
+                  <div class="bucket-summary-row">
+                    <span class="bucket-summary__num">Bucket 3</span>
+                    <span class="bucket-summary__name">Active Response Execution</span>
+                    <span class="bucket-summary__count">SI-04, 05, 10, 14 &bull; 4 items</span>
+                  </div>
+                  <div class="bucket-summary-row">
+                    <span class="bucket-summary__num">Bucket 4</span>
+                    <span class="bucket-summary__name">Post-Incident Close-Out</span>
+                    <span class="bucket-summary__count">SI-12, 07, 13 &bull; 3 items</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div><!-- /.worked-example__content -->
+
+          <!-- ====================================================
+               Right column: think-aloud
+               ==================================================== -->
+          <aside class="worked-example__think-aloud"
+                 aria-label="Expert think-aloud annotations">
+
+            <div class="think-aloud__header">
+              <h2 class="think-aloud__heading">Expert Think-Aloud</h2>
+              <button type="button"
+                      id="annotations-toggle"
+                      class="btn btn--toggle"
+                      aria-controls="annotations-list"
+                      aria-expanded="true">
+                <span class="toggle-label">Hide Annotations</span>
+              </button>
+            </div>
+
+            <div id="annotations-list" class="think-aloud__list">
+
+              <div class="annotation-item" data-step="1"
+                   aria-label="Annotation for step 1">
+                <span class="annotation-marker" aria-hidden="true">01</span>
+                <p class="annotation-text">
+                  The most common bucketing error is starting before you have
+                  seen the full set. The first five items look like a natural
+                  group until you read item 16 and realize the sequencing
+                  logic is different than you assumed. First pass: read
+                  everything. Zero decisions.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="2"
+                   aria-label="Annotation for step 2">
+                <span class="annotation-marker" aria-hidden="true">02</span>
+                <p class="annotation-text">
+                  Topic-based grouping feels natural because it matches how
+                  subject-matter experts think about their field. But learners
+                  are not being trained to think about the field -- they are
+                  being trained to perform in the field. Those two things
+                  require different organizational logic.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="3"
+                   aria-label="Annotation for step 3">
+                <span class="annotation-marker" aria-hidden="true">03</span>
+                <p class="annotation-text">
+                  Bucket 1 has 5 items -- the largest bucket. I am not
+                  splitting it to achieve numerical balance. The 5 items
+                  form an unbroken decision chain (classify, activate,
+                  reclassify, escalate, re-activate). Splitting that chain
+                  would teach the decision sequence in two separate buckets,
+                  which breaks the prerequisite logic.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="4"
+                   aria-label="Annotation for step 4">
+                <span class="annotation-marker" aria-hidden="true">04</span>
+                <p class="annotation-text">
+                  The signal that these four belong together is not just
+                  workflow position -- it is that they are all governed by
+                  PC-3 (role-bounded authority). When scope items share
+                  a governing constraint, that constraint usually defines
+                  the learning challenge for the bucket. Here: can you
+                  identify and execute the right containment action within
+                  your authority, without waiting for supervisor confirmation?
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="5"
+                   aria-label="Annotation for step 5">
+                <span class="annotation-marker" aria-hidden="true">05</span>
+                <p class="annotation-text">
+                  SI-10 is the most debated placement. Post-incident designers
+                  want to put it in close-out because breach notification
+                  "happens after the incident." But the 72-hour clock starts
+                  at discovery, not at closure. A course that teaches
+                  notification timing only in the post-incident module will
+                  produce learners who don't think about the clock until
+                  it is almost out of time.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="6"
+                   aria-label="Annotation for step 6">
+                <span class="annotation-marker" aria-hidden="true">06</span>
+                <p class="annotation-text">
+                  Three items does not automatically mean the bucket is too
+                  thin. The test is not "how many items" but "do these items
+                  require meaningful learning content and do they have a
+                  coherent prerequisite structure?" SI-12, SI-07, and SI-13
+                  all pass that test. Step 3 will confirm whether the
+                  instructional content they generate fits within the
+                  project constraints.
+                </p>
+              </div>
+
+            </div>
+          </aside>
+
+        </div><!-- /.worked-example__layout -->
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l2-s1.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="m1-l2-s3.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+
+    <section id="artifact-reference"
+             tabindex="-1"
+             aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">
+        The four buckets established on this screen form the structure
+        of MRHN_BucketMap_v1. The Bucket Map artifact is completed
+        in Screen 4.
+      </p>
+    </section>
+
+    <section id="decision-history"
+             tabindex="-1"
+             aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">
+        Bucketing decisions for each scope item are recorded with
+        rationale above. Governance records will be drafted in Screen 4.
+      </p>
+    </section>
+
+  </aside>
+
+  <!-- ============================================================
+       Support Panels
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12"
+                placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded',
+          btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Think-aloud toggle
+       ============================================================ -->
+  <script type="module">
+    const toggle = document.getElementById('annotations-toggle');
+    const list   = document.getElementById('annotations-list');
+    const label  = toggle.querySelector('.toggle-label');
+
+    toggle.addEventListener('click', () => {
+      const nowExpanded = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(nowExpanded));
+      label.textContent = nowExpanded ? 'Hide Annotations' : 'Show Annotations';
+      if (nowExpanded) {
+        list.removeAttribute('hidden');
+      } else {
+        list.setAttribute('hidden', '');
+      }
+    });
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script
+       ============================================================ -->
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.2';
+    document.getElementById('pt-phase').textContent        = '1';
+    document.getElementById('pt-step').textContent         = '2';
+    document.getElementById('pt-screen').textContent       = '2';
+    document.getElementById('pt-screen-total').textContent = '6';
+
+    document.querySelectorAll('.module-nav-link').forEach(link => {
+      link.removeAttribute('aria-current');
+    });
+    const activeLink = document.querySelector(
+      '.module-nav-link[href="module-1.html"]'
+    );
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+  </script>
+
+</body>
+</html>

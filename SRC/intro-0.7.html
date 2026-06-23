@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Six support tools are built into the ARCH Method Practitioner Credential to help you reflect, document decisions, and calibrate your understanding as you work through each module.">
+  <title>How You Will Learn | Introduction | ARCH Method Practitioner Credential | Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/scaffolds/persistentStepTracker.css">
+  <style>
+    /* ================================================================
+       Screen 0.7 — How You Will Learn
+       All color values reference CSS tokens. No hard-coded hex values.
+       ================================================================ */
+
+    .lesson-intro__lead {
+      margin: 0 0 1.5rem;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+      max-width: 70ch;
+    }
+
+    .lesson-intro__body-text {
+      margin: 0 0 1rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+      max-width: 70ch;
+    }
+
+    /* ----------------------------------------------------------------
+       Tool Card Grid
+       3 columns desktop → 2 columns tablet → 1 column mobile
+       ---------------------------------------------------------------- */
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.125rem;
+      margin: 1.25rem 0 1.75rem;
+      max-width: 860px;
+    }
+
+    @media (max-width: 700px) {
+      .tool-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 440px) {
+      .tool-grid { grid-template-columns: 1fr; }
+    }
+
+    .tool-card {
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      padding: 1.125rem;
+    }
+
+    /* Icon rendered in teal via currentColor inheritance */
+    .tool-card__icon {
+      display: block;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 0.75rem;
+      color: var(--color-text-link);
+    }
+
+    .tool-card__name {
+      margin: 0 0 0.375rem;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+    }
+
+    .tool-card__desc {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+    }
+
+    @media (prefers-contrast: more) {
+      .tool-card { border-color: var(--color-border-strong); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">
+        Module <span id="pt-module">Intro</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        <span id="pt-lesson">Introduction</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true" id="pt-phase-divider" hidden>&bull;</span>
+      <span class="pt-item" id="pt-phase-item" hidden>
+        Phase <span id="pt-phase">0</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true" id="pt-step-divider" hidden>&bull;</span>
+      <span class="pt-item" id="pt-step-item" hidden>
+        Step <span id="pt-step">0</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Screen <span id="pt-screen">7</span> of <span id="pt-screen-total">9</span>
+      </span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary"
+              aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel"
+              aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer"
+              aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory"
+              aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel"
+              aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link" aria-current="page">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <article class="lesson-intro" aria-labelledby="lesson-title">
+
+        <header class="lesson-intro__header">
+          <p class="lesson-label" aria-label="Introduction, Screen 7 of 9">
+            Introduction &bull; Screen 7 of 9
+          </p>
+          <h1 id="lesson-title" class="lesson-intro__title">How You Will Learn</h1>
+        </header>
+
+        <p class="lesson-intro__lead">
+          Six support tools are built into the lessons of this credential. Each serves a specific
+          purpose within the self-paced flow. You do not need to locate them manually -- they
+          appear at the appropriate moment within each lesson.
+        </p>
+
+        <!-- =========================================================
+             Tool Card Grid
+             6 cards: icon (inline SVG, teal via currentColor) + name + desc
+             All icons are inline SVG. No external icon libraries.
+             Icons are aria-hidden; card names provide the accessible label.
+             ========================================================= -->
+        <div class="tool-grid"
+             role="list"
+             aria-label="Six credential support tools">
+
+          <!-- Tool 1: Reflection Checkpoints
+               Icon: magnifying glass (inspect / look closely at practice) -->
+          <div class="tool-card" role="listitem">
+            <svg class="tool-card__icon"
+                 viewBox="0 0 24 24"
+                 aria-hidden="true"
+                 focusable="false"
+                 fill="none">
+              <circle cx="10.5" cy="10.5" r="7"
+                      stroke="currentColor" stroke-width="1.75"/>
+              <line x1="16" y1="16" x2="21" y2="21"
+                    stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+            </svg>
+            <p class="tool-card__name">Reflection Checkpoints</p>
+            <p class="tool-card__desc">
+              A brief prompt at the end of most lessons inviting you to connect what you just
+              learned to your own practice or a design project you have worked on. Responses
+              are not collected or evaluated.
+            </p>
+          </div>
+
+          <!-- Tool 2: ARCH Decision Logs
+               Icon: decision diamond (flowchart decision symbol) -->
+          <div class="tool-card" role="listitem">
+            <svg class="tool-card__icon"
+                 viewBox="0 0 24 24"
+                 aria-hidden="true"
+                 focusable="false"
+                 fill="none">
+              <polygon points="12,2 22,12 12,22 2,12"
+                       stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+            </svg>
+            <p class="tool-card__name">ARCH Decision Logs</p>
+            <p class="tool-card__desc">
+              A running record of every significant design decision made in the Meridian
+              scenario, including the rationale and the alternative that was ruled out. The
+              log accumulates across all four modules.
+            </p>
+          </div>
+
+          <!-- Tool 3: Learning Science Decision Logs
+               Icon: lightbulb (circle globe + tapered base lines) -->
+          <div class="tool-card" role="listitem">
+            <svg class="tool-card__icon"
+                 viewBox="0 0 24 24"
+                 aria-hidden="true"
+                 focusable="false"
+                 fill="none">
+              <circle cx="12" cy="9" r="6.5"
+                      stroke="currentColor" stroke-width="1.75"/>
+              <line x1="9"   y1="15.5" x2="15"   y2="15.5"
+                    stroke="currentColor" stroke-width="1.5"  stroke-linecap="round"/>
+              <line x1="9.5" y1="18"   x2="14.5" y2="18"
+                    stroke="currentColor" stroke-width="1.5"  stroke-linecap="round"/>
+              <line x1="11"  y1="20.5" x2="13"   y2="20.5"
+                    stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+            </svg>
+            <p class="tool-card__name">Learning Science Decision Logs</p>
+            <p class="tool-card__desc">
+              Notes on how each ARCH step is grounded in research on how people learn. These
+              appear in selected lessons and explain the evidence basis for the method's
+              design choices.
+            </p>
+          </div>
+
+          <!-- Tool 4: Governance Decision Logs
+               Icon: shield with three horizontal log-entry lines -->
+          <div class="tool-card" role="listitem">
+            <svg class="tool-card__icon"
+                 viewBox="0 0 24 24"
+                 aria-hidden="true"
+                 focusable="false"
+                 fill="none">
+              <path d="M12 2 L20 5.5 L20 12.5 C20 17 16.5 20.5 12 22 C7.5 20.5 4 17 4 12.5 L4 5.5 Z"
+                    stroke="currentColor" stroke-width="1.75"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="8.5" y1="10" x2="15.5" y2="10"
+                    stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+              <line x1="8.5" y1="13" x2="15.5" y2="13"
+                    stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+              <line x1="8.5" y1="16" x2="12.5" y2="16"
+                    stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+            </svg>
+            <p class="tool-card__name">Governance Decision Logs</p>
+            <p class="tool-card__desc">
+              Formal records of decisions made at the governance gates built into the ARCH
+              Method. These are the decisions that become part of the final Structural Freeze
+              Declaration Package.
+            </p>
+          </div>
+
+          <!-- Tool 5: Calibration Activities
+               Icon: three horizontal slider controls at different knob positions.
+               Knob fill uses --color-bg-subtle to match card background and
+               visually interrupt the track line, producing the classic slider look. -->
+          <div class="tool-card" role="listitem">
+            <svg class="tool-card__icon"
+                 viewBox="0 0 24 24"
+                 aria-hidden="true"
+                 focusable="false"
+                 fill="none">
+              <line x1="3"  y1="7"  x2="21" y2="7"
+                    stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+              <line x1="3"  y1="12" x2="21" y2="12"
+                    stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+              <line x1="3"  y1="17" x2="21" y2="17"
+                    stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+              <circle cx="8"  cy="7"  r="2.75"
+                      fill="var(--color-bg-subtle)"
+                      stroke="currentColor" stroke-width="1.75"/>
+              <circle cx="15" cy="12" r="2.75"
+                      fill="var(--color-bg-subtle)"
+                      stroke="currentColor" stroke-width="1.75"/>
+              <circle cx="11" cy="17" r="2.75"
+                      fill="var(--color-bg-subtle)"
+                      stroke="currentColor" stroke-width="1.75"/>
+            </svg>
+            <p class="tool-card__name">Calibration Activities</p>
+            <p class="tool-card__desc">
+              Short self-check activities that appear before or after key concepts. These are
+              for your own calibration only and do not contribute to your credential
+              evaluation.
+            </p>
+          </div>
+
+          <!-- Tool 6: Governance Checkpoints
+               Icon: circle with checkmark (approval gate) -->
+          <div class="tool-card" role="listitem">
+            <svg class="tool-card__icon"
+                 viewBox="0 0 24 24"
+                 aria-hidden="true"
+                 focusable="false"
+                 fill="none">
+              <circle cx="12" cy="12" r="9.5"
+                      stroke="currentColor" stroke-width="1.75"/>
+              <polyline points="7,12 10.5,15.5 17,8.5"
+                        stroke="currentColor" stroke-width="1.75"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="tool-card__name">Governance Checkpoints</p>
+            <p class="tool-card__desc">
+              Formal gates at the end of each module where you review your artifact against a
+              governance checklist before advancing. A checkpoint must be cleared before you
+              can proceed to the next module.
+            </p>
+          </div>
+
+        </div>
+
+        <p class="lesson-intro__body-text">
+          You will encounter each tool for the first time in Module 1. By Module 4, you will
+          have used all six across the full ARCH workflow.
+        </p>
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="intro-0.6.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="intro-0.8.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">No artifacts have been started yet. Your first artifact begins in Module 1.</p>
+    </section>
+
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">No decisions recorded yet. Decision points begin in Module 1.</p>
+    </section>
+
+  </aside>
+
+  <!-- ============================================================
+       Support Panels — managed by panelManager.js
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12"
+                placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded',
+          btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script
+       ============================================================ -->
+  <script type="module">
+    import { init } from './js/scaffolds/persistentStepTracker.js';
+
+    init({
+      module:   0,
+      lesson:   'Introduction',
+      phase:    0,
+      step:     0,
+      screen:   7,
+      total:    9,
+      announce: false,
+    });
+
+    /* ptUpdate() sets pt-module to '0'. Override to display 'Intro'. */
+    document.getElementById('pt-module').textContent = 'Intro';
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="This credential uses a cognitive apprenticeship structure across four modules. Support decreases as learner independence increases, following the Gradual Release of Responsibility model.">
+  <title>The Gradual Release Model | Introduction | ARCH Method Practitioner Credential | Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/scaffolds/persistentStepTracker.css">
+  <style>
+    /* ================================================================
+       Screen 0.5 — Gradual Release Model Styles
+       All color values reference CSS tokens. No hard-coded hex values.
+       ================================================================ */
+
+    .lesson-intro__lead {
+      margin: 0 0 1.5rem;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+      max-width: 70ch;
+    }
+
+    .lesson-intro__body-text {
+      margin: 0 0 1rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      max-width: 68ch;
+    }
+
+    /* ----------------------------------------------------------------
+       Gradual Release Figure
+       Horizontal scroll on narrow viewports preserves SVG legibility.
+       min-width keeps chart text readable at minimum display size.
+       ---------------------------------------------------------------- */
+
+    .gr-figure {
+      margin: 0 0 1.5rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .gr-graphic {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-width: 500px;
+    }
+
+    .gr-caption {
+      margin-top: 0.875rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--color-border-default);
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      max-width: 720px;
+    }
+
+    .gr-scroll-hint {
+      display: none;
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 539px) {
+      .gr-scroll-hint { display: block; }
+    }
+
+    /* ----------------------------------------------------------------
+       Cognitive Apprenticeship Arc List
+       Two-column grid: module label left, phase name + desc right.
+       Same pattern as performance task list in Screen 0.4.
+       ---------------------------------------------------------------- */
+
+    .arc-list {
+      margin: 0.875rem 0 1.25rem;
+      padding: 0;
+      list-style: none;
+      max-width: 680px;
+    }
+
+    .arc-item {
+      display: grid;
+      grid-template-columns: 6.5rem 1fr;
+      gap: 0 1.125rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--color-border-default);
+      align-items: start;
+    }
+
+    .arc-item:first-child { padding-top: 0; }
+    .arc-item:last-child  { border-bottom: none; }
+
+    @media (max-width: 480px) {
+      .arc-item { grid-template-columns: 1fr; gap: 0.25rem 0; }
+    }
+
+    .arc-item__module {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+      padding-top: 0.125rem;
+    }
+
+    .arc-item__phase {
+      display: block;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 0.25rem;
+      line-height: 1.3;
+    }
+
+    .arc-item__desc {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+    }
+
+    /* High contrast: strengthen list separators */
+    @media (prefers-contrast: more) {
+      .arc-item { border-bottom-color: var(--color-border-strong); }
+      .arc-item__module { color: var(--color-text-primary); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">
+        Module <span id="pt-module">Intro</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        <span id="pt-lesson">Introduction</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true" id="pt-phase-divider" hidden>&bull;</span>
+      <span class="pt-item" id="pt-phase-item" hidden>
+        Phase <span id="pt-phase">0</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true" id="pt-step-divider" hidden>&bull;</span>
+      <span class="pt-item" id="pt-step-item" hidden>
+        Step <span id="pt-step">0</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Screen <span id="pt-screen">5</span> of <span id="pt-screen-total">9</span>
+      </span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button"
+              class="support-toggle"
+              data-panel="glossary"
+              aria-controls="glossary"
+              aria-expanded="false">Glossary</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="supportPanel"
+              aria-controls="supportPanel"
+              aria-expanded="false">Support</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="artifactDrawer"
+              aria-controls="artifactDrawer"
+              aria-expanded="false">Artifacts</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="decisionHistory"
+              aria-controls="decisionHistory"
+              aria-expanded="false">Decision History</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="annotationPanel"
+              aria-controls="annotationPanel"
+              aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link" aria-current="page">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <article class="lesson-intro" aria-labelledby="lesson-title">
+
+        <header class="lesson-intro__header">
+          <p class="lesson-label" aria-label="Introduction, Screen 5 of 9">Introduction &bull; Screen 5 of 9</p>
+          <h1 id="lesson-title" class="lesson-intro__title">The Gradual Release Model</h1>
+        </header>
+
+        <p class="lesson-intro__lead">
+          This credential uses a cognitive apprenticeship structure to sequence how support is
+          provided and withdrawn across four modules. In Module 1, you work alongside expert
+          modeling and receive structured feedback on every decision. By Module 4, the scaffolding
+          has been removed and you apply the ARCH Method independently, with calibration-based
+          feedback on your work. This pattern is the Gradual Release of Responsibility: support
+          decreases as your competence with the method grows.
+        </p>
+
+        <!-- =========================================================
+             Graphic 2 — Gradual Release Progression SVG
+
+             Requirements met:
+             - Support: navy solid line (--color-text-primary), left to right decreasing
+             - Independence: teal dashed line (--color-text-link), left to right increasing
+             - Both labeled directly ON the lines via inline knockout labels
+             - Four module markers on the x-axis (Module 1 through Module 4)
+             - Grayscale readable: solid vs dashed differentiates lines
+               without relying on color; filled vs open dots reinforce distinction
+             - Colorblind accessible: line style (solid/dashed) + label text
+               carry the full meaning; color is supplemental only
+
+             Coordinate system (viewBox 0 0 720 290):
+             - Plot area: x=70 to x=620, y=34 to y=218
+             - Support line:     M 70,34  L 620,218  (high left to low right)
+             - Independence line: M 70,218 L 620,34  (low left to high right)
+             - Lines cross at (345, 126)
+             - Module x positions: 70, 253, 437, 620 (spacing: 550/3 = 183px)
+             - Support y at each module: 34, 95, 157, 218
+             - Independence y at each module: 218, 157, 95, 34
+
+             Labels are embedded directly in the lines via knockout rects
+             (filled with --color-bg-subtle) placed before the text elements
+             in rendering order, interrupting the line at the label position.
+             ========================================================= -->
+
+        <p class="gr-scroll-hint" aria-hidden="true">Scroll right to view the full chart.</p>
+
+        <figure class="gr-figure"
+                role="group"
+                aria-labelledby="gr-caption-text">
+
+          <svg class="gr-graphic"
+               viewBox="0 0 720 290"
+               xmlns="http://www.w3.org/2000/svg"
+               role="img"
+               aria-labelledby="gr-svg-title"
+               aria-describedby="gr-svg-desc">
+
+            <title id="gr-svg-title">Gradual Release Progression: Support and Independence across four modules</title>
+            <desc id="gr-svg-desc">A four-step progression shows support decreasing from high in Module 1 to minimal in Module 4, while independence increases from low in Module 1 to full in Module 4.</desc>
+
+            <style>
+              /* SVG colors from CSS tokens only. Tokens adapt to dark mode
+                 and high contrast via media queries in tokens.css. */
+              .gr-bg        { fill: var(--color-bg-subtle); stroke: var(--color-border-default); stroke-width: 1; }
+              .gr-axis      { stroke: var(--color-border-default); stroke-width: 1; }
+              .gr-tick      { stroke: var(--color-border-default); stroke-width: 1; }
+              .gr-mod-lbl   { fill: var(--color-text-secondary);
+                              font-family: system-ui, -apple-system, sans-serif;
+                              font-size: 10.5px; font-weight: 600; }
+              .gr-axis-lbl  { fill: var(--color-text-secondary);
+                              font-family: system-ui, -apple-system, sans-serif;
+                              font-size: 10.5px; }
+              .gr-hl-lbl    { fill: var(--color-text-secondary);
+                              font-family: system-ui, -apple-system, sans-serif;
+                              font-size: 10px; }
+
+              /* Support line: solid navy.
+                 Solid stroke = grayscale differentiator for this line. */
+              .gr-s-line  { stroke: var(--color-text-primary); stroke-width: 2.5; fill: none; }
+
+              /* Independence line: teal dashed (8px on, 5px off).
+                 Dashed stroke = grayscale differentiator for this line. */
+              .gr-i-line  { stroke: var(--color-text-link); stroke-width: 2.5;
+                            stroke-dasharray: 8,5; fill: none; }
+
+              /* Inline label knockout rectangle.
+                 fill matches chart background so it interrupts the line
+                 at the label position. Adapts to dark mode automatically. */
+              .gr-knockout { fill: var(--color-bg-subtle); }
+
+              /* Inline label text */
+              .gr-s-lbl   { fill: var(--color-text-primary);
+                            font-family: system-ui, -apple-system, sans-serif;
+                            font-size: 12px; font-weight: 700; }
+              .gr-i-lbl   { fill: var(--color-text-link);
+                            font-family: system-ui, -apple-system, sans-serif;
+                            font-size: 12px; font-weight: 700; }
+
+              /* Module dots on support line: filled circles (solid visual) */
+              .gr-s-dot   { fill: var(--color-text-primary); }
+
+              /* Module dots on independence line: open circles (echoes dashed line) */
+              .gr-i-dot   { fill: var(--color-bg-subtle);
+                            stroke: var(--color-text-link); stroke-width: 2; }
+
+              /* High contrast: thicker strokes, stronger ticks */
+              @media (prefers-contrast: more) {
+                .gr-axis, .gr-tick { stroke: var(--color-border-strong); }
+                .gr-bg             { stroke: var(--color-border-strong); }
+                .gr-s-line         { stroke-width: 3.5; }
+                .gr-i-line         { stroke-width: 3.5; stroke-dasharray: 10,5; }
+                .gr-i-dot          { stroke-width: 3; }
+              }
+            </style>
+
+            <!-- Chart background -->
+            <rect class="gr-bg" x="1" y="1" width="718" height="288" rx="8"/>
+
+            <!-- X-axis baseline -->
+            <line class="gr-axis" x1="70" y1="228" x2="620" y2="228"/>
+
+            <!-- Four module tick marks -->
+            <line class="gr-tick" x1="70"  y1="228" x2="70"  y2="240"/>
+            <line class="gr-tick" x1="253" y1="228" x2="253" y2="240"/>
+            <line class="gr-tick" x1="437" y1="228" x2="437" y2="240"/>
+            <line class="gr-tick" x1="620" y1="228" x2="620" y2="240"/>
+
+            <!-- Module labels -->
+            <text class="gr-mod-lbl" x="70"  y="256" text-anchor="middle">Module 1</text>
+            <text class="gr-mod-lbl" x="253" y="256" text-anchor="middle">Module 2</text>
+            <text class="gr-mod-lbl" x="437" y="256" text-anchor="middle">Module 3</text>
+            <text class="gr-mod-lbl" x="620" y="256" text-anchor="middle">Module 4</text>
+
+            <!-- X-axis label -->
+            <text class="gr-axis-lbl" x="345" y="276" text-anchor="middle">Progression through the credential</text>
+
+            <!-- Y-scale orientation (high/low at plot boundaries) -->
+            <text class="gr-hl-lbl" x="62" y="40"  text-anchor="end">High</text>
+            <text class="gr-hl-lbl" x="62" y="222" text-anchor="end">Low</text>
+
+            <!-- ========== Support Line (solid navy) ==========
+                 Starts high (Module 1) and decreases to low (Module 4).
+                 In grayscale: dark solid line. ================= -->
+            <path class="gr-s-line" d="M 70,34 L 620,218"/>
+
+            <!-- ========== Independence Line (teal dashed) ==========
+                 Starts low (Module 1) and increases to high (Module 4).
+                 In grayscale: medium dashed line. ================ -->
+            <path class="gr-i-line" d="M 70,218 L 620,34"/>
+
+            <!-- ========== Module step dots ==========
+                 Four dots per line mark the four discrete module positions.
+                 Support: filled circles (matches solid line visual language).
+                 Independence: open/ring circles (matches dashed line visual language).
+                 This distinction aids grayscale and colorblind readability
+                 without relying on color alone.
+                 ===================================== -->
+
+            <!-- Support dots (filled navy) -->
+            <circle class="gr-s-dot" cx="70"  cy="34"  r="5"/>
+            <circle class="gr-s-dot" cx="253" cy="95"  r="5"/>
+            <circle class="gr-s-dot" cx="437" cy="157" r="5"/>
+            <circle class="gr-s-dot" cx="620" cy="218" r="5"/>
+
+            <!-- Independence dots (open teal ring) -->
+            <circle class="gr-i-dot" cx="70"  cy="218" r="5"/>
+            <circle class="gr-i-dot" cx="253" cy="157" r="5"/>
+            <circle class="gr-i-dot" cx="437" cy="95"  r="5"/>
+            <circle class="gr-i-dot" cx="620" cy="34"  r="5"/>
+
+            <!-- ========== Inline labels ==========
+                 Each label is placed directly on its line.
+                 A knockout rectangle (gr-knockout) painted with the chart
+                 background color interrupts the line at the label position.
+                 The label text is then drawn on top of the knockout rect.
+
+                 "Support" label:
+                   - Centered at x=165, on support line at y=66
+                   - Knockout rect: x=124 to x=206 (82px), y=54 to y=78
+                 "Independence" label:
+                   - Centered at x=490, on independence line at y=78
+                   - Knockout rect: x=437 to x=543 (106px), y=66 to y=90
+                 ===================================== -->
+
+            <!-- Support label knockout + text -->
+            <rect class="gr-knockout" x="124" y="54" width="82" height="24" rx="2"/>
+            <text class="gr-s-lbl" x="165" y="70" text-anchor="middle">Support</text>
+
+            <!-- Independence label knockout + text.
+                 x=490 positions this to the right of Module 3 (x=437),
+                 avoiding overlap with the Module 3 independence dot (437, 95). -->
+            <rect class="gr-knockout" x="437" y="66" width="106" height="24" rx="2"/>
+            <text class="gr-i-lbl" x="490" y="82" text-anchor="middle">Independence</text>
+
+          </svg>
+
+          <figcaption class="gr-caption" id="gr-caption-text">
+            The solid line shows the level of instructional support available to you across the
+            credential. The dashed line shows the level of independent judgment expected. The lines
+            cross between Modules 2 and 3: from that point, independence becomes the dominant
+            expectation. Filled dots mark the four module positions on the Support line; open dots
+            mark the four module positions on the Independence line.
+          </figcaption>
+
+        </figure>
+
+        <!-- =====================================================
+             Cognitive Apprenticeship Arc: four-module mapping
+             ===================================================== -->
+        <p class="lesson-intro__body-text">
+          The arc follows four phases of the cognitive apprenticeship model. Each module
+          corresponds to a phase in that arc.
+        </p>
+
+        <ul class="arc-list" role="list">
+
+          <li class="arc-item">
+            <span class="arc-item__module">Module 1</span>
+            <div>
+              <span class="arc-item__phase">Modeling and Coaching</span>
+              <p class="arc-item__desc">
+                Worked examples walk through every ARCH decision with expert think-aloud
+                narration. Guided practice provides immediate, criterion-referenced feedback.
+                Support is at its highest.
+              </p>
+            </div>
+          </li>
+
+          <li class="arc-item">
+            <span class="arc-item__module">Module 2</span>
+            <div>
+              <span class="arc-item__phase">Coaching</span>
+              <p class="arc-item__desc">
+                Worked examples continue but require more active judgment from you. Decision
+                point prompts supply criteria without modeling the answer. Support moderates
+                as fluency builds.
+              </p>
+            </div>
+          </li>
+
+          <li class="arc-item">
+            <span class="arc-item__module">Module 3</span>
+            <div>
+              <span class="arc-item__phase">Scaffolding Withdrawal</span>
+              <p class="arc-item__desc">
+                Expert narration decreases. You apply diagnostic criteria to your own
+                Meridian architecture with limited guidance and compare your judgment
+                to expert benchmarks.
+              </p>
+            </div>
+          </li>
+
+          <li class="arc-item">
+            <span class="arc-item__module">Module 4</span>
+            <div>
+              <span class="arc-item__phase">Fading</span>
+              <p class="arc-item__desc">
+                Instructional scaffolding is minimal. You complete the MRHN Architecture
+                Package through independent judgment. Feedback is calibration-based
+                rather than instructional.
+              </p>
+            </div>
+          </li>
+
+        </ul>
+
+        <p class="lesson-intro__body-text">
+          The course tools, including the glossary, decision history, and support panel,
+          remain available in all four modules. The instructional scaffolding itself is
+          what withdraws.
+        </p>
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="intro-0.4.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true"
+                 focusable="false"
+                 width="16"
+                 height="16"
+                 viewBox="0 0 16 16"
+                 fill="none">
+              <path d="M10 12L6 8l4-4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="intro-0.6.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen">
+            Next
+            <svg aria-hidden="true"
+                 focusable="false"
+                 width="16"
+                 height="16"
+                 viewBox="0 0 16 16"
+                 fill="none">
+              <path d="M6 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+
+    <section id="artifact-reference"
+             tabindex="-1"
+             aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">No artifacts have been started yet. Your first artifact begins in Module 1.</p>
+    </section>
+
+    <section id="decision-history"
+             tabindex="-1"
+             aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">No decisions recorded yet. Decision points begin in Module 1.</p>
+    </section>
+
+  </aside>
+
+  <!-- ============================================================
+       Support Panels — managed by panelManager.js
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script
+       ============================================================ -->
+  <script type="module">
+    import { init } from './js/scaffolds/persistentStepTracker.js';
+
+    init({
+      module:   0,
+      lesson:   'Introduction',
+      phase:    0,
+      step:     0,
+      screen:   5,
+      total:    9,
+      announce: false,
+    });
+
+    /* ptUpdate() sets pt-module to '0'. Override to display 'Intro'. */
+    document.getElementById('pt-module').textContent = 'Intro';
+  </script>
+
+</body>
+</html>

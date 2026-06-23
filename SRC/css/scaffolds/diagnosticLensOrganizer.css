@@ -1,0 +1,251 @@
+/* =============================================================================
+   diagnosticLensOrganizer.css
+   Scaffold Component 3 of 10 -- Diagnostic Lens Organizer
+   Requires: css/tokens.css loaded first (all color values from tokens)
+   ============================================================================= */
+
+/* ---- Outer container ---- */
+.dlo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ---- Optional panel heading ---- */
+.dlo__heading {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+/* ============================================================
+   LENS LIST
+   ============================================================ */
+
+.dlo__lenses {
+  border: 1px solid var(--color-border-default);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* ---- Single lens item ---- */
+.dlo__lens {
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.dlo__lens:last-child {
+  border-bottom: none;
+}
+
+/* ---- Trigger button ---- */
+.dlo__lens-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  color: var(--color-text-primary);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dlo__lens-trigger:hover {
+  background-color: var(--color-bg-subtle);
+}
+
+.dlo__lens-trigger:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
+}
+
+/* ---- Index badge (decorative 1-5 counter) ---- */
+.dlo__lens-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border-default);
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Badge fills with brand color when lens is expanded */
+.dlo__lens-trigger--expanded .dlo__lens-badge {
+  background-color: var(--color-text-primary);
+  border-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
+}
+
+/* ---- Lens label text ---- */
+.dlo__lens-label {
+  flex: 1;
+}
+
+/* ---- Chevron icon ---- */
+.dlo__lens-chevron {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+  transition: transform 200ms ease;
+}
+
+.dlo__lens-trigger--expanded .dlo__lens-chevron {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dlo__lens-chevron {
+    transition: none;
+  }
+}
+
+/* ---- Lens body (collapsed by default via JS [hidden]) ---- */
+.dlo__lens-body {
+  border-top: 1px solid var(--color-border-default);
+  background-color: var(--color-surface-raised);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ---- Description paragraph (guiding question) ---- */
+.dlo__lens-description {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* ---- Observation field ---- */
+.dlo__lens-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.dlo__lens-field-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.dlo__lens-textarea {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--color-border-default);
+  border-radius: 4px;
+  background-color: var(--color-surface-default);
+  color: var(--color-text-primary);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.dlo__lens-textarea::placeholder {
+  color: var(--color-text-disabled);
+}
+
+.dlo__lens-textarea:focus {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 0;
+  border-color: var(--color-focus-ring);
+}
+
+/* ============================================================
+   SYNTHESIS PROMPT
+   Visually separated from the lens list.
+   ============================================================ */
+
+.dlo__prompt {
+  padding: 1.25rem;
+  border: 1px solid var(--color-border-default);
+  border-radius: 4px;
+  background-color: var(--color-surface-raised);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ---- Synthesis heading ("What pattern appears first?") ---- */
+.dlo__prompt-heading {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+/* ---- Synthesis textarea ---- */
+.dlo__prompt-textarea {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--color-border-default);
+  border-radius: 4px;
+  background-color: var(--color-surface-default);
+  color: var(--color-text-primary);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.dlo__prompt-textarea::placeholder {
+  color: var(--color-text-disabled);
+}
+
+.dlo__prompt-textarea:focus {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 0;
+  border-color: var(--color-focus-ring);
+}
+
+/* ============================================================
+   HIGH CONTRAST
+   ============================================================ */
+
+@media (prefers-contrast: more) {
+  .dlo__lenses,
+  .dlo__lens,
+  .dlo__lens-body,
+  .dlo__lens-textarea,
+  .dlo__prompt,
+  .dlo__prompt-textarea {
+    border-color: var(--color-border-strong);
+  }
+
+  .dlo__lens-badge {
+    border-color: var(--color-border-strong);
+  }
+
+  .dlo__lens-trigger--expanded .dlo__lens-badge {
+    background-color: var(--color-border-strong);
+    border-color: var(--color-border-strong);
+  }
+
+  .dlo__lens-trigger:focus-visible {
+    outline-width: 3px;
+  }
+
+  .dlo__lens-textarea:focus,
+  .dlo__prompt-textarea:focus {
+    outline-width: 3px;
+  }
+}

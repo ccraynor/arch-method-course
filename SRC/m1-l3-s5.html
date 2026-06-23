@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lesson 1.3 reflection checkpoint: identify which calibration finding would most change your approach to scope definition in your own design practice.">
+  <title>Lesson 1.3 Reflection — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l3-s5 -- Lesson Reflection Checkpoint
+       All color values via CSS tokens only.
+       ================================================================ */
+
+    .lesson-label {
+      display: block;
+      margin: 0 0 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-link);
+    }
+
+    .reflection-title {
+      margin: 0 0 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    .reflection-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 0 1rem;
+      flex-wrap: wrap;
+    }
+
+    .screen-type-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    .time-estimate {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 3px;
+      padding: 0.125rem 0.5rem;
+    }
+
+    .step-badge {
+      display: inline-block;
+      padding: 0.25rem 0.625rem;
+      background: var(--color-bg-page);
+      border: 1.5px solid var(--color-text-link);
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-link);
+    }
+
+    /* ---- Lesson recap ---- */
+    .lesson-recap {
+      margin: 0 0 2rem;
+      padding: 1.25rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+    }
+
+    .lesson-recap__heading {
+      margin: 0 0 1rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+    }
+
+    .recap-step-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.875rem;
+      margin: 0 0 1rem;
+    }
+
+    @media (max-width: 600px) { .recap-step-cards { grid-template-columns: 1fr; } }
+
+    .recap-step-card {
+      background: var(--color-bg-page);
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .recap-step-card__header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+    }
+
+    .recap-step-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background: var(--color-text-inverse);
+      color: var(--color-brand-navy);
+      font-size: 0.6875rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .recap-step-card__title {
+      font-size: 0.875rem;
+      font-weight: 700;
+    }
+
+    .recap-step-card__body {
+      padding: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+    }
+
+    .recap-step-card__body ul {
+      margin: 0.375rem 0 0;
+      padding-left: 1.125rem;
+      font-size: 0.8125rem;
+      line-height: 1.55;
+    }
+
+    .recap-step-card__body ul li { margin-bottom: 0.2rem; }
+
+    .recap-artifacts {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      flex-wrap: wrap;
+      padding-top: 0.875rem;
+      border-top: 1px solid var(--color-border-default);
+    }
+
+    .recap-artifacts__label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      white-space: nowrap;
+    }
+
+    .artifact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3125rem;
+      padding: 0.25rem 0.625rem;
+      background: var(--color-bg-page);
+      border: 1.5px solid var(--color-brand-teal);
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .recap-findings {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding-top: 0.75rem;
+      margin-top: 0.75rem;
+      border-top: 1px solid var(--color-border-default);
+    }
+
+    .finding-count {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+    }
+
+    .finding-count__num {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--color-text-link);
+    }
+
+    /* ---- Reflection section ---- */
+    .reflection-section {
+      margin: 0 0 2.5rem;
+    }
+
+    .reflection-section__heading {
+      margin: 0 0 1.125rem;
+      font-size: 1.125rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+    }
+
+    .reflection-prompt-card {
+      padding: 1.25rem 1.375rem;
+      background: var(--color-bg-page);
+      border: 2px solid var(--color-brand-navy);
+      border-radius: 6px;
+      margin: 0 0 1.375rem;
+    }
+
+    .reflection-prompt-label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+      margin: 0 0 0.625rem;
+    }
+
+    .reflection-prompt-text {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.55;
+    }
+
+    /* ---- Scaffolding prompts ---- */
+    .scaffold-details {
+      margin: 0 0 1rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .scaffold-details summary {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+    }
+
+    .scaffold-details summary::-webkit-details-marker { display: none; }
+    .scaffold-details summary:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: -2px; }
+
+    .scaffold-chevron { margin-left: auto; transition: transform 0.2s; }
+    .scaffold-details[open] .scaffold-chevron { transform: rotate(180deg); }
+
+    .scaffold-body {
+      padding: 0.875rem 1rem;
+      border-top: 1px solid var(--color-border-default);
+      background: var(--color-bg-page);
+    }
+
+    .scaffold-intro {
+      margin: 0 0 0.75rem;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .scaffold-list {
+      counter-reset: scaffold;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+    }
+
+    .scaffold-list li {
+      counter-increment: scaffold;
+      display: flex;
+      gap: 0.75rem;
+      align-items: baseline;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+    }
+
+    .scaffold-list li::before {
+      content: counter(scaffold);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.375rem;
+      height: 1.375rem;
+      border-radius: 50%;
+      background: var(--color-bg-subtle);
+      border: 1.5px solid var(--color-border-strong);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+    }
+
+    /* ---- Findings reference ---- */
+    .findings-ref-details {
+      margin: 0 0 1.125rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .findings-ref-details summary {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+    }
+
+    .findings-ref-details summary::-webkit-details-marker { display: none; }
+    .findings-ref-details summary:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: -2px; }
+    .findings-ref-details[open] .scaffold-chevron { transform: rotate(180deg); }
+
+    .findings-ref-body {
+      padding: 0.875rem 1rem;
+      border-top: 1px solid var(--color-border-default);
+      background: var(--color-bg-page);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 640px) { .findings-ref-body { grid-template-columns: 1fr; } }
+
+    .findings-ref-col-heading {
+      grid-column: 1;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+      margin: 0 0 0.5rem;
+    }
+
+    .findings-ref-col-heading-tax {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+      margin: 0 0 0.5rem;
+    }
+
+    .findings-ref-list {
+      margin: 0;
+      padding: 0 0 0 1rem;
+      font-size: 0.8125rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    .findings-ref-list li { margin-bottom: 0.5rem; }
+    .findings-ref-list li:last-child { margin-bottom: 0; }
+    .findings-ref-list strong { font-weight: 700; }
+
+    /* ---- Textarea and autosave ---- */
+    .reflection-textarea-wrap {
+      position: relative;
+    }
+
+    .reflection-textarea-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin: 0 0 0.5rem;
+    }
+
+    .reflection-textarea {
+      display: block;
+      width: 100%;
+      min-height: 12rem;
+      padding: 0.75rem 0.875rem;
+      font-size: 0.9375rem;
+      font-family: inherit;
+      color: var(--color-text-primary);
+      background: var(--color-bg-page);
+      border: 1.5px solid var(--color-border-default);
+      border-radius: 5px;
+      resize: vertical;
+      line-height: 1.65;
+      box-sizing: border-box;
+    }
+
+    .reflection-textarea:focus-visible {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 1px;
+      border-color: var(--color-brand-teal);
+    }
+
+    .reflection-textarea::placeholder { color: var(--color-text-secondary); }
+
+    .autosave-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .autosave-status {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+      min-height: 1.25rem;
+    }
+
+    .autosave-status svg { flex-shrink: 0; }
+
+    .autosave-last-saved {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+    }
+
+    .char-count {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+    }
+
+    /* ---- Lesson complete + transition ---- */
+    .lesson-complete-section {
+      margin: 0 0 2rem;
+      padding: 1.5rem;
+      background: var(--color-success-bg);
+      border: 1.5px solid var(--color-success-border);
+      border-radius: 6px;
+    }
+
+    .lesson-complete-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.75rem 0.25rem 0.5rem;
+      background: var(--color-success-text);
+      color: var(--color-text-inverse);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin: 0 0 0.875rem;
+    }
+
+    .lesson-complete-heading {
+      margin: 0 0 0.375rem;
+      font-size: 1.0625rem;
+      font-weight: 800;
+      color: var(--color-success-text);
+    }
+
+    .lesson-complete-text {
+      margin: 0 0 1.25rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    .lesson-transition-card {
+      background: var(--color-bg-page);
+      border: 1px solid var(--color-success-border);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .lesson-transition-card__header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5625rem 0.875rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+    }
+
+    .next-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      opacity: 0.75;
+    }
+
+    .next-lesson-name {
+      font-size: 0.9375rem;
+      font-weight: 700;
+    }
+
+    .lesson-transition-card__body {
+      padding: 0.875rem 1rem;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    .next-step-list {
+      margin: 0.625rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .next-step-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.625rem;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.55;
+    }
+
+    .step-pill {
+      display: inline-flex;
+      padding: 0.125rem 0.5rem;
+      background: var(--color-bg-subtle);
+      border: 1.5px solid var(--color-brand-teal);
+      border-radius: 3px;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--color-brand-teal);
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+    }
+
+    .artifact-carried-forward {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.875rem;
+      padding: 0.5rem 0.75rem;
+      background: var(--color-bg-subtle);
+      border-radius: 4px;
+      font-size: 0.8125rem;
+      color: var(--color-text-primary);
+    }
+
+    .artifact-carried-forward strong { font-weight: 700; }
+
+    .lesson-transition-card__footer {
+      padding: 0.875rem 1rem;
+      border-top: 1px solid var(--color-border-default);
+      background: var(--color-bg-subtle);
+    }
+
+    .btn--start-next {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1.25rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+      border-radius: 4px;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      text-decoration: none;
+      min-height: 44px;
+    }
+
+    .btn--start-next:hover { opacity: 0.9; }
+    .btn--start-next:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 3px; }
+
+    @media (prefers-contrast: more) {
+      .recap-step-card, .reflection-prompt-card, .scaffold-details,
+      .findings-ref-details, .lesson-transition-card { border-color: var(--color-border-strong); }
+      .lesson-complete-section { border-color: var(--color-success-text); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scaffold-chevron { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <header role="banner">
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+    <div id="progress-tracker" role="group" aria-label="Course progress" tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.3</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">3&ndash;4</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">5</span> of <span id="pt-screen-total">5</span></span>
+    </div>
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel" aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer" aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory" aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel" aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+  </header>
+
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item"><a href="intro-0.1.html" class="module-nav-link">Introduction</a></li>
+      <li class="module-nav-item"><a href="module-1.html" class="module-nav-link" aria-current="page">Module 1: Bound the Course</a></li>
+      <li class="module-nav-item"><a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a></li>
+      <li class="module-nav-item"><a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a></li>
+      <li class="module-nav-item"><a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a></li>
+    </ol>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <section id="current-activity" tabindex="-1" aria-label="Current activity">
+
+      <div class="reflection-meta">
+        <span class="screen-type-label">Reflection</span>
+        <span class="time-estimate" aria-label="Estimated time: 10 to 15 minutes">10&ndash;15 min</span>
+        <span class="step-badge">Steps 3&ndash;4</span>
+      </div>
+      <p class="lesson-label" aria-label="Lesson 1.3 -- final screen">Lesson 1.3 &mdash; Final Screen</p>
+      <h1 class="reflection-title">Lesson Reflection: What Changes in Your Practice?</h1>
+
+      <!-- Lesson recap -->
+      <div class="lesson-recap" role="region" aria-label="Lesson 1.3 summary">
+        <h2 class="lesson-recap__heading">Lesson 1.3 at a Glance</h2>
+        <div class="recap-step-cards">
+          <div class="recap-step-card">
+            <div class="recap-step-card__header">
+              <span class="recap-step-num" aria-hidden="true">3</span>
+              <span class="recap-step-card__title">Step 3 -- Formal Bucket Map</span>
+            </div>
+            <div class="recap-step-card__body">
+              Completed the three-component MRHN_BucketMap_v1:
+              <ul>
+                <li>Scope item table with all 16 SI items assigned, buckets, and workflow rationale</li>
+                <li>Balance check summary applying four criteria across four buckets</li>
+                <li>Governance record MRHN-D-002 with risk notes and checkpoint linkage</li>
+              </ul>
+            </div>
+          </div>
+          <div class="recap-step-card">
+            <div class="recap-step-card__header">
+              <span class="recap-step-num" aria-hidden="true">4</span>
+              <span class="recap-step-card__title">Step 4 -- Calibration</span>
+            </div>
+            <div class="recap-step-card__body">
+              Applied two lenses to every scope item:
+              <ul>
+                <li>Domain Authenticity -- 5 items flagged for annotation</li>
+                <li>Taxonomy Calibration -- 3 items had level adjusted for this learner population</li>
+                <li>Governance record MRHN-D-003 established</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="recap-artifacts">
+          <span class="recap-artifacts__label">Artifacts produced:</span>
+          <span class="artifact-chip">
+            <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none" style="color:var(--color-brand-teal)">
+              <rect x="2" y="1" width="10" height="12" rx="1.5" stroke="currentColor" stroke-width="1.25"/>
+              <path d="M4.5 5h5M4.5 7.5h5M4.5 10h3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+            </svg>
+            MRHN_BucketMap_v1
+          </span>
+          <span class="artifact-chip">
+            <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none" style="color:var(--color-brand-teal)">
+              <rect x="2" y="1" width="10" height="12" rx="1.5" stroke="currentColor" stroke-width="1.25"/>
+              <path d="M4.5 5h5M4.5 7.5h5M4.5 10h3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+            </svg>
+            MRHN_CalibratedScopeMap_v1
+          </span>
+        </div>
+
+        <div class="recap-findings" role="group" aria-label="Key calibration findings">
+          <div class="finding-count">
+            <span class="finding-count__num" aria-hidden="true">5</span>
+            <span>domain authenticity flags</span>
+          </div>
+          <div class="finding-count">
+            <span class="finding-count__num" aria-hidden="true">3</span>
+            <span>taxonomy level adjustments</span>
+          </div>
+          <div class="finding-count">
+            <span class="finding-count__num" aria-hidden="true">2</span>
+            <span>governance records established</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reflection section -->
+      <section class="reflection-section" aria-labelledby="reflection-heading">
+        <h2 class="reflection-section__heading" id="reflection-heading">Lesson Reflection</h2>
+
+        <div class="reflection-prompt-card" role="note" aria-label="Reflection prompt">
+          <span class="reflection-prompt-label">Reflection Prompt</span>
+          <p class="reflection-prompt-text">
+            Which calibration finding from this lesson would most change how you approach
+            scope definition in your own design practice -- and why? Be specific about what
+            you would do differently and what that change would protect against.
+          </p>
+        </div>
+
+        <!-- Scaffolding prompts -->
+        <details class="scaffold-details" id="scaffold-details">
+          <summary>
+            <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0">
+              <path d="M7 1.5L13 12.5H1L7 1.5Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 6v3M7 10.5v.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+            </svg>
+            Optional: Use a structured approach
+            <svg class="scaffold-chevron" aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="scaffold-body">
+            <p class="scaffold-intro">
+              If you prefer a guided approach, work through these four prompts in sequence.
+              You can write your response as prose or follow the structure exactly.
+            </p>
+            <ol class="scaffold-list" role="list" aria-label="Structured reflection prompts">
+              <li>
+                <span>Name the finding. Which specific calibration result surprised you most -- a domain authenticity flag, a taxonomy level that differed from your initial expectation, or the reasoning behind one of the population-specific adjustments?</span>
+              </li>
+              <li>
+                <span>Name the default. What would you have done without this finding? Describe the content or assessment you would have built had you treated the item as generic or at the taxonomy level you initially expected.</span>
+              </li>
+              <li>
+                <span>Name the correction. What specifically would you do differently now? Not in the MRHN scenario -- in your own current or recent design work. Be concrete: what would change in your scope list, your taxonomy assignments, or your calibration notes?</span>
+              </li>
+              <li>
+                <span>Name the protection. What downstream error does this change prevent? Who or what is protected -- the learner, the organization, the compliance record, the course design itself?</span>
+              </li>
+            </ol>
+          </div>
+        </details>
+
+        <!-- Calibration findings reference -->
+        <details class="findings-ref-details" id="findings-ref">
+          <summary>
+            Reference: All Calibration Findings from This Lesson
+            <svg class="scaffold-chevron" aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="findings-ref-body">
+            <div>
+              <p class="findings-ref-col-heading">Domain Authenticity Flags</p>
+              <ul class="findings-ref-list">
+                <li><strong>SI-10 (HIPAA clock):</strong> Clock triggers at "reasonably should have known" (45 CFR 164.404), not forensic confirmation. Generic courses teach the wrong trigger.</li>
+                <li><strong>SI-07 (OCR documentation):</strong> Requires 8 specific data elements under 45 CFR 164.408. "File a report" hides significant procedural complexity.</li>
+                <li><strong>SI-13 (Lessons learned):</strong> Document may be discoverable in litigation. Generic retrospective framing creates legal exposure at MRHN.</li>
+                <li><strong>SI-14 (Deviation documentation):</strong> RC-2 requires specific justification language, not notation only. Deviation vs. adaptation is a taught distinction.</li>
+                <li><strong>SI-09 (Network segmentation):</strong> MRHN multi-site topology requires evaluating EHR, imaging, and billing interdependencies before segmentation. Clinical care availability changes the task.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="findings-ref-col-heading-tax">Taxonomy Adjustments (this learner population)</p>
+              <ul class="findings-ref-list">
+                <li><strong>SI-10:</strong> Application elevated to Analysis. "Reasonably should have known" is legal reasoning under ambiguous facts, not timer management.</li>
+                <li><strong>SI-13:</strong> Application elevated to Evaluation. Judging what to document given legal exposure -- no prescribed answer.</li>
+                <li><strong>SI-09:</strong> Application elevated to Analysis. Clinical interdependency evaluation required before applying segmentation procedure.</li>
+                <li><strong>SI-08:</strong> Analysis (not Application). Distinguishing security incidents from system failures requires reasoning without a practiced pattern library.</li>
+                <li><strong>SI-06:</strong> Analysis (not Application). Healthcare IT professionals default to escalation; "protocol" language masks a genuine capability evaluation judgment.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <!-- Textarea + autosave -->
+        <div class="reflection-textarea-wrap">
+          <label class="reflection-textarea-label" for="reflection-textarea">
+            Your Reflection
+          </label>
+          <textarea
+            id="reflection-textarea"
+            class="reflection-textarea"
+            rows="12"
+            placeholder="Write your reflection here. Your response is saved automatically as you type."
+            aria-describedby="autosave-status char-count"
+          ></textarea>
+          <div class="autosave-bar">
+            <span class="autosave-status" id="autosave-status" aria-live="polite" aria-atomic="true">
+              <!-- status icon + text injected by JS -->
+            </span>
+            <span class="autosave-last-saved" id="last-saved-display"></span>
+            <span class="char-count" id="char-count" aria-live="off">0 characters</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lesson complete + transition -->
+      <section class="lesson-complete-section" aria-labelledby="transition-heading">
+        <span class="lesson-complete-badge" aria-label="Lesson 1.3 complete">
+          <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M4 7l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Lesson 1.3 Complete
+        </span>
+
+        <h2 class="lesson-complete-heading" id="transition-heading">Up Next: Lesson 1.4a</h2>
+        <p class="lesson-complete-text">
+          The MRHN scope is now bounded and calibrated. Module 1 continues with
+          Lesson 1.4a, which applies Steps 5 and 6 of Phase 1: Performance Arc Analysis
+          and Decomposition. These two steps transform the calibrated scope map into
+          discrete, teachable learning units -- the architecture that Module 2 will
+          engineer into instruction.
+        </p>
+
+        <div class="lesson-transition-card" role="region" aria-label="Lesson 1.4a transition">
+          <div class="lesson-transition-card__header">
+            <span class="next-label">Next</span>
+            <span class="next-lesson-name">Lesson 1.4a -- Performance Arc and Decomposition</span>
+          </div>
+          <div class="lesson-transition-card__body">
+            <ul class="next-step-list">
+              <li>
+                <span class="step-pill">Step 5</span>
+                <span>
+                  <strong>Performance Arc Analysis:</strong> Define what authentic professional
+                  performance looks like for each bucket, using the MRHN context. The performance
+                  arc establishes the ceiling for decomposition -- what fully capable performance
+                  looks like so that instruction builds toward it rather than stopping short.
+                </span>
+              </li>
+              <li>
+                <span class="step-pill">Step 6</span>
+                <span>
+                  <strong>Decomposition:</strong> Break each scope item into discrete, teachable
+                  learning units (DC components). Decomposition produces the 48-component set
+                  (DC-01 through DC-48) that becomes the structural input to Module 2. Calibration
+                  annotations from Step 4 govern the complexity and assessment design of each
+                  decomposition component.
+                </span>
+              </li>
+            </ul>
+            <div class="artifact-carried-forward" role="note" aria-label="Artifact carried forward">
+              <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                   style="flex-shrink:0;color:var(--color-brand-teal)">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span><strong>Carried forward:</strong> MRHN_CalibratedScopeMap_v1 is the primary input to Lessons 1.4a and 1.4b. All five domain authenticity annotations and all taxonomy level assignments travel with the scope map into decomposition.</span>
+            </div>
+          </div>
+          <div class="lesson-transition-card__footer">
+            <a href="m1-l4a-s1.html" class="btn--start-next" aria-label="Begin Lesson 1.4a: Performance Arc and Decomposition">
+              Begin Lesson 1.4a
+              <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </section>
+  </main>
+
+  <!-- Supplementary resources -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">
+        MRHN_BucketMap_v1 and MRHN_CalibratedScopeMap_v1 are the Lesson 1.3 outputs.
+        Both carry into Lesson 1.4a.
+      </p>
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">
+        MRHN-D-001 (Step 1.5), MRHN-D-002 (balance check), MRHN-D-003 (calibration adjustments).
+      </p>
+    </section>
+  </aside>
+
+  <!-- Support panels -->
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header"><h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header"><h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header"><h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header"><h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header"><h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- Screen navigation -->
+  <nav class="screen-nav" aria-label="Screen navigation">
+    <a href="m1-l3-s4.html"
+       class="btn btn--nav btn--prev"
+       rel="prev"
+       aria-label="Go to previous screen: guided practice, calibration lenses">
+      <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Previous
+    </a>
+    <a href="m1-l4a-s1.html"
+       class="btn btn--nav btn--next"
+       rel="next"
+       aria-label="Go to next screen: Lesson 1.4a, Screen 1">
+      Next
+      <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </nav>
+
+  <footer role="contentinfo">
+    <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- Panel manager -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    function syncToggleStates(name) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === name ? 'true' : 'false');
+      });
+    }
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const p = btn.dataset.panel;
+        if (getActivePanel() === p) { closeAll(); syncToggleStates(null); }
+        else { openPanel(p, btn); syncToggleStates(p); }
+      });
+    });
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => { closeAll(); syncToggleStates(null); });
+    });
+  </script>
+
+  <!-- Progress tracker labels -->
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.3';
+    document.getElementById('pt-phase').textContent        = '1';
+    document.getElementById('pt-screen').textContent       = '5';
+    document.getElementById('pt-screen-total').textContent = '5';
+  </script>
+
+  <!-- Autosave -->
+  <script type="module">
+    import { getItem, setItem } from './js/storage.js';
+
+    const STORAGE_KEY = 'archMethod_m1l3s5_reflection';
+    const LESSON_COMPLETE_KEY = 'archMethod_lesson_1_3_complete';
+
+    const textarea     = document.getElementById('reflection-textarea');
+    const statusEl     = document.getElementById('autosave-status');
+    const lastSavedEl  = document.getElementById('last-saved-display');
+    const charCountEl  = document.getElementById('char-count');
+    const announcer    = document.getElementById('sr-announcer');
+
+    let saveTimer = null;
+
+    const SAVE_ICON_SAVING = `<svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none" style="color:var(--color-text-secondary)">
+      <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.25" stroke-dasharray="3 2"/>
+    </svg> Saving&hellip;`;
+
+    const SAVE_ICON_SAVED = `<svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none" style="color:var(--color-success-text)">
+      <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.25"/>
+      <path d="M4.5 7l2 2 3-3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg> Saved`;
+
+    function formatTime(iso) {
+      if (!iso) return '';
+      const d = new Date(iso);
+      return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function updateCharCount(text) {
+      const n = text.length;
+      charCountEl.textContent = `${n} character${n !== 1 ? 's' : ''}`;
+    }
+
+    function doSave(text) {
+      const now = new Date().toISOString();
+      setItem(STORAGE_KEY, { text, savedAt: now });
+      setItem(LESSON_COMPLETE_KEY, { complete: true, reflectionLength: text.length, savedAt: now });
+      statusEl.innerHTML = SAVE_ICON_SAVED;
+      lastSavedEl.textContent = `Last saved at ${formatTime(now)}`;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        announcer.textContent = 'Reflection saved.';
+      }));
+    }
+
+    // Load saved content
+    const saved = getItem(STORAGE_KEY);
+    if (saved && saved.text) {
+      textarea.value = saved.text;
+      updateCharCount(saved.text);
+      statusEl.innerHTML = SAVE_ICON_SAVED;
+      lastSavedEl.textContent = `Last saved at ${formatTime(saved.savedAt)}`;
+    }
+
+    // Autosave on input
+    textarea.addEventListener('input', () => {
+      const text = textarea.value;
+      updateCharCount(text);
+      clearTimeout(saveTimer);
+      statusEl.innerHTML = SAVE_ICON_SAVING;
+      saveTimer = setTimeout(() => doSave(text), 500);
+    });
+
+    // Save on blur (catches tab-away before timer fires)
+    textarea.addEventListener('blur', () => {
+      if (saveTimer) {
+        clearTimeout(saveTimer);
+        doSave(textarea.value);
+      }
+    });
+
+    // Save before unload
+    window.addEventListener('beforeunload', () => {
+      if (textarea.value) {
+        const text = textarea.value;
+        setItem(STORAGE_KEY, { text, savedAt: new Date().toISOString() });
+        setItem(LESSON_COMPLETE_KEY, { complete: true, reflectionLength: text.length, savedAt: new Date().toISOString() });
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- TEMPLATE: replace with practice-specific description (≤155 chars) -->
+  <meta name="description" content="[DESCRIPTION — one sentence describing what the learner practices on this screen]">
+  <!-- TEMPLATE: replace with "Guided Practice: Title — Lesson X.X — ARCH Method Practitioner Credential — Proof Point Learning" -->
+  <title>[Guided Practice: Title] — Lesson [X.X] — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links — do not modify
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header — banner landmark — do not modify
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">1</span> of <span id="pt-screen-total">4</span></span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary"
+              aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel"
+              aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer"
+              aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory"
+              aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel"
+              aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation — TEMPLATE: set aria-current="page" on
+       the link matching the current module.
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link" aria-current="false">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link" aria-current="false">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link" aria-current="false">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link" aria-current="false">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link" aria-current="false">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content — main landmark
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <!-- =========================================================
+           GUIDED PRACTICE WITH FEEDBACK TEMPLATE
+           Template type: interactive, immediate feedback on submit
+           Interaction types available: select | drag | input
+           Choose ONE interaction type per screen.
+           Comment out the two unused interaction sections.
+           ========================================================= -->
+      <article class="guided-practice" aria-labelledby="practice-title">
+
+        <header class="guided-practice__header">
+          <span class="screen-type-label">Guided Practice</span>
+          <!-- TEMPLATE: update lesson label -->
+          <p class="lesson-label" aria-label="Lesson [X.X]">Lesson [X.X]</p>
+          <!-- TEMPLATE: update title — this is the page's h1 -->
+          <h1 id="practice-title" class="guided-practice__title">[Practice Title]</h1>
+        </header>
+
+        <!-- ---- Practice context ----
+             All four subsections are visible before the learner attempts.
+             This transparency is intentional: learners know what success
+             looks like before they start. -->
+        <section class="practice-context" aria-labelledby="context-heading">
+          <h2 id="context-heading" class="sr-only">Activity Context</h2>
+
+          <div class="context-block context-block--purpose">
+            <h3 class="context-block__heading">Purpose</h3>
+            <!-- TEMPLATE: one sentence on why this practice matters -->
+            <p>[Why this practice activity exists and what skill it builds.]</p>
+          </div>
+
+          <div class="context-block context-block--instructions">
+            <h3 class="context-block__heading">Instructions</h3>
+            <!-- TEMPLATE: numbered steps the learner should follow -->
+            <ol class="instructions-list">
+              <li>[Step 1 of the activity.]</li>
+              <li>[Step 2 of the activity.]</li>
+              <li>Select <strong>Check My Answer</strong> when you are ready.</li>
+            </ol>
+          </div>
+
+          <div class="context-block context-block--criteria">
+            <h3 class="context-block__heading">Success Criteria</h3>
+            <!-- TEMPLATE: observable, measurable criteria the learner can self-check -->
+            <ul class="criteria-list">
+              <li>[Observable criterion 1]</li>
+              <li>[Observable criterion 2]</li>
+            </ul>
+          </div>
+
+          <div class="context-block context-block--evidence">
+            <h3 class="context-block__heading">Expected Evidence</h3>
+            <!-- TEMPLATE: what artifact or output demonstrates mastery -->
+            <p>[Describe the specific artifact or response that will demonstrate mastery of this skill.]</p>
+          </div>
+
+        </section><!-- /.practice-context -->
+
+        <!-- ---- Interaction form ----
+             novalidate: we handle all validation in JS so we control
+             the error presentation and AT announcements ourselves. -->
+        <form class="practice-form"
+              id="practice-form"
+              novalidate
+              aria-label="Practice activity">
+
+          <!-- ==================================================
+               INTERACTION TYPE A: SELECT
+               Use for single-best-answer or multiple-correct-answer
+               questions. Radio = single answer. Checkbox = multiple.
+               TEMPLATE: comment out if using TYPE B or TYPE C.
+               ================================================== -->
+          <fieldset class="interaction interaction--select" id="interaction-select">
+            <!-- TEMPLATE: replace legend with the question text -->
+            <legend class="interaction__label">
+              [Question text. Be specific. Connect to the Meridian Regional Health Network scenario.]
+            </legend>
+
+            <!-- TEMPLATE: 3–5 options. Mark correct in the script below (ANSWER_KEY). -->
+            <!-- Radio buttons for single-answer; change type="radio" to type="checkbox"
+                 and name to unique values for multiple-correct. -->
+            <div class="select-option">
+              <input type="radio"
+                     id="opt-a"
+                     name="practice-select"
+                     value="a"
+                     class="select-input">
+              <label for="opt-a" class="select-label">[Option A text]</label>
+            </div>
+
+            <div class="select-option">
+              <input type="radio"
+                     id="opt-b"
+                     name="practice-select"
+                     value="b"
+                     class="select-input">
+              <label for="opt-b" class="select-label">[Option B text]</label>
+            </div>
+
+            <div class="select-option">
+              <input type="radio"
+                     id="opt-c"
+                     name="practice-select"
+                     value="c"
+                     class="select-input">
+              <label for="opt-c" class="select-label">[Option C text]</label>
+            </div>
+
+            <div class="select-option">
+              <input type="radio"
+                     id="opt-d"
+                     name="practice-select"
+                     value="d"
+                     class="select-input">
+              <label for="opt-d" class="select-label">[Option D text]</label>
+            </div>
+
+          </fieldset>
+          <!-- END TYPE A -->
+
+          <!-- ==================================================
+               INTERACTION TYPE B: DRAG TO REORDER
+               Drag-and-drop with keyboard fallback (Up/Down buttons).
+               Screen readers use the button controls; mouse users drag.
+               TEMPLATE: comment out if using TYPE A or TYPE C.
+               ================================================== -->
+          <div class="interaction interaction--drag"
+               id="interaction-drag"
+               role="group"
+               aria-labelledby="drag-label">
+
+            <!-- TEMPLATE: replace with drag question/instruction -->
+            <p id="drag-label" class="interaction__label">
+              [Instruction for drag activity — e.g., "Arrange the following items in the correct order."]
+            </p>
+
+            <!-- Keyboard instructions appear visually when any list item is focused.
+                 aria-live="polite" announces them to AT on focus via the script. -->
+            <p class="drag-keyboard-hint" id="drag-keyboard-hint" aria-hidden="true">
+              Use the Move Up and Move Down buttons to reorder items with a keyboard.
+            </p>
+
+            <!-- Drag list.
+                 role="listbox" + aria-multiselectable="false" treats this as
+                 a single-select widget while drag is in progress.
+                 Items use role="option" and aria-selected to track dragged state. -->
+            <ul class="drag-list"
+                id="drag-list"
+                role="listbox"
+                aria-label="[Items to reorder — TEMPLATE: replace]"
+                aria-multiselectable="false">
+
+              <!-- TEMPLATE: 4–6 drag items. Set data-id to a stable unique value.
+                   The correct order is defined in the script ANSWER_KEY below. -->
+              <li class="drag-item"
+                  draggable="true"
+                  role="option"
+                  aria-selected="false"
+                  aria-roledescription="draggable item"
+                  data-id="item-1"
+                  tabindex="0">
+                <span class="drag-handle" aria-hidden="true">
+                  <svg focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <circle cx="5" cy="4" r="1.5" fill="currentColor"/>
+                    <circle cx="11" cy="4" r="1.5" fill="currentColor"/>
+                    <circle cx="5" cy="8" r="1.5" fill="currentColor"/>
+                    <circle cx="11" cy="8" r="1.5" fill="currentColor"/>
+                    <circle cx="5" cy="12" r="1.5" fill="currentColor"/>
+                    <circle cx="11" cy="12" r="1.5" fill="currentColor"/>
+                  </svg>
+                </span>
+                <span class="drag-item-label">[Item 1 text]</span>
+                <div class="drag-item-controls" aria-label="Move item 1">
+                  <button type="button"
+                          class="btn-move btn-move--up"
+                          aria-label="Move item 1 up"
+                          data-target="item-1">
+                    <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M2 9l5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                  <button type="button"
+                          class="btn-move btn-move--down"
+                          aria-label="Move item 1 down"
+                          data-target="item-1">
+                    <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </li>
+
+              <li class="drag-item"
+                  draggable="true"
+                  role="option"
+                  aria-selected="false"
+                  aria-roledescription="draggable item"
+                  data-id="item-2"
+                  tabindex="0">
+                <span class="drag-handle" aria-hidden="true">
+                  <svg focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <circle cx="5" cy="4" r="1.5" fill="currentColor"/>
+                    <circle cx="11" cy="4" r="1.5" fill="currentColor"/>
+                    <circle cx="5" cy="8" r="1.5" fill="currentColor"/>
+                    <circle cx="11" cy="8" r="1.5" fill="currentColor"/>
+                    <circle cx="5" cy="12" r="1.5" fill="currentColor"/>
+                    <circle cx="11" cy="12" r="1.5" fill="currentColor"/>
+                  </svg>
+                </span>
+                <span class="drag-item-label">[Item 2 text]</span>
+                <div class="drag-item-controls" aria-label="Move item 2">
+                  <button type="button"
+                          class="btn-move btn-move--up"
+                          aria-label="Move item 2 up"
+                          data-target="item-2">
+                    <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M2 9l5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                  <button type="button"
+                          class="btn-move btn-move--down"
+                          aria-label="Move item 2 down"
+                          data-target="item-2">
+                    <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </li>
+
+              <li class="drag-item"
+                  draggable="true"
+                  role="option"
+                  aria-selected="false"
+                  aria-roledescription="draggable item"
+                  data-id="item-3"
+                  tabindex="0">
+                <span class="drag-handle" aria-hidden="true">
+                  <svg focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <circle cx="5" cy="4" r="1.5" fill="currentColor"/>
+                    <circle cx="11" cy="4" r="1.5" fill="currentColor"/>
+                    <circle cx="5" cy="8" r="1.5" fill="currentColor"/>
+                    <circle cx="11" cy="8" r="1.5" fill="currentColor"/>
+                    <circle cx="5" cy="12" r="1.5" fill="currentColor"/>
+                    <circle cx="11" cy="12" r="1.5" fill="currentColor"/>
+                  </svg>
+                </span>
+                <span class="drag-item-label">[Item 3 text]</span>
+                <div class="drag-item-controls" aria-label="Move item 3">
+                  <button type="button"
+                          class="btn-move btn-move--up"
+                          aria-label="Move item 3 up"
+                          data-target="item-3">
+                    <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M2 9l5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                  <button type="button"
+                          class="btn-move btn-move--down"
+                          aria-label="Move item 3 down"
+                          data-target="item-3">
+                    <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </li>
+
+              <li class="drag-item"
+                  draggable="true"
+                  role="option"
+                  aria-selected="false"
+                  aria-roledescription="draggable item"
+                  data-id="item-4"
+                  tabindex="0">
+                <span class="drag-handle" aria-hidden="true">
+                  <svg focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <circle cx="5" cy="4" r="1.5" fill="currentColor"/>
+                    <circle cx="11" cy="4" r="1.5" fill="currentColor"/>
+                    <circle cx="5" cy="8" r="1.5" fill="currentColor"/>
+                    <circle cx="11" cy="8" r="1.5" fill="currentColor"/>
+                    <circle cx="5" cy="12" r="1.5" fill="currentColor"/>
+                    <circle cx="11" cy="12" r="1.5" fill="currentColor"/>
+                  </svg>
+                </span>
+                <span class="drag-item-label">[Item 4 text]</span>
+                <div class="drag-item-controls" aria-label="Move item 4">
+                  <button type="button"
+                          class="btn-move btn-move--up"
+                          aria-label="Move item 4 up"
+                          data-target="item-4">
+                    <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M2 9l5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                  <button type="button"
+                          class="btn-move btn-move--down"
+                          aria-label="Move item 4 down"
+                          data-target="item-4">
+                    <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </li>
+
+              <!-- TEMPLATE: add additional drag items here -->
+
+            </ul>
+          </div>
+          <!-- END TYPE B -->
+
+          <!-- ==================================================
+               INTERACTION TYPE C: INPUT
+               Use for constructed-response or reflection prompts.
+               Feedback for input is either keyword-matched (scored)
+               or always-correct (unscored reflection).
+               TEMPLATE: comment out if using TYPE A or TYPE B.
+               ================================================== -->
+          <div class="interaction interaction--input" id="interaction-input">
+
+            <!-- TEMPLATE: replace label with specific prompt -->
+            <label for="practice-input" class="interaction__label">
+              [Input prompt — e.g., "Describe how you would apply Step 3 to the MRHN scenario."]
+            </label>
+
+            <!-- TEMPLATE: update hint to match expected response format -->
+            <p class="input-hint" id="input-hint">
+              Write 2–4 sentences. Focus on [specific aspect relevant to the ARCH Phase and Step].
+            </p>
+
+            <textarea id="practice-input"
+                      name="practice-input"
+                      class="practice-textarea"
+                      rows="6"
+                      aria-describedby="input-hint"
+                      placeholder="[Optional placeholder text]"></textarea>
+
+          </div>
+          <!-- END TYPE C -->
+
+          <!-- Submit button — always present regardless of interaction type -->
+          <button type="submit"
+                  id="btn-submit"
+                  class="btn btn--primary btn--submit">
+            Check My Answer
+          </button>
+
+        </form><!-- /#practice-form -->
+
+        <!-- ---- Feedback region ----
+             Hidden until form submission. Focus moves to #feedback-heading
+             on reveal so screen readers announce it without needing aria-live
+             on this container. #sr-announcer also receives a brief status.
+             tabindex="-1" on the heading enables programmatic focus. -->
+        <section id="feedback-region"
+                 class="feedback-region"
+                 aria-labelledby="feedback-heading"
+                 hidden>
+
+          <!-- Icon is decorative; state is communicated via heading text and class -->
+          <div class="feedback-icon" aria-hidden="true">
+            <!-- Populated by script: success SVG on correct, warning SVG on incorrect -->
+          </div>
+
+          <div class="feedback-body">
+
+            <!-- Heading receives focus on reveal.
+                 Script populates: "Correct." | "Not quite." | "Partially correct." -->
+            <h2 id="feedback-heading"
+                class="feedback-heading"
+                tabindex="-1">
+            </h2>
+
+            <!-- Script populates explanation text -->
+            <p id="feedback-explanation" class="feedback-explanation"></p>
+
+            <!-- Correct answer reveal — shown only on incorrect submission -->
+            <div id="feedback-correct-answer" class="feedback-correct-answer" hidden>
+              <h3 class="feedback-correct-answer__heading">Correct Answer</h3>
+              <!-- TEMPLATE: populate this in the screen-specific script below -->
+              <div id="feedback-correct-answer-body"></div>
+            </div>
+
+          </div><!-- /.feedback-body -->
+
+          <div class="feedback-actions">
+            <!-- Try Again: resets interaction to idle state.
+                 Hidden on correct answer. Visible on incorrect. -->
+            <button type="button"
+                    id="btn-try-again"
+                    class="btn btn--secondary"
+                    hidden>
+              Try Again
+            </button>
+            <!-- Continue: navigates to next screen.
+                 Visible after any submission (learner may continue even after incorrect).
+                 TEMPLATE: update href to next screen filename. -->
+            <a id="btn-continue"
+               href="[NEXT_SCREEN].html"
+               class="btn btn--primary"
+               hidden>
+              Continue
+            </a>
+          </div>
+
+        </section><!-- /#feedback-region -->
+
+        <!-- Screen navigation (previous only — next is surfaced via Continue button after submission) -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <!-- TEMPLATE: update href to previous screen filename -->
+          <a href="[PREV_SCREEN].html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources — complementary landmark
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <!-- TEMPLATE: list artifacts relevant to this practice activity -->
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <!-- TEMPLATE: list decisions relevant to this practice activity -->
+    </section>
+  </aside>
+
+  <!-- ============================================================
+       Support Panels — do not modify — managed by panelManager.js
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer — contentinfo landmark — do not modify
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script — do not modify
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    import { getItem, setItem } from './js/storage.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Practice interaction + feedback script — do not modify
+       ============================================================ -->
+  <script type="module">
+    /* State */
+    let attempts = 0;
+
+    /* DOM references */
+    const form           = document.getElementById('practice-form');
+    const btnSubmit      = document.getElementById('btn-submit');
+    const feedbackRegion = document.getElementById('feedback-region');
+    const feedbackIcon   = feedbackRegion.querySelector('.feedback-icon');
+    const feedbackHdg    = document.getElementById('feedback-heading');
+    const feedbackExp    = document.getElementById('feedback-explanation');
+    const correctAnswer  = document.getElementById('feedback-correct-answer');
+    const correctBody    = document.getElementById('feedback-correct-answer-body');
+    const btnTryAgain    = document.getElementById('btn-try-again');
+    const btnContinue    = document.getElementById('btn-continue');
+    const announcer      = document.getElementById('sr-announcer');
+
+    /* SVG icons for feedback — inline so no external dependency */
+    const SVG_SUCCESS = `<svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="14" stroke="var(--color-success-border)" stroke-width="2"/>
+      <path d="M9 16l5 5 9-9" stroke="var(--color-success-text)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+
+    const SVG_INCORRECT = `<svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="14" stroke="var(--color-error-border)" stroke-width="2"/>
+      <path d="M11 11l10 10M21 11l-10 10" stroke="var(--color-error-text)" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>`;
+
+    /* ---- Evaluate answer ----
+       Called with the current learner response value(s).
+       Returns { correct: boolean, explanation: string }
+       TEMPLATE: replace ANSWER_KEY and explanation strings below.
+       For TYPE A (select): response is the selected radio/checkbox value(s).
+       For TYPE B (drag): response is an array of data-id values in current order.
+       For TYPE C (input): response is the textarea string value.
+       ---- */
+    function evaluate(response) {
+      /* TEMPLATE: set correct answer for this interaction type */
+
+      /* TYPE A example:
+         const ANSWER_KEY = 'b';
+         const correct = response === ANSWER_KEY;
+         return {
+           correct,
+           explanation: correct
+             ? '[Explanation of why this answer is correct.]'
+             : '[Explanation of why the correct answer is B and what the learner may have missed.]'
+         }; */
+
+      /* TYPE B example:
+         const ANSWER_KEY = ['item-2', 'item-4', 'item-1', 'item-3'];
+         const correct = ANSWER_KEY.every((id, i) => response[i] === id);
+         return {
+           correct,
+           explanation: correct
+             ? '[Explanation of why this sequence is correct.]'
+             : '[Explanation of the correct order and the reasoning behind it.]'
+         }; */
+
+      /* TYPE C example (keyword match):
+         const keywords = ['[keyword1]', '[keyword2]'];
+         const lower = response.toLowerCase();
+         const correct = keywords.some(kw => lower.includes(kw));
+         return {
+           correct,
+           explanation: correct
+             ? '[Affirmation and elaboration on the learner response.]'
+             : '[Guidance on what to include. Correct response is shown below.]'
+         }; */
+
+      /* TEMPLATE: remove this placeholder and use one of the examples above */
+      return { correct: false, explanation: '[TEMPLATE: replace evaluate() with actual answer logic.]' };
+    }
+
+    /* ---- Get current response by interaction type ---- */
+    function getResponse() {
+      /* TYPE A: select */
+      const selected = form.querySelector('[name="practice-select"]:checked');
+      if (selected) return selected.value;
+
+      /* TYPE B: drag */
+      const dragList = document.getElementById('drag-list');
+      if (dragList) {
+        return Array.from(dragList.querySelectorAll('.drag-item')).map(li => li.dataset.id);
+      }
+
+      /* TYPE C: input */
+      const textarea = document.getElementById('practice-input');
+      if (textarea) return textarea.value.trim();
+
+      return null;
+    }
+
+    /* ---- Show feedback ---- */
+    function showFeedback(result) {
+      feedbackIcon.innerHTML = result.correct ? SVG_SUCCESS : SVG_INCORRECT;
+      feedbackRegion.classList.toggle('feedback-region--correct',   result.correct);
+      feedbackRegion.classList.toggle('feedback-region--incorrect', !result.correct);
+      feedbackHdg.textContent = result.correct ? 'Correct.' : 'Not quite.';
+      feedbackExp.textContent = result.explanation;
+
+      if (!result.correct) {
+        /* Populate correct answer reveal — TEMPLATE: set content in screen script */
+        correctAnswer.removeAttribute('hidden');
+      } else {
+        correctAnswer.setAttribute('hidden', '');
+      }
+
+      btnTryAgain.hidden  = result.correct;
+      btnContinue.hidden  = false;
+      feedbackRegion.removeAttribute('hidden');
+
+      /* Move focus to feedback heading — announces result to all AT */
+      feedbackHdg.focus();
+
+      /* Also update live region with brief status */
+      announcer.textContent = '';
+      requestAnimationFrame(() => {
+        announcer.textContent = result.correct
+          ? 'Correct. Continue to the next screen.'
+          : 'Not quite. Review the feedback and try again or continue.';
+      });
+    }
+
+    /* ---- Disable all form controls after submission ---- */
+    function lockForm() {
+      form.querySelectorAll('input, textarea, select, .drag-item, .btn-move').forEach(el => {
+        el.setAttribute('disabled', '');
+        if (el.classList.contains('drag-item')) el.setAttribute('draggable', 'false');
+      });
+      btnSubmit.setAttribute('disabled', '');
+    }
+
+    /* ---- Reset to idle state (Try Again) ---- */
+    function resetForm() {
+      form.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => {
+        el.checked = false;
+        el.removeAttribute('disabled');
+      });
+      form.querySelectorAll('textarea').forEach(el => {
+        el.value = '';
+        el.removeAttribute('disabled');
+      });
+      form.querySelectorAll('.drag-item').forEach(el => {
+        el.removeAttribute('disabled');
+        el.setAttribute('draggable', 'true');
+      });
+      form.querySelectorAll('.btn-move').forEach(el => el.removeAttribute('disabled'));
+      btnSubmit.removeAttribute('disabled');
+      feedbackRegion.setAttribute('hidden', '');
+      feedbackRegion.classList.remove('feedback-region--correct', 'feedback-region--incorrect');
+
+      /* Return focus to submit button so keyboard users resume from a logical point */
+      btnSubmit.focus();
+    }
+
+    /* ---- Form submit ---- */
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      attempts++;
+      const response = getResponse();
+      if (response === null || response === '' || (Array.isArray(response) && response.length === 0)) {
+        announcer.textContent = '';
+        requestAnimationFrame(() => { announcer.textContent = 'Please make a selection or enter a response before checking your answer.'; });
+        return;
+      }
+      const result = evaluate(response);
+      lockForm();
+      showFeedback(result);
+    });
+
+    /* ---- Try Again ---- */
+    btnTryAgain.addEventListener('click', resetForm);
+
+    /* ---- Drag-and-drop: mouse/touch ---- */
+    const dragList = document.getElementById('drag-list');
+    if (dragList) {
+      let dragSrc = null;
+
+      dragList.addEventListener('dragstart', e => {
+        dragSrc = e.target.closest('.drag-item');
+        if (!dragSrc) return;
+        dragSrc.setAttribute('aria-selected', 'true');
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', dragSrc.dataset.id);
+      });
+
+      dragList.addEventListener('dragover', e => {
+        e.preventDefault();
+        const target = e.target.closest('.drag-item');
+        if (target && target !== dragSrc) {
+          target.classList.add('drag-over');
+        }
+      });
+
+      dragList.addEventListener('dragleave', e => {
+        const target = e.target.closest('.drag-item');
+        if (target) target.classList.remove('drag-over');
+      });
+
+      dragList.addEventListener('drop', e => {
+        e.preventDefault();
+        const target = e.target.closest('.drag-item');
+        if (!target || !dragSrc || target === dragSrc) return;
+        target.classList.remove('drag-over');
+        /* Insert dragSrc before or after target based on pointer position */
+        const rect = target.getBoundingClientRect();
+        const after = e.clientY > rect.top + rect.height / 2;
+        dragList.insertBefore(dragSrc, after ? target.nextSibling : target);
+      });
+
+      dragList.addEventListener('dragend', e => {
+        dragList.querySelectorAll('.drag-item').forEach(li => {
+          li.classList.remove('drag-over');
+          li.setAttribute('aria-selected', 'false');
+        });
+        dragSrc = null;
+      });
+
+      /* ---- Drag-and-drop: keyboard (Up/Down buttons) ---- */
+      dragList.addEventListener('click', e => {
+        const btn = e.target.closest('.btn-move');
+        if (!btn) return;
+        const item = dragList.querySelector(`.drag-item[data-id="${btn.dataset.target}"]`);
+        if (!item) return;
+
+        if (btn.classList.contains('btn-move--up') && item.previousElementSibling) {
+          dragList.insertBefore(item, item.previousElementSibling);
+        } else if (btn.classList.contains('btn-move--down') && item.nextElementSibling) {
+          dragList.insertBefore(item.nextElementSibling, item);
+        }
+        /* Keep focus on the button after the move so keyboard users can continue */
+        btn.focus();
+      });
+
+      /* Show keyboard hint on focus of any drag item */
+      dragList.addEventListener('focusin', e => {
+        if (e.target.closest('.drag-item')) {
+          document.getElementById('drag-keyboard-hint').removeAttribute('aria-hidden');
+        }
+      });
+    }
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script — TEMPLATE: update all values below
+       ============================================================ -->
+  <script type="module">
+    /* Progress tracker */
+    document.getElementById('pt-module').textContent       = '[X]';
+    document.getElementById('pt-lesson').textContent       = '[X.X]';
+    document.getElementById('pt-phase').textContent        = '[X]';
+    document.getElementById('pt-step').textContent         = '[X]';
+    document.getElementById('pt-screen').textContent       = '[X]';
+    document.getElementById('pt-screen-total').textContent = '[Y]';
+
+    /* Module nav aria-current */
+    document.querySelectorAll('.module-nav-link').forEach(link => link.removeAttribute('aria-current'));
+    const activeLink = document.querySelector('.module-nav-link[href="[MODULE_HREF].html"]');
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+
+    /* TEMPLATE: populate correct answer reveal content here if needed.
+       This runs after the interaction script, so the DOM element exists.
+       Example:
+       document.getElementById('feedback-correct-answer-body').innerHTML =
+         '<p>The correct sequence is: [Item 2], [Item 4], [Item 1], [Item 3].</p>
+          <p>[Explanation of why this order is correct.]</p>'; */
+  </script>
+
+</body>
+</html>

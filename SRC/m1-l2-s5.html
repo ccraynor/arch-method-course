@@ -1,0 +1,2114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guided practice: apply the four-criterion balance test to each of the four MRHN buckets. Evaluate constraint compliance, item volume, instructional coherence, and sequence position for each bucket, then complete the thin-bucket evaluation for Bucket 4.">
+  <title>Guided Practice: Evaluate Bucket Balance — Lesson 1.2 — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l2-s5 -- Guided Practice: Evaluate Bucket Balance
+       Phase 1, Step 3. All color values use CSS tokens only.
+       ================================================================ */
+
+    .practice__meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 0 0.25rem;
+    }
+
+    .screen-type-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    .time-estimate {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 3px;
+      padding: 0.125rem 0.5rem;
+    }
+
+    .lesson-label {
+      display: block;
+      margin: 0 0 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-link);
+    }
+
+    .practice__title {
+      margin: 0 0 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    .step-badge {
+      display: inline-block;
+      margin: 0 0 0.875rem;
+      padding: 0.25rem 0.625rem;
+      background: var(--color-bg-page);
+      border: 1.5px solid var(--color-text-link);
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-link);
+    }
+
+    .task-description {
+      margin: 0 0 1rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    .task-note {
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-left: 3px solid var(--color-text-link);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      margin: 0 0 1.5rem;
+    }
+
+    .task-note strong { font-weight: 700; }
+
+    /* ---- Reference map ---- */
+    .ref-map {
+      margin: 0 0 2rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .ref-map__header {
+      padding: 0.5rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border-bottom: 1px solid var(--color-border-default);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+    }
+
+    .ref-map__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (max-width: 700px) {
+      .ref-map__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 400px) {
+      .ref-map__grid { grid-template-columns: 1fr; }
+    }
+
+    .ref-bucket {
+      padding: 0.625rem 0.75rem;
+      border-right: 1px solid var(--color-border-default);
+    }
+
+    .ref-bucket:last-child { border-right: none; }
+
+    @media (max-width: 700px) {
+      .ref-bucket:nth-child(2) { border-right: none; }
+      .ref-bucket:nth-child(odd) { border-right: 1px solid var(--color-border-default); }
+      .ref-bucket:nth-child(1),
+      .ref-bucket:nth-child(2) { border-bottom: 1px solid var(--color-border-default); }
+    }
+
+    .ref-bucket__num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.375rem;
+      height: 1.375rem;
+      border-radius: 50%;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .ref-bucket__name {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 0.25rem;
+      line-height: 1.3;
+    }
+
+    .ref-bucket__items {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+
+    .ref-bucket__count {
+      display: inline-block;
+      margin-top: 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--color-text-link);
+    }
+
+    /* ---- Eval form ---- */
+    .eval-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    .bucket-eval-card {
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .bec__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.625rem 1rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+    }
+
+    .bec__title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .bec__num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background: var(--color-text-inverse);
+      color: var(--color-brand-navy);
+      font-size: 0.6875rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .bec__name {
+      font-size: 0.9375rem;
+      font-weight: 700;
+    }
+
+    .bec__count {
+      font-size: 0.75rem;
+      opacity: 0.8;
+      white-space: nowrap;
+    }
+
+    /* Criterion fieldsets */
+    .criterion-fieldset {
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .criterion-row {
+      display: grid;
+      grid-template-columns: 10rem 1fr;
+      gap: 0 0.75rem;
+      align-items: start;
+      padding: 0.625rem 1rem;
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .criterion-row:last-child { border-bottom: none; }
+    .criterion-row:nth-child(even) { background: var(--color-bg-subtle); }
+
+    @media (max-width: 560px) {
+      .criterion-row { grid-template-columns: 1fr; gap: 0.375rem 0; }
+    }
+
+    .criterion-legend {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.4;
+      padding: 0.125rem 0;
+    }
+
+    .criterion-desc {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      line-height: 1.45;
+      margin-top: 0.125rem;
+    }
+
+    .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      padding: 0.25rem 0;
+    }
+
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      cursor: pointer;
+      line-height: 1.4;
+    }
+
+    .radio-label input[type="radio"] {
+      width: 1.125rem;
+      height: 1.125rem;
+      accent-color: var(--color-text-link);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .radio-label:hover { color: var(--color-text-link); }
+
+    /* ---- Bucket 4 thin-bucket panel ---- */
+    .thin-panel {
+      margin: 0;
+      border-top: 2px dashed var(--color-border-default);
+      background: var(--color-bg-subtle);
+    }
+
+    .thin-panel__header {
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .thin-panel__body {
+      padding: 0.875rem 1rem;
+    }
+
+    .thin-panel__desc {
+      margin: 0 0 0.875rem;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    .rebucket-fieldset {
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .rebucket-legend {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .reasoning-label {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin: 0.875rem 0 0.375rem;
+    }
+
+    .reasoning-textarea {
+      width: 100%;
+      min-height: 5rem;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 4px;
+      background: var(--color-bg-page);
+      color: var(--color-text-primary);
+      font-family: inherit;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+
+    .reasoning-textarea:focus {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 1px;
+      border-color: var(--color-text-link);
+    }
+
+    .reasoning-textarea[aria-invalid="true"] {
+      border-color: var(--color-error-text);
+    }
+
+    /* ---- Error messages ---- */
+    .field-error {
+      font-size: 0.8125rem;
+      color: var(--color-error-text);
+      margin-top: 0.25rem;
+      min-height: 1.25rem;
+    }
+
+    .form-error-summary {
+      padding: 0.75rem 1rem;
+      background: var(--color-error-bg);
+      border: 1px solid var(--color-error-border);
+      border-radius: 4px;
+      font-size: 0.875rem;
+      color: var(--color-error-text);
+      margin: 0 0 1.25rem;
+    }
+
+    .form-error-summary strong { font-weight: 700; }
+
+    /* ---- Submit area ---- */
+    .form-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ---- Feedback section ---- */
+    .feedback-section {
+      margin-top: 2rem;
+    }
+
+    .feedback-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      border-radius: 5px;
+      margin: 0 0 1.5rem;
+    }
+
+    .feedback-banner--strong {
+      background: var(--color-success-bg);
+      border: 1px solid var(--color-success-border);
+    }
+
+    .feedback-banner--partial {
+      background: var(--color-warning-bg);
+      border: 1px solid var(--color-warning-border);
+    }
+
+    .feedback-banner--light {
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+    }
+
+    .feedback-banner__text {
+      flex: 1;
+    }
+
+    .feedback-banner__label {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 0.25rem;
+    }
+
+    .feedback-banner--strong .feedback-banner__label { color: var(--color-success-text); }
+    .feedback-banner--partial .feedback-banner__label { color: var(--color-warning-text); }
+    .feedback-banner--light .feedback-banner__label { color: var(--color-text-secondary); }
+
+    .feedback-banner__msg {
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    /* ---- Per-bucket feedback cards ---- */
+    .fb-bucket-card {
+      margin: 0 0 1.5rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .fb-bucket-card:last-child { margin-bottom: 0; }
+
+    .fb-bucket__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.625rem 1rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+    }
+
+    .fb-bucket__title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .fb-bucket__num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background: var(--color-text-inverse);
+      color: var(--color-brand-navy);
+      font-size: 0.6875rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .fb-bucket__name {
+      font-size: 0.9375rem;
+      font-weight: 700;
+    }
+
+    .fb-verdict-badge {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    .fb-verdict-badge--pass {
+      background: var(--color-success-bg);
+      color: var(--color-success-text);
+      border: 1px solid var(--color-success-border);
+    }
+
+    .fb-verdict-badge--flag {
+      background: var(--color-warning-bg);
+      color: var(--color-warning-text);
+      border: 1px solid var(--color-warning-border);
+    }
+
+    /* Per-criterion feedback rows */
+    .fb-criterion-row {
+      display: grid;
+      grid-template-columns: 10rem 6.5rem 1fr;
+      gap: 0 0.75rem;
+      align-items: baseline;
+      padding: 0.5625rem 1rem;
+      border-bottom: 1px solid var(--color-border-default);
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+
+    .fb-criterion-row:last-child { border-bottom: none; }
+    .fb-criterion-row:nth-child(even) { background: var(--color-bg-subtle); }
+
+    @media (max-width: 640px) {
+      .fb-criterion-row { grid-template-columns: 1fr; gap: 0.25rem 0; }
+    }
+
+    .fb-criterion__label {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .fb-match-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .fb-match-chip--match {
+      background: var(--color-success-bg);
+      color: var(--color-success-text);
+      border: 1px solid var(--color-success-border);
+    }
+
+    .fb-match-chip--mismatch {
+      background: var(--color-warning-bg);
+      color: var(--color-warning-text);
+      border: 1px solid var(--color-warning-border);
+    }
+
+    .fb-match-chip--near {
+      background: var(--color-bg-subtle);
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border-default);
+    }
+
+    .fb-criterion__analysis { color: var(--color-text-primary); }
+    .fb-criterion__analysis strong { font-weight: 700; }
+
+    /* Thin-bucket feedback panel */
+    .fb-thin-panel {
+      border-top: 2px dashed var(--color-border-default);
+      background: var(--color-bg-subtle);
+    }
+
+    .fb-thin-panel__header {
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .fb-thin-panel__body {
+      padding: 0.875rem 1rem;
+    }
+
+    .thin-test-list {
+      margin: 0.5rem 0 0.875rem;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .thin-test-item {
+      display: grid;
+      grid-template-columns: 1.375rem 1fr;
+      gap: 0 0.5rem;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.55;
+    }
+
+    .thin-test-item strong { font-weight: 700; }
+
+    .fb-conclusion {
+      padding: 0.625rem 0.875rem;
+      background: var(--color-success-bg);
+      border: 1px solid var(--color-success-border);
+      border-radius: 4px;
+      font-size: 0.875rem;
+      color: var(--color-success-text);
+      line-height: 1.55;
+    }
+
+    .fb-conclusion strong { font-weight: 700; }
+
+    /* Rebucket evaluation strip */
+    .fb-rebucket-strip {
+      margin-top: 0.875rem;
+      padding: 0.625rem 0.875rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+
+    .fb-rebucket-strip--correct {
+      background: var(--color-success-bg);
+      border: 1px solid var(--color-success-border);
+      color: var(--color-success-text);
+    }
+
+    .fb-rebucket-strip--incorrect {
+      background: var(--color-warning-bg);
+      border: 1px solid var(--color-warning-border);
+      color: var(--color-warning-text);
+    }
+
+    .fb-rebucket-strip strong { font-weight: 700; }
+
+    /* ---- Practice insight panel ---- */
+    .practice-insight {
+      margin-top: 1.5rem;
+      padding: 1rem 1.125rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-left: 3px solid var(--color-text-link);
+      border-radius: 0 5px 5px 0;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    .practice-insight__label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.375rem;
+    }
+
+    .practice-insight strong { font-weight: 700; }
+
+    /* High-contrast overrides */
+    @media (prefers-contrast: more) {
+      .ref-map, .bucket-eval-card, .fb-bucket-card {
+        border-color: var(--color-border-strong);
+      }
+      .criterion-row, .fb-criterion-row {
+        border-bottom-color: var(--color-border-strong);
+      }
+      .thin-panel, .fb-thin-panel {
+        border-top-color: var(--color-border-strong);
+      }
+      .task-note { border-color: var(--color-border-strong); border-left-color: var(--color-text-primary); }
+      .practice-insight { border-color: var(--color-border-strong); border-left-color: var(--color-text-primary); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <header role="banner">
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+    <div id="progress-tracker" role="group" aria-label="Course progress" tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.2</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">3</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">5</span> of <span id="pt-screen-total">6</span></span>
+    </div>
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel" aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer" aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory" aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel" aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+  </header>
+
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item"><a href="intro-0.1.html" class="module-nav-link">Introduction</a></li>
+      <li class="module-nav-item"><a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a></li>
+      <li class="module-nav-item"><a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a></li>
+      <li class="module-nav-item"><a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a></li>
+      <li class="module-nav-item"><a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a></li>
+    </ol>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <section id="current-activity" tabindex="-1" aria-label="Current activity">
+      <article class="practice" aria-labelledby="practice-title">
+
+        <header class="practice__header">
+          <div class="practice__meta">
+            <span class="screen-type-label">Guided Practice</span>
+            <span class="time-estimate" aria-label="Estimated time: 20 to 25 minutes">20&ndash;25 min</span>
+          </div>
+          <p class="lesson-label" aria-label="Lesson 1.2">Lesson 1.2</p>
+          <h1 id="practice-title" class="practice__title">
+            Apply the Four-Criterion Balance Test to the MRHN Bucket Map
+          </h1>
+          <span class="step-badge">Step 3</span>
+          <p class="task-description">
+            You have seen the expert apply the four-criterion balance test in Screen 4.
+            Now apply it yourself. For each of the four MRHN buckets, evaluate all four
+            criteria: constraint compliance, item volume, instructional coherence, and
+            sequence position. For Bucket 4, complete the thin-bucket evaluation and
+            record your re-bucketing judgment.
+          </p>
+          <div class="task-note" role="note">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:0.125rem;color:var(--color-text-secondary);">
+              <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M8 7v5M8 4.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>
+              <strong>Reference map note:</strong> This practice uses the expert MRHN bucket map
+              from Screen 2. If your Screen 3 assignments differed, consider how your balance
+              analysis would compare -- the four criteria apply to any well-formed bucket map.
+            </span>
+          </div>
+        </header>
+
+        <!-- Reference map -->
+        <div class="ref-map" role="region" aria-label="MRHN expert bucket map reference">
+          <div class="ref-map__header">
+            MRHN Expert Bucket Map -- Reference
+          </div>
+          <div class="ref-map__grid">
+            <div class="ref-bucket">
+              <span class="ref-bucket__num" aria-label="Bucket 1">1</span>
+              <span class="ref-bucket__name">Threat Recognition and Triage</span>
+              <span class="ref-bucket__items">SI-08, SI-01, SI-16, SI-06, SI-02</span>
+              <span class="ref-bucket__count">5 items</span>
+            </div>
+            <div class="ref-bucket">
+              <span class="ref-bucket__num" aria-label="Bucket 2">2</span>
+              <span class="ref-bucket__name">Containment and Control</span>
+              <span class="ref-bucket__items">SI-03, SI-11, SI-09, SI-15</span>
+              <span class="ref-bucket__count">4 items</span>
+            </div>
+            <div class="ref-bucket">
+              <span class="ref-bucket__num" aria-label="Bucket 3">3</span>
+              <span class="ref-bucket__name">Active Response Execution</span>
+              <span class="ref-bucket__items">SI-04, SI-05, SI-10, SI-14</span>
+              <span class="ref-bucket__count">4 items</span>
+            </div>
+            <div class="ref-bucket">
+              <span class="ref-bucket__num" aria-label="Bucket 4">4</span>
+              <span class="ref-bucket__name">Post-Incident Close-Out</span>
+              <span class="ref-bucket__items">SI-12, SI-07, SI-13</span>
+              <span class="ref-bucket__count">3 items</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Error summary (hidden until needed) -->
+        <div id="form-error-summary"
+             class="form-error-summary"
+             role="alert"
+             aria-live="assertive"
+             hidden>
+          <strong>Complete all required fields before checking your work.</strong>
+          <span id="error-summary-detail"></span>
+        </div>
+
+        <!-- ======================================================
+             Evaluation form
+             ====================================================== -->
+        <form id="balance-eval-form"
+              class="eval-form"
+              novalidate
+              aria-label="Bucket balance evaluation">
+
+          <!-- ---- Bucket 1 ---- -->
+          <div class="bucket-eval-card" id="card-b1">
+            <div class="bec__header">
+              <div class="bec__title-group">
+                <span class="bec__num" aria-hidden="true">1</span>
+                <span class="bec__name">Threat Recognition and Triage</span>
+              </div>
+              <span class="bec__count">5 items</span>
+            </div>
+
+            <fieldset class="criterion-fieldset">
+              <legend class="sr-only">Bucket 1 balance evaluation</legend>
+
+              <!-- C1 -->
+              <div class="criterion-row">
+                <div>
+                  <span class="criterion-legend">Constraint compliance</span>
+                  <span class="criterion-desc">Can these items be delivered within LC-1, LC-3/LC-4, and PC-3?</span>
+                </div>
+                <div>
+                  <div class="radio-group" role="group" aria-label="Bucket 1 -- Constraint compliance verdict">
+                    <label class="radio-label">
+                      <input type="radio" name="b1-c1" value="pass" required>
+                      Passes
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="b1-c1" value="flag">
+                      Flag
+                    </label>
+                  </div>
+                  <p class="field-error" id="error-b1-c1" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <!-- C2 -->
+              <div class="criterion-row">
+                <div>
+                  <span class="criterion-legend">Item volume</span>
+                  <span class="criterion-desc">Is 5 items appropriate, overloaded, or thin?</span>
+                </div>
+                <div>
+                  <div class="radio-group" role="group" aria-label="Bucket 1 -- Item volume verdict">
+                    <label class="radio-label">
+                      <input type="radio" name="b1-c2" value="pass">
+                      Passes
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="b1-c2" value="flag">
+                      Flag
+                    </label>
+                  </div>
+                  <p class="field-error" id="error-b1-c2" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <!-- C3 -->
+              <div class="criterion-row">
+                <div>
+                  <span class="criterion-legend">Instructional coherence</span>
+                  <span class="criterion-desc">Do these 5 items form a teachable unit?</span>
+                </div>
+                <div>
+                  <div class="radio-group" role="group" aria-label="Bucket 1 -- Instructional coherence verdict">
+                    <label class="radio-label">
+                      <input type="radio" name="b1-c3" value="pass">
+                      Passes
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="b1-c3" value="flag">
+                      Flag
+                    </label>
+                  </div>
+                  <p class="field-error" id="error-b1-c3" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <!-- C4 -->
+              <div class="criterion-row">
+                <div>
+                  <span class="criterion-legend">Sequence position</span>
+                  <span class="criterion-desc">Does first position reflect a sound prerequisite?</span>
+                </div>
+                <div>
+                  <div class="radio-group" role="group" aria-label="Bucket 1 -- Sequence position verdict">
+                    <label class="radio-label">
+                      <input type="radio" name="b1-c4" value="pass">
+                      Passes
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="b1-c4" value="flag">
+                      Flag
+                    </label>
+                  </div>
+                  <p class="field-error" id="error-b1-c4" aria-live="polite"></p>
+                </div>
+              </div>
+
+            </fieldset>
+          </div><!-- /#card-b1 -->
+
+          <!-- ---- Bucket 2 ---- -->
+          <div class="bucket-eval-card" id="card-b2">
+            <div class="bec__header">
+              <div class="bec__title-group">
+                <span class="bec__num" aria-hidden="true">2</span>
+                <span class="bec__name">Containment and Control</span>
+              </div>
+              <span class="bec__count">4 items</span>
+            </div>
+
+            <fieldset class="criterion-fieldset">
+              <legend class="sr-only">Bucket 2 balance evaluation</legend>
+
+              <div class="criterion-row">
+                <div>
+                  <span class="criterion-legend">Constraint compliance</span>
+                  <span class="criterion-desc">Can these items be delivered within LC-1 and PC-3?</span>
+                </div>
+                <div>
+                  <div class="radio-group" role="group" aria-label="Bucket 2 -- Constraint compliance verdict">
+                    <label class="radio-label">
+                      <input type="radio" name="b2-c1" value="pass">
+                      Passes
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="b2-c1" value="flag">
+                      Flag
+                    </label>
+                  </div>
+                  <p class="field-error" id="error-b2-c1" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <div class="criterion-row">
+                <div>
+                  <span class="criterion-legend">Item volume</span>
+                  <span class="criterion-desc">Is 4 items appropriate for this phase?</span>
+                </div>
+                <div>
+                  <div class="radio-group" role="group" aria-label="Bucket 2 -- Item volume verdict">
+                    <label class="radio-label">
+                      <input type="radio" name="b2-c2" value="pass">
+                      Passes
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="b2-c2" value="flag">
+                      Flag
+                    </label>
+                  </div>
+                  <p class="field-error" id="error-b2-c2" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <div class="criterion-row">
+                <div>
+                  <span class="criterion-legend">Instructional coherence</span>
+                  <span class="criterion-desc">Do these 4 items form a teachable unit?</span>
+                </div>
+                <div>
+                  <div class="radio-group" role="group" aria-label="Bucket 2 -- Instructional coherence verdict">
+                    <label class="radio-label">
+                      <input type="radio" name="b2-c3" value="pass">
+                      Passes
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="b2-c3" value="flag">
+                      Flag
+                    </label>
+                  </div>
+                  <p class="field-error" id="error-b2-c3" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <div class="criterion-row">
+                <div>
+                  <span class="criterion-legend">Sequence position</span>
+                  <span class="criterion-desc">Does second position reflect a sound prerequisite?</span>
+                </div>
+                <div>
+                  <div class="radio-group" role="group" aria-label="Bucket 2 -- Sequence position verdict">
+                    <label class="radio-label">
+                      <input type="radio" name="b2-c4" value="pass">
+                      Passes
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="b2-c4" value="flag">
+                      Flag
+                    </label>
+                  </div>
+                  <p class="field-error" id="error-b2-c4" aria-live="polite"></p>
+                </div>
+              </div>
+
+            </fieldset>
+          </div><!-- /#card-b2 -->
+
+          <!-- ---- Bucket 3 ---- -->
+          <div class="bucket-eval-card" id="card-b3">
+            <div class="bec__header">
+              <div class="bec__title-group">
+                <span class="bec__num" aria-hidden="true">3</span>
+                <span class="bec__name">Active Response Execution</span>
+              </div>
+              <span class="bec__count">4 items</span>
+            </div>
+
+            <fieldset class="criterion-fieldset">
+              <legend class="sr-only">Bucket 3 balance evaluation</legend>
+
+              <div class="criterion-row">
+                <div>
+                  <span class="criterion-legend">Constraint compliance</span>
+                  <span class="criterion-desc">Can these items be delivered within LC-1? Note the governing constraints: PC-4, PC-5, RC-1, RC-3, RC-2.</span>
+                </div>
+                <div>
+                  <div class="radio-group" role="group" aria-label="Bucket 3 -- Constraint compliance verdict">
+                    <label class="radio-label">
+                      <input type="radio" name="b3-c1" value="pass">
+                      Passes
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="b3-c1" value="flag">
+                      Flag
+                    </label>
+                  </div>
+                  <p class="field-error" id="error-b3-c1" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <div class="criterion-row">
+                <div>
+                  <span class="criterion-legend">Item volume</span>
+                  <span class="criterion-desc">Is 4 items appropriate for this phase?</span>
+                </div>
+                <div>
+                  <div class="radio-group" role="group" aria-label="Bucket 3 -- Item volume verdict">
+                    <label class="radio-label">
+                      <input type="radio" name="b3-c2" value="pass">
+                      Passes
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="b3-c2" value="flag">
+                      Flag
+                    </label>
+                  </div>
+                  <p class="field-error" id="error-b3-c2" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <div class="criterion-row">
+                <div>
+                  <span class="criterion-legend">Instructional coherence</span>
+                  <span class="criterion-desc">Do these 4 items form a teachable unit?</span>
+                </div>
+                <div>
+                  <div class="radio-group" role="group" aria-label="Bucket 3 -- Instructional coherence verdict">
+                    <label class="radio-label">
+                      <input type="radio" name="b3-c3" value="pass">
+                      Passes
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="b3-c3" value="flag">
+                      Flag
+                    </label>
+                  </div>
+                  <p class="field-error" id="error-b3-c3" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <div class="criterion-row">
+                <div>
+                  <span class="criterion-legend">Sequence position</span>
+                  <span class="criterion-desc">Does third position reflect a sound prerequisite? Consider the concurrency question.</span>
+                </div>
+                <div>
+                  <div class="radio-group" role="group" aria-label="Bucket 3 -- Sequence position verdict">
+                    <label class="radio-label">
+                      <input type="radio" name="b3-c4" value="pass">
+                      Passes
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="b3-c4" value="flag">
+                      Flag
+                    </label>
+                  </div>
+                  <p class="field-error" id="error-b3-c4" aria-live="polite"></p>
+                </div>
+              </div>
+
+            </fieldset>
+          </div><!-- /#card-b3 -->
+
+          <!-- ---- Bucket 4 ---- -->
+          <div class="bucket-eval-card" id="card-b4">
+            <div class="bec__header">
+              <div class="bec__title-group">
+                <span class="bec__num" aria-hidden="true">4</span>
+                <span class="bec__name">Post-Incident Close-Out</span>
+              </div>
+              <span class="bec__count">3 items</span>
+            </div>
+
+            <fieldset class="criterion-fieldset">
+              <legend class="sr-only">Bucket 4 balance evaluation</legend>
+
+              <div class="criterion-row">
+                <div>
+                  <span class="criterion-legend">Constraint compliance</span>
+                  <span class="criterion-desc">Can these 3 items be delivered within the remaining LC-1 budget?</span>
+                </div>
+                <div>
+                  <div class="radio-group" role="group" aria-label="Bucket 4 -- Constraint compliance verdict">
+                    <label class="radio-label">
+                      <input type="radio" name="b4-c1" value="pass">
+                      Passes
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="b4-c1" value="flag">
+                      Flag
+                    </label>
+                  </div>
+                  <p class="field-error" id="error-b4-c1" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <div class="criterion-row">
+                <div>
+                  <span class="criterion-legend">Item volume</span>
+                  <span class="criterion-desc">Is 3 items appropriate, or is this a thin bucket?</span>
+                </div>
+                <div>
+                  <div class="radio-group" role="group" aria-label="Bucket 4 -- Item volume verdict">
+                    <label class="radio-label">
+                      <input type="radio" name="b4-c2" value="pass">
+                      Passes
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="b4-c2" value="flag">
+                      Flag
+                    </label>
+                  </div>
+                  <p class="field-error" id="error-b4-c2" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <div class="criterion-row">
+                <div>
+                  <span class="criterion-legend">Instructional coherence</span>
+                  <span class="criterion-desc">Do these 3 items form a teachable unit?</span>
+                </div>
+                <div>
+                  <div class="radio-group" role="group" aria-label="Bucket 4 -- Instructional coherence verdict">
+                    <label class="radio-label">
+                      <input type="radio" name="b4-c3" value="pass">
+                      Passes
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="b4-c3" value="flag">
+                      Flag
+                    </label>
+                  </div>
+                  <p class="field-error" id="error-b4-c3" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <div class="criterion-row">
+                <div>
+                  <span class="criterion-legend">Sequence position</span>
+                  <span class="criterion-desc">Does fourth position reflect a sound prerequisite?</span>
+                </div>
+                <div>
+                  <div class="radio-group" role="group" aria-label="Bucket 4 -- Sequence position verdict">
+                    <label class="radio-label">
+                      <input type="radio" name="b4-c4" value="pass">
+                      Passes
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="b4-c4" value="flag">
+                      Flag
+                    </label>
+                  </div>
+                  <p class="field-error" id="error-b4-c4" aria-live="polite"></p>
+                </div>
+              </div>
+
+            </fieldset>
+
+            <!-- Thin-bucket evaluation panel -->
+            <div class="thin-panel" role="group" aria-label="Bucket 4 thin-bucket evaluation">
+              <div class="thin-panel__header">
+                Thin-Bucket Evaluation -- Bucket 4 Only
+              </div>
+              <div class="thin-panel__body">
+                <p class="thin-panel__desc">
+                  Bucket 4 has only 3 items -- the smallest bucket in the set. Whether
+                  or not you flagged item volume above, you must complete the thin-bucket
+                  evaluation before recording a final verdict. Consider the four questions
+                  from Screen 4: instructional substance, distinct prerequisite, constraint
+                  fit, and merge test. Then record your re-bucketing judgment below.
+                </p>
+                <fieldset class="rebucket-fieldset">
+                  <legend class="rebucket-legend">
+                    After applying the thin-bucket test, should Bucket 4 (Post-Incident
+                    Close-Out) be merged into Bucket 3?
+                  </legend>
+                  <div class="radio-group" role="group" aria-label="Bucket 4 re-bucketing judgment">
+                    <label class="radio-label">
+                      <input type="radio" name="b4-rebucket" value="no">
+                      No -- Bucket 4 is appropriately scoped
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="b4-rebucket" value="yes">
+                      Yes -- merge into Bucket 3
+                    </label>
+                  </div>
+                  <p class="field-error" id="error-b4-rebucket" aria-live="polite"></p>
+                </fieldset>
+                <label class="reasoning-label" for="b4-reasoning">
+                  Briefly explain your reasoning:
+                </label>
+                <textarea id="b4-reasoning"
+                          name="b4-reasoning"
+                          class="reasoning-textarea"
+                          rows="4"
+                          maxlength="1200"
+                          placeholder="What made you decide to keep or merge Bucket 4? Which of the four thin-bucket questions was most determinative?"></textarea>
+              </div>
+            </div>
+
+          </div><!-- /#card-b4 -->
+
+          <!-- Form actions -->
+          <div class="form-actions">
+            <button type="submit" id="submit-btn" class="btn btn--primary">
+              Check My Balance Analysis
+            </button>
+            <button type="button" id="reset-btn" class="btn btn--secondary">
+              Start Over
+            </button>
+          </div>
+
+        </form>
+
+        <!-- ======================================================
+             Feedback section
+             ====================================================== -->
+        <section id="feedback-section"
+                 class="feedback-section"
+                 hidden
+                 aria-labelledby="feedback-heading"
+                 tabindex="-1">
+
+          <h2 id="feedback-heading" class="section-heading">
+            Expert Comparison -- Balance Analysis
+          </h2>
+
+          <!-- Banner (filled by JS) -->
+          <div id="feedback-banner" class="feedback-banner feedback-banner--light">
+            <div class="feedback-banner__text">
+              <span id="banner-label" class="feedback-banner__label"></span>
+              <span id="banner-msg" class="feedback-banner__msg"></span>
+            </div>
+          </div>
+
+          <!-- Per-bucket feedback -->
+          <div id="feedback-buckets" aria-label="Per-bucket expert comparison">
+
+            <!-- Bucket 1 feedback -->
+            <div class="fb-bucket-card" id="fb-b1">
+              <div class="fb-bucket__header">
+                <div class="fb-bucket__title-group">
+                  <span class="fb-bucket__num" aria-hidden="true">1</span>
+                  <span class="fb-bucket__name">Threat Recognition and Triage</span>
+                </div>
+                <span class="fb-verdict-badge fb-verdict-badge--pass">Passes</span>
+              </div>
+
+              <!-- C1 -->
+              <div class="fb-criterion-row" id="fb-b1-c1-row">
+                <span class="fb-criterion__label">Constraint compliance</span>
+                <span id="fb-b1-c1-chip" class="fb-match-chip"></span>
+                <span class="fb-criterion__analysis">
+                  <strong>Expert: Passes.</strong> LC-1 (SME access) is satisfied -- triage
+                  protocol is the first priority for expert review. LC-3/LC-4 (SCORM,
+                  90-day) are satisfied because scenario-based simulation is the correct
+                  delivery format for decision chains. PC-3 (role authority) is addressed
+                  through the Tier 1 vs. Tier 2 distinction built into SI-01 and SI-02.
+                </span>
+              </div>
+
+              <!-- C2 -->
+              <div class="fb-criterion-row" id="fb-b1-c2-row">
+                <span class="fb-criterion__label">Item volume</span>
+                <span id="fb-b1-c2-chip" class="fb-match-chip"></span>
+                <span class="fb-criterion__analysis">
+                  <strong>Expert: Passes.</strong> Five items is the largest bucket, which
+                  triggers the overload check. The overload check fails when items run
+                  parallel to each other, creating additive cognitive load. Here, the five
+                  items form a linear decision chain (detect, classify, execute Tier 1,
+                  escalate, activate protocol). Sequential load is appropriate -- the chain
+                  is the instructional structure.
+                </span>
+              </div>
+
+              <!-- C3 -->
+              <div class="fb-criterion-row" id="fb-b1-c3-row">
+                <span class="fb-criterion__label">Instructional coherence</span>
+                <span id="fb-b1-c3-chip" class="fb-match-chip"></span>
+                <span class="fb-criterion__analysis">
+                  <strong>Expert: Passes.</strong> All five items answer a single performance
+                  question: what is this incident and am I the right person to handle it? Shared
+                  performance context, shared prerequisite structure, and one governing challenge.
+                  This is the definition of a coherent bucket.
+                </span>
+              </div>
+
+              <!-- C4 -->
+              <div class="fb-criterion-row" id="fb-b1-c4-row">
+                <span class="fb-criterion__label">Sequence position</span>
+                <span id="fb-b1-c4-chip" class="fb-match-chip"></span>
+                <span class="fb-criterion__analysis">
+                  <strong>Expert: Passes.</strong> First position is the only correct
+                  position. Every other bucket in the map depends on threat classification
+                  and protocol activation. There are no upstream prerequisites, and all
+                  downstream buckets require this one.
+                </span>
+              </div>
+
+            </div><!-- /#fb-b1 -->
+
+            <!-- Bucket 2 feedback -->
+            <div class="fb-bucket-card" id="fb-b2">
+              <div class="fb-bucket__header">
+                <div class="fb-bucket__title-group">
+                  <span class="fb-bucket__num" aria-hidden="true">2</span>
+                  <span class="fb-bucket__name">Containment and Control</span>
+                </div>
+                <span class="fb-verdict-badge fb-verdict-badge--pass">Passes</span>
+              </div>
+
+              <div class="fb-criterion-row" id="fb-b2-c1-row">
+                <span class="fb-criterion__label">Constraint compliance</span>
+                <span id="fb-b2-c1-chip" class="fb-match-chip"></span>
+                <span class="fb-criterion__analysis">
+                  <strong>Expert: Passes.</strong> PC-3 governs all four items -- a feature
+                  that reduces instructional complexity, because the authority boundary rule
+                  is the same across all four containment actions. LC-1 is satisfied; this
+                  is the second priority for SME time after Bucket 1.
+                </span>
+              </div>
+
+              <div class="fb-criterion-row" id="fb-b2-c2-row">
+                <span class="fb-criterion__label">Item volume</span>
+                <span id="fb-b2-c2-chip" class="fb-match-chip"></span>
+                <span class="fb-criterion__analysis">
+                  <strong>Expert: Passes.</strong> Four items is well-scoped. Each item requires
+                  distinct procedural knowledge (device isolation, network segmentation, evidence
+                  chain, external notification) so there is no redundancy. Not overloaded, not thin.
+                </span>
+              </div>
+
+              <div class="fb-criterion-row" id="fb-b2-c3-row">
+                <span class="fb-criterion__label">Instructional coherence</span>
+                <span id="fb-b2-c3-chip" class="fb-match-chip"></span>
+                <span class="fb-criterion__analysis">
+                  <strong>Expert: Passes.</strong> All four are role-authorized operational
+                  actions within the containment window. The governing challenge is unified:
+                  execute the correct containment action within your authority level without
+                  waiting for supervisor confirmation.
+                </span>
+              </div>
+
+              <div class="fb-criterion-row" id="fb-b2-c4-row">
+                <span class="fb-criterion__label">Sequence position</span>
+                <span id="fb-b2-c4-chip" class="fb-match-chip"></span>
+                <span class="fb-criterion__analysis">
+                  <strong>Expert: Passes.</strong> Second position requires Bucket 1 to
+                  confirm the incident classification and activate the IR-2024 protocol.
+                  Both prerequisites are satisfied by Bucket 1. No items in this bucket
+                  can be executed before the threat is confirmed.
+                </span>
+              </div>
+
+            </div><!-- /#fb-b2 -->
+
+            <!-- Bucket 3 feedback -->
+            <div class="fb-bucket-card" id="fb-b3">
+              <div class="fb-bucket__header">
+                <div class="fb-bucket__title-group">
+                  <span class="fb-bucket__num" aria-hidden="true">3</span>
+                  <span class="fb-bucket__name">Active Response Execution</span>
+                </div>
+                <span class="fb-verdict-badge fb-verdict-badge--pass">Passes</span>
+              </div>
+
+              <div class="fb-criterion-row" id="fb-b3-c1-row">
+                <span class="fb-criterion__label">Constraint compliance</span>
+                <span id="fb-b3-c1-chip" class="fb-match-chip"></span>
+                <span class="fb-criterion__analysis">
+                  <strong>Expert: Flag (constraint density).</strong> Bucket 3 has the
+                  highest constraint density in the map -- four items with four different
+                  governing constraints: SI-04 (PC-4), SI-05 (PC-5), SI-10 (RC-1, RC-3),
+                  SI-14 (RC-2). This is a planning flag, not a structural failure: the bucket
+                  passes constraint compliance, but requires priority SME allocation alongside
+                  Bucket 1. If you marked Passes, your judgment is defensible -- the flag is
+                  a precision note, not a hard fail.
+                </span>
+              </div>
+
+              <div class="fb-criterion-row" id="fb-b3-c2-row">
+                <span class="fb-criterion__label">Item volume</span>
+                <span id="fb-b3-c2-chip" class="fb-match-chip"></span>
+                <span class="fb-criterion__analysis">
+                  <strong>Expert: Passes.</strong> Four items with concurrent obligations
+                  during active response. The concurrent nature is the defining feature of
+                  this bucket -- instruction must teach learners to manage simultaneous
+                  obligations, which is appropriate difficulty for this phase.
+                </span>
+              </div>
+
+              <div class="fb-criterion-row" id="fb-b3-c3-row">
+                <span class="fb-criterion__label">Instructional coherence</span>
+                <span id="fb-b3-c3-chip" class="fb-match-chip"></span>
+                <span class="fb-criterion__analysis">
+                  <strong>Expert: Passes.</strong> Shared temporal context: all four
+                  obligations are active during the response window. The learning challenge
+                  is unified: manage concurrent documentation, communication, regulatory,
+                  and compliance obligations without deferring any to post-closure.
+                </span>
+              </div>
+
+              <div class="fb-criterion-row" id="fb-b3-c4-row">
+                <span class="fb-criterion__label">Sequence position</span>
+                <span id="fb-b3-c4-chip" class="fb-match-chip"></span>
+                <span class="fb-criterion__analysis">
+                  <strong>Expert: Passes.</strong> Third position is correct. Note the
+                  concurrency: SI-04 (real-time documentation) and SI-10 (clock management)
+                  begin at incident discovery, concurrent with Bucket 2. This concurrency
+                  is a design note for Module 2 instruction -- it does not require a sequence
+                  change here.
+                </span>
+              </div>
+
+            </div><!-- /#fb-b3 -->
+
+            <!-- Bucket 4 feedback -->
+            <div class="fb-bucket-card" id="fb-b4">
+              <div class="fb-bucket__header">
+                <div class="fb-bucket__title-group">
+                  <span class="fb-bucket__num" aria-hidden="true">4</span>
+                  <span class="fb-bucket__name">Post-Incident Close-Out</span>
+                </div>
+                <span class="fb-verdict-badge fb-verdict-badge--pass">Passes (flag resolved)</span>
+              </div>
+
+              <div class="fb-criterion-row" id="fb-b4-c1-row">
+                <span class="fb-criterion__label">Constraint compliance</span>
+                <span id="fb-b4-c1-chip" class="fb-match-chip"></span>
+                <span class="fb-criterion__analysis">
+                  <strong>Expert: Passes.</strong> SI-07 (OCR documentation) requires
+                  SME review for compliance accuracy; SI-12 and SI-13 are lower constraint
+                  density. Combined SME estimate: 45 to 60 minutes -- well within the
+                  remaining LC-1 budget after Buckets 1 through 3.
+                </span>
+              </div>
+
+              <div class="fb-criterion-row" id="fb-b4-c2-row">
+                <span class="fb-criterion__label">Item volume</span>
+                <span id="fb-b4-c2-chip" class="fb-match-chip"></span>
+                <span class="fb-criterion__analysis">
+                  <strong>Expert: Flag (triggers thin-bucket evaluation).</strong> Three items
+                  is below the center of the set (average: 4). Flagging this is the correct
+                  response -- it initiates the thin-bucket test rather than immediately
+                  requiring re-bucketing. The flag is resolved by the thin-bucket evaluation.
+                  If you marked Passes without flagging, review the thin-bucket decision
+                  below -- the reasoning still applies.
+                </span>
+              </div>
+
+              <div class="fb-criterion-row" id="fb-b4-c3-row">
+                <span class="fb-criterion__label">Instructional coherence</span>
+                <span id="fb-b4-c3-chip" class="fb-match-chip"></span>
+                <span class="fb-criterion__analysis">
+                  <strong>Expert: Passes.</strong> All three items share a hard prerequisite:
+                  containment confirmation. None can begin until the incident is formally
+                  closed and the active-response record is complete. The shared prerequisite
+                  is a stronger coherence bond than shared topic or content area.
+                </span>
+              </div>
+
+              <div class="fb-criterion-row" id="fb-b4-c4-row">
+                <span class="fb-criterion__label">Sequence position</span>
+                <span id="fb-b4-c4-chip" class="fb-match-chip"></span>
+                <span class="fb-criterion__analysis">
+                  <strong>Expert: Passes.</strong> Fourth position is correct. Containment
+                  (Bucket 2) must be verified and active response (Bucket 3) substantially
+                  complete before any Bucket 4 item begins. The hard prerequisite structure
+                  is clear and robust.
+                </span>
+              </div>
+
+              <!-- Thin-bucket feedback panel -->
+              <div class="fb-thin-panel">
+                <div class="fb-thin-panel__header">
+                  Thin-Bucket Evaluation -- Expert Analysis
+                </div>
+                <div class="fb-thin-panel__body">
+                  <p class="thin-panel__desc">
+                    The four-question thin-bucket test applied to Bucket 4:
+                  </p>
+                  <ul class="thin-test-list" aria-label="Thin-bucket test results">
+                    <li class="thin-test-item">
+                      <svg aria-label="Yes" focusable="false" width="15" height="15"
+                           viewBox="0 0 15 15" fill="none"
+                           style="flex-shrink:0;margin-top:0.125rem;color:var(--color-success-text);">
+                        <circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M4.5 7.5l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span>
+                        <strong>Instructional substance:</strong> Yes -- each item requires substantial
+                        procedural knowledge. SI-12 is a multi-step integrity check. SI-07 requires
+                        precise OCR compliance procedure. SI-13 requires systematic retrospective analysis.
+                        None are one-step tasks.
+                      </span>
+                    </li>
+                    <li class="thin-test-item">
+                      <svg aria-label="Yes" focusable="false" width="15" height="15"
+                           viewBox="0 0 15 15" fill="none"
+                           style="flex-shrink:0;margin-top:0.125rem;color:var(--color-success-text);">
+                        <circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M4.5 7.5l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span>
+                        <strong>Distinct prerequisite:</strong> Yes -- containment confirmation
+                        is a hard gate for all three items that no Bucket 3 item shares.
+                        The boundary is structurally unambiguous.
+                      </span>
+                    </li>
+                    <li class="thin-test-item">
+                      <svg aria-label="Yes" focusable="false" width="15" height="15"
+                           viewBox="0 0 15 15" fill="none"
+                           style="flex-shrink:0;margin-top:0.125rem;color:var(--color-success-text);">
+                        <circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M4.5 7.5l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span>
+                        <strong>Constraint fit:</strong> Yes -- 45 to 60 minutes of SME time
+                        is well within the remaining LC-1 budget.
+                      </span>
+                    </li>
+                    <li class="thin-test-item">
+                      <svg aria-label="No -- merge would harm the architecture" focusable="false"
+                           width="15" height="15" viewBox="0 0 15 15" fill="none"
+                           style="flex-shrink:0;margin-top:0.125rem;color:var(--color-error-text);">
+                        <circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 5l5 5M10 5l-5 5" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round"/>
+                      </svg>
+                      <span>
+                        <strong>Merge test:</strong> No -- merging into Bucket 3 would remove the
+                        temporal boundary between concurrent-response obligations and post-closure
+                        tasks. That boundary is one of the most important distinctions in incident
+                        response practice. Removing it harms the architecture.
+                      </span>
+                    </li>
+                  </ul>
+                  <div class="fb-conclusion">
+                    <strong>Thin-bucket conclusion: Bucket 4 passes.</strong> All four questions
+                    resolve in favor of keeping Bucket 4 as a separate instructional unit. Three
+                    items is appropriately scoped for this workflow phase.
+                  </div>
+
+                  <!-- Rebucket judgment comparison (filled by JS) -->
+                  <div id="fb-rebucket-strip" class="fb-rebucket-strip" style="display:none;"></div>
+
+                </div>
+              </div>
+
+            </div><!-- /#fb-b4 -->
+
+          </div><!-- /#feedback-buckets -->
+
+          <!-- Practice insight -->
+          <div class="practice-insight" role="note">
+            <span class="practice-insight__label">What this means for your practice</span>
+            <strong>Balance is a fitness test, not a count.</strong> The most common error
+            in bucket balance evaluation is using item count as a proxy for quality. A five-item
+            bucket that forms a coherent chain is more balanced than a four-item bucket where
+            two items belong in an adjacent phase. The four criteria -- constraint compliance,
+            item volume, instructional coherence, and sequence position -- force precision:
+            each criterion can fail independently, and each failure requires a specific remedy.
+            Bucket 4 demonstrates the most important principle: a flag is an evaluation prompt,
+            not an automatic failure. The thin-bucket test is what converts a size concern into
+            a structural decision.
+          </div>
+
+          <!-- Post-feedback navigation -->
+          <nav class="screen-nav screen-nav--post-feedback" aria-label="Screen navigation">
+            <a href="m1-l2-s4.html"
+               class="btn btn--nav btn--prev"
+               rel="prev"
+               aria-label="Go back to Screen 4">
+              <svg aria-hidden="true" focusable="false" width="16" height="16"
+                   viewBox="0 0 16 16" fill="none">
+                <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Previous
+            </a>
+            <a href="m1-l2-s6.html"
+               class="btn btn--nav btn--next"
+               rel="next"
+               aria-label="Continue to Screen 6">
+              Continue
+              <svg aria-hidden="true" focusable="false" width="16" height="16"
+                   viewBox="0 0 16 16" fill="none">
+                <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </nav>
+
+        </section><!-- /#feedback-section -->
+
+        <!-- Pre-feedback screen nav -->
+        <nav id="screen-nav-pre" class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l2-s4.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+        </nav>
+
+      </article>
+    </section>
+  </main>
+
+  <!-- Supplementary Resources -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">
+        This screen evaluates MRHN_BucketMap_v1. Decision record MRHN-D-002
+        (balance check) was established in Screen 4.
+      </p>
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">
+        MRHN-D-001 (Step 1.5 documentation), MRHN-D-002 (bucket balance check).
+        No new decisions are recorded on this screen.
+      </p>
+    </section>
+  </aside>
+
+  <!-- Support panels -->
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- Panel manager -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) { closeAll(); syncToggleStates(null); }
+        else { openPanel(panelName, btn); syncToggleStates(panelName); }
+      });
+    });
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => { closeAll(); syncToggleStates(null); });
+    });
+  </script>
+
+  <!-- Progress tracker -->
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.2';
+    document.getElementById('pt-phase').textContent        = '1';
+    document.getElementById('pt-step').textContent         = '3';
+    document.getElementById('pt-screen').textContent       = '5';
+    document.getElementById('pt-screen-total').textContent = '6';
+    document.querySelectorAll('.module-nav-link').forEach(link => link.removeAttribute('aria-current'));
+    const activeLink = document.querySelector('.module-nav-link[href="module-1.html"]');
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+  </script>
+
+  <!-- ============================================================
+       Evaluation engine
+       ============================================================ -->
+  <script type="module">
+    import { getItem, setItem } from './js/storage.js';
+
+    const SCREEN_ID   = 'm1-l2-s5';
+    const STORAGE_KEY = 'submitted_' + SCREEN_ID;
+
+    const form        = document.getElementById('balance-eval-form');
+    const feedbackSec = document.getElementById('feedback-section');
+    const preNav      = document.getElementById('screen-nav-pre');
+    const errorSummary= document.getElementById('form-error-summary');
+    const errorDetail = document.getElementById('error-summary-detail');
+    const resetBtn    = document.getElementById('reset-btn');
+
+    // ------------------------------------------------------------------
+    // Announce helper
+    // ------------------------------------------------------------------
+    function announce(msg) {
+      const el = document.getElementById('sr-announcer');
+      el.textContent = '';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => { el.textContent = msg; });
+      });
+    }
+
+    // ------------------------------------------------------------------
+    // Expert verdicts
+    // ------------------------------------------------------------------
+    const EXPERT = {
+      'b1-c1': 'pass', 'b1-c2': 'pass', 'b1-c3': 'pass', 'b1-c4': 'pass',
+      'b2-c1': 'pass', 'b2-c2': 'pass', 'b2-c3': 'pass', 'b2-c4': 'pass',
+      'b3-c1': 'flag', 'b3-c2': 'pass', 'b3-c3': 'pass', 'b3-c4': 'pass',
+      'b4-c1': 'pass', 'b4-c2': 'flag', 'b4-c3': 'pass', 'b4-c4': 'pass',
+    };
+
+    // b3-c1 is "near miss" if learner picks pass (acceptable, not a hard mismatch)
+    const NEAR_MISS = new Set(['b3-c1']);
+
+    const EXPERT_REBUCKET = 'no';
+
+    const CRITERIA_NAMES = {
+      'c1': 'Constraint compliance',
+      'c2': 'Item volume',
+      'c3': 'Instructional coherence',
+      'c4': 'Sequence position'
+    };
+
+    // ------------------------------------------------------------------
+    // Collect form values
+    // ------------------------------------------------------------------
+    function collectValues() {
+      const vals = {};
+      Object.keys(EXPERT).forEach(name => {
+        const checked = form.querySelector(`input[name="${name}"]:checked`);
+        vals[name] = checked ? checked.value : null;
+      });
+      const rebucket = form.querySelector('input[name="b4-rebucket"]:checked');
+      vals['b4-rebucket'] = rebucket ? rebucket.value : null;
+      vals['b4-reasoning'] = (form.querySelector('#b4-reasoning') || {}).value || '';
+      return vals;
+    }
+
+    // ------------------------------------------------------------------
+    // Validate
+    // ------------------------------------------------------------------
+    function validate(vals) {
+      const errors = {};
+      Object.keys(EXPERT).forEach(name => {
+        if (!vals[name]) errors[name] = `Select a verdict for ${CRITERIA_NAMES[name.split('-')[1]]}.`;
+      });
+      if (!vals['b4-rebucket']) errors['b4-rebucket'] = 'Record your re-bucketing judgment for Bucket 4.';
+      return errors;
+    }
+
+    function showErrors(errors) {
+      // Clear all previous errors
+      document.querySelectorAll('.field-error').forEach(el => { el.textContent = ''; });
+      document.querySelectorAll('[aria-invalid]').forEach(el => el.removeAttribute('aria-invalid'));
+
+      const errKeys = Object.keys(errors);
+      if (errKeys.length === 0) { errorSummary.setAttribute('hidden', ''); return true; }
+
+      errKeys.forEach(name => {
+        const errEl = document.getElementById('error-' + name);
+        if (errEl) errEl.textContent = errors[name];
+        const inputs = form.querySelectorAll(`input[name="${name}"]`);
+        inputs.forEach(inp => inp.setAttribute('aria-invalid', 'true'));
+      });
+
+      errorDetail.textContent = ` ${errKeys.length} field${errKeys.length > 1 ? 's' : ''} need${errKeys.length === 1 ? 's' : ''} a response.`;
+      errorSummary.removeAttribute('hidden');
+      errorSummary.focus();
+      announce(`Please review your responses. ${errKeys.length} field${errKeys.length > 1 ? 's are' : ' is'} incomplete.`);
+      return false;
+    }
+
+    // ------------------------------------------------------------------
+    // Chip helpers
+    // ------------------------------------------------------------------
+    function makeChip(type, label) {
+      const span = document.createElement('span');
+      span.className = 'fb-match-chip fb-match-chip--' + type;
+      span.setAttribute('aria-label', label);
+      const svgNS = 'http://www.w3.org/2000/svg';
+
+      if (type === 'match') {
+        span.textContent = 'Matches expert';
+        const svg = document.createElementNS(svgNS, 'svg');
+        svg.setAttribute('aria-hidden', 'true');
+        svg.setAttribute('focusable', 'false');
+        svg.setAttribute('width', '12');
+        svg.setAttribute('height', '12');
+        svg.setAttribute('viewBox', '0 0 12 12');
+        svg.setAttribute('fill', 'none');
+        const circle = document.createElementNS(svgNS, 'circle');
+        circle.setAttribute('cx', '6');
+        circle.setAttribute('cy', '6');
+        circle.setAttribute('r', '5');
+        circle.setAttribute('stroke', 'currentColor');
+        circle.setAttribute('stroke-width', '1.5');
+        const path = document.createElementNS(svgNS, 'path');
+        path.setAttribute('d', 'M3.5 6l2 2 3-3');
+        path.setAttribute('stroke', 'currentColor');
+        path.setAttribute('stroke-width', '1.5');
+        path.setAttribute('stroke-linecap', 'round');
+        path.setAttribute('stroke-linejoin', 'round');
+        svg.appendChild(circle);
+        svg.appendChild(path);
+        span.prepend(svg);
+      } else if (type === 'mismatch') {
+        span.textContent = 'Differs from expert';
+      } else {
+        span.textContent = 'Near match';
+      }
+      return span;
+    }
+
+    // ------------------------------------------------------------------
+    // Render feedback
+    // ------------------------------------------------------------------
+    function renderFeedback(vals) {
+      let exactMatches = 0;
+      let nearMatches  = 0;
+
+      Object.keys(EXPERT).forEach(name => {
+        const expert  = EXPERT[name];
+        const learner = vals[name];
+        const chipEl  = document.getElementById('fb-' + name + '-chip');
+        if (!chipEl) return;
+
+        chipEl.className = '';
+        while (chipEl.firstChild) chipEl.removeChild(chipEl.firstChild);
+
+        if (learner === expert) {
+          exactMatches++;
+          const chip = makeChip('match', 'Your verdict matches the expert');
+          chipEl.appendChild(chip);
+        } else if (NEAR_MISS.has(name)) {
+          nearMatches++;
+          const chip = makeChip('near', 'Both verdicts are defensible');
+          chipEl.appendChild(chip);
+        } else {
+          const chip = makeChip('mismatch', 'Your verdict differs from the expert');
+          chipEl.appendChild(chip);
+        }
+      });
+
+      // Rebucket comparison
+      const rebucketStrip = document.getElementById('fb-rebucket-strip');
+      if (rebucketStrip) {
+        rebucketStrip.style.display = '';
+        if (vals['b4-rebucket'] === EXPERT_REBUCKET) {
+          rebucketStrip.className = 'fb-rebucket-strip fb-rebucket-strip--correct';
+          rebucketStrip.innerHTML = '<strong>Your re-bucketing judgment matches the expert:</strong> Bucket 4 is appropriately scoped and should not be merged into Bucket 3. The four thin-bucket questions all resolved in favor of keeping Bucket 4 as a separate instructional unit.';
+        } else {
+          rebucketStrip.className = 'fb-rebucket-strip fb-rebucket-strip--incorrect';
+          rebucketStrip.innerHTML = '<strong>Your re-bucketing judgment differs from the expert.</strong> The expert concluded that Bucket 4 should NOT be merged into Bucket 3. The merge test is the decisive question: merging would remove the temporal boundary between concurrent-response obligations and post-closure tasks -- a boundary that is structurally critical to the architecture.';
+        }
+      }
+
+      // Determine alignment level
+      const totalCriteria = Object.keys(EXPERT).length;
+      const rebucketCorrect = vals['b4-rebucket'] === EXPERT_REBUCKET;
+      const effectiveMatches = exactMatches + nearMatches;
+
+      let bannerClass, bannerLabel, bannerMsg;
+
+      if (effectiveMatches >= 15 && rebucketCorrect) {
+        bannerClass = 'feedback-banner--strong';
+        bannerLabel = 'Expert Alignment';
+        bannerMsg   = `You identified ${exactMatches} of ${totalCriteria} criteria with the expert's verdict${nearMatches > 0 ? ' (with ' + nearMatches + ' near-match)' : ''}, and your re-bucketing judgment is correct. You are applying the balance criteria precisely -- including the key distinctions around constraint density flags and thin-bucket evaluation.`;
+      } else if (effectiveMatches >= 12 && rebucketCorrect) {
+        bannerClass = 'feedback-banner--partial';
+        bannerLabel = 'Close Alignment';
+        bannerMsg   = `You matched ${exactMatches} of ${totalCriteria} criteria and reached the correct re-bucketing conclusion. Review the expert analysis for the criteria that differed -- pay particular attention to constraint density in Bucket 3 and the item volume flag in Bucket 4.`;
+      } else if (!rebucketCorrect) {
+        bannerClass = 'feedback-banner--partial';
+        bannerLabel = 'Revise the Re-Bucketing Decision';
+        bannerMsg   = `Your criterion verdicts show good evaluation instincts (${exactMatches + nearMatches} of ${totalCriteria} aligned with expert), but the re-bucketing judgment for Bucket 4 needs revision. Read the thin-bucket expert analysis carefully -- the merge test is the determinative question.`;
+      } else {
+        bannerClass = 'feedback-banner--light';
+        bannerLabel = 'Review the Criteria Carefully';
+        bannerMsg   = `You matched ${exactMatches} of ${totalCriteria} criteria. The balance test requires precision on each criterion independently. Review the expert analysis below, particularly the distinction between a flag that triggers further evaluation and a flag that requires re-bucketing.`;
+      }
+
+      const banner = document.getElementById('feedback-banner');
+      banner.className = 'feedback-banner ' + bannerClass;
+      document.getElementById('banner-label').textContent = bannerLabel;
+      document.getElementById('banner-msg').textContent   = bannerMsg;
+    }
+
+    // ------------------------------------------------------------------
+    // Save and restore
+    // ------------------------------------------------------------------
+    function saveState(vals) {
+      setItem(STORAGE_KEY, JSON.stringify(vals));
+    }
+
+    function restoreState() {
+      const raw = getItem(STORAGE_KEY);
+      if (!raw) return;
+      let vals;
+      try { vals = JSON.parse(raw); } catch { return; }
+
+      // Restore radio selections
+      Object.keys(EXPERT).forEach(name => {
+        if (vals[name]) {
+          const radio = form.querySelector(`input[name="${name}"][value="${vals[name]}"]`);
+          if (radio) radio.checked = true;
+        }
+      });
+      if (vals['b4-rebucket']) {
+        const radio = form.querySelector(`input[name="b4-rebucket"][value="${vals['b4-rebucket']}"]`);
+        if (radio) radio.checked = true;
+      }
+      if (vals['b4-reasoning']) {
+        const ta = form.querySelector('#b4-reasoning');
+        if (ta) ta.value = vals['b4-reasoning'];
+      }
+
+      // Render feedback
+      renderFeedback(vals);
+
+      // Show feedback
+      feedbackSec.removeAttribute('hidden');
+      preNav.setAttribute('hidden', '');
+      form.querySelectorAll('input, textarea, button[type="submit"]').forEach(el => {
+        el.setAttribute('disabled', '');
+      });
+    }
+
+    // ------------------------------------------------------------------
+    // Submit
+    // ------------------------------------------------------------------
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const vals   = collectValues();
+      const errors = validate(vals);
+      if (!showErrors(errors)) return;
+
+      errorSummary.setAttribute('hidden', '');
+
+      renderFeedback(vals);
+      saveState(vals);
+
+      feedbackSec.removeAttribute('hidden');
+      preNav.setAttribute('hidden', '');
+
+      form.querySelectorAll('input, textarea, button[type="submit"]').forEach(el => {
+        el.setAttribute('disabled', '');
+      });
+
+      announce('Your balance analysis is submitted. Expert comparison is now visible below.');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.getElementById('feedback-heading').focus();
+        });
+      });
+    });
+
+    // ------------------------------------------------------------------
+    // Reset
+    // ------------------------------------------------------------------
+    resetBtn.addEventListener('click', () => {
+      form.reset();
+      document.querySelectorAll('.field-error').forEach(el => { el.textContent = ''; });
+      document.querySelectorAll('[aria-invalid]').forEach(el => el.removeAttribute('aria-invalid'));
+      errorSummary.setAttribute('hidden', '');
+
+      feedbackSec.setAttribute('hidden', '');
+      preNav.removeAttribute('hidden');
+
+      form.querySelectorAll('input, textarea, button[type="submit"]').forEach(el => {
+        el.removeAttribute('disabled');
+      });
+
+      try { localStorage.removeItem('archMethod_submitted_' + SCREEN_ID); } catch {}
+
+      announce('Form reset. Start your evaluation again.');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const firstRadio = form.querySelector('input[type="radio"]');
+          if (firstRadio) firstRadio.focus();
+        });
+      });
+    });
+
+    // ------------------------------------------------------------------
+    // Restore on load
+    // ------------------------------------------------------------------
+    restoreState();
+  </script>
+
+</body>
+</html>

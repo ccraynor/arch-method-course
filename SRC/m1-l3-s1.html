@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lesson 1.3 introduction: Bucket Mapping and Domain Calibration. This lesson completes the formal bucket map artifact and introduces Step 4 -- Domain Authenticity and Taxonomy Calibration -- producing the calibrated scope map that will anchor decomposition in Module 2.">
+  <title>Lesson 1.3 — Bucket Mapping and Domain Calibration — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l3-s1 -- Lesson 1.3 Introduction
+       Phase 1, Steps 3 and 4. All color values use CSS tokens only.
+       ================================================================ */
+
+    .lesson-intro__meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 0 0.25rem;
+    }
+
+    .screen-type-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    .lesson-label {
+      display: block;
+      margin: 0 0 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-link);
+    }
+
+    .lesson-intro__title {
+      margin: 0 0 0.5rem;
+      font-size: 1.625rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    .step-badge-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 0 0 1.25rem;
+    }
+
+    .step-badge {
+      display: inline-block;
+      padding: 0.25rem 0.625rem;
+      background: var(--color-bg-page);
+      border: 1.5px solid var(--color-text-link);
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-link);
+    }
+
+    .lesson-intro__lead {
+      margin: 0 0 1.5rem;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+
+    /* ---- Scenario context ---- */
+    .scenario-context {
+      display: flex;
+      align-items: baseline;
+      gap: 0.375rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border-left: 3px solid var(--color-border-strong);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      margin: 0 0 2rem;
+      line-height: 1.65;
+    }
+
+    .scenario-label {
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+    }
+
+    /* ---- Continuation banner (what Lesson 1.2 produced) ---- */
+    .continuation-banner {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.875rem 1rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      margin: 0 0 2rem;
+    }
+
+    .continuation-banner__body { flex: 1; min-width: 0; }
+
+    .continuation-banner__label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+      margin: 0 0 0.375rem;
+    }
+
+    .continuation-banner__text {
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .continuation-banner__text strong { font-weight: 700; }
+
+    .continuation-artifact {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      margin-top: 0.5rem;
+      padding: 0.25rem 0.625rem;
+      background: var(--color-bg-page);
+      border: 1px solid var(--color-border-default);
+      border-radius: 3px;
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+    }
+
+    .continuation-artifact strong {
+      font-family: monospace;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    /* ---- Lesson scope card ---- */
+    .lesson-scope {
+      margin: 0 0 2rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .lesson-scope__header {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.625rem 1rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+    }
+
+    .lesson-scope__heading {
+      margin: 0;
+      font-size: 0.9375rem;
+      font-weight: 700;
+    }
+
+    .scope-row {
+      display: grid;
+      grid-template-columns: 6.5rem 1fr;
+      gap: 0 0.875rem;
+      align-items: baseline;
+      padding: 0.5625rem 1rem;
+      border-bottom: 1px solid var(--color-border-default);
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    .scope-row:last-child { border-bottom: none; }
+    .scope-row:nth-child(even) { background: var(--color-bg-subtle); }
+
+    .scope-screen-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      white-space: nowrap;
+    }
+
+    .scope-desc { color: var(--color-text-primary); }
+    .scope-desc strong { font-weight: 700; }
+
+    .scope-step-chip {
+      display: inline-block;
+      margin-left: 0.375rem;
+      padding: 0.1rem 0.4rem;
+      background: var(--color-bg-page);
+      border: 1px solid var(--color-border-default);
+      border-radius: 3px;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      vertical-align: middle;
+    }
+
+    /* ---- Two-step overview ---- */
+    .two-step-overview {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin: 0 0 2rem;
+    }
+
+    @media (max-width: 640px) {
+      .two-step-overview { grid-template-columns: 1fr; }
+    }
+
+    .step-overview-card {
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .step-overview-card__header {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+    }
+
+    .step-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 50%;
+      background: var(--color-text-inverse);
+      color: var(--color-brand-navy);
+      font-size: 0.8125rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .step-overview-card__title {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .step-overview-card__body {
+      padding: 0.875rem;
+    }
+
+    .step-overview-desc {
+      margin: 0 0 0.75rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    .step-overview-desc:last-child { margin-bottom: 0; }
+
+    .step-sub-list {
+      margin: 0;
+      padding: 0 0 0 1.125rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .step-sub-list li {
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+    }
+
+    .step-sub-list li strong { font-weight: 700; }
+
+    /* ---- Artifact cards ---- */
+    .artifact-section {
+      margin: 0 0 2rem;
+    }
+
+    .artifact-section__label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-secondary);
+      margin: 0 0 0.75rem;
+    }
+
+    .artifact-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 560px) {
+      .artifact-cards { grid-template-columns: 1fr; }
+    }
+
+    .artifact-card {
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .artifact-card--complete {
+      border-color: var(--color-success-border);
+    }
+
+    .artifact-card__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: var(--color-bg-subtle);
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .artifact-card--complete .artifact-card__header {
+      background: var(--color-success-bg);
+      border-bottom-color: var(--color-success-border);
+    }
+
+    .artifact-card__type {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+    }
+
+    .artifact-card--complete .artifact-card__type { color: var(--color-success-text); }
+
+    .artifact-status-chip {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .artifact-status-chip--complete {
+      background: var(--color-success-bg);
+      color: var(--color-success-text);
+      border: 1px solid var(--color-success-border);
+    }
+
+    .artifact-status-chip--new {
+      background: var(--color-warning-bg);
+      color: var(--color-warning-text);
+      border: 1px solid var(--color-warning-border);
+    }
+
+    .artifact-card__body { padding: 0.75rem; }
+
+    .artifact-name {
+      display: block;
+      font-family: monospace;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin: 0 0 0.375rem;
+      line-height: 1.35;
+      word-break: break-all;
+    }
+
+    .artifact-desc {
+      margin: 0;
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+    }
+
+    .artifact-step-tag {
+      display: inline-block;
+      margin-top: 0.375rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--color-text-link);
+    }
+
+    /* ---- What you are building ---- */
+    .building-callout {
+      padding: 1rem 1.125rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-left: 4px solid var(--color-brand-teal);
+      border-radius: 0 5px 5px 0;
+      margin: 0 0 2rem;
+    }
+
+    .building-callout__label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-secondary);
+      margin: 0 0 0.5rem;
+    }
+
+    .building-callout__text {
+      margin: 0;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.75;
+    }
+
+    .building-callout__text strong { font-weight: 700; }
+
+    /* High contrast */
+    @media (prefers-contrast: more) {
+      .scenario-context { border-left-color: var(--color-text-primary); border-color: var(--color-border-strong); }
+      .continuation-banner { border-color: var(--color-border-strong); }
+      .continuation-artifact { border-color: var(--color-border-strong); }
+      .lesson-scope { border-color: var(--color-border-strong); }
+      .scope-row { border-bottom-color: var(--color-border-strong); }
+      .scope-step-chip { border-color: var(--color-border-strong); }
+      .step-overview-card { border-color: var(--color-border-strong); }
+      .artifact-card { border-color: var(--color-border-strong); }
+      .artifact-card--complete { border-color: var(--color-success-border); }
+      .artifact-card__header { border-bottom-color: var(--color-border-strong); }
+      .building-callout { border-color: var(--color-border-strong); border-left-color: var(--color-text-primary); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <header role="banner">
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+    <div id="progress-tracker" role="group" aria-label="Course progress" tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.3</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Steps <span id="pt-step">3&ndash;4</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">1</span> of <span id="pt-screen-total">5</span></span>
+    </div>
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel" aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer" aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory" aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel" aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+  </header>
+
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item"><a href="intro-0.1.html" class="module-nav-link">Introduction</a></li>
+      <li class="module-nav-item"><a href="module-1.html" class="module-nav-link" aria-current="page">Module 1: Bound the Course</a></li>
+      <li class="module-nav-item"><a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a></li>
+      <li class="module-nav-item"><a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a></li>
+      <li class="module-nav-item"><a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a></li>
+    </ol>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <section id="current-activity" tabindex="-1" aria-label="Current activity">
+      <article class="lesson-intro" aria-labelledby="lesson-intro-title">
+
+        <header class="lesson-intro__header">
+          <div class="lesson-intro__meta">
+            <span class="screen-type-label">Lesson Introduction</span>
+          </div>
+          <p class="lesson-label" aria-label="Lesson 1.3">Lesson 1.3</p>
+          <h1 id="lesson-intro-title" class="lesson-intro__title">
+            Bucket Mapping and Domain Calibration
+          </h1>
+          <div class="step-badge-group">
+            <span class="step-badge">Step 3</span>
+            <span class="step-badge">Step 4</span>
+          </div>
+          <p class="lesson-intro__lead">
+            Lesson 1.2 established the four-bucket MRHN structure and confirmed
+            it passes the balance check. Lesson 1.3 closes out Step 3 by
+            producing the formal bucket map artifact, then moves into Step 4:
+            Domain Authenticity and Taxonomy Calibration -- the process that
+            determines whether the bucket map is ready for decomposition or
+            requires scope adjustment before Module 2 begins.
+          </p>
+        </header>
+
+        <!-- Scenario context -->
+        <div class="scenario-context" role="note" aria-label="Scenario context">
+          <span class="scenario-label">Scenario:</span>
+          Meridian Regional Health Network. The four-bucket map is balance-checked
+          and documented. Before decomposition can begin, an expert applies two
+          calibration lenses to each scope item: domain authenticity (does it
+          reflect real MRHN incident response practice?) and taxonomy (does the
+          cognitive demand match what healthcare IT professionals can achieve
+          within the project constraints?).
+        </div>
+
+        <!-- Continuation banner: what Lesson 1.2 produced -->
+        <div class="continuation-banner"
+             role="note"
+             aria-label="Carrying forward from Lesson 1.2">
+          <svg aria-hidden="true" focusable="false" width="20" height="20"
+               viewBox="0 0 20 20" fill="none"
+               style="flex-shrink:0;margin-top:0.125rem;color:var(--color-success-text);">
+            <circle cx="10" cy="10" r="8.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M6.5 10l3 3 5-5" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="continuation-banner__body">
+            <span class="continuation-banner__label">Carrying Forward from Lesson 1.2</span>
+            <p class="continuation-banner__text">
+              You completed <strong>Step 2</strong> (Bucket Scope Items) and
+              <strong>Step 3</strong> (Evaluate Bucket Balance) in Lesson 1.2.
+              The four-bucket MRHN structure -- Threat Recognition and Triage,
+              Containment and Control, Active Response Execution, and Post-Incident
+              Close-Out -- passed all four balance criteria. Governance decision
+              MRHN-D-002 is on record. Lesson 1.3 picks up with the final Step 3
+              task: producing the formal artifact.
+            </p>
+            <div class="continuation-artifact">
+              <svg aria-hidden="true" focusable="false" width="13" height="13"
+                   viewBox="0 0 13 13" fill="none">
+                <rect x="2" y="1.5" width="9" height="10" rx="1.5"
+                      stroke="currentColor" stroke-width="1.25"/>
+                <path d="M4.5 5h4M4.5 7.5h4M4.5 10h2"
+                      stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+              </svg>
+              In progress:
+              <strong>MRHN_BucketMap_v1_[Date]</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lesson scope -->
+        <div class="lesson-scope" role="region" aria-label="Lesson 1.3 scope and screen plan">
+          <div class="lesson-scope__header">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <rect x="2" y="2" width="12" height="12" rx="2"
+                    stroke="currentColor" stroke-width="1.5"/>
+              <path d="M5 5h6M5 8h6M5 11h3"
+                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <h2 class="lesson-scope__heading">Lesson 1.3 -- 5 Screens</h2>
+          </div>
+
+          <div class="scope-row">
+            <span class="scope-screen-label">Screen 1</span>
+            <span class="scope-desc">
+              <strong>This screen.</strong> Lesson introduction -- what Steps 3 and 4
+              cover, what artifacts you will produce, and what calibration means in
+              the ARCH Method context.
+              <span class="scope-step-chip">Steps 3&ndash;4</span>
+            </span>
+          </div>
+
+          <div class="scope-row">
+            <span class="scope-screen-label">Screen 2</span>
+            <span class="scope-desc">
+              <strong>Worked example:</strong> An expert completes the formal
+              MRHN bucket map artifact -- producing the balance-checked, governance-documented
+              record that closes Step 3 and prepares the scope for calibration.
+              <span class="scope-step-chip">Step 3</span>
+            </span>
+          </div>
+
+          <div class="scope-row">
+            <span class="scope-screen-label">Screen 3</span>
+            <span class="scope-desc">
+              <strong>Worked example:</strong> The expert applies Domain Authenticity
+              and Taxonomy Calibration (Step 4) to the MRHN bucket map -- evaluating
+              each scope item against real incident response practice and the cognitive
+              demand level appropriate for the learner population.
+              <span class="scope-step-chip">Step 4</span>
+            </span>
+          </div>
+
+          <div class="scope-row">
+            <span class="scope-screen-label">Screen 4</span>
+            <span class="scope-desc">
+              <strong>Guided practice:</strong> Apply Step 4 calibration to selected
+              MRHN scope items. Evaluate domain authenticity and taxonomy level for
+              each item, then record your calibration decisions and produce the
+              annotated scope map.
+              <span class="scope-step-chip">Step 4</span>
+            </span>
+          </div>
+
+          <div class="scope-row">
+            <span class="scope-screen-label">Screen 5</span>
+            <span class="scope-desc">
+              <strong>Lesson reflection:</strong> Which calibration decision changed
+              your view of a scope item most significantly, and what does that change
+              mean for how the item should be taught?
+            </span>
+          </div>
+        </div>
+
+        <!-- Two-step overview -->
+        <div class="two-step-overview" role="region" aria-label="Step overviews for Steps 3 and 4">
+
+          <div class="step-overview-card">
+            <div class="step-overview-card__header">
+              <span class="step-circle" aria-hidden="true">3</span>
+              <span class="step-overview-card__title">Complete the Bucket Map</span>
+            </div>
+            <div class="step-overview-card__body">
+              <p class="step-overview-desc">
+                Step 3 produces the formal artifact that closes the bucketing phase.
+                The balance-checked bucket map becomes a governed document: all
+                16 scope items assigned, all four buckets confirmed, and the
+                five-field governance record attached.
+              </p>
+              <p class="step-overview-desc">
+                The completed artifact has three components:
+              </p>
+              <ul class="step-sub-list">
+                <li><strong>Scope item table:</strong> All 16 SI items with bucket assignment and workflow rationale for each</li>
+                <li><strong>Balance check summary:</strong> Four-criterion verdict for each bucket</li>
+                <li><strong>Governance record MRHN-D-002:</strong> Decision statement, constraint reference, rationale, risk note, and checkpoint linkage</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="step-overview-card">
+            <div class="step-overview-card__header">
+              <span class="step-circle" aria-hidden="true">4</span>
+              <span class="step-overview-card__title">Domain Authenticity and Taxonomy Calibration</span>
+            </div>
+            <div class="step-overview-card__body">
+              <p class="step-overview-desc">
+                Step 4 applies two calibration lenses to the completed bucket
+                map before decomposition begins. Both lenses can produce adjustments
+                to scope items -- splits, consolidations, or calibration annotations.
+              </p>
+              <ul class="step-sub-list">
+                <li><strong>Domain Authenticity:</strong> Does each scope item reflect how healthcare IT professionals actually perform incident response under HIPAA and IR-2024 constraints -- not an idealized or generic version of the task?</li>
+                <li><strong>Taxonomy Calibration:</strong> Is the cognitive demand of each scope item -- recall, application, analysis, or evaluation -- appropriate for the MRHN learner population within the project constraint set?</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Artifacts this lesson produces -->
+        <div class="artifact-section" role="region" aria-label="Artifacts produced in Lesson 1.3">
+          <span class="artifact-section__label">Artifacts This Lesson Produces</span>
+          <div class="artifact-cards">
+
+            <div class="artifact-card artifact-card--complete">
+              <div class="artifact-card__header">
+                <span class="artifact-card__type">Completing</span>
+                <span class="artifact-status-chip artifact-status-chip--complete">Step 3</span>
+              </div>
+              <div class="artifact-card__body">
+                <span class="artifact-name">MRHN_BucketMap_v1_[Date]</span>
+                <p class="artifact-desc">
+                  The formal, balance-checked bucket map with all 16 SI items
+                  assigned, four-criterion balance verdicts for each bucket, and
+                  governance decision MRHN-D-002 attached. This artifact closes
+                  Step 3 and serves as the foundation for calibration in Step 4.
+                </p>
+                <span class="artifact-step-tag">Produced on Screen 2</span>
+              </div>
+            </div>
+
+            <div class="artifact-card">
+              <div class="artifact-card__header">
+                <span class="artifact-card__type">New Artifact</span>
+                <span class="artifact-status-chip artifact-status-chip--new">Step 4</span>
+              </div>
+              <div class="artifact-card__body">
+                <span class="artifact-name">MRHN_CalibratedScopeMap_v1_[Date]</span>
+                <p class="artifact-desc">
+                  The bucket map annotated with domain authenticity notes and
+                  taxonomy level assignments for each scope item. Any scope
+                  adjustments from calibration are documented with governance
+                  records. This artifact anchors decomposition in Module 2.
+                </p>
+                <span class="artifact-step-tag">Produced on Screen 4</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- What you are building callout -->
+        <div class="building-callout" role="note" aria-label="What calibration accomplishes">
+          <span class="building-callout__label">Why Calibration Precedes Decomposition</span>
+          <p class="building-callout__text">
+            Decomposition in Module 2 breaks each scope item into its component
+            learning tasks. If a scope item is pitched at the wrong taxonomy level
+            or does not reflect real domain practice, those errors compound: every
+            decomposed component inherits the original miscalibration.
+            <strong>Step 4 is a pre-decomposition check</strong> -- the last
+            opportunity to adjust scope before the architecture becomes too granular
+            to restructure efficiently. A scope item adjusted here costs one
+            governance record. The same adjustment made after decomposition costs
+            a re-design of multiple components.
+          </p>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l2-s6.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Return to Lesson 1.2 reflection">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="m1-l3-s2.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to Screen 2: completing the bucket map artifact">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+    </section>
+  </main>
+
+  <!-- Supplementary resources -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">
+        MRHN_BucketMap_v1 is in progress (completing on Screen 2).
+        MRHN_CalibratedScopeMap_v1 is introduced this lesson (produced on Screen 4).
+      </p>
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">
+        MRHN-D-001 (Step 1.5 documentation), MRHN-D-002 (bucket balance check).
+        New governance records from calibration decisions will be established
+        starting Screen 3.
+      </p>
+    </section>
+  </aside>
+
+  <!-- Support panels -->
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- Panel manager -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) { closeAll(); syncToggleStates(null); }
+        else { openPanel(panelName, btn); syncToggleStates(panelName); }
+      });
+    });
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => { closeAll(); syncToggleStates(null); });
+    });
+  </script>
+
+  <!-- Progress tracker -->
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.3';
+    document.getElementById('pt-phase').textContent        = '1';
+    document.getElementById('pt-screen').textContent       = '1';
+    document.getElementById('pt-screen-total').textContent = '5';
+  </script>
+
+</body>
+</html>

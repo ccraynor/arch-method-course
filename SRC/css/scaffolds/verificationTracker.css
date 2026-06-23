@@ -1,0 +1,333 @@
+/* =============================================================================
+   verificationTracker.css
+   Scaffold Component 4 of 10 -- Verification Tracker Chain Visual
+   Requires: css/tokens.css loaded first (all color values from tokens)
+
+   LAYOUT
+   Desktop (>= 640px): horizontal chain -- nodes in a row, arrows between
+   Mobile  (< 640px):  vertical chain  -- nodes stacked, arrows point down
+
+   CSS drives the layout switch via media query.
+   JS drives node state via data-status="unreviewed|verified|gap" on .vtc__node.
+   Icon colors are set here via [data-status] selectors (no colors in SVG markup).
+   ============================================================================= */
+
+/* ---- Outer container ---- */
+.vtc {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ---- Optional panel heading ---- */
+.vtc__heading {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+/* ============================================================
+   CHAIN LAYOUT
+   ============================================================ */
+
+.vtc__chain {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+}
+
+/* Desktop: horizontal chain */
+@media (min-width: 640px) {
+  .vtc__chain {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+/* ============================================================
+   CHAIN NODE (card)
+   ============================================================ */
+
+.vtc__node {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.25rem 1rem;
+  border: 1px solid var(--color-border-default);
+  border-radius: 4px;
+  background-color: var(--color-surface-default);
+  gap: 0.5rem;
+}
+
+/* Verified node: success surface */
+.vtc__node[data-status="verified"] {
+  border-color: var(--color-success-border);
+  background-color: var(--color-success-bg);
+}
+
+/* Gap node: warning surface */
+.vtc__node[data-status="gap"] {
+  border-color: var(--color-warning-border);
+  background-color: var(--color-warning-bg);
+}
+
+/* ---- Status icon (24px SVG, color controlled here) ---- */
+.vtc__node-status-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Unreviewed: muted ring icon */
+.vtc__node[data-status="unreviewed"] .vtc__node-status-icon {
+  color: var(--color-text-disabled);
+}
+
+/* Verified: success icon */
+.vtc__node[data-status="verified"] .vtc__node-status-icon {
+  color: var(--color-success-text);
+}
+
+/* Gap: warning icon */
+.vtc__node[data-status="gap"] .vtc__node-status-icon {
+  color: var(--color-warning-text);
+}
+
+/* ---- Node label (h3) ---- */
+.vtc__node-label {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+/* ---- Optional description text ---- */
+.vtc__node-description {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+/* ---- Status text (visible label under the icon) ---- */
+.vtc__node-status-text {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.vtc__node[data-status="unreviewed"] .vtc__node-status-text {
+  color: var(--color-text-disabled);
+}
+
+.vtc__node[data-status="verified"] .vtc__node-status-text {
+  color: var(--color-success-text);
+}
+
+.vtc__node[data-status="gap"] .vtc__node-status-text {
+  color: var(--color-warning-text);
+}
+
+/* ---- Action button group ---- */
+.vtc__node-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+  margin-top: auto;      /* push buttons to bottom of card on equal-height rows */
+  padding-top: 0.5rem;
+}
+
+/* Shared button base */
+.vtc__btn {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: none;
+}
+
+.vtc__btn:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Mark Verified button */
+.vtc__btn--verify {
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border-default);
+  color: var(--color-text-primary);
+}
+
+.vtc__btn--verify:hover {
+  background-color: var(--color-success-bg);
+  border-color: var(--color-success-border);
+  color: var(--color-success-text);
+}
+
+/* Mark Verified: active (aria-pressed="true") */
+.vtc__btn--verify[aria-pressed="true"] {
+  background-color: var(--color-success-bg);
+  border-color: var(--color-success-border);
+  color: var(--color-success-text);
+}
+
+/* Identify Gap button */
+.vtc__btn--gap {
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border-default);
+  color: var(--color-text-primary);
+}
+
+.vtc__btn--gap:hover {
+  background-color: var(--color-warning-bg);
+  border-color: var(--color-warning-border);
+  color: var(--color-warning-text);
+}
+
+/* Identify Gap: active (aria-pressed="true") */
+.vtc__btn--gap[aria-pressed="true"] {
+  background-color: var(--color-warning-bg);
+  border-color: var(--color-warning-border);
+  color: var(--color-warning-text);
+}
+
+/* ============================================================
+   CHAIN CONNECTOR
+   Arrow between nodes. aria-hidden="true" set in JS.
+   ============================================================ */
+
+.vtc__connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-text-disabled);
+  /* Mobile: vertical spacing around the down-pointing arrow */
+  padding: 0.25rem 0;
+}
+
+/* Desktop: horizontal connector -- no extra padding, centered in row */
+@media (min-width: 640px) {
+  .vtc__connector {
+    padding: 0 0.25rem;
+  }
+}
+
+/* Rotate right-pointing arrow 90deg to point down on mobile */
+.vtc__connector-arrow {
+  display: block;
+  transform: rotate(90deg);
+}
+
+@media (min-width: 640px) {
+  .vtc__connector-arrow {
+    transform: rotate(0deg);
+  }
+}
+
+/* ============================================================
+   SYNTHESIS PROMPT
+   ============================================================ */
+
+.vtc__prompt {
+  padding: 1.25rem;
+  border: 1px solid var(--color-border-default);
+  border-radius: 4px;
+  background-color: var(--color-surface-raised);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.vtc__prompt-heading {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+.vtc__prompt-textarea {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--color-border-default);
+  border-radius: 4px;
+  background-color: var(--color-surface-default);
+  color: var(--color-text-primary);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.vtc__prompt-textarea::placeholder {
+  color: var(--color-text-disabled);
+}
+
+.vtc__prompt-textarea:focus {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 0;
+  border-color: var(--color-focus-ring);
+}
+
+/* ============================================================
+   HIGH CONTRAST
+   ============================================================ */
+
+@media (prefers-contrast: more) {
+  .vtc__node {
+    border-color: var(--color-border-strong);
+  }
+
+  .vtc__node[data-status="verified"] {
+    border-color: var(--color-success-border);
+  }
+
+  .vtc__node[data-status="gap"] {
+    border-color: var(--color-warning-border);
+  }
+
+  .vtc__btn--verify,
+  .vtc__btn--gap {
+    border-color: var(--color-border-strong);
+  }
+
+  .vtc__btn--verify[aria-pressed="true"] {
+    border-color: var(--color-success-border);
+    outline: 2px solid var(--color-success-border);
+    outline-offset: -2px;
+  }
+
+  .vtc__btn--gap[aria-pressed="true"] {
+    border-color: var(--color-warning-border);
+    outline: 2px solid var(--color-warning-border);
+    outline-offset: -2px;
+  }
+
+  .vtc__btn:focus-visible {
+    outline-width: 3px;
+  }
+
+  .vtc__prompt,
+  .vtc__prompt-textarea {
+    border-color: var(--color-border-strong);
+  }
+
+  .vtc__prompt-textarea:focus {
+    outline-width: 3px;
+  }
+}

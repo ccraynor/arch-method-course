@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Four cumulative performance tasks close each module of this credential. Each task builds on the previous one, producing a complete ARCH Design Package by Module 4.">
+  <title>Performance Tasks | Introduction | ARCH Method Practitioner Credential | Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/scaffolds/persistentStepTracker.css">
+  <style>
+    /* ================================================================
+       Screen 0.6 — Performance Tasks Styles
+       All color values reference CSS tokens. No hard-coded hex values.
+       ================================================================ */
+
+    .lesson-intro__lead {
+      margin: 0 0 1.5rem;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+      max-width: 70ch;
+    }
+
+    .lesson-intro__body-text {
+      margin: 0 0 1rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+      max-width: 70ch;
+    }
+
+    /* ----------------------------------------------------------------
+       Roadmap Figure
+       Horizontal scroll on narrow viewports so the five-node timeline
+       stays readable. min-width based on the five-node SVG layout.
+       ---------------------------------------------------------------- */
+
+    .rt-figure {
+      margin: 0 0 1.5rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .rt-graphic {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-width: 560px;
+    }
+
+    .rt-caption {
+      margin-top: 0.875rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--color-border-default);
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      max-width: 760px;
+    }
+
+    .rt-scroll-hint {
+      display: none;
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 599px) {
+      .rt-scroll-hint { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">
+        Module <span id="pt-module">Intro</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        <span id="pt-lesson">Introduction</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true" id="pt-phase-divider" hidden>&bull;</span>
+      <span class="pt-item" id="pt-phase-item" hidden>
+        Phase <span id="pt-phase">0</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true" id="pt-step-divider" hidden>&bull;</span>
+      <span class="pt-item" id="pt-step-item" hidden>
+        Step <span id="pt-step">0</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Screen <span id="pt-screen">6</span> of <span id="pt-screen-total">9</span>
+      </span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button"
+              class="support-toggle"
+              data-panel="glossary"
+              aria-controls="glossary"
+              aria-expanded="false">Glossary</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="supportPanel"
+              aria-controls="supportPanel"
+              aria-expanded="false">Support</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="artifactDrawer"
+              aria-controls="artifactDrawer"
+              aria-expanded="false">Artifacts</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="decisionHistory"
+              aria-controls="decisionHistory"
+              aria-expanded="false">Decision History</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="annotationPanel"
+              aria-controls="annotationPanel"
+              aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link" aria-current="page">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <article class="lesson-intro" aria-labelledby="lesson-title">
+
+        <header class="lesson-intro__header">
+          <p class="lesson-label" aria-label="Introduction, Screen 6 of 9">Introduction &bull; Screen 6 of 9</p>
+          <h1 id="lesson-title" class="lesson-intro__title">Performance Tasks</h1>
+        </header>
+
+        <p class="lesson-intro__lead">
+          Each module closes with one performance task applied to the Meridian scenario. The tasks
+          are cumulative: each one builds directly on the artifact produced in the previous module.
+          By Module 4, the four packages combine into a single complete ARCH Design Package for
+          Meridian Regional Health Network.
+        </p>
+
+        <!-- =========================================================
+             Graphic 3 — Performance Task Roadmap SVG
+
+             Design:
+             - Five nodes on a horizontal axis: four task circles + final destination box
+             - Task circles: teal filled, numbered 1-4 with white text
+             - Connector arrows: navy filled triangles with navy lines between circles
+             - Final destination box: teal filled, two-line white text
+             - Module labels above each task circle (muted secondary text)
+             - Task labels ("Task 1" etc.) below each circle in teal
+             - Task package names below task labels (three text lines each, primary text)
+             - Navy structure, teal task markers -- per design spec
+             - Responsive via width:100% + min-width on container
+
+             Coordinate system (viewBox 0 0 760 210):
+             - Task circle centers: x = 65, 205, 345, 485 (140px spacing), y = 72
+             - Circle radius: 24
+             - Connector arrows between: (65→205), (205→345), (345→485), (485→final)
+             - Final destination box: x=549 to x=734, centered at x=641, y=72
+             - Module labels: y=26 (above circles)
+             - Task labels: y=110 (below circles)
+             - Task names: y=126, 142, 158 (three lines at 16px line height)
+
+             Alt text (exact as specified):
+             "Four cumulative performance tasks lead to a complete ARCH design package.
+             Task 1 creates the Bucket Map and Scope Organization Package.
+             Task 2 creates the Sequenced Unit Architecture Package.
+             Task 3 creates the Audit and Governance Package.
+             Task 4 creates the Structural Freeze Declaration Package."
+             ========================================================= -->
+
+        <p class="rt-scroll-hint" aria-hidden="true">Scroll right to view the full roadmap.</p>
+
+        <figure class="rt-figure"
+                role="group"
+                aria-labelledby="rt-caption-text">
+
+          <svg class="rt-graphic"
+               viewBox="0 0 760 210"
+               xmlns="http://www.w3.org/2000/svg"
+               role="img"
+               aria-labelledby="rt-svg-title"
+               aria-describedby="rt-svg-desc">
+
+            <title id="rt-svg-title">Performance Task Roadmap: four cumulative tasks leading to the Complete ARCH Design Package</title>
+            <desc id="rt-svg-desc">Four cumulative performance tasks lead to a complete ARCH design package. Task 1 creates the Bucket Map and Scope Organization Package. Task 2 creates the Sequenced Unit Architecture Package. Task 3 creates the Audit and Governance Package. Task 4 creates the Structural Freeze Declaration Package.</desc>
+
+            <style>
+              /* All SVG colors from CSS tokens. Adapts automatically to
+                 dark mode and high contrast via tokens.css media queries. */
+              .rt-bg         { fill: var(--color-bg-subtle);
+                               stroke: var(--color-border-default); stroke-width: 1; }
+              .rt-mod        { fill: var(--color-text-secondary);
+                               font-family: system-ui, -apple-system, sans-serif;
+                               font-size: 9.5px; font-weight: 600; letter-spacing: 0.04em; }
+              .rt-conn-line  { stroke: var(--color-text-primary); stroke-width: 2; }
+              .rt-conn-arrow { fill: var(--color-text-primary); }
+              .rt-circle     { fill: var(--color-text-link); }
+              .rt-num        { fill: var(--color-text-inverse);
+                               font-family: system-ui, -apple-system, sans-serif;
+                               font-size: 18px; font-weight: 800; }
+              .rt-task-lbl   { fill: var(--color-text-link);
+                               font-family: system-ui, -apple-system, sans-serif;
+                               font-size: 9.5px; font-weight: 700; letter-spacing: 0.06em; }
+              .rt-name       { fill: var(--color-text-primary);
+                               font-family: system-ui, -apple-system, sans-serif;
+                               font-size: 11.5px; }
+              .rt-final-box  { fill: var(--color-text-link); }
+              .rt-final-text { fill: var(--color-text-inverse);
+                               font-family: system-ui, -apple-system, sans-serif;
+                               font-size: 11.5px; font-weight: 700; }
+
+              @media (prefers-contrast: more) {
+                .rt-bg { stroke: var(--color-border-strong); }
+                /* Circles get a navy outline in high contrast to
+                   ensure distinction from background. */
+                .rt-circle { stroke: var(--color-border-strong); stroke-width: 2; }
+                .rt-final-box { stroke: var(--color-border-strong); stroke-width: 2; }
+                .rt-conn-line { stroke-width: 3; }
+                /* Labels use primary text in high contrast for stronger contrast. */
+                .rt-mod, .rt-task-lbl { fill: var(--color-text-primary); }
+              }
+            </style>
+
+            <!-- Chart background -->
+            <rect class="rt-bg" x="1" y="1" width="758" height="208" rx="8"/>
+
+            <!-- ========== Module labels above circles ========== -->
+            <text class="rt-mod" x="65"  y="26" text-anchor="middle">Module 1</text>
+            <text class="rt-mod" x="205" y="26" text-anchor="middle">Module 2</text>
+            <text class="rt-mod" x="345" y="26" text-anchor="middle">Module 3</text>
+            <text class="rt-mod" x="485" y="26" text-anchor="middle">Module 4</text>
+
+            <!-- ========== Connector lines (drawn before circles so circles render on top) ==========
+                 Lines run from 6px past the circle edge to the triangle base.
+                 Arrow triangles: base is 16px tall (8px each side of center y=72), 10-12px wide.
+                 ================================================================================== -->
+
+            <!-- Task 1 (x=65, r=24, right edge=89) to Task 2 (x=205, left edge=181) -->
+            <line class="rt-conn-line" x1="95"  y1="72" x2="171" y2="72"/>
+            <polygon class="rt-conn-arrow" points="171,64 181,72 171,80"/>
+
+            <!-- Task 2 (x=205, right edge=229) to Task 3 (x=345, left edge=321) -->
+            <line class="rt-conn-line" x1="235" y1="72" x2="311" y2="72"/>
+            <polygon class="rt-conn-arrow" points="311,64 321,72 311,80"/>
+
+            <!-- Task 3 (x=345, right edge=369) to Task 4 (x=485, left edge=461) -->
+            <line class="rt-conn-line" x1="375" y1="72" x2="451" y2="72"/>
+            <polygon class="rt-conn-arrow" points="451,64 461,72 451,80"/>
+
+            <!-- Task 4 (x=485, right edge=509) to Final box (left edge=549) -->
+            <line class="rt-conn-line" x1="515" y1="72" x2="537" y2="72"/>
+            <!-- Slightly narrower triangle to fit the tighter gap -->
+            <polygon class="rt-conn-arrow" points="537,65 549,72 537,79"/>
+
+            <!-- ========== Task circles (teal, drawn after connectors) ========== -->
+            <circle class="rt-circle" cx="65"  cy="72" r="24"/>
+            <circle class="rt-circle" cx="205" cy="72" r="24"/>
+            <circle class="rt-circle" cx="345" cy="72" r="24"/>
+            <circle class="rt-circle" cx="485" cy="72" r="24"/>
+
+            <!-- Task numbers inside circles (white bold text) -->
+            <text class="rt-num" x="65"  y="72" text-anchor="middle" dominant-baseline="middle">1</text>
+            <text class="rt-num" x="205" y="72" text-anchor="middle" dominant-baseline="middle">2</text>
+            <text class="rt-num" x="345" y="72" text-anchor="middle" dominant-baseline="middle">3</text>
+            <text class="rt-num" x="485" y="72" text-anchor="middle" dominant-baseline="middle">4</text>
+
+            <!-- ========== Final destination box (teal rounded rectangle) ========== -->
+            <rect class="rt-final-box" x="549" y="44" width="185" height="56" rx="8"/>
+
+            <!-- Final destination text: two lines centered in box -->
+            <text class="rt-final-text" x="641" y="67" text-anchor="middle">Complete ARCH</text>
+            <text class="rt-final-text" x="641" y="84" text-anchor="middle">Design Package</text>
+
+            <!-- ========== "Task N" labels below circles ========== -->
+            <text class="rt-task-lbl" x="65"  y="110" text-anchor="middle">Task 1</text>
+            <text class="rt-task-lbl" x="205" y="110" text-anchor="middle">Task 2</text>
+            <text class="rt-task-lbl" x="345" y="110" text-anchor="middle">Task 3</text>
+            <text class="rt-task-lbl" x="485" y="110" text-anchor="middle">Task 4</text>
+
+            <!-- ========== Task package names (three text lines per task, 16px line height) ==========
+                 Each name broken at ~18 characters per line to fit the 120px node width.
+                 text-anchor="middle" centers all lines on the circle x-position.
+                 ================================================================================== -->
+
+            <!-- Task 1: Bucket Map and Scope Organization Package -->
+            <text class="rt-name" x="65"  y="126" text-anchor="middle">Bucket Map and</text>
+            <text class="rt-name" x="65"  y="142" text-anchor="middle">Scope Organization</text>
+            <text class="rt-name" x="65"  y="158" text-anchor="middle">Package</text>
+
+            <!-- Task 2: Sequenced Unit Architecture Package -->
+            <text class="rt-name" x="205" y="126" text-anchor="middle">Sequenced Unit</text>
+            <text class="rt-name" x="205" y="142" text-anchor="middle">Architecture</text>
+            <text class="rt-name" x="205" y="158" text-anchor="middle">Package</text>
+
+            <!-- Task 3: Audit and Governance Package -->
+            <text class="rt-name" x="345" y="126" text-anchor="middle">Audit and</text>
+            <text class="rt-name" x="345" y="142" text-anchor="middle">Governance</text>
+            <text class="rt-name" x="345" y="158" text-anchor="middle">Package</text>
+
+            <!-- Task 4: Structural Freeze Declaration Package -->
+            <text class="rt-name" x="485" y="126" text-anchor="middle">Structural Freeze</text>
+            <text class="rt-name" x="485" y="142" text-anchor="middle">Declaration</text>
+            <text class="rt-name" x="485" y="158" text-anchor="middle">Package</text>
+
+          </svg>
+
+          <figcaption class="rt-caption" id="rt-caption-text">
+            The four task packages are cumulative. Task 2 incorporates the output of Task 1.
+            Task 3 incorporates Tasks 1 and 2. Task 4 incorporates all three. The Complete ARCH
+            Design Package produced in Module 4 contains a full record of every design decision
+            made across all four modules.
+          </figcaption>
+
+        </figure>
+
+        <p class="lesson-intro__body-text">
+          Task 1 anchors the design in a documented scope and course map. Task 2 translates that
+          scope into a sequenced unit architecture with aligned outcomes. Task 3 stress-tests the
+          architecture through structured audit and governance review. Task 4 applies the structural
+          freeze protocol and produces a declaration package ready for handoff. Each task incorporates
+          everything produced before it, so your final package is a complete design record.
+        </p>
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="intro-0.5.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true"
+                 focusable="false"
+                 width="16"
+                 height="16"
+                 viewBox="0 0 16 16"
+                 fill="none">
+              <path d="M10 12L6 8l4-4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="intro-0.7.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen">
+            Next
+            <svg aria-hidden="true"
+                 focusable="false"
+                 width="16"
+                 height="16"
+                 viewBox="0 0 16 16"
+                 fill="none">
+              <path d="M6 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+
+    <section id="artifact-reference"
+             tabindex="-1"
+             aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">No artifacts have been started yet. Your first artifact begins in Module 1.</p>
+    </section>
+
+    <section id="decision-history"
+             tabindex="-1"
+             aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">No decisions recorded yet. Decision points begin in Module 1.</p>
+    </section>
+
+  </aside>
+
+  <!-- ============================================================
+       Support Panels — managed by panelManager.js
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script
+       ============================================================ -->
+  <script type="module">
+    import { init } from './js/scaffolds/persistentStepTracker.js';
+
+    init({
+      module:   0,
+      lesson:   'Introduction',
+      phase:    0,
+      step:     0,
+      screen:   6,
+      total:    9,
+      announce: false,
+    });
+
+    /* ptUpdate() sets pt-module to '0'. Override to display 'Intro'. */
+    document.getElementById('pt-module').textContent = 'Intro';
+  </script>
+
+</body>
+</html>

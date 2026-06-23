@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Record the architecture challenge you are bringing into this credential. Your response is saved privately and returned to you at the start of Module 4.">
+  <title>Your Commitment | Introduction | ARCH Method Practitioner Credential | Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/scaffolds/persistentStepTracker.css">
+  <style>
+    /* ================================================================
+       Screen 0.9 — Your Commitment
+       All color values reference CSS tokens. No hard-coded hex values.
+       ================================================================ */
+
+    .lesson-intro__lead {
+      margin: 0 0 1.5rem;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+      max-width: 70ch;
+    }
+
+    /* ----------------------------------------------------------------
+       Reflection Prompt Card
+       Navy left-border (--color-border-strong) signals a formal task,
+       distinct from the teal-border informational cards used elsewhere
+       in the introduction.
+       ---------------------------------------------------------------- */
+
+    .commitment-prompt {
+      margin: 0 0 1.5rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-left: 4px solid var(--color-border-strong);
+      border-radius: 0 6px 6px 0;
+      padding: 1.25rem 1.5rem;
+      max-width: 680px;
+    }
+
+    .commitment-prompt__label {
+      display: block;
+      margin: 0 0 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .commitment-prompt__text {
+      margin: 0;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    .commitment-prompt__text + .commitment-prompt__text {
+      margin-top: 0.75rem;
+    }
+
+    /* ----------------------------------------------------------------
+       Commitment Form
+       Textarea, label, helper text, error container, submit area.
+       ---------------------------------------------------------------- */
+
+    .commitment-form {
+      max-width: 680px;
+    }
+
+    /* Returning-learner note (hidden by default; shown by JS when a
+       saved value exists). Uses [hidden] attribute so the element
+       is removed from the accessibility tree when not needed. */
+    .commitment-form__saved-note {
+      margin-bottom: 0.875rem;
+      padding: 0.625rem 1rem;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-left: 3px solid var(--color-text-link);
+      border-radius: 0 4px 4px 0;
+      line-height: 1.5;
+    }
+
+    .commitment-form__label {
+      display: block;
+      margin-bottom: 0.375rem;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .commitment-form__helper {
+      display: block;
+      margin-bottom: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+    }
+
+    .commitment-form__textarea {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      min-height: 10rem;
+      padding: 0.75rem;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      background: var(--color-bg-page);
+      border: 1.5px solid var(--color-border-default);
+      border-radius: 4px;
+      line-height: 1.65;
+      resize: vertical;
+    }
+
+    .commitment-form__textarea:focus {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 2px;
+      border-color: var(--color-text-link);
+    }
+
+    /* aria-invalid="true" state -- adds red border to signal error.
+       Color is supplemental: the visible error message below provides
+       the primary signal without relying on color alone. */
+    .commitment-form__textarea[aria-invalid="true"] {
+      border-color: var(--color-error-border);
+    }
+
+    /* Error container. Starts empty in the DOM so role="alert" does
+       not announce on page load. JS adds/clears textContent only.
+       :empty collapses the space when no error is active. */
+    .commitment-form__error {
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--color-error-text);
+      background: var(--color-error-bg);
+      border: 1px solid var(--color-error-border);
+      border-radius: 4px;
+      padding: 0.5625rem 0.875rem;
+      line-height: 1.55;
+    }
+
+    .commitment-form__error:empty {
+      display: none;
+    }
+
+    /* Submit area: button and inline confirmation message */
+    .commitment-submit-area {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.125rem;
+    }
+
+    /* Primary commit button -- teal filled, more prominent than nav buttons */
+    .btn--commit {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--color-text-inverse);
+      background: var(--color-text-link);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    .btn--commit:hover:not(:disabled) {
+      opacity: 0.88;
+    }
+
+    .btn--commit:focus {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 3px;
+    }
+
+    .btn--commit:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    /* Inline visible confirmation (aria-hidden; sr-announcer handles
+       the screen reader announcement separately). Hidden until JS shows
+       it after a successful save. */
+    .commitment-confirmation {
+      display: none;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--color-success-text);
+    }
+
+    .commitment-confirmation.is-visible {
+      display: inline-flex;
+    }
+
+    /* High contrast adjustments */
+    @media (prefers-contrast: more) {
+      .commitment-prompt {
+        border-color: var(--color-border-strong);
+        border-left-color: var(--color-border-strong);
+      }
+
+      .commitment-prompt__label {
+        color: var(--color-text-primary);
+      }
+
+      .commitment-form__saved-note {
+        border-color: var(--color-border-strong);
+        border-left-color: var(--color-text-link);
+      }
+
+      .commitment-form__textarea {
+        border-width: 2px;
+        border-color: var(--color-border-strong);
+      }
+
+      .commitment-form__textarea:focus {
+        border-color: var(--color-focus-ring);
+      }
+
+      .commitment-form__error {
+        border-width: 2px;
+      }
+
+      .btn--commit {
+        outline: 2px solid var(--color-border-strong);
+        outline-offset: 2px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">
+        Module <span id="pt-module">Intro</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        <span id="pt-lesson">Introduction</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true" id="pt-phase-divider" hidden>&bull;</span>
+      <span class="pt-item" id="pt-phase-item" hidden>
+        Phase <span id="pt-phase">0</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true" id="pt-step-divider" hidden>&bull;</span>
+      <span class="pt-item" id="pt-step-item" hidden>
+        Step <span id="pt-step">0</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Screen <span id="pt-screen">9</span> of <span id="pt-screen-total">9</span>
+      </span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary"
+              aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel"
+              aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer"
+              aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory"
+              aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel"
+              aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link" aria-current="page">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <article class="lesson-intro" aria-labelledby="lesson-title">
+
+        <header class="lesson-intro__header">
+          <p class="lesson-label" aria-label="Introduction, Screen 9 of 9">
+            Introduction &bull; Screen 9 of 9
+          </p>
+          <h1 id="lesson-title" class="lesson-intro__title">Your Commitment</h1>
+        </header>
+
+        <p class="lesson-intro__lead">
+          This is the final step before Module 1 begins. The prompt below asks you to
+          identify a specific architecture challenge from your own practice. Your response
+          is saved privately in your browser and returned to you at the start of Module 4,
+          where you will review whether this credential addressed the challenge you named.
+        </p>
+
+        <!-- =========================================================
+             Reflection Prompt Card
+             Navy left-border signals this is the task itself, not
+             supporting information. The card frames the reflection
+             question and sets expectations for what a useful answer
+             looks like.
+             ========================================================= -->
+        <div class="commitment-prompt"
+             role="region"
+             aria-labelledby="commitment-prompt-label">
+
+          <span id="commitment-prompt-label"
+                class="commitment-prompt__label">Reflection Prompt</span>
+
+          <p class="commitment-prompt__text">
+            Think about a course design project you have worked on, or one you anticipate
+            working on. Identify a specific challenge you have faced or expect to face in
+            the structural design of the course -- not the content, but the architecture.
+            Examples: scope that was too broad to assess meaningfully, outcomes that did
+            not connect to the activities or assessments you planned, a sequence that did
+            not build toward the performance you needed, or a design decision you could
+            not justify with evidence.
+          </p>
+
+          <p class="commitment-prompt__text">
+            Write a description specific enough that you will recognize this challenge when
+            you read it again at the start of Module 4. This note is for your own use and
+            is not evaluated.
+          </p>
+
+        </div>
+
+        <!-- =========================================================
+             Commitment Form
+             Submission flow:
+             1. Validate (non-empty after trim)
+             2. On fail: populate error container (role="alert" announces),
+                set aria-invalid, focus textarea
+             3. On pass: setItem via storage.js, disable button,
+                show visible confirmation, announce via #sr-announcer,
+                navigate to module-1.html after 1400ms
+             ========================================================= -->
+        <form id="commitment-form"
+              class="commitment-form"
+              novalidate
+              aria-label="Commitment form">
+
+          <!-- Returning-learner note. Hidden by default via [hidden]
+               attribute. JS removes [hidden] and pre-populates the
+               textarea if a saved value already exists. -->
+          <div id="commitment-saved-note"
+               class="commitment-form__saved-note"
+               hidden>
+            A commitment you saved in a previous session has been loaded into the field
+            below. You can review or update it before continuing to Module 1.
+          </div>
+
+          <label for="commitment-input"
+                 class="commitment-form__label">
+            Your architecture challenge
+          </label>
+
+          <span id="commitment-helper"
+                class="commitment-form__helper">
+            Write one to three sentences. Be specific enough that you will recognize this
+            challenge when you return to it at the start of Module 4.
+          </span>
+
+          <textarea id="commitment-input"
+                    class="commitment-form__textarea"
+                    name="commitment"
+                    rows="8"
+                    aria-describedby="commitment-helper"
+                    placeholder="Describe a specific architecture challenge from your own practice or anticipated work..."></textarea>
+
+          <!-- Error container. Starts empty so role="alert" does not
+               fire on page load. JS sets textContent to show the error
+               and clears it when the learner begins typing again.
+               CSS :empty selector hides the element when no error is
+               active, keeping it in the DOM for the alert role. -->
+          <div id="commitment-error"
+               class="commitment-form__error"
+               role="alert"
+               aria-atomic="true"></div>
+
+          <div class="commitment-submit-area">
+
+            <button id="commitment-submit"
+                    type="submit"
+                    class="btn btn--commit">
+              Save and Begin Module 1
+              <svg aria-hidden="true"
+                   focusable="false"
+                   width="16"
+                   height="16"
+                   viewBox="0 0 16 16"
+                   fill="none">
+                <path d="M6 4l4 4-4 4"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <!-- Visible confirmation shown after successful save.
+                 aria-hidden="true" because #sr-announcer handles the
+                 screen reader announcement via polite live region. -->
+            <span id="commitment-confirmation"
+                  class="commitment-confirmation"
+                  aria-hidden="true">
+              <svg aria-hidden="true"
+                   focusable="false"
+                   width="14"
+                   height="14"
+                   viewBox="0 0 14 14"
+                   fill="none">
+                <polyline points="2,7 6,11 12,4"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"/>
+              </svg>
+              Saved. Taking you to Module 1...
+            </span>
+
+          </div>
+
+        </form>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">No artifacts have been started yet. Your first artifact begins in Module 1.</p>
+    </section>
+
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">No decisions recorded yet. Decision points begin in Module 1.</p>
+    </section>
+
+  </aside>
+
+  <!-- ============================================================
+       Support Panels — managed by panelManager.js
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12"
+                placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded',
+          btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script
+
+       State management:
+       - getItem('learnerCommitmentNote') checks for a previously
+         saved commitment on page load.
+       - setItem('learnerCommitmentNote', value) persists the
+         learner's typed response under the archMethod_ namespace
+         so Module 4 Lesson 4.1 can retrieve it via the same key.
+
+       Submission flow:
+       1. Prevent default form submission.
+       2. Trim textarea value. If empty, populate the role="alert"
+          error container (announced immediately by screen readers),
+          set aria-invalid, focus the textarea.
+       3. If valid, clear any existing error, call setItem, disable
+          the submit button, show the visible confirmation span, and
+          announce via #sr-announcer (polite live region). Navigate
+          to module-1.html after 1400ms -- enough time for the polite
+          announcement to complete before the page unloads.
+
+       Returning-learner detection:
+       - On DOMContentLoaded, getItem is called. If a value exists,
+         the textarea is pre-populated and the saved-note div is
+         revealed. The sr-announcer fires after a double
+         requestAnimationFrame so the announcement clears the
+         page-load announcement queue before being injected.
+       ============================================================ -->
+  <script type="module">
+    import { init }               from './js/scaffolds/persistentStepTracker.js';
+    import { getItem, setItem }   from './js/storage.js';
+
+    /* ── Progress tracker ───────────────────────────────────────── */
+    init({
+      module:   0,
+      lesson:   'Introduction',
+      phase:    0,
+      step:     0,
+      screen:   9,
+      total:    9,
+      announce: false,
+    });
+    document.getElementById('pt-module').textContent = 'Intro';
+
+    /* ── DOM refs ───────────────────────────────────────────────── */
+    const form         = document.getElementById('commitment-form');
+    const textarea     = document.getElementById('commitment-input');
+    const errorEl      = document.getElementById('commitment-error');
+    const savedNote    = document.getElementById('commitment-saved-note');
+    const submitBtn    = document.getElementById('commitment-submit');
+    const confirmEl    = document.getElementById('commitment-confirmation');
+    const announcer    = document.getElementById('sr-announcer');
+
+    /* ── Returning-learner detection ─────────────────────────────
+       If a value was previously saved, pre-populate the textarea
+       and reveal the saved-note div. The sr-announcer fires after
+       two rAF ticks to avoid colliding with any page-load focus
+       announcement from the browser or screen reader.
+    ─────────────────────────────────────────────────────────────── */
+    const existingValue = getItem('learnerCommitmentNote');
+
+    if (existingValue) {
+      textarea.value = existingValue;
+      savedNote.removeAttribute('hidden');
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          announcer.textContent = '';
+          requestAnimationFrame(() => {
+            announcer.textContent =
+              'A commitment you saved previously has been loaded into the text field. ' +
+              'You can review or update it before continuing to Module 1.';
+          });
+        });
+      });
+    }
+
+    /* ── Clear error when learner resumes typing ─────────────────
+       Removes the visible error and aria-invalid as soon as the
+       learner begins editing, so they are not left in a permanent
+       error state while they type.
+    ─────────────────────────────────────────────────────────────── */
+    textarea.addEventListener('input', () => {
+      if (textarea.getAttribute('aria-invalid') === 'true') {
+        errorEl.textContent = '';
+        textarea.removeAttribute('aria-invalid');
+      }
+    });
+
+    /* ── Form submission ─────────────────────────────────────────── */
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const value = textarea.value.trim();
+
+      /* Validation: non-empty response required */
+      if (!value) {
+        errorEl.textContent =
+          'Please describe your architecture challenge before continuing. ' +
+          'This note will be returned to you at the start of Module 4.';
+        textarea.setAttribute('aria-invalid', 'true');
+        textarea.focus();
+        return;
+      }
+
+      /* Clear any previous error state */
+      errorEl.textContent = '';
+      textarea.removeAttribute('aria-invalid');
+
+      /* Persist via storage.js (stored as archMethod_learnerCommitmentNote) */
+      setItem('learnerCommitmentNote', value);
+
+      /* Lock the button immediately to prevent double-submission */
+      submitBtn.disabled = true;
+
+      /* Show visible inline confirmation */
+      confirmEl.classList.add('is-visible');
+
+      /* Announce to screen readers via polite live region.
+         Double rAF ensures the DOM update settles before injection. */
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          announcer.textContent = '';
+          requestAnimationFrame(() => {
+            announcer.textContent =
+              'Your commitment has been saved. Taking you to Module 1.';
+          });
+        });
+      });
+
+      /* Navigate after the polite announcement has had time to be read.
+         1400ms is sufficient for most screen reader announcement cycles. */
+      setTimeout(() => {
+        window.location.href = 'module-1.html';
+      }, 1400);
+    });
+  </script>
+
+</body>
+</html>

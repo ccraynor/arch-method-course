@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An expert reads the Meridian project brief as a design document, extracting performance, regulatory, logistical, and stakeholder constraints and ranking them binding versus negotiable.">
+  <title>Worked Example: Design Document Synthesis — Lesson 1.1b — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l1b-s2 — Worked Example: Design Document Synthesis
+       All color values use CSS tokens. No hard-coded hex values.
+       ================================================================ */
+
+    /* ---- Screen header ---- */
+    .worked-example__meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 0 0.25rem;
+    }
+
+    .screen-type-label {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    .time-estimate {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 3px;
+      padding: 0.125rem 0.5rem;
+    }
+
+    .lesson-label {
+      display: block;
+      margin: 0 0 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-link);
+    }
+
+    .worked-example__title {
+      margin: 0 0 0.75rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    .scenario-context {
+      display: flex;
+      align-items: baseline;
+      gap: 0.375rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border-left: 3px solid var(--color-border-strong);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      margin: 0 0 1.5rem;
+    }
+
+    .scenario-label {
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+    }
+
+    /* ---- Two-column layout ---- */
+    .worked-example__layout {
+      display: grid;
+      grid-template-columns: 1fr 20rem;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .worked-example__layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ---- Left column: expert steps ---- */
+    .worked-example__content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .example-step {
+      display: grid;
+      grid-template-columns: 2.75rem 1fr;
+      gap: 0 1rem;
+    }
+
+    .step-marker {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 0.125rem;
+    }
+
+    .step-marker span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      background: var(--color-text-link);
+      color: var(--color-text-inverse);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .step-body {
+      min-width: 0;
+    }
+
+    .step-heading {
+      margin: 0.25rem 0 0.625rem;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+    }
+
+    /* Constraint type sub-label within a step heading */
+    .step-heading__type {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-link);
+      margin-bottom: 0.25rem;
+    }
+
+    .step-content {
+      margin: 0 0 0.75rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    .step-content:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Brief extract block */
+    .step-extract {
+      margin: 0 0 0.875rem;
+      padding: 0.75rem 1rem;
+      background: var(--color-bg-subtle);
+      border-left: 3px solid var(--color-border-strong);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .step-extract__label {
+      display: block;
+      margin: 0 0 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+    }
+
+    .step-extract__text {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      font-style: italic;
+      line-height: 1.65;
+    }
+
+    /* Constraint list: extracted items within a step */
+    .constraint-list {
+      margin: 0 0 0.875rem;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .constraint-list li {
+      display: grid;
+      grid-template-columns: 8rem 1fr;
+      gap: 0.25rem 0.75rem;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 520px) {
+      .constraint-list li {
+        grid-template-columns: 1fr;
+        gap: 0.125rem;
+      }
+    }
+
+    .constraint-list__key {
+      font-weight: 700;
+      color: var(--color-text-secondary);
+    }
+
+    .constraint-list__val {
+      color: var(--color-text-primary);
+    }
+
+    /* ---- Step 05: Binding vs. Negotiable ranking display ---- */
+    .ranking-groups {
+      display: flex;
+      flex-direction: column;
+      gap: 1.125rem;
+      margin: 0 0 0.875rem;
+    }
+
+    .ranking-group {
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    /* Group header strip -- uses background color + text label together
+       so meaning is never conveyed by color alone. */
+    .ranking-group__header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.875rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .ranking-group--binding .ranking-group__header {
+      background: var(--color-error-bg);
+      color: var(--color-error-text);
+      border-bottom: 1px solid var(--color-error-border);
+    }
+
+    .ranking-group--negotiable .ranking-group__header {
+      background: var(--color-success-bg);
+      color: var(--color-success-text);
+      border-bottom: 1px solid var(--color-success-border);
+    }
+
+    .ranking-group__icon {
+      flex-shrink: 0;
+    }
+
+    .ranking-group__items {
+      padding: 0.625rem 0.875rem;
+      margin: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      background: var(--color-bg-page);
+    }
+
+    .ranking-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.25rem 0.75rem;
+      align-items: start;
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+
+    .ranking-item__label {
+      color: var(--color-text-primary);
+      font-weight: 600;
+    }
+
+    .ranking-item__note {
+      font-size: 0.8rem;
+      color: var(--color-text-secondary);
+      font-weight: 400;
+      grid-column: 1 / -1;
+      padding-left: 0;
+      line-height: 1.5;
+    }
+
+    /* ---- Right column: think-aloud annotations ---- */
+    .worked-example__think-aloud {
+      position: sticky;
+      top: 1.5rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 900px) {
+      .worked-example__think-aloud {
+        position: static;
+      }
+    }
+
+    .think-aloud__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--color-border-default);
+      background: var(--color-bg-page);
+    }
+
+    .think-aloud__heading {
+      margin: 0;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .think-aloud__list {
+      padding: 0.875rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .annotation-item {
+      display: grid;
+      grid-template-columns: 1.625rem 1fr;
+      gap: 0 0.625rem;
+      align-items: start;
+    }
+
+    .annotation-marker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      border: 1.5px solid var(--color-border-strong);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+      margin-top: 0.0625rem;
+    }
+
+    .annotation-text {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    /* ---- Toggle button ---- */
+    .btn--toggle {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.625rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 4px;
+      background: var(--color-bg-page);
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn--toggle:hover {
+      background: var(--color-bg-subtle);
+      color: var(--color-text-primary);
+    }
+
+    .btn--toggle:focus-visible {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 2px;
+    }
+
+    /* High contrast adjustments */
+    @media (prefers-contrast: more) {
+      .scenario-context,
+      .step-extract {
+        border-left-color: var(--color-border-strong);
+      }
+      .worked-example__think-aloud,
+      .think-aloud__header,
+      .ranking-group {
+        border-color: var(--color-border-strong);
+      }
+      .ranking-group--binding .ranking-group__header {
+        border-bottom-color: var(--color-border-strong);
+      }
+      .ranking-group--negotiable .ranking-group__header {
+        border-bottom-color: var(--color-border-strong);
+      }
+      .annotation-marker {
+        border-color: var(--color-text-primary);
+        color: var(--color-text-primary);
+      }
+      .screen-type-label,
+      .lesson-label,
+      .step-heading__type {
+        color: var(--color-text-primary);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.1b</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">2</span> of <span id="pt-screen-total">6</span></span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary"
+              aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel"
+              aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer"
+              aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory"
+              aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel"
+              aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <article class="worked-example" aria-labelledby="example-title">
+
+        <header class="worked-example__header">
+          <div class="worked-example__meta">
+            <span class="screen-type-label">Worked Example</span>
+            <span class="time-estimate"
+                  aria-label="Estimated reading time: 12 to 16 minutes">
+              12&ndash;16 min
+            </span>
+          </div>
+          <p class="lesson-label" aria-label="Lesson 1.1b">Lesson 1.1b</p>
+          <h1 id="example-title"
+              class="worked-example__title">Design Document Synthesis</h1>
+          <div class="scenario-context" role="note" aria-label="Scenario context">
+            <span class="scenario-label">Scenario:</span>
+            Meridian Regional Health Network -- the project brief has been read
+            for scope in Lesson 1.1a. Now an expert reads the same document a
+            second time, this time to extract every constraint by type and
+            rank them for design impact.
+          </div>
+        </header>
+
+        <div class="worked-example__layout">
+
+          <!-- ============================================================
+               Left column: expert steps
+               ============================================================ -->
+          <div class="worked-example__content">
+
+            <!-- Step 01: Performance Constraints -->
+            <div class="example-step" id="step-1">
+              <div class="step-marker" aria-label="Step 1">
+                <span aria-hidden="true">01</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">
+                  <span class="step-heading__type">Constraint Type 1</span>
+                  Performance Constraints
+                </h2>
+                <p class="step-content">
+                  I read the brief a second time with a different purpose.
+                  The first read was about boundary -- what is in and out
+                  of scope. This read is diagnostic: I am looking for
+                  conditions that constrain my design choices even within
+                  the agreed scope.
+                </p>
+                <p class="step-content">
+                  I start with performance constraints because they are the
+                  hardest ceiling. A performance constraint tells me what
+                  the learner must be able to do and how precisely. It is
+                  not a preference -- it is a specification.
+                </p>
+
+                <figure class="step-extract" role="figure"
+                        aria-label="Excerpt from the Meridian project brief, Required Performance section">
+                  <p class="step-extract__label">From the brief -- Required Performance:</p>
+                  <p class="step-extract__text">
+                    "Execute Tier 1 and Tier 2 IR-2024 protocol decisions
+                    independently, within their role authority... Make
+                    appropriate system isolation decisions without escalating
+                    every call to a supervisor... Communicate incident status
+                    to clinical leadership using the approved Meridian
+                    communication templates."
+                  </p>
+                </figure>
+
+                <p class="step-content">
+                  I extract five performance constraints from this section:</p>
+                <ul class="constraint-list" aria-label="Extracted performance constraints">
+                  <li>
+                    <span class="constraint-list__key">PC-1:</span>
+                    <span class="constraint-list__val">Must execute IR-2024 specifically -- not a generic incident response framework</span>
+                  </li>
+                  <li>
+                    <span class="constraint-list__key">PC-2:</span>
+                    <span class="constraint-list__val">Must perform Tier 1 and Tier 2 decisions independently, without supervisor escalation</span>
+                  </li>
+                  <li>
+                    <span class="constraint-list__key">PC-3:</span>
+                    <span class="constraint-list__val">Decision authority is role-bounded -- different roles have different authority ceilings</span>
+                  </li>
+                  <li>
+                    <span class="constraint-list__key">PC-4:</span>
+                    <span class="constraint-list__val">Must document in real time in Meridian's SIEM event log</span>
+                  </li>
+                  <li>
+                    <span class="constraint-list__key">PC-5:</span>
+                    <span class="constraint-list__val">Must communicate using Meridian's approved templates -- not improvised communication</span>
+                  </li>
+                </ul>
+                <p class="step-content">
+                  PC-3 is the one I flag immediately. Role-bounded authority
+                  means I cannot design a single learner path. The course
+                  must account for what a systems administrator can decide
+                  versus what a help desk staffer can decide. That is a
+                  structural constraint, not a content choice.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 02: Regulatory Constraints -->
+            <div class="example-step" id="step-2">
+              <div class="step-marker" aria-label="Step 2">
+                <span aria-hidden="true">02</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">
+                  <span class="step-heading__type">Constraint Type 2</span>
+                  Regulatory Constraints
+                </h2>
+                <p class="step-content">
+                  Regulatory constraints have an authority external to the
+                  client and external to me. Neither of us can negotiate them
+                  away. They set an absolute floor.
+                </p>
+
+                <figure class="step-extract" role="figure"
+                        aria-label="Excerpt from the Meridian project brief, Regulatory and Compliance Context section">
+                  <p class="step-extract__label">From the brief -- Regulatory and Compliance Context:</p>
+                  <p class="step-extract__text">
+                    "HIPAA Security Rule (45 CFR 164.308(a)(5)) -- workforce
+                    training requirement for covered entities... OCR audit
+                    finding (2023) -- recommended documented improvement to
+                    incident response workforce training within 18 months of
+                    the audit date."
+                  </p>
+                </figure>
+
+                <p class="step-content">
+                  Three regulatory constraints:</p>
+                <ul class="constraint-list" aria-label="Extracted regulatory constraints">
+                  <li>
+                    <span class="constraint-list__key">RC-1:</span>
+                    <span class="constraint-list__val">HIPAA 45 CFR 164.308(a)(5) -- workforce training is a covered entity obligation; the course must fulfill it documentably</span>
+                  </li>
+                  <li>
+                    <span class="constraint-list__key">RC-2:</span>
+                    <span class="constraint-list__val">Must align to IR-2024 as adopted -- not to a revised or idealized version of it</span>
+                  </li>
+                  <li>
+                    <span class="constraint-list__key">RC-3:</span>
+                    <span class="constraint-list__val">OCR 18-month timeline -- delivery must occur within the audit remediation window regardless of project preference</span>
+                  </li>
+                </ul>
+                <p class="step-content">
+                  RC-3 creates a hard external deadline. The 90-day project
+                  timeline the client stated in the Project Constraints section
+                  exists inside that window -- but the OCR timeline is the
+                  binding authority, not the client's preference. If the
+                  project slips, the OCR obligation does not.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 03: Logistical Constraints -->
+            <div class="example-step" id="step-3">
+              <div class="step-marker" aria-label="Step 3">
+                <span aria-hidden="true">03</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">
+                  <span class="step-heading__type">Constraint Type 3</span>
+                  Logistical Constraints
+                </h2>
+                <p class="step-content">
+                  Logistical constraints define what is buildable within this
+                  project. They bound the designer's options even when the
+                  performance requirements and regulatory requirements are
+                  fully understood.
+                </p>
+
+                <figure class="step-extract" role="figure"
+                        aria-label="Excerpt from the Meridian project brief, Project Constraints section">
+                  <p class="step-extract__label">From the brief -- Project Constraints:</p>
+                  <p class="step-extract__text">
+                    "Limited to 4 hours total with Meridian's IR team lead;
+                    schedule set in advance... Delivery-ready within 90 days
+                    of project start... SCORM 1.2 for LMS deployment; estimated
+                    learner-facing time 4 to 6 hours... No prior course content
+                    or existing training materials."
+                  </p>
+                </figure>
+
+                <p class="step-content">
+                  Five logistical constraints, in descending order of design impact:</p>
+                <ul class="constraint-list" aria-label="Extracted logistical constraints">
+                  <li>
+                    <span class="constraint-list__key">LC-1:</span>
+                    <span class="constraint-list__val">4 hours total SME access with the IR team lead -- the hardest logistical ceiling</span>
+                  </li>
+                  <li>
+                    <span class="constraint-list__key">LC-2:</span>
+                    <span class="constraint-list__val">90-day delivery timeline from project start</span>
+                  </li>
+                  <li>
+                    <span class="constraint-list__key">LC-3:</span>
+                    <span class="constraint-list__val">SCORM 1.2, self-paced online delivery -- no synchronous option</span>
+                  </li>
+                  <li>
+                    <span class="constraint-list__key">LC-4:</span>
+                    <span class="constraint-list__val">Fixed budget, no travel, no in-person delivery</span>
+                  </li>
+                  <li>
+                    <span class="constraint-list__key">LC-5:</span>
+                    <span class="constraint-list__val">IR-2024 protocol document is the only existing content -- no prior course materials</span>
+                  </li>
+                </ul>
+                <p class="step-content">
+                  LC-1 controls almost everything else. Four hours of SME
+                  time for a course that requires demonstrated IR-2024
+                  proficiency means the design must arrive at validation
+                  nearly complete. I cannot use SME time for discovery.
+                  LC-3 removes instructor feedback as an assessment option --
+                  whatever calibration I design must be self-contained.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 04: Stakeholder Constraints -->
+            <div class="example-step" id="step-4">
+              <div class="step-marker" aria-label="Step 4">
+                <span aria-hidden="true">04</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">
+                  <span class="step-heading__type">Constraint Type 4</span>
+                  Stakeholder Constraints
+                </h2>
+                <p class="step-content">
+                  Stakeholder constraints are client-stated conditions about
+                  process, quality, or approach. They are not externally
+                  mandated, but they are non-negotiable within this project
+                  without a documented conversation. Ignoring them is a
+                  project risk, not just a quality risk.
+                </p>
+
+                <figure class="step-extract" role="figure"
+                        aria-label="Excerpts from the Meridian project brief, Course Request and Deliverable Request sections">
+                  <p class="step-extract__label">From the brief -- Course Request and Deliverable Request:</p>
+                  <p class="step-extract__text">
+                    "This is not a compliance checkbox course. We need staff who
+                    can act independently and correctly during a cyber incident...
+                    We require sign-off on scope and sequence before any content
+                    is written."
+                  </p>
+                </figure>
+
+                <p class="step-content">
+                  Two stakeholder constraints with different implications:</p>
+                <ul class="constraint-list" aria-label="Extracted stakeholder constraints">
+                  <li>
+                    <span class="constraint-list__key">SC-1:</span>
+                    <span class="constraint-list__val">Explicit rejection of the compliance-checkbox model -- the client has named what they do not want, which constrains the assessment design toward demonstrated performance</span>
+                  </li>
+                  <li>
+                    <span class="constraint-list__key">SC-2:</span>
+                    <span class="constraint-list__val">Architecture sign-off required before any content is written -- no content development begins until the client approves scope and sequence</span>
+                  </li>
+                </ul>
+                <p class="step-content">
+                  SC-2 is actually a process constraint more than a quality
+                  constraint. It means the Bucket Map and Scope Organization
+                  Package I am about to produce is not optional documentation --
+                  it is the gate through which content development must pass.
+                  That changes its priority in my work sequence.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 05: Rank binding vs. negotiable -->
+            <div class="example-step" id="step-5">
+              <div class="step-marker" aria-label="Step 5">
+                <span aria-hidden="true">05</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">Rank Binding Versus Negotiable</h2>
+                <p class="step-content">
+                  With all four constraint types extracted, I now rank them
+                  into two groups. A binding constraint cannot flex without
+                  a formal scope change, a regulatory waiver, or client
+                  sign-off on a revised agreement. A negotiable constraint
+                  can flex within designer judgment -- but it must still be
+                  documented so the client knows what was decided and why.
+                </p>
+                <p class="step-content">
+                  This ranking is not permanent. If a binding constraint
+                  turns out to be wrong -- if the OCR timeline was
+                  misread, if the SME hours can be extended -- I update
+                  the record. But I start from the assumption that
+                  everything in the brief is binding until I have evidence
+                  otherwise.
+                </p>
+
+                <div class="ranking-groups" role="region" aria-label="Constraint ranking: binding versus negotiable">
+
+                  <div class="ranking-group ranking-group--binding">
+                    <div class="ranking-group__header">
+                      <svg class="ranking-group__icon" aria-hidden="true"
+                           focusable="false" width="14" height="14"
+                           viewBox="0 0 14 14" fill="none">
+                        <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M7 4v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="7" cy="10" r="1" fill="currentColor"/>
+                      </svg>
+                      Binding -- cannot flex without a formal change
+                    </div>
+                    <ul class="ranking-group__items">
+                      <li class="ranking-item">
+                        <span class="ranking-item__label">IR-2024 protocol alignment (PC-1, RC-2)</span>
+                        <span class="ranking-item__note">Specified in both required performance and regulatory sections; changing it changes the course purpose</span>
+                      </li>
+                      <li class="ranking-item">
+                        <span class="ranking-item__label">Role-bounded decision authority (PC-3)</span>
+                        <span class="ranking-item__note">Appears across multiple performance items; drives the structural design decision about learner paths</span>
+                      </li>
+                      <li class="ranking-item">
+                        <span class="ranking-item__label">4 hours SME access (LC-1)</span>
+                        <span class="ranking-item__note">Cannot be extended without budget and schedule change; determines when scope must be locked</span>
+                      </li>
+                      <li class="ranking-item">
+                        <span class="ranking-item__label">SCORM 1.2, self-paced format (LC-3)</span>
+                        <span class="ranking-item__note">LMS format specified; synchronous delivery explicitly excluded; removes instructor feedback from assessment options</span>
+                      </li>
+                      <li class="ranking-item">
+                        <span class="ranking-item__label">OCR 18-month audit timeline (RC-3)</span>
+                        <span class="ranking-item__note">External regulatory authority; does not move with project preference</span>
+                      </li>
+                      <li class="ranking-item">
+                        <span class="ranking-item__label">Architecture sign-off before content (SC-2)</span>
+                        <span class="ranking-item__note">Client-stated process gate; the Bucket Map and Scope Organization Package must be approved before development begins</span>
+                      </li>
+                      <li class="ranking-item">
+                        <span class="ranking-item__label">HIPAA 164.308(a)(5) workforce training (RC-1)</span>
+                        <span class="ranking-item__note">Covered entity obligation; training must be documentably completed</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="ranking-group ranking-group--negotiable">
+                    <div class="ranking-group__header">
+                      <svg class="ranking-group__icon" aria-hidden="true"
+                           focusable="false" width="14" height="14"
+                           viewBox="0 0 14 14" fill="none">
+                        <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M4.5 7l2 2 3-3" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      Negotiable -- can flex within designer judgment, but must be documented
+                    </div>
+                    <ul class="ranking-group__items">
+                      <li class="ranking-item">
+                        <span class="ranking-item__label">4 to 6 hour learner-facing time estimate (LC-2 adjacent)</span>
+                        <span class="ranking-item__note">The brief offers an estimate, not a ceiling; may increase if performance complexity requires it -- requires client conversation if exceeded</span>
+                      </li>
+                      <li class="ranking-item">
+                        <span class="ranking-item__label">Number and format of practice scenarios</span>
+                        <span class="ranking-item__note">Not specified; designer professional judgment, constrained by SME time and development timeline</span>
+                      </li>
+                      <li class="ranking-item">
+                        <span class="ranking-item__label">Instructional sequence within scope</span>
+                        <span class="ranking-item__note">Not specified; designer's structural decision -- subject to client sign-off on the architecture document</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                </div><!-- /.ranking-groups -->
+
+                <p class="step-content">
+                  This ranked list becomes the spine of the Bucket Map. It
+                  is not a deliverable on its own -- it is the working
+                  document from which the artifact is constructed. Every
+                  architecture decision in Modules 2 through 4 will be
+                  traceable back to this list.
+                </p>
+              </div>
+            </div>
+
+          </div><!-- /.worked-example__content -->
+
+          <!-- ============================================================
+               Right column: think-aloud annotations
+               ============================================================ -->
+          <aside class="worked-example__think-aloud"
+                 aria-label="Expert think-aloud annotations">
+
+            <div class="think-aloud__header">
+              <h2 class="think-aloud__heading">Expert Think-Aloud</h2>
+              <button type="button"
+                      id="annotations-toggle"
+                      class="btn btn--toggle"
+                      aria-controls="annotations-list"
+                      aria-expanded="true">
+                <span class="toggle-label">Hide Annotations</span>
+              </button>
+            </div>
+
+            <div id="annotations-list" class="think-aloud__list">
+
+              <div class="annotation-item" data-step="1"
+                   aria-label="Annotation for step 1">
+                <span class="annotation-marker" aria-hidden="true">01</span>
+                <p class="annotation-text">
+                  Reading a document twice is not redundancy -- it is method.
+                  The first read establishes what the document is about.
+                  The second read extracts what the document requires of your
+                  design. Most novice designers do one read and attempt both
+                  tasks simultaneously. The result is incomplete constraint
+                  extraction and scope statements that feel complete but have
+                  invisible gaps.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="2"
+                   aria-label="Annotation for step 2">
+                <span class="annotation-marker" aria-hidden="true">02</span>
+                <p class="annotation-text">
+                  The OCR audit timeline is the constraint most likely to be
+                  missed on a first read because it appears in the background
+                  section, not the constraints section. Clients do not always
+                  organize their briefs to surface every constraint in a single
+                  location. Design Document Synthesis requires reading every
+                  section for constraints, not just the one labeled
+                  "constraints."
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="3"
+                   aria-label="Annotation for step 3">
+                <span class="annotation-marker" aria-hidden="true">03</span>
+                <p class="annotation-text">
+                  The 4-to-6-hour learner estimate is listed as a constraint
+                  but it functions differently from the others. It is a
+                  client expectation, not a ceiling with regulatory authority.
+                  I note it as negotiable because performance complexity may
+                  legitimately require more time -- but "negotiable" does not
+                  mean "ignore." It means the conversation must happen explicitly
+                  if I plan to exceed it.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="4"
+                   aria-label="Annotation for step 4">
+                <span class="annotation-marker" aria-hidden="true">04</span>
+                <p class="annotation-text">
+                  "This is not a compliance checkbox course" is a design
+                  constraint, not just a sentiment. When a client names what
+                  they do not want with that specificity, it tells me they have
+                  experienced the thing they are rejecting. That rejection has
+                  direct implications: knowledge recall questions are not
+                  sufficient evidence of performance. The assessment design
+                  must require demonstrated decision-making under realistic
+                  conditions.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="5"
+                   aria-label="Annotation for step 5">
+                <span class="annotation-marker" aria-hidden="true">05</span>
+                <p class="annotation-text">
+                  The binding category is deliberately longer than the
+                  negotiable category for this project. That is not a sign
+                  of a badly scoped project -- it is a sign of a well-specified
+                  brief. A client who knows what they need and articulates it
+                  precisely makes the designer's job more constrained but
+                  less risky. Ambiguity is where projects fail, not specificity.
+                </p>
+              </div>
+
+            </div><!-- /#annotations-list -->
+
+          </aside>
+
+        </div><!-- /.worked-example__layout -->
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l1b-s1.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="m1-l1b-s3.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+
+    <section id="artifact-reference"
+             tabindex="-1"
+             aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">
+        The MRHN Bucket Map and Scope Organization Package is produced in
+        Screens 3 through 5 of this lesson.
+      </p>
+    </section>
+
+    <section id="decision-history"
+             tabindex="-1"
+             aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">
+        Design decisions begin in Screen 3 when you apply this synthesis
+        method to the Meridian brief yourself.
+      </p>
+    </section>
+
+  </aside>
+
+  <!-- ============================================================
+       Support Panels
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12"
+                placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded',
+          btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Think-aloud annotation toggle
+       ============================================================ -->
+  <script type="module">
+    const toggle = document.getElementById('annotations-toggle');
+    const list   = document.getElementById('annotations-list');
+    const label  = toggle.querySelector('.toggle-label');
+
+    toggle.addEventListener('click', () => {
+      const nowExpanded = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(nowExpanded));
+      label.textContent = nowExpanded ? 'Hide Annotations' : 'Show Annotations';
+      if (nowExpanded) {
+        list.removeAttribute('hidden');
+      } else {
+        list.setAttribute('hidden', '');
+      }
+    });
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script
+       ============================================================ -->
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.1b';
+    document.getElementById('pt-phase').textContent        = '1';
+    document.getElementById('pt-step').textContent         = '1';
+    document.getElementById('pt-screen').textContent       = '2';
+    document.getElementById('pt-screen-total').textContent = '6';
+
+    document.querySelectorAll('.module-nav-link').forEach(link => {
+      link.removeAttribute('aria-current');
+    });
+    const activeLink = document.querySelector(
+      '.module-nav-link[href="module-1.html"]'
+    );
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+  </script>
+
+</body>
+</html>

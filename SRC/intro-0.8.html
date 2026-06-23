@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="This credential takes 22-26 hours and requires artifact-based work with no instructor feedback. Read what the credential requires before you begin.">
+  <title>What to Expect | Introduction | ARCH Method Practitioner Credential | Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/scaffolds/persistentStepTracker.css">
+  <style>
+    /* ================================================================
+       Screen 0.8 — What to Expect
+       All color values reference CSS tokens. No hard-coded hex values.
+       ================================================================ */
+
+    .lesson-intro__lead {
+      margin: 0 0 1.5rem;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+      max-width: 70ch;
+    }
+
+    /* ----------------------------------------------------------------
+       Expectation List
+       Numbered items: teal circle marker + two-column grid body.
+       Collapses to single column on narrow viewports.
+       ---------------------------------------------------------------- */
+
+    .expectation-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      max-width: 680px;
+    }
+
+    .expectation-item {
+      display: grid;
+      grid-template-columns: 2.25rem 1fr;
+      gap: 0 1rem;
+      padding: 1.125rem 0;
+      border-bottom: 1px solid var(--color-border-default);
+      align-items: start;
+    }
+
+    .expectation-item:first-child { padding-top: 0; }
+    .expectation-item:last-child  { border-bottom: none; padding-bottom: 0; }
+
+    @media (max-width: 480px) {
+      .expectation-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem 0;
+      }
+    }
+
+    /* Teal filled circle with white bold number.
+       aria-hidden="true" on these spans -- the ol provides
+       list position context to screen readers via role="list". */
+    .expectation-item__num {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      background: var(--color-text-link);
+      color: var(--color-text-inverse);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.0625rem;
+    }
+
+    .expectation-item__name {
+      margin: 0 0 0.375rem;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+    }
+
+    .expectation-item__desc {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ----------------------------------------------------------------
+       Commitment Card
+       Teal left-accent card at the bottom of the expectation list.
+       Frames the credential as worth the effort without hedging the
+       honest expectations stated above.
+       ---------------------------------------------------------------- */
+
+    .commitment-card {
+      margin: 1.75rem 0 1.75rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-left: 4px solid var(--color-text-link);
+      border-radius: 0 6px 6px 0;
+      padding: 1.125rem 1.375rem;
+      max-width: 680px;
+    }
+
+    .commitment-card__label {
+      display: block;
+      margin: 0 0 0.625rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .commitment-card__text {
+      margin: 0;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    /* High contrast adjustments */
+    @media (prefers-contrast: more) {
+      .expectation-item {
+        border-bottom-color: var(--color-border-strong);
+      }
+      .expectation-item__num {
+        outline: 2px solid var(--color-border-strong);
+        outline-offset: 1px;
+      }
+      .commitment-card {
+        border-color: var(--color-border-strong);
+        border-left-color: var(--color-text-link);
+      }
+      .commitment-card__label {
+        color: var(--color-text-primary);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">
+        Module <span id="pt-module">Intro</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        <span id="pt-lesson">Introduction</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true" id="pt-phase-divider" hidden>&bull;</span>
+      <span class="pt-item" id="pt-phase-item" hidden>
+        Phase <span id="pt-phase">0</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true" id="pt-step-divider" hidden>&bull;</span>
+      <span class="pt-item" id="pt-step-item" hidden>
+        Step <span id="pt-step">0</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Screen <span id="pt-screen">8</span> of <span id="pt-screen-total">9</span>
+      </span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary"
+              aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel"
+              aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer"
+              aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory"
+              aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel"
+              aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link" aria-current="page">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <article class="lesson-intro" aria-labelledby="lesson-title">
+
+        <header class="lesson-intro__header">
+          <p class="lesson-label" aria-label="Introduction, Screen 8 of 9">
+            Introduction &bull; Screen 8 of 9
+          </p>
+          <h1 id="lesson-title" class="lesson-intro__title">What to Expect</h1>
+        </header>
+
+        <p class="lesson-intro__lead">
+          Before you begin Module 1, here is an accurate picture of what this credential
+          requires. Each point below describes something that distinguishes this credential
+          from a typical online course. Read these carefully before continuing to the
+          commitment screen.
+        </p>
+
+        <!-- =========================================================
+             Expectation List
+             Five numbered items. Teal circle markers are aria-hidden;
+             the ol with role="list" provides list semantics to screen
+             readers. Numbers are decorative position markers only.
+             ========================================================= -->
+        <ol class="expectation-list" role="list">
+
+          <li class="expectation-item">
+            <span class="expectation-item__num" aria-hidden="true">1</span>
+            <div class="expectation-item__body">
+              <p class="expectation-item__name">Time Commitment: 22 to 26 Hours</p>
+              <p class="expectation-item__desc">
+                This credential takes 22 to 26 hours to complete across all four modules.
+                Most learners budget 5 to 7 hours per module. The sessions do not need to
+                be consecutive, but each module is designed to be completed in sequence
+                without extended gaps between lessons. Interrupting a module mid-lesson and
+                returning days later typically requires reorientation time.
+              </p>
+            </div>
+          </li>
+
+          <li class="expectation-item">
+            <span class="expectation-item__num" aria-hidden="true">2</span>
+            <div class="expectation-item__body">
+              <p class="expectation-item__name">No Multiple Choice -- Artifact Only</p>
+              <p class="expectation-item__desc">
+                There are no multiple choice questions, quizzes, or fill-in exercises in
+                this credential. Every module closes with a performance task that produces
+                a design artifact applied to the Meridian scenario. Your credential is
+                earned through the quality of what you design, not through test scores.
+                This means the work is harder to fake and harder to rush.
+              </p>
+            </div>
+          </li>
+
+          <li class="expectation-item">
+            <span class="expectation-item__num" aria-hidden="true">3</span>
+            <div class="expectation-item__body">
+              <p class="expectation-item__name">No Instructor Feedback</p>
+              <p class="expectation-item__desc">
+                This credential is fully self-directed. No instructor reviews your work or
+                provides individual feedback. The rubric, the ARCH Decision Logs, and the
+                Governance Checkpoints built into each module serve as your feedback
+                system. By the time you reach the final evaluation, you will have a clear
+                picture of where your work stands without waiting on anyone else.
+              </p>
+            </div>
+          </li>
+
+          <li class="expectation-item">
+            <span class="expectation-item__num" aria-hidden="true">4</span>
+            <div class="expectation-item__body">
+              <p class="expectation-item__name">Self-Assessment Through Calibration</p>
+              <p class="expectation-item__desc">
+                Calibration activities throughout the lessons ask you to check your
+                understanding against a reference response. You evaluate your own answer.
+                These activities are the primary mechanism for checking comprehension
+                between performance tasks. They work only if you engage with them honestly.
+                The credential cannot enforce accurate self-assessment -- it depends on the
+                seriousness you bring to the work.
+              </p>
+            </div>
+          </li>
+
+          <li class="expectation-item">
+            <span class="expectation-item__num" aria-hidden="true">5</span>
+            <div class="expectation-item__body">
+              <p class="expectation-item__name">Professional-Level Rigor</p>
+              <p class="expectation-item__desc">
+                This credential asks you to work at the level of a practitioner. The
+                Meridian scenario is realistic, the decisions you face are non-trivial, and
+                the artifacts you produce are the same type a working instructional designer
+                would create for an actual client. The credential does not simplify the
+                work. It provides a structured workflow and a realistic scenario to scaffold
+                your path through it.
+              </p>
+            </div>
+          </li>
+
+        </ol>
+
+        <!-- =========================================================
+             Commitment Card
+             Closes on a forward-looking, affirming note without hedging
+             the honest expectations stated above.
+             ========================================================= -->
+        <div class="commitment-card" role="region" aria-label="Credential commitment summary">
+          <span class="commitment-card__label" aria-hidden="true">The Bottom Line</span>
+          <p class="commitment-card__text">
+            If you bring the time and the intention to engage seriously, you will work
+            through a complete ARCH workflow on a realistic scenario and produce design
+            artifacts that demonstrate genuine professional competence in course
+            architecture. That is what this credential is designed to deliver. The
+            next screen gives you the opportunity to record your commitment before you
+            begin Module 1.
+          </p>
+        </div>
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="intro-0.7.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="intro-0.9.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">No artifacts have been started yet. Your first artifact begins in Module 1.</p>
+    </section>
+
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">No decisions recorded yet. Decision points begin in Module 1.</p>
+    </section>
+
+  </aside>
+
+  <!-- ============================================================
+       Support Panels — managed by panelManager.js
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12"
+                placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded',
+          btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script
+       ============================================================ -->
+  <script type="module">
+    import { init } from './js/scaffolds/persistentStepTracker.js';
+
+    init({
+      module:   0,
+      lesson:   'Introduction',
+      phase:    0,
+      step:     0,
+      screen:   8,
+      total:    9,
+      announce: false,
+    });
+
+    /* ptUpdate() sets pt-module to '0'. Override to display 'Intro'. */
+    document.getElementById('pt-module').textContent = 'Intro';
+  </script>
+
+</body>
+</html>

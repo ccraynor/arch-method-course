@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- TEMPLATE: replace with form-specific description (≤155 chars) -->
+  <meta name="description" content="[DESCRIPTION — one sentence describing what governance record the learner completes on this screen]">
+  <!-- TEMPLATE: replace with "Governance Record: Title — Lesson X.X — ARCH Method Practitioner Credential — Proof Point Learning" -->
+  <title>[Governance Record: Title] — Lesson [X.X] — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links — do not modify
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header — banner landmark — do not modify
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">1</span> of <span id="pt-screen-total">4</span></span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary"
+              aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel"
+              aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer"
+              aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory"
+              aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel"
+              aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation — TEMPLATE: set aria-current="page" on
+       the link matching the current module.
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link" aria-current="false">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link" aria-current="false">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link" aria-current="false">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link" aria-current="false">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link" aria-current="false">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content — main landmark
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <!-- =========================================================
+           GOVERNANCE RECORD FORM TEMPLATE
+           Template type: multi-section structured form
+           Sections: 4 (configurable — add/remove fieldsets as needed)
+           Autosave: every 30 seconds + on field blur + on navigation
+           Error handling: inline per-field + error summary on submit
+           Progress: per-section status + overall count, announced to AT
+
+           SECTION CONFIGURATION
+           SECTIONS constant in the governance form script defines
+           which fields are required in each section. Update it to
+           match whatever fieldsets you add or remove.
+
+           FIELD NAMING CONVENTION
+           All form controls must have unique id attributes.
+           Radio groups share a name attribute; id each radio uniquely.
+           Required fields: add required + aria-required="true".
+           Each field must have aria-describedby pointing to its error id.
+
+           AUTOSAVE KEY: governance_[SCREEN_ID]
+           Set SCREEN_ID via window.__setGovernanceFormId() below.
+           ========================================================= -->
+      <article class="governance-form-article" aria-labelledby="form-title">
+
+        <header class="governance-form-article__header">
+          <span class="screen-type-label">Governance Record</span>
+          <!-- TEMPLATE: update lesson label -->
+          <p class="lesson-label" aria-label="Lesson [X.X]">Lesson [X.X]</p>
+          <!-- TEMPLATE: update title — this is the page's h1 -->
+          <h1 id="form-title" class="governance-form-article__title">[Governance Record Title]</h1>
+          <p class="governance-form-article__intro">
+            <!-- TEMPLATE: 1–2 sentences explaining what this record documents and why it matters -->
+            [Explain what this governance record captures and how it will be used in the ARCH Method process.]
+            Fields marked with an asterisk (<span aria-hidden="true">*</span><span class="sr-only">asterisk</span>) are required.
+          </p>
+        </header>
+
+        <!-- ---- Error summary ----
+             Hidden until a failed submit attempt.
+             tabindex="-1" on heading allows programmatic focus.
+             Each list item is a link to the invalid field.
+             Focus moves here on failed submit; learner clicks links to reach fields. -->
+        <div id="error-summary"
+             class="error-summary"
+             role="group"
+             aria-labelledby="error-summary-heading"
+             hidden>
+          <h2 id="error-summary-heading"
+              class="error-summary__heading"
+              tabindex="-1">
+            <!-- Script populates: "Your record has N error(s). Please correct the following:" -->
+          </h2>
+          <ul id="error-summary-list" class="error-summary__list">
+            <!-- Script populates: <li><a href="#field-id">Field label: error message</a></li> -->
+          </ul>
+        </div>
+
+        <!-- ---- Form progress indicator ----
+             Announces section completion changes via sr-announcer (not aria-live on
+             this element, to avoid announcing every keystroke).
+             Progress bar uses role="progressbar" with aria-valuenow updated by script.
+             Section statuses update visually; milestones announced via sr-announcer. -->
+        <div class="form-progress"
+             id="form-progress"
+             role="group"
+             aria-labelledby="form-progress-heading">
+
+          <h2 id="form-progress-heading" class="form-progress__heading">
+            Form Progress
+          </h2>
+
+          <!-- Overall progress bar -->
+          <div class="form-progress__bar-track" aria-hidden="true">
+            <div class="form-progress__bar-fill" id="progress-bar-fill"></div>
+          </div>
+          <p class="form-progress__count">
+            <span id="progress-complete-count">0</span> of
+            <span id="progress-total-count">4</span> sections complete
+            <span role="progressbar"
+                  aria-valuenow="0"
+                  aria-valuemin="0"
+                  aria-valuemax="4"
+                  aria-label="0 of 4 sections complete"
+                  id="progress-bar-role"
+                  class="sr-only"></span>
+          </p>
+
+          <!-- Per-section status list -->
+          <ol class="form-progress__sections" aria-label="Section completion status">
+            <li class="progress-section" id="progress-section-1">
+              <span class="progress-section__name">Course Identification</span>
+              <span class="progress-section__status" data-status="not-started">Not started</span>
+            </li>
+            <li class="progress-section" id="progress-section-2">
+              <span class="progress-section__name">Scope Declaration</span>
+              <span class="progress-section__status" data-status="not-started">Not started</span>
+            </li>
+            <li class="progress-section" id="progress-section-3">
+              <span class="progress-section__name">Constraint Documentation</span>
+              <span class="progress-section__status" data-status="not-started">Not started</span>
+            </li>
+            <li class="progress-section" id="progress-section-4">
+              <span class="progress-section__name">Stakeholder Acknowledgment</span>
+              <span class="progress-section__status" data-status="not-started">Not started</span>
+            </li>
+          </ol>
+
+        </div><!-- /.form-progress -->
+
+        <!-- ---- Governance record form ----
+             novalidate: custom validation controls all error presentation.
+             aria-label distinguishes this form from the skip-link nav forms. -->
+        <form class="governance-form"
+              id="governance-form"
+              novalidate
+              aria-label="Governance record">
+
+          <!-- ================================================
+               SECTION 1: COURSE IDENTIFICATION
+               Required: course-title, target-audience
+               ================================================ -->
+          <fieldset class="form-section" id="section-1">
+            <legend class="form-section__legend">
+              <span class="form-section__number" aria-hidden="true">1</span>
+              Course Identification
+            </legend>
+
+            <!-- Course title -->
+            <div class="form-field" id="field-group-course-title">
+              <label for="course-title" class="form-field__label">
+                Course Title
+                <span class="field-required" aria-hidden="true">*</span>
+                <span class="sr-only">(required)</span>
+              </label>
+              <p class="form-field__hint" id="course-title-hint">
+                <!-- TEMPLATE: hint text for this field -->
+                Enter the working title for the course you are designing.
+              </p>
+              <input type="text"
+                     id="course-title"
+                     name="course-title"
+                     class="governance-input"
+                     required
+                     aria-required="true"
+                     aria-invalid="false"
+                     aria-describedby="course-title-hint course-title-error"
+                     autocomplete="off">
+              <p id="course-title-error" class="field-error" hidden>
+                Course title is required.
+              </p>
+            </div>
+
+            <!-- Course ID (optional) -->
+            <div class="form-field" id="field-group-course-id">
+              <label for="course-id" class="form-field__label">
+                Course ID or Code
+                <span class="field-optional">(optional)</span>
+              </label>
+              <p class="form-field__hint" id="course-id-hint">
+                Enter an internal tracking code if one has been assigned.
+              </p>
+              <input type="text"
+                     id="course-id"
+                     name="course-id"
+                     class="governance-input"
+                     aria-describedby="course-id-hint"
+                     autocomplete="off">
+            </div>
+
+            <!-- Target audience -->
+            <div class="form-field" id="field-group-target-audience">
+              <label for="target-audience" class="form-field__label">
+                Target Audience
+                <span class="field-required" aria-hidden="true">*</span>
+                <span class="sr-only">(required)</span>
+              </label>
+              <p class="form-field__hint" id="target-audience-hint">
+                Describe who will take this course: role, experience level, and organizational context.
+              </p>
+              <textarea id="target-audience"
+                        name="target-audience"
+                        class="governance-textarea"
+                        rows="4"
+                        required
+                        aria-required="true"
+                        aria-invalid="false"
+                        aria-describedby="target-audience-hint target-audience-error"></textarea>
+              <p id="target-audience-error" class="field-error" hidden>
+                Target audience description is required.
+              </p>
+            </div>
+
+            <!-- Department (optional) -->
+            <div class="form-field" id="field-group-department">
+              <label for="department" class="form-field__label">
+                Department or Organization
+                <span class="field-optional">(optional)</span>
+              </label>
+              <input type="text"
+                     id="department"
+                     name="department"
+                     class="governance-input"
+                     autocomplete="off">
+            </div>
+
+          </fieldset>
+          <!-- END SECTION 1 -->
+
+          <!-- ================================================
+               SECTION 2: SCOPE DECLARATION
+               Required: scope-in, scope-out
+               ================================================ -->
+          <fieldset class="form-section" id="section-2">
+            <legend class="form-section__legend">
+              <span class="form-section__number" aria-hidden="true">2</span>
+              Scope Declaration
+            </legend>
+
+            <!-- In-scope boundaries -->
+            <div class="form-field" id="field-group-scope-in">
+              <label for="scope-in" class="form-field__label">
+                In-Scope Boundaries
+                <span class="field-required" aria-hidden="true">*</span>
+                <span class="sr-only">(required)</span>
+              </label>
+              <p class="form-field__hint" id="scope-in-hint">
+                List what this course will explicitly cover. Reference SI codes if applicable (e.g., SI-01 through SI-06).
+              </p>
+              <textarea id="scope-in"
+                        name="scope-in"
+                        class="governance-textarea"
+                        rows="5"
+                        required
+                        aria-required="true"
+                        aria-invalid="false"
+                        aria-describedby="scope-in-hint scope-in-error"></textarea>
+              <p id="scope-in-error" class="field-error" hidden>
+                In-scope boundaries are required.
+              </p>
+            </div>
+
+            <!-- Out-of-scope exclusions -->
+            <div class="form-field" id="field-group-scope-out">
+              <label for="scope-out" class="form-field__label">
+                Out-of-Scope Exclusions
+                <span class="field-required" aria-hidden="true">*</span>
+                <span class="sr-only">(required)</span>
+              </label>
+              <p class="form-field__hint" id="scope-out-hint">
+                List what this course will explicitly not cover and why those boundaries exist.
+              </p>
+              <textarea id="scope-out"
+                        name="scope-out"
+                        class="governance-textarea"
+                        rows="5"
+                        required
+                        aria-required="true"
+                        aria-invalid="false"
+                        aria-describedby="scope-out-hint scope-out-error"></textarea>
+              <p id="scope-out-error" class="field-error" hidden>
+                Out-of-scope exclusions are required.
+              </p>
+            </div>
+
+            <!-- Scope rationale (optional) -->
+            <div class="form-field" id="field-group-scope-rationale">
+              <label for="scope-rationale" class="form-field__label">
+                Scope Rationale
+                <span class="field-optional">(optional)</span>
+              </label>
+              <p class="form-field__hint" id="scope-rationale-hint">
+                Explain any constraints or decisions that shaped these boundaries.
+              </p>
+              <textarea id="scope-rationale"
+                        name="scope-rationale"
+                        class="governance-textarea"
+                        rows="4"
+                        aria-describedby="scope-rationale-hint"></textarea>
+            </div>
+
+          </fieldset>
+          <!-- END SECTION 2 -->
+
+          <!-- ================================================
+               SECTION 3: CONSTRAINT DOCUMENTATION
+               Required: delivery-modality (radio group), course-duration
+               ================================================ -->
+          <fieldset class="form-section" id="section-3">
+            <legend class="form-section__legend">
+              <span class="form-section__number" aria-hidden="true">3</span>
+              Constraint Documentation
+            </legend>
+
+            <!-- Delivery modality — radio group.
+                 aria-required on the fieldset communicates the group is required.
+                 Error targets the first radio via href in error summary. -->
+            <fieldset class="form-field form-field--radio-group"
+                      id="field-group-delivery-modality"
+                      aria-required="true"
+                      aria-describedby="delivery-modality-error">
+              <legend class="form-field__label">
+                Delivery Modality
+                <span class="field-required" aria-hidden="true">*</span>
+                <span class="sr-only">(required)</span>
+              </legend>
+
+              <div class="radio-option">
+                <input type="radio"
+                       id="modality-async"
+                       name="delivery-modality"
+                       value="self-paced-online"
+                       class="governance-radio">
+                <label for="modality-async">Self-paced online</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio"
+                       id="modality-sync"
+                       name="delivery-modality"
+                       value="synchronous-virtual"
+                       class="governance-radio">
+                <label for="modality-sync">Synchronous virtual</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio"
+                       id="modality-blended"
+                       name="delivery-modality"
+                       value="blended"
+                       class="governance-radio">
+                <label for="modality-blended">Blended</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio"
+                       id="modality-ilt"
+                       name="delivery-modality"
+                       value="instructor-led"
+                       class="governance-radio">
+                <label for="modality-ilt">Instructor-led in person</label>
+              </div>
+
+              <p id="delivery-modality-error" class="field-error" hidden>
+                Please select a delivery modality.
+              </p>
+            </fieldset>
+
+            <!-- Estimated duration -->
+            <div class="form-field" id="field-group-course-duration">
+              <label for="course-duration" class="form-field__label">
+                Estimated Course Duration
+                <span class="field-required" aria-hidden="true">*</span>
+                <span class="sr-only">(required)</span>
+              </label>
+              <select id="course-duration"
+                      name="course-duration"
+                      class="governance-select"
+                      required
+                      aria-required="true"
+                      aria-invalid="false"
+                      aria-describedby="course-duration-error">
+                <option value="">Select a range</option>
+                <option value="under-1h">Under 1 hour</option>
+                <option value="1-3h">1 to 3 hours</option>
+                <option value="3-8h">3 to 8 hours</option>
+                <option value="8-16h">8 to 16 hours</option>
+                <option value="16-40h">16 to 40 hours</option>
+                <option value="over-40h">Over 40 hours</option>
+              </select>
+              <p id="course-duration-error" class="field-error" hidden>
+                Please select an estimated duration.
+              </p>
+            </div>
+
+            <!-- Technical or platform constraints (optional) -->
+            <div class="form-field" id="field-group-tech-constraints">
+              <label for="tech-constraints" class="form-field__label">
+                Technical and Platform Constraints
+                <span class="field-optional">(optional)</span>
+              </label>
+              <p class="form-field__hint" id="tech-constraints-hint">
+                Describe LMS requirements, authoring tool restrictions, bandwidth limits, or device constraints.
+              </p>
+              <textarea id="tech-constraints"
+                        name="tech-constraints"
+                        class="governance-textarea"
+                        rows="4"
+                        aria-describedby="tech-constraints-hint"></textarea>
+            </div>
+
+            <!-- Prerequisite requirements (optional) -->
+            <div class="form-field" id="field-group-prerequisites">
+              <label for="prerequisites" class="form-field__label">
+                Prerequisite Requirements
+                <span class="field-optional">(optional)</span>
+              </label>
+              <p class="form-field__hint" id="prerequisites-hint">
+                List any prior knowledge, credentials, or course completions required before enrollment.
+              </p>
+              <textarea id="prerequisites"
+                        name="prerequisites"
+                        class="governance-textarea"
+                        rows="4"
+                        aria-describedby="prerequisites-hint"></textarea>
+            </div>
+
+          </fieldset>
+          <!-- END SECTION 3 -->
+
+          <!-- ================================================
+               SECTION 4: STAKEHOLDER ACKNOWLEDGMENT
+               Required: stakeholder-name, review-date, accuracy-confirm
+               ================================================ -->
+          <fieldset class="form-section" id="section-4">
+            <legend class="form-section__legend">
+              <span class="form-section__number" aria-hidden="true">4</span>
+              Stakeholder Acknowledgment
+            </legend>
+
+            <!-- Requesting stakeholder name -->
+            <div class="form-field" id="field-group-stakeholder-name">
+              <label for="stakeholder-name" class="form-field__label">
+                Requesting Stakeholder Name
+                <span class="field-required" aria-hidden="true">*</span>
+                <span class="sr-only">(required)</span>
+              </label>
+              <p class="form-field__hint" id="stakeholder-name-hint">
+                Name of the person or role who commissioned this course.
+              </p>
+              <input type="text"
+                     id="stakeholder-name"
+                     name="stakeholder-name"
+                     class="governance-input"
+                     required
+                     aria-required="true"
+                     aria-invalid="false"
+                     aria-describedby="stakeholder-name-hint stakeholder-name-error"
+                     autocomplete="off">
+              <p id="stakeholder-name-error" class="field-error" hidden>
+                Requesting stakeholder name is required.
+              </p>
+            </div>
+
+            <!-- SME name (optional) -->
+            <div class="form-field" id="field-group-sme-name">
+              <label for="sme-name" class="form-field__label">
+                Subject Matter Expert Name
+                <span class="field-optional">(optional)</span>
+              </label>
+              <input type="text"
+                     id="sme-name"
+                     name="sme-name"
+                     class="governance-input"
+                     autocomplete="off">
+            </div>
+
+            <!-- Review date -->
+            <div class="form-field" id="field-group-review-date">
+              <label for="review-date" class="form-field__label">
+                Review Date
+                <span class="field-required" aria-hidden="true">*</span>
+                <span class="sr-only">(required)</span>
+              </label>
+              <p class="form-field__hint" id="review-date-hint">
+                Date this governance record was reviewed and agreed upon.
+              </p>
+              <input type="date"
+                     id="review-date"
+                     name="review-date"
+                     class="governance-input governance-input--date"
+                     required
+                     aria-required="true"
+                     aria-invalid="false"
+                     aria-describedby="review-date-hint review-date-error">
+              <p id="review-date-error" class="field-error" hidden>
+                Review date is required.
+              </p>
+            </div>
+
+            <!-- Additional stakeholder notes (optional) -->
+            <div class="form-field" id="field-group-stakeholder-notes">
+              <label for="stakeholder-notes" class="form-field__label">
+                Additional Notes
+                <span class="field-optional">(optional)</span>
+              </label>
+              <textarea id="stakeholder-notes"
+                        name="stakeholder-notes"
+                        class="governance-textarea"
+                        rows="4"></textarea>
+            </div>
+
+            <!-- Accuracy acknowledgment — single required checkbox.
+                 Must be checked before the record can be submitted.
+                 aria-required="true" on the input communicates requirement to AT. -->
+            <div class="form-field form-field--checkbox" id="field-group-accuracy-confirm">
+              <input type="checkbox"
+                     id="accuracy-confirm"
+                     name="accuracy-confirm"
+                     class="governance-checkbox"
+                     value="confirmed"
+                     required
+                     aria-required="true"
+                     aria-invalid="false"
+                     aria-describedby="accuracy-confirm-error">
+              <label for="accuracy-confirm" class="form-field__label form-field__label--checkbox">
+                I confirm that this governance record accurately reflects the course scope, constraints,
+                and stakeholder agreement as understood at this point in the design process.
+                <span class="field-required" aria-hidden="true">*</span>
+                <span class="sr-only">(required)</span>
+              </label>
+              <p id="accuracy-confirm-error" class="field-error" hidden>
+                You must confirm the accuracy of this record before submitting.
+              </p>
+            </div>
+
+          </fieldset>
+          <!-- END SECTION 4 -->
+
+          <!-- ---- Save controls ---- -->
+          <div class="save-controls" role="group" aria-label="Save controls">
+            <button type="button"
+                    id="btn-save-form"
+                    class="btn btn--secondary btn--save">
+              <svg aria-hidden="true" focusable="false" width="16" height="16"
+                   viewBox="0 0 16 16" fill="none">
+                <path d="M13 13H3a1 1 0 01-1-1V4l3-3h7l2 2v9a1 1 0 01-1 1z"
+                      stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M5 13V9h6v4M5 1v4h5"
+                      stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Save Draft
+            </button>
+
+            <p id="form-save-status"
+               class="save-status"
+               aria-live="polite"
+               aria-atomic="true">
+              Not yet saved
+            </p>
+          </div>
+
+          <!-- Submit button -->
+          <div class="form-submit-row">
+            <button type="submit"
+                    id="btn-submit-form"
+                    class="btn btn--primary btn--submit">
+              Submit Governance Record
+            </button>
+            <p class="submit-note">
+              Submitting validates all required fields and saves your completed record.
+              You may continue to the next screen whether or not submission succeeds.
+            </p>
+          </div>
+
+          <!-- Success state — hidden until successful submit -->
+          <div id="submit-success"
+               class="submit-success"
+               role="status"
+               tabindex="-1"
+               hidden>
+            <svg class="submit-success__icon"
+                 aria-hidden="true"
+                 focusable="false"
+                 width="28"
+                 height="28"
+                 viewBox="0 0 28 28"
+                 fill="none">
+              <circle cx="14" cy="14" r="12" stroke="var(--color-success-border)" stroke-width="2"/>
+              <path d="M8 14l4 4 8-8" stroke="var(--color-success-text)" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="submit-success__body">
+              <p class="submit-success__heading">Governance record submitted.</p>
+              <p class="submit-success__detail" id="submit-success-timestamp"></p>
+            </div>
+          </div>
+
+        </form><!-- /#governance-form -->
+
+        <!-- Screen navigation — both directions available.
+             Navigation triggers a draft save before leaving. -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <!-- TEMPLATE: update href values -->
+          <a href="[PREV_SCREEN].html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="[NEXT_SCREEN].html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources — complementary landmark
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <!-- TEMPLATE: list artifacts the learner should consult when completing this record -->
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <!-- TEMPLATE: list decisions that inform this governance record -->
+    </section>
+  </aside>
+
+  <!-- ============================================================
+       Support Panels — do not modify — managed by panelManager.js
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer — contentinfo landmark — do not modify
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script — do not modify
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    import { getItem, setItem } from './js/storage.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Governance form script — do not modify
+       ============================================================ -->
+  <script type="module">
+    import { getItem, setItem } from './js/storage.js';
+
+    const AUTOSAVE_MS = 30000;
+
+    /* TEMPLATE: update SECTIONS to match fieldsets in this form.
+       id         — matches fieldset id.
+       progressId — matches progress-section-N list item id.
+       name       — human-readable section name (used in announcements).
+       required   — array of field identifiers.
+                    String = input/textarea/select id.
+                    { name: 'X' } = radio group name (any checked = filled).
+                    { id: 'X', type: 'checkbox' } = single required checkbox. */
+    const SECTIONS = [
+      {
+        id:         'section-1',
+        progressId: 'progress-section-1',
+        name:       'Course Identification',
+        required:   ['course-title', 'target-audience']
+      },
+      {
+        id:         'section-2',
+        progressId: 'progress-section-2',
+        name:       'Scope Declaration',
+        required:   ['scope-in', 'scope-out']
+      },
+      {
+        id:         'section-3',
+        progressId: 'progress-section-3',
+        name:       'Constraint Documentation',
+        required:   [{ name: 'delivery-modality' }, 'course-duration']
+      },
+      {
+        id:         'section-4',
+        progressId: 'progress-section-4',
+        name:       'Stakeholder Acknowledgment',
+        required:   ['stakeholder-name', 'review-date', { id: 'accuracy-confirm', type: 'checkbox' }]
+      }
+    ];
+
+    let SCREEN_ID       = null;
+    let autoSaveTimer   = null;
+    let lastSaved       = null;
+    let prevCompletions = {};    /* tracks last known status per section to detect changes */
+
+    const form         = document.getElementById('governance-form');
+    const saveStatus   = document.getElementById('form-save-status');
+    const btnSave      = document.getElementById('btn-save-form');
+    const btnSubmit    = document.getElementById('btn-submit-form');
+    const errorSummary = document.getElementById('error-summary');
+    const errorHdg     = document.getElementById('error-summary-heading');
+    const errorList    = document.getElementById('error-summary-list');
+    const successBox   = document.getElementById('submit-success');
+    const successTs    = document.getElementById('submit-success-timestamp');
+    const announcer    = document.getElementById('sr-announcer');
+    const progressBar  = document.getElementById('progress-bar-fill');
+    const progressRole = document.getElementById('progress-bar-role');
+    const countEl      = document.getElementById('progress-complete-count');
+
+    /* ---- Field value reader ---- */
+    function readField(descriptor) {
+      if (typeof descriptor === 'string') {
+        const el = document.getElementById(descriptor);
+        if (!el) return '';
+        return el.value.trim();
+      }
+      if (descriptor.type === 'checkbox') {
+        const el = document.getElementById(descriptor.id);
+        return (el && el.checked) ? 'checked' : '';
+      }
+      if (descriptor.name) {
+        const checked = form.querySelector(`[name="${descriptor.name}"]:checked`);
+        return checked ? checked.value : '';
+      }
+      return '';
+    }
+
+    /* ---- Section completion status ---- */
+    function sectionStatus(section) {
+      const values = section.required.map(d => readField(d));
+      const filled = values.filter(v => v !== '').length;
+      if (filled === 0) return 'not-started';
+      if (filled < section.required.length) return 'in-progress';
+      return 'complete';
+    }
+
+    /* ---- Update progress indicator ---- */
+    function updateProgress(announce) {
+      let completedCount = 0;
+      const newAnnouncements = [];
+
+      SECTIONS.forEach(section => {
+        const status   = sectionStatus(section);
+        const prev     = prevCompletions[section.id];
+        const listItem = document.getElementById(section.progressId);
+        const statusEl = listItem && listItem.querySelector('.progress-section__status');
+
+        if (statusEl) {
+          const label = status === 'not-started' ? 'Not started'
+                      : status === 'in-progress'  ? 'In progress'
+                      : 'Complete';
+          statusEl.textContent  = label;
+          statusEl.dataset.status = status;
+        }
+
+        if (status === 'complete') completedCount++;
+
+        /* Announce milestone: section just became complete */
+        if (announce && status === 'complete' && prev !== 'complete') {
+          newAnnouncements.push(section.name + ' complete.');
+        }
+        prevCompletions[section.id] = status;
+      });
+
+      /* Update overall progress bar */
+      const total   = SECTIONS.length;
+      const pct     = Math.round((completedCount / total) * 100);
+      progressBar.style.width = pct + '%';
+      progressRole.setAttribute('aria-valuenow', completedCount);
+      progressRole.setAttribute('aria-label', completedCount + ' of ' + total + ' sections complete');
+      countEl.textContent = completedCount;
+
+      /* Announce milestones */
+      if (newAnnouncements.length) {
+        const msg = newAnnouncements.join(' ') +
+          (completedCount === total ? ' All sections complete.' : '');
+        announcer.textContent = '';
+        requestAnimationFrame(() => { announcer.textContent = msg; });
+      }
+    }
+
+    /* ---- Collect all form data as a flat object ---- */
+    function collectData() {
+      const data = {};
+      form.querySelectorAll('input, textarea, select').forEach(el => {
+        if (!el.name && !el.id) return;
+        const key = el.id || el.name;
+        if (el.type === 'radio') {
+          if (el.checked) data[el.name] = el.value;
+        } else if (el.type === 'checkbox') {
+          data[key] = el.checked ? el.value : '';
+        } else {
+          data[key] = el.value;
+        }
+      });
+      return data;
+    }
+
+    /* ---- Save draft ---- */
+    function saveDraft(source) {
+      if (!SCREEN_ID) return;
+      const data     = collectData();
+      const serialized = JSON.stringify(data);
+      if (source === 'auto' && serialized === lastSaved) return;
+
+      try {
+        setItem('governance_' + SCREEN_ID, serialized);
+        const ts = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        setItem('governance_' + SCREEN_ID + '_savedAt', ts);
+        lastSaved = serialized;
+        const msg = 'Draft saved at ' + ts;
+        const announce = source === 'manual';
+        saveStatus.setAttribute('aria-live', announce ? 'polite' : 'off');
+        saveStatus.textContent = '';
+        requestAnimationFrame(() => { saveStatus.textContent = msg; });
+        if (announce) {
+          announcer.textContent = '';
+          requestAnimationFrame(() => { announcer.textContent = msg; });
+        }
+      } catch {
+        saveStatus.setAttribute('aria-live', 'polite');
+        saveStatus.textContent = 'Save failed. Storage may be unavailable.';
+      }
+    }
+
+    /* ---- Restore draft ---- */
+    function restoreDraft() {
+      if (!SCREEN_ID) return;
+      const stored = getItem('governance_' + SCREEN_ID);
+      if (!stored) return;
+      try {
+        const data = JSON.parse(stored);
+        Object.entries(data).forEach(([key, value]) => {
+          const byId   = document.getElementById(key);
+          const byName = key && form.querySelector(`[name="${key}"]`);
+          if (byId) {
+            if (byId.type === 'checkbox') { byId.checked = value === byId.value; }
+            else if (byId.type !== 'radio') { byId.value = value; }
+          } else if (byName && byName.type === 'radio') {
+            const match = form.querySelector(`[name="${key}"][value="${value}"]`);
+            if (match) match.checked = true;
+          }
+        });
+        lastSaved = stored;
+        const savedAt = getItem('governance_' + SCREEN_ID + '_savedAt');
+        saveStatus.textContent = savedAt ? 'Last saved at ' + savedAt : 'Draft restored';
+        updateProgress(false);
+      } catch { /* corrupted storage — start fresh */ }
+    }
+
+    /* ---- Inline field validation on blur ---- */
+    function validateField(el) {
+      const errorEl = document.getElementById(el.id + '-error') ||
+                      (el.closest('fieldset') && document.getElementById(el.closest('fieldset').id.replace('field-group-', '') + '-error'));
+      let valid = true;
+      let message = '';
+
+      if (el.type === 'checkbox' && el.required && !el.checked) {
+        valid = false; message = 'This confirmation is required.';
+      } else if (el.required && !el.value.trim()) {
+        valid = false; message = el.tagName === 'SELECT' ? 'Please make a selection.' : 'This field is required.';
+      }
+
+      el.setAttribute('aria-invalid', valid ? 'false' : 'true');
+      if (errorEl) {
+        errorEl.textContent = message;
+        errorEl.hidden = valid;
+      }
+      return valid;
+    }
+
+    /* ---- Full form validation (returns array of error objects) ---- */
+    function validateAll() {
+      const errors = [];
+      /* Text, textarea, select */
+      form.querySelectorAll('input:not([type="radio"]):not([type="checkbox"]), textarea, select').forEach(el => {
+        if (!el.required) return;
+        const valid = el.value.trim() !== '';
+        el.setAttribute('aria-invalid', valid ? 'false' : 'true');
+        const errorEl = document.getElementById(el.id + '-error');
+        if (errorEl) {
+          errorEl.hidden = valid;
+          if (!valid) errorEl.textContent = el.tagName === 'SELECT' ? 'Please make a selection.' : 'This field is required.';
+        }
+        if (!valid) {
+          const label = form.querySelector(`label[for="${el.id}"]`);
+          errors.push({
+            fieldId: el.id,
+            label:   label ? label.textContent.replace(/[*(required)]/g, '').trim() : el.id,
+            message: el.tagName === 'SELECT' ? 'Please make a selection.' : 'This field is required.'
+          });
+        }
+      });
+      /* Checkboxes */
+      form.querySelectorAll('input[type="checkbox"][required]').forEach(el => {
+        const valid = el.checked;
+        el.setAttribute('aria-invalid', valid ? 'false' : 'true');
+        const errorEl = document.getElementById(el.id + '-error');
+        if (errorEl) { errorEl.hidden = valid; }
+        if (!valid) {
+          const label = form.querySelector(`label[for="${el.id}"]`);
+          errors.push({
+            fieldId: el.id,
+            label:   label ? label.textContent.replace(/[*(required)]/g, '').trim() : el.id,
+            message: 'This confirmation is required.'
+          });
+        }
+      });
+      /* Radio groups */
+      const radioNames = new Set(
+        Array.from(form.querySelectorAll('input[type="radio"]')).map(r => r.name)
+      );
+      radioNames.forEach(name => {
+        const group = form.querySelector(`[name="${name}"]`);
+        if (!group) return;
+        const fieldset = group.closest('fieldset[aria-required="true"]');
+        if (!fieldset) return;
+        const checked = form.querySelector(`[name="${name}"]:checked`);
+        const errorEl = document.getElementById(name.replace(/-/g, '-') + '-error') ||
+                        fieldset.querySelector('.field-error');
+        const valid = !!checked;
+        if (errorEl) { errorEl.hidden = valid; }
+        if (!valid) {
+          const legendText = fieldset.querySelector('legend')?.textContent.replace(/[*(required)]/g, '').trim() || name;
+          errors.push({
+            fieldId: fieldset.querySelector('input[type="radio"]')?.id || name,
+            label:   legendText,
+            message: 'Please select one option.'
+          });
+        }
+      });
+      return errors;
+    }
+
+    /* ---- Show error summary ---- */
+    function showErrorSummary(errors) {
+      errorHdg.textContent =
+        'Your record has ' + errors.length + ' error' + (errors.length === 1 ? '' : 's') +
+        '. Please correct the following:';
+      errorList.innerHTML = errors.map(e =>
+        '<li><a href="#' + e.fieldId + '">' + e.label + ': ' + e.message + '</a></li>'
+      ).join('');
+      errorSummary.removeAttribute('hidden');
+      errorHdg.focus();
+
+      announcer.textContent = '';
+      requestAnimationFrame(() => {
+        announcer.textContent = errors.length + ' error' + (errors.length === 1 ? '' : 's') + ' found. Review the error summary.';
+      });
+    }
+
+    /* ---- Clear error summary ---- */
+    function clearErrorSummary() {
+      errorSummary.setAttribute('hidden', '');
+      errorList.innerHTML = '';
+      errorHdg.textContent = '';
+    }
+
+    /* ---- Submit ---- */
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      clearErrorSummary();
+      const errors = validateAll();
+      if (errors.length) {
+        showErrorSummary(errors);
+        return;
+      }
+      /* Valid — save as final record */
+      saveDraft('submit');
+      const ts = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      successTs.textContent = 'Submitted at ' + ts;
+      successBox.removeAttribute('hidden');
+      successBox.focus();
+      btnSubmit.setAttribute('disabled', '');
+      announcer.textContent = '';
+      requestAnimationFrame(() => { announcer.textContent = 'Governance record submitted successfully.'; });
+    });
+
+    /* ---- Blur validation + progress update ---- */
+    form.addEventListener('focusout', e => {
+      const el = e.target;
+      if (el.matches('input, textarea, select')) {
+        if (el.required || el.getAttribute('aria-required') === 'true') {
+          validateField(el);
+        }
+        saveDraft('blur');
+        updateProgress(true);
+      }
+    });
+
+    /* ---- Manual save ---- */
+    btnSave.addEventListener('click', () => {
+      saveDraft('manual');
+      updateProgress(true);
+    });
+
+    /* ---- Navigation: save before leaving ---- */
+    document.querySelectorAll('.btn--nav').forEach(link => {
+      link.addEventListener('click', () => saveDraft('exit'));
+    });
+
+    /* ---- Autosave timer ---- */
+    function startAutosave() {
+      autoSaveTimer = setInterval(() => {
+        saveDraft('auto');
+        updateProgress(false);
+      }, AUTOSAVE_MS);
+    }
+
+    /* ---- Init: called by screen-specific script after SCREEN_ID is set ---- */
+    window.__initGovernanceForm = function (id) {
+      SCREEN_ID = id;
+      restoreDraft();
+      startAutosave();
+      updateProgress(false);
+    };
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script — TEMPLATE: update all values below
+       ============================================================ -->
+  <script type="module">
+    /* Progress tracker */
+    document.getElementById('pt-module').textContent       = '[X]';
+    document.getElementById('pt-lesson').textContent       = '[X.X]';
+    document.getElementById('pt-phase').textContent        = '[X]';
+    document.getElementById('pt-step').textContent         = '[X]';
+    document.getElementById('pt-screen').textContent       = '[X]';
+    document.getElementById('pt-screen-total').textContent = '[Y]';
+
+    /* Module nav aria-current */
+    document.querySelectorAll('.module-nav-link').forEach(link => link.removeAttribute('aria-current'));
+    const activeLink = document.querySelector('.module-nav-link[href="[MODULE_HREF].html"]');
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+
+    /* TEMPLATE: set a unique ID for this governance form screen.
+       Used as localStorage key: governance_[SCREEN_ID]
+       Convention: module[N]_lesson[N]_governance[N]
+       Example: 'module1_lesson3_governance1'
+       Calling this triggers draft restore, autosave timer, and initial progress check. */
+    window.__initGovernanceForm('[MODULE]_[LESSON]_[GOVERNANCE_N]');
+  </script>
+
+</body>
+</html>

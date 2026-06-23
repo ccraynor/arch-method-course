@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Worked example: an expert applies the four bucket balance checks to the Meridian bucket map, evaluates why the three-item Post-Incident Close-Out bucket passes despite its smaller size, and records the balance decision using the five-field governance rule.">
+  <title>Worked Example: Evaluate Bucket Balance — Lesson 1.2 — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l2-s4 -- Worked Example: Evaluate Bucket Balance
+       Phase 1, Step 3.
+       All color values use CSS tokens. No hard-coded hex values.
+       ================================================================ */
+
+    .worked-example__meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 0 0.25rem;
+    }
+
+    .screen-type-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    .time-estimate {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 3px;
+      padding: 0.125rem 0.5rem;
+    }
+
+    .lesson-label {
+      display: block;
+      margin: 0 0 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-link);
+    }
+
+    .worked-example__title {
+      margin: 0 0 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    .step-badge {
+      display: inline-block;
+      margin: 0 0 0.875rem;
+      padding: 0.25rem 0.625rem;
+      background: var(--color-bg-page);
+      border: 1.5px solid var(--color-text-link);
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-link);
+    }
+
+    .scenario-context {
+      display: flex;
+      align-items: baseline;
+      gap: 0.375rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border-left: 3px solid var(--color-border-strong);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      margin: 0 0 1.5rem;
+    }
+
+    .scenario-label {
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+    }
+
+    /* ---- Two-column layout ---- */
+    .worked-example__layout {
+      display: grid;
+      grid-template-columns: 1fr 20rem;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .worked-example__layout { grid-template-columns: 1fr; }
+    }
+
+    .worked-example__content {
+      display: flex;
+      flex-direction: column;
+      gap: 2.25rem;
+    }
+
+    .example-step {
+      display: grid;
+      grid-template-columns: 2.75rem 1fr;
+      gap: 0 1rem;
+    }
+
+    .step-marker {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 0.125rem;
+    }
+
+    .step-marker span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      background: var(--color-text-link);
+      color: var(--color-text-inverse);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .step-body { min-width: 0; }
+
+    .step-heading {
+      margin: 0.25rem 0 0.625rem;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+    }
+
+    .step-content {
+      margin: 0 0 0.875rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    .step-content:last-child { margin-bottom: 0; }
+
+    /* ---- Balance criteria list (Step 01) ---- */
+    .criteria-list {
+      margin: 0 0 0.875rem;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .criteria-list li {
+      display: grid;
+      grid-template-columns: 1.75rem 1fr;
+      gap: 0 0.625rem;
+      align-items: baseline;
+      padding: 0.5625rem 0.875rem;
+      border-bottom: 1px solid var(--color-border-default);
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.55;
+      background: var(--color-bg-page);
+    }
+
+    .criteria-list li:last-child { border-bottom: none; }
+    .criteria-list li:nth-child(even) { background: var(--color-bg-subtle); }
+
+    .criteria-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ---- Balance check cards (Steps 02-05) ---- */
+    .balance-card {
+      margin: 0 0 0.875rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .balance-card:last-child { margin-bottom: 0; }
+
+    .balance-card__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.625rem 1rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+    }
+
+    .balance-card__title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+    }
+
+    .bucket-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.625rem;
+      height: 1.625rem;
+      border-radius: 50%;
+      background: var(--color-text-inverse);
+      color: var(--color-brand-navy);
+      font-size: 0.75rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .balance-card__name {
+      font-size: 0.9375rem;
+      font-weight: 700;
+    }
+
+    .balance-card__count {
+      font-size: 0.75rem;
+      opacity: 0.8;
+      white-space: nowrap;
+    }
+
+    .balance-card__body { padding: 0; }
+
+    /* Criterion rows */
+    .criterion-row {
+      display: grid;
+      grid-template-columns: 1.625rem 8rem 1fr;
+      gap: 0 0.625rem;
+      align-items: baseline;
+      padding: 0.5625rem 1rem;
+      border-bottom: 1px solid var(--color-border-default);
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+
+    .criterion-row:last-child { border-bottom: none; }
+    .criterion-row:nth-child(even) { background: var(--color-bg-subtle); }
+
+    @media (max-width: 600px) {
+      .criterion-row {
+        grid-template-columns: 1.625rem 1fr;
+      }
+      .criterion-label { display: none; }
+    }
+
+    .criterion-icon { flex-shrink: 0; margin-top: 0.125rem; }
+
+    .icon--pass  { color: var(--color-success-text); }
+    .icon--flag  { color: var(--color-warning-text); }
+    .icon--note  { color: var(--color-text-secondary); }
+
+    .criterion-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+
+    .criterion-text { color: var(--color-text-primary); }
+    .criterion-text strong { font-weight: 700; }
+
+    /* Verdict strip */
+    .verdict-strip {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.5625rem 1rem;
+      border-top: 2px solid var(--color-border-default);
+    }
+
+    .verdict-strip--pass {
+      background: var(--color-success-bg);
+      border-top-color: var(--color-success-border);
+    }
+
+    .verdict-strip--flag {
+      background: var(--color-warning-bg);
+      border-top-color: var(--color-warning-border);
+    }
+
+    .verdict-label {
+      font-size: 0.8125rem;
+      font-weight: 700;
+    }
+
+    .verdict-strip--pass .verdict-label { color: var(--color-success-text); }
+    .verdict-strip--flag .verdict-label { color: var(--color-warning-text); }
+
+    .verdict-text {
+      font-size: 0.8125rem;
+      color: var(--color-text-primary);
+      line-height: 1.5;
+    }
+
+    /* ---- Thin-bucket resolution panel (Step 05 only) ---- */
+    .thin-resolution {
+      margin: 0.875rem 0 0;
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .thin-resolution__header {
+      padding: 0.5rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border-bottom: 1px solid var(--color-border-default);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+    }
+
+    .thin-check {
+      display: grid;
+      grid-template-columns: 1.5rem 1fr;
+      gap: 0 0.5rem;
+      align-items: baseline;
+      padding: 0.5625rem 0.875rem;
+      border-bottom: 1px solid var(--color-border-default);
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.55;
+    }
+
+    .thin-check:last-child { border-bottom: none; }
+    .thin-check:nth-child(even) { background: var(--color-bg-subtle); }
+
+    .thin-check strong { font-weight: 700; }
+
+    .thin-resolved {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-success-bg);
+      border-top: 2px solid var(--color-success-border);
+      font-size: 0.875rem;
+      color: var(--color-success-text);
+      line-height: 1.55;
+    }
+
+    .thin-resolved strong { font-weight: 700; }
+
+    /* ---- Sequence flow (Step 06) ---- */
+    .sequence-flow {
+      margin: 0 0 1rem;
+      padding: 1rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+    }
+
+    .sequence-flow__label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+      margin: 0 0 0.75rem;
+    }
+
+    .sequence-nodes {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .sequence-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 6rem;
+      max-width: 8rem;
+      flex: 1;
+    }
+
+    .sequence-node__box {
+      width: 100%;
+      padding: 0.5rem 0.5rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+      border-radius: 4px;
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .sequence-node__num {
+      display: block;
+      font-size: 0.6875rem;
+      opacity: 0.75;
+      margin-bottom: 0.125rem;
+    }
+
+    .sequence-node__items {
+      display: block;
+      font-size: 0.6875rem;
+      opacity: 0.7;
+      margin-top: 0.125rem;
+      font-weight: 400;
+    }
+
+    .sequence-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0.5rem 0.25rem 0;
+      gap: 0.125rem;
+      min-width: 2rem;
+    }
+
+    .sequence-arrow__svg { color: var(--color-text-secondary); }
+
+    .sequence-arrow__label {
+      font-size: 0.625rem;
+      color: var(--color-text-secondary);
+      text-align: center;
+      line-height: 1.3;
+      max-width: 3.5rem;
+    }
+
+    .sequence-note {
+      margin: 0.625rem 0 0;
+      padding: 0.5rem 0.75rem;
+      background: var(--color-bg-page);
+      border: 1px solid var(--color-border-default);
+      border-radius: 4px;
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+    }
+
+    /* ---- Governance record ---- */
+    .gov-record {
+      margin: 0.875rem 0 0;
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .gov-record__header {
+      padding: 0.5rem 1rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .gov-field {
+      display: grid;
+      grid-template-columns: 10.5rem 1fr;
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .gov-field:last-child { border-bottom: none; }
+
+    @media (max-width: 540px) {
+      .gov-field { grid-template-columns: 1fr; }
+    }
+
+    .gov-field__key {
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      border-right: 1px solid var(--color-border-default);
+    }
+
+    @media (max-width: 540px) {
+      .gov-field__key {
+        border-right: none;
+        border-bottom: 1px solid var(--color-border-default);
+      }
+    }
+
+    .gov-field__val {
+      padding: 0.625rem 0.875rem;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      background: var(--color-bg-page);
+    }
+
+    .field-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      background: var(--color-text-link);
+      color: var(--color-text-inverse);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      margin-right: 0.375rem;
+      vertical-align: middle;
+    }
+
+    /* ---- Right column: think-aloud ---- */
+    .worked-example__think-aloud {
+      position: sticky;
+      top: 1.5rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 900px) {
+      .worked-example__think-aloud { position: static; }
+    }
+
+    .think-aloud__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--color-border-default);
+      background: var(--color-bg-page);
+    }
+
+    .think-aloud__heading {
+      margin: 0;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .think-aloud__list {
+      padding: 0.875rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .annotation-item {
+      display: grid;
+      grid-template-columns: 1.625rem 1fr;
+      gap: 0 0.625rem;
+      align-items: start;
+    }
+
+    .annotation-marker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      border: 1.5px solid var(--color-border-strong);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+      margin-top: 0.0625rem;
+    }
+
+    .annotation-text {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    .btn--toggle {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.625rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 4px;
+      background: var(--color-bg-page);
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn--toggle:hover { background: var(--color-bg-subtle); color: var(--color-text-primary); }
+    .btn--toggle:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+
+    /* High contrast */
+    @media (prefers-contrast: more) {
+      .scenario-context { border-left-color: var(--color-border-strong); }
+      .criteria-list, .criteria-list li { border-color: var(--color-border-strong); }
+      .balance-card { border-color: var(--color-border-strong); }
+      .criterion-row { border-bottom-color: var(--color-border-strong); }
+      .thin-resolution { border-color: var(--color-border-strong); }
+      .thin-resolution__header { border-bottom-color: var(--color-border-strong); }
+      .thin-check { border-bottom-color: var(--color-border-strong); }
+      .sequence-flow { border-color: var(--color-border-strong); }
+      .sequence-note { border-color: var(--color-border-strong); }
+      .gov-record { border-color: var(--color-border-strong); }
+      .gov-field { border-bottom-color: var(--color-border-strong); }
+      .gov-field__key { border-right-color: var(--color-border-strong); }
+      .worked-example__think-aloud { border-color: var(--color-border-strong); }
+      .annotation-marker { border-color: var(--color-text-primary); color: var(--color-text-primary); }
+      .step-badge { border-color: var(--color-border-strong); color: var(--color-text-primary); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <header role="banner">
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+    <div id="progress-tracker" role="group" aria-label="Course progress" tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.2</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">3</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">4</span> of <span id="pt-screen-total">6</span></span>
+    </div>
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel" aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer" aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory" aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel" aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+  </header>
+
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item"><a href="intro-0.1.html" class="module-nav-link">Introduction</a></li>
+      <li class="module-nav-item"><a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a></li>
+      <li class="module-nav-item"><a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a></li>
+      <li class="module-nav-item"><a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a></li>
+      <li class="module-nav-item"><a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a></li>
+    </ol>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <section id="current-activity" tabindex="-1" aria-label="Current activity">
+      <article class="worked-example" aria-labelledby="example-title">
+
+        <header class="worked-example__header">
+          <div class="worked-example__meta">
+            <span class="screen-type-label">Worked Example</span>
+            <span class="time-estimate" aria-label="Estimated reading time: 16 to 20 minutes">16&ndash;20 min</span>
+          </div>
+          <p class="lesson-label" aria-label="Lesson 1.2">Lesson 1.2</p>
+          <h1 id="example-title" class="worked-example__title">
+            Evaluating Bucket Balance: Four Checks Against the Meridian Constraint Set
+          </h1>
+          <span class="step-badge">Step 3</span>
+          <div class="scenario-context" role="note" aria-label="Scenario context">
+            <span class="scenario-label">Scenario:</span>
+            Meridian Regional Health Network -- the four-bucket map is established.
+            An expert now applies four balance checks to each bucket: constraint
+            compliance, item volume, instructional coherence, and sequence position.
+            The three-item Post-Incident Close-Out bucket receives extended evaluation.
+          </div>
+        </header>
+
+        <div class="worked-example__layout">
+
+          <!-- ====================================================
+               Left column
+               ==================================================== -->
+          <div class="worked-example__content">
+
+            <!-- Step 01: What balance means -->
+            <div class="example-step" id="step-1">
+              <div class="step-marker" aria-label="Step 1">
+                <span aria-hidden="true">01</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">
+                  Define Balance Before Running the Checks
+                </h2>
+                <p class="step-content">
+                  Balance does not mean equal. Four buckets do not need to contain
+                  four items each. An architecture with five items in one bucket and
+                  three in another can be perfectly balanced if both satisfy the same
+                  four criteria. The balance check is a constraint compliance test --
+                  not a counting exercise.
+                </p>
+                <p class="step-content">
+                  For each MRHN bucket, I apply four criteria:
+                </p>
+                <ol class="criteria-list" aria-label="Four balance criteria">
+                  <li>
+                    <span class="criteria-num" aria-hidden="true">1</span>
+                    <span><strong>Constraint compliance:</strong> Can the bucket's scope items be delivered within the binding constraints -- LC-1 (4-hour SME access cap), LC-3 and LC-4 (SCORM self-paced, 90-day window), and PC-3 (role-bounded authority) where applicable?</span>
+                  </li>
+                  <li>
+                    <span class="criteria-num" aria-hidden="true">2</span>
+                    <span><strong>Item volume:</strong> Is the number of scope items appropriate for this workflow phase -- neither overloaded (too many or too complex for the constraint budget) nor thin (too sparse to justify a standalone category)?</span>
+                  </li>
+                  <li>
+                    <span class="criteria-num" aria-hidden="true">3</span>
+                    <span><strong>Instructional coherence:</strong> Do the items form a teachable unit? Do they share a performance context, prerequisite structure, or governing constraint that defines a coherent learning challenge?</span>
+                  </li>
+                  <li>
+                    <span class="criteria-num" aria-hidden="true">4</span>
+                    <span><strong>Sequence position:</strong> Does this bucket sit correctly in the workflow sequence? Are the prerequisites it depends on established by the preceding bucket?</span>
+                  </li>
+                </ol>
+                <p class="step-content">
+                  A bucket passes the balance check when it satisfies all four
+                  criteria. A single failure is a re-bucketing flag that requires
+                  a documented decision. I will note where flags arise and whether
+                  the re-bucketing test shows the flag is resolved or genuinely
+                  requires structural change.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 02: Bucket 1 -->
+            <div class="example-step" id="step-2">
+              <div class="step-marker" aria-label="Step 2">
+                <span aria-hidden="true">02</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">
+                  Balance Check: Bucket 1 -- Threat Recognition and Triage
+                </h2>
+                <p class="step-content">
+                  Bucket 1 contains five items: SI-08, SI-01, SI-16, SI-06, SI-02.
+                  Five items is the largest bucket in this set, which makes it the
+                  first candidate for an overload flag. The check begins here.
+                </p>
+
+                <div class="balance-card"
+                     role="region"
+                     aria-label="Balance check for Bucket 1: Threat Recognition and Triage">
+                  <div class="balance-card__header">
+                    <div class="balance-card__title-group">
+                      <span class="bucket-num" aria-hidden="true">1</span>
+                      <span class="balance-card__name">Threat Recognition and Triage</span>
+                    </div>
+                    <span class="balance-card__count">5 items -- SI-08, 01, 16, 06, 02</span>
+                  </div>
+                  <div class="balance-card__body">
+
+                    <div class="criterion-row">
+                      <svg class="criterion-icon icon--pass" aria-label="Passes" focusable="false"
+                           width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="criterion-label">Constraint fit</span>
+                      <span class="criterion-text">
+                        LC-1: triage and protocol classification is the highest SME priority --
+                        IR-2024 Tier 1 and Tier 2 execution (SI-01, SI-02) and escalation
+                        protocol (SI-06) require expert review. LC-3/LC-4: scenario-based
+                        simulation is the appropriate SCORM delivery format for decision chains.
+                        Constraint budget is sufficient.
+                      </span>
+                    </div>
+
+                    <div class="criterion-row">
+                      <svg class="criterion-icon icon--pass" aria-label="Passes" focusable="false"
+                           width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="criterion-label">Item volume</span>
+                      <span class="criterion-text">
+                        Five items is not overloaded here. The five items form a linear
+                        decision chain -- each activates the next. The cognitive load
+                        is sequential, not additive. Splitting this chain would require
+                        learners to reunite the prerequisite logic themselves.
+                      </span>
+                    </div>
+
+                    <div class="criterion-row">
+                      <svg class="criterion-icon icon--pass" aria-label="Passes" focusable="false"
+                           width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="criterion-label">Coherence</span>
+                      <span class="criterion-text">
+                        All five items answer one question: <em>what is this incident and am
+                        I the right person to handle it?</em> Shared performance context,
+                        shared prerequisite structure, and a single governing challenge.
+                      </span>
+                    </div>
+
+                    <div class="criterion-row">
+                      <svg class="criterion-icon icon--pass" aria-label="Passes" focusable="false"
+                           width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="criterion-label">Sequence</span>
+                      <span class="criterion-text">
+                        First position is correct. Every other bucket depends on threat
+                        classification and protocol activation. No upstream prerequisites exist.
+                      </span>
+                    </div>
+
+                    <div class="verdict-strip verdict-strip--pass">
+                      <svg aria-hidden="true" focusable="false" width="16" height="16"
+                           viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="verdict-label">Passes balance check.</span>
+                      <span class="verdict-text">No re-bucketing required. Five items is appropriate for this workflow phase.</span>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Step 03: Bucket 2 -->
+            <div class="example-step" id="step-3">
+              <div class="step-marker" aria-label="Step 3">
+                <span aria-hidden="true">03</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">
+                  Balance Check: Bucket 2 -- Containment and Control
+                </h2>
+                <p class="step-content">
+                  Bucket 2 contains four items: SI-03, SI-11, SI-09, SI-15.
+                  These are role-authorized operational actions within the
+                  containment window. The governing constraint for all four
+                  is PC-3 (role-bounded authority) -- a feature that reduces
+                  instructional complexity even as the content is technically demanding.
+                </p>
+
+                <div class="balance-card"
+                     role="region"
+                     aria-label="Balance check for Bucket 2: Containment and Control">
+                  <div class="balance-card__header">
+                    <div class="balance-card__title-group">
+                      <span class="bucket-num" aria-hidden="true">2</span>
+                      <span class="balance-card__name">Containment and Control</span>
+                    </div>
+                    <span class="balance-card__count">4 items -- SI-03, 11, 09, 15</span>
+                  </div>
+                  <div class="balance-card__body">
+
+                    <div class="criterion-row">
+                      <svg class="criterion-icon icon--pass" aria-label="Passes" focusable="false"
+                           width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="criterion-label">Constraint fit</span>
+                      <span class="criterion-text">
+                        PC-3 governs all four items. Constraint coherence reduces
+                        instructional complexity -- learners apply the same authority
+                        boundary rule across all four actions. LC-1: containment is
+                        the second SME priority after triage. Constraint budget is
+                        sufficient for four items with shared governing logic.
+                      </span>
+                    </div>
+
+                    <div class="criterion-row">
+                      <svg class="criterion-icon icon--pass" aria-label="Passes" focusable="false"
+                           width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="criterion-label">Item volume</span>
+                      <span class="criterion-text">
+                        Four items is well-scoped for the containment phase. Not overloaded
+                        (all governed by the same constraint) and not thin (each item
+                        requires distinct procedural knowledge: isolation, segmentation,
+                        evidence chain, external notification).
+                      </span>
+                    </div>
+
+                    <div class="criterion-row">
+                      <svg class="criterion-icon icon--pass" aria-label="Passes" focusable="false"
+                           width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="criterion-label">Coherence</span>
+                      <span class="criterion-text">
+                        All four items are role-authorized physical or operational actions
+                        executed within the containment window. The shared learning
+                        challenge: execute the right containment action within your
+                        authority, without waiting for supervisor confirmation.
+                      </span>
+                    </div>
+
+                    <div class="criterion-row">
+                      <svg class="criterion-icon icon--pass" aria-label="Passes" focusable="false"
+                           width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="criterion-label">Sequence</span>
+                      <span class="criterion-text">
+                        Second position is correct. Triage (Bucket 1) must confirm incident
+                        classification and activate protocol before containment begins.
+                        Hard prerequisite satisfied.
+                      </span>
+                    </div>
+
+                    <div class="verdict-strip verdict-strip--pass">
+                      <svg aria-hidden="true" focusable="false" width="16" height="16"
+                           viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="verdict-label">Passes balance check.</span>
+                      <span class="verdict-text">Well-scoped. PC-3 constraint coherence supports instructional efficiency.</span>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Step 04: Bucket 3 -->
+            <div class="example-step" id="step-4">
+              <div class="step-marker" aria-label="Step 4">
+                <span aria-hidden="true">04</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">
+                  Balance Check: Bucket 3 -- Active Response Execution
+                </h2>
+                <p class="step-content">
+                  Bucket 3 contains four items: SI-04, SI-05, SI-10, SI-14.
+                  These are concurrent obligations during active incident response.
+                  This bucket has the highest constraint density in the set -- four
+                  items with four different governing constraints -- which requires
+                  explicit attention in the constraint compliance check.
+                </p>
+
+                <div class="balance-card"
+                     role="region"
+                     aria-label="Balance check for Bucket 3: Active Response Execution">
+                  <div class="balance-card__header">
+                    <div class="balance-card__title-group">
+                      <span class="bucket-num" aria-hidden="true">3</span>
+                      <span class="balance-card__name">Active Response Execution</span>
+                    </div>
+                    <span class="balance-card__count">4 items -- SI-04, 05, 10, 14</span>
+                  </div>
+                  <div class="balance-card__body">
+
+                    <div class="criterion-row">
+                      <svg class="criterion-icon icon--flag" aria-label="Noted -- review required" focusable="false"
+                           width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M8 1.5L14.5 13.5H1.5L8 1.5Z" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 6v4M8 12v.5" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round"/>
+                      </svg>
+                      <span class="criterion-label">Constraint fit</span>
+                      <span class="criterion-text">
+                        <strong>Highest constraint density:</strong> SI-04 governed by PC-4,
+                        SI-05 by PC-5, SI-10 by RC-1 and RC-3, SI-14 by RC-2. Four
+                        regulatory or performance constraints across four items.
+                        LC-1 implication: each item requires SME review for compliance
+                        accuracy, particularly SI-10 (breach notification timing) and
+                        SI-14 (deviation from IR-2024). Constraint budget is sufficient
+                        but this bucket must receive priority SME time alongside Bucket 1.
+                      </span>
+                    </div>
+
+                    <div class="criterion-row">
+                      <svg class="criterion-icon icon--pass" aria-label="Passes" focusable="false"
+                           width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="criterion-label">Item volume</span>
+                      <span class="criterion-text">
+                        Four items is appropriate. The concurrent nature of these obligations
+                        (all active simultaneously during response) means the instruction
+                        must teach learners to manage multiple obligations at once -- which
+                        is the correct difficulty level for this phase, not a sign of overload.
+                      </span>
+                    </div>
+
+                    <div class="criterion-row">
+                      <svg class="criterion-icon icon--pass" aria-label="Passes" focusable="false"
+                           width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="criterion-label">Coherence</span>
+                      <span class="criterion-text">
+                        Shared temporal context -- all four obligations are active during
+                        the response window. The learning challenge: manage concurrent
+                        documentation, communication, regulatory, and compliance obligations
+                        without deferring any to post-closure.
+                      </span>
+                    </div>
+
+                    <div class="criterion-row">
+                      <svg class="criterion-icon icon--pass" aria-label="Passes" focusable="false"
+                           width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="criterion-label">Sequence</span>
+                      <span class="criterion-text">
+                        Third position is correct. SI-04 (real-time documentation) can begin
+                        as soon as the incident is confirmed -- concurrently with Bucket 2
+                        containment actions. SI-10 clock management begins at discovery.
+                        No items in this bucket require containment to be complete before
+                        they begin, though SI-05 (leadership communication) typically follows
+                        initial containment.
+                      </span>
+                    </div>
+
+                    <div class="verdict-strip verdict-strip--pass">
+                      <svg aria-hidden="true" focusable="false" width="16" height="16"
+                           viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="verdict-label">Passes balance check.</span>
+                      <span class="verdict-text">Constraint density is high but manageable. Allocate SME time to SI-10 and SI-14 specifically. No re-bucketing required.</span>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Step 05: Bucket 4 -- the key case -->
+            <div class="example-step" id="step-5">
+              <div class="step-marker" aria-label="Step 5">
+                <span aria-hidden="true">05</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">
+                  Balance Check: Bucket 4 -- Post-Incident Close-Out
+                </h2>
+                <p class="step-content">
+                  Bucket 4 contains three items: SI-12, SI-07, SI-13. Three items
+                  is the smallest bucket in the set. That automatically triggers
+                  a thin-bucket evaluation. A thin bucket would require re-bucketing --
+                  merging with Bucket 3 or restructuring the set. This is the
+                  most consequential balance check in the MRHN map.
+                </p>
+
+                <div class="balance-card"
+                     role="region"
+                     aria-label="Balance check for Bucket 4: Post-Incident Close-Out">
+                  <div class="balance-card__header">
+                    <div class="balance-card__title-group">
+                      <span class="bucket-num" aria-hidden="true">4</span>
+                      <span class="balance-card__name">Post-Incident Close-Out</span>
+                    </div>
+                    <span class="balance-card__count">3 items -- SI-12, 07, 13</span>
+                  </div>
+                  <div class="balance-card__body">
+
+                    <div class="criterion-row">
+                      <svg class="criterion-icon icon--pass" aria-label="Passes" focusable="false"
+                           width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="criterion-label">Constraint fit</span>
+                      <span class="criterion-text">
+                        SI-07 (RC-1, RC-3) requires SME review for OCR compliance accuracy.
+                        SI-12 is procedurally straightforward but high-stakes.
+                        SI-13 (lessons learned) is lower constraint density and can be
+                        largely self-directed. Estimated SME time: 30 to 45 minutes.
+                        Well within the remaining LC-1 budget after Buckets 1 through 3.
+                      </span>
+                    </div>
+
+                    <div class="criterion-row">
+                      <svg class="criterion-icon icon--flag" aria-label="Flag -- thin bucket evaluation required" focusable="false"
+                           width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M8 1.5L14.5 13.5H1.5L8 1.5Z" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 6v4M8 12v.5" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round"/>
+                      </svg>
+                      <span class="criterion-label">Item volume</span>
+                      <span class="criterion-text">
+                        <strong>Three items -- thin bucket evaluation triggered.</strong>
+                        Three items is below the center of the range in this set (average: 4).
+                        This flag does not mean the bucket fails -- it means the thin-bucket
+                        test must be applied to determine whether the flag is resolved or
+                        requires re-bucketing. See evaluation below.
+                      </span>
+                    </div>
+
+                    <div class="criterion-row">
+                      <svg class="criterion-icon icon--pass" aria-label="Passes" focusable="false"
+                           width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="criterion-label">Coherence</span>
+                      <span class="criterion-text">
+                        All three items require containment confirmation as a hard prerequisite.
+                        None can begin until the incident is formally closed and the full
+                        active-response record is available. The shared prerequisite is what
+                        defines this as a distinct phase -- not item count.
+                      </span>
+                    </div>
+
+                    <div class="criterion-row">
+                      <svg class="criterion-icon icon--pass" aria-label="Passes" focusable="false"
+                           width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="criterion-label">Sequence</span>
+                      <span class="criterion-text">
+                        Fourth position is correct. Containment (Bucket 2) must be
+                        verified and active response (Bucket 3) substantially complete
+                        before any Bucket 4 item can begin. Hard prerequisite satisfied.
+                      </span>
+                    </div>
+
+                    <div class="verdict-strip verdict-strip--flag">
+                      <svg aria-hidden="true" focusable="false" width="16" height="16"
+                           viewBox="0 0 16 16" fill="none">
+                        <path d="M8 1.5L14.5 13.5H1.5L8 1.5Z" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 6v4M8 12v.5" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round"/>
+                      </svg>
+                      <span class="verdict-label">Volume flag raised.</span>
+                      <span class="verdict-text">Thin-bucket evaluation required before verdict. Applying four-question test below.</span>
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- Thin-bucket resolution -->
+                <div class="thin-resolution"
+                     role="region"
+                     aria-label="Thin-bucket evaluation for Bucket 4">
+                  <div class="thin-resolution__header">
+                    Thin-Bucket Test -- Four Questions
+                  </div>
+
+                  <div class="thin-check">
+                    <svg aria-label="Passes" focusable="false" width="15" height="15"
+                         viewBox="0 0 15 15" fill="none"
+                         style="flex-shrink:0;margin-top:0.125rem;color:var(--color-success-text);">
+                      <circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+                      <path d="M4.5 7.5l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>
+                      <strong>1. Does each item require substantial procedural knowledge?</strong>
+                      Yes. SI-12 (recovery verification) is a multi-step integrity check.
+                      SI-07 (OCR breach documentation) requires precise compliance procedure.
+                      SI-13 (lessons learned) requires systematic retrospective analysis.
+                      None are one-step tasks.
+                    </span>
+                  </div>
+
+                  <div class="thin-check">
+                    <svg aria-label="Passes" focusable="false" width="15" height="15"
+                         viewBox="0 0 15 15" fill="none"
+                         style="flex-shrink:0;margin-top:0.125rem;color:var(--color-success-text);">
+                      <circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+                      <path d="M4.5 7.5l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>
+                      <strong>2. Does this bucket have a distinct prerequisite that clearly separates it from Bucket 3?</strong>
+                      Yes. Containment confirmation is the hard gate: SI-12, SI-07, and SI-13
+                      all require the incident to be formally closed before they begin. No item
+                      in Bucket 3 has this same prerequisite. The boundary is structurally clear.
+                    </span>
+                  </div>
+
+                  <div class="thin-check">
+                    <svg aria-label="Passes" focusable="false" width="15" height="15"
+                         viewBox="0 0 15 15" fill="none"
+                         style="flex-shrink:0;margin-top:0.125rem;color:var(--color-success-text);">
+                      <circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+                      <path d="M4.5 7.5l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>
+                      <strong>3. Do these items fit within the remaining constraint budget?</strong>
+                      Yes. SI-07 needs 30 to 45 minutes of SME time. SI-12 and SI-13 require less.
+                      Estimated total: 45 to 60 minutes SME, well within LC-1.
+                    </span>
+                  </div>
+
+                  <div class="thin-check">
+                    <svg aria-label="Passes" focusable="false" width="15" height="15"
+                         viewBox="0 0 15 15" fill="none"
+                         style="flex-shrink:0;margin-top:0.125rem;color:var(--color-success-text);">
+                      <circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+                      <path d="M4.5 7.5l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>
+                      <strong>4. Would merging Bucket 4 into Bucket 3 improve the architecture?</strong>
+                      No. Merging would blend concurrent-response obligations (Bucket 3) with
+                      post-closure tasks (Bucket 4) into a single instructional unit. Learners
+                      would encounter SI-07 (requires complete incident record) in the same
+                      context as SI-04 (real-time, begins at incident start). The temporal
+                      boundary that separates these obligations would disappear from the
+                      architecture. That boundary is one of the most important distinctions
+                      in incident response practice.
+                    </span>
+                  </div>
+
+                  <div class="thin-resolved">
+                    <svg aria-hidden="true" focusable="false" width="16" height="16"
+                         viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:0.125rem;">
+                      <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                      <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>
+                      <strong>Volume flag resolved. Bucket 4 passes the balance check.</strong>
+                      Three items is appropriate for this workflow phase. The thin-bucket test
+                      confirms instructional substance, a distinct prerequisite structure,
+                      constraint compliance, and that merging would harm the architecture.
+                      No re-bucketing required.
+                    </span>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Step 06: Sequence logic + governance record -->
+            <div class="example-step" id="step-6">
+              <div class="step-marker" aria-label="Step 6">
+                <span aria-hidden="true">06</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">
+                  Evaluate Sequence Logic and Record the Balance Decision
+                </h2>
+                <p class="step-content">
+                  With all four buckets passing the balance check, the final
+                  evaluation is sequence logic: does the bucket order Bucket 1 to
+                  Bucket 2 to Bucket 3 to Bucket 4 reflect a sound instructional
+                  prerequisite chain, not just a content grouping?
+                </p>
+
+                <div class="sequence-flow"
+                     role="region"
+                     aria-label="Bucket sequence with prerequisite links">
+                  <span class="sequence-flow__label" aria-hidden="true">
+                    Instructional Sequence and Prerequisite Logic
+                  </span>
+                  <div class="sequence-nodes" aria-label="Bucket sequence: Bucket 1 leads to Bucket 2 leads to Bucket 3, which runs concurrently with Bucket 2, and leads to Bucket 4">
+                    <div class="sequence-node">
+                      <div class="sequence-node__box">
+                        <span class="sequence-node__num">Bucket 1</span>
+                        Threat Recognition and Triage
+                        <span class="sequence-node__items">SI-08, 01, 16, 06, 02</span>
+                      </div>
+                    </div>
+                    <div class="sequence-arrow" aria-hidden="true">
+                      <svg class="sequence-arrow__svg" focusable="false" width="20" height="16"
+                           viewBox="0 0 20 16" fill="none">
+                        <path d="M2 8h14M12 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="sequence-arrow__label">Hard prerequisite</span>
+                    </div>
+                    <div class="sequence-node">
+                      <div class="sequence-node__box">
+                        <span class="sequence-node__num">Bucket 2</span>
+                        Containment and Control
+                        <span class="sequence-node__items">SI-03, 11, 09, 15</span>
+                      </div>
+                    </div>
+                    <div class="sequence-arrow" aria-hidden="true">
+                      <svg class="sequence-arrow__svg" focusable="false" width="20" height="16"
+                           viewBox="0 0 20 16" fill="none">
+                        <path d="M2 8h14M12 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="sequence-arrow__label">Concurrent from incident start</span>
+                    </div>
+                    <div class="sequence-node">
+                      <div class="sequence-node__box">
+                        <span class="sequence-node__num">Bucket 3</span>
+                        Active Response Execution
+                        <span class="sequence-node__items">SI-04, 05, 10, 14</span>
+                      </div>
+                    </div>
+                    <div class="sequence-arrow" aria-hidden="true">
+                      <svg class="sequence-arrow__svg" focusable="false" width="20" height="16"
+                           viewBox="0 0 20 16" fill="none">
+                        <path d="M2 8h14M12 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="sequence-arrow__label">Hard prerequisite (containment confirmed)</span>
+                    </div>
+                    <div class="sequence-node">
+                      <div class="sequence-node__box">
+                        <span class="sequence-node__num">Bucket 4</span>
+                        Post-Incident Close-Out
+                        <span class="sequence-node__items">SI-12, 07, 13</span>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="sequence-note">
+                    <strong>Concurrency note:</strong> Bucket 3 items (SI-04 real-time documentation,
+                    SI-10 clock management) begin at incident discovery -- concurrently with
+                    Bucket 2 containment. The architecture sequence teaches them in order, but
+                    instruction within Bucket 3 must make the concurrency explicit. This does
+                    not require re-bucketing; it requires instructional design within the bucket.
+                  </p>
+                </div>
+
+                <p class="step-content">
+                  All four checks pass. The sequence is sound. The balance check is
+                  complete and the decision is documented using the five-field
+                  governance rule established in Step 1.5:
+                </p>
+
+                <div class="gov-record"
+                     role="region"
+                     aria-label="Governance decision record for balance check: MRHN-D-002">
+                  <div class="gov-record__header">
+                    Decision Record -- MRHN-D-002: Bucket Map Balance Check
+                  </div>
+                  <div class="gov-field">
+                    <div class="gov-field__key">
+                      <span class="field-num" aria-hidden="true">1</span>
+                      Decision Statement
+                    </div>
+                    <div class="gov-field__val">
+                      The MRHN course architecture will proceed with four buckets in the
+                      sequence established in Step 2: Threat Recognition and Triage (5 items),
+                      Containment and Control (4 items), Active Response Execution (4 items),
+                      and Post-Incident Close-Out (3 items). No re-bucketing is required.
+                    </div>
+                  </div>
+                  <div class="gov-field">
+                    <div class="gov-field__key">
+                      <span class="field-num" aria-hidden="true">2</span>
+                      Constraint Reference
+                    </div>
+                    <div class="gov-field__val">
+                      LC-1 (4-hour SME access cap); LC-3 and LC-4 (SCORM self-paced, 90-day);
+                      PC-3 (role-bounded authority, Buckets 1 and 2); RC-1, RC-3 (OCR
+                      compliance, Buckets 3 and 4); SI-12, SI-07, SI-13 (Bucket 4 thin-bucket
+                      evaluation)
+                    </div>
+                  </div>
+                  <div class="gov-field">
+                    <div class="gov-field__key">
+                      <span class="field-num" aria-hidden="true">3</span>
+                      Rationale
+                    </div>
+                    <div class="gov-field__val">
+                      All four buckets satisfy constraint compliance, appropriate item volume,
+                      instructional coherence, and sequence position. Bucket 1's five-item
+                      count is justified by the linear decision chain structure. Bucket 4's
+                      three-item count is justified by the thin-bucket test: distinct
+                      prerequisite (containment confirmation), sufficient instructional
+                      substance, constraint compliance, and the finding that merging
+                      with Bucket 3 would remove a structurally critical temporal boundary
+                      from the architecture.
+                    </div>
+                  </div>
+                  <div class="gov-field">
+                    <div class="gov-field__key">
+                      <span class="field-num" aria-hidden="true">4</span>
+                      Risk Note
+                    </div>
+                    <div class="gov-field__val">
+                      If SME time is consumed disproportionately on Buckets 1 and 3 (both
+                      high constraint density), Bucket 4 item SI-07 may receive insufficient
+                      expert review before the 90-day delivery window closes. This risk is
+                      managed by establishing SME allocation in the project plan before
+                      decomposition begins in Module 2. A secondary risk: the concurrency
+                      between Buckets 2 and 3 must be explicitly addressed in instructional
+                      design during Module 2 -- if treated as strictly sequential, learners
+                      may not develop real-time multi-obligation management skills.
+                    </div>
+                  </div>
+                  <div class="gov-field">
+                    <div class="gov-field__key">
+                      <span class="field-num" aria-hidden="true">5</span>
+                      Checkpoint Linkage
+                    </div>
+                    <div class="gov-field__val">
+                      Gate 1.TG.1 (Transition Gate, Module 1) will verify that all four
+                      buckets are constraint-compliant and that the Bucket 4 thin-bucket
+                      rationale is documented. Module 3 Outcome Mapping will confirm that
+                      the instructional content within each bucket prepares learners for
+                      the specific performance requirements of that workflow phase.
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div><!-- /.worked-example__content -->
+
+          <!-- ====================================================
+               Right column: think-aloud
+               ==================================================== -->
+          <aside class="worked-example__think-aloud"
+                 aria-label="Expert think-aloud annotations">
+            <div class="think-aloud__header">
+              <h2 class="think-aloud__heading">Expert Think-Aloud</h2>
+              <button type="button"
+                      id="annotations-toggle"
+                      class="btn btn--toggle"
+                      aria-controls="annotations-list"
+                      aria-expanded="true">
+                <span class="toggle-label">Hide Annotations</span>
+              </button>
+            </div>
+            <div id="annotations-list" class="think-aloud__list">
+
+              <div class="annotation-item" data-step="1" aria-label="Annotation for step 1">
+                <span class="annotation-marker" aria-hidden="true">01</span>
+                <p class="annotation-text">
+                  The word "balance" sets the wrong expectation when designers
+                  first encounter Step 3. It sounds like counting. The four
+                  criteria make clear that balance is a fitness test, not an
+                  arithmetic one. A bucket with three items that all satisfy
+                  the four criteria is more balanced than a bucket with five
+                  items where two fail constraint compliance.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="2" aria-label="Annotation for step 2">
+                <span class="annotation-marker" aria-hidden="true">02</span>
+                <p class="annotation-text">
+                  The reflex when seeing five items is to split. I have seen
+                  designers split the triage bucket into "classification" and
+                  "protocol execution" just to reduce the count. That split
+                  breaks the decision chain and requires learners to integrate
+                  the halves themselves. The five items are one decision
+                  sequence -- splitting them is an instructional harm, not
+                  an architectural improvement.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="3" aria-label="Annotation for step 3">
+                <span class="annotation-marker" aria-hidden="true">03</span>
+                <p class="annotation-text">
+                  Constraint coherence within a bucket is a meaningful asset.
+                  When all four items in a bucket share the same governing
+                  constraint (PC-3), the constraint becomes the organizing
+                  principle of the instruction itself. Learners are not
+                  learning four separate things -- they are learning one
+                  governing rule applied across four operational contexts.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="4" aria-label="Annotation for step 4">
+                <span class="annotation-marker" aria-hidden="true">04</span>
+                <p class="annotation-text">
+                  High constraint density does not mean the bucket fails
+                  constraint compliance -- it means the SME allocation
+                  decision matters more. Flagging constraint density here
+                  is a planning signal for Module 2, not a structural problem.
+                  The flag goes in the governance record where it will inform
+                  the SME meeting agenda.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="5" aria-label="Annotation for step 5">
+                <span class="annotation-marker" aria-hidden="true">05</span>
+                <p class="annotation-text">
+                  The merge test in the thin-bucket evaluation is the one that
+                  does the real work. It is not enough to say "the three items
+                  form a coherent group." You have to ask whether the group
+                  is coherent enough to justify separate instructional treatment
+                  versus being absorbed into the adjacent bucket. When the merge
+                  would remove a critical temporal boundary from the architecture,
+                  the answer is always to keep the small bucket.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="6" aria-label="Annotation for step 6">
+                <span class="annotation-marker" aria-hidden="true">06</span>
+                <p class="annotation-text">
+                  The governance record for a balance check decision feels like
+                  overhead when everything passes. It is not. The record captures
+                  the reasoning behind the thin-bucket decision for Bucket 4. When
+                  a reviewer in Module 3 asks "why does this course have a
+                  three-item post-incident module?" the answer is in MRHN-D-002,
+                  not in someone's memory.
+                </p>
+              </div>
+
+            </div>
+          </aside>
+
+        </div><!-- /.worked-example__layout -->
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l2-s3.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="m1-l2-s5.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+    </section>
+  </main>
+
+  <!-- Supplementary Resources -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">
+        The balance check confirms MRHN_BucketMap_v1. Governance decision
+        MRHN-D-002 is recorded on this screen.
+      </p>
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">
+        MRHN-D-002 (Bucket Map balance check) is established on this
+        screen. MRHN-D-001 was established in Lesson 1.1b, Screen 4.
+      </p>
+    </section>
+  </aside>
+
+  <!-- Support Panels -->
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) { closeAll(); syncToggleStates(null); }
+        else { openPanel(panelName, btn); syncToggleStates(panelName); }
+      });
+    });
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => { closeAll(); syncToggleStates(null); });
+    });
+  </script>
+
+  <script type="module">
+    const toggle = document.getElementById('annotations-toggle');
+    const list   = document.getElementById('annotations-list');
+    const label  = toggle.querySelector('.toggle-label');
+    toggle.addEventListener('click', () => {
+      const nowExpanded = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(nowExpanded));
+      label.textContent = nowExpanded ? 'Hide Annotations' : 'Show Annotations';
+      if (nowExpanded) { list.removeAttribute('hidden'); }
+      else { list.setAttribute('hidden', ''); }
+    });
+  </script>
+
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.2';
+    document.getElementById('pt-phase').textContent        = '1';
+    document.getElementById('pt-step').textContent         = '3';
+    document.getElementById('pt-screen').textContent       = '4';
+    document.getElementById('pt-screen-total').textContent = '6';
+    document.querySelectorAll('.module-nav-link').forEach(link => link.removeAttribute('aria-current'));
+    const activeLink = document.querySelector('.module-nav-link[href="module-1.html"]');
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+  </script>
+
+</body>
+</html>

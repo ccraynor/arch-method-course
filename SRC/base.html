@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ARCH Method Practitioner Credential — a self-paced course for instructional designers in higher education.">
+  <title>ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <!-- Screen-specific stylesheets inserted here in individual lesson files -->
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+       First keyboard-focusable elements on every screen.
+       Visually hidden until focused (styled via base.css).
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <!-- Screen reader live region — required dependency of panelManager.js.
+       Must be present in DOM before any panel is opened.
+       Fires announcements within one rAF tick (~16ms), within the 500ms spec. -->
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header — banner landmark
+       Contains: brand identity, progress tracker, support tool toggles
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <!-- Progress Tracker
+         IDs are updated by individual lesson scripts via dataset or direct assignment.
+         tabindex="-1" makes this a valid skip link target. -->
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">
+        Module <span id="pt-module">1</span> of 4
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Lesson <span id="pt-lesson">1.1</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Phase <span id="pt-phase">1</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Step <span id="pt-step">1</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Screen <span id="pt-screen">1</span> of <span id="pt-screen-total">9</span>
+      </span>
+    </div>
+
+    <!-- Support Tool Toggles
+         aria-expanded and aria-controls are kept in sync by the inline
+         module script below. data-panel identifies the target panel. -->
+    <nav aria-label="Support tools">
+      <button type="button"
+              class="support-toggle"
+              data-panel="glossary"
+              aria-controls="glossary"
+              aria-expanded="false">Glossary</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="supportPanel"
+              aria-controls="supportPanel"
+              aria-expanded="false">Support</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="artifactDrawer"
+              aria-controls="artifactDrawer"
+              aria-expanded="false">Artifacts</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="decisionHistory"
+              aria-controls="decisionHistory"
+              aria-expanded="false">Decision History</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="annotationPanel"
+              aria-controls="annotationPanel"
+              aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation — navigation landmark
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="#" class="module-nav-link" aria-current="false">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="#" class="module-nav-link" aria-current="false">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="#" class="module-nav-link" aria-current="false">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="#" class="module-nav-link" aria-current="false">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="#" class="module-nav-link" aria-current="false">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content — main landmark
+       tabindex="-1" makes this a valid skip link target without
+       placing it in the natural tab order.
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <!-- Current Activity anchor — skip link target within main.
+         Individual lesson files populate this section with screen content. -->
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+      <!-- Screen content injected per lesson -->
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources — complementary landmark
+       Persistent sidebar containing artifact reference and decision
+       history summaries. Distinct from the overlay panel versions.
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+
+    <section id="artifact-reference"
+             tabindex="-1"
+             aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <!-- Artifact listing populated per screen by lesson scripts -->
+    </section>
+
+    <section id="decision-history"
+             tabindex="-1"
+             aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <!-- Decision history summary populated per screen by lesson scripts -->
+    </section>
+
+  </aside>
+
+  <!-- ============================================================
+       Support Panels — managed exclusively by panelManager.js
+       activeSupportPanel ∈ {
+         null, artifactDrawer, decisionHistory,
+         glossary, supportPanel, annotationPanel
+       }
+       All panels start hidden. Only one may be open at a time.
+       data-panel-focus marks the element that receives focus on open.
+       ============================================================ -->
+
+  <aside id="artifactDrawer"
+         aria-label="Artifact drawer"
+         hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button"
+              class="panel-close"
+              data-panel-focus
+              aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <!-- Artifact drawer content -->
+    </div>
+  </aside>
+
+  <aside id="decisionHistory"
+         aria-label="Decision history panel"
+         hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button"
+              class="panel-close"
+              data-panel-focus
+              aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <!-- Decision history panel content -->
+    </div>
+  </aside>
+
+  <aside id="glossary"
+         aria-label="Glossary"
+         hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button"
+              class="panel-close"
+              data-panel-focus
+              aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <!-- Glossary terms -->
+    </div>
+  </aside>
+
+  <aside id="supportPanel"
+         aria-label="Support"
+         hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button"
+              class="panel-close"
+              data-panel-focus
+              aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <!-- Support content -->
+    </div>
+  </aside>
+
+  <aside id="annotationPanel"
+         aria-label="Annotation"
+         hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button"
+              class="panel-close"
+              data-panel-focus
+              aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input"
+                rows="12"
+                placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer — contentinfo landmark
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Scripts
+       Loaded as ES modules. panelManager.js self-registers the
+       Escape key listener on import. storage.js is imported so
+       lesson scripts can import from it without re-fetching.
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    import { getItem, setItem } from './js/storage.js';
+
+    /* ---------- Footer year ---------- */
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    /* ---------- Support panel toggles ---------- */
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        const isActive = btn.dataset.panel === activeName;
+        btn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    /* ---------- Panel close buttons ---------- */
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+
+    /* ---------- Restore learnerCommitmentNote on Module 4 screens ----------
+       Individual lesson scripts handle this; storage.js is available
+       module-wide via the import above for use by lesson-specific scripts. */
+  </script>
+
+</body>
+</html>

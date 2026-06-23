@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The ARCH Method Practitioner Credential assesses four competencies through four cumulative performance tasks. Learn the competencies, performance tasks, and mastery threshold before beginning Module 1.">
+  <title>Credential Structure | Introduction | ARCH Method Practitioner Credential | Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/scaffolds/persistentStepTracker.css">
+  <style>
+    /* ================================================================
+       Screen 0.4 — Credential Structure Styles
+       All color values reference CSS tokens. No hard-coded hex values.
+       ================================================================ */
+
+    .lesson-intro__lead {
+      margin: 0 0 1.5rem;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+      max-width: 70ch;
+    }
+
+    .lesson-intro__section-heading {
+      margin: 1.875rem 0 0.5rem;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+    }
+
+    .lesson-intro__body-text {
+      margin: 0 0 1rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      max-width: 68ch;
+    }
+
+    /* ----------------------------------------------------------------
+       Competency Grid
+       2x2 card layout. Each card: teal top-accent bar, subtle bg.
+       Collapses to single column at narrow viewports.
+       ---------------------------------------------------------------- */
+
+    .competency-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin: 1rem 0 0;
+      max-width: 740px;
+    }
+
+    @media (max-width: 560px) {
+      .competency-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .competency-card {
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-top: 3px solid var(--color-text-link);
+      border-radius: 0 0 6px 6px;
+      padding: 1rem 1.125rem 1.125rem;
+    }
+
+    .competency-card__label {
+      display: block;
+      margin: 0 0 0.375rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--color-text-link);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .competency-card__name {
+      margin: 0 0 0.5rem;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+    }
+
+    .competency-card__desc {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+    }
+
+    /* ----------------------------------------------------------------
+       Performance Task List
+       Numbered list styled as a label + body grid.
+       role="list" preserves list semantics when list-style is removed
+       (required for VoiceOver on Safari).
+       ---------------------------------------------------------------- */
+
+    .perf-task-list {
+      margin: 1rem 0 0;
+      padding: 0;
+      list-style: none;
+      max-width: 680px;
+    }
+
+    .perf-task-item {
+      display: grid;
+      grid-template-columns: 7rem 1fr;
+      gap: 0 1.125rem;
+      padding: 0.875rem 0;
+      border-bottom: 1px solid var(--color-border-default);
+      align-items: start;
+    }
+
+    .perf-task-item:first-child {
+      padding-top: 0;
+    }
+
+    .perf-task-item:last-child {
+      border-bottom: none;
+    }
+
+    /* Narrow viewports: stack module label and body */
+    @media (max-width: 480px) {
+      .perf-task-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem 0;
+      }
+    }
+
+    .perf-task-item__module {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+      padding-top: 0.125rem;
+    }
+
+    .perf-task-item__name {
+      margin: 0 0 0.25rem;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.35;
+    }
+
+    .perf-task-item__desc {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+    }
+
+    /* ----------------------------------------------------------------
+       Mastery Threshold Card
+       Teal left-accent card. Three gateway criteria each carry a
+       "Strong Evidence" badge (success tokens). Floor rule below.
+       ---------------------------------------------------------------- */
+
+    .mastery-threshold {
+      margin: 1rem 0 0;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-left: 4px solid var(--color-text-link);
+      border-radius: 0 6px 6px 0;
+      padding: 1.125rem 1.375rem 1.25rem;
+      max-width: 680px;
+    }
+
+    .mastery-threshold__label {
+      display: block;
+      margin: 0 0 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Brief rubric level note before the criteria list */
+    .mastery-threshold__rubric-note {
+      margin: 0 0 0.875rem;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .mastery-threshold__criteria {
+      margin: 0 0 0.875rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .mastery-threshold__criterion {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0 0.75rem;
+      padding: 0.5625rem 0;
+      border-bottom: 1px solid var(--color-border-default);
+      align-items: start;
+    }
+
+    .mastery-threshold__criterion:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    /* "Strong Evidence" badge — success tokens so color conveys
+       achievement level; shape (border, text) communicates without
+       relying on color alone. */
+    .mastery-threshold__badge {
+      display: inline-flex;
+      align-items: center;
+      height: 1.5rem;
+      padding: 0 0.5rem;
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-success-text);
+      background: var(--color-success-bg);
+      border: 1px solid var(--color-success-border);
+      border-radius: 3px;
+      white-space: nowrap;
+      margin-top: 0.125rem;
+    }
+
+    .mastery-threshold__criterion-name {
+      margin: 0 0 0.1875rem;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+    }
+
+    .mastery-threshold__criterion-desc {
+      margin: 0;
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Floor rule below criteria list */
+    .mastery-threshold__floor {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--color-border-default);
+    }
+
+    .mastery-threshold__floor strong {
+      color: var(--color-text-primary);
+      font-weight: 700;
+    }
+
+    /* High contrast adjustments */
+    @media (prefers-contrast: more) {
+      .competency-card {
+        border-color: var(--color-border-strong);
+      }
+
+      .perf-task-item {
+        border-bottom-color: var(--color-border-strong);
+      }
+
+      .mastery-threshold {
+        border-color: var(--color-border-strong);
+        border-left-color: var(--color-text-link);
+      }
+
+      .mastery-threshold__criterion,
+      .mastery-threshold__rubric-note,
+      .mastery-threshold__floor {
+        border-color: var(--color-border-strong);
+      }
+
+      .competency-card__label,
+      .mastery-threshold__label,
+      .perf-task-item__module {
+        color: var(--color-text-primary);
+      }
+
+      .mastery-threshold__badge {
+        border-width: 2px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">
+        Module <span id="pt-module">Intro</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        <span id="pt-lesson">Introduction</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true" id="pt-phase-divider" hidden>&bull;</span>
+      <span class="pt-item" id="pt-phase-item" hidden>
+        Phase <span id="pt-phase">0</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true" id="pt-step-divider" hidden>&bull;</span>
+      <span class="pt-item" id="pt-step-item" hidden>
+        Step <span id="pt-step">0</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Screen <span id="pt-screen">4</span> of <span id="pt-screen-total">9</span>
+      </span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button"
+              class="support-toggle"
+              data-panel="glossary"
+              aria-controls="glossary"
+              aria-expanded="false">Glossary</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="supportPanel"
+              aria-controls="supportPanel"
+              aria-expanded="false">Support</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="artifactDrawer"
+              aria-controls="artifactDrawer"
+              aria-expanded="false">Artifacts</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="decisionHistory"
+              aria-controls="decisionHistory"
+              aria-expanded="false">Decision History</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="annotationPanel"
+              aria-controls="annotationPanel"
+              aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link" aria-current="page">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <article class="lesson-intro" aria-labelledby="lesson-title">
+
+        <header class="lesson-intro__header">
+          <p class="lesson-label" aria-label="Introduction, Screen 4 of 9">Introduction &bull; Screen 4 of 9</p>
+          <h1 id="lesson-title" class="lesson-intro__title">Credential Structure</h1>
+        </header>
+
+        <p class="lesson-intro__lead">
+          This credential assesses four competencies through four cumulative performance tasks, one
+          at the end of each module. Each performance task builds directly on the work you completed
+          in the previous module, so your output compounds across all four. By the final performance
+          task, you will have produced a complete course architecture for Meridian using every Phase
+          and Step of the ARCH Method.
+        </p>
+
+        <!-- =====================================================
+             Section 1: Four Competencies
+             ===================================================== -->
+        <h2 class="lesson-intro__section-heading">Four Competencies</h2>
+
+        <p class="lesson-intro__body-text">
+          The credential recognizes competence in four areas of course architecture practice. Each
+          competency is assessed across all four modules, with your performance tasks as the
+          primary evidence.
+        </p>
+
+        <!-- 2x2 competency card grid.
+             Each card has a teal top-accent bar, a competency label,
+             the competency name, and a one-sentence description.
+             The grid collapses to single column below 560px. -->
+        <div class="competency-grid" role="list" aria-label="Four credential competencies">
+
+          <div class="competency-card" role="listitem">
+            <span class="competency-card__label">Competency 1</span>
+            <p class="competency-card__name">Course Architecture Development</p>
+            <p class="competency-card__desc">
+              Design a complete course architecture from initial constraints through scope definition
+              and learning design, applying each Phase and Step of the ARCH Method in sequence.
+            </p>
+          </div>
+
+          <div class="competency-card" role="listitem">
+            <span class="competency-card__label">Competency 2</span>
+            <p class="competency-card__name">Instructional Sequence Engineering</p>
+            <p class="competency-card__desc">
+              Engineer a learning sequence that aligns identified outcomes, learning activities, and
+              assessment tasks with the documented performance requirements and learner characteristics.
+            </p>
+          </div>
+
+          <div class="competency-card" role="listitem">
+            <span class="competency-card__label">Competency 3</span>
+            <p class="competency-card__name">Structural Diagnostics and Design Integrity</p>
+            <p class="competency-card__desc">
+              Conduct stress tests on a working course architecture to identify structural weaknesses,
+              scope drift, and outcome misalignment before content development begins.
+            </p>
+          </div>
+
+          <div class="competency-card" role="listitem">
+            <span class="competency-card__label">Competency 4</span>
+            <p class="competency-card__name">Design Governance and Decision Traceability</p>
+            <p class="competency-card__desc">
+              Document design decisions with rationale at each Phase, maintain a complete decision
+              trail, and produce a governance-frozen architecture ready for handoff to content
+              development.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- =====================================================
+             Section 2: Performance Tasks
+             ===================================================== -->
+        <h2 class="lesson-intro__section-heading">Performance Tasks</h2>
+
+        <p class="lesson-intro__body-text">
+          Each module closes with a performance task applied to the Meridian scenario. Tasks are
+          cumulative: the artifact you produce in Module 1 becomes the foundation for Module 2,
+          and so on through Module 4.
+        </p>
+
+        <!-- Ordered list preserves sequence semantics.
+             role="list" re-asserts list role for VoiceOver on Safari
+             when list-style is removed via CSS. -->
+        <ol class="perf-task-list" role="list">
+
+          <li class="perf-task-item">
+            <span class="perf-task-item__module">Module 1</span>
+            <div class="perf-task-item__body">
+              <p class="perf-task-item__name">Bucket Map and Scope Organization Package</p>
+              <p class="perf-task-item__desc">
+                Map Meridian's course content into instructional buckets and organize the full
+                scope into a structured package. This artifact anchors all design decisions
+                in Modules 2 through 4.
+              </p>
+            </div>
+          </li>
+
+          <li class="perf-task-item">
+            <span class="perf-task-item__module">Module 2</span>
+            <div class="perf-task-item__body">
+              <p class="perf-task-item__name">Sequenced Unit Architecture Package</p>
+              <p class="perf-task-item__desc">
+                Extend your scope work into a sequenced unit architecture with decomposed outcomes
+                and aligned assessments organized across the course structure.
+              </p>
+            </div>
+          </li>
+
+          <li class="perf-task-item">
+            <span class="perf-task-item__module">Module 3</span>
+            <div class="perf-task-item__body">
+              <p class="perf-task-item__name">Audit and Governance Package</p>
+              <p class="perf-task-item__desc">
+                Apply structural audits to your Module 2 architecture, identify design integrity
+                issues, and produce a governance record of all findings and corrective decisions.
+              </p>
+            </div>
+          </li>
+
+          <li class="perf-task-item">
+            <span class="perf-task-item__module">Module 4</span>
+            <div class="perf-task-item__body">
+              <p class="perf-task-item__name">Structural Freeze Declaration Package</p>
+              <p class="perf-task-item__desc">
+                Apply the structural freeze protocol to your architecture and issue a formal
+                declaration package with complete decision traceability, ready for handoff to
+                content development.
+              </p>
+            </div>
+          </li>
+
+        </ol>
+
+        <!-- =====================================================
+             Section 3: Mastery Threshold
+             ===================================================== -->
+        <h2 class="lesson-intro__section-heading">Mastery Threshold</h2>
+
+        <p class="lesson-intro__body-text">
+          To receive this credential, your final performance tasks must meet the following threshold.
+        </p>
+
+        <!-- Mastery threshold card.
+             The "Strong Evidence" badge uses success color tokens.
+             Color is supplemental: criterion name and badge text both
+             communicate the requirement without relying on color alone.
+             role="region" groups the threshold as a navigable landmark. -->
+        <div class="mastery-threshold"
+             role="region"
+             aria-label="Mastery threshold requirements">
+
+          <span class="mastery-threshold__label" aria-hidden="true">Mastery Threshold</span>
+
+          <!-- Rubric level orientation -->
+          <p class="mastery-threshold__rubric-note">
+            The credential rubric uses three performance levels: Strong Evidence, Adequate Evidence,
+            and Developing Evidence. The three criteria below require Strong Evidence at final
+            evaluation. All remaining criteria must reach Developing Evidence or above.
+          </p>
+
+          <!-- Three gateway criteria requiring Strong Evidence -->
+          <ul class="mastery-threshold__criteria" role="list" aria-label="Gateway criteria requiring strong evidence">
+
+            <li class="mastery-threshold__criterion">
+              <span class="mastery-threshold__badge" aria-label="Requires strong evidence">Strong Evidence</span>
+              <div>
+                <p class="mastery-threshold__criterion-name">ARCH Workflow Application</p>
+                <p class="mastery-threshold__criterion-desc">
+                  Applied each Phase and Step of the ARCH Method correctly and in the intended
+                  sequence across all four modules.
+                </p>
+              </div>
+            </li>
+
+            <li class="mastery-threshold__criterion">
+              <span class="mastery-threshold__badge" aria-label="Requires strong evidence">Strong Evidence</span>
+              <div>
+                <p class="mastery-threshold__criterion-name">Scope Fidelity</p>
+                <p class="mastery-threshold__criterion-desc">
+                  Maintained consistency with the defined course scope from the Bucket Map and
+                  Scope Organization Package through the Structural Freeze Declaration Package.
+                </p>
+              </div>
+            </li>
+
+            <li class="mastery-threshold__criterion">
+              <span class="mastery-threshold__badge" aria-label="Requires strong evidence">Strong Evidence</span>
+              <div>
+                <p class="mastery-threshold__criterion-name">Governance and Traceability</p>
+                <p class="mastery-threshold__criterion-desc">
+                  Documented design decisions with rationale at each Phase and produced a complete
+                  decision trail in the Structural Freeze Declaration Package.
+                </p>
+              </div>
+            </li>
+
+          </ul>
+
+          <!-- Floor rule -->
+          <p class="mastery-threshold__floor">
+            <strong>Floor requirement:</strong> No criterion on the final evaluation may fall
+            below Developing Evidence. Meeting the three gateway criteria above does not satisfy
+            this threshold if any remaining criterion is below Developing Evidence.
+          </p>
+
+        </div>
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="intro-0.3.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true"
+                 focusable="false"
+                 width="16"
+                 height="16"
+                 viewBox="0 0 16 16"
+                 fill="none">
+              <path d="M10 12L6 8l4-4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="intro-0.5.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen">
+            Next
+            <svg aria-hidden="true"
+                 focusable="false"
+                 width="16"
+                 height="16"
+                 viewBox="0 0 16 16"
+                 fill="none">
+              <path d="M6 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+
+    <section id="artifact-reference"
+             tabindex="-1"
+             aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">No artifacts have been started yet. Your first artifact begins in Module 1.</p>
+    </section>
+
+    <section id="decision-history"
+             tabindex="-1"
+             aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">No decisions recorded yet. Decision points begin in Module 1.</p>
+    </section>
+
+  </aside>
+
+  <!-- ============================================================
+       Support Panels — managed by panelManager.js
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script
+       ============================================================ -->
+  <script type="module">
+    import { init } from './js/scaffolds/persistentStepTracker.js';
+
+    init({
+      module:   0,
+      lesson:   'Introduction',
+      phase:    0,
+      step:     0,
+      screen:   4,
+      total:    9,
+      announce: false,
+    });
+
+    /* ptUpdate() sets pt-module to '0'. Override to display 'Intro'. */
+    document.getElementById('pt-module').textContent = 'Intro';
+  </script>
+
+</body>
+</html>

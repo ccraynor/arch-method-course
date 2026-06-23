@@ -1,0 +1,1855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guided practice: name four buckets and assign all 16 MRHN scope items using workflow logic. Feedback compares your assignments to the expert bucket map and evaluates whether workflow sequence guided your decisions.">
+  <title>Guided Practice: Bucket Scope Items — Lesson 1.2 — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l2-s3 -- Guided Practice: Bucket Scope Items
+       Phase 1, Step 2.
+       All color values use CSS tokens. No hard-coded hex values.
+       ================================================================ */
+
+    .lesson-label {
+      display: block;
+      margin: 0 0 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-link);
+    }
+
+    .screen-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 0 0.25rem;
+    }
+
+    .screen-type-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    .time-estimate {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 3px;
+      padding: 0.125rem 0.5rem;
+    }
+
+    .screen-title {
+      margin: 0 0 0.375rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    .step-badge {
+      display: inline-block;
+      margin: 0 0 0.875rem;
+      padding: 0.25rem 0.625rem;
+      background: var(--color-bg-page);
+      border: 1.5px solid var(--color-text-link);
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-link);
+    }
+
+    /* ---- Brief reference strip ---- */
+    .brief-reference {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.25rem 0.5rem;
+      padding: 0.625rem 0.875rem;
+      margin: 0 0 1.75rem;
+      background: var(--color-bg-subtle);
+      border-left: 3px solid var(--color-border-strong);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+    }
+
+    .brief-reference__label {
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+    }
+
+    /* ---- Task instruction blocks ---- */
+    .task-instruction-block {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.875rem;
+      padding: 1rem 1.125rem;
+      margin: 0 0 2rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+    }
+
+    .task-instruction-block__icon {
+      flex-shrink: 0;
+      color: var(--color-text-link);
+      margin-top: 0.125rem;
+    }
+
+    .task-instruction-block__body { min-width: 0; }
+
+    .task-instruction-block__heading {
+      margin: 0 0 0.375rem;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .task-instruction-block__text {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    /* ---- Part A: Bucket naming ---- */
+    .part-heading {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 0 0.75rem;
+    }
+
+    .part-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 50%;
+      background: var(--color-text-link);
+      color: var(--color-text-inverse);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .part-title {
+      margin: 0;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .part-desc {
+      margin: 0 0 1rem;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+    }
+
+    .bucket-name-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.875rem;
+      margin: 0 0 2rem;
+    }
+
+    @media (max-width: 560px) {
+      .bucket-name-grid { grid-template-columns: 1fr; }
+    }
+
+    .bucket-name-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .bucket-name-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .bucket-num-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.375rem;
+      height: 1.375rem;
+      border-radius: 50%;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    input[type="text"].bucket-name-input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.5rem 0.75rem;
+      border: 1.5px solid var(--color-border-default);
+      border-radius: 4px;
+      background: var(--color-bg-page);
+      color: var(--color-text-primary);
+      font-size: 0.9375rem;
+      font-family: inherit;
+      transition: border-color 0.15s ease;
+    }
+
+    input[type="text"].bucket-name-input:focus {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 1px;
+      border-color: var(--color-text-link);
+    }
+
+    input[type="text"].bucket-name-input[aria-invalid="true"] {
+      border-color: var(--color-error-text);
+    }
+
+    .field-error {
+      font-size: 0.8125rem;
+      color: var(--color-error-text);
+      line-height: 1.4;
+    }
+
+    .field-error:empty { display: none; }
+
+    /* ---- Part B: SI assignment ---- */
+    .si-assignment-section {
+      margin: 0 0 1.5rem;
+    }
+
+    /* Column header strip showing bucket names above the list */
+    .bucket-header-strip {
+      display: grid;
+      grid-template-columns: 3.75rem 1fr 11.5rem;
+      gap: 0 0.75rem;
+      align-items: center;
+      padding: 0.4375rem 0.75rem;
+      background: var(--color-brand-navy);
+      border-radius: 5px 5px 0 0;
+    }
+
+    .bhs-id-col {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-inverse);
+    }
+
+    .bhs-desc-col {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-inverse);
+    }
+
+    .bhs-assign-col {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-inverse);
+      text-align: center;
+    }
+
+    /* SI row */
+    .si-list {
+      border: 1px solid var(--color-border-default);
+      border-top: none;
+      border-radius: 0 0 5px 5px;
+      overflow: hidden;
+    }
+
+    .si-row {
+      display: grid;
+      grid-template-columns: 3.75rem 1fr 11.5rem;
+      gap: 0 0.75rem;
+      align-items: center;
+      padding: 0.5625rem 0.75rem;
+      border-bottom: 1px solid var(--color-border-default);
+      background: var(--color-bg-page);
+    }
+
+    .si-row:last-child { border-bottom: none; }
+
+    .si-row:nth-child(even) { background: var(--color-bg-subtle); }
+
+    .si-row__code {
+      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro',
+                   Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--color-text-link);
+      white-space: nowrap;
+    }
+
+    .si-row__desc {
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.5;
+    }
+
+    .si-row__assign { display: flex; align-items: center; }
+
+    select.bucket-select {
+      width: 100%;
+      padding: 0.375rem 0.625rem;
+      border: 1.5px solid var(--color-border-default);
+      border-radius: 4px;
+      background: var(--color-bg-page);
+      color: var(--color-text-primary);
+      font-size: 0.8125rem;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    select.bucket-select:focus {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 1px;
+      border-color: var(--color-text-link);
+    }
+
+    select.bucket-select[aria-invalid="true"] {
+      border-color: var(--color-error-text);
+    }
+
+    /* Global assign error */
+    .assign-error {
+      margin: 0.75rem 0 0;
+      font-size: 0.8125rem;
+      color: var(--color-error-text);
+    }
+
+    .assign-error:empty { display: none; }
+
+    /* ---- Form controls ---- */
+    .form-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 0 0;
+    }
+
+    /* ---- Feedback section ---- */
+    .feedback-section {
+      margin: 2rem 0 0;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .feedback-header {
+      padding: 0.75rem 1rem;
+      background: var(--color-bg-subtle);
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .feedback-heading {
+      margin: 0;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .feedback-body { padding: 1rem 1.125rem; }
+
+    /* Result banner */
+    .result-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.875rem 1rem;
+      border-radius: 5px;
+      border: 2px solid;
+      margin: 0 0 1.25rem;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    .result-banner--pass    { background: var(--color-success-bg); border-color: var(--color-success-border); color: var(--color-success-text); }
+    .result-banner--partial { background: var(--color-warning-bg); border-color: var(--color-warning-border); color: var(--color-warning-text); }
+    .result-banner--weak    { background: var(--color-error-bg);   border-color: var(--color-error-border);   color: var(--color-error-text); }
+
+    .result-banner__icon { flex-shrink: 0; margin-top: 0.125rem; }
+
+    .result-banner__label {
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0.125rem;
+    }
+
+    /* Structural checks */
+    .structural-checks {
+      margin: 0 0 1.25rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .structural-checks__heading {
+      padding: 0.5rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border-bottom: 1px solid var(--color-border-default);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+    }
+
+    .check-row {
+      display: grid;
+      grid-template-columns: 1.5rem 1fr;
+      gap: 0 0.625rem;
+      align-items: flex-start;
+      padding: 0.5625rem 0.875rem;
+      border-bottom: 1px solid var(--color-border-default);
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+
+    .check-row:last-child { border-bottom: none; }
+
+    .check-icon { flex-shrink: 0; margin-top: 0.125rem; }
+    .check-icon--pass  { color: var(--color-success-text); }
+    .check-icon--fail  { color: var(--color-error-text); }
+    .check-icon--warn  { color: var(--color-warning-text); }
+
+    .check-text { color: var(--color-text-primary); }
+    .check-text strong { font-weight: 700; }
+
+    /* Naming evaluation */
+    .naming-eval {
+      margin: 0 0 1.25rem;
+      padding: 0.75rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    .naming-eval__label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.375rem;
+    }
+
+    /* Expert bucket map */
+    .expert-map { margin: 1.25rem 0 0; }
+
+    .expert-map__heading {
+      margin: 0 0 0.625rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+    }
+
+    .expert-bucket-card {
+      margin: 0 0 0.75rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .expert-bucket-card:last-child { margin-bottom: 0; }
+
+    .expert-bucket-card__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.5rem 0.875rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+    }
+
+    .expert-bucket-card__title {
+      font-size: 0.875rem;
+      font-weight: 700;
+    }
+
+    .expert-bucket-card__count {
+      font-size: 0.75rem;
+      font-weight: 600;
+      opacity: 0.8;
+      white-space: nowrap;
+    }
+
+    .expert-bucket-card__items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-page);
+    }
+
+    .si-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.25rem 0.5rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 3px;
+      background: var(--color-bg-subtle);
+      font-size: 0.8125rem;
+      line-height: 1.4;
+    }
+
+    .si-chip__code {
+      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro',
+                   Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+      font-weight: 700;
+      color: var(--color-text-link);
+      flex-shrink: 0;
+    }
+
+    .si-chip__desc {
+      color: var(--color-text-secondary);
+    }
+
+    /* si-chip--match / --mismatch: text + icon, not color-only */
+    .si-chip--match   { border-color: var(--color-success-border); background: var(--color-success-bg); }
+    .si-chip--mismatch { border-color: var(--color-error-border); background: var(--color-error-bg); }
+    .si-chip--match .si-chip__code   { color: var(--color-success-text); }
+    .si-chip--mismatch .si-chip__code { color: var(--color-error-text); }
+
+    .si-chip__match-icon {
+      flex-shrink: 0;
+      color: var(--color-success-text);
+    }
+
+    .si-chip__mismatch-icon {
+      flex-shrink: 0;
+      color: var(--color-error-text);
+    }
+
+    .feedback-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 0 0;
+      flex-wrap: wrap;
+    }
+
+    /* High contrast */
+    @media (prefers-contrast: more) {
+      .brief-reference { border-left-color: var(--color-border-strong); border-color: var(--color-border-strong); }
+      .task-instruction-block { border-color: var(--color-border-strong); }
+      input[type="text"].bucket-name-input { border-color: var(--color-border-strong); }
+      select.bucket-select { border-color: var(--color-border-strong); }
+      .si-list { border-color: var(--color-border-strong); }
+      .si-row { border-bottom-color: var(--color-border-strong); }
+      .feedback-section { border-color: var(--color-border-strong); }
+      .feedback-header { border-bottom-color: var(--color-border-strong); }
+      .structural-checks { border-color: var(--color-border-strong); }
+      .structural-checks__heading { border-bottom-color: var(--color-border-strong); }
+      .check-row { border-bottom-color: var(--color-border-strong); }
+      .naming-eval { border-color: var(--color-border-strong); }
+      .expert-bucket-card { border-color: var(--color-border-strong); }
+      .si-chip { border-color: var(--color-border-strong); }
+      .step-badge { border-color: var(--color-border-strong); color: var(--color-text-primary); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header
+       ============================================================ -->
+  <header role="banner">
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.2</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">2</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">3</span> of <span id="pt-screen-total">6</span></span>
+    </div>
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary"
+              aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel"
+              aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer"
+              aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory"
+              aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel"
+              aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+    <section id="current-activity" tabindex="-1" aria-label="Current activity">
+      <article aria-labelledby="screen-title">
+
+        <header>
+          <div class="screen-meta">
+            <span class="screen-type-label">Guided Practice</span>
+            <span class="time-estimate"
+                  aria-label="Estimated time: 25 to 30 minutes">
+              25&ndash;30 min
+            </span>
+          </div>
+          <p class="lesson-label" aria-label="Lesson 1.2">Lesson 1.2</p>
+          <h1 id="screen-title" class="screen-title">
+            Apply Step 2: Bucket the 16 MRHN Scope Items
+          </h1>
+          <span class="step-badge">Step 2</span>
+
+          <div class="brief-reference" role="note" aria-label="Reference">
+            <span class="brief-reference__label">Reference:</span>
+            The expert bucket map is at
+            <a href="m1-l2-s2.html" class="link" target="_blank"
+               aria-label="Open worked example Screen 2 in a new tab">
+              Screen 2 of this lesson
+            </a>.
+            Do not open it until you have submitted your assignments -- the
+            feedback on this screen will reveal and compare against the expert map.
+          </div>
+        </header>
+
+        <div class="task-instruction-block"
+             role="note"
+             aria-label="Task instructions">
+          <svg class="task-instruction-block__icon"
+               aria-hidden="true" focusable="false"
+               width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M10 6v5M10 13.5v.5" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round"/>
+          </svg>
+          <div class="task-instruction-block__body">
+            <p class="task-instruction-block__heading">Two-part task</p>
+            <p class="task-instruction-block__text">
+              <strong>Part A:</strong> Name your four buckets before assigning any scope items.
+              Use language that reflects when in the incident response workflow the items occur --
+              not what topic they cover.<br>
+              <strong>Part B:</strong> Assign all 16 scope items (SI-01 through SI-16) to your
+              four buckets. Every item must be assigned. Items should appear in exactly one bucket.
+              Apply workflow sequence logic, not topic similarity.
+            </p>
+          </div>
+        </div>
+
+        <form id="bucket-form" novalidate aria-label="Bucket assignment practice">
+
+          <!-- ==================================================
+               Part A: Name Your Buckets
+               ================================================== -->
+          <section aria-labelledby="part-a-heading">
+            <div class="part-heading">
+              <span class="part-num" aria-hidden="true">A</span>
+              <h2 id="part-a-heading" class="part-title">Name Your Four Buckets</h2>
+            </div>
+            <p class="part-desc">
+              Name each bucket using a phrase that describes its role in the incident
+              response workflow. You will reference these names when assigning scope items below.
+            </p>
+
+            <div class="bucket-name-grid"
+                 role="group"
+                 aria-label="Bucket name fields">
+
+              <div class="bucket-name-field">
+                <label class="bucket-name-label" for="b1name">
+                  <span class="bucket-num-badge" aria-hidden="true">1</span>
+                  Bucket 1 Name
+                </label>
+                <input type="text"
+                       class="bucket-name-input"
+                       id="b1name"
+                       name="b1name"
+                       aria-required="true"
+                       aria-describedby="error-b1name"
+                       autocomplete="off"
+                       placeholder="e.g. Threat Recognition...">
+                <span id="error-b1name" class="field-error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="bucket-name-field">
+                <label class="bucket-name-label" for="b2name">
+                  <span class="bucket-num-badge" aria-hidden="true">2</span>
+                  Bucket 2 Name
+                </label>
+                <input type="text"
+                       class="bucket-name-input"
+                       id="b2name"
+                       name="b2name"
+                       aria-required="true"
+                       aria-describedby="error-b2name"
+                       autocomplete="off"
+                       placeholder="e.g. Containment...">
+                <span id="error-b2name" class="field-error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="bucket-name-field">
+                <label class="bucket-name-label" for="b3name">
+                  <span class="bucket-num-badge" aria-hidden="true">3</span>
+                  Bucket 3 Name
+                </label>
+                <input type="text"
+                       class="bucket-name-input"
+                       id="b3name"
+                       name="b3name"
+                       aria-required="true"
+                       aria-describedby="error-b3name"
+                       autocomplete="off"
+                       placeholder="e.g. Active Response...">
+                <span id="error-b3name" class="field-error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="bucket-name-field">
+                <label class="bucket-name-label" for="b4name">
+                  <span class="bucket-num-badge" aria-hidden="true">4</span>
+                  Bucket 4 Name
+                </label>
+                <input type="text"
+                       class="bucket-name-input"
+                       id="b4name"
+                       name="b4name"
+                       aria-required="true"
+                       aria-describedby="error-b4name"
+                       autocomplete="off"
+                       placeholder="e.g. Post-Incident...">
+                <span id="error-b4name" class="field-error" role="alert" aria-live="polite"></span>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ==================================================
+               Part B: Assign Scope Items
+               ================================================== -->
+          <section class="si-assignment-section" aria-labelledby="part-b-heading">
+            <div class="part-heading">
+              <span class="part-num" aria-hidden="true">B</span>
+              <h2 id="part-b-heading" class="part-title">Assign All 16 Scope Items</h2>
+            </div>
+            <p class="part-desc">
+              Use the dropdown on each row to assign the scope item to one of your four buckets.
+              All 16 items must be assigned before you can submit.
+            </p>
+
+            <!-- Column headers -->
+            <div class="bucket-header-strip" aria-hidden="true">
+              <span class="bhs-id-col">ID</span>
+              <span class="bhs-desc-col">Scope Item</span>
+              <span class="bhs-assign-col">Assign to Bucket</span>
+            </div>
+
+            <!-- 16 SI rows -->
+            <div class="si-list" role="list" aria-label="16 MRHN scope items to assign">
+
+              <!-- SI-01 -->
+              <div class="si-row" role="listitem">
+                <span class="si-row__code" aria-hidden="true">SI-01</span>
+                <span class="si-row__desc">IR-2024 Tier 1 protocol execution -- independent, no escalation required</span>
+                <div class="si-row__assign">
+                  <label for="assign-1" class="sr-only">
+                    Assign SI-01: IR-2024 Tier 1 protocol execution to a bucket
+                  </label>
+                  <select id="assign-1" class="bucket-select" name="assign-1" data-si="1">
+                    <option value="">-- assign --</option>
+                    <option value="b1" class="opt-b1">Bucket 1</option>
+                    <option value="b2" class="opt-b2">Bucket 2</option>
+                    <option value="b3" class="opt-b3">Bucket 3</option>
+                    <option value="b4" class="opt-b4">Bucket 4</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- SI-02 -->
+              <div class="si-row" role="listitem">
+                <span class="si-row__code" aria-hidden="true">SI-02</span>
+                <span class="si-row__desc">IR-2024 Tier 2 protocol execution -- within role authority</span>
+                <div class="si-row__assign">
+                  <label for="assign-2" class="sr-only">
+                    Assign SI-02: IR-2024 Tier 2 protocol execution to a bucket
+                  </label>
+                  <select id="assign-2" class="bucket-select" name="assign-2" data-si="2">
+                    <option value="">-- assign --</option>
+                    <option value="b1" class="opt-b1">Bucket 1</option>
+                    <option value="b2" class="opt-b2">Bucket 2</option>
+                    <option value="b3" class="opt-b3">Bucket 3</option>
+                    <option value="b4" class="opt-b4">Bucket 4</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- SI-03 -->
+              <div class="si-row" role="listitem">
+                <span class="si-row__code" aria-hidden="true">SI-03</span>
+                <span class="si-row__desc">System isolation decisions -- role-bounded, no supervisor required</span>
+                <div class="si-row__assign">
+                  <label for="assign-3" class="sr-only">
+                    Assign SI-03: System isolation decisions to a bucket
+                  </label>
+                  <select id="assign-3" class="bucket-select" name="assign-3" data-si="3">
+                    <option value="">-- assign --</option>
+                    <option value="b1" class="opt-b1">Bucket 1</option>
+                    <option value="b2" class="opt-b2">Bucket 2</option>
+                    <option value="b3" class="opt-b3">Bucket 3</option>
+                    <option value="b4" class="opt-b4">Bucket 4</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- SI-04 -->
+              <div class="si-row" role="listitem">
+                <span class="si-row__code" aria-hidden="true">SI-04</span>
+                <span class="si-row__desc">Real-time SIEM event log documentation during active incident</span>
+                <div class="si-row__assign">
+                  <label for="assign-4" class="sr-only">
+                    Assign SI-04: Real-time SIEM event log documentation to a bucket
+                  </label>
+                  <select id="assign-4" class="bucket-select" name="assign-4" data-si="4">
+                    <option value="">-- assign --</option>
+                    <option value="b1" class="opt-b1">Bucket 1</option>
+                    <option value="b2" class="opt-b2">Bucket 2</option>
+                    <option value="b3" class="opt-b3">Bucket 3</option>
+                    <option value="b4" class="opt-b4">Bucket 4</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- SI-05 -->
+              <div class="si-row" role="listitem">
+                <span class="si-row__code" aria-hidden="true">SI-05</span>
+                <span class="si-row__desc">Clinical leadership communication using Meridian approved templates</span>
+                <div class="si-row__assign">
+                  <label for="assign-5" class="sr-only">
+                    Assign SI-05: Clinical leadership communication to a bucket
+                  </label>
+                  <select id="assign-5" class="bucket-select" name="assign-5" data-si="5">
+                    <option value="">-- assign --</option>
+                    <option value="b1" class="opt-b1">Bucket 1</option>
+                    <option value="b2" class="opt-b2">Bucket 2</option>
+                    <option value="b3" class="opt-b3">Bucket 3</option>
+                    <option value="b4" class="opt-b4">Bucket 4</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- SI-06 -->
+              <div class="si-row" role="listitem">
+                <span class="si-row__code" aria-hidden="true">SI-06</span>
+                <span class="si-row__desc">Escalation protocol -- recognizing when a decision requires supervisor involvement</span>
+                <div class="si-row__assign">
+                  <label for="assign-6" class="sr-only">
+                    Assign SI-06: Escalation protocol to a bucket
+                  </label>
+                  <select id="assign-6" class="bucket-select" name="assign-6" data-si="6">
+                    <option value="">-- assign --</option>
+                    <option value="b1" class="opt-b1">Bucket 1</option>
+                    <option value="b2" class="opt-b2">Bucket 2</option>
+                    <option value="b3" class="opt-b3">Bucket 3</option>
+                    <option value="b4" class="opt-b4">Bucket 4</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- SI-07 -->
+              <div class="si-row" role="listitem">
+                <span class="si-row__code" aria-hidden="true">SI-07</span>
+                <span class="si-row__desc">Post-incident OCR-compliant documentation and breach reporting procedure</span>
+                <div class="si-row__assign">
+                  <label for="assign-7" class="sr-only">
+                    Assign SI-07: Post-incident OCR-compliant documentation to a bucket
+                  </label>
+                  <select id="assign-7" class="bucket-select" name="assign-7" data-si="7">
+                    <option value="">-- assign --</option>
+                    <option value="b1" class="opt-b1">Bucket 1</option>
+                    <option value="b2" class="opt-b2">Bucket 2</option>
+                    <option value="b3" class="opt-b3">Bucket 3</option>
+                    <option value="b4" class="opt-b4">Bucket 4</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- SI-08 -->
+              <div class="si-row" role="listitem">
+                <span class="si-row__code" aria-hidden="true">SI-08</span>
+                <span class="si-row__desc">Threat classification -- Tier 1 vs. Tier 2 identification from SIEM alerts</span>
+                <div class="si-row__assign">
+                  <label for="assign-8" class="sr-only">
+                    Assign SI-08: Threat classification to a bucket
+                  </label>
+                  <select id="assign-8" class="bucket-select" name="assign-8" data-si="8">
+                    <option value="">-- assign --</option>
+                    <option value="b1" class="opt-b1">Bucket 1</option>
+                    <option value="b2" class="opt-b2">Bucket 2</option>
+                    <option value="b3" class="opt-b3">Bucket 3</option>
+                    <option value="b4" class="opt-b4">Bucket 4</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- SI-09 -->
+              <div class="si-row" role="listitem">
+                <span class="si-row__code" aria-hidden="true">SI-09</span>
+                <span class="si-row__desc">Evidence preservation -- maintaining chain of custody during active incident response</span>
+                <div class="si-row__assign">
+                  <label for="assign-9" class="sr-only">
+                    Assign SI-09: Evidence preservation to a bucket
+                  </label>
+                  <select id="assign-9" class="bucket-select" name="assign-9" data-si="9">
+                    <option value="">-- assign --</option>
+                    <option value="b1" class="opt-b1">Bucket 1</option>
+                    <option value="b2" class="opt-b2">Bucket 2</option>
+                    <option value="b3" class="opt-b3">Bucket 3</option>
+                    <option value="b4" class="opt-b4">Bucket 4</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- SI-10 -->
+              <div class="si-row" role="listitem">
+                <span class="si-row__code" aria-hidden="true">SI-10</span>
+                <span class="si-row__desc">HIPAA breach notification timeline -- managing the 72-hour OCR reporting window</span>
+                <div class="si-row__assign">
+                  <label for="assign-10" class="sr-only">
+                    Assign SI-10: HIPAA breach notification timeline to a bucket
+                  </label>
+                  <select id="assign-10" class="bucket-select" name="assign-10" data-si="10">
+                    <option value="">-- assign --</option>
+                    <option value="b1" class="opt-b1">Bucket 1</option>
+                    <option value="b2" class="opt-b2">Bucket 2</option>
+                    <option value="b3" class="opt-b3">Bucket 3</option>
+                    <option value="b4" class="opt-b4">Bucket 4</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- SI-11 -->
+              <div class="si-row" role="listitem">
+                <span class="si-row__code" aria-hidden="true">SI-11</span>
+                <span class="si-row__desc">Network segmentation decisions -- isolating affected systems to limit lateral spread</span>
+                <div class="si-row__assign">
+                  <label for="assign-11" class="sr-only">
+                    Assign SI-11: Network segmentation decisions to a bucket
+                  </label>
+                  <select id="assign-11" class="bucket-select" name="assign-11" data-si="11">
+                    <option value="">-- assign --</option>
+                    <option value="b1" class="opt-b1">Bucket 1</option>
+                    <option value="b2" class="opt-b2">Bucket 2</option>
+                    <option value="b3" class="opt-b3">Bucket 3</option>
+                    <option value="b4" class="opt-b4">Bucket 4</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- SI-12 -->
+              <div class="si-row" role="listitem">
+                <span class="si-row__code" aria-hidden="true">SI-12</span>
+                <span class="si-row__desc">Recovery verification -- confirming system integrity before restoring to production</span>
+                <div class="si-row__assign">
+                  <label for="assign-12" class="sr-only">
+                    Assign SI-12: Recovery verification to a bucket
+                  </label>
+                  <select id="assign-12" class="bucket-select" name="assign-12" data-si="12">
+                    <option value="">-- assign --</option>
+                    <option value="b1" class="opt-b1">Bucket 1</option>
+                    <option value="b2" class="opt-b2">Bucket 2</option>
+                    <option value="b3" class="opt-b3">Bucket 3</option>
+                    <option value="b4" class="opt-b4">Bucket 4</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- SI-13 -->
+              <div class="si-row" role="listitem">
+                <span class="si-row__code" aria-hidden="true">SI-13</span>
+                <span class="si-row__desc">Post-incident lessons learned -- documenting what happened and what to change</span>
+                <div class="si-row__assign">
+                  <label for="assign-13" class="sr-only">
+                    Assign SI-13: Post-incident lessons learned to a bucket
+                  </label>
+                  <select id="assign-13" class="bucket-select" name="assign-13" data-si="13">
+                    <option value="">-- assign --</option>
+                    <option value="b1" class="opt-b1">Bucket 1</option>
+                    <option value="b2" class="opt-b2">Bucket 2</option>
+                    <option value="b3" class="opt-b3">Bucket 3</option>
+                    <option value="b4" class="opt-b4">Bucket 4</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- SI-14 -->
+              <div class="si-row" role="listitem">
+                <span class="si-row__code" aria-hidden="true">SI-14</span>
+                <span class="si-row__desc">IR-2024 protocol deviation documentation -- recording when steps cannot be followed as written</span>
+                <div class="si-row__assign">
+                  <label for="assign-14" class="sr-only">
+                    Assign SI-14: IR-2024 protocol deviation documentation to a bucket
+                  </label>
+                  <select id="assign-14" class="bucket-select" name="assign-14" data-si="14">
+                    <option value="">-- assign --</option>
+                    <option value="b1" class="opt-b1">Bucket 1</option>
+                    <option value="b2" class="opt-b2">Bucket 2</option>
+                    <option value="b3" class="opt-b3">Bucket 3</option>
+                    <option value="b4" class="opt-b4">Bucket 4</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- SI-15 -->
+              <div class="si-row" role="listitem">
+                <span class="si-row__code" aria-hidden="true">SI-15</span>
+                <span class="si-row__desc">Vendor and third-party system notification during active incident</span>
+                <div class="si-row__assign">
+                  <label for="assign-15" class="sr-only">
+                    Assign SI-15: Vendor and third-party notification to a bucket
+                  </label>
+                  <select id="assign-15" class="bucket-select" name="assign-15" data-si="15">
+                    <option value="">-- assign --</option>
+                    <option value="b1" class="opt-b1">Bucket 1</option>
+                    <option value="b2" class="opt-b2">Bucket 2</option>
+                    <option value="b3" class="opt-b3">Bucket 3</option>
+                    <option value="b4" class="opt-b4">Bucket 4</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- SI-16 -->
+              <div class="si-row" role="listitem">
+                <span class="si-row__code" aria-hidden="true">SI-16</span>
+                <span class="si-row__desc">Incident severity reclassification -- upgrading from Tier 1 to Tier 2 mid-response</span>
+                <div class="si-row__assign">
+                  <label for="assign-16" class="sr-only">
+                    Assign SI-16: Incident severity reclassification to a bucket
+                  </label>
+                  <select id="assign-16" class="bucket-select" name="assign-16" data-si="16">
+                    <option value="">-- assign --</option>
+                    <option value="b1" class="opt-b1">Bucket 1</option>
+                    <option value="b2" class="opt-b2">Bucket 2</option>
+                    <option value="b3" class="opt-b3">Bucket 3</option>
+                    <option value="b4" class="opt-b4">Bucket 4</option>
+                  </select>
+                </div>
+              </div>
+
+            </div><!-- /.si-list -->
+
+            <p id="assign-error" class="assign-error" role="alert" aria-live="polite"></p>
+
+          </section>
+
+          <!-- Submit -->
+          <div class="form-controls">
+            <button type="submit" id="submit-btn" class="btn btn--primary">
+              Submit Bucket Map
+            </button>
+          </div>
+
+        </form>
+
+        <!-- ============================================================
+             Feedback Section
+             ============================================================ -->
+        <section id="feedback-section"
+                 class="feedback-section"
+                 aria-labelledby="feedback-heading"
+                 tabindex="-1"
+                 hidden>
+
+          <div class="feedback-header">
+            <h2 id="feedback-heading" class="feedback-heading">Bucket Map Review</h2>
+          </div>
+
+          <div class="feedback-body">
+
+            <!-- Result banner: populated by JS -->
+            <div id="result-banner" class="result-banner" role="status"></div>
+
+            <!-- Structural checks: populated by JS -->
+            <div class="structural-checks"
+                 role="region"
+                 aria-label="Structural logic checks">
+              <div class="structural-checks__heading">Structural Logic Checks</div>
+              <div id="check-chain" class="check-row">
+                <!-- JS: decision chain check -->
+              </div>
+              <div id="check-si10" class="check-row">
+                <!-- JS: SI-10 placement check -->
+              </div>
+              <div id="check-si04-si07" class="check-row">
+                <!-- JS: SI-04 vs SI-07 separation check -->
+              </div>
+            </div>
+
+            <!-- Naming evaluation: populated by JS -->
+            <div id="naming-eval" class="naming-eval" role="region" aria-label="Bucket naming evaluation">
+            </div>
+
+            <!-- Expert bucket map: always shown -->
+            <div class="expert-map"
+                 role="region"
+                 aria-label="Expert bucket map">
+              <p class="expert-map__heading">Expert Bucket Map -- MRHN Step 2</p>
+
+              <div class="expert-bucket-card"
+                   aria-label="Expert Bucket 1: Threat Recognition and Triage">
+                <div class="expert-bucket-card__header">
+                  <span class="expert-bucket-card__title">
+                    Bucket 1: Threat Recognition and Triage
+                  </span>
+                  <span class="expert-bucket-card__count">5 items</span>
+                </div>
+                <div class="expert-bucket-card__items" id="expert-b1-items">
+                  <!-- populated by JS with match/mismatch chips -->
+                </div>
+              </div>
+
+              <div class="expert-bucket-card"
+                   aria-label="Expert Bucket 2: Containment and Control">
+                <div class="expert-bucket-card__header">
+                  <span class="expert-bucket-card__title">
+                    Bucket 2: Containment and Control
+                  </span>
+                  <span class="expert-bucket-card__count">4 items</span>
+                </div>
+                <div class="expert-bucket-card__items" id="expert-b2-items">
+                </div>
+              </div>
+
+              <div class="expert-bucket-card"
+                   aria-label="Expert Bucket 3: Active Response Execution">
+                <div class="expert-bucket-card__header">
+                  <span class="expert-bucket-card__title">
+                    Bucket 3: Active Response Execution
+                  </span>
+                  <span class="expert-bucket-card__count">4 items</span>
+                </div>
+                <div class="expert-bucket-card__items" id="expert-b3-items">
+                </div>
+              </div>
+
+              <div class="expert-bucket-card"
+                   aria-label="Expert Bucket 4: Post-Incident Close-Out">
+                <div class="expert-bucket-card__header">
+                  <span class="expert-bucket-card__title">
+                    Bucket 4: Post-Incident Close-Out
+                  </span>
+                  <span class="expert-bucket-card__count">3 items</span>
+                </div>
+                <div class="expert-bucket-card__items" id="expert-b4-items">
+                </div>
+              </div>
+
+            </div><!-- /.expert-map -->
+
+            <div class="feedback-controls">
+              <button type="button" id="try-again-btn" class="btn btn--secondary" hidden>
+                Revise Assignments
+              </button>
+              <a href="m1-l2-s4.html"
+                 id="continue-link"
+                 class="btn btn--primary"
+                 hidden>
+                Continue
+              </a>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Screen navigation (pre-submission) -->
+        <nav id="screen-nav-pre" class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l2-s2.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+        </nav>
+
+      </article>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">Your bucket assignments on this screen are the foundation of MRHN_BucketMap_v1, completed in Screen 4.</p>
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">Bucket assignment rationale will be recorded as governance decisions in Screen 4.</p>
+    </section>
+  </aside>
+
+  <!-- ============================================================
+       Support Panels
+       ============================================================ -->
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded',
+          btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Evaluation and dynamic label script
+       ============================================================ -->
+  <script type="module">
+
+    // ---- SI item descriptions for chip rendering ----
+    const SI_DESCRIPTIONS = {
+      1:  'Tier 1 protocol execution',
+      2:  'Tier 2 protocol execution',
+      3:  'System isolation decisions',
+      4:  'Real-time SIEM documentation',
+      5:  'Clinical leadership communication',
+      6:  'Escalation protocol',
+      7:  'Post-incident OCR documentation',
+      8:  'Threat classification',
+      9:  'Evidence preservation',
+      10: 'HIPAA breach notification timeline',
+      11: 'Network segmentation decisions',
+      12: 'Recovery verification',
+      13: 'Post-incident lessons learned',
+      14: 'Protocol deviation documentation',
+      15: 'Vendor/third-party notification',
+      16: 'Severity reclassification',
+    };
+
+    // ---- Expert bucket assignments ----
+    // Key = SI number (integer), value = expert group letter
+    const EXPERT_GROUPS = {
+      A: new Set([1, 2, 6, 8, 16]),   // Threat Recognition and Triage
+      B: new Set([3, 9, 11, 15]),      // Containment and Control
+      C: new Set([4, 5, 10, 14]),      // Active Response Execution
+      D: new Set([7, 12, 13]),         // Post-Incident Close-Out
+    };
+
+    const EXPERT_GROUP_NAMES = {
+      A: 'Threat Recognition and Triage',
+      B: 'Containment and Control',
+      C: 'Active Response Execution',
+      D: 'Post-Incident Close-Out',
+    };
+
+    // Map expert group letter to expert-b[N]-items container
+    const EXPERT_CONTAINERS = { A: 'expert-b1-items', B: 'expert-b2-items',
+                                 C: 'expert-b3-items', D: 'expert-b4-items' };
+
+    // ---- Dynamic bucket name labels in selects ----
+    const BUCKET_KEYS = ['b1', 'b2', 'b3', 'b4'];
+
+    function getBucketLabel(key) {
+      const num = key.replace('b', '');
+      const name = document.getElementById(`${key}name`).value.trim();
+      return name ? `Bucket ${num}: ${name}` : `Bucket ${num}`;
+    }
+
+    function refreshSelectOptions() {
+      BUCKET_KEYS.forEach(key => {
+        const label = getBucketLabel(key);
+        document.querySelectorAll(`.opt-${key}`).forEach(opt => {
+          opt.textContent = label;
+        });
+      });
+    }
+
+    BUCKET_KEYS.forEach(key => {
+      document.getElementById(`${key}name`).addEventListener('input', refreshSelectOptions);
+    });
+
+    // ---- Screen reader announcement helper ----
+    function announce(message) {
+      const el = document.getElementById('sr-announcer');
+      el.textContent = '';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => { el.textContent = message; });
+      });
+    }
+
+    // ---- Permutation engine (24 permutations of 4 items) ----
+    function permutations(arr) {
+      if (arr.length <= 1) return [arr.slice()];
+      const result = [];
+      for (let i = 0; i < arr.length; i++) {
+        const rest = arr.filter((_, j) => j !== i);
+        for (const perm of permutations(rest)) {
+          result.push([arr[i], ...perm]);
+        }
+      }
+      return result;
+    }
+
+    // ---- Find best mapping from learner buckets to expert groups ----
+    function bestMapping(learnerGroups) {
+      const expertKeys  = ['A', 'B', 'C', 'D'];
+      const learnerKeys = ['b1', 'b2', 'b3', 'b4'];
+      const perms       = permutations(learnerKeys);
+
+      let bestScore = -1;
+      let bestPerm  = perms[0];
+
+      for (const perm of perms) {
+        let score = 0;
+        for (let i = 0; i < 4; i++) {
+          const expertSet  = EXPERT_GROUPS[expertKeys[i]];
+          const learnerSet = learnerGroups[perm[i]];
+          for (const item of expertSet) {
+            if (learnerSet.has(item)) score++;
+          }
+        }
+        if (score > bestScore) {
+          bestScore = score;
+          bestPerm  = perm;
+        }
+      }
+
+      // mapping[expertKey] = learnerBucketKey
+      const mapping = {};
+      expertKeys.forEach((ek, i) => { mapping[ek] = bestPerm[i]; });
+      return { score: bestScore, mapping };
+    }
+
+    // ---- Naming evaluation ----
+    // Returns 'workflow' | 'mixed' | 'topic'
+    function evaluateNaming(names) {
+      const workflowTerms = [
+        /triage/i, /recogni/i, /classif/i, /detect/i, /threat/i, /initial/i, /identif/i,
+        /contain/i, /isolat/i, /control/i, /segmen/i, /stop/i,
+        /execut/i, /active/i, /real.?time/i, /concurrent/i, /manag/i, /response/i, /during/i,
+        /close/i, /post/i, /recover/i, /lesson/i, /after/i, /final/i,
+        /phase/i, /workflow/i, /stage/i,
+      ];
+      const topicTerms = [
+        /document/i, /protocol/i, /communic/i, /technical/i, /report/i,
+        /HIPAA/i, /compliance/i, /regulatory/i, /log/i, /network/i,
+      ];
+
+      let workflowHits = 0;
+      let topicHits    = 0;
+
+      names.forEach(name => {
+        if (workflowTerms.some(re => re.test(name))) workflowHits++;
+        if (topicTerms.some(re => re.test(name)))    topicHits++;
+      });
+
+      if (workflowHits >= 3) return 'workflow';
+      if (topicHits >= 3)    return 'topic';
+      return 'mixed';
+    }
+
+    // ---- SVG icons ----
+    const iconPass = `<svg class="check-icon check-icon--pass" aria-hidden="true" focusable="false"
+                           width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5.5 9l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>`;
+
+    const iconFail = `<svg class="check-icon check-icon--fail" aria-hidden="true" focusable="false"
+                           width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M6 6l6 6M12 6l-6 6" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round"/>
+                      </svg>`;
+
+    const iconWarn = `<svg class="check-icon check-icon--warn" aria-hidden="true" focusable="false"
+                           width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M9 2L16 15H2L9 2Z" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 7v4M9 13v.5" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round"/>
+                      </svg>`;
+
+    // ---- Chip builder ----
+    function buildChip(siNum, matched) {
+      const desc = SI_DESCRIPTIONS[siNum];
+      const cls  = matched ? 'si-chip si-chip--match' : 'si-chip si-chip--mismatch';
+      const icon = matched
+        ? `<svg class="si-chip__match-icon" aria-hidden="true" focusable="false"
+                width="12" height="12" viewBox="0 0 12 12" fill="none">
+             <path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5"
+                   stroke-linecap="round" stroke-linejoin="round"/>
+           </svg>`
+        : `<svg class="si-chip__mismatch-icon" aria-hidden="true" focusable="false"
+                width="12" height="12" viewBox="0 0 12 12" fill="none">
+             <path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.5"
+                   stroke-linecap="round"/>
+           </svg>`;
+      const matchLabel = matched ? ' -- correctly placed' : ' -- placed in different bucket';
+      return `<span class="${cls}"
+                    aria-label="SI-${String(siNum).padStart(2,'0')}: ${desc}${matchLabel}">
+                ${icon}
+                <span class="si-chip__code">SI-${String(siNum).padStart(2,'0')}</span>
+                <span class="si-chip__desc">${desc}</span>
+              </span>`;
+    }
+
+    // ---- Render feedback ----
+    function renderFeedback(learnerGroups, assignments, bucketNames) {
+      const { score, mapping } = bestMapping(learnerGroups);
+
+      // Build reverse mapping: learnerKey -> expertKey
+      const reverseMapping = {};
+      for (const [ek, lk] of Object.entries(mapping)) reverseMapping[lk] = ek;
+
+      // ---- Result banner ----
+      const banner = document.getElementById('result-banner');
+      let verdict, bannerClass, bannerLabel, bannerDetail;
+
+      if (score >= 14) {
+        verdict     = 'strong';
+        bannerClass = 'result-banner result-banner--pass';
+        bannerLabel = 'Strong workflow logic.';
+        bannerDetail = `You placed ${score} of 16 scope items in the workflow-correct bucket. Compare your assignments against the expert map below.`;
+      } else if (score >= 10) {
+        verdict     = 'partial';
+        bannerClass = 'result-banner result-banner--partial';
+        bannerLabel = 'Workflow logic applied -- some adjustments needed.';
+        bannerDetail = `You placed ${score} of 16 scope items in the workflow-correct bucket. Review the structural checks and the expert map to identify where topic logic crept in.`;
+      } else {
+        verdict     = 'weak';
+        bannerClass = 'result-banner result-banner--weak';
+        bannerLabel = 'Topic-based grouping detected.';
+        bannerDetail = `You placed ${score} of 16 scope items in the workflow-correct bucket. Review the structural checks below to understand how workflow sequence differs from topic similarity.`;
+      }
+
+      const bannerIcon = verdict === 'strong'
+        ? `<svg class="result-banner__icon" aria-hidden="true" focusable="false"
+                width="22" height="22" viewBox="0 0 22 22" fill="none">
+             <circle cx="11" cy="11" r="10" stroke="currentColor" stroke-width="1.75"/>
+             <path d="M6.5 11l3 3 6-6" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round"/>
+           </svg>`
+        : verdict === 'partial'
+        ? `<svg class="result-banner__icon" aria-hidden="true" focusable="false"
+                width="22" height="22" viewBox="0 0 22 22" fill="none">
+             <path d="M11 2L20 19H2L11 2Z" stroke="currentColor" stroke-width="1.75"
+                   stroke-linecap="round" stroke-linejoin="round"/>
+             <path d="M11 8v6M11 16.5v.5" stroke="currentColor" stroke-width="1.75"
+                   stroke-linecap="round"/>
+           </svg>`
+        : `<svg class="result-banner__icon" aria-hidden="true" focusable="false"
+                width="22" height="22" viewBox="0 0 22 22" fill="none">
+             <circle cx="11" cy="11" r="10" stroke="currentColor" stroke-width="1.75"/>
+             <path d="M7 7l8 8M15 7l-8 8" stroke="currentColor" stroke-width="1.75"
+                   stroke-linecap="round"/>
+           </svg>`;
+
+      banner.className = bannerClass;
+      banner.innerHTML = `${bannerIcon}
+        <div>
+          <span class="result-banner__label">${bannerLabel}</span>
+          ${bannerDetail}
+        </div>`;
+
+      // ---- Structural checks ----
+
+      // Check 1: Decision chain -- SI-01, 02, 06, 08, 16 all in same learner bucket
+      const chainItems = [1, 2, 6, 8, 16];
+      const chainBuckets = new Set(chainItems.map(n => assignments[n]));
+      const chainIntact = chainBuckets.size === 1;
+
+      document.getElementById('check-chain').innerHTML =
+        `${chainIntact ? iconPass : iconFail}
+         <span class="check-text">
+           <strong>Decision chain intact (SI-01, 02, 06, 08, 16):</strong>
+           ${chainIntact
+             ? 'All five triage and protocol items are in the same bucket -- the sequential decision logic is preserved.'
+             : `These five items span ${chainBuckets.size} buckets in your map. SI-08 (classify) leads to SI-01 (Tier 1 execute) or via SI-16 (reclassify) to SI-06 (escalate) to SI-02 (Tier 2 execute). Splitting this chain breaks the prerequisite sequence.`}
+         </span>`;
+
+      // Check 2: SI-10 NOT in same bucket as post-incident items (SI-07, SI-12, SI-13)
+      const si10bucket     = assignments[10];
+      const postItems      = [7, 12, 13];
+      const postBuckets    = postItems.map(n => assignments[n]);
+      const si10WithPost   = postBuckets.includes(si10bucket);
+
+      document.getElementById('check-si10').innerHTML =
+        `${si10WithPost ? iconWarn : iconPass}
+         <span class="check-text">
+           <strong>SI-10 placement (HIPAA 72-hour notification clock):</strong>
+           ${si10WithPost
+             ? 'SI-10 is in the same bucket as your post-incident items. The 72-hour OCR clock starts at the point of discovery -- not at incident closure. Clock management is an obligation during active response, not a post-closure task. This is the most commonly debated placement in the set.'
+             : 'SI-10 is placed with active response items rather than post-incident. Correct -- the 72-hour clock starts at discovery and must be managed during active response.'}
+         </span>`;
+
+      // Check 3: SI-04 and SI-07 in different buckets
+      const si04bucket  = assignments[4];
+      const si07bucket  = assignments[7];
+      const si0407split = si04bucket !== si07bucket;
+
+      document.getElementById('check-si04-si07').innerHTML =
+        `${si0407split ? iconPass : iconFail}
+         <span class="check-text">
+           <strong>SI-04 and SI-07 separated:</strong>
+           ${si0407split
+             ? 'Real-time SIEM documentation (SI-04) and post-incident OCR documentation (SI-07) are in different buckets. Correct -- topic similarity (both are documentation) does not override workflow position (SI-04 is concurrent with active response; SI-07 requires a complete incident record).'
+             : 'SI-04 and SI-07 are in the same bucket. Both involve documentation, but they occur at different workflow positions. SI-04 happens during active incident response; SI-07 cannot be completed until the incident is closed and the full record is available. This is the most common topic-based grouping error in this set.'}
+         </span>`;
+
+      // ---- Naming evaluation ----
+      const namingResult = evaluateNaming(bucketNames);
+      const namingEl = document.getElementById('naming-eval');
+      namingEl.innerHTML = `
+        <span class="naming-eval__label">Bucket Naming Evaluation</span>
+        ${namingResult === 'workflow'
+          ? 'Your bucket names use workflow or phase language ("triage," "containment," "execution," "close-out," etc.). This signals the right organizing logic -- names that reflect sequence rather than subject matter.'
+          : namingResult === 'mixed'
+          ? 'Some of your bucket names use workflow language; others lean toward topic or content labels. Names like "Documentation" or "Protocol" describe what the content is, not when it occurs. Consider whether your names would still make sense if the scope items inside them changed -- workflow names are robust to that; topic names are not.'
+          : 'Your bucket names use topic or content language ("Documentation," "Protocol," "Communication," "Technical"). Topic-based names often signal topic-based grouping logic. Compare your assignments to the expert map to see whether the names led the organization.'}`;
+
+      // ---- Expert map with match/mismatch chips ----
+      // For each expert group, show chips colored by whether the item
+      // was placed in the learner bucket that best-maps to this expert group
+      const expertGroupKeys = ['A', 'B', 'C', 'D'];
+      const containerIds    = ['expert-b1-items', 'expert-b2-items',
+                                'expert-b3-items', 'expert-b4-items'];
+
+      expertGroupKeys.forEach((ek, i) => {
+        const expertSet      = EXPERT_GROUPS[ek];
+        const mappedLearner  = mapping[ek];   // which learner bucket maps to this expert group
+        const container      = document.getElementById(containerIds[i]);
+        let   html           = '';
+
+        const siNums = [...expertSet].sort((a, b) => a - b);
+        for (const siNum of siNums) {
+          const matched = assignments[siNum] === mappedLearner;
+          html += buildChip(siNum, matched);
+        }
+        container.innerHTML = html;
+      });
+
+      // ---- Show/hide controls ----
+      document.getElementById('continue-link').removeAttribute('hidden');
+      if (verdict !== 'strong') {
+        document.getElementById('try-again-btn').removeAttribute('hidden');
+      }
+    }
+
+    // ---- Validation ----
+    function clearErrors() {
+      BUCKET_KEYS.forEach(key => {
+        document.getElementById(`error-${key}name`).textContent = '';
+        document.getElementById(`${key}name`).removeAttribute('aria-invalid');
+      });
+      document.getElementById('assign-error').textContent = '';
+      document.querySelectorAll('.bucket-select').forEach(sel => {
+        sel.removeAttribute('aria-invalid');
+      });
+    }
+
+    function validate() {
+      let valid  = true;
+      let firstErrorEl = null;
+
+      // Check bucket names
+      BUCKET_KEYS.forEach(key => {
+        const input = document.getElementById(`${key}name`);
+        if (!input.value.trim()) {
+          document.getElementById(`error-${key}name`).textContent =
+            `Enter a name for Bucket ${key.replace('b','')}.`;
+          input.setAttribute('aria-invalid', 'true');
+          if (!firstErrorEl) firstErrorEl = input;
+          valid = false;
+        }
+      });
+
+      // Check all 16 assigned
+      let unassigned = 0;
+      document.querySelectorAll('.bucket-select').forEach(sel => {
+        if (!sel.value) {
+          sel.setAttribute('aria-invalid', 'true');
+          unassigned++;
+          valid = false;
+        }
+      });
+
+      if (unassigned > 0) {
+        const errEl = document.getElementById('assign-error');
+        errEl.textContent = `${unassigned} scope item${unassigned > 1 ? 's have' : ' has'} not been assigned. Assign all 16 before submitting.`;
+        if (!firstErrorEl) firstErrorEl = errEl;
+      }
+
+      return { valid, firstErrorEl };
+    }
+
+    // ---- Form submission ----
+    document.getElementById('bucket-form').addEventListener('submit', e => {
+      e.preventDefault();
+      clearErrors();
+
+      const { valid, firstErrorEl } = validate();
+
+      if (!valid) {
+        announce('Submission incomplete. Review the highlighted fields.');
+        if (firstErrorEl) firstErrorEl.focus();
+        return;
+      }
+
+      // Collect assignments: siNum -> bucketKey
+      const assignments = {};
+      document.querySelectorAll('.bucket-select').forEach(sel => {
+        assignments[Number(sel.dataset.si)] = sel.value;
+      });
+
+      // Build learner groups
+      const learnerGroups = { b1: new Set(), b2: new Set(), b3: new Set(), b4: new Set() };
+      for (const [si, bucket] of Object.entries(assignments)) {
+        learnerGroups[bucket].add(Number(si));
+      }
+
+      const bucketNames = BUCKET_KEYS.map(k =>
+        document.getElementById(`${k}name`).value.trim()
+      );
+
+      renderFeedback(learnerGroups, assignments, bucketNames);
+
+      // Reveal feedback, hide pre-nav, disable form
+      const feedbackSection = document.getElementById('feedback-section');
+      feedbackSection.removeAttribute('hidden');
+      document.getElementById('screen-nav-pre').setAttribute('hidden', '');
+
+      document.getElementById('bucket-form').querySelectorAll(
+        'input, select, button[type="submit"]'
+      ).forEach(el => el.setAttribute('disabled', ''));
+
+      // Announce and focus feedback heading
+      announce('Bucket map submitted. Feedback is now visible.');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.getElementById('feedback-heading').focus();
+        });
+      });
+    });
+
+    // ---- Revise Assignments ----
+    document.getElementById('try-again-btn').addEventListener('click', () => {
+      document.getElementById('feedback-section').setAttribute('hidden', '');
+      document.getElementById('screen-nav-pre').removeAttribute('hidden');
+
+      document.getElementById('bucket-form').querySelectorAll(
+        'input, select, button[type="submit"]'
+      ).forEach(el => el.removeAttribute('disabled'));
+
+      clearErrors();
+      announce('Form re-enabled. Update your assignments and resubmit.');
+
+      requestAnimationFrame(() => {
+        document.getElementById('b1name').focus();
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script
+       ============================================================ -->
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.2';
+    document.getElementById('pt-phase').textContent        = '1';
+    document.getElementById('pt-step').textContent         = '2';
+    document.getElementById('pt-screen').textContent       = '3';
+    document.getElementById('pt-screen-total').textContent = '6';
+
+    document.querySelectorAll('.module-nav-link').forEach(link => {
+      link.removeAttribute('aria-current');
+    });
+    const activeLink = document.querySelector(
+      '.module-nav-link[href="module-1.html"]'
+    );
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Meridian Regional Health Network is the organizational scenario used in every module of this credential. Learn who Meridian is, what course you will design, and why this scenario anchors the ARCH Method practice.">
+  <title>The Meridian Scenario | Introduction | ARCH Method Practitioner Credential | Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/scaffolds/persistentStepTracker.css">
+  <style>
+    /* ================================================================
+       Screen 0.3 — Scenario Introduction Styles
+       All color values reference CSS tokens. No hard-coded hex values.
+       ================================================================ */
+
+    .lesson-intro__lead {
+      margin: 0 0 1.5rem;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+      max-width: 70ch;
+    }
+
+    .lesson-intro__section-heading {
+      margin: 1.875rem 0 0.625rem;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+    }
+
+    .lesson-intro__body-text {
+      margin: 0 0 1rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+      max-width: 70ch;
+    }
+
+    /* ----------------------------------------------------------------
+       Scenario Brief Card
+       Styled as a client project brief: navy left accent, subtle
+       background, labeled definition list of project parameters.
+       ---------------------------------------------------------------- */
+
+    .scenario-brief {
+      margin: 1.5rem 0 1.25rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-left: 4px solid var(--color-border-strong);
+      border-radius: 0 6px 6px 0;
+      padding: 1.125rem 1.375rem 1.25rem;
+      max-width: 720px;
+    }
+
+    /* "PROJECT BRIEF" label above the dl */
+    .scenario-brief__label {
+      display: block;
+      margin: 0 0 0.875rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .scenario-brief__dl {
+      margin: 0;
+    }
+
+    /* Each dt/dd pair sits in a two-column grid row */
+    .scenario-brief__row {
+      display: grid;
+      grid-template-columns: 10rem 1fr;
+      gap: 0 1rem;
+      padding: 0.5625rem 0;
+      border-bottom: 1px solid var(--color-border-default);
+      align-items: start;
+    }
+
+    .scenario-brief__row:first-child {
+      padding-top: 0;
+    }
+
+    .scenario-brief__row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .scenario-brief__dt {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+      padding-top: 0.125rem;
+    }
+
+    .scenario-brief__dd {
+      margin: 0;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.5;
+    }
+
+    /* Narrow viewports: stack label and value */
+    @media (max-width: 480px) {
+      .scenario-brief__row {
+        grid-template-columns: 1fr;
+        gap: 0.125rem 0;
+      }
+    }
+
+    /* High contrast: strengthen card borders and label color */
+    @media (prefers-contrast: more) {
+      .scenario-brief {
+        border-color: var(--color-border-strong);
+        border-left-color: var(--color-border-strong);
+        border-left-width: 4px;
+      }
+
+      .scenario-brief__row {
+        border-bottom-color: var(--color-border-strong);
+      }
+
+      .scenario-brief__dt {
+        color: var(--color-text-primary);
+      }
+
+      .scenario-brief__label {
+        color: var(--color-text-primary);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">
+        Module <span id="pt-module">Intro</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        <span id="pt-lesson">Introduction</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true" id="pt-phase-divider" hidden>&bull;</span>
+      <span class="pt-item" id="pt-phase-item" hidden>
+        Phase <span id="pt-phase">0</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true" id="pt-step-divider" hidden>&bull;</span>
+      <span class="pt-item" id="pt-step-item" hidden>
+        Step <span id="pt-step">0</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Screen <span id="pt-screen">3</span> of <span id="pt-screen-total">9</span>
+      </span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button"
+              class="support-toggle"
+              data-panel="glossary"
+              aria-controls="glossary"
+              aria-expanded="false">Glossary</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="supportPanel"
+              aria-controls="supportPanel"
+              aria-expanded="false">Support</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="artifactDrawer"
+              aria-controls="artifactDrawer"
+              aria-expanded="false">Artifacts</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="decisionHistory"
+              aria-controls="decisionHistory"
+              aria-expanded="false">Decision History</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="annotationPanel"
+              aria-controls="annotationPanel"
+              aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link" aria-current="page">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <article class="lesson-intro" aria-labelledby="lesson-title">
+
+        <header class="lesson-intro__header">
+          <p class="lesson-label" aria-label="Introduction, Screen 3 of 9">Introduction &bull; Screen 3 of 9</p>
+          <h1 id="lesson-title" class="lesson-intro__title">The Meridian Scenario</h1>
+        </header>
+
+        <p class="lesson-intro__lead">
+          Every decision point, worked example, and performance task in this credential uses the same
+          organizational context: Meridian Regional Health Network. Working with one scenario across all
+          four modules lets you practice the ARCH Method on a realistic design problem without switching
+          contexts between lessons. You will complete the Meridian course architecture progressively as
+          you work through each Phase and Step of the method.
+        </p>
+
+        <!-- =====================================================
+             Section 1: The Organization
+             ===================================================== -->
+        <h2 class="lesson-intro__section-heading">The Organization</h2>
+
+        <p class="lesson-intro__body-text">
+          Meridian Regional Health Network operates six acute-care hospitals and a network of outpatient
+          clinics across a three-state region, with approximately 4,200 employees. In late 2023, a
+          ransomware attack disrupted electronic health record access at two of its facilities for eleven
+          days. A post-incident review identified a critical capability gap: IT staff lacked a shared,
+          documented protocol for detecting, containing, and reporting cybersecurity incidents. Meridian's
+          Chief Information Security Officer commissioned a formal training program to close that gap
+          before the next incident cycle.
+        </p>
+
+        <!-- =====================================================
+             Project Brief Card
+             Styled as a client handoff document.
+             role="region" groups the brief as a navigable landmark.
+             The visible .scenario-brief__label is aria-hidden because
+             the aria-label on the region carries the accessible name.
+             ===================================================== -->
+        <div class="scenario-brief"
+             role="region"
+             aria-label="Project brief for the Meridian course design">
+
+          <span class="scenario-brief__label" aria-hidden="true">Project Brief</span>
+
+          <dl class="scenario-brief__dl">
+
+            <div class="scenario-brief__row">
+              <dt class="scenario-brief__dt">Course Title</dt>
+              <dd class="scenario-brief__dd">Cybersecurity Incident Response for Healthcare IT Professionals</dd>
+            </div>
+
+            <div class="scenario-brief__row">
+              <dt class="scenario-brief__dt">Organization</dt>
+              <dd class="scenario-brief__dd">Meridian Regional Health Network</dd>
+            </div>
+
+            <div class="scenario-brief__row">
+              <dt class="scenario-brief__dt">Learner Population</dt>
+              <dd class="scenario-brief__dd">
+                Approximately 120 healthcare IT professionals across six facilities: help desk
+                technicians, network engineers, and systems administrators with mixed experience levels
+                in cybersecurity
+              </dd>
+            </div>
+
+            <div class="scenario-brief__row">
+              <dt class="scenario-brief__dt">Regulatory Context</dt>
+              <dd class="scenario-brief__dd">
+                HIPAA breach notification requirements and Meridian Incident Response Policy IR-2024
+              </dd>
+            </div>
+
+            <div class="scenario-brief__row">
+              <dt class="scenario-brief__dt">Your Role</dt>
+              <dd class="scenario-brief__dd">
+                Instructional designer hired to build the course architecture before content
+                development begins
+              </dd>
+            </div>
+
+            <div class="scenario-brief__row">
+              <dt class="scenario-brief__dt">Client Contact</dt>
+              <dd class="scenario-brief__dd">
+                Priya Okonkwo, Director of IT Education and Workforce Development
+              </dd>
+            </div>
+
+          </dl>
+
+        </div>
+
+        <p class="lesson-intro__body-text">
+          You are not expected to be a cybersecurity expert or a healthcare professional. The ARCH Method
+          operates at the level of course architecture, not subject-matter expertise. Meridian's
+          subject-matter experts will develop the content. Your job is to build an architecture that makes
+          that content development purposeful and defensible. The distinction between the architect's role
+          and the developer's role is one of the core arguments the ARCH Method makes.
+        </p>
+
+        <!-- =====================================================
+             Section 2: Why This Scenario
+             ===================================================== -->
+        <h2 class="lesson-intro__section-heading">Why This Scenario</h2>
+
+        <p class="lesson-intro__body-text">
+          Healthcare is not a higher education context, and that distance is intentional. The ARCH Method
+          is domain-agnostic: the same Phases and Steps apply whether you are designing a clinical
+          training, an onboarding program, or a graduate seminar. Using a scenario outside your typical
+          domain asks you to engage with the method as method rather than relying on context familiarity.
+        </p>
+
+        <p class="lesson-intro__body-text">
+          The Meridian scenario was chosen because it has real regulatory constraints, a defined but
+          heterogeneous learner population, high-stakes performance requirements, and a clear
+          organizational trigger that explains why the training must exist. Those features create the
+          conditions where course architecture decisions have genuine consequences. That is exactly where
+          the ARCH Method is most valuable.
+        </p>
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="intro-0.2.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true"
+                 focusable="false"
+                 width="16"
+                 height="16"
+                 viewBox="0 0 16 16"
+                 fill="none">
+              <path d="M10 12L6 8l4-4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="intro-0.4.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen">
+            Next
+            <svg aria-hidden="true"
+                 focusable="false"
+                 width="16"
+                 height="16"
+                 viewBox="0 0 16 16"
+                 fill="none">
+              <path d="M6 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+
+    <section id="artifact-reference"
+             tabindex="-1"
+             aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">No artifacts have been started yet. Your first artifact begins in Module 1.</p>
+    </section>
+
+    <section id="decision-history"
+             tabindex="-1"
+             aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">No decisions recorded yet. Decision points begin in Module 1.</p>
+    </section>
+
+  </aside>
+
+  <!-- ============================================================
+       Support Panels — managed by panelManager.js
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script
+       ============================================================ -->
+  <script type="module">
+    import { init } from './js/scaffolds/persistentStepTracker.js';
+
+    init({
+      module:   0,
+      lesson:   'Introduction',
+      phase:    0,
+      step:     0,
+      screen:   3,
+      total:    9,
+      announce: false,
+    });
+
+    /* ptUpdate() sets pt-module to '0'. Override to display 'Intro'. */
+    document.getElementById('pt-module').textContent = 'Intro';
+  </script>
+
+</body>
+</html>

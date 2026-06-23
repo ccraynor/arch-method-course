@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Worked example: an expert conducts the full Scope Trace Audit on the optimized MRHN decomposition map -- forward trace, backward trace, and orphan check -- resolves one parent misattribution, and produces MRHN_DecompositionMap_v2 with governance record MRHN-D-008.">
+  <title>Worked Example: Scope Trace Audit -- Lesson 1.4b -- ARCH Method Practitioner Credential -- Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l4b-s3 -- Worked Example: Step 8 Scope Trace Audit
+       Phase 2, Step 8. All color values use CSS tokens only.
+       ================================================================ */
+
+    .worked-example__meta { display: flex; align-items: center; gap: 0.75rem; margin: 0 0 0.25rem; flex-wrap: wrap; }
+    .screen-type-label { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-secondary); }
+    .time-estimate { font-size: 0.75rem; color: var(--color-text-secondary); background: var(--color-bg-subtle); border: 1px solid var(--color-border-default); border-radius: 3px; padding: 0.125rem 0.5rem; }
+    .lesson-label { display: block; margin: 0 0 0.25rem; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-link); }
+
+    .worked-example__title { margin: 0 0 0.5rem; font-size: 1.5rem; font-weight: 800; color: var(--color-text-primary); line-height: 1.2; }
+    .step-badge { display: inline-block; margin: 0 0 0.875rem; padding: 0.25rem 0.625rem; background: var(--color-bg-page); border: 1.5px solid var(--color-text-link); border-radius: 3px; font-size: 0.75rem; font-weight: 600; color: var(--color-text-link); }
+
+    .scenario-context { display: flex; align-items: baseline; gap: 0.375rem; padding: 0.625rem 0.875rem; background: var(--color-bg-subtle); border-left: 3px solid var(--color-border-strong); border-radius: 0 4px 4px 0; font-size: 0.875rem; color: var(--color-text-primary); margin: 0 0 1.5rem; line-height: 1.65; }
+    .scenario-label { font-weight: 700; color: var(--color-text-secondary); flex-shrink: 0; }
+
+    /* ---- Two-column layout ---- */
+    .worked-example__layout { display: grid; grid-template-columns: 1fr 20rem; gap: 2rem; align-items: start; }
+    @media (max-width: 900px) { .worked-example__layout { grid-template-columns: 1fr; } }
+
+    .worked-example__content { display: flex; flex-direction: column; gap: 2.25rem; }
+
+    .example-step { display: grid; grid-template-columns: 2.75rem 1fr; gap: 0 1rem; }
+    .step-marker { display: flex; align-items: flex-start; justify-content: center; padding-top: 0.125rem; }
+    .step-marker span { display: flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: var(--color-text-link); color: var(--color-text-inverse); font-size: 0.8125rem; font-weight: 700; flex-shrink: 0; }
+    .step-body { min-width: 0; }
+    .step-heading { margin: 0.25rem 0 0.625rem; font-size: 1.0625rem; font-weight: 700; color: var(--color-text-primary); line-height: 1.3; }
+    .step-content { margin: 0 0 0.875rem; font-size: 0.9375rem; color: var(--color-text-primary); line-height: 1.7; }
+    .step-content:last-child { margin-bottom: 0; }
+    .step-content strong { font-weight: 700; }
+
+    /* ---- Audit pass methodology cards ---- */
+    .audit-pass-cards { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; margin: 0 0 0.875rem; }
+    .audit-pass-card { display: grid; grid-template-columns: 5.5rem 1fr; }
+    .audit-pass-card + .audit-pass-card { border-top: 1px solid var(--color-border-default); }
+    .audit-pass-card__key { padding: 0.625rem 0.75rem; background: var(--color-bg-subtle); border-right: 1px solid var(--color-border-default); display: flex; flex-direction: column; gap: 0.2rem; }
+    .audit-pass-card__num { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-secondary); }
+    .audit-pass-card__pass-name { font-size: 0.8125rem; font-weight: 700; color: var(--color-text-primary); line-height: 1.35; }
+    .audit-pass-card__val { padding: 0.625rem 0.875rem; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; background: var(--color-bg-page); }
+    .audit-pass-card__val strong { font-weight: 700; }
+
+    /* ---- Forward trace table ---- */
+    .trace-table-wrap { border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; margin: 0 0 0.875rem; overflow-x: auto; }
+    .trace-table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
+    .trace-table thead th { padding: 0.375rem 0.625rem; background: var(--color-brand-navy); color: var(--color-text-inverse); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; text-align: left; white-space: nowrap; }
+    .trace-table tbody td { padding: 0.4375rem 0.625rem; border-bottom: 1px solid var(--color-border-default); vertical-align: middle; line-height: 1.5; }
+    .trace-table tbody tr:last-child td { border-bottom: none; }
+    .trace-table tbody tr:nth-child(even) td { background: var(--color-bg-subtle); }
+    .trace-table tbody tr.trace-row--flag td { background: var(--color-warning-bg); }
+    .trace-table tbody tr.trace-row--pass td { background: var(--color-bg-page); }
+    .si-id { font-family: monospace; font-weight: 700; color: var(--color-text-primary); white-space: nowrap; }
+    .bucket-chip { display: inline-flex; font-size: 0.6875rem; font-weight: 700; padding: 0.125rem 0.375rem; border-radius: 3px; background: var(--color-bg-subtle); border: 1px solid var(--color-border-default); color: var(--color-text-secondary); white-space: nowrap; }
+    .count-badge { font-family: monospace; font-weight: 700; }
+
+    /* ---- Validation chips ---- */
+    .val-chip { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.6875rem; font-weight: 700; padding: 0.1875rem 0.4375rem; border-radius: 3px; white-space: nowrap; }
+    .val-chip--pass { background: var(--color-success-bg); color: var(--color-success-text); border: 1px solid var(--color-success-border); }
+    .val-chip--fail { background: var(--color-error-bg); color: var(--color-error-text); border: 1px solid var(--color-error-border); }
+    .val-chip--flag { background: var(--color-warning-bg); color: var(--color-warning-text); border: 1px solid var(--color-warning-border); }
+    .val-chip--resolved { background: var(--color-bg-subtle); color: var(--color-text-link); border: 1px solid var(--color-text-link); }
+    .val-chip--note { background: var(--color-warning-bg); color: var(--color-warning-text); border: 1px solid var(--color-warning-border); }
+
+    .validation-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.625rem; padding-top: 0.625rem; border-top: 1px solid var(--color-border-default); }
+
+    /* ---- Anomaly component card ---- */
+    .anomaly-card { border: 1px solid var(--color-error-border); border-radius: 6px; overflow: hidden; margin: 0 0 1rem; border-top: 3px solid var(--color-error-border); }
+    .anomaly-card__header { display: flex; align-items: center; gap: 0.625rem; padding: 0.5rem 0.875rem; background: var(--color-brand-navy); color: var(--color-text-inverse); }
+    .anomaly-card__id { font-family: monospace; font-size: 0.875rem; font-weight: 700; }
+    .anomaly-card__parent-listed { font-size: 0.75rem; opacity: 0.8; }
+    .anomaly-verdict { margin-left: auto; font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.125rem 0.4375rem; border-radius: 10px; background: var(--color-error-bg); color: var(--color-error-text); border: 1px solid var(--color-error-border); white-space: nowrap; }
+
+    .anomaly-card__body { padding: 0.875rem; background: var(--color-bg-page); }
+
+    .mismatch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 0 0 0.75rem; }
+    @media (max-width: 560px) { .mismatch-grid { grid-template-columns: 1fr; } }
+
+    .mismatch-cell { padding: 0.625rem 0.75rem; border: 1px solid var(--color-border-default); border-radius: 4px; }
+    .mismatch-cell--listed { border-color: var(--color-error-border); background: var(--color-error-bg); }
+    .mismatch-cell--actual { border-color: var(--color-success-border); background: var(--color-success-bg); }
+
+    .mismatch-cell__label { display: block; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.25rem; }
+    .mismatch-cell--listed .mismatch-cell__label { color: var(--color-error-text); }
+    .mismatch-cell--actual .mismatch-cell__label { color: var(--color-success-text); }
+
+    .mismatch-cell__si { font-family: monospace; font-size: 0.8125rem; font-weight: 700; color: var(--color-text-primary); display: block; margin-bottom: 0.1875rem; }
+    .mismatch-cell__desc { font-size: 0.8125rem; color: var(--color-text-primary); line-height: 1.5; margin: 0; }
+
+    .component-desc-block { margin: 0 0 0.75rem; }
+    .component-desc-label { display: block; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-secondary); margin-bottom: 0.25rem; }
+    .component-desc-text { font-size: 0.9375rem; color: var(--color-text-primary); line-height: 1.6; margin: 0; font-style: italic; }
+
+    /* ---- Resolution block ---- */
+    .resolution-block { border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; margin: 0 0 0.875rem; }
+    .resolution-block__header { padding: 0.4375rem 0.875rem; background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border-default); display: flex; align-items: center; gap: 0.5rem; }
+    .resolution-block__label { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-secondary); }
+    .resolution-block__body { padding: 0.875rem; background: var(--color-bg-page); display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; }
+    .resolution-block__body strong { font-weight: 700; }
+
+    .correction-row { display: grid; grid-template-columns: auto 1.5rem auto; align-items: center; gap: 0.5rem; padding: 0.5rem 0.625rem; background: var(--color-success-bg); border: 1px solid var(--color-success-border); border-radius: 4px; }
+    @media (max-width: 480px) { .correction-row { grid-template-columns: 1fr; } }
+    .correction-before { font-family: monospace; font-size: 0.8125rem; color: var(--color-error-text); text-decoration: line-through; text-decoration-color: var(--color-error-border); }
+    .correction-arrow { text-align: center; font-size: 1rem; color: var(--color-success-text); }
+    .correction-after { font-family: monospace; font-size: 0.8125rem; font-weight: 700; color: var(--color-success-text); }
+
+    /* ---- Orphan check table ---- */
+    .orphan-check-wrap { border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; margin: 0 0 0.875rem; }
+    .orphan-check-table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
+    .orphan-check-table thead th { padding: 0.375rem 0.625rem; background: var(--color-brand-navy); color: var(--color-text-inverse); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; text-align: left; }
+    .orphan-check-table tbody td { padding: 0.5rem 0.625rem; border-bottom: 1px solid var(--color-border-default); vertical-align: top; line-height: 1.55; }
+    .orphan-check-table tbody tr:last-child td { border-bottom: none; }
+    .check-name { font-weight: 700; color: var(--color-text-primary); }
+    .check-detail { color: var(--color-text-secondary); font-size: 0.8125rem; }
+
+    /* ---- Audit result banner ---- */
+    .audit-result-banner { display: flex; gap: 0.875rem; align-items: center; padding: 1rem 1.125rem; background: var(--color-success-bg); border: 1px solid var(--color-success-border); border-radius: 6px; margin: 0 0 0.875rem; }
+    .audit-result-banner__icon { flex-shrink: 0; color: var(--color-success-text); }
+    .audit-result-banner__body { flex: 1; }
+    .audit-result-banner__heading { margin: 0 0 0.25rem; font-size: 0.9375rem; font-weight: 700; color: var(--color-success-text); }
+    .audit-result-banner__text { margin: 0; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.6; }
+    .audit-result-banner__text strong { font-weight: 700; }
+
+    /* ---- Artifact block ---- */
+    .artifact-block { border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; margin: 0 0 0.875rem; }
+    .artifact-block__header { display: flex; align-items: center; gap: 0.625rem; padding: 0.5625rem 0.875rem; background: var(--color-brand-navy); color: var(--color-text-inverse); }
+    .artifact-id { font-family: monospace; font-size: 0.875rem; font-weight: 700; }
+    .artifact-version { font-size: 0.75rem; opacity: 0.7; margin-left: auto; }
+    .artifact-section { padding: 0.875rem; border-bottom: 1px solid var(--color-border-default); background: var(--color-bg-page); }
+    .artifact-section:last-child { border-bottom: none; }
+    .artifact-section-label { display: block; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-secondary); margin-bottom: 0.5rem; }
+
+    .change-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.375rem; }
+    .change-list li { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.55; }
+    .change-list li::before { content: ''; display: inline-block; width: 0.4375rem; height: 0.4375rem; border-radius: 50%; background: var(--color-brand-teal); flex-shrink: 0; margin-top: 0.375rem; }
+    .change-list strong { font-weight: 700; }
+
+    /* ---- Governance record ---- */
+    .gov-record { border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; margin: 0 0 0.875rem; }
+    .gov-record__header { display: flex; align-items: center; gap: 0.625rem; padding: 0.5rem 0.875rem; background: var(--color-brand-navy); color: var(--color-text-inverse); }
+    .gov-record__id { font-family: monospace; font-size: 0.875rem; font-weight: 700; }
+    .gov-record__title { font-size: 0.9375rem; font-weight: 700; }
+    .gov-record__row { display: grid; grid-template-columns: 9.5rem 1fr; border-bottom: 1px solid var(--color-border-default); }
+    .gov-record__row:last-child { border-bottom: none; }
+    @media (max-width: 480px) { .gov-record__row { grid-template-columns: 1fr; } }
+    .gov-record__key { padding: 0.5rem 0.875rem; background: var(--color-bg-subtle); font-size: 0.75rem; font-weight: 700; color: var(--color-text-secondary); border-right: 1px solid var(--color-border-default); line-height: 1.5; }
+    @media (max-width: 480px) { .gov-record__key { border-right: none; border-bottom: 1px solid var(--color-border-default); } }
+    .gov-record__val { padding: 0.5rem 0.875rem; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; background: var(--color-bg-page); }
+    .gov-record__val strong { font-weight: 700; }
+    .gov-record__val ul { margin: 0.25rem 0 0; padding-left: 1.25rem; font-size: 0.875rem; line-height: 1.6; }
+    .gov-record__val ul li { margin-bottom: 0.25rem; }
+
+    /* ---- Think-aloud column ---- */
+    .worked-example__think-aloud { position: sticky; top: 1.5rem; background: var(--color-bg-subtle); border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; }
+    @media (max-width: 900px) { .worked-example__think-aloud { position: static; } }
+    .think-aloud__header { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-border-default); background: var(--color-bg-page); }
+    .think-aloud__heading { margin: 0; font-size: 0.875rem; font-weight: 700; color: var(--color-text-primary); }
+    .think-aloud__list { padding: 0.875rem 1rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .annotation-item { display: grid; grid-template-columns: 1.625rem 1fr; gap: 0 0.625rem; align-items: start; }
+    .annotation-marker { display: flex; align-items: center; justify-content: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; border: 1.5px solid var(--color-border-strong); font-size: 0.6875rem; font-weight: 700; color: var(--color-text-secondary); flex-shrink: 0; margin-top: 0.0625rem; }
+    .annotation-text { margin: 0; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; }
+    .btn--toggle { font-size: 0.75rem; padding: 0.25rem 0.625rem; border: 1px solid var(--color-border-default); border-radius: 4px; background: var(--color-bg-page); color: var(--color-text-secondary); cursor: pointer; white-space: nowrap; }
+    .btn--toggle:hover { background: var(--color-bg-subtle); color: var(--color-text-primary); }
+    .btn--toggle:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+
+    @media (prefers-contrast: more) {
+      .audit-pass-cards, .anomaly-card, .resolution-block,
+      .orphan-check-wrap, .artifact-block, .gov-record,
+      .trace-table-wrap, .audit-result-banner { border-color: var(--color-border-strong); }
+      .audit-pass-card + .audit-pass-card { border-top-color: var(--color-border-strong); }
+      .audit-pass-card__key { border-right-color: var(--color-border-strong); }
+      .gov-record__row { border-bottom-color: var(--color-border-strong); }
+      .gov-record__key { border-right-color: var(--color-border-strong); }
+      .worked-example__think-aloud { border-color: var(--color-border-strong); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <header role="banner">
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+    <div id="progress-tracker" role="group" aria-label="Course progress" tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.4b</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">2</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">8</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">3</span> of <span id="pt-screen-total">6</span></span>
+    </div>
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel" aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer" aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory" aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel" aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+  </header>
+
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item"><a href="intro-0.1.html" class="module-nav-link">Introduction</a></li>
+      <li class="module-nav-item"><a href="module-1.html" class="module-nav-link" aria-current="page">Module 1: Bound the Course</a></li>
+      <li class="module-nav-item"><a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a></li>
+      <li class="module-nav-item"><a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a></li>
+      <li class="module-nav-item"><a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a></li>
+    </ol>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <section id="current-activity" tabindex="-1" aria-label="Current activity">
+      <article class="worked-example" aria-labelledby="example-title">
+
+        <header class="worked-example__header">
+          <div class="worked-example__meta">
+            <span class="screen-type-label">Worked Example</span>
+            <span class="time-estimate" aria-label="Estimated reading time: 20 to 25 minutes">20&ndash;25 min</span>
+          </div>
+          <p class="lesson-label">Lesson 1.4b</p>
+          <h1 id="example-title" class="worked-example__title">
+            Scope Trace Audit: Confirming Every Component Traces to a Parent Scope Item
+          </h1>
+          <span class="step-badge">Phase 2 -- Step 8</span>
+          <div class="scenario-context" role="note" aria-label="Scenario context">
+            <span class="scenario-label">Scenario:</span>
+            Meridian Regional Health Network. The optimized MRHN decomposition map
+            (48 components, MRHN-D-007 on record) is the input. An expert runs the
+            three-pass Scope Trace Audit -- forward trace, backward trace, orphan
+            check -- discovers one parent misattribution during the backward trace,
+            resolves it, and confirms the audit passes with zero orphan components.
+            Produces MRHN_DecompositionMap_v2 and governance record MRHN-D-008.
+          </div>
+        </header>
+
+        <div class="worked-example__layout">
+
+          <!-- ==================================================
+               Left column
+               ================================================== -->
+          <div class="worked-example__content">
+
+            <!-- Step 01 -->
+            <div class="example-step" id="step-1">
+              <div class="step-marker" aria-label="Step 1"><span aria-hidden="true">01</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">The Three-Pass Audit -- What Each Pass Catches and Why One Pass Is Not Enough</h2>
+                <p class="step-content">
+                  The Scope Trace Audit answers one question: does the decomposition map
+                  stay within the scope boundary? A component that cannot be traced to a
+                  parent SI item in the scope registry is content outside the boundary --
+                  something that was added during decomposition without authorization from
+                  Step 3 scoping decisions. Equally, a scope item with no DC children means
+                  a piece of authorized scope was silently dropped during decomposition.
+                  Either condition represents a structural failure in the map before it
+                  reaches Module 2.
+                </p>
+                <p class="step-content">
+                  The audit runs as three sequential passes. Running only one or two passes
+                  is insufficient: each pass catches a different class of failure, and the
+                  orphan check requires both previous passes to be complete before it can run.
+                </p>
+
+                <div class="audit-pass-cards" role="region" aria-label="Three audit passes and what each catches">
+                  <div class="audit-pass-card">
+                    <div class="audit-pass-card__key">
+                      <span class="audit-pass-card__num">Pass 1</span>
+                      <span class="audit-pass-card__pass-name">Forward Trace</span>
+                    </div>
+                    <div class="audit-pass-card__val">
+                      <strong>SI registry to DC components.</strong> Start from each of the 16 SI items.
+                      Count how many DC components list that SI item as their parent. Every SI item must
+                      have at least one DC child -- a count of zero means a scope item was dropped during
+                      decomposition. Note unusually high counts for verification in Pass 2. Pass 1 does
+                      not verify that component descriptions match their listed parents -- that is Pass 2's job.
+                    </div>
+                  </div>
+                  <div class="audit-pass-card">
+                    <div class="audit-pass-card__key">
+                      <span class="audit-pass-card__num">Pass 2</span>
+                      <span class="audit-pass-card__pass-name">Backward Trace</span>
+                    </div>
+                    <div class="audit-pass-card__val">
+                      <strong>DC components to SI registry.</strong> For each of the 48 DC components, verify
+                      that (a) a parent SI item is listed, (b) that SI item exists in the scope registry, and
+                      (c) the component description is consistent with what that SI item covers. A misattribution
+                      -- a component whose description does not match its listed parent -- is a labeling error
+                      that Pass 1 cannot catch. Pass 2 is the only pass that reads both the component description
+                      and the parent SI item name together.
+                    </div>
+                  </div>
+                  <div class="audit-pass-card">
+                    <div class="audit-pass-card__key">
+                      <span class="audit-pass-card__num">Pass 3</span>
+                      <span class="audit-pass-card__pass-name">Orphan Check</span>
+                    </div>
+                    <div class="audit-pass-card__val">
+                      <strong>Cross-reference.</strong> After any corrections from Pass 2 are applied,
+                      run the cross-reference: confirm that every SI item in the registry appears at least
+                      once as a parent in the corrected backward trace, and that every DC component in
+                      the corrected map appears as a child in the forward trace. A correction in Pass 2
+                      that moves a component to a different parent SI can leave the original parent
+                      unrepresented -- Pass 3 is what catches that knock-on effect.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 02 -->
+            <div class="example-step" id="step-2">
+              <div class="step-marker" aria-label="Step 2"><span aria-hidden="true">02</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Pass 1 -- Forward Trace: All 16 SI Items Have at Least One DC Child</h2>
+                <p class="step-content">
+                  I run the forward trace by reading down the SI registry and counting how
+                  many DC components list each SI item as their parent. The pass criterion
+                  is simple: every SI item must return a count of at least one. I note the
+                  count for each SI item and flag any that look unusually high or low for
+                  follow-up in Pass 2. The forward trace does not verify description
+                  alignment -- that happens in Pass 2.
+                </p>
+
+                <div class="trace-table-wrap" role="region" aria-label="Forward trace results for all 16 scope items">
+                  <table class="trace-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">SI Item</th>
+                        <th scope="col">Bucket</th>
+                        <th scope="col">Scope Item</th>
+                        <th scope="col">DC Count</th>
+                        <th scope="col">Pass 1</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span class="si-id">SI-08</span></td>
+                        <td><span class="bucket-chip">1</span></td>
+                        <td>Threat identification and incident classification</td>
+                        <td><span class="count-badge">4</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="si-id">SI-01</span></td>
+                        <td><span class="bucket-chip">1</span></td>
+                        <td>Incident classification using the MRHN severity rubric</td>
+                        <td><span class="count-badge">2</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="si-id">SI-16</span></td>
+                        <td><span class="bucket-chip">1</span></td>
+                        <td>Containment action documentation using IR-2024 protocol fields</td>
+                        <td><span class="count-badge">3</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="si-id">SI-06</span></td>
+                        <td><span class="bucket-chip">1</span></td>
+                        <td>Tier 1 / Tier 2 escalation decision</td>
+                        <td><span class="count-badge">3</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="si-id">SI-02</span></td>
+                        <td><span class="bucket-chip">1</span></td>
+                        <td>Evidence preservation and chain-of-custody procedures</td>
+                        <td><span class="count-badge">2</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="si-id">SI-03</span></td>
+                        <td><span class="bucket-chip">2</span></td>
+                        <td>Network isolation and segmentation procedures</td>
+                        <td><span class="count-badge">3</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="si-id">SI-04</span></td>
+                        <td><span class="bucket-chip">2</span></td>
+                        <td>External notification requirements (regulators, vendors, insurers)</td>
+                        <td><span class="count-badge">3</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="si-id">SI-05</span></td>
+                        <td><span class="bucket-chip">2</span></td>
+                        <td>System containment authority boundaries (PC-3)</td>
+                        <td><span class="count-badge">3</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="si-id">SI-09</span></td>
+                        <td><span class="bucket-chip">2</span></td>
+                        <td>Clinical system interdependency evaluation for network segmentation risk</td>
+                        <td><span class="count-badge">4</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="si-id">SI-10</span></td>
+                        <td><span class="bucket-chip">3</span></td>
+                        <td>HIPAA 72-hour breach notification clock management (45 CFR 164.404)</td>
+                        <td><span class="count-badge">4</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="si-id">SI-11</span></td>
+                        <td><span class="bucket-chip">3</span></td>
+                        <td>Leadership and communication chain notification protocols (PC-5)</td>
+                        <td><span class="count-badge">2</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="si-id">SI-12</span></td>
+                        <td><span class="bucket-chip">3</span></td>
+                        <td>Real-time incident documentation (IR-2024 required fields)</td>
+                        <td><span class="count-badge">3</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="si-id">SI-14</span></td>
+                        <td><span class="bucket-chip">3</span></td>
+                        <td>Protocol deviation documentation using RC-2 justification language</td>
+                        <td><span class="count-badge">3</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="si-id">SI-07</span></td>
+                        <td><span class="bucket-chip">4</span></td>
+                        <td>OCR breach notification -- eight required data elements (45 CFR 164.408)</td>
+                        <td><span class="count-badge">3</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                      </tr>
+                      <tr class="trace-row--flag">
+                        <td><span class="si-id">SI-15</span></td>
+                        <td><span class="bucket-chip">4</span></td>
+                        <td>Recovery verification against MRHN system restoration criteria</td>
+                        <td><span class="count-badge">4</span></td>
+                        <td><span class="val-chip val-chip--flag">Flag: count check</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="si-id">SI-13</span></td>
+                        <td><span class="bucket-chip">4</span></td>
+                        <td>Post-incident lessons learned documentation (operational notes vs. formal governed record)</td>
+                        <td><span class="count-badge">2</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="step-content">
+                  Pass 1 result: all 16 SI items return a count of at least one. No scope
+                  item was dropped during decomposition. However, SI-15 shows four DC components
+                  tracing to it -- notably higher than any other Bucket 4 item and higher than
+                  the scope decomposition rationale from Step 6 would suggest for a single
+                  scope item at this level. I flag SI-15 for description verification in Pass 2.
+                  SI-13 at two components is on the lower end for a scope item at Evaluation
+                  level, but two components is not a minimum-count failure -- I will verify
+                  in Pass 2 that both descriptions genuinely belong to SI-13.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 03 -->
+            <div class="example-step" id="step-3">
+              <div class="step-marker" aria-label="Step 3"><span aria-hidden="true">03</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Pass 2 -- Backward Trace: DC-45 Misattribution Found</h2>
+                <p class="step-content">
+                  Pass 2 reads every component description and checks it against its listed
+                  parent SI item. For the 45 components not flagged in Pass 1, the check
+                  is confirmatory and moves quickly -- the description matches the parent.
+                  I run the full verification but spend additional time on the SI-15
+                  components because of the count flag. When I reach DC-45, the mismatch
+                  is immediate.
+                </p>
+
+                <!-- DC-45 anomaly card -->
+                <div class="anomaly-card" role="region" aria-label="DC-45 parent misattribution">
+                  <div class="anomaly-card__header">
+                    <span class="anomaly-card__id">DC-45</span>
+                    <span class="anomaly-card__parent-listed">Parent listed: SI-15</span>
+                    <span class="anomaly-verdict">Misattribution</span>
+                  </div>
+                  <div class="anomaly-card__body">
+
+                    <div class="component-desc-block">
+                      <span class="component-desc-label">Component Description</span>
+                      <p class="component-desc-text">
+                        "Complete the MRHN post-incident lessons learned documentation,
+                        distinguishing operational notes from the formal governed record
+                        subject to legal review, and applying the Evaluation-level judgment
+                        required to determine what belongs in each category."
+                      </p>
+                    </div>
+
+                    <div class="mismatch-grid" role="group" aria-label="Parent mismatch details for DC-45">
+                      <div class="mismatch-cell mismatch-cell--listed">
+                        <span class="mismatch-cell__label">Parent Listed (incorrect)</span>
+                        <span class="mismatch-cell__si">SI-15</span>
+                        <p class="mismatch-cell__desc">Recovery verification against MRHN system restoration criteria -- a procedural check that facilities have returned to operational status before the incident is declared closed.</p>
+                      </div>
+                      <div class="mismatch-cell mismatch-cell--actual">
+                        <span class="mismatch-cell__label">Correct Parent (identified)</span>
+                        <span class="mismatch-cell__si">SI-13</span>
+                        <p class="mismatch-cell__desc">Post-incident lessons learned documentation -- distinguishing operational notes from the formal governed record subject to legal review. Evaluation level. This description matches DC-45 exactly.</p>
+                      </div>
+                    </div>
+
+                    <div class="validation-row" aria-label="DC-45 backward trace result">
+                      <span class="val-chip val-chip--fail">Description does not match listed parent SI-15</span>
+                      <span class="val-chip val-chip--resolved">Correct parent identified: SI-13</span>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="step-content">
+                  The mismatch is unambiguous: DC-45 describes a lessons learned documentation
+                  task explicitly naming the operational/governed record distinction -- which is
+                  the defining characteristic of SI-13, not SI-15. SI-15 covers recovery
+                  verification: checking whether systems have met restoration criteria before
+                  declaring the incident closed. There is no overlap between the two scope items,
+                  so the misattribution cannot be resolved by adjusting the component description --
+                  the parent label must be corrected. Before making the correction, I need to verify
+                  that SI-15 will still be represented in the map after DC-45 is moved.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 04 -->
+            <div class="example-step" id="step-4">
+              <div class="step-marker" aria-label="Step 4"><span aria-hidden="true">04</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Investigation: Confirming SI-15 Remains Represented After Correction</h2>
+                <p class="step-content">
+                  Before I correct DC-45, I check what happens to SI-15 if DC-45 is removed
+                  from its child list. Pass 1 showed SI-15 had four DC children. If DC-45 is
+                  moved to SI-13, SI-15 will have three remaining children. I verify all three
+                  by reading their descriptions.
+                </p>
+
+                <div class="resolution-block" role="region" aria-label="SI-15 representation check and DC-45 correction">
+                  <div class="resolution-block__header">
+                    <span class="resolution-block__label">SI-15 Remaining Children After DC-45 Correction</span>
+                  </div>
+                  <div class="resolution-block__body">
+                    <p>
+                      <strong>DC-43</strong> (parent: SI-15): "Apply MRHN system restoration
+                      criteria to evaluate whether affected systems meet functional and security
+                      requirements before declaring them ready for reintegration." -- Recovery
+                      verification. Correctly attributed to SI-15.
+                    </p>
+                    <p>
+                      <strong>DC-44</strong> (parent: SI-15): "Document the restoration
+                      verification outcome for each affected system, recording which criteria
+                      were tested, the test result, and the approving authority under PC-3."
+                      -- Recovery documentation. Correctly attributed to SI-15.
+                    </p>
+                    <p>
+                      <strong>DC-46</strong> (parent: SI-15): "Evaluate whether all MRHN
+                      facility systems have met restoration criteria before authorizing the
+                      transition from incident response mode to normal operations." --
+                      Multi-facility restoration authorization. Correctly attributed to SI-15.
+                    </p>
+                    <p>
+                      SI-15 retains three correctly attributed DC children after the
+                      DC-45 correction. No orphan scope item will result from the correction.
+                    </p>
+                  </div>
+                </div>
+
+                <p class="step-content">
+                  With SI-15 confirmed to remain represented, I apply the correction and
+                  verify the outcome for SI-13.
+                </p>
+
+                <div class="resolution-block" role="region" aria-label="DC-45 parent correction applied">
+                  <div class="resolution-block__header">
+                    <span class="resolution-block__label">Correction Applied: DC-45 Parent Attribute</span>
+                  </div>
+                  <div class="resolution-block__body">
+                    <div class="correction-row" aria-label="DC-45 parent corrected from SI-15 to SI-13">
+                      <span class="correction-before">DC-45 parent: SI-15</span>
+                      <span class="correction-arrow" aria-hidden="true">&rarr;</span>
+                      <span class="correction-after">DC-45 parent: SI-13</span>
+                    </div>
+                    <p>
+                      After correction, SI-13 now has three DC children: DC-45 (corrected),
+                      DC-47, and DC-48. All three descriptions align with SI-13 (post-incident
+                      lessons learned documentation, operational/governed record distinction,
+                      Evaluation-level judgment).
+                    </p>
+                    <p>
+                      <strong>Why misattribution happens:</strong> DC-45 was the last component
+                      added to the Bucket 4 decomposition. The working document had SI-15 as the
+                      active parent field when DC-43, DC-44, and DC-46 were entered. DC-45 was
+                      added in a subsequent session, inheriting the SI-15 parent from the prior
+                      entry without being updated when the lessons learned content was drafted
+                      under a different scope item. This is the most common misattribution pattern
+                      in decomposition maps built across multiple sessions: the parent field carries
+                      over from the previous entry. The backward trace is the only systematic
+                      check that catches it.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 05 -->
+            <div class="example-step" id="step-5">
+              <div class="step-marker" aria-label="Step 5"><span aria-hidden="true">05</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Pass 3 -- Orphan Check: All Three Checks Pass</h2>
+                <p class="step-content">
+                  With the DC-45 correction applied, I run the cross-reference orphan check.
+                  The check runs against the corrected map, not the original. Three conditions
+                  must all be true for the audit to pass.
+                </p>
+
+                <div class="orphan-check-wrap" role="region" aria-label="Orphan check results -- all three conditions">
+                  <table class="orphan-check-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Check</th>
+                        <th scope="col">Condition</th>
+                        <th scope="col">Result</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span class="check-name">Check 1</span><br><span class="check-detail">Forward completeness</span></td>
+                        <td>Every SI item in the scope registry (SI-01 through SI-16) must appear at least once as a parent in the corrected backward trace.</td>
+                        <td>
+                          <span class="val-chip val-chip--pass">Pass</span><br>
+                          <span style="font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.5;display:block;margin-top:0.25rem">All 16 SI items have at least one DC child in the corrected map. SI-15: 3 children (DC-43, DC-44, DC-46). SI-13: 3 children (DC-45 corrected, DC-47, DC-48). No unrepresented scope items.</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><span class="check-name">Check 2</span><br><span class="check-detail">Backward completeness</span></td>
+                        <td>Every DC component in the corrected map (48 total) must list exactly one parent SI item that exists in the scope registry.</td>
+                        <td>
+                          <span class="val-chip val-chip--pass">Pass</span><br>
+                          <span style="font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.5;display:block;margin-top:0.25rem">All 48 components list exactly one parent. All listed parents resolve to valid SI items in the registry. DC-45 parent corrected from SI-15 to SI-13 before this check. No component lists a parent outside SI-01 through SI-16.</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><span class="check-name">Check 3</span><br><span class="check-detail">Zero orphans</span></td>
+                        <td>No DC component exists that cannot be traced to an authorized parent SI item. No SI item exists without at least one DC child representing it.</td>
+                        <td>
+                          <span class="val-chip val-chip--pass">Pass</span><br>
+                          <span style="font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.5;display:block;margin-top:0.25rem">Zero orphan components. Zero unrepresented scope items. The corrected map is fully traced in both directions. Audit passes.</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="audit-result-banner" role="region" aria-label="Scope Trace Audit passed">
+                  <div class="audit-result-banner__icon" aria-hidden="true">
+                    <svg focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                      <path d="M7 12l3.5 3.5L17 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div class="audit-result-banner__body">
+                    <h3 class="audit-result-banner__heading">Scope Trace Audit: Pass</h3>
+                    <p class="audit-result-banner__text">
+                      All 16 scope items represented. All 48 components traced to valid
+                      parent SI items. <strong>Zero orphan components.</strong> One
+                      misattribution corrected (DC-45: parent updated from SI-15 to SI-13).
+                      Map is cleared for advancement as MRHN_DecompositionMap_v2.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 06 -->
+            <div class="example-step" id="step-6">
+              <div class="step-marker" aria-label="Step 6"><span aria-hidden="true">06</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Produce MRHN_DecompositionMap_v2 and Governance Record MRHN-D-008</h2>
+                <p class="step-content">
+                  The map is promoted to version 2. MRHN_DecompositionMap_v2 incorporates
+                  both the Step 7 optimization changes (MRHN-D-007) and the Step 8 trace
+                  correction. It is the artifact that Module 2 will use to assign DC
+                  components to instruction sequences. No further changes are permitted
+                  to the structural map without a new governance record.
+                </p>
+
+                <!-- v2 artifact summary -->
+                <div class="artifact-block" role="region" aria-label="MRHN_DecompositionMap_v2 artifact summary">
+                  <div class="artifact-block__header">
+                    <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" style="color:rgba(255,255,255,0.75)">
+                      <rect x="2.5" y="1.5" width="11" height="13" rx="1.5" stroke="currentColor" stroke-width="1.25"/>
+                      <path d="M5 5.5h6M5 8h6M5 10.5h4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+                    </svg>
+                    <span class="artifact-id">MRHN_DecompositionMap_v2</span>
+                    <span class="artifact-version">Steps 7 and 8 output -- Module 2 structural input</span>
+                  </div>
+
+                  <div class="artifact-section">
+                    <span class="artifact-section-label">Map Summary</span>
+                    <ul class="change-list">
+                      <li><strong>48 DC components</strong> across 4 buckets and 16 scope items. All components traced to valid parent SI items. Zero orphan components.</li>
+                      <li><strong>16 SI items</strong> (SI-01 through SI-16) each represented by at least one DC child. Forward trace complete.</li>
+                      <li><strong>Taxonomy levels confirmed:</strong> Analysis-level components at DC-18a (SI-09), DC-35 (SI-10), and all SI-08 components. Evaluation-level components in SI-13 set.</li>
+                      <li><strong>Calibration constraints documented</strong> per component for all five domain authenticity annotations from MRHN-D-003. Constraints travel into Module 2 design briefs unchanged.</li>
+                    </ul>
+                  </div>
+
+                  <div class="artifact-section">
+                    <span class="artifact-section-label">Changes from v1 (incorporated from MRHN-D-007 and MRHN-D-008)</span>
+                    <ul class="change-list">
+                      <li><strong>DC-18 split (MRHN-D-007):</strong> DC-18 retired; replaced by DC-18a (Analysis level, SI-09 calibration annotation) and DC-18b (Application level, PC-3 constraint). Reason: two distinct assessment demands separated.</li>
+                      <li><strong>DC-07 merge (MRHN-D-007):</strong> original DC-07 retired; former DC-08 renumbered and revised as DC-07. Reason: lookup behavior not independently assessable.</li>
+                      <li><strong>DC-45 parent corrected (MRHN-D-008):</strong> DC-45 parent updated from SI-15 to SI-13. Reason: component description (lessons learned, operational/governed record distinction) did not match SI-15 (recovery verification). Misattribution from prior decomposition session. SI-15 remains represented by DC-43, DC-44, DC-46.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Governance record MRHN-D-008 -->
+                <div class="gov-record" role="region" aria-label="Governance record MRHN-D-008">
+                  <div class="gov-record__header">
+                    <span class="gov-record__id">MRHN-D-008</span>
+                    <span class="gov-record__title">Scope Trace Audit Record -- Phase 2 Step 8</span>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Decision</div>
+                    <div class="gov-record__val">
+                      Scope Trace Audit conducted on the optimized MRHN decomposition map
+                      (48 components, incorporating MRHN-D-007 changes). Three-pass audit run:
+                      forward trace (SI to DC), backward trace (DC to SI), orphan check.
+                      One misattribution found and corrected: DC-45 parent updated from SI-15
+                      to SI-13. Audit passes with zero orphan components and all 16 scope items
+                      represented. Map promoted to MRHN_DecompositionMap_v2 and cleared for
+                      Module 2 use.
+                    </div>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Audit Findings</div>
+                    <div class="gov-record__val">
+                      <strong>Pass 1 (Forward trace):</strong> All 16 SI items returned at least one
+                      DC child. SI-15 flagged for count verification (4 children; unusually high
+                      for Bucket 4 scope item).<br><br>
+                      <strong>Pass 2 (Backward trace):</strong> DC-45 misattribution identified.
+                      Description ("lessons learned, operational/governed record distinction") did
+                      not match listed parent SI-15 (recovery verification). Correct parent
+                      confirmed as SI-13. SI-15 verified to retain 3 children (DC-43, DC-44,
+                      DC-46) after correction. Correction applied.<br><br>
+                      <strong>Pass 3 (Orphan check):</strong> All three conditions met in the
+                      corrected map. Zero orphan components. Zero unrepresented scope items.
+                    </div>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Constraint Reference</div>
+                    <div class="gov-record__val">
+                      LC-1 (scope boundary: only content traceable to SI-01 through SI-16 may
+                      appear in the decomposition map); MRHN_ScopeRegistry_v1 (authoritative
+                      SI item list and descriptions, established in Step 3); MRHN-D-007 (Step 7
+                      optimization record, structural changes incorporated into v2 before audit);
+                      SI-13 Evaluation-level assignment (MRHN_CalibratedScopeMap_v1): DC-45
+                      must reflect that level in Module 2 design brief.
+                    </div>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Rationale</div>
+                    <div class="gov-record__val">
+                      The DC-45 misattribution was a labeling error introduced during the
+                      final session of Step 6 decomposition: the parent field carried the
+                      SI-15 value from the previous entry (DC-44) without being updated when
+                      DC-45 was drafted under SI-13. The backward trace is the only systematic
+                      process that reads component descriptions against their listed parents --
+                      the error was undetectable in the forward trace because SI-15 had the
+                      correct count before the DC-45 correction. This confirms the necessity
+                      of running Pass 2 even when Pass 1 produces no failures.
+                    </div>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Risk Note</div>
+                    <div class="gov-record__val">
+                      <strong>Risk 1:</strong> Any Module 2 design brief drafted from
+                      MRHN_DecompositionMap_v1 (pre-correction) will assign DC-45 to SI-15
+                      instruction, producing recovery verification instruction for a lessons
+                      learned component. All Module 2 work must reference v2 as the structural
+                      input.<br><br>
+                      <strong>Risk 2:</strong> The optimization designations from MRHN-D-007
+                      (DC-18a, DC-18b, revised DC-07; DC-08 and DC-18 designations retired)
+                      are structural. Any Module 2 reference to the retired designations
+                      (DC-08, DC-18) must be flagged and corrected to the v2 identifiers.
+                    </div>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Checkpoint Linkage</div>
+                    <div class="gov-record__val">
+                      <ul>
+                        <li><strong>Gate 1.TG.1 (Module 1 Threshold Check):</strong> MRHN_DecompositionMap_v2
+                        and MRHN-D-008 are required gate artifacts. Gate review will verify
+                        that the audit was conducted on the post-optimization map (not v1)
+                        and that all corrections are documented.</li>
+                        <li><strong>Module 2 design briefs:</strong> each brief references the
+                        DC component from v2 as the structural unit. DC-45 brief must reflect
+                        SI-13 (lessons learned, Evaluation level), not SI-15.</li>
+                        <li><strong>Module 3 Outcome Mapping:</strong> the trace record
+                        established here is what makes Outcome Mapping tractable in Module 3 --
+                        assessments can be traced backward through DC components to SI items
+                        to scope decisions because this audit confirmed the trace is clean.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div><!-- /.worked-example__content -->
+
+          <!-- ==================================================
+               Right column: think-aloud
+               ================================================== -->
+          <aside class="worked-example__think-aloud" aria-label="Expert think-aloud annotations">
+            <div class="think-aloud__header">
+              <h2 class="think-aloud__heading">Expert Think-Aloud</h2>
+              <button type="button" id="annotations-toggle" class="btn--toggle"
+                      aria-controls="annotations-list" aria-expanded="true">
+                <span class="toggle-label">Hide Annotations</span>
+              </button>
+            </div>
+            <div id="annotations-list" class="think-aloud__list">
+
+              <div class="annotation-item" data-step="1" aria-label="Annotation for step 1">
+                <span class="annotation-marker" aria-hidden="true">01</span>
+                <p class="annotation-text">
+                  The reason I cannot run just one pass is that forward and backward
+                  traces catch different failure modes. A forward trace that finds every
+                  SI item has at least one child cannot tell me whether any of those
+                  children have descriptions that match the parent. A backward trace
+                  alone cannot tell me whether a scope item was dropped entirely --
+                  if it was, there are no components to trace backward from. Both
+                  passes are necessary; neither is sufficient.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="2" aria-label="Annotation for step 2">
+                <span class="annotation-marker" aria-hidden="true">02</span>
+                <p class="annotation-text">
+                  I flag SI-15 for a count check not because four is too many -- some
+                  scope items legitimately have more children -- but because the Bucket 4
+                  decomposition from Step 6 produced three SI items with roughly equal
+                  component counts. A count of four when the siblings have three is worth
+                  verifying. This is pattern recognition, not a rule: it tells me where
+                  to spend extra attention in Pass 2. The actual check happens in Pass 2.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="3" aria-label="Annotation for step 3">
+                <span class="annotation-marker" aria-hidden="true">03</span>
+                <p class="annotation-text">
+                  The DC-45 mismatch becomes obvious the moment I read the description
+                  next to the parent label. "Lessons learned, distinguishing operational
+                  notes from the formal governed record" is the defining language of SI-13 --
+                  it came from the Bucket 4 sub-arc revision in Step 5. SI-15 is recovery
+                  verification. There is no interpretation that makes these the same scope
+                  item. This is not an edge case requiring judgment -- it is a labeling
+                  error that the description makes immediately visible.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="4" aria-label="Annotation for step 4">
+                <span class="annotation-marker" aria-hidden="true">04</span>
+                <p class="annotation-text">
+                  The step of checking SI-15's remaining children before correcting DC-45
+                  is not optional. If SI-15 only had one child (DC-45), moving DC-45
+                  to SI-13 would leave SI-15 with zero children -- an unrepresented scope
+                  item, which is a more serious finding than a misattribution. I always
+                  verify the donor SI item before making the correction. In this case SI-15
+                  has three other solid children, so the correction is safe.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="5" aria-label="Annotation for step 5">
+                <span class="annotation-marker" aria-hidden="true">05</span>
+                <p class="annotation-text">
+                  Pass 3 is not redundant with Passes 1 and 2. It runs against the
+                  corrected map, not the original. Any correction made in Pass 2 changes
+                  the trace structure, and Pass 3 is what verifies that the correction
+                  did not introduce a new problem. In this case it did not -- but there
+                  are decompositions where a correction cascade is possible: moving a
+                  component to a different parent can reveal that the receiving parent
+                  is now over-populated, prompting a second round of Pass 2 work.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="6" aria-label="Annotation for step 6">
+                <span class="annotation-marker" aria-hidden="true">06</span>
+                <p class="annotation-text">
+                  MRHN_DecompositionMap_v2 is the last artifact produced before the
+                  module-level gate. Its integrity matters more than any other artifact
+                  produced in Phase 2 -- it is the structural input to everything that
+                  follows. If v2 has an orphan component or an unrepresented scope item,
+                  that error propagates through Module 2 instruction design, Module 3
+                  stress-testing, and eventually into the assessment architecture.
+                  A clean audit here is not bureaucratic -- it is the condition that
+                  makes Module 2 tractable.
+                </p>
+              </div>
+
+            </div>
+          </aside>
+
+        </div><!-- /.worked-example__layout -->
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l4b-s2.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen: Step 7 worked example, unit optimization">
+            <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="m1-l4b-s4.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen: Lesson 1.4b guided practice">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+    </section>
+  </main>
+
+  <!-- Supplementary resources -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">
+        Input: Optimized MRHN_DecompositionMap_v1 (48 components, MRHN-D-007). Correction
+        this screen: DC-45 parent updated from SI-15 to SI-13. Output: MRHN_DecompositionMap_v2
+        (48 components, Scope Trace Audit passed, zero orphans). MRHN-D-008 established.
+      </p>
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">
+        MRHN-D-001 through MRHN-D-007 on record. MRHN-D-008 (Scope Trace Audit)
+        established this screen. MRHN_DecompositionMap_v2 is cleared for Gate 1.TG.1
+        and Module 2 use.
+      </p>
+    </section>
+  </aside>
+
+  <!-- Support panels -->
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header"><h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header"><h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header"><h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header"><h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header"><h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <footer role="contentinfo">
+    <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    function syncToggleStates(name) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === name ? 'true' : 'false');
+      });
+    }
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const p = btn.dataset.panel;
+        if (getActivePanel() === p) { closeAll(); syncToggleStates(null); }
+        else { openPanel(p, btn); syncToggleStates(p); }
+      });
+    });
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => { closeAll(); syncToggleStates(null); });
+    });
+  </script>
+
+  <script type="module">
+    const toggle = document.getElementById('annotations-toggle');
+    const list   = document.getElementById('annotations-list');
+    const label  = toggle.querySelector('.toggle-label');
+    toggle.addEventListener('click', () => {
+      const nowExpanded = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(nowExpanded));
+      label.textContent = nowExpanded ? 'Hide Annotations' : 'Show Annotations';
+      if (nowExpanded) list.removeAttribute('hidden');
+      else list.setAttribute('hidden', '');
+    });
+  </script>
+
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.4b';
+    document.getElementById('pt-screen').textContent       = '3';
+    document.getElementById('pt-screen-total').textContent = '6';
+  </script>
+
+</body>
+</html>

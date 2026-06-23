@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gate 1.TG.1: review all eight MRHN governance records for completeness and internal coherence, then confirm structural readiness before advancing to Module 2.">
+  <title>Gate 1.TG.1: Module 1 Threshold Check -- ARCH Method Practitioner Credential -- Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-gate-s1 -- Gate 1.TG.1: Module 1 Threshold Check
+       Governance checkpoint. Not a scored assessment.
+       All color values use CSS tokens only.
+       ================================================================ */
+
+    .screen-type-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    /* ---- Gate banner ---- */
+    .gate-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.5rem 1.75rem;
+      background: var(--color-brand-navy);
+      border-radius: 8px;
+      margin: 0 0 2rem;
+      color: var(--color-text-inverse);
+    }
+
+    .gate-banner__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      flex-shrink: 0;
+      margin-top: 0.1875rem;
+    }
+
+    .gate-banner__meta { flex: 1; min-width: 0; }
+
+    .gate-banner__id {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.75;
+      margin-bottom: 0.375rem;
+    }
+
+    .gate-banner__title {
+      margin: 0 0 0.625rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .gate-banner__type {
+      display: inline-block;
+      padding: 0.1875rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      background: rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    @media (max-width: 680px) {
+      .gate-banner { flex-direction: column; gap: 0.875rem; }
+    }
+
+    /* ---- Purpose block ---- */
+    .gate-purpose {
+      margin: 0 0 2rem;
+      padding: 1.125rem 1.375rem;
+      background: var(--color-bg-subtle);
+      border-left: 4px solid var(--color-brand-teal);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .gate-purpose__heading {
+      margin: 0 0 0.5rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    .gate-purpose__body {
+      margin: 0;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    .gate-purpose__body + .gate-purpose__body {
+      margin-top: 0.75rem;
+    }
+
+    /* ---- What the gate checks ---- */
+    .gate-criteria {
+      margin: 0 0 2.5rem;
+    }
+
+    .gate-criteria__heading {
+      margin: 0 0 0.75rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    .gate-criteria__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .gate-criteria__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.625rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-page);
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+    }
+
+    .gate-criteria__item-marker {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.375rem;
+      height: 1.375rem;
+      border-radius: 50%;
+      background: var(--color-brand-teal);
+      color: var(--color-text-inverse);
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+    }
+
+    /* ---- Section divider ---- */
+    .gate-section-heading {
+      margin: 0 0 0.5rem;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .gate-section-sub {
+      margin: 0 0 1.25rem;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ---- Governance record log ---- */
+    .gate-record-review {
+      margin: 0 0 2.5rem;
+    }
+
+    .record-log {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .record-log__item {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 640px) {
+      .record-log__item { grid-template-columns: 1fr; }
+    }
+
+    .record-log__id-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 0.625rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+      text-align: center;
+      gap: 0.375rem;
+    }
+
+    .record-log__id {
+      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro',
+                   Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .record-log__source-label {
+      font-size: 0.5625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.65;
+      line-height: 1.4;
+    }
+
+    .record-log__content {
+      padding: 0.875rem 1rem 0.875rem 1rem;
+      background: var(--color-bg-page);
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .record-log__title {
+      margin: 0;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+    }
+
+    .record-log__decision {
+      margin: 0;
+      font-size: 0.8125rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    .record-log__verify {
+      margin: 0.25rem 0 0;
+      padding: 0.3125rem 0.625rem;
+      border-left: 3px solid var(--color-brand-teal);
+      background: var(--color-bg-subtle);
+      border-radius: 0 3px 3px 0;
+    }
+
+    .record-log__verify-label {
+      display: block;
+      font-size: 0.5625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.125rem;
+    }
+
+    .record-log__verify-text {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+    }
+
+    /* ---- Confirmation section ---- */
+    .gate-confirmations {
+      margin: 0 0 2rem;
+      padding: 1.375rem 1.5rem 1.5rem;
+      border: 2px solid var(--color-brand-navy);
+      border-radius: 8px;
+    }
+
+    .gate-confirmations__heading {
+      margin: 0 0 0.25rem;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .gate-confirmations__intro {
+      margin: 0 0 1.25rem;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    .confirmation-list {
+      list-style: none;
+      margin: 0 0 1.375rem;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .confirmation-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.625rem;
+      align-items: start;
+      padding: 0.875rem 1rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .confirmation-item--checked {
+      background: var(--color-success-bg);
+      border-color: var(--color-success-border);
+    }
+
+    .confirmation-checkbox {
+      width: 1.25rem;
+      height: 1.25rem;
+      margin: 0.125rem 0 0;
+      accent-color: var(--color-brand-teal);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .confirmation-checkbox:focus {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 2px;
+    }
+
+    .confirmation-label {
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+      cursor: pointer;
+    }
+
+    .confirmation-label .record-refs {
+      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro',
+                   Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+    }
+
+    /* ---- Gate status bar ---- */
+    .gate-status {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.375rem;
+    }
+
+    .gate-status__label {
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+      white-space: nowrap;
+    }
+
+    .gate-status__count {
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .gate-status__track {
+      flex: 1;
+      max-width: 10rem;
+      height: 6px;
+      background: var(--color-border-default);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .gate-status__fill {
+      height: 100%;
+      background: var(--color-brand-teal);
+      border-radius: 3px;
+      width: 0%;
+      transition: width 0.2s ease;
+    }
+
+    /* ---- Clearance action ---- */
+    .gate-clearance {
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+      align-items: flex-start;
+    }
+
+    .btn--gate {
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.75rem 1.75rem;
+      min-height: 2.75rem;
+    }
+
+    .btn--gate[aria-disabled="true"] {
+      opacity: 0.45;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .gate-clearance__hint {
+      margin: 0;
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+    }
+
+    /* ---- Gate cleared success block ---- */
+    .gate-cleared {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--color-success-bg);
+      border: 2px solid var(--color-success-border);
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+
+    .gate-cleared__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      background: var(--color-success-border);
+      color: var(--color-bg-page);
+      flex-shrink: 0;
+    }
+
+    .gate-cleared__body { flex: 1; min-width: 0; }
+
+    .gate-cleared__heading {
+      margin: 0 0 0.25rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-success-text);
+    }
+
+    .gate-cleared__detail {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-success-text);
+      line-height: 1.6;
+    }
+
+    /* ---- Module 2 preview card ---- */
+    .module-preview {
+      margin: 0.5rem 0 0;
+      padding: 0.875rem 1rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-left: 4px solid var(--color-brand-teal);
+      border-radius: 0 5px 5px 0;
+    }
+
+    .module-preview__label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.3125rem;
+    }
+
+    .module-preview__name {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 0.3125rem;
+    }
+
+    .module-preview__desc {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    /* High contrast overrides */
+    @media (prefers-contrast: more) {
+      .gate-criteria__item { border-color: var(--color-border-strong); }
+      .record-log__item { border-color: var(--color-border-strong); }
+      .gate-confirmations { border-color: var(--color-border-strong); }
+      .confirmation-item { border-color: var(--color-border-strong); }
+      .confirmation-item--checked { border-color: var(--color-success-border); }
+      .gate-cleared { border-color: var(--color-success-border); }
+      .module-preview { border-color: var(--color-border-strong); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <header role="banner">
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+    <div id="progress-tracker" role="group" aria-label="Course progress" tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item"><span id="pt-lesson">Gate 1.TG.1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">2</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item"><span id="pt-step">Gate</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">1</span> of <span id="pt-screen-total">1</span></span>
+    </div>
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel" aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer" aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory" aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel" aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+  </header>
+
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item"><a href="intro-0.1.html" class="module-nav-link">Introduction</a></li>
+      <li class="module-nav-item"><a href="module-1.html" class="module-nav-link" aria-current="page">Module 1: Bound the Course</a></li>
+      <li class="module-nav-item"><a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a></li>
+      <li class="module-nav-item"><a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a></li>
+      <li class="module-nav-item"><a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a></li>
+    </ol>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <section id="current-activity" tabindex="-1" aria-label="Current activity">
+      <article class="gate-screen" aria-labelledby="gate-title">
+
+        <!-- ================================================================
+             Gate Banner
+             ================================================================ -->
+        <div class="gate-banner" role="banner" aria-label="Gate 1.TG.1 header">
+          <div class="gate-banner__icon" aria-hidden="true">
+            <svg focusable="false" width="26" height="26" viewBox="0 0 26 26" fill="none">
+              <rect x="3" y="11" width="20" height="13" rx="2.5" stroke="rgba(255,255,255,0.9)" stroke-width="1.75"/>
+              <path d="M8 11V8a5 5 0 0110 0v3" stroke="rgba(255,255,255,0.9)" stroke-width="1.75" stroke-linecap="round"/>
+              <circle cx="13" cy="17.5" r="1.75" fill="rgba(255,255,255,0.9)"/>
+              <path d="M13 19.25v2" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="gate-banner__meta">
+            <span class="gate-banner__id">Gate 1.TG.1</span>
+            <h1 id="gate-title" class="gate-banner__title">Module 1 Threshold Check: Structural Approval Gate</h1>
+            <span class="gate-banner__type">Governance Checkpoint -- Not a Scored Assessment</span>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             Purpose
+             ================================================================ -->
+        <div class="gate-purpose" role="note" aria-label="Gate purpose">
+          <h2 class="gate-purpose__heading">What This Gate Does</h2>
+          <p class="gate-purpose__body">
+            Gate 1.TG.1 is the readiness checkpoint at the end of Module 1. It is not a scored
+            test. It is a structured review of your governance record log -- a check that all eight
+            records are present, internally consistent, and coherent with one another before you
+            advance to Module 2: Engineer the Learning.
+          </p>
+          <p class="gate-purpose__body">
+            Passing the gate means your structural design is ready to receive the learning
+            engineering work that begins in Module 2. If you identify a gap or contradiction
+            during this review, return to the relevant lesson screen and resolve it before
+            confirming the checkpoint below.
+          </p>
+        </div>
+
+        <!-- ================================================================
+             What the gate checks
+             ================================================================ -->
+        <div class="gate-criteria">
+          <h2 class="gate-criteria__heading">Four Things This Gate Checks</h2>
+          <ol class="gate-criteria__list">
+            <li class="gate-criteria__item">
+              <span class="gate-criteria__item-marker" aria-hidden="true">1</span>
+              <span><strong>Record completeness:</strong> All eight MRHN governance records (MRHN-D-001 through MRHN-D-008) are present and complete in your record log.</span>
+            </li>
+            <li class="gate-criteria__item">
+              <span class="gate-criteria__item-marker" aria-hidden="true">2</span>
+              <span><strong>Artifact accuracy:</strong> MRHN_DecompositionMap_v2 accurately reflects all optimization and trace audit decisions documented in MRHN-D-007 and MRHN-D-008.</span>
+            </li>
+            <li class="gate-criteria__item">
+              <span class="gate-criteria__item-marker" aria-hidden="true">3</span>
+              <span><strong>Scope integrity:</strong> Your decomposition map contains exactly 48 DC components, all tracing to the 16 scope items established in LC-1. No items were added outside that boundary.</span>
+            </li>
+            <li class="gate-criteria__item">
+              <span class="gate-criteria__item-marker" aria-hidden="true">4</span>
+              <span><strong>Cross-record coherence:</strong> No governance record contradicts a decision made in a later record without documented rationale for the change.</span>
+            </li>
+          </ol>
+        </div>
+
+        <!-- ================================================================
+             Governance Record Log: Eight Required Records
+             ================================================================ -->
+        <section class="gate-record-review" aria-labelledby="record-review-heading">
+
+          <h2 id="record-review-heading" class="gate-section-heading">Governance Record Log: Eight Required Records</h2>
+          <p class="gate-section-sub">
+            Review each record below. Confirm that the decision documented matches your working record log
+            before completing the confirmation section.
+          </p>
+
+          <ul class="record-log" aria-label="Module 1 governance records">
+
+            <!-- MRHN-D-001 -->
+            <li class="record-log__item">
+              <div class="record-log__id-col" aria-label="Record MRHN-D-001, established Lesson 1.1b Screen 4">
+                <span class="record-log__id">MRHN-D-001</span>
+                <span class="record-log__source-label">L 1.1b &bull; Scr 4</span>
+              </div>
+              <div class="record-log__content">
+                <h3 class="record-log__title">IR-2024 Version Alignment</h3>
+                <p class="record-log__decision">
+                  Documents the Step 1.5 version alignment decision: the Cybersecurity Incident Response
+                  standard in scope is IR-2024. A version conflict between IR-2024 and IR-2019 was
+                  identified during constraint extraction. IR-2024 was selected based on the MRHN
+                  implementation timeline (rollout begins Q3). IR-2019 references are out of scope.
+                  This decision governs the regulatory grounding of all 16 scope items.
+                </p>
+                <div class="record-log__verify">
+                  <span class="record-log__verify-label">Coherence check</span>
+                  <span class="record-log__verify-text">
+                    Record names the applicable version, the conflict identified, the resolution rationale,
+                    and the implementation timeline constraint. All 16 SI items are anchored to IR-2024.
+                  </span>
+                </div>
+              </div>
+            </li>
+
+            <!-- MRHN-D-002 -->
+            <li class="record-log__item">
+              <div class="record-log__id-col" aria-label="Record MRHN-D-002, established Lesson 1.2 Screen 4">
+                <span class="record-log__id">MRHN-D-002</span>
+                <span class="record-log__source-label">L 1.2 &bull; Scr 4</span>
+              </div>
+              <div class="record-log__content">
+                <h3 class="record-log__title">Bucket Map Balance Check</h3>
+                <p class="record-log__decision">
+                  Documents the Step 3 balance check verdict on MRHN_BucketMap_v1. Bucket 3 triggered
+                  the thin-bucket test (3 items); the resolution -- retaining all three items based on
+                  MRHN incident domain specificity -- is documented with rationale and a risk note.
+                  All four buckets confirmed compliant. Record includes a checkpoint linkage to Step 4.
+                </p>
+                <div class="record-log__verify">
+                  <span class="record-log__verify-label">Coherence check</span>
+                  <span class="record-log__verify-text">
+                    Record states a verdict for each bucket, names the thin-bucket issue and its resolution,
+                    and carries a risk note. Five required fields are complete.
+                  </span>
+                </div>
+              </div>
+            </li>
+
+            <!-- MRHN-D-003 -->
+            <li class="record-log__item">
+              <div class="record-log__id-col" aria-label="Record MRHN-D-003, established Lesson 1.3 Screen 4">
+                <span class="record-log__id">MRHN-D-003</span>
+                <span class="record-log__source-label">L 1.3 &bull; Scr 4</span>
+              </div>
+              <div class="record-log__content">
+                <h3 class="record-log__title">Domain Authenticity Calibration</h3>
+                <p class="record-log__decision">
+                  Documents five domain authenticity calibration adjustments applied to scope items
+                  in Buckets 2 and 3. Taxonomy level overrides for the MRHN clinical environment are
+                  recorded with MRHN-specific rationale for each change. These calibration annotations
+                  govern all downstream decomposition decisions in Steps 5 and 6.
+                </p>
+                <div class="record-log__verify">
+                  <span class="record-log__verify-label">Coherence check</span>
+                  <span class="record-log__verify-text">
+                    Record names each calibration adjustment, the affected scope item, and the MRHN
+                    rationale. Adjustments are consistent with the Bucket 2 and Bucket 3 decisions
+                    carried forward into MRHN-D-005 and MRHN-D-006.
+                  </span>
+                </div>
+              </div>
+            </li>
+
+            <!-- MRHN-D-004 -->
+            <li class="record-log__item">
+              <div class="record-log__id-col" aria-label="Record MRHN-D-004, established Lesson 1.4a Screen 2">
+                <span class="record-log__id">MRHN-D-004</span>
+                <span class="record-log__source-label">L 1.4a &bull; Scr 2</span>
+              </div>
+              <div class="record-log__content">
+                <h3 class="record-log__title">Performance Arc Feasibility Validation</h3>
+                <p class="record-log__decision">
+                  Documents the expert validation of the MRHN macro performance arc and four bucket
+                  sub-arcs. The Bucket 3 sub-arc was revised based on Step 4 calibration annotations
+                  from MRHN-D-003 -- two authenticity corrections applied. Macro arc and all four
+                  sub-arcs confirmed feasible. MRHN_PerformanceArc_v1 produced.
+                </p>
+                <div class="record-log__verify">
+                  <span class="record-log__verify-label">Coherence check</span>
+                  <span class="record-log__verify-text">
+                    Record confirms the macro arc is consistent with MRHN context. Bucket 3 revisions
+                    are traceable to MRHN-D-003. Feasibility verdict is documented for each sub-arc.
+                  </span>
+                </div>
+              </div>
+            </li>
+
+            <!-- MRHN-D-005 -->
+            <li class="record-log__item">
+              <div class="record-log__id-col" aria-label="Record MRHN-D-005, established Lesson 1.4a Screen 3">
+                <span class="record-log__id">MRHN-D-005</span>
+                <span class="record-log__source-label">L 1.4a &bull; Scr 3</span>
+              </div>
+              <div class="record-log__content">
+                <h3 class="record-log__title">Bucket 1 Decomposition</h3>
+                <p class="record-log__decision">
+                  Documents the Step 6 decomposition of SI-01 through SI-04 (Bucket 1) into
+                  DC-01 through DC-15. Calibration constraint notes are applied per component.
+                  Taxonomy level assignments are consistent with MRHN-D-003. Risk notes address
+                  anticipated handoff failure points for Bucket 1 components.
+                </p>
+                <div class="record-log__verify">
+                  <span class="record-log__verify-label">Coherence check</span>
+                  <span class="record-log__verify-text">
+                    Record accounts for 15 DC components (DC-01 through DC-15) assigned to 4 Bucket 1
+                    scope items. Constraint notes align with MRHN-D-003 calibration decisions.
+                  </span>
+                </div>
+              </div>
+            </li>
+
+            <!-- MRHN-D-006 -->
+            <li class="record-log__item">
+              <div class="record-log__id-col" aria-label="Record MRHN-D-006, established Lesson 1.4a Screen 4">
+                <span class="record-log__id">MRHN-D-006</span>
+                <span class="record-log__source-label">L 1.4a &bull; Scr 4</span>
+              </div>
+              <div class="record-log__content">
+                <h3 class="record-log__title">Buckets 2 through 4 Decomposition</h3>
+                <p class="record-log__decision">
+                  Documents the Step 6 decomposition of SI-05 through SI-16 (Buckets 2 through 4)
+                  into DC-16 through DC-48. All 16 scope items are fully decomposed. Net component
+                  count across all four buckets: 48 DC components. Calibration constraint notes from
+                  MRHN-D-003 are applied to all Bucket 2 and Bucket 3 components.
+                </p>
+                <div class="record-log__verify">
+                  <span class="record-log__verify-label">Coherence check</span>
+                  <span class="record-log__verify-text">
+                    Record accounts for DC-16 through DC-48 and confirms all 12 Bucket 2 through 4
+                    scope items have at least one component. Total component count (with MRHN-D-005)
+                    reaches 48 before optimization.
+                  </span>
+                </div>
+              </div>
+            </li>
+
+            <!-- MRHN-D-007 -->
+            <li class="record-log__item">
+              <div class="record-log__id-col" aria-label="Record MRHN-D-007, established Lesson 1.4b Screen 2">
+                <span class="record-log__id">MRHN-D-007</span>
+                <span class="record-log__source-label">L 1.4b &bull; Scr 2</span>
+              </div>
+              <div class="record-log__content">
+                <h3 class="record-log__title">Unit Optimization</h3>
+                <p class="record-log__decision">
+                  Documents three Step 7 unit optimization cases: DC-18 split into DC-18a
+                  (Analysis, SI-09 calibration annotation) and DC-18b (Application, PC-3 constraint)
+                  because two distinct assessment demands were conflated; DC-07 merged (former DC-07
+                  retired, DC-08 renumbered as DC-07) because lookup behavior is not independently
+                  assessable; one component confirmed correct without change. Net count: 48 (split and
+                  merge offset). This record is a required gate artifact.
+                </p>
+                <div class="record-log__verify">
+                  <span class="record-log__verify-label">Coherence check</span>
+                  <span class="record-log__verify-text">
+                    Record states the optimization action and criterion for each reviewed component.
+                    The split and merge changes are consistent with the component descriptions in
+                    MRHN-D-005 and MRHN-D-006.
+                  </span>
+                </div>
+              </div>
+            </li>
+
+            <!-- MRHN-D-008 -->
+            <li class="record-log__item">
+              <div class="record-log__id-col" aria-label="Record MRHN-D-008, established Lesson 1.4b Screen 3">
+                <span class="record-log__id">MRHN-D-008</span>
+                <span class="record-log__source-label">L 1.4b &bull; Scr 3</span>
+              </div>
+              <div class="record-log__content">
+                <h3 class="record-log__title">Scope Trace Audit</h3>
+                <p class="record-log__decision">
+                  Documents the Step 8 three-pass Scope Trace Audit on the optimized decomposition
+                  map: forward trace (each SI maps to at least one DC component), backward trace
+                  (each DC traces to exactly one SI parent), and orphan check (zero unparented
+                  components). One parent misattribution was identified and resolved: DC-45 parent
+                  corrected from SI-15 to SI-13. SI-15 remains represented by DC-43, DC-44, and
+                  DC-46. Audit passed. MRHN_DecompositionMap_v2 produced. This record is a required
+                  gate artifact.
+                </p>
+                <div class="record-log__verify">
+                  <span class="record-log__verify-label">Coherence check</span>
+                  <span class="record-log__verify-text">
+                    Record names the audit method, documents the DC-45 correction with rationale,
+                    and confirms a final count of 48 components with zero orphans. Correction is
+                    consistent with the SI-13 scope item description.
+                  </span>
+                </div>
+              </div>
+            </li>
+
+          </ul>
+
+        </section>
+        <!-- /.gate-record-review -->
+
+        <!-- ================================================================
+             Completion Confirmations
+             ================================================================ -->
+        <section class="gate-confirmations" aria-labelledby="confirmations-heading">
+
+          <h2 id="confirmations-heading" class="gate-confirmations__heading">Completion Confirmations</h2>
+          <p class="gate-confirmations__intro">
+            Check each statement below only after reviewing the corresponding records above.
+            All four confirmations are required to clear the gate. The clearance button
+            activates when all four are checked.
+          </p>
+
+          <ul class="confirmation-list" role="group" aria-label="Gate completion confirmations">
+
+            <li class="confirmation-item" id="confirm-item-1">
+              <input type="checkbox"
+                     id="confirm-1"
+                     name="confirm-1"
+                     class="confirmation-checkbox"
+                     aria-describedby="confirm-1-label"
+                     value="checked">
+              <label for="confirm-1" id="confirm-1-label" class="confirmation-label">
+                All eight MRHN governance records are present and complete in my record log.
+                <span class="record-refs">(MRHN-D-001 through MRHN-D-008)</span>
+              </label>
+            </li>
+
+            <li class="confirmation-item" id="confirm-item-2">
+              <input type="checkbox"
+                     id="confirm-2"
+                     name="confirm-2"
+                     class="confirmation-checkbox"
+                     aria-describedby="confirm-2-label"
+                     value="checked">
+              <label for="confirm-2" id="confirm-2-label" class="confirmation-label">
+                <span class="record-refs">MRHN_DecompositionMap_v2</span> accurately reflects the
+                optimization decisions in
+                <span class="record-refs">MRHN-D-007</span>
+                (DC-18 split, DC-07 merge) and the trace audit correction in
+                <span class="record-refs">MRHN-D-008</span>
+                (DC-45 parent updated from SI-15 to SI-13).
+              </label>
+            </li>
+
+            <li class="confirmation-item" id="confirm-item-3">
+              <input type="checkbox"
+                     id="confirm-3"
+                     name="confirm-3"
+                     class="confirmation-checkbox"
+                     aria-describedby="confirm-3-label"
+                     value="checked">
+              <label for="confirm-3" id="confirm-3-label" class="confirmation-label">
+                My decomposition map contains exactly 48 DC components, all tracing to the
+                16 scope items established in LC-1. No scope items or components were added
+                outside that boundary.
+              </label>
+            </li>
+
+            <li class="confirmation-item" id="confirm-item-4">
+              <input type="checkbox"
+                     id="confirm-4"
+                     name="confirm-4"
+                     class="confirmation-checkbox"
+                     aria-describedby="confirm-4-label"
+                     value="checked">
+              <label for="confirm-4" id="confirm-4-label" class="confirmation-label">
+                I find no contradictions between the eight governance records. No later record
+                overrides an earlier decision without documented rationale.
+              </label>
+            </li>
+
+          </ul>
+
+          <!-- Gate status bar -->
+          <div class="gate-status" role="group" aria-label="Gate confirmation progress">
+            <span class="gate-status__label">
+              <span class="gate-status__count" id="gate-count">0</span> of 4 confirmed
+            </span>
+            <div class="gate-status__track" aria-hidden="true">
+              <div class="gate-status__fill" id="gate-status-fill"></div>
+            </div>
+          </div>
+
+          <!-- Gate clearance area -->
+          <div class="gate-clearance">
+
+            <!-- Success message: hidden until gate is cleared -->
+            <div class="gate-cleared"
+                 id="gate-cleared-msg"
+                 role="status"
+                 tabindex="-1"
+                 hidden>
+              <div class="gate-cleared__icon" aria-hidden="true">
+                <svg focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M4 10l5 5 7-8" stroke="currentColor" stroke-width="2.25"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="gate-cleared__body">
+                <p class="gate-cleared__heading">Gate 1.TG.1 cleared.</p>
+                <p class="gate-cleared__detail" id="gate-cleared-timestamp">
+                  All four confirmation requirements met. Your structural design is ready
+                  for Module 2: Engineer the Learning.
+                </p>
+              </div>
+            </div>
+
+            <!-- Clearance button: disabled until all 4 confirmations are checked -->
+            <a href="m2-l1-s1.html"
+               id="btn-clear-gate"
+               class="btn btn--primary btn--gate"
+               aria-disabled="true"
+               aria-describedby="gate-clearance-hint"
+               rel="next">
+              Cleared for Module 2: Engineer the Learning
+              <svg aria-hidden="true" focusable="false" width="16" height="16"
+                   viewBox="0 0 16 16" fill="none">
+                <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+
+            <p id="gate-clearance-hint" class="gate-clearance__hint">
+              Complete all four confirmation checks above to activate this button.
+            </p>
+
+            <!-- Module 2 preview card -->
+            <div class="module-preview">
+              <span class="module-preview__label">Next: Module 2</span>
+              <span class="module-preview__name">Engineer the Learning</span>
+              <p class="module-preview__desc">
+                Module 2 takes the decomposition map you have built and stress-tests the learning
+                design decisions that will make each component teachable. Lessons 2.1 through 2.4
+                cover performance objective specification, practice sequence design, assessment
+                alignment, and formative checkpoint architecture.
+              </p>
+            </div>
+
+          </div>
+          <!-- /.gate-clearance -->
+
+        </section>
+        <!-- /.gate-confirmations -->
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l4b-s6.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen: Lesson 1.4b final screen -- reflection checkpoint and Module 1 completion">
+            <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+        </nav>
+
+      </article>
+    </section>
+  </main>
+
+  <!-- Supplementary resources -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">
+        Five Module 1 artifacts on record: MRHN_BucketMap_v1 (MRHN-D-001 through MRHN-D-003),
+        MRHN_CalibratedScopeMap_v1 (MRHN-D-003), MRHN_PerformanceArc_v1 (MRHN-D-004),
+        MRHN_DecompositionMap_v1 (MRHN-D-005, MRHN-D-006), and MRHN_DecompositionMap_v2
+        (MRHN-D-007, MRHN-D-008). Final artifact: MRHN_DecompositionMap_v2, 48 components,
+        Scope Trace Audit passed.
+      </p>
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">
+        MRHN-D-001 through MRHN-D-008 complete. Gate 1.TG.1 requires all eight records
+        to be present, internally consistent, and coherent with one another. See the
+        record log above for full decision summaries.
+      </p>
+    </section>
+  </aside>
+
+  <!-- Support panels -->
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <footer role="contentinfo">
+    <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- Base script -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    function syncToggleStates(name) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === name ? 'true' : 'false');
+      });
+    }
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const p = btn.dataset.panel;
+        if (getActivePanel() === p) { closeAll(); syncToggleStates(null); }
+        else { openPanel(p, btn); syncToggleStates(p); }
+      });
+    });
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => { closeAll(); syncToggleStates(null); });
+    });
+  </script>
+
+  <!-- Gate confirmation script -->
+  <script type="module">
+    import { getItem, setItem } from './js/storage.js';
+
+    const STORAGE_KEY = 'gate_m1_tg1';
+    const TOTAL       = 4;
+
+    const checkboxes   = Array.from(document.querySelectorAll('.confirmation-checkbox'));
+    const countEl      = document.getElementById('gate-count');
+    const fillEl       = document.getElementById('gate-status-fill');
+    const clearedMsg   = document.getElementById('gate-cleared-msg');
+    const clearedTs    = document.getElementById('gate-cleared-timestamp');
+    const clearBtn     = document.getElementById('btn-clear-gate');
+    const announcer    = document.getElementById('sr-announcer');
+    const items        = {
+      'confirm-1': document.getElementById('confirm-item-1'),
+      'confirm-2': document.getElementById('confirm-item-2'),
+      'confirm-3': document.getElementById('confirm-item-3'),
+      'confirm-4': document.getElementById('confirm-item-4'),
+    };
+
+    function getCheckedCount() {
+      return checkboxes.filter(cb => cb.checked).length;
+    }
+
+    function updateUI(announce) {
+      const count = getCheckedCount();
+      const pct   = Math.round((count / TOTAL) * 100);
+
+      countEl.textContent = count;
+      fillEl.style.width  = pct + '%';
+
+      checkboxes.forEach(cb => {
+        const item = items[cb.id];
+        if (!item) return;
+        if (cb.checked) {
+          item.classList.add('confirmation-item--checked');
+        } else {
+          item.classList.remove('confirmation-item--checked');
+        }
+      });
+
+      if (count === TOTAL) {
+        clearBtn.removeAttribute('aria-disabled');
+        clearedMsg.removeAttribute('hidden');
+        if (announce) {
+          clearedMsg.focus();
+          announcer.textContent = '';
+          requestAnimationFrame(() => {
+            announcer.textContent = 'Gate 1.TG.1 cleared. All four confirmations complete. Proceed to Module 2.';
+          });
+        }
+      } else {
+        clearBtn.setAttribute('aria-disabled', 'true');
+        clearedMsg.setAttribute('hidden', '');
+      }
+    }
+
+    function saveState() {
+      const data = {};
+      checkboxes.forEach(cb => { data[cb.id] = cb.checked; });
+      const count = getCheckedCount();
+      if (count === TOTAL) {
+        const ts = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        data.clearedAt = ts;
+      }
+      try { setItem(STORAGE_KEY, JSON.stringify(data)); } catch { /* storage unavailable */ }
+    }
+
+    function restoreState() {
+      const stored = getItem(STORAGE_KEY);
+      if (!stored) return;
+      try {
+        const data = JSON.parse(stored);
+        checkboxes.forEach(cb => {
+          if (Object.prototype.hasOwnProperty.call(data, cb.id)) {
+            cb.checked = !!data[cb.id];
+          }
+        });
+        if (data.clearedAt) {
+          clearedTs.textContent = 'Gate cleared at ' + data.clearedAt +
+            '. Your structural design is ready for Module 2: Engineer the Learning.';
+        }
+        updateUI(false);
+      } catch { /* corrupted storage */ }
+    }
+
+    /* Intercept click on disabled clearance link */
+    clearBtn.addEventListener('click', e => {
+      if (clearBtn.getAttribute('aria-disabled') === 'true') {
+        e.preventDefault();
+        announcer.textContent = '';
+        requestAnimationFrame(() => {
+          announcer.textContent = 'Complete all four confirmation checks to clear the gate.';
+        });
+      }
+    });
+
+    /* Checkbox change handler */
+    checkboxes.forEach(cb => {
+      cb.addEventListener('change', () => {
+        updateUI(true);
+        saveState();
+      });
+    });
+
+    /* Init */
+    restoreState();
+    updateUI(false);
+  </script>
+
+  <!-- Screen-specific script -->
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = 'Gate 1.TG.1';
+    document.getElementById('pt-phase').textContent        = '2';
+    document.getElementById('pt-step').textContent         = 'Gate';
+    document.getElementById('pt-screen').textContent       = '1';
+    document.getElementById('pt-screen-total').textContent = '1';
+
+    document.querySelectorAll('.module-nav-link').forEach(link => link.removeAttribute('aria-current'));
+    const activeLink = document.querySelector('.module-nav-link[href="module-1.html"]');
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+  </script>
+
+</body>
+</html>

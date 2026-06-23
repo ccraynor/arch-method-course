@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guided practice: apply the Output Style Gate to produce your own MRHN documentation snapshot. Write the naming convention, assign SI identifiers to scope items, and complete one governance record using all five fields.">
+  <title>Guided Practice: Output Style Gate and Snapshot Protocol — Lesson 1.1b — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l1b-s5 -- Guided Practice: Output Style Gate
+       Step 1.5 -- three-task snapshot protocol exercise.
+       All color values use CSS tokens. No hard-coded hex values.
+       ================================================================ */
+
+    .lesson-label {
+      display: block;
+      margin: 0 0 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-link);
+    }
+
+    .screen-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 0 0.25rem;
+    }
+
+    .screen-type-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    .time-estimate {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 3px;
+      padding: 0.125rem 0.5rem;
+    }
+
+    .screen-title {
+      margin: 0 0 0.375rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    .step-badge {
+      display: inline-block;
+      margin: 0 0 0.875rem;
+      padding: 0.25rem 0.625rem;
+      background: var(--color-bg-page);
+      border: 1.5px solid var(--color-text-link);
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-link);
+    }
+
+    /* ---- Brief reference strip ---- */
+    .brief-reference {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.25rem 0.5rem;
+      padding: 0.625rem 0.875rem;
+      margin: 0 0 1.75rem;
+      background: var(--color-bg-subtle);
+      border-left: 3px solid var(--color-border-strong);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+    }
+
+    .brief-reference__label {
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+    }
+
+    /* ---- Task sections ---- */
+    .task-section {
+      margin: 0 0 2rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .task-section__header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--color-bg-subtle);
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .task-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 50%;
+      background: var(--color-text-link);
+      color: var(--color-text-inverse);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .task-section__title {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .task-section__body {
+      padding: 1rem 1rem 1.125rem;
+    }
+
+    .task-instruction {
+      margin: 0 0 1rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    /* ---- Pattern reminder (inside Task 1) ---- */
+    .pattern-reminder {
+      margin: 0 0 1rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-page);
+      border: 1px solid var(--color-border-default);
+      border-radius: 4px;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+
+    .pattern-reminder strong {
+      color: var(--color-text-primary);
+      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro',
+                   Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+    }
+
+    /* ---- Form fields ---- */
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+      margin: 0 0 1rem;
+    }
+
+    .field-group:last-child { margin-bottom: 0; }
+
+    .field-label {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .field-label .field-hint {
+      font-weight: 400;
+      color: var(--color-text-secondary);
+    }
+
+    textarea, input[type="text"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.5625rem 0.75rem;
+      border: 1.5px solid var(--color-border-default);
+      border-radius: 4px;
+      background: var(--color-bg-page);
+      color: var(--color-text-primary);
+      font-size: 0.9375rem;
+      font-family: inherit;
+      line-height: 1.5;
+      resize: vertical;
+      transition: border-color 0.15s ease;
+    }
+
+    textarea:focus, input[type="text"]:focus {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 1px;
+      border-color: var(--color-text-link);
+    }
+
+    textarea[aria-invalid="true"],
+    input[type="text"][aria-invalid="true"] {
+      border-color: var(--color-error-text);
+    }
+
+    .field-error {
+      font-size: 0.8125rem;
+      color: var(--color-error-text);
+      line-height: 1.4;
+    }
+
+    .field-error:empty { display: none; }
+
+    /* ---- SI assignment rows ---- */
+    .si-grid {
+      display: grid;
+      grid-template-columns: 4.5rem 1fr;
+      gap: 0.5rem 0.75rem;
+      align-items: center;
+      margin: 0 0 0.75rem;
+    }
+
+    .si-identifier {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5625rem 0;
+      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro',
+                   Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--color-text-link);
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .si-scope-input {
+      resize: none;
+    }
+
+    .si-requirement-note {
+      margin: 0;
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+      font-style: italic;
+    }
+
+    /* ---- Governance record form ---- */
+    .gov-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .gov-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .gov-field-label {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .gov-field-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      background: var(--color-text-link);
+      color: var(--color-text-inverse);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .gov-field-name {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .gov-field-desc {
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+      font-weight: 400;
+    }
+
+    /* ---- Submit controls ---- */
+    .form-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0 0;
+    }
+
+    /* ---- Feedback section ---- */
+    .feedback-section {
+      margin: 2rem 0 0;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .feedback-header {
+      padding: 0.75rem 1rem;
+      background: var(--color-bg-subtle);
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .feedback-heading {
+      margin: 0;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .feedback-body { padding: 1rem; }
+
+    /* Result banner -- uses text + border, not color alone */
+    .result-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.875rem 1rem;
+      border-radius: 5px;
+      border: 2px solid;
+      margin: 0 0 1.25rem;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    .result-banner--pass {
+      background: var(--color-success-bg);
+      border-color: var(--color-success-border);
+      color: var(--color-success-text);
+    }
+
+    .result-banner--partial {
+      background: var(--color-warning-bg);
+      border-color: var(--color-warning-border);
+      color: var(--color-warning-text);
+    }
+
+    .result-banner__icon {
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+    }
+
+    .result-banner__label {
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0.125rem;
+    }
+
+    /* Gaps list */
+    .gap-list {
+      margin: 0.75rem 0 0;
+      padding-left: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3125rem;
+    }
+
+    .gap-list li {
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    /* ---- Expert snapshot ---- */
+    .expert-snapshot {
+      margin: 1.25rem 0 0;
+    }
+
+    .expert-snapshot__heading {
+      margin: 0 0 0.75rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+    }
+
+    /* Naming convention display */
+    .snapshot-convention {
+      margin: 0 0 1.5rem;
+      padding: 0.75rem 1rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-left: 3px solid var(--color-brand-navy);
+      border-radius: 0 5px 5px 0;
+    }
+
+    .snapshot-convention__label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.375rem;
+    }
+
+    .snapshot-convention__pattern {
+      display: block;
+      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro',
+                   Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .snapshot-convention__rules {
+      margin: 0.5rem 0 0;
+      padding-left: 1.125rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .snapshot-convention__rules li {
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+
+    /* SI table */
+    .si-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      margin: 0 0 1.5rem;
+    }
+
+    .si-table th {
+      text-align: left;
+      padding: 0.4375rem 0.75rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-text-secondary);
+    }
+
+    .si-table td {
+      padding: 0.4375rem 0.75rem;
+      border: 1px solid var(--color-border-default);
+      color: var(--color-text-primary);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+
+    .si-table tr:nth-child(even) td {
+      background: var(--color-bg-subtle);
+    }
+
+    .si-code {
+      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro',
+                   Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+      font-weight: 700;
+      color: var(--color-text-link);
+      white-space: nowrap;
+    }
+
+    /* Expert governance record */
+    .gov-record {
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .gov-record__header {
+      padding: 0.5rem 1rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .gov-record__field {
+      display: grid;
+      grid-template-columns: 10.5rem 1fr;
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .gov-record__field:last-child { border-bottom: none; }
+
+    @media (max-width: 540px) {
+      .gov-record__field { grid-template-columns: 1fr; }
+    }
+
+    .gov-record__key {
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      border-right: 1px solid var(--color-border-default);
+    }
+
+    @media (max-width: 540px) {
+      .gov-record__key {
+        border-right: none;
+        border-bottom: 1px solid var(--color-border-default);
+      }
+    }
+
+    .gov-record__val {
+      padding: 0.625rem 0.875rem;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      background: var(--color-bg-page);
+    }
+
+    .field-num-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      background: var(--color-text-link);
+      color: var(--color-text-inverse);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      margin-right: 0.375rem;
+      vertical-align: middle;
+    }
+
+    /* Navigation controls inside feedback */
+    .feedback-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 0 0;
+      flex-wrap: wrap;
+    }
+
+    /* High contrast adjustments */
+    @media (prefers-contrast: more) {
+      .brief-reference { border-left-color: var(--color-border-strong); }
+      .task-section { border-color: var(--color-border-strong); }
+      .task-section__header { border-bottom-color: var(--color-border-strong); }
+      textarea, input[type="text"] { border-color: var(--color-border-strong); }
+      .si-identifier { border-color: var(--color-border-strong); }
+      .pattern-reminder { border-color: var(--color-border-strong); }
+      .snapshot-convention { border-color: var(--color-border-strong); }
+      .si-table th, .si-table td { border-color: var(--color-border-strong); }
+      .gov-record { border-color: var(--color-border-strong); }
+      .gov-record__field { border-bottom-color: var(--color-border-strong); }
+      .gov-record__key { border-right-color: var(--color-border-strong); }
+      .result-banner--pass,
+      .result-banner--partial { border-width: 2px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.1b</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">1.5</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">5</span> of <span id="pt-screen-total">6</span></span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary"
+              aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel"
+              aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer"
+              aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory"
+              aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel"
+              aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <article aria-labelledby="screen-title">
+
+        <header>
+          <div class="screen-meta">
+            <span class="screen-type-label">Guided Practice</span>
+            <span class="time-estimate"
+                  aria-label="Estimated time: 20 to 25 minutes">
+              20&ndash;25 min
+            </span>
+          </div>
+          <p class="lesson-label" aria-label="Lesson 1.1b">Lesson 1.1b</p>
+          <h1 id="screen-title" class="screen-title">
+            Apply the Output Style Gate: MRHN Documentation Snapshot
+          </h1>
+          <span class="step-badge">Step 1.5</span>
+
+          <div class="brief-reference" role="note" aria-label="Reference document">
+            <span class="brief-reference__label">Reference:</span>
+            The Meridian project brief is at
+            <a href="m1-l1a-s2.html" class="link" target="_blank"
+               aria-label="Open Meridian project brief in new tab (Lesson 1.1a, Screen 2)">
+              Lesson 1.1a, Screen 2
+            </a>.
+            Open it alongside this task. Your constraint map from Screen 3 identifies
+            the binding scope items you will assign SI identifiers to below.
+          </div>
+        </header>
+
+        <form id="snapshot-form"
+              novalidate
+              aria-label="MRHN documentation snapshot practice">
+
+          <!-- ======================================================
+               Task 1: Artifact Naming Convention
+               ====================================================== -->
+          <div class="task-section" role="group" aria-labelledby="task1-heading">
+            <div class="task-section__header">
+              <span class="task-num" aria-hidden="true">1</span>
+              <h2 id="task1-heading" class="task-section__title">
+                Write the MRHN Artifact Naming Convention
+              </h2>
+            </div>
+            <div class="task-section__body">
+              <p class="task-instruction">
+                Write the artifact naming pattern you will apply to every MRHN
+                document produced in this credential. Use the exact four-segment
+                structure from Screen 4. Then write one example filename using
+                the Bucket Map as the artifact.
+              </p>
+              <div class="pattern-reminder" role="note" aria-label="Format reminder">
+                Format reminder: four segments, underscore separators,
+                <strong>MRHN_[ArtifactName]_v[Version]_[Date]</strong> structure.
+                Date format is YYYY-MM-DD.
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="field-naming">
+                  Naming pattern and example filename
+                  <span class="field-hint"> -- write the pattern, then one example</span>
+                </label>
+                <textarea id="field-naming"
+                          name="field-naming"
+                          rows="3"
+                          aria-required="true"
+                          aria-describedby="error-naming"
+                          placeholder="Pattern: ...&#10;Example: ..."
+                          autocomplete="off"></textarea>
+                <span id="error-naming"
+                      class="field-error"
+                      role="alert"
+                      aria-live="polite"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ======================================================
+               Task 2: SI Identifier Assignment
+               ====================================================== -->
+          <div class="task-section" role="group" aria-labelledby="task2-heading">
+            <div class="task-section__header">
+              <span class="task-num" aria-hidden="true">2</span>
+              <h2 id="task2-heading" class="task-section__title">
+                Assign SI Identifiers to Meridian Scope Items
+              </h2>
+            </div>
+            <div class="task-section__body">
+              <p class="task-instruction">
+                Using the constraint map from Screen 3, write a concise scope
+                item description for each identifier below. Complete at least
+                four rows. Descriptions should name the specific performance,
+                protocol action, or documentation behavior each item covers --
+                not a restatement of the constraint itself.
+              </p>
+              <div class="si-grid"
+                   role="group"
+                   aria-label="Scope item identifier assignments">
+
+                <div class="si-identifier" aria-label="Identifier S I 01">SI-01</div>
+                <div class="field-group" style="margin:0;">
+                  <label class="sr-only" for="si-input-1">Scope item for SI-01</label>
+                  <input type="text"
+                         id="si-input-1"
+                         class="si-scope-input"
+                         name="si-input-1"
+                         aria-describedby="error-si"
+                         autocomplete="off"
+                         placeholder="Describe the scope item this identifier covers">
+                </div>
+
+                <div class="si-identifier" aria-label="Identifier S I 02">SI-02</div>
+                <div class="field-group" style="margin:0;">
+                  <label class="sr-only" for="si-input-2">Scope item for SI-02</label>
+                  <input type="text"
+                         id="si-input-2"
+                         class="si-scope-input"
+                         name="si-input-2"
+                         autocomplete="off"
+                         placeholder="Describe the scope item this identifier covers">
+                </div>
+
+                <div class="si-identifier" aria-label="Identifier S I 03">SI-03</div>
+                <div class="field-group" style="margin:0;">
+                  <label class="sr-only" for="si-input-3">Scope item for SI-03</label>
+                  <input type="text"
+                         id="si-input-3"
+                         class="si-scope-input"
+                         name="si-input-3"
+                         autocomplete="off"
+                         placeholder="Describe the scope item this identifier covers">
+                </div>
+
+                <div class="si-identifier" aria-label="Identifier S I 04">SI-04</div>
+                <div class="field-group" style="margin:0;">
+                  <label class="sr-only" for="si-input-4">Scope item for SI-04</label>
+                  <input type="text"
+                         id="si-input-4"
+                         class="si-scope-input"
+                         name="si-input-4"
+                         autocomplete="off"
+                         placeholder="Describe the scope item this identifier covers">
+                </div>
+
+                <div class="si-identifier" aria-label="Identifier S I 05">SI-05</div>
+                <div class="field-group" style="margin:0;">
+                  <label class="sr-only" for="si-input-5">Scope item for SI-05</label>
+                  <input type="text"
+                         id="si-input-5"
+                         class="si-scope-input"
+                         name="si-input-5"
+                         autocomplete="off"
+                         placeholder="Optional: add a fifth scope item">
+                </div>
+
+                <div class="si-identifier" aria-label="Identifier S I 06">SI-06</div>
+                <div class="field-group" style="margin:0;">
+                  <label class="sr-only" for="si-input-6">Scope item for SI-06</label>
+                  <input type="text"
+                         id="si-input-6"
+                         class="si-scope-input"
+                         name="si-input-6"
+                         autocomplete="off"
+                         placeholder="Optional: add a sixth scope item">
+                </div>
+
+              </div>
+              <p id="error-si" class="field-error" role="alert" aria-live="polite"></p>
+              <p class="si-requirement-note" aria-live="off">
+                At minimum, complete SI-01 through SI-04. SI-05 and SI-06 are
+                optional on this screen; the full Bucket Map in Module 1 will
+                carry all 16.
+              </p>
+            </div>
+          </div>
+
+          <!-- ======================================================
+               Task 3: Governance Decision Record
+               ====================================================== -->
+          <div class="task-section" role="group" aria-labelledby="task3-heading">
+            <div class="task-section__header">
+              <span class="task-num" aria-hidden="true">3</span>
+              <h2 id="task3-heading" class="task-section__title">
+                Complete One Five-Field Governance Decision Record
+              </h2>
+            </div>
+            <div class="task-section__body">
+              <p class="task-instruction">
+                Choose any one design decision you would make for the Meridian
+                project based on the constraints you identified. Complete all
+                five fields of the governance documentation rule. Your
+                Constraint Reference field must include at least one specific
+                constraint code (PC-1, RC-2, LC-1, SC-1, etc.) or SI
+                identifier.
+              </p>
+              <div class="gov-form">
+
+                <div class="gov-field-group">
+                  <label class="gov-field-label" for="field-decision">
+                    <span class="gov-field-num" aria-hidden="true">1</span>
+                    <span class="gov-field-name">Decision Statement</span>
+                  </label>
+                  <span class="gov-field-desc" id="desc-decision">
+                    What was decided -- written as a precise, present-tense declaration.
+                  </span>
+                  <textarea id="field-decision"
+                            name="field-decision"
+                            rows="3"
+                            aria-required="true"
+                            aria-describedby="desc-decision error-governance"
+                            autocomplete="off"
+                            placeholder="The MRHN course will..."></textarea>
+                </div>
+
+                <div class="gov-field-group">
+                  <label class="gov-field-label" for="field-constraint">
+                    <span class="gov-field-num" aria-hidden="true">2</span>
+                    <span class="gov-field-name">Constraint Reference</span>
+                  </label>
+                  <span class="gov-field-desc" id="desc-constraint">
+                    Which SI-XX identifier or named binding constraint (PC-1, RC-2, LC-1, SC-1, etc.) governs this decision.
+                  </span>
+                  <textarea id="field-constraint"
+                            name="field-constraint"
+                            rows="2"
+                            aria-required="true"
+                            aria-describedby="desc-constraint error-governance"
+                            autocomplete="off"
+                            placeholder="PC-1, RC-2... or SI-01..."></textarea>
+                </div>
+
+                <div class="gov-field-group">
+                  <label class="gov-field-label" for="field-rationale">
+                    <span class="gov-field-num" aria-hidden="true">3</span>
+                    <span class="gov-field-name">Rationale</span>
+                  </label>
+                  <span class="gov-field-desc" id="desc-rationale">
+                    Why this decision follows from the constraint -- not a restatement of the decision.
+                  </span>
+                  <textarea id="field-rationale"
+                            name="field-rationale"
+                            rows="3"
+                            aria-required="true"
+                            aria-describedby="desc-rationale error-governance"
+                            autocomplete="off"
+                            placeholder="This decision follows from the constraint because..."></textarea>
+                </div>
+
+                <div class="gov-field-group">
+                  <label class="gov-field-label" for="field-risk">
+                    <span class="gov-field-num" aria-hidden="true">4</span>
+                    <span class="gov-field-name">Risk Note</span>
+                  </label>
+                  <span class="gov-field-desc" id="desc-risk">
+                    What could go wrong if this decision is incorrect or needs to change.
+                  </span>
+                  <textarea id="field-risk"
+                            name="field-risk"
+                            rows="3"
+                            aria-required="true"
+                            aria-describedby="desc-risk error-governance"
+                            autocomplete="off"
+                            placeholder="If this decision is wrong or needs to change..."></textarea>
+                </div>
+
+                <div class="gov-field-group">
+                  <label class="gov-field-label" for="field-checkpoint">
+                    <span class="gov-field-num" aria-hidden="true">5</span>
+                    <span class="gov-field-name">Governance Checkpoint Linkage</span>
+                  </label>
+                  <span class="gov-field-desc" id="desc-checkpoint">
+                    Which checkpoint (Gate 1.TG.1, Module 3 Outcome Mapping, etc.) will verify or revisit this decision.
+                  </span>
+                  <textarea id="field-checkpoint"
+                            name="field-checkpoint"
+                            rows="2"
+                            aria-required="true"
+                            aria-describedby="desc-checkpoint error-governance"
+                            autocomplete="off"
+                            placeholder="Gate 1.TG.1 will verify..."></textarea>
+                </div>
+
+                <p id="error-governance"
+                   class="field-error"
+                   role="alert"
+                   aria-live="polite"></p>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit controls -->
+          <div class="form-controls">
+            <button type="submit"
+                    id="submit-btn"
+                    class="btn btn--primary">
+              Submit Snapshot
+            </button>
+          </div>
+
+        </form>
+
+        <!-- ============================================================
+             Feedback Section (hidden until submission)
+             ============================================================ -->
+        <section id="feedback-section"
+                 class="feedback-section"
+                 aria-labelledby="feedback-heading"
+                 tabindex="-1"
+                 hidden>
+
+          <div class="feedback-header">
+            <h2 id="feedback-heading" class="feedback-heading">Snapshot Review</h2>
+          </div>
+
+          <div class="feedback-body">
+
+            <!-- Result banner: JS sets class and content -->
+            <div id="result-banner"
+                 class="result-banner"
+                 role="status"
+                 aria-live="polite">
+            </div>
+
+            <!-- Expert snapshot -- always shown -->
+            <div class="expert-snapshot"
+                 aria-label="Expert documentation snapshot">
+
+              <p class="expert-snapshot__heading">Expert Snapshot Record</p>
+
+              <!-- Naming convention -->
+              <div class="snapshot-convention"
+                   role="region"
+                   aria-label="Expert naming convention">
+                <span class="snapshot-convention__label">Artifact Naming Convention</span>
+                <code class="snapshot-convention__pattern"
+                      aria-label="Pattern: MRHN underscore ArtifactName underscore v Version underscore Date">
+                  MRHN_[ArtifactName]_v[Version]_[Date]
+                </code>
+                <ul class="snapshot-convention__rules">
+                  <li>ArtifactName: CamelCase, no spaces or hyphens</li>
+                  <li>Version: integer starting at 1; increment only after documented governance review</li>
+                  <li>Date: YYYY-MM-DD format; the date the version was finalized</li>
+                  <li>Example: <code>MRHN_BucketMap_v1_2026-01-15</code></li>
+                </ul>
+              </div>
+
+              <!-- SI identifier table -->
+              <p class="expert-snapshot__heading"
+                 style="margin-top:0;">
+                Expert SI Identifier Assignments (First Eight)
+              </p>
+              <table class="si-table"
+                     aria-label="Expert SI identifier assignments for the Meridian project">
+                <thead>
+                  <tr>
+                    <th scope="col" style="width:5.5rem;">Identifier</th>
+                    <th scope="col">Scope Item</th>
+                    <th scope="col" style="width:9rem;">Constraint Sources</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code class="si-code">SI-01</code></td>
+                    <td>IR-2024 Tier 1 protocol execution -- independent, no escalation required</td>
+                    <td>PC-1, PC-2, RC-2</td>
+                  </tr>
+                  <tr>
+                    <td><code class="si-code">SI-02</code></td>
+                    <td>IR-2024 Tier 2 protocol execution -- within role authority</td>
+                    <td>PC-2, PC-3</td>
+                  </tr>
+                  <tr>
+                    <td><code class="si-code">SI-03</code></td>
+                    <td>System isolation decisions -- role-bounded, no supervisor required</td>
+                    <td>PC-3</td>
+                  </tr>
+                  <tr>
+                    <td><code class="si-code">SI-04</code></td>
+                    <td>Real-time SIEM event log documentation during active incident</td>
+                    <td>PC-4</td>
+                  </tr>
+                  <tr>
+                    <td><code class="si-code">SI-05</code></td>
+                    <td>Clinical leadership communication using Meridian approved templates</td>
+                    <td>PC-5</td>
+                  </tr>
+                  <tr>
+                    <td><code class="si-code">SI-06</code></td>
+                    <td>Escalation protocol -- recognizing when a decision requires supervisor involvement</td>
+                    <td>PC-3, PC-2</td>
+                  </tr>
+                  <tr>
+                    <td><code class="si-code">SI-07</code></td>
+                    <td>Post-incident OCR-compliant documentation and breach reporting procedure</td>
+                    <td>RC-1, RC-3</td>
+                  </tr>
+                  <tr>
+                    <td><code class="si-code">SI-08</code></td>
+                    <td>Threat classification -- Tier 1 vs. Tier 2 identification from SIEM alerts</td>
+                    <td>PC-1, PC-2</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- Expert governance record -->
+              <p class="expert-snapshot__heading"
+                 style="margin-top:0;">
+                Expert Governance Decision Record -- MRHN-D-001
+              </p>
+              <div class="gov-record"
+                   role="region"
+                   aria-label="Expert governance decision record MRHN D 001">
+                <div class="gov-record__header">
+                  MRHN-D-001: IR-2024 Version Alignment
+                </div>
+                <div class="gov-record__field">
+                  <div class="gov-record__key">
+                    <span class="field-num-badge" aria-hidden="true">1</span>
+                    Decision Statement
+                  </div>
+                  <div class="gov-record__val">
+                    The MRHN course aligns to IR-2024 as adopted in January 2024.
+                    Revisions to IR-2024 occurring after project start are out of
+                    scope without a documented scope change request and governance
+                    review.
+                  </div>
+                </div>
+                <div class="gov-record__field">
+                  <div class="gov-record__key">
+                    <span class="field-num-badge" aria-hidden="true">2</span>
+                    Constraint Reference
+                  </div>
+                  <div class="gov-record__val">
+                    RC-2 (IR-2024 as adopted); PC-1 (IR-2024 protocol alignment);
+                    LC-1 (4 hours total SME access)
+                  </div>
+                </div>
+                <div class="gov-record__field">
+                  <div class="gov-record__key">
+                    <span class="field-num-badge" aria-hidden="true">3</span>
+                    Rationale
+                  </div>
+                  <div class="gov-record__val">
+                    The OCR remediation timeline (RC-3) and SME access cap (LC-1)
+                    mean scope cannot flex after the first SME meeting. Aligning
+                    to IR-2024 as a fixed document prevents drift that cannot be
+                    absorbed within project constraints. The client brief names
+                    IR-2024 by adoption date, establishing it as the governing
+                    reference.
+                  </div>
+                </div>
+                <div class="gov-record__field">
+                  <div class="gov-record__key">
+                    <span class="field-num-badge" aria-hidden="true">4</span>
+                    Risk Note
+                  </div>
+                  <div class="gov-record__val">
+                    If Meridian updates IR-2024 during the project window, the
+                    delivered course will not reflect the change. This risk is
+                    accepted given the timeline and SME constraints. Any
+                    post-launch protocol update requires a documented v2 revision
+                    under the version control protocol.
+                  </div>
+                </div>
+                <div class="gov-record__field">
+                  <div class="gov-record__key">
+                    <span class="field-num-badge" aria-hidden="true">5</span>
+                    Checkpoint Linkage
+                  </div>
+                  <div class="gov-record__val">
+                    Gate 1.TG.1 (Transition Gate, Module 1) will verify that all
+                    performance items trace to IR-2024 as adopted. Module 3
+                    Outcome Mapping will confirm no performance item references
+                    a protocol version not covered by the course content.
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /.expert-snapshot -->
+
+            <!-- Navigation inside feedback -->
+            <div class="feedback-controls">
+              <button type="button"
+                      id="try-again-btn"
+                      class="btn btn--secondary"
+                      hidden>
+                Revise Snapshot
+              </button>
+              <a href="m1-l1b-s6.html"
+                 id="continue-link"
+                 class="btn btn--primary"
+                 hidden>
+                Continue to Lesson Reflection
+              </a>
+            </div>
+
+          </div><!-- /.feedback-body -->
+
+        </section>
+
+        <!-- Screen navigation (pre-submission) -->
+        <nav id="screen-nav-pre"
+             class="screen-nav"
+             aria-label="Screen navigation">
+          <a href="m1-l1b-s4.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+
+    <section id="artifact-reference"
+             tabindex="-1"
+             aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">
+        The documentation conventions you establish on this screen govern
+        MRHN_BucketMap_v1 and all subsequent MRHN artifacts through
+        Structural Freeze.
+      </p>
+    </section>
+
+    <section id="decision-history"
+             tabindex="-1"
+             aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">
+        MRHN-D-001 (IR-2024 version alignment) is the first governance
+        record for the project. It is modeled in Screen 4 and shown in
+        full in the expert snapshot below after you submit.
+      </p>
+    </section>
+
+  </aside>
+
+  <!-- ============================================================
+       Support Panels
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12"
+                placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded',
+          btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script
+       ============================================================ -->
+  <script type="module">
+    // Progress tracker
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.1b';
+    document.getElementById('pt-phase').textContent        = '1';
+    document.getElementById('pt-step').textContent         = '1.5';
+    document.getElementById('pt-screen').textContent       = '5';
+    document.getElementById('pt-screen-total').textContent = '6';
+
+    document.querySelectorAll('.module-nav-link').forEach(link => {
+      link.removeAttribute('aria-current');
+    });
+    const activeLink = document.querySelector(
+      '.module-nav-link[href="module-1.html"]'
+    );
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+
+    // ---- Evaluation helpers ----
+
+    function wordCount(str) {
+      return str.trim().split(/\s+/).filter(w => w.length > 0).length;
+    }
+
+    function evaluate() {
+      const namingVal     = document.getElementById('field-naming').value.trim().toLowerCase();
+      const constraintVal = document.getElementById('field-constraint').value.toLowerCase();
+      const riskVal       = document.getElementById('field-risk').value.trim();
+      const decisionVal   = document.getElementById('field-decision').value.trim();
+      const rationaleVal  = document.getElementById('field-rationale').value.trim();
+      const checkpointVal = document.getElementById('field-checkpoint').value.trim();
+
+      // SI fields: count those with at least 4 words
+      const siInputs = document.querySelectorAll('.si-scope-input');
+      let siComplete = 0;
+      siInputs.forEach(input => {
+        if (wordCount(input.value) >= 4) siComplete++;
+      });
+
+      // Check 1: Naming convention contains MRHN prefix, underscore,
+      //          version indicator, and date or year pattern
+      const namingOk =
+        namingVal.includes('mrhn') &&
+        namingVal.includes('_') &&
+        (namingVal.includes('_v') || namingVal.includes('version')) &&
+        (namingVal.includes('date') ||
+         /\d{4}/.test(namingVal) ||
+         namingVal.includes('[date]'));
+
+      // Check 2: At least 4 SI fields have substantive descriptions
+      const siOk = siComplete >= 4;
+
+      // Check 3: All five governance fields have meaningful content
+      const govOk =
+        wordCount(decisionVal)   >= 8  &&
+        wordCount(constraintVal) >= 2  &&
+        wordCount(rationaleVal)  >= 10 &&
+        wordCount(riskVal)       >= 10 &&
+        wordCount(checkpointVal) >= 5;
+
+      // Check 4: Constraint reference contains actual constraint codes or SI identifiers
+      const constraintOk =
+        /\b(pc|rc|lc|sc)-?\d+\b/i.test(constraintVal) ||
+        /\bsi-\d+\b/i.test(constraintVal);
+
+      // Check 5: Risk note contains risk language beyond a minimal word count
+      const riskOk =
+        wordCount(riskVal) >= 12 &&
+        /\b(risk|change|wrong|fail|incorrect|gap|miss|error|not|if|could|would|may|should)\b/i
+          .test(riskVal);
+
+      const checks    = [namingOk, siOk, govOk, constraintOk, riskOk];
+      const passCount = checks.filter(Boolean).length;
+
+      return { namingOk, siOk, govOk, constraintOk, riskOk,
+               passCount, isComplete: passCount >= 4 };
+    }
+
+    // ---- Announce to screen reader (double rAF for SR reliability) ----
+    function announce(message) {
+      const el = document.getElementById('sr-announcer');
+      el.textContent = '';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          el.textContent = message;
+        });
+      });
+    }
+
+    // ---- Clear per-field errors ----
+    function clearErrors() {
+      document.getElementById('error-naming').textContent     = '';
+      document.getElementById('error-si').textContent         = '';
+      document.getElementById('error-governance').textContent = '';
+
+      document.getElementById('field-naming').removeAttribute('aria-invalid');
+      document.querySelectorAll('.si-scope-input').forEach(input => {
+        input.removeAttribute('aria-invalid');
+      });
+      ['field-decision','field-constraint','field-rationale',
+       'field-risk','field-checkpoint'].forEach(id => {
+        document.getElementById(id).removeAttribute('aria-invalid');
+      });
+    }
+
+    // ---- Mark incomplete fields with aria-invalid ----
+    function flagErrors(result) {
+      if (!result.namingOk) {
+        document.getElementById('error-naming').textContent =
+          'Include the full four-segment pattern (MRHN prefix, artifact name, version, and date).';
+        document.getElementById('field-naming').setAttribute('aria-invalid', 'true');
+      }
+
+      if (!result.siOk) {
+        document.getElementById('error-si').textContent =
+          'At least four SI identifier rows need a scope item description of four or more words.';
+        // Mark any sparse rows
+        document.querySelectorAll('.si-scope-input').forEach((input, i) => {
+          if (i < 4 && wordCount(input.value) < 4) {
+            input.setAttribute('aria-invalid', 'true');
+          }
+        });
+      }
+
+      const govFields  = ['field-decision','field-constraint',
+                          'field-rationale','field-risk','field-checkpoint'];
+      const govMinWords = [8, 2, 10, 12, 5];
+      let   govMsgs    = [];
+
+      if (!result.govOk) {
+        govFields.forEach((id, i) => {
+          if (wordCount(document.getElementById(id).value) < govMinWords[i]) {
+            document.getElementById(id).setAttribute('aria-invalid', 'true');
+            const names = ['Decision Statement','Constraint Reference','Rationale',
+                           'Risk Note','Checkpoint Linkage'];
+            govMsgs.push(names[i]);
+          }
+        });
+      }
+      if (!result.constraintOk && !govMsgs.includes('Constraint Reference')) {
+        document.getElementById('field-constraint').setAttribute('aria-invalid', 'true');
+        govMsgs.push('Constraint Reference (needs a specific code: PC-1, RC-2, etc.)');
+      }
+      if (!result.riskOk && !govMsgs.includes('Risk Note')) {
+        document.getElementById('field-risk').setAttribute('aria-invalid', 'true');
+        govMsgs.push('Risk Note (describe what could go wrong if this decision changes)');
+      }
+
+      if (govMsgs.length > 0) {
+        document.getElementById('error-governance').textContent =
+          'Governance record needs more detail in: ' + govMsgs.join('; ') + '.';
+      }
+    }
+
+    // ---- Render feedback ----
+    function renderFeedback(result) {
+      const banner       = document.getElementById('result-banner');
+      const tryAgainBtn  = document.getElementById('try-again-btn');
+      const continueLink = document.getElementById('continue-link');
+
+      if (result.isComplete) {
+        banner.className = 'result-banner result-banner--pass';
+
+        const icon = `<svg class="result-banner__icon" aria-hidden="true" focusable="false"
+                           width="22" height="22" viewBox="0 0 22 22" fill="none">
+                        <circle cx="11" cy="11" r="10"
+                                stroke="currentColor" stroke-width="1.75"/>
+                        <path d="M6.5 11l3 3 6-6" stroke="currentColor" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>`;
+
+        let detail = '';
+        if (!result.constraintOk || !result.riskOk) {
+          const notes = [];
+          if (!result.constraintOk) notes.push('add at least one specific constraint code to your Constraint Reference field');
+          if (!result.riskOk)       notes.push('expand your Risk Note to describe what could go wrong and acknowledge the condition clearly');
+          detail = `<ul class="gap-list">${notes.map(n => `<li>${n}</li>`).join('')}</ul>`;
+        }
+
+        banner.innerHTML = `${icon}
+          <div>
+            <span class="result-banner__label">Convention applied correctly.</span>
+            Your naming pattern, SI assignments, and governance record demonstrate
+            sound documentation practice. Compare your record against the expert
+            snapshot below.${detail}
+          </div>`;
+
+      } else {
+        banner.className = 'result-banner result-banner--partial';
+
+        const icon = `<svg class="result-banner__icon" aria-hidden="true" focusable="false"
+                           width="22" height="22" viewBox="0 0 22 22" fill="none">
+                        <circle cx="11" cy="11" r="10"
+                                stroke="currentColor" stroke-width="1.75"/>
+                        <path d="M11 7v5M11 15.5v.5" stroke="currentColor" stroke-width="2"
+                              stroke-linecap="round"/>
+                      </svg>`;
+
+        const gaps = [];
+        if (!result.namingOk)
+          gaps.push('Naming convention: include the full four-segment pattern with MRHN prefix, version indicator, and date format');
+        if (!result.siOk)
+          gaps.push('SI assignments: complete at least four rows with a description of four or more words each');
+        if (!result.govOk)
+          gaps.push('Governance record: all five fields need substantive content');
+        if (!result.constraintOk)
+          gaps.push('Constraint Reference: name at least one specific constraint code (PC-1, RC-2, LC-1, SC-1, etc.) or SI identifier');
+        if (!result.riskOk)
+          gaps.push('Risk Note: describe what could go wrong and the condition under which the risk materializes');
+
+        banner.innerHTML = `${icon}
+          <div>
+            <span class="result-banner__label">Snapshot needs revision.</span>
+            Review the expert record below, then use Revise Snapshot to
+            strengthen the following:
+            <ul class="gap-list">
+              ${gaps.map(g => `<li>${g}</li>`).join('')}
+            </ul>
+          </div>`;
+
+        tryAgainBtn.removeAttribute('hidden');
+      }
+
+      continueLink.removeAttribute('hidden');
+    }
+
+    // ---- Form submission ----
+    document.getElementById('snapshot-form').addEventListener('submit', e => {
+      e.preventDefault();
+      clearErrors();
+
+      const result = evaluate();
+
+      if (!result.isComplete) {
+        // Surface per-field errors and stop if nothing substantive submitted
+        const namingVal = document.getElementById('field-naming').value.trim();
+        if (!namingVal) {
+          document.getElementById('error-naming').textContent =
+            'Write the naming pattern before submitting.';
+          document.getElementById('field-naming').setAttribute('aria-invalid', 'true');
+          document.getElementById('field-naming').focus();
+          announce('Submission incomplete. Naming convention field is empty.');
+          return;
+        }
+        flagErrors(result);
+      }
+
+      // Reveal feedback
+      const feedbackSection = document.getElementById('feedback-section');
+      const form            = document.getElementById('snapshot-form');
+      const preNav          = document.getElementById('screen-nav-pre');
+
+      feedbackSection.removeAttribute('hidden');
+      renderFeedback(result);
+
+      // Hide pre-submission nav; feedback has its own Continue link
+      preNav.setAttribute('hidden', '');
+
+      // Disable form fields
+      form.querySelectorAll('textarea, input, button[type="submit"]').forEach(el => {
+        el.setAttribute('disabled', '');
+      });
+
+      // Announce result
+      const msg = result.isComplete
+        ? 'Snapshot submitted. Convention applied correctly. Expert snapshot record is now visible below.'
+        : 'Snapshot submitted with gaps. See the feedback for what to revise.';
+      announce(msg);
+
+      // Focus feedback heading
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.getElementById('feedback-heading').focus();
+        });
+      });
+    });
+
+    // ---- Revise Snapshot ----
+    document.getElementById('try-again-btn').addEventListener('click', () => {
+      const form           = document.getElementById('snapshot-form');
+      const feedbackSection = document.getElementById('feedback-section');
+      const preNav         = document.getElementById('screen-nav-pre');
+
+      feedbackSection.setAttribute('hidden', '');
+
+      form.querySelectorAll('textarea, input, button[type="submit"]').forEach(el => {
+        el.removeAttribute('disabled');
+      });
+
+      preNav.removeAttribute('hidden');
+      clearErrors();
+
+      requestAnimationFrame(() => {
+        document.getElementById('field-naming').focus();
+      });
+
+      announce('Form re-enabled. Update your snapshot and resubmit.');
+    });
+  </script>
+
+</body>
+</html>

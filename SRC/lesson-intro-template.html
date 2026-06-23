@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- TEMPLATE: replace description with lesson-specific copy (≤155 chars) -->
+  <meta name="description" content="[LESSON DESCRIPTION — one sentence summarizing what the learner will do in this lesson]">
+  <!-- TEMPLATE: replace with "Lesson X.X: Title — ARCH Method Practitioner Credential — Proof Point Learning" -->
+  <title>[Lesson X.X: Title] — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links — do not modify
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header — banner landmark — do not modify
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">
+        Module <span id="pt-module">1</span> of 4
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Lesson <span id="pt-lesson">1.1</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Phase <span id="pt-phase">1</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Step <span id="pt-step">1</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Screen <span id="pt-screen">1</span> of <span id="pt-screen-total">4</span>
+      </span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button"
+              class="support-toggle"
+              data-panel="glossary"
+              aria-controls="glossary"
+              aria-expanded="false">Glossary</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="supportPanel"
+              aria-controls="supportPanel"
+              aria-expanded="false">Support</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="artifactDrawer"
+              aria-controls="artifactDrawer"
+              aria-expanded="false">Artifacts</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="decisionHistory"
+              aria-controls="decisionHistory"
+              aria-expanded="false">Decision History</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="annotationPanel"
+              aria-controls="annotationPanel"
+              aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation — TEMPLATE: set aria-current="page" on
+       the link matching the current module; remove it from others.
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link" aria-current="false">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <!-- TEMPLATE: set aria-current="page" when in Module 1 -->
+        <a href="module-1.html" class="module-nav-link" aria-current="false">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link" aria-current="false">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link" aria-current="false">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link" aria-current="false">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content — main landmark
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <!-- =========================================================
+           LESSON INTRODUCTION TEMPLATE
+           Template type: read-only, no interactive inputs
+           Word limit: 200 words across purpose + do + produce
+           ========================================================= -->
+      <article class="lesson-intro" aria-labelledby="lesson-title">
+
+        <header class="lesson-intro__header">
+          <!-- TEMPLATE: update lesson label (e.g. "Lesson 1.1", "Lesson 2.3") -->
+          <p class="lesson-label" aria-label="Lesson [X.X]">Lesson [X.X]</p>
+          <!-- TEMPLATE: update lesson title — this is the page's h1 -->
+          <h1 id="lesson-title" class="lesson-intro__title">[Lesson Title]</h1>
+        </header>
+
+        <!-- Purpose — one to three sentences explaining why this lesson exists.
+             Do not exceed 75 words here. -->
+        <section class="lesson-intro__purpose" aria-labelledby="purpose-heading">
+          <h2 id="purpose-heading" class="lesson-intro__section-heading">Purpose</h2>
+          <p class="lesson-intro__purpose-text">
+            <!-- TEMPLATE: replace with lesson purpose (≤75 words) -->
+            [Explain why this lesson exists and what problem or gap it addresses
+            for the learner. Connect directly to the ARCH Method phase and step
+            this lesson belongs to.]
+          </p>
+        </section>
+
+        <!-- Outcomes — two parallel columns: what you do, what you produce.
+             Use 3–5 items per list. Do not exceed 125 words combined. -->
+        <div class="lesson-intro__outcomes">
+
+          <section class="lesson-intro__do" aria-labelledby="do-heading">
+            <h2 id="do-heading" class="lesson-intro__section-heading">What You Will Do</h2>
+            <ul class="lesson-intro__list">
+              <!-- TEMPLATE: 3–5 action-verb items describing learner activities -->
+              <li>[Action verb + brief description of activity]</li>
+              <li>[Action verb + brief description of activity]</li>
+              <li>[Action verb + brief description of activity]</li>
+            </ul>
+          </section>
+
+          <section class="lesson-intro__produce" aria-labelledby="produce-heading">
+            <h2 id="produce-heading" class="lesson-intro__section-heading">What You Will Produce</h2>
+            <ul class="lesson-intro__list">
+              <!-- TEMPLATE: 1–3 named artifacts using MRHN_[Name]_v[N]_[Date] convention -->
+              <li>[Artifact name and brief description]</li>
+              <li>[Artifact name and brief description]</li>
+            </ul>
+          </section>
+
+        </div>
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <!-- TEMPLATE: update href values to adjacent screen filenames -->
+          <a href="[PREV_SCREEN].html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true"
+                 focusable="false"
+                 width="16"
+                 height="16"
+                 viewBox="0 0 16 16"
+                 fill="none">
+              <path d="M10 12L6 8l4-4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="[NEXT_SCREEN].html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen">
+            Next
+            <svg aria-hidden="true"
+                 focusable="false"
+                 width="16"
+                 height="16"
+                 viewBox="0 0 16 16"
+                 fill="none">
+              <path d="M6 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources — complementary landmark
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+
+    <section id="artifact-reference"
+             tabindex="-1"
+             aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <!-- TEMPLATE: list artifacts relevant to this lesson, or leave
+           empty with a "No artifacts yet" message for early screens -->
+    </section>
+
+    <section id="decision-history"
+             tabindex="-1"
+             aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <!-- TEMPLATE: list prior decisions relevant to this lesson, or
+           leave empty for early screens -->
+    </section>
+
+  </aside>
+
+  <!-- ============================================================
+       Support Panels — do not modify — managed by panelManager.js
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer — contentinfo landmark — do not modify
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script — do not modify
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    import { getItem, setItem } from './js/storage.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script — TEMPLATE: update all values below
+       ============================================================ -->
+  <script type="module">
+    /* Progress tracker — replace with values for this screen */
+    document.getElementById('pt-module').textContent       = '[X]';
+    document.getElementById('pt-lesson').textContent       = '[X.X]';
+    document.getElementById('pt-phase').textContent        = '[X]';
+    document.getElementById('pt-step').textContent         = '[X]';
+    document.getElementById('pt-screen').textContent       = '[X]';
+    document.getElementById('pt-screen-total').textContent = '[Y]';
+
+    /* Module nav — set aria-current="page" on the active module link */
+    document.querySelectorAll('.module-nav-link').forEach(link => {
+      link.removeAttribute('aria-current');
+    });
+    /* TEMPLATE: replace selector with the href of the current module */
+    const activeLink = document.querySelector('.module-nav-link[href="[MODULE_HREF].html"]');
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+  </script>
+
+</body>
+</html>

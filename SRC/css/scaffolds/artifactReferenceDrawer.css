@@ -1,0 +1,263 @@
+/* =============================================================================
+   artifactReferenceDrawer.css
+   Scaffold Component 10 of 10 -- Artifact Reference Drawer Wrapper
+   Requires: css/tokens.css loaded first (all color values from tokens)
+
+   MOUNT POINT
+   Styles apply to content inside #artifact-reference (<section> in base.html).
+   All selectors are prefixed .ard__ to avoid conflicts with the overlay panel
+   (.ad-*) styles that belong to artifactDrawer.js.
+
+   COLLAPSE MECHANISM
+   JS sets aria-expanded on .ard__toggle and toggles [hidden] on .ard__body.
+   CSS reads [aria-expanded="true"] to rotate the chevron.
+
+   STATUS STATES
+   Three modifier classes applied to .ard__dd--status by JS:
+     .ard__status--not-started  -- ring icon, muted color
+     .ard__status--in-progress  -- dot icon, accent (link) color
+     .ard__status--complete     -- check icon, success color
+   Status text is always present -- color and shape are both supplemental.
+   ============================================================================= */
+
+/* ============================================================
+   HEADER: h2 + collapse toggle button row
+   ============================================================ */
+
+.ard__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.75rem 0 0.5rem;
+}
+
+.ard__heading {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+/* ============================================================
+   COLLAPSE TOGGLE BUTTON
+   Icon-only (chevron). Minimum 44px touch target via padding.
+   ============================================================ */
+
+.ard__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  min-height: 44px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  border-radius: 4px;
+}
+
+.ard__toggle:hover {
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-primary);
+}
+
+.ard__toggle:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Chevron: down by default, rotates up when expanded */
+.ard__chevron {
+  display: flex;
+  align-items: center;
+  transition: transform 200ms ease;
+}
+
+.ard__toggle[aria-expanded="true"] .ard__chevron {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ard__chevron {
+    transition: none;
+  }
+}
+
+/* ============================================================
+   BODY
+   ============================================================ */
+
+.ard__body {
+  /* No layout overrides -- inherits from #supplementary-resources context */
+}
+
+/* ============================================================
+   FIELDS: definition list of artifact metadata
+   Each dt/dd pair is wrapped in .ard__row for grid alignment.
+   ============================================================ */
+
+.ard__fields {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-border-default);
+}
+
+/* Row wrapper: one dt + one dd per row */
+.ard__row {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  gap: 0 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border-default);
+  align-items: start;
+}
+
+.ard__row:last-child {
+  border-bottom: none;
+}
+
+/* Term (label column) */
+.ard__dt {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  padding-top: 0.125rem;   /* optical alignment with dd text */
+}
+
+/* Definition (value column) */
+.ard__dd {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+/* Artifact name: allow long filenames to break */
+.ard__dd--name {
+  word-break: break-all;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  color: var(--color-text-primary);
+}
+
+/* ============================================================
+   STATUS ROW
+   Flex row: [icon] [text]. Icon is aria-hidden; text carries meaning.
+   Color is supplemental to shape -- never sole communicator of status.
+   ============================================================ */
+
+.ard__dd--status {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.ard__status-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  /* color is set via the modifier class below */
+}
+
+/* Not Started: ring icon, muted color */
+.ard__status--not-started .ard__status-icon,
+.ard__status--not-started .ard__status-text {
+  color: var(--color-text-secondary);
+}
+
+/* In Progress: dot icon, accent/link color */
+.ard__status--in-progress .ard__status-icon,
+.ard__status--in-progress .ard__status-text {
+  color: var(--color-text-link);
+}
+
+/* Complete: check icon, success color */
+.ard__status--complete .ard__status-icon,
+.ard__status--complete .ard__status-text {
+  color: var(--color-success-text);
+}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+
+.ard__empty {
+  margin: 0.75rem 0;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+  font-style: italic;
+  border-top: 1px solid var(--color-border-default);
+  padding-top: 0.75rem;
+}
+
+/* ============================================================
+   VIEW FULL ARTIFACT DETAILS BUTTON
+   Link-styled, inline. Same pattern as .rdh__view-all.
+   min-height 44px satisfied by vertical padding on the inline-flex.
+   ============================================================ */
+
+.ard__view {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0;
+  margin-top: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--color-text-link);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.ard__view:hover {
+  text-decoration-style: solid;
+  color: var(--color-text-primary);
+}
+
+.ard__view:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ============================================================
+   HIGH CONTRAST
+   ============================================================ */
+
+@media (prefers-contrast: more) {
+  .ard__toggle:focus-visible,
+  .ard__view:focus-visible {
+    outline-width: 3px;
+  }
+
+  .ard__heading {
+    font-weight: 800;
+  }
+
+  .ard__fields,
+  .ard__row,
+  .ard__empty {
+    border-color: var(--color-border-strong);
+  }
+
+  .ard__dt {
+    color: var(--color-text-primary);
+  }
+
+  .ard__status--not-started .ard__status-icon,
+  .ard__status--not-started .ard__status-text {
+    color: var(--color-text-primary);
+  }
+}

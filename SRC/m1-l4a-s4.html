@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guided practice: select one Bucket 2 and one Bucket 3 scope item, decompose each into DC components with correct DC identifiers and calibration constraint notes, then compare your work to the expert decomposition.">
+  <title>Guided Practice: Step 6 Decomposition — Lesson 1.4a — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l4a-s4 -- Guided Practice: Step 6 Decomposition
+       Phase 2, Step 6. All color values use CSS tokens only.
+       ================================================================ */
+
+    .screen-type-label { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-secondary); }
+    .lesson-label { display: block; margin: 0 0 0.25rem; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-link); }
+
+    .guided-practice__title {
+      margin: 0 0 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    /* ---- Practice context ---- */
+    .practice-context {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: 0 0 2rem;
+    }
+    @media (max-width: 700px) { .practice-context { grid-template-columns: 1fr; } }
+
+    .context-block {
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .context-block__heading {
+      margin: 0;
+      padding: 0.4375rem 0.875rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-inverse);
+      background: var(--color-brand-navy);
+    }
+    .context-block > :not(.context-block__heading) {
+      padding: 0.625rem 0.875rem;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+      background: var(--color-bg-page);
+    }
+    .context-block p { margin: 0 0 0.375rem; }
+    .context-block p:last-child { margin-bottom: 0; }
+    .context-block ol, .context-block ul { margin: 0; padding-left: 1.25rem; }
+    .context-block li { margin-bottom: 0.25rem; }
+
+    /* ---- Phase 1: Item Selection ---- */
+    #phase-selection { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .phase-intro {
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .phase-intro strong { font-weight: 700; }
+
+    .bucket-selection-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 680px) { .bucket-selection-grid { grid-template-columns: 1fr; } }
+
+    .bucket-fieldset {
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+      padding: 0;
+      margin: 0;
+    }
+    .bucket-fieldset legend {
+      display: block;
+      width: 100%;
+      padding: 0.5625rem 0.875rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+      font-size: 0.875rem;
+      font-weight: 700;
+      line-height: 1.3;
+      float: left;
+    }
+    .bucket-dc-range {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+      padding: 0.5rem 0.875rem 0;
+      background: var(--color-bg-page);
+      clear: both;
+    }
+
+    .si-option {
+      display: block;
+      border-top: 1px solid var(--color-border-default);
+      background: var(--color-bg-page);
+    }
+    .si-option:first-of-type { border-top: none; }
+    .si-option label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.625rem;
+      padding: 0.625rem 0.875rem;
+      cursor: pointer;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.5;
+      min-height: 44px;
+    }
+    .si-option label:hover { background: var(--color-bg-subtle); }
+    .si-option input[type="radio"] {
+      margin-top: 0.125rem;
+      flex-shrink: 0;
+      width: 1rem;
+      height: 1rem;
+      accent-color: var(--color-text-link);
+    }
+    .si-option input[type="radio"]:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+    .si-option__text { flex: 1; min-width: 0; }
+    .si-option__id { font-family: monospace; font-weight: 800; font-size: 0.875rem; color: var(--color-text-primary); margin-right: 0.25rem; }
+    .si-option__name { color: var(--color-text-primary); }
+    .si-option__badges { display: flex; gap: 0.3125rem; flex-wrap: wrap; margin-top: 0.25rem; }
+
+    .level-chip { display: inline-flex; align-items: center; padding: 0.0625rem 0.375rem; border-radius: 3px; font-size: 0.5625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; white-space: nowrap; }
+    .level-chip--analysis { background: var(--color-bg-subtle); color: var(--color-text-link); border: 1px solid var(--color-text-link); }
+    .level-chip--application { background: var(--color-bg-subtle); color: var(--color-text-secondary); border: 1px solid var(--color-border-default); }
+    .flag-chip { display: inline-flex; align-items: center; padding: 0.0625rem 0.375rem; border-radius: 3px; font-size: 0.5625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; white-space: nowrap; background: var(--color-warning-bg); color: var(--color-warning-text); border: 1px solid var(--color-warning-border); }
+
+    .selection-error {
+      display: none;
+      padding: 0.5rem 0.875rem;
+      background: var(--color-error-bg);
+      border: 1px solid var(--color-error-border);
+      border-radius: 4px;
+      font-size: 0.875rem;
+      color: var(--color-error-text);
+    }
+    .selection-error.is-visible { display: block; }
+
+    /* ---- Phase 2: Decomposition Workspace ---- */
+    #phase-workspace { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .workspace-intro {
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .dc-workspace {
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .dc-workspace__header {
+      padding: 0.5625rem 0.875rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+    }
+    .dc-workspace__id-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.1875rem;
+    }
+    .ws-si-id { font-family: monospace; font-size: 0.9375rem; font-weight: 800; flex-shrink: 0; }
+    .ws-si-name { font-size: 0.9375rem; font-weight: 700; flex: 1; line-height: 1.3; }
+    .ws-dc-range { font-size: 0.6875rem; color: rgba(255,255,255,0.7); }
+
+    .ws-calibration-box {
+      padding: 0.625rem 0.875rem;
+      background: var(--color-warning-bg);
+      border-bottom: 1px solid var(--color-warning-border);
+      font-size: 0.8125rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+    }
+    .ws-arc-box {
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border-bottom: 1px solid var(--color-border-default);
+      border-left: 3px solid var(--color-brand-teal);
+      font-size: 0.8125rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+    }
+    .ws-box-label {
+      display: block;
+      font-size: 0.5625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.25rem;
+    }
+    .ws-calibration-box .ws-box-label { color: var(--color-warning-text); }
+
+    .component-rows { padding: 0.875rem; display: flex; flex-direction: column; gap: 0.875rem; background: var(--color-bg-page); }
+
+    .component-row {
+      display: grid;
+      grid-template-columns: 1.875rem 1fr;
+      gap: 0 0.75rem;
+      align-items: start;
+    }
+    .component-row__num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 50%;
+      background: var(--color-bg-subtle);
+      border: 1.5px solid var(--color-border-default);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+    }
+    .component-row__fields { display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; }
+    .component-row__top { display: grid; grid-template-columns: 7rem 1fr; gap: 0.5rem; }
+    @media (max-width: 480px) { .component-row__top { grid-template-columns: 1fr; } }
+
+    .field-group { display: flex; flex-direction: column; gap: 0.1875rem; }
+    .field-label { font-size: 0.6875rem; font-weight: 700; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.07em; }
+    .field-req { font-weight: 400; text-transform: none; letter-spacing: 0; }
+    .field-hint { font-size: 0.6875rem; color: var(--color-text-secondary); }
+
+    .dc-id-input {
+      font-family: monospace;
+      font-size: 0.875rem;
+      font-weight: 700;
+      padding: 0.3125rem 0.5rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 4px;
+      background: var(--color-bg-page);
+      color: var(--color-text-primary);
+      width: 100%;
+      min-height: 44px;
+    }
+    .dc-id-input:focus { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+
+    .level-select {
+      padding: 0.3125rem 0.5rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 4px;
+      background: var(--color-bg-page);
+      color: var(--color-text-primary);
+      font-size: 0.875rem;
+      width: 100%;
+      min-height: 44px;
+    }
+    .level-select:focus { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+
+    .field-textarea {
+      padding: 0.375rem 0.5rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 4px;
+      background: var(--color-bg-page);
+      color: var(--color-text-primary);
+      font-size: 0.875rem;
+      line-height: 1.6;
+      width: 100%;
+      resize: vertical;
+      font-family: inherit;
+    }
+    .field-textarea:focus { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+    .calib-textarea { border-color: var(--color-warning-border); background: var(--color-warning-bg); }
+    .calib-textarea:focus { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+
+    .workspace-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border-top: 1px solid var(--color-border-default);
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .workspace-footer__count { font-size: 0.75rem; color: var(--color-text-secondary); }
+
+    .btn--add-component {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.3125rem 0.75rem;
+      border: 1px dashed var(--color-border-default);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--color-text-link);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 44px;
+    }
+    .btn--add-component:hover { border-color: var(--color-text-link); background: var(--color-bg-subtle); }
+    .btn--add-component:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+    .btn--add-component:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    .workspace-form-footer {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 0.5rem;
+    }
+
+    /* ---- Feedback: Expert Comparison ---- */
+    .feedback-region {
+      margin-top: 1.5rem;
+    }
+    .feedback-region--comparison .feedback-heading {
+      color: var(--color-text-primary);
+    }
+    .feedback-region--comparison .feedback-icon { display: none; }
+
+    .expert-compare {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 0.875rem;
+    }
+
+    .expert-panel {
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .expert-panel__header {
+      padding: 0.5625rem 0.875rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+    }
+    .expert-panel__id-row { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.1875rem; }
+    .expert-panel__si-id { font-family: monospace; font-size: 0.9375rem; font-weight: 800; }
+    .expert-panel__si-name { font-size: 0.9375rem; font-weight: 700; flex: 1; line-height: 1.3; }
+    .expert-panel__count { font-size: 0.6875rem; color: rgba(255,255,255,0.7); }
+
+    .expert-annotation {
+      padding: 0.5625rem 0.875rem;
+      background: var(--color-warning-bg);
+      border-bottom: 1px solid var(--color-warning-border);
+      font-size: 0.8125rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+    }
+    .expert-annotation__label {
+      display: block;
+      font-size: 0.5625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-warning-text);
+      margin-bottom: 0.25rem;
+    }
+
+    .expert-panel__components { display: flex; flex-direction: column; gap: 0; }
+
+    .expert-comp {
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-page);
+      border-bottom: 1px solid var(--color-border-default);
+    }
+    .expert-comp:last-child { border-bottom: none; }
+    .expert-comp__id-row { display: flex; align-items: center; gap: 0.375rem; margin-bottom: 0.3125rem; }
+    .expert-comp__id { font-family: monospace; font-size: 0.875rem; font-weight: 800; color: var(--color-text-primary); }
+    .expert-comp__level { font-size: 0.5625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 0.0625rem 0.375rem; border-radius: 3px; }
+    .expert-comp__level--analysis { background: var(--color-bg-subtle); color: var(--color-text-link); border: 1px solid var(--color-text-link); }
+    .expert-comp__level--application { background: var(--color-bg-subtle); color: var(--color-text-secondary); border: 1px solid var(--color-border-default); }
+    .expert-comp__desc { font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.6; margin: 0 0 0.375rem; }
+    .expert-comp__note { font-size: 0.8125rem; color: var(--color-warning-text); line-height: 1.55; margin: 0; font-style: italic; padding: 0.3125rem 0.5rem; background: var(--color-warning-bg); border-radius: 3px; }
+
+    .expert-insight {
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border-top: 2px solid var(--color-brand-teal);
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+    }
+    .expert-insight__label {
+      display: block;
+      font-size: 0.5625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-brand-teal);
+      margin-bottom: 0.25rem;
+    }
+
+    .compare-guide {
+      margin-top: 1rem;
+      padding: 0.875rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+    .compare-guide__heading { font-weight: 700; margin: 0 0 0.5rem; font-size: 0.875rem; color: var(--color-text-primary); }
+    .compare-guide ol { margin: 0; padding-left: 1.25rem; }
+    .compare-guide li { margin-bottom: 0.3rem; }
+
+    @media (prefers-contrast: more) {
+      .bucket-fieldset, .si-option, .context-block, .dc-workspace,
+      .expert-panel, .expert-comp { border-color: var(--color-border-strong); }
+      .si-option { border-top-color: var(--color-border-strong); }
+      .dc-id-input, .level-select, .field-textarea { border-color: var(--color-border-strong); }
+      .workspace-footer { border-top-color: var(--color-border-strong); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <header role="banner">
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+    <div id="progress-tracker" role="group" aria-label="Course progress" tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.4a</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">2</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">6</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">4</span> of <span id="pt-screen-total">5</span></span>
+    </div>
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel" aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer" aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory" aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel" aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+  </header>
+
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item"><a href="intro-0.1.html" class="module-nav-link">Introduction</a></li>
+      <li class="module-nav-item"><a href="module-1.html" class="module-nav-link" aria-current="page">Module 1: Bound the Course</a></li>
+      <li class="module-nav-item"><a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a></li>
+      <li class="module-nav-item"><a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a></li>
+      <li class="module-nav-item"><a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a></li>
+    </ol>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <section id="current-activity" tabindex="-1" aria-label="Current activity">
+      <article class="guided-practice" aria-labelledby="practice-title">
+
+        <header class="guided-practice__header">
+          <span class="screen-type-label">Guided Practice</span>
+          <p class="lesson-label">Lesson 1.4a</p>
+          <h1 id="practice-title" class="guided-practice__title">
+            Decompose Bucket 2 and Bucket 3 Scope Items: Your Turn
+          </h1>
+        </header>
+
+        <section class="practice-context" aria-labelledby="context-heading">
+          <h2 id="context-heading" class="sr-only">Activity Context</h2>
+
+          <div class="context-block context-block--purpose">
+            <h3 class="context-block__heading">Purpose</h3>
+            <p>Apply the Step 6 decomposition methodology from Screen 3 to scope items you have not seen decomposed yet. This practice transfers the skill from observation to independent execution.</p>
+          </div>
+
+          <div class="context-block context-block--instructions">
+            <h3 class="context-block__heading">Instructions</h3>
+            <ol class="instructions-list">
+              <li>Select one scope item from Bucket 2 and one from Bucket 3.</li>
+              <li>For each item, write component descriptions, assign DC identifiers in the correct range, select taxonomy levels, and add calibration constraint notes for any flagged items.</li>
+              <li>Select <strong>Check My Work</strong> to compare your decomposition to the expert.</li>
+            </ol>
+          </div>
+
+          <div class="context-block context-block--criteria">
+            <h3 class="context-block__heading">Success Criteria</h3>
+            <ul class="criteria-list">
+              <li>DC identifiers fall within the correct range for the selected bucket</li>
+              <li>Taxonomy level assignments reflect calibration -- Analysis items produce at least one Analysis component</li>
+              <li>For calibration-flagged items, constraint notes name the specific MRHN-D-003 requirement</li>
+              <li>Component descriptions state what the learner must do, not what the course covers</li>
+            </ul>
+          </div>
+
+          <div class="context-block context-block--evidence">
+            <h3 class="context-block__heading">Expected Evidence</h3>
+            <p>Two partial decompositions (one Bucket 2 item, one Bucket 3 item), each with DC identifiers, taxonomy level assignments, component descriptions, and calibration constraint notes where the item is flagged.</p>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             Phase 1: Item Selection (outside the form)
+             ==================================================== -->
+        <div id="phase-selection">
+          <p class="phase-intro">
+            Select <strong>one item from each bucket.</strong> Items marked
+            with a calibration flag carry MRHN-D-003 annotations that must
+            be reflected in your component design. You will see the calibration
+            annotation in your workspace.
+          </p>
+
+          <div class="bucket-selection-grid">
+
+            <fieldset class="bucket-fieldset" id="bucket2-fieldset">
+              <legend>Bucket 2 -- Containment and Control</legend>
+              <span class="bucket-dc-range">DC-16 through DC-27</span>
+
+              <div class="si-option">
+                <input type="radio" id="b2-si09" name="bucket2-item" value="si09">
+                <label for="b2-si09">
+                  <span class="si-option__text">
+                    <span><span class="si-option__id">SI-09</span><span class="si-option__name">Network Segmentation with Clinical System Interdependency</span></span>
+                    <span class="si-option__badges">
+                      <span class="level-chip level-chip--analysis">Analysis</span>
+                      <span class="flag-chip">Calibration Flag</span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="si-option">
+                <input type="radio" id="b2-si03" name="bucket2-item" value="si03">
+                <label for="b2-si03">
+                  <span class="si-option__text">
+                    <span><span class="si-option__id">SI-03</span><span class="si-option__name">System Isolation and Authority Boundaries</span></span>
+                    <span class="si-option__badges">
+                      <span class="level-chip level-chip--application">Application</span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="si-option">
+                <input type="radio" id="b2-si04" name="bucket2-item" value="si04">
+                <label for="b2-si04">
+                  <span class="si-option__text">
+                    <span><span class="si-option__id">SI-04</span><span class="si-option__name">Evidence Preservation and Chain of Custody</span></span>
+                    <span class="si-option__badges">
+                      <span class="level-chip level-chip--application">Application</span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="bucket-fieldset" id="bucket3-fieldset">
+              <legend>Bucket 3 -- Active Response Execution</legend>
+              <span class="bucket-dc-range">DC-28 through DC-39</span>
+
+              <div class="si-option">
+                <input type="radio" id="b3-si10" name="bucket3-item" value="si10">
+                <label for="b3-si10">
+                  <span class="si-option__text">
+                    <span><span class="si-option__id">SI-10</span><span class="si-option__name">HIPAA Breach Notification Clock Management</span></span>
+                    <span class="si-option__badges">
+                      <span class="level-chip level-chip--analysis">Analysis</span>
+                      <span class="flag-chip">Calibration Flag</span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="si-option">
+                <input type="radio" id="b3-si12" name="bucket3-item" value="si12">
+                <label for="b3-si12">
+                  <span class="si-option__text">
+                    <span><span class="si-option__id">SI-12</span><span class="si-option__name">Leadership Notification</span></span>
+                    <span class="si-option__badges">
+                      <span class="level-chip level-chip--application">Application</span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="si-option">
+                <input type="radio" id="b3-si14" name="bucket3-item" value="si14">
+                <label for="b3-si14">
+                  <span class="si-option__text">
+                    <span><span class="si-option__id">SI-14</span><span class="si-option__name">Protocol Deviation Documentation</span></span>
+                    <span class="si-option__badges">
+                      <span class="level-chip level-chip--application">Application</span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </fieldset>
+
+          </div>
+
+          <p id="selection-error" class="selection-error" role="alert" aria-live="assertive">
+            Please select one item from each bucket before continuing.
+          </p>
+
+          <button type="button" id="btn-start" class="btn btn--primary">
+            Start Decomposition
+          </button>
+        </div>
+
+        <!-- ====================================================
+             Phase 2: Decomposition Workspace (the practice form)
+             ==================================================== -->
+        <form id="practice-form" class="practice-form" novalidate aria-label="Decomposition practice" hidden>
+
+          <p class="workspace-intro" id="workspace-heading" tabindex="-1">
+            Complete your decomposition for both items below. Start with 2 components
+            and add more if your analysis requires it (maximum 5 per item). For calibration-flagged
+            items, the annotation and arc constraint are shown -- your component descriptions
+            must reflect both.
+          </p>
+
+          <!-- Bucket 2 workspace -- populated by JS -->
+          <div id="workspace-b2" aria-label="Bucket 2 item workspace"></div>
+
+          <!-- Bucket 3 workspace -- populated by JS -->
+          <div id="workspace-b3" aria-label="Bucket 3 item workspace"></div>
+
+          <div class="workspace-form-footer">
+            <button type="submit" id="btn-submit" class="btn btn--primary btn--submit">
+              Check My Work
+            </button>
+          </div>
+
+        </form>
+
+        <!-- ====================================================
+             Feedback region (comparison mode)
+             ==================================================== -->
+        <section id="feedback-region"
+                 class="feedback-region"
+                 aria-labelledby="feedback-heading"
+                 hidden>
+
+          <div class="feedback-icon" aria-hidden="true"></div>
+
+          <div class="feedback-body">
+            <h2 id="feedback-heading" class="feedback-heading" tabindex="-1"></h2>
+            <p id="feedback-explanation" class="feedback-explanation"></p>
+
+            <div id="feedback-correct-answer" class="feedback-correct-answer">
+              <div id="feedback-correct-answer-body"></div>
+            </div>
+          </div>
+
+          <div class="feedback-actions">
+            <button type="button" id="btn-try-again" class="btn btn--secondary" hidden>
+              Try Again
+            </button>
+            <a id="btn-continue" href="m1-l4a-s5.html" class="btn btn--primary" hidden>
+              Continue
+            </a>
+          </div>
+        </section>
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l4a-s3.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen: Step 6 Part 1, Bucket 1 decomposition worked example">
+            <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+        </nav>
+
+      </article>
+    </section>
+  </main>
+
+  <!-- Supplementary resources -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">Practice builds toward MRHN_DecompositionMap_v1 (DC-16 through DC-39). Expert decomposition for your selected items revealed after submission.</p>
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">MRHN-D-001 through MRHN-D-005 on record. MRHN-D-003 calibration annotations govern Bucket 2 and 3 decomposition decisions.</p>
+    </section>
+  </aside>
+
+  <!-- Support panels -->
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header"><h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header"><h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header"><h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header"><h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header"><h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <footer role="contentinfo">
+    <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- Base script -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    function syncToggleStates(name) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === name ? 'true' : 'false');
+      });
+    }
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const p = btn.dataset.panel;
+        if (getActivePanel() === p) { closeAll(); syncToggleStates(null); }
+        else { openPanel(p, btn); syncToggleStates(p); }
+      });
+    });
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => { closeAll(); syncToggleStates(null); });
+    });
+  </script>
+
+  <!-- Practice interaction script -->
+  <script type="module">
+    /* ============================================================
+       Expert decomposition data -- Buckets 2 and 3
+       ============================================================ */
+    const EXPERT = {
+      si09: {
+        id: 'SI-09', name: 'Network Segmentation with Clinical System Interdependency',
+        level: 'Analysis', flagged: true, bucket: 2,
+        dcRange: 'DC-19 through DC-21', startDc: 19,
+        calibrationAnnotation: 'MRHN-D-003: Network segmentation at MRHN requires evaluating EHR, imaging, and billing system interdependencies before applying procedures. The patient care continuity constraint elevates this to Analysis level -- the evaluative work on clinical dependencies is what makes this item non-procedural.',
+        arcConstraint: 'Bucket 2 sub-arc: "without disrupting patient care at active MRHN facilities" -- this phrase must be reflected in any component that handles clinical interdependency evaluation.',
+        components: [
+          { id: 'DC-19', level: 'Analysis', desc: 'Evaluate clinical system interdependencies (EHR, imaging, billing) before applying network segmentation to determine which systems cannot be segmented without disrupting active patient care at the affected MRHN facility.', note: 'Assessment must present scenarios where segmentation would disrupt at least one clinical system -- learners must identify the conflict and evaluate the trade-off. A component whose assessment presents only clean segmentation scenarios does not meet the Analysis-level demand.' },
+          { id: 'DC-20', level: 'Application', desc: 'Apply MRHN network segmentation procedure to isolate affected network segments while preserving continuity on identified patient-care-critical systems, following the approved segmentation sequence.' },
+          { id: 'DC-21', level: 'Analysis', desc: 'Document segmentation decisions including clinical systems evaluated, interdependencies identified, actions taken, and any segmentation deferred -- naming the patient care factors that governed each deferral decision.', note: 'Documentation must name the care-continuity factors that drove deferral decisions, not just record what was done. A component whose documentation standard could be met by "checked clinical systems" is not Analysis-level.' }
+        ],
+        keyInsight: 'The calibration flag requires two Analysis-level components (DC-19 and DC-21). If your decomposition has only one Analysis-level component, or treats segmentation as a purely procedural task, the MRHN-D-003 constraint is not honored. The arc phrase "without disrupting patient care" must appear explicitly in at least one component.'
+      },
+      si03: {
+        id: 'SI-03', name: 'System Isolation and Authority Boundaries',
+        level: 'Application', flagged: false, bucket: 2,
+        dcRange: 'DC-16 through DC-18', startDc: 16,
+        calibrationAnnotation: null,
+        arcConstraint: 'Bucket 2 sub-arc: "authority-bounded system isolation (PC-3)" -- the PC-3 authority check must appear as a discrete component, not be assumed within the isolation procedure.',
+        components: [
+          { id: 'DC-16', level: 'Application', desc: 'Apply PC-3 authority boundary check to determine which systems the Tier 1 responder has independent authority to isolate versus which require supervisor authorization before isolation.' },
+          { id: 'DC-17', level: 'Application', desc: 'Execute MRHN system isolation procedure for all confirmed in-scope, authority-approved systems, following the approved isolation sequence.' },
+          { id: 'DC-18', level: 'Application', desc: 'Document system isolation actions with timestamps, system identifiers, isolation method applied, and PC-3 authority basis for each action per RC-1 requirements.' }
+        ],
+        keyInsight: 'The PC-3 authority check (DC-16) must be a separate component from the isolation execution (DC-17). Collapsing authority verification into the procedure component removes an explicit instructional obligation -- a learner can execute isolation correctly without knowing which actions were within their authority.'
+      },
+      si04: {
+        id: 'SI-04', name: 'Evidence Preservation and Chain of Custody',
+        level: 'Application', flagged: false, bucket: 2,
+        dcRange: 'DC-22 through DC-23', startDc: 22,
+        calibrationAnnotation: null,
+        arcConstraint: 'Bucket 2 sub-arc: "evidence preservation using the chain-of-custody procedure" -- identification must precede custody application.',
+        components: [
+          { id: 'DC-22', level: 'Application', desc: 'Identify and flag all digital evidence artifacts per the MRHN evidence identification checklist before any system action that could alter artifact state.' },
+          { id: 'DC-23', level: 'Application', desc: 'Apply MRHN chain-of-custody procedure to preserve and document all identified evidence artifacts, producing a chain-of-custody record per PC-4 evidence handling requirements.' }
+        ],
+        keyInsight: 'Evidence identification (DC-22) must precede chain-of-custody application (DC-23) because custody cannot be established for artifacts that have not been identified. A single "evidence preservation" component collapses two distinct acts that can fail independently -- a responder can correctly identify evidence and then apply the wrong custody procedure, or skip identification entirely and go straight to procedure.'
+      },
+      si10: {
+        id: 'SI-10', name: 'HIPAA Breach Notification Clock Management',
+        level: 'Analysis', flagged: true, bucket: 3,
+        dcRange: 'DC-33 through DC-36', startDc: 33,
+        calibrationAnnotation: 'MRHN-D-003: The HIPAA clock triggers at "reasonably should have known" (45 CFR 164.404), not at forensic confirmation. This is the most consequential calibration annotation in the course -- a component that teaches the wrong trigger point will produce systematic HIPAA non-compliance at MRHN.',
+        arcConstraint: 'Bucket 3 sub-arc (revised): "management of the HIPAA 72-hour breach notification clock (evaluating the \'reasonably should have known\' discovery trigger under 45 CFR 164.404)" -- the trigger standard must be named explicitly in the evaluation component.',
+        components: [
+          { id: 'DC-33', level: 'Analysis', desc: 'Evaluate the incident against the "reasonably should have known" standard (45 CFR 164.404) to determine whether the HIPAA 72-hour breach notification clock has been triggered -- applying the legal discovery standard, not the forensic confirmation standard.', note: 'Assessment must present scenarios where the "reasonably should have known" threshold is met before forensic confirmation is complete. Learners must apply the correct trigger standard under uncertainty. A scenario that only presents confirmed breaches does not develop this capability.' },
+          { id: 'DC-34', level: 'Analysis', desc: 'Record the clock trigger determination with documented reasoning that names the specific evidence establishing the "reasonably should have known" finding, the 45 CFR 164.404 standard applied, and the precise clock start timestamp.', note: 'The documentation must name the evidence basis for the trigger determination, not just record a timestamp. A record stating only "clock started at [time]" does not capture the legal reasoning required and cannot be verified by an auditor.' },
+          { id: 'DC-35', level: 'Application', desc: 'Monitor clock status against the 72-hour threshold throughout active response, flagging when the remaining window requires immediate notification preparation.' },
+          { id: 'DC-36', level: 'Application', desc: 'Verify all personnel involved in breach notification preparation are working from the correct clock trigger point and start timestamp to prevent systematic use of an incorrect reference point.' }
+        ],
+        keyInsight: 'The calibration flag requires DC-33 and DC-34 to target the "reasonably should have known" trigger standard specifically -- not general HIPAA clock management. If your decomposition has components that only describe "tracking the 72-hour window" without naming the trigger point, you have replicated the authenticity failure that caused the Bucket 3 arc to fail validation in Screen 2.'
+      },
+      si12: {
+        id: 'SI-12', name: 'Leadership Notification',
+        level: 'Application', flagged: false, bucket: 3,
+        dcRange: 'DC-30 through DC-32', startDc: 30,
+        calibrationAnnotation: null,
+        arcConstraint: 'Bucket 3 sub-arc: "leadership notification per the PC-5 communication chain" -- PC-5 must appear in the notification sequence component, not just in the documentation.',
+        components: [
+          { id: 'DC-30', level: 'Application', desc: 'Identify which leadership levels require notification for this incident based on the confirmed severity classification and the PC-5 communication chain requirements.' },
+          { id: 'DC-31', level: 'Application', desc: 'Initiate leadership notifications in the required sequence per PC-5 protocols, providing incident summary, severity classification, current response actions, and escalation status.' },
+          { id: 'DC-32', level: 'Application', desc: 'Document leadership notification actions with timestamp, individuals notified, information provided, method used, and responses received per RC-1 requirements.' }
+        ],
+        keyInsight: 'SI-12 is Application level, but the sequencing across three components matters. Identification of who requires notification (DC-30) must precede the notification itself (DC-31) because the PC-5 communication chain specifies which levels are required -- a responder who skips DC-30 may notify the wrong people or miss a required level entirely.'
+      },
+      si14: {
+        id: 'SI-14', name: 'Protocol Deviation Documentation',
+        level: 'Application', flagged: false, bucket: 3,
+        dcRange: 'DC-37 through DC-39', startDc: 37,
+        calibrationAnnotation: null,
+        arcConstraint: 'Bucket 3 sub-arc: "protocol deviation documentation using RC-2 justification language" -- RC-2 language requirement must appear explicitly in the documentation component.',
+        components: [
+          { id: 'DC-37', level: 'Application', desc: 'Identify each instance where departure from IR-2024 protocol is required due to MRHN operational constraints, clinical care requirements, or site-specific limitations -- flagging each deviation before documentation.' },
+          { id: 'DC-38', level: 'Application', desc: 'Document each protocol deviation using RC-2 justification language: naming the IR-2024 protocol requirement deviated from, the reason for deviation, and the alternative action taken.' },
+          { id: 'DC-39', level: 'Application', desc: 'Verify protocol deviation documentation is complete before incident close-out, ensuring the governed record reflects all departures from IR-2024 protocol.' }
+        ],
+        keyInsight: 'The RC-2 justification language requirement must appear in DC-38 specifically. A component that only says "document protocol deviations" without naming the RC-2 format standard will not produce instruction that teaches the required structure -- MRHN needs a specific justification format, not just a deviation log.'
+      }
+    };
+
+    /* ============================================================
+       State
+       ============================================================ */
+    let selectedB2 = null;
+    let selectedB3 = null;
+    const rowCounts = {};
+    const MAX_ROWS = 5;
+
+    /* ============================================================
+       DOM references
+       ============================================================ */
+    const phaseSelection  = document.getElementById('phase-selection');
+    const phaseWorkspace  = document.getElementById('phase-workspace');
+    const practiceForm    = document.getElementById('practice-form');
+    const workspaceB2     = document.getElementById('workspace-b2');
+    const workspaceB3     = document.getElementById('workspace-b3');
+    const workspaceHdg    = document.getElementById('workspace-heading');
+    const btnStart        = document.getElementById('btn-start');
+    const btnSubmit       = document.getElementById('btn-submit');
+    const selectionError  = document.getElementById('selection-error');
+    const feedbackRegion  = document.getElementById('feedback-region');
+    const feedbackHdg     = document.getElementById('feedback-heading');
+    const feedbackExp     = document.getElementById('feedback-explanation');
+    const correctBody     = document.getElementById('feedback-correct-answer-body');
+    const btnContinue     = document.getElementById('btn-continue');
+    const announcer       = document.getElementById('sr-announcer');
+
+    /* ============================================================
+       Build workspace HTML for one SI item
+       ============================================================ */
+    function buildWorkspaceHTML(itemKey) {
+      const item = EXPERT[itemKey];
+      rowCounts[itemKey] = 2;
+
+      const flagBadge = item.flagged
+        ? `<span class="flag-chip" aria-label="Calibration flag">Calibration Flag</span>`
+        : '';
+      const levelClass = item.level === 'Analysis' ? 'level-chip--analysis' : 'level-chip--application';
+      const calibBlock = item.calibrationAnnotation
+        ? `<div class="ws-calibration-box" role="note" aria-label="MRHN-D-003 calibration annotation">
+             <span class="ws-box-label">MRHN-D-003 Calibration Annotation</span>
+             ${item.calibrationAnnotation}
+           </div>`
+        : '';
+
+      return `
+        <div class="dc-workspace" id="ws-${itemKey}">
+          <div class="dc-workspace__header">
+            <div class="dc-workspace__id-row">
+              <span class="ws-si-id">${item.id}</span>
+              <span class="ws-si-name">${item.name}</span>
+              <span class="level-chip ${levelClass}">${item.level}</span>
+              ${flagBadge}
+            </div>
+            <span class="ws-dc-range">DC range: ${item.dcRange}</span>
+          </div>
+          ${calibBlock}
+          <div class="ws-arc-box" role="note" aria-label="Arc constraint">
+            <span class="ws-box-label">Arc Constraint</span>
+            ${item.arcConstraint}
+          </div>
+          <div class="component-rows" id="rows-${itemKey}" aria-label="Component rows for ${item.id}">
+            ${buildRowHTML(itemKey, 1)}
+            ${buildRowHTML(itemKey, 2)}
+          </div>
+          <div class="workspace-footer">
+            <span class="workspace-footer__count" id="count-${itemKey}" aria-live="polite">2 of ${MAX_ROWS} components</span>
+            <button type="button" class="btn--add-component" data-item="${itemKey}"
+                    aria-label="Add another component for ${item.id}"
+                    id="addbtn-${itemKey}">
+              <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              Add Component
+            </button>
+          </div>
+        </div>`;
+    }
+
+    function buildRowHTML(itemKey, num) {
+      const item = EXPERT[itemKey];
+      const suggestedDc = `DC-${(item.startDc + num - 1).toString().padStart(2, '0')}`;
+      const calibField = item.flagged ? `
+        <div class="field-group">
+          <label class="field-label" for="${itemKey}-${num}-calib">
+            Calibration constraint note
+            <span class="field-req">(required for flagged items)</span>
+          </label>
+          <textarea id="${itemKey}-${num}-calib"
+                    name="${itemKey}-${num}-calib"
+                    class="field-textarea calib-textarea"
+                    rows="2"
+                    placeholder="Describe the specific MRHN-D-003 constraint this component must honor..."
+                    aria-required="true"></textarea>
+        </div>` : '';
+
+      return `
+        <div class="component-row" data-row="${num}" data-item="${itemKey}">
+          <div class="component-row__num" aria-hidden="true">${num}</div>
+          <div class="component-row__fields">
+            <div class="component-row__top">
+              <div class="field-group field-group--id">
+                <label class="field-label" for="${itemKey}-${num}-dc">DC Identifier</label>
+                <input type="text"
+                       id="${itemKey}-${num}-dc"
+                       name="${itemKey}-${num}-dc"
+                       class="field-input dc-id-input"
+                       value="${suggestedDc}"
+                       aria-describedby="${itemKey}-${num}-dc-hint">
+                <span id="${itemKey}-${num}-dc-hint" class="field-hint">Range: ${item.dcRange}</span>
+              </div>
+              <div class="field-group field-group--level">
+                <label class="field-label" for="${itemKey}-${num}-level">Taxonomy Level</label>
+                <select id="${itemKey}-${num}-level"
+                        name="${itemKey}-${num}-level"
+                        class="level-select">
+                  <option value="">Select...</option>
+                  <option value="Knowledge">Knowledge</option>
+                  <option value="Comprehension">Comprehension</option>
+                  <option value="Application">Application</option>
+                  <option value="Analysis">Analysis</option>
+                  <option value="Evaluation">Evaluation</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="${itemKey}-${num}-desc">Component Description</label>
+              <textarea id="${itemKey}-${num}-desc"
+                        name="${itemKey}-${num}-desc"
+                        class="field-textarea"
+                        rows="3"
+                        placeholder="Describe what the learner must be able to do in this component..."
+                        aria-required="true"></textarea>
+            </div>
+            ${calibField}
+          </div>
+        </div>`;
+    }
+
+    /* ============================================================
+       Add component row
+       ============================================================ */
+    document.addEventListener('click', e => {
+      const btn = e.target.closest('.btn--add-component');
+      if (!btn) return;
+      const itemKey = btn.dataset.item;
+      const current = rowCounts[itemKey];
+      if (current >= MAX_ROWS) return;
+      rowCounts[itemKey] = current + 1;
+      const rowsEl = document.getElementById(`rows-${itemKey}`);
+      rowsEl.insertAdjacentHTML('beforeend', buildRowHTML(itemKey, rowCounts[itemKey]));
+      document.getElementById(`count-${itemKey}`).textContent = `${rowCounts[itemKey]} of ${MAX_ROWS} components`;
+      if (rowCounts[itemKey] >= MAX_ROWS) btn.setAttribute('disabled', '');
+      /* focus the new DC ID input */
+      const newInput = document.getElementById(`${itemKey}-${rowCounts[itemKey]}-dc`);
+      if (newInput) newInput.focus();
+    });
+
+    /* ============================================================
+       Phase 1 -> Phase 2 transition
+       ============================================================ */
+    btnStart.addEventListener('click', () => {
+      const b2Radio = document.querySelector('[name="bucket2-item"]:checked');
+      const b3Radio = document.querySelector('[name="bucket3-item"]:checked');
+
+      if (!b2Radio || !b3Radio) {
+        selectionError.classList.add('is-visible');
+        (b2Radio ? document.querySelector('[name="bucket3-item"]') : document.querySelector('[name="bucket2-item"]')).focus();
+        return;
+      }
+      selectionError.classList.remove('is-visible');
+
+      selectedB2 = b2Radio.value;
+      selectedB3 = b3Radio.value;
+
+      workspaceB2.innerHTML = buildWorkspaceHTML(selectedB2);
+      workspaceB3.innerHTML = buildWorkspaceHTML(selectedB3);
+
+      phaseSelection.setAttribute('hidden', '');
+      practiceForm.removeAttribute('hidden');
+      workspaceHdg.focus();
+    });
+
+    /* ============================================================
+       Build expert comparison HTML
+       ============================================================ */
+    function buildExpertPanel(itemKey) {
+      const item = EXPERT[itemKey];
+      const flagBadge = item.flagged ? `<span class="flag-chip">Calibration Flag</span>` : '';
+      const annoHtml = item.calibrationAnnotation
+        ? `<div class="expert-annotation" role="note">
+             <span class="expert-annotation__label">MRHN-D-003 Annotation Applied</span>
+             ${item.calibrationAnnotation}
+           </div>` : '';
+
+      const compsHtml = item.components.map(c => {
+        const levelClass = c.level === 'Analysis' ? 'expert-comp__level--analysis' : 'expert-comp__level--application';
+        const noteHtml = c.note
+          ? `<p class="expert-comp__note">${c.note}</p>` : '';
+        return `<div class="expert-comp">
+          <div class="expert-comp__id-row">
+            <span class="expert-comp__id">${c.id}</span>
+            <span class="expert-comp__level ${levelClass}">${c.level}</span>
+          </div>
+          <p class="expert-comp__desc">${c.desc}</p>
+          ${noteHtml}
+        </div>`;
+      }).join('');
+
+      return `<div class="expert-panel">
+        <div class="expert-panel__header">
+          <div class="expert-panel__id-row">
+            <span class="expert-panel__si-id">${item.id}</span>
+            <span class="expert-panel__si-name">${item.name}</span>
+            ${flagBadge}
+          </div>
+          <span class="expert-panel__count">${item.components.length} components &bull; ${item.dcRange}</span>
+        </div>
+        ${annoHtml}
+        <div class="expert-panel__components">${compsHtml}</div>
+        <div class="expert-insight">
+          <span class="expert-insight__label">Key Insight</span>
+          ${item.keyInsight}
+        </div>
+      </div>`;
+    }
+
+    /* ============================================================
+       Form submit -- reveal expert comparison
+       ============================================================ */
+    practiceForm.addEventListener('submit', e => {
+      e.preventDefault();
+
+      /* Lock all form controls */
+      practiceForm.querySelectorAll('input, textarea, select').forEach(el => el.setAttribute('disabled', ''));
+      practiceForm.querySelectorAll('.btn--add-component').forEach(el => el.setAttribute('disabled', ''));
+      btnSubmit.setAttribute('disabled', '');
+
+      /* Build expert comparison */
+      correctBody.innerHTML =
+        buildExpertPanel(selectedB2) +
+        buildExpertPanel(selectedB3) +
+        `<div class="compare-guide" role="note">
+          <p class="compare-guide__heading">How to evaluate your work</p>
+          <ol>
+            <li><strong>Component count:</strong> does your count match the expert, or do you have a reasoned justification for a different number?</li>
+            <li><strong>DC identifier range:</strong> are your IDs within the correct bucket range (DC-16 through DC-27 for Bucket 2; DC-28 through DC-39 for Bucket 3)?</li>
+            <li><strong>Taxonomy level assignments:</strong> for Analysis-level items, do you have at least one Analysis component? For Application-level items, are all your components at Application?</li>
+            <li><strong>Calibration constraint notes:</strong> for flagged items, does your note name the specific MRHN-D-003 standard -- not just "there is a calibration flag" -- and does it state what the component must require or exclude?</li>
+          </ol>
+        </div>`;
+
+      /* Show feedback */
+      feedbackRegion.classList.add('feedback-region--comparison');
+      feedbackHdg.textContent = 'Expert Decomposition Comparison';
+      feedbackExp.textContent = 'Review the expert decomposition for your two items below. Pay particular attention to component count, taxonomy level assignments, and -- for calibration-flagged items -- whether your constraint notes name the specific MRHN-D-003 requirement.';
+      document.getElementById('feedback-correct-answer').removeAttribute('hidden');
+      btnContinue.removeAttribute('hidden');
+      feedbackRegion.removeAttribute('hidden');
+      feedbackHdg.focus();
+
+      announcer.textContent = '';
+      requestAnimationFrame(() => {
+        announcer.textContent = 'Expert decomposition comparison is now visible. Review your work against the expert and continue when ready.';
+      });
+    });
+
+    /* Progress tracker */
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.4a';
+    document.getElementById('pt-phase').textContent        = '2';
+    document.getElementById('pt-step').textContent         = '6';
+    document.getElementById('pt-screen').textContent       = '4';
+    document.getElementById('pt-screen-total').textContent = '5';
+  </script>
+
+</body>
+</html>

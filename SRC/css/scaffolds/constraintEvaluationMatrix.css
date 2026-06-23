@@ -1,0 +1,227 @@
+/* =============================================================================
+   constraintEvaluationMatrix.css
+   Scaffold Component 2 of 10 -- Constraint Evaluation Matrix
+   Requires: css/tokens.css loaded first (all color values from tokens)
+
+   LAYOUT SWITCHING
+   JS toggles [hidden] on .cem__table-wrapper and .cem__accordion
+   based on matchMedia('(max-width: 639px)'). No CSS media queries
+   are needed to show/hide layouts -- [hidden] handles it.
+   CSS here styles each layout independently.
+   ============================================================================= */
+
+/* ============================================================
+   TABLE LAYOUT
+   Used at >= 640px (desktop and tablet)
+   ============================================================ */
+
+/* Horizontally scrollable wrapper.
+   tabindex="0" allows keyboard users to focus and scroll with arrow keys.
+   role="region" + aria-label set in JS announce the scroll container to AT. */
+.cem__table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--color-border-default);
+  border-radius: 4px;
+  /* Prevent the focus ring from being clipped */
+  padding: 0;
+}
+
+.cem__table-wrapper:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.cem__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  /* Prevents columns from crushing below readable widths on tablet */
+  min-width: 580px;
+}
+
+/* ---- Column headers ---- */
+.cem__th {
+  padding: 0.75rem 1rem;
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-align: left;
+  border-bottom: 2px solid var(--color-border-strong);
+  white-space: nowrap;
+}
+
+/* Column widths -- proportional, sum to 100% */
+.cem__th--constraint  { width: 28%; }
+.cem__th--required    { width: 12%; }
+.cem__th--consequence { width: 36%; }
+.cem__th--artifacts   { width: 24%; }
+
+/* ---- Table cells ---- */
+.cem__td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border-default);
+  vertical-align: top;
+  color: var(--color-text-primary);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+/* Alternating row stripe -- supplemental only, meaning not conveyed by color */
+.cem__tr--alt .cem__td {
+  background-color: var(--color-bg-subtle);
+}
+
+/* Last row: remove bottom border so it doesn't double with wrapper border */
+.cem__tr:last-child .cem__td {
+  border-bottom: none;
+}
+
+/* ============================================================
+   REQUIRED? COLUMN
+   Shared between table cells and accordion definition list.
+   Text ("Yes" / "No") is the primary AT signal.
+   Color class is supplemental -- no color-only communication.
+   ============================================================ */
+
+.cem__required--yes {
+  font-weight: 600;
+  color: var(--color-success-text);
+}
+
+.cem__required--no {
+  color: var(--color-text-secondary);
+}
+
+/* ============================================================
+   ACCORDION LAYOUT
+   Used at < 640px (mobile)
+   ============================================================ */
+
+.cem__accordion {
+  border: 1px solid var(--color-border-default);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Each constraint row becomes an accordion item */
+.cem__item {
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.cem__item:last-child {
+  border-bottom: none;
+}
+
+/* Trigger -- Constraint name is the visible label */
+.cem__item-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  color: var(--color-text-primary);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cem__item-trigger:hover {
+  background-color: var(--color-bg-subtle);
+}
+
+.cem__item-trigger:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
+}
+
+/* Constraint label text */
+.cem__item-label {
+  flex: 1;
+}
+
+/* Chevron icon */
+.cem__item-chevron {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+  transition: transform 200ms ease;
+}
+
+.cem__item-trigger--expanded .cem__item-chevron {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cem__item-chevron {
+    transition: none;
+  }
+}
+
+/* Accordion body */
+.cem__item-body {
+  border-top: 1px solid var(--color-border-default);
+  background-color: var(--color-surface-raised);
+}
+
+/* Definition list -- two-column grid: label | value */
+.cem__item-dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.625rem 1rem;
+  margin: 0;
+  padding: 1rem;
+}
+
+.cem__item-dt {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  align-self: start;
+  /* Optical alignment with dd text */
+  padding-top: 0.125rem;
+}
+
+.cem__item-dd {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   HIGH CONTRAST
+   ============================================================ */
+
+@media (prefers-contrast: more) {
+  .cem__table-wrapper,
+  .cem__accordion {
+    border-color: var(--color-border-strong);
+  }
+
+  .cem__th {
+    border-bottom-color: var(--color-border-strong);
+  }
+
+  .cem__td,
+  .cem__item,
+  .cem__item-body {
+    border-color: var(--color-border-strong);
+  }
+
+  .cem__table-wrapper:focus-visible,
+  .cem__item-trigger:focus-visible {
+    outline-width: 3px;
+  }
+}

@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Worked example: an expert decomposes the five Bucket 1 scope items (SI-08, SI-01, SI-16, SI-06, SI-02) into DC-01 through DC-15, showing full decomposition methodology for SI-08 and SI-06 -- the two Analysis-level items with calibration annotations from MRHN_CalibratedScopeMap_v1.">
+  <title>Worked Example: Step 6 Part 1 — Bucket 1 Decomposition — Lesson 1.4a — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l4a-s3 -- Worked Example: Step 6 Part 1 Bucket 1
+       Phase 2, Step 6. All color values use CSS tokens only.
+       ================================================================ */
+
+    .worked-example__meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 0 0.25rem;
+      flex-wrap: wrap;
+    }
+
+    .screen-type-label { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-secondary); }
+    .time-estimate { font-size: 0.75rem; color: var(--color-text-secondary); background: var(--color-bg-subtle); border: 1px solid var(--color-border-default); border-radius: 3px; padding: 0.125rem 0.5rem; }
+    .lesson-label { display: block; margin: 0 0 0.25rem; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-link); }
+
+    .worked-example__title {
+      margin: 0 0 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    .step-badge { display: inline-block; margin: 0 0 0.875rem; padding: 0.25rem 0.625rem; background: var(--color-bg-page); border: 1.5px solid var(--color-text-link); border-radius: 3px; font-size: 0.75rem; font-weight: 600; color: var(--color-text-link); }
+
+    .scenario-context { display: flex; align-items: baseline; gap: 0.375rem; padding: 0.625rem 0.875rem; background: var(--color-bg-subtle); border-left: 3px solid var(--color-border-strong); border-radius: 0 4px 4px 0; font-size: 0.875rem; color: var(--color-text-primary); margin: 0 0 1.5rem; line-height: 1.65; }
+    .scenario-label { font-weight: 700; color: var(--color-text-secondary); flex-shrink: 0; }
+
+    /* ---- Two-column layout ---- */
+    .worked-example__layout { display: grid; grid-template-columns: 1fr 20rem; gap: 2rem; align-items: start; }
+    @media (max-width: 900px) { .worked-example__layout { grid-template-columns: 1fr; } }
+
+    .worked-example__content { display: flex; flex-direction: column; gap: 2.25rem; }
+
+    .example-step { display: grid; grid-template-columns: 2.75rem 1fr; gap: 0 1rem; }
+    .step-marker { display: flex; align-items: flex-start; justify-content: center; padding-top: 0.125rem; }
+    .step-marker span { display: flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: var(--color-text-link); color: var(--color-text-inverse); font-size: 0.8125rem; font-weight: 700; flex-shrink: 0; }
+    .step-body { min-width: 0; }
+    .step-heading { margin: 0.25rem 0 0.625rem; font-size: 1.0625rem; font-weight: 700; color: var(--color-text-primary); line-height: 1.3; }
+    .step-content { margin: 0 0 0.875rem; font-size: 0.9375rem; color: var(--color-text-primary); line-height: 1.7; }
+    .step-content:last-child { margin-bottom: 0; }
+    .step-content strong { font-weight: 700; }
+
+    /* ---- SI item header card ---- */
+    .si-card { border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; margin: 0 0 1.25rem; }
+
+    .si-card__header { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0.625rem; padding: 0.5625rem 0.875rem; background: var(--color-brand-navy); color: var(--color-text-inverse); }
+
+    .si-id { font-family: monospace; font-size: 0.9375rem; font-weight: 800; flex-shrink: 0; }
+    .si-name { font-size: 0.9375rem; font-weight: 700; line-height: 1.3; }
+    .si-level-chip { display: inline-flex; align-items: center; padding: 0.1875rem 0.5rem; border-radius: 10px; font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; white-space: nowrap; flex-shrink: 0; }
+    .si-level-chip--analysis { background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.4); color: var(--color-text-inverse); }
+    .si-level-chip--application { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.85); }
+
+    .si-card__body { padding: 0.875rem; background: var(--color-bg-page); }
+
+    .calibration-flag { display: flex; gap: 0.5rem; align-items: flex-start; padding: 0.5625rem 0.75rem; background: var(--color-warning-bg); border: 1px solid var(--color-warning-border); border-radius: 4px; margin: 0 0 0.875rem; font-size: 0.8125rem; color: var(--color-text-primary); line-height: 1.6; }
+    .calibration-flag__label { font-size: 0.625rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-warning-text); white-space: nowrap; margin-top: 0.125rem; }
+
+    .arc-constraint { display: flex; gap: 0.5rem; align-items: flex-start; padding: 0.5rem 0.75rem; background: var(--color-bg-subtle); border: 1px solid var(--color-border-default); border-left: 3px solid var(--color-brand-teal); border-radius: 0 4px 4px 0; margin: 0 0 0.875rem; font-size: 0.8125rem; color: var(--color-text-primary); line-height: 1.6; }
+    .arc-constraint__label { font-size: 0.625rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-brand-teal); white-space: nowrap; margin-top: 0.125rem; flex-shrink: 0; }
+
+    /* ---- Expert reasoning block ---- */
+    .reasoning-block { margin: 0 0 0.875rem; }
+    .reasoning-block__label { display: block; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-secondary); margin-bottom: 0.5rem; }
+    .reasoning-block__text { font-size: 0.9375rem; color: var(--color-text-primary); line-height: 1.7; margin: 0 0 0.625rem; }
+    .reasoning-block__text:last-child { margin-bottom: 0; }
+    .reasoning-block__text strong { font-weight: 700; }
+
+    /* ---- DC component list ---- */
+    .dc-list { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; margin: 0 0 0.875rem; }
+
+    .dc-item { display: grid; grid-template-columns: 5.5rem 1fr; border-bottom: 1px solid var(--color-border-default); }
+    .dc-item:last-child { border-bottom: none; }
+
+    .dc-item__id-col { padding: 0.5625rem 0.75rem; background: var(--color-bg-subtle); border-right: 1px solid var(--color-border-default); display: flex; flex-direction: column; gap: 0.25rem; justify-content: flex-start; }
+    .dc-id { font-family: monospace; font-size: 0.875rem; font-weight: 800; color: var(--color-text-primary); }
+    .dc-level { font-size: 0.5625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-secondary); }
+
+    .dc-item__desc-col { padding: 0.5625rem 0.875rem; background: var(--color-bg-page); }
+    .dc-desc { font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.6; margin: 0 0 0.25rem; }
+    .dc-constraint-note { font-size: 0.75rem; color: var(--color-warning-text); font-style: italic; line-height: 1.5; padding: 0.25rem 0.4375rem; background: var(--color-warning-bg); border-radius: 3px; display: inline-block; margin-top: 0.1875rem; }
+
+    /* ---- SI summary cards (for items without full deep-dive) ---- */
+    .si-summary-card { border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; margin: 0 0 1rem; }
+    .si-summary-card__header { display: flex; align-items: center; gap: 0.5rem; padding: 0.4375rem 0.75rem; background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border-default); }
+    .si-summary-id { font-family: monospace; font-size: 0.8125rem; font-weight: 800; color: var(--color-text-primary); }
+    .si-summary-name { font-size: 0.8125rem; font-weight: 600; color: var(--color-text-primary); flex: 1; }
+    .si-summary-level { font-size: 0.5625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-secondary); background: var(--color-bg-page); border: 1px solid var(--color-border-default); border-radius: 3px; padding: 0.0625rem 0.3125rem; white-space: nowrap; }
+
+    /* ---- Bucket 1 complete reference table ---- */
+    .dc-ref-wrap { border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; margin: 0 0 0.875rem; }
+    .dc-ref-table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
+    .dc-ref-table thead th { padding: 0.375rem 0.625rem; background: var(--color-brand-navy); color: var(--color-text-inverse); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; text-align: left; }
+    .dc-ref-table thead th:first-child { width: 5.5rem; }
+    .dc-ref-table thead th:nth-child(3) { width: 5.5rem; }
+    .dc-ref-table thead th:last-child { width: 6rem; }
+    .dc-ref-table tbody td { padding: 0.4375rem 0.625rem; border-bottom: 1px solid var(--color-border-default); vertical-align: top; line-height: 1.5; }
+    .dc-ref-table tbody tr:last-child td { border-bottom: none; }
+    .dc-ref-table tbody tr:nth-child(even) td { background: var(--color-bg-subtle); }
+    .dc-ref-table .dc-id-cell { font-family: monospace; font-weight: 800; font-size: 0.8125rem; color: var(--color-text-primary); white-space: nowrap; }
+    .dc-ref-table .dc-si-cell { font-family: monospace; font-size: 0.75rem; color: var(--color-text-secondary); white-space: nowrap; }
+    .dc-ref-table .dc-flag-cell { font-size: 0.6875rem; }
+    .flag-yes { color: var(--color-warning-text); font-weight: 700; }
+    .flag-none { color: var(--color-text-secondary); }
+
+    /* Group dividers in table */
+    .dc-ref-table .group-row td { background: var(--color-bg-subtle); border-top: 2px solid var(--color-border-strong); }
+    .group-label { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-secondary); }
+
+    /* ---- Governance record ---- */
+    .gov-record { border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; margin: 0 0 0.875rem; }
+    .gov-record__header { display: flex; align-items: center; gap: 0.625rem; padding: 0.5rem 0.875rem; background: var(--color-brand-navy); color: var(--color-text-inverse); }
+    .gov-record__id { font-family: monospace; font-size: 0.875rem; font-weight: 700; }
+    .gov-record__title { font-size: 0.9375rem; font-weight: 700; }
+    .gov-record__row { display: grid; grid-template-columns: 9.5rem 1fr; border-bottom: 1px solid var(--color-border-default); }
+    .gov-record__row:last-child { border-bottom: none; }
+    @media (max-width: 480px) { .gov-record__row { grid-template-columns: 1fr; } }
+    .gov-record__key { padding: 0.5rem 0.875rem; background: var(--color-bg-subtle); font-size: 0.75rem; font-weight: 700; color: var(--color-text-secondary); border-right: 1px solid var(--color-border-default); line-height: 1.5; }
+    @media (max-width: 480px) { .gov-record__key { border-right: none; border-bottom: 1px solid var(--color-border-default); } }
+    .gov-record__val { padding: 0.5rem 0.875rem; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; background: var(--color-bg-page); }
+    .gov-record__val strong { font-weight: 700; }
+    .gov-record__val ul { margin: 0.25rem 0 0; padding-left: 1.25rem; font-size: 0.875rem; line-height: 1.6; }
+    .gov-record__val ul li { margin-bottom: 0.25rem; }
+
+    /* ---- Think-aloud column ---- */
+    .worked-example__think-aloud { position: sticky; top: 1.5rem; background: var(--color-bg-subtle); border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; }
+    @media (max-width: 900px) { .worked-example__think-aloud { position: static; } }
+
+    .think-aloud__header { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-border-default); background: var(--color-bg-page); }
+    .think-aloud__heading { margin: 0; font-size: 0.875rem; font-weight: 700; color: var(--color-text-primary); }
+
+    .think-aloud__list { padding: 0.875rem 1rem; display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .annotation-item { display: grid; grid-template-columns: 1.625rem 1fr; gap: 0 0.625rem; align-items: start; }
+    .annotation-marker { display: flex; align-items: center; justify-content: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; border: 1.5px solid var(--color-border-strong); font-size: 0.6875rem; font-weight: 700; color: var(--color-text-secondary); flex-shrink: 0; margin-top: 0.0625rem; }
+    .annotation-text { margin: 0; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; }
+
+    .btn--toggle { font-size: 0.75rem; padding: 0.25rem 0.625rem; border: 1px solid var(--color-border-default); border-radius: 4px; background: var(--color-bg-page); color: var(--color-text-secondary); cursor: pointer; white-space: nowrap; }
+    .btn--toggle:hover { background: var(--color-bg-subtle); color: var(--color-text-primary); }
+    .btn--toggle:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+
+    @media (prefers-contrast: more) {
+      .si-card, .si-summary-card, .dc-list, .dc-ref-wrap, .gov-record { border-color: var(--color-border-strong); }
+      .dc-item { border-bottom-color: var(--color-border-strong); }
+      .dc-item__id-col { border-right-color: var(--color-border-strong); }
+      .si-summary-card__header { border-bottom-color: var(--color-border-strong); }
+      .gov-record__row { border-bottom-color: var(--color-border-strong); }
+      .gov-record__key { border-right-color: var(--color-border-strong); }
+      .worked-example__think-aloud { border-color: var(--color-border-strong); }
+      .calibration-flag { border-color: var(--color-warning-text); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <header role="banner">
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+    <div id="progress-tracker" role="group" aria-label="Course progress" tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.4a</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">2</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">6</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">3</span> of <span id="pt-screen-total">5</span></span>
+    </div>
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel" aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer" aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory" aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel" aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+  </header>
+
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item"><a href="intro-0.1.html" class="module-nav-link">Introduction</a></li>
+      <li class="module-nav-item"><a href="module-1.html" class="module-nav-link" aria-current="page">Module 1: Bound the Course</a></li>
+      <li class="module-nav-item"><a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a></li>
+      <li class="module-nav-item"><a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a></li>
+      <li class="module-nav-item"><a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a></li>
+    </ol>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <section id="current-activity" tabindex="-1" aria-label="Current activity">
+      <article class="worked-example" aria-labelledby="example-title">
+
+        <header class="worked-example__header">
+          <div class="worked-example__meta">
+            <span class="screen-type-label">Worked Example</span>
+            <span class="time-estimate" aria-label="Estimated reading time: 30 to 35 minutes">30&ndash;35 min</span>
+          </div>
+          <p class="lesson-label">Lesson 1.4a</p>
+          <h1 id="example-title" class="worked-example__title">
+            Decompose Bucket 1: How Calibration Annotations Govern Every DC Component Decision
+          </h1>
+          <span class="step-badge">Phase 2 -- Step 6, Part 1: Bucket 1 (DC-01 through DC-15)</span>
+          <div class="scenario-context" role="note" aria-label="Scenario context">
+            <span class="scenario-label">Scenario:</span>
+            Meridian Regional Health Network. MRHN_PerformanceArc_v1 is the ceiling.
+            An expert decomposes the five Bucket 1 scope items (SI-08, SI-01, SI-16,
+            SI-06, SI-02) into DC-01 through DC-15. Full decomposition methodology
+            shown for SI-08 and SI-06 -- the two Analysis-level items with calibration
+            annotations from MRHN-D-003. Remaining items shown in summary.
+          </div>
+        </header>
+
+        <div class="worked-example__layout">
+
+          <!-- ====================================================
+               Left column
+               ==================================================== -->
+          <div class="worked-example__content">
+
+            <!-- Step 01 -->
+            <div class="example-step" id="step-1">
+              <div class="step-marker" aria-label="Step 1"><span aria-hidden="true">01</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">What Step 6 Does -- and the Rule That Governs Every Component Decision</h2>
+                <p class="step-content">
+                  Step 6 converts scope items into discrete, teachable units. Each DC
+                  component represents one learnable capability -- specific enough that
+                  Module 2 can design instruction and assessment for it independently,
+                  bounded enough that it fits within a coherent lesson without requiring
+                  all surrounding components to be present.
+                </p>
+                <p class="step-content">
+                  The governing rule is this: <strong>the calibration annotation for a
+                  scope item is not context. It is a constraint.</strong> If MRHN-D-003
+                  assigned SI-08 at Analysis level because the MRHN population lacks
+                  practiced pattern recognition, then every DC component derived from
+                  SI-08 must require analytical practice -- not procedure-following. A
+                  component that could be satisfied by consulting a reference table has
+                  not honored the taxonomy assignment. The calibration governs both what
+                  each component requires and what it excludes.
+                </p>
+                <p class="step-content">
+                  The arc from Step 5 sets a second constraint. Each component must be
+                  traceable to the Bucket 1 sub-arc: "Evaluate indicators of a potential
+                  cybersecurity incident to distinguish it from non-incident system events,
+                  apply the MRHN severity rubric to produce a documented severity
+                  classification, and evaluate whether Tier 1 containment capacity is
+                  sufficient." Components that do not build toward this arc should not
+                  exist. Components whose absence creates a gap in the arc are missing
+                  and must be added.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 02: SI-08 deep dive -->
+            <div class="example-step" id="step-2">
+              <div class="step-marker" aria-label="Step 2"><span aria-hidden="true">02</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Deep Dive: Decomposing SI-08 (Threat Identification)</h2>
+
+                <div class="si-card" role="region" aria-label="SI-08 scope item details and decomposition">
+                  <div class="si-card__header">
+                    <span class="si-id">SI-08</span>
+                    <span class="si-name">Threat Identification</span>
+                    <span class="si-level-chip si-level-chip--analysis">Analysis</span>
+                  </div>
+                  <div class="si-card__body">
+
+                    <div class="calibration-flag" role="note" aria-label="MRHN-D-003 calibration annotation for SI-08">
+                      <span class="calibration-flag__label">MRHN-D-003 Flag</span>
+                      Healthcare IT professionals at MRHN must distinguish a cybersecurity
+                      incident from system failures, user errors, and hardware problems
+                      without a practiced pattern library. Analysis level is assigned
+                      because identification requires active evaluation of competing
+                      event hypotheses -- not pattern matching from experience. Instruction
+                      and assessment must target the evaluation process, not the conclusion.
+                    </div>
+
+                    <div class="arc-constraint" role="note" aria-label="Arc constraint for SI-08 components">
+                      <span class="arc-constraint__label">Arc&nbsp;Constraint</span>
+                      Bucket 1 sub-arc requires "evaluate indicators... to distinguish it
+                      from non-incident system events." Components must build this
+                      evaluation capability, not recognition speed.
+                    </div>
+
+                    <div class="reasoning-block">
+                      <span class="reasoning-block__label">Expert Reasoning: How Many Components?</span>
+                      <p class="reasoning-block__text">
+                        SI-08 at Analysis level breaks into four components because the
+                        full identification capability has four distinct learnable parts
+                        that can fail independently. A learner can know the MRHN event
+                        taxonomy (DC-02) but fail at ambiguous-indicator situations (DC-03).
+                        A learner can reach a correct identification but produce a
+                        documentation rationale that does not name the competing hypotheses
+                        they ruled out (DC-04) -- which fails the RC-1 documentation
+                        requirement and leaves the response team without the identification
+                        record they need.
+                      </p>
+                      <p class="reasoning-block__text">
+                        I do not produce a fifth component for "confirm identification with
+                        a supervisor." That capability is excluded by PC-3 authority
+                        boundaries: Tier 1 responders at MRHN are expected to reach
+                        identification independently. Adding a confirmation component would
+                        teach a dependency that the constraint set explicitly does not
+                        permit in a Tier 1 response.
+                      </p>
+                    </div>
+
+                    <div class="reasoning-block">
+                      <span class="reasoning-block__label">Calibration Constraint Applied: What Each Component Must Require</span>
+                      <p class="reasoning-block__text">
+                        The MRHN-D-003 annotation governs all four components: none can be
+                        satisfied by applying a decision tree or lookup table without
+                        analytical judgment. <strong>DC-01</strong> must require distinguishing
+                        among event types, not just identifying one. <strong>DC-02</strong>
+                        must require applying the taxonomy to assign a type, not just
+                        recognizing a named category. <strong>DC-03</strong> is the highest-demand
+                        component: it is entirely about what a learner does when evidence
+                        points in two directions simultaneously -- the situation the calibration
+                        annotation identified as the critical gap for this population.
+                        <strong>DC-04</strong> must require that the documentation names the
+                        alternatives that were evaluated, not just the conclusion reached.
+                      </p>
+                    </div>
+
+                    <div class="dc-list" role="list" aria-label="DC components derived from SI-08">
+                      <div class="dc-item" role="listitem">
+                        <div class="dc-item__id-col">
+                          <span class="dc-id">DC-01</span>
+                          <span class="dc-level">Analysis</span>
+                        </div>
+                        <div class="dc-item__desc-col">
+                          <p class="dc-desc">Recognize the indicator profile of a cybersecurity incident by evaluating whether event characteristics match a security event pattern, a system failure pattern, a user error pattern, or a hardware fault pattern using the MRHN event taxonomy as the evaluation framework.</p>
+                          <span class="dc-constraint-note">Calibration: must require active comparison among event types, not single-category identification.</span>
+                        </div>
+                      </div>
+                      <div class="dc-item" role="listitem">
+                        <div class="dc-item__id-col">
+                          <span class="dc-id">DC-02</span>
+                          <span class="dc-level">Application</span>
+                        </div>
+                        <div class="dc-item__desc-col">
+                          <p class="dc-desc">Apply the MRHN threat classification schema to assign an incident type designation (unauthorized access, malware infection, ransomware, data exfiltration, denial of service, or insider threat) based on evaluated indicator evidence.</p>
+                        </div>
+                      </div>
+                      <div class="dc-item" role="listitem">
+                        <div class="dc-item__id-col">
+                          <span class="dc-id">DC-03</span>
+                          <span class="dc-level">Analysis</span>
+                        </div>
+                        <div class="dc-item__desc-col">
+                          <p class="dc-desc">Evaluate competing event hypotheses when initial indicator data is ambiguous or consistent with more than one event type, using the MRHN hypothesis-evaluation protocol to determine which explanation best accounts for the full evidence set.</p>
+                          <span class="dc-constraint-note">Calibration: this component directly addresses the critical gap identified in MRHN-D-003. Assessment must present ambiguous indicator sets, not clean single-hypothesis scenarios.</span>
+                        </div>
+                      </div>
+                      <div class="dc-item" role="listitem">
+                        <div class="dc-item__id-col">
+                          <span class="dc-id">DC-04</span>
+                          <span class="dc-level">Analysis</span>
+                        </div>
+                        <div class="dc-item__desc-col">
+                          <p class="dc-desc">Document the threat identification determination with criteria-based rationale that names the event type assigned, the indicators evaluated, the competing hypotheses considered and ruled out, and the evidence basis for the conclusion -- satisfying RC-1 documentation requirements.</p>
+                          <span class="dc-constraint-note">Calibration: documentation must name ruled-out hypotheses, not just state a conclusion. A record that only states "identified as ransomware" is insufficient.</span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 03: SI-06 deep dive -->
+            <div class="example-step" id="step-3">
+              <div class="step-marker" aria-label="Step 3"><span aria-hidden="true">03</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Deep Dive: Decomposing SI-06 (Escalation Decision)</h2>
+
+                <div class="si-card" role="region" aria-label="SI-06 scope item details and decomposition">
+                  <div class="si-card__header">
+                    <span class="si-id">SI-06</span>
+                    <span class="si-name">Escalation Decision</span>
+                    <span class="si-level-chip si-level-chip--analysis">Analysis</span>
+                  </div>
+                  <div class="si-card__body">
+
+                    <div class="calibration-flag" role="note" aria-label="MRHN-D-003 calibration annotation for SI-06">
+                      <span class="calibration-flag__label">MRHN-D-003 Flag</span>
+                      The Tier 1 / Tier 2 escalation decision at MRHN is Analysis level
+                      because it requires evaluating whether the current team's capability
+                      is sufficient for the confirmed incident -- not simply applying an
+                      escalation checklist. The healthcare IT professional must assess
+                      team readiness against incident complexity in real time, without
+                      the benefit of a pre-determined threshold that resolves the judgment.
+                    </div>
+
+                    <div class="arc-constraint" role="note" aria-label="Arc constraint for SI-06 components">
+                      <span class="arc-constraint__label">Arc&nbsp;Constraint</span>
+                      Bucket 1 sub-arc: "evaluate whether Tier 1 containment capacity
+                      is sufficient -- escalating to Tier 2 when indicated and documenting
+                      the escalation decision with criteria-based rationale." Components
+                      must build evaluation of capacity, not criteria-lookup.
+                    </div>
+
+                    <div class="reasoning-block">
+                      <span class="reasoning-block__label">Expert Reasoning: Four Components, Not Two</span>
+                      <p class="reasoning-block__text">
+                        A naive decomposition of SI-06 produces two components: "apply
+                        escalation criteria" and "document the decision." That decomposition
+                        misses the calibration constraint entirely. The MRHN-D-003 annotation
+                        does not say escalation criteria don't exist -- it says the decision
+                        cannot be resolved by criteria alone, because the critical variable
+                        is whether the current team can execute a Tier 1 response to this
+                        specific incident.
+                      </p>
+                      <p class="reasoning-block__text">
+                        That means there must be a component for assessing team capability
+                        (DC-10) and a separate component for evaluating whether incident
+                        complexity and scope exceed that capability (DC-11) before a learner
+                        reaches criteria application (DC-12). These are not the same cognitive
+                        act, and they can fail independently. A learner can accurately assess
+                        their team's capability and still misapply the criteria. A learner can
+                        correctly apply criteria and still produce an escalation rationale
+                        that omits the capability evaluation -- failing the RC-1 requirement
+                        and leaving the Tier 2 team without the context they need to take over.
+                      </p>
+                      <p class="reasoning-block__text">
+                        DC-13 (documentation) is not a simple record-keeping task. The arc
+                        specifies "criteria-based rationale" -- the documentation must name the
+                        capability factors evaluated, the criteria applied, and the conclusion
+                        reached. This is Evaluation-adjacent for the documentation component
+                        specifically, but I hold it at Analysis because the judgment is made in
+                        DC-10 through DC-12; DC-13 requires translating that judgment into a
+                        governed record, which is Application-level execution of an
+                        Analysis-level decision.
+                      </p>
+                    </div>
+
+                    <div class="dc-list" role="list" aria-label="DC components derived from SI-06">
+                      <div class="dc-item" role="listitem">
+                        <div class="dc-item__id-col">
+                          <span class="dc-id">DC-10</span>
+                          <span class="dc-level">Analysis</span>
+                        </div>
+                        <div class="dc-item__desc-col">
+                          <p class="dc-desc">Assess current Tier 1 response team capability against the demands of the confirmed incident by evaluating available personnel, technical access, authority scope under PC-3, and relevant experience -- producing a team-readiness determination for this specific incident.</p>
+                          <span class="dc-constraint-note">Calibration: this is a real-time self-assessment, not a staffing checklist. The evaluative object is team readiness against a specific incident, not team composition in the abstract.</span>
+                        </div>
+                      </div>
+                      <div class="dc-item" role="listitem">
+                        <div class="dc-item__id-col">
+                          <span class="dc-id">DC-11</span>
+                          <span class="dc-level">Analysis</span>
+                        </div>
+                        <div class="dc-item__desc-col">
+                          <p class="dc-desc">Evaluate whether the incident's confirmed complexity, scope, potential legal exposure (HIPAA, IR-2024), and operational impact exceed Tier 1 authority and capacity as assessed in DC-10 -- identifying the specific factors that drive escalation consideration.</p>
+                          <span class="dc-constraint-note">Calibration: evaluation must connect to the team-readiness determination from DC-10, not just assess incident severity in isolation.</span>
+                        </div>
+                      </div>
+                      <div class="dc-item" role="listitem">
+                        <div class="dc-item__id-col">
+                          <span class="dc-id">DC-12</span>
+                          <span class="dc-level">Application</span>
+                        </div>
+                        <div class="dc-item__desc-col">
+                          <p class="dc-desc">Apply the MRHN escalation criteria to the team-readiness and incident-complexity evaluations to determine whether Tier 1 response continues or Tier 2 escalation is required, producing a clear escalation status.</p>
+                        </div>
+                      </div>
+                      <div class="dc-item" role="listitem">
+                        <div class="dc-item__id-col">
+                          <span class="dc-id">DC-13</span>
+                          <span class="dc-level">Application</span>
+                        </div>
+                        <div class="dc-item__desc-col">
+                          <p class="dc-desc">Document the escalation decision with criteria-based rationale that names the team capability factors evaluated, the incident complexity factors evaluated, the MRHN criteria applied, and the escalation status reached -- satisfying RC-1 requirements and providing the Tier 2 team with the handoff record they require.</p>
+                          <span class="dc-constraint-note">Arc constraint: rationale must name capability factors, not just state the conclusion. "Escalating to Tier 2" without reasoning is insufficient per arc specification.</span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 04: SI-01, SI-16, SI-02 summary -->
+            <div class="example-step" id="step-4">
+              <div class="step-marker" aria-label="Step 4"><span aria-hidden="true">04</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Remaining Bucket 1 Items: SI-01, SI-16, SI-02</h2>
+                <p class="step-content">
+                  The three remaining items carry Application-level assignments and no
+                  MRHN-D-003 calibration flags. Each decomposes more directly, because
+                  the cognitive demand is procedure execution within a known framework,
+                  not evaluation under ambiguity. I show the component logic and note
+                  where the arc or constraint set still shapes the decomposition.
+                </p>
+
+                <!-- SI-01 -->
+                <div class="si-summary-card" role="region" aria-label="SI-01 scope item and components">
+                  <div class="si-summary-card__header">
+                    <span class="si-summary-id">SI-01</span>
+                    <span class="si-summary-name">Initial Incident Detection</span>
+                    <span class="si-summary-level">Application</span>
+                  </div>
+                  <div class="si-card__body">
+                    <p style="font-size:0.875rem;color:var(--color-text-primary);line-height:1.65;margin:0 0 0.75rem">
+                      Two components. SI-01 is an Application-level procedural item:
+                      learners must execute the MRHN detection procedure correctly and
+                      initiate the incident record that all downstream documentation depends on.
+                      The two components fail independently -- a learner can execute the
+                      detection checklist and fail to activate the log per RC-1, which
+                      breaks the documentation chain.
+                    </p>
+                    <div class="dc-list" role="list" aria-label="DC components derived from SI-01">
+                      <div class="dc-item" role="listitem">
+                        <div class="dc-item__id-col">
+                          <span class="dc-id">DC-05</span>
+                          <span class="dc-level">Application</span>
+                        </div>
+                        <div class="dc-item__desc-col">
+                          <p class="dc-desc">Execute the MRHN initial detection procedure for a confirmed or suspected cybersecurity event, verifying all detection checklist items are addressed and no detection criteria are skipped before proceeding to identification.</p>
+                        </div>
+                      </div>
+                      <div class="dc-item" role="listitem">
+                        <div class="dc-item__id-col">
+                          <span class="dc-id">DC-06</span>
+                          <span class="dc-level">Application</span>
+                        </div>
+                        <div class="dc-item__desc-col">
+                          <p class="dc-desc">Activate the MRHN incident log and assign a preliminary incident tracking ID per RC-1 documentation requirements, establishing the governed record that all subsequent triage and response documentation will reference.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SI-16 -->
+                <div class="si-summary-card" role="region" aria-label="SI-16 scope item and components">
+                  <div class="si-summary-card__header">
+                    <span class="si-summary-id">SI-16</span>
+                    <span class="si-summary-name">Severity Assessment</span>
+                    <span class="si-summary-level">Analysis</span>
+                  </div>
+                  <div class="si-card__body">
+                    <p style="font-size:0.875rem;color:var(--color-text-primary);line-height:1.65;margin:0 0 0.75rem">
+                      Three components. SI-16 is assigned at Analysis level because
+                      the MRHN severity rubric requires evaluating contextual factors --
+                      active patient care status, facility type, system criticality -- that
+                      can modify the rubric output. A learner who only applies the rubric
+                      criteria without evaluating context may assign an incorrect severity
+                      level when, for example, a moderate-severity indicator profile
+                      occurs at a facility with active patient care on affected systems.
+                      DC-08 is the component that captures this contextual judgment.
+                    </p>
+                    <div class="dc-list" role="list" aria-label="DC components derived from SI-16">
+                      <div class="dc-item" role="listitem">
+                        <div class="dc-item__id-col">
+                          <span class="dc-id">DC-07</span>
+                          <span class="dc-level">Application</span>
+                        </div>
+                        <div class="dc-item__desc-col">
+                          <p class="dc-desc">Apply the MRHN severity rubric criteria to the confirmed incident to produce a preliminary severity level (Critical, High, Moderate, or Low) based on the four rubric dimensions: scope, affected system type, data exposure potential, and operational impact.</p>
+                        </div>
+                      </div>
+                      <div class="dc-item" role="listitem">
+                        <div class="dc-item__id-col">
+                          <span class="dc-id">DC-08</span>
+                          <span class="dc-level">Analysis</span>
+                        </div>
+                        <div class="dc-item__desc-col">
+                          <p class="dc-desc">Evaluate contextual factors -- active patient care status at the affected facility, clinical system interdependencies, and multi-site operational exposure -- to determine whether any factor warrants adjusting the preliminary rubric severity level.</p>
+                          <span class="dc-constraint-note">Analysis level: contextual evaluation can override the rubric output. Instruction must present scenarios where rubric and context point in different directions.</span>
+                        </div>
+                      </div>
+                      <div class="dc-item" role="listitem">
+                        <div class="dc-item__id-col">
+                          <span class="dc-id">DC-09</span>
+                          <span class="dc-level">Application</span>
+                        </div>
+                        <div class="dc-item__desc-col">
+                          <p class="dc-desc">Document the confirmed severity classification with rubric criteria notation, contextual factor record, and any adjustment rationale -- satisfying RC-1 requirements and providing the response team with the severity basis for containment decisions.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SI-02 -->
+                <div class="si-summary-card" role="region" aria-label="SI-02 scope item and components">
+                  <div class="si-summary-card__header">
+                    <span class="si-summary-id">SI-02</span>
+                    <span class="si-summary-name">Initial Triage Documentation</span>
+                    <span class="si-summary-level">Application</span>
+                  </div>
+                  <div class="si-card__body">
+                    <p style="font-size:0.875rem;color:var(--color-text-primary);line-height:1.65;margin:0 0 0.75rem">
+                      Two components. SI-02 closes Bucket 1 by ensuring the triage
+                      record is complete before containment begins. The two-component
+                      split reflects a practical distinction: DC-14 is about producing
+                      the correct content, and DC-15 is about verifying the record is
+                      usable by the team members who will need it next. Both can fail
+                      independently. A complete record that is inaccessible to the
+                      incoming containment team fails DC-15 even if it passes DC-14.
+                    </p>
+                    <div class="dc-list" role="list" aria-label="DC components derived from SI-02">
+                      <div class="dc-item" role="listitem">
+                        <div class="dc-item__id-col">
+                          <span class="dc-id">DC-14</span>
+                          <span class="dc-level">Application</span>
+                        </div>
+                        <div class="dc-item__desc-col">
+                          <p class="dc-desc">Complete the MRHN triage record with all required initial data elements: detection timestamp, preliminary incident type, severity classification with rationale, escalation status with decision rationale, and assigned responder identification -- per RC-1 and RC-2 documentation requirements.</p>
+                        </div>
+                      </div>
+                      <div class="dc-item" role="listitem">
+                        <div class="dc-item__id-col">
+                          <span class="dc-id">DC-15</span>
+                          <span class="dc-level">Application</span>
+                        </div>
+                        <div class="dc-item__desc-col">
+                          <p class="dc-desc">Verify triage documentation completeness and confirm the incident record is accessible to all incoming response team members before transitioning to Bucket 2 containment procedures.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Step 05: Complete Bucket 1 reference table -->
+            <div class="example-step" id="step-5">
+              <div class="step-marker" aria-label="Step 5"><span aria-hidden="true">05</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Bucket 1 Complete: DC-01 through DC-15 Reference</h2>
+                <p class="step-content">
+                  All 15 Bucket 1 components are now established. The table below is
+                  the partial MRHN_DecompositionMap_v1 for Bucket 1. Each component
+                  is traceable to its parent SI item. Calibration constraints are
+                  flagged for components where MRHN-D-003 annotations require specific
+                  instructional treatment or assessment design.
+                </p>
+
+                <div class="dc-ref-wrap" role="region" aria-label="Bucket 1 decomposition map DC-01 through DC-15">
+                  <table class="dc-ref-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">DC ID</th>
+                        <th scope="col">Component Description</th>
+                        <th scope="col">Parent SI</th>
+                        <th scope="col">Calib. Flag</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="group-row">
+                        <td colspan="4"><span class="group-label">SI-08 -- Threat Identification (Analysis)</span></td>
+                      </tr>
+                      <tr>
+                        <td class="dc-id-cell">DC-01</td>
+                        <td>Recognize indicator profile of a cybersecurity incident by evaluating against system failure, user error, and hardware fault patterns using the MRHN event taxonomy</td>
+                        <td class="dc-si-cell">SI-08</td>
+                        <td class="dc-flag-cell"><span class="flag-yes">Yes</span></td>
+                      </tr>
+                      <tr>
+                        <td class="dc-id-cell">DC-02</td>
+                        <td>Apply MRHN threat classification schema to assign incident type designation based on evaluated indicator evidence</td>
+                        <td class="dc-si-cell">SI-08</td>
+                        <td class="dc-flag-cell"><span class="flag-none">--</span></td>
+                      </tr>
+                      <tr>
+                        <td class="dc-id-cell">DC-03</td>
+                        <td>Evaluate competing event hypotheses when indicator data is ambiguous or consistent with more than one event type</td>
+                        <td class="dc-si-cell">SI-08</td>
+                        <td class="dc-flag-cell"><span class="flag-yes">Yes</span></td>
+                      </tr>
+                      <tr>
+                        <td class="dc-id-cell">DC-04</td>
+                        <td>Document threat identification determination with criteria-based rationale naming event type, evaluated indicators, competing hypotheses ruled out, and evidence basis</td>
+                        <td class="dc-si-cell">SI-08</td>
+                        <td class="dc-flag-cell"><span class="flag-yes">Yes</span></td>
+                      </tr>
+                      <tr class="group-row">
+                        <td colspan="4"><span class="group-label">SI-01 -- Initial Incident Detection (Application)</span></td>
+                      </tr>
+                      <tr>
+                        <td class="dc-id-cell">DC-05</td>
+                        <td>Execute MRHN initial detection procedure, verifying all detection checklist items are addressed before proceeding</td>
+                        <td class="dc-si-cell">SI-01</td>
+                        <td class="dc-flag-cell"><span class="flag-none">--</span></td>
+                      </tr>
+                      <tr>
+                        <td class="dc-id-cell">DC-06</td>
+                        <td>Activate MRHN incident log and assign preliminary incident tracking ID per RC-1 requirements</td>
+                        <td class="dc-si-cell">SI-01</td>
+                        <td class="dc-flag-cell"><span class="flag-none">--</span></td>
+                      </tr>
+                      <tr class="group-row">
+                        <td colspan="4"><span class="group-label">SI-16 -- Severity Assessment (Analysis)</span></td>
+                      </tr>
+                      <tr>
+                        <td class="dc-id-cell">DC-07</td>
+                        <td>Apply MRHN severity rubric to confirmed incident to produce preliminary severity level across four rubric dimensions</td>
+                        <td class="dc-si-cell">SI-16</td>
+                        <td class="dc-flag-cell"><span class="flag-none">--</span></td>
+                      </tr>
+                      <tr>
+                        <td class="dc-id-cell">DC-08</td>
+                        <td>Evaluate contextual factors (patient care status, clinical system interdependencies, multi-site exposure) to determine whether preliminary severity level requires adjustment</td>
+                        <td class="dc-si-cell">SI-16</td>
+                        <td class="dc-flag-cell"><span class="flag-yes">Yes</span></td>
+                      </tr>
+                      <tr>
+                        <td class="dc-id-cell">DC-09</td>
+                        <td>Document confirmed severity classification with rubric criteria notation, contextual factor record, and any adjustment rationale per RC-1</td>
+                        <td class="dc-si-cell">SI-16</td>
+                        <td class="dc-flag-cell"><span class="flag-none">--</span></td>
+                      </tr>
+                      <tr class="group-row">
+                        <td colspan="4"><span class="group-label">SI-06 -- Escalation Decision (Analysis)</span></td>
+                      </tr>
+                      <tr>
+                        <td class="dc-id-cell">DC-10</td>
+                        <td>Assess current Tier 1 team capability against confirmed incident demands by evaluating personnel, technical access, authority scope, and experience</td>
+                        <td class="dc-si-cell">SI-06</td>
+                        <td class="dc-flag-cell"><span class="flag-yes">Yes</span></td>
+                      </tr>
+                      <tr>
+                        <td class="dc-id-cell">DC-11</td>
+                        <td>Evaluate whether incident complexity, scope, legal exposure, and operational impact exceed Tier 1 authority and capacity as assessed in DC-10</td>
+                        <td class="dc-si-cell">SI-06</td>
+                        <td class="dc-flag-cell"><span class="flag-yes">Yes</span></td>
+                      </tr>
+                      <tr>
+                        <td class="dc-id-cell">DC-12</td>
+                        <td>Apply MRHN escalation criteria to team-readiness and incident-complexity evaluations to determine Tier 1 continuation or Tier 2 escalation status</td>
+                        <td class="dc-si-cell">SI-06</td>
+                        <td class="dc-flag-cell"><span class="flag-none">--</span></td>
+                      </tr>
+                      <tr>
+                        <td class="dc-id-cell">DC-13</td>
+                        <td>Document escalation decision with criteria-based rationale naming capability factors evaluated, incident factors evaluated, MRHN criteria applied, and escalation status reached per RC-1</td>
+                        <td class="dc-si-cell">SI-06</td>
+                        <td class="dc-flag-cell"><span class="flag-yes">Yes</span></td>
+                      </tr>
+                      <tr class="group-row">
+                        <td colspan="4"><span class="group-label">SI-02 -- Initial Triage Documentation (Application)</span></td>
+                      </tr>
+                      <tr>
+                        <td class="dc-id-cell">DC-14</td>
+                        <td>Complete MRHN triage record with all required initial data elements per RC-1 and RC-2 documentation requirements</td>
+                        <td class="dc-si-cell">SI-02</td>
+                        <td class="dc-flag-cell"><span class="flag-none">--</span></td>
+                      </tr>
+                      <tr>
+                        <td class="dc-id-cell">DC-15</td>
+                        <td>Verify triage documentation completeness and accessibility to incoming response team before transitioning to Bucket 2 containment</td>
+                        <td class="dc-si-cell">SI-02</td>
+                        <td class="dc-flag-cell"><span class="flag-none">--</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="step-content">
+                  Seven of the fifteen components carry calibration flags. That ratio
+                  reflects the Bucket 1 profile: two Analysis-level items with explicit
+                  domain authenticity constraints (SI-08 and SI-06), plus SI-16 at
+                  Analysis level for contextual evaluation. All seven flagged components
+                  require instructional designs that place learners in evaluative
+                  situations, not procedure-execution situations.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 06: Governance record MRHN-D-005 -->
+            <div class="example-step" id="step-6">
+              <div class="step-marker" aria-label="Step 6"><span aria-hidden="true">06</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Governance Record MRHN-D-005: Bucket 1 Decomposition</h2>
+                <p class="step-content">
+                  DC-01 through DC-15 are now locked as the Bucket 1 portion of
+                  MRHN_DecompositionMap_v1. The governance record documents the
+                  key decisions, the constraints that traveled from Step 4 and Step 5,
+                  and the risks that Module 2 designers must not introduce during
+                  instructional engineering.
+                </p>
+
+                <div class="gov-record" role="region" aria-label="Governance record MRHN-D-005">
+                  <div class="gov-record__header">
+                    <span class="gov-record__id">MRHN-D-005</span>
+                    <span class="gov-record__title">Bucket 1 Decomposition Decision Record</span>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Decision</div>
+                    <div class="gov-record__val">
+                      DC-01 through DC-15 established as the Bucket 1 component set
+                      for MRHN_DecompositionMap_v1. Five Bucket 1 scope items decomposed
+                      into 15 components. SI-08 produces four components; SI-06 produces
+                      four components. SI-16 produces three components at Analysis level
+                      due to contextual evaluation demand. SI-01 and SI-02 produce two
+                      components each at Application level.
+                    </div>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Calibration Constraints Applied</div>
+                    <div class="gov-record__val">
+                      <ul>
+                        <li><strong>SI-08 (MRHN-D-003):</strong> DC-01, DC-03, and DC-04 require evaluative cognitive demand -- active hypothesis comparison, ambiguous-indicator practice, and rationale documentation that names ruled-out alternatives. No component from SI-08 can be satisfied by pattern recognition or single-category identification.</li>
+                        <li><strong>SI-06 (MRHN-D-003):</strong> DC-10 and DC-11 require capability self-assessment before criteria application. DC-13 documentation must name capability factors, not just state the escalation conclusion. Criteria application (DC-12) is Application level but depends on prior Analysis-level work in DC-10 and DC-11 to be valid.</li>
+                        <li><strong>SI-16:</strong> DC-08 contextual evaluation may override the rubric output. Module 2 must design scenarios where rubric and context point in different directions to develop this capability.</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Arc Traceability</div>
+                    <div class="gov-record__val">
+                      All 15 components are traceable to the validated Bucket 1 sub-arc.
+                      The "evaluate indicators to distinguish" clause is built by DC-01
+                      through DC-04. The "apply the MRHN severity rubric" clause is built
+                      by DC-07 through DC-09. The "evaluate whether Tier 1 capacity is
+                      sufficient" clause is built by DC-10 through DC-13. DC-05, DC-06,
+                      DC-14, and DC-15 provide the procedural and documentation framework
+                      that the arc's "documented severity classification" and "criteria-based
+                      rationale" language requires.
+                    </div>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Risk Note</div>
+                    <div class="gov-record__val">
+                      <strong>Risk 1:</strong> If Module 2 designers collapse DC-10 and DC-11
+                      into DC-12 (treating escalation as a single criteria-application task),
+                      the SI-06 calibration constraint is violated. The capability-assessment
+                      and complexity-evaluation components must remain distinct in instructional
+                      design.<br><br>
+                      <strong>Risk 2:</strong> If DC-03 assessments use unambiguous indicator
+                      sets (single hypothesis obvious from evidence), the SI-08 calibration
+                      constraint is not met. The population-specific gap identified in
+                      MRHN-D-003 -- the absence of practiced pattern recognition -- can only
+                      be addressed by genuine ambiguity in assessment scenarios.<br><br>
+                      <strong>Risk 3:</strong> DC-04 and DC-13 documentation components must
+                      not be treated as completion checkboxes. Assessment rubrics for both
+                      must verify that the rationale names evaluated alternatives and named
+                      criteria, not just the conclusion.
+                    </div>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Checkpoint Linkage</div>
+                    <div class="gov-record__val">
+                      <ul>
+                        <li><strong>Screen 4 (this lesson):</strong> Bucket 1 components established here become the reference baseline for Buckets 2, 3, and 4 decomposition. DC component structure and calibration flag conventions carry forward.</li>
+                        <li><strong>Gate 1.TG.1:</strong> MRHN_DecompositionMap_v1 is a required gate artifact. Bucket 1 decomposition is complete; Buckets 2 through 4 completed in Screen 4.</li>
+                        <li><strong>Module 3 Outcome Mapping:</strong> flagged components (DC-01, DC-03, DC-04, DC-08, DC-10, DC-11, DC-13) require assessment alignment verification -- each must have a corresponding assessment item that targets the evaluative demand, not just the procedural outcome.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div><!-- /.worked-example__content -->
+
+          <!-- ====================================================
+               Right column: think-aloud
+               ==================================================== -->
+          <aside class="worked-example__think-aloud" aria-label="Expert think-aloud annotations">
+            <div class="think-aloud__header">
+              <h2 class="think-aloud__heading">Expert Think-Aloud</h2>
+              <button type="button" id="annotations-toggle" class="btn--toggle"
+                      aria-controls="annotations-list" aria-expanded="true">
+                <span class="toggle-label">Hide Annotations</span>
+              </button>
+            </div>
+            <div id="annotations-list" class="think-aloud__list">
+
+              <div class="annotation-item" data-step="1" aria-label="Annotation for step 1">
+                <span class="annotation-marker" aria-hidden="true">01</span>
+                <p class="annotation-text">
+                  The easiest mistake in decomposition is producing components that look
+                  right at the content level but ignore what the calibration says about
+                  cognitive demand. A list of correct identification behaviors is not the
+                  same as a decomposition that builds evaluation capability. The taxonomy
+                  level tells me what type of practice each component must require --
+                  that is a design specification, not a label.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="2" aria-label="Annotation for step 2">
+                <span class="annotation-marker" aria-hidden="true">02</span>
+                <p class="annotation-text">
+                  DC-03 is the hardest component in Bucket 1 to design instruction for,
+                  which is precisely why it must exist as a separate component. If I fold
+                  ambiguous-indicator practice into DC-01 or DC-02, it will get
+                  under-weighted in Module 2. Decomposition creates explicit instructional
+                  obligations. A component that exists cannot be skipped. A capability
+                  folded into another component often is.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="3" aria-label="Annotation for step 3">
+                <span class="annotation-marker" aria-hidden="true">03</span>
+                <p class="annotation-text">
+                  The "naive two-component" decomposition of SI-06 I described is what
+                  you get when you decompose from a generic scope item label rather than
+                  from the calibrated item. The label says "escalation decision." The
+                  calibrated item says "evaluate team capability against incident demand."
+                  Those are not the same instructional problem, and they produce
+                  fundamentally different component sets.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="4" aria-label="Annotation for step 4">
+                <span class="annotation-marker" aria-hidden="true">04</span>
+                <p class="annotation-text">
+                  SI-16 is Analysis level, but it gets three components rather than four
+                  because the "apply the rubric" and "evaluate context" steps do not have
+                  a hypothesis-evaluation equivalent. The contextual evaluation (DC-08)
+                  is the Analysis-level demand for this item. The third component (DC-09)
+                  is documentation of the result. The item does not require a fourth
+                  component because the taxonomy placement is anchored to one specific
+                  analytical act -- not to a full analytical process across multiple steps.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="5" aria-label="Annotation for step 5">
+                <span class="annotation-marker" aria-hidden="true">05</span>
+                <p class="annotation-text">
+                  The calibration flag column in the reference table is not decoration.
+                  It is an instruction to the Module 2 designer: this component requires
+                  a specific instructional treatment that a generic activity cannot provide.
+                  When I hand MRHN_DecompositionMap_v1 to the Module 2 team, the flags
+                  tell them where they cannot use a standard activity template -- they must
+                  design something that creates genuine evaluative demand.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="6" aria-label="Annotation for step 6">
+                <span class="annotation-marker" aria-hidden="true">06</span>
+                <p class="annotation-text">
+                  The risk notes in MRHN-D-005 are written to anticipate handoff failures.
+                  I have seen all three of these failure modes in actual decomposition
+                  projects: collapsed Analysis components, sanitized assessment scenarios,
+                  and treated documentation rubrics as completion checkboxes. Naming them
+                  now in the governance record means they are available for Gate 1 review
+                  and Module 3 stress-testing, not discovered in a learner assessment that
+                  fails to produce the capability the course promised.
+                </p>
+              </div>
+
+            </div>
+          </aside>
+
+        </div><!-- /.worked-example__layout -->
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l4a-s2.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen: Step 5 performance arc worked example">
+            <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="m1-l4a-s4.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen: Step 6 Part 2, Buckets 2 through 4 decomposition">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+    </section>
+  </main>
+
+  <!-- Supplementary resources -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">MRHN_DecompositionMap_v1 (partial): DC-01 through DC-15 established this screen. MRHN-D-005 on record. Buckets 2 through 4 completed in Screen 4.</p>
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">MRHN-D-001 through MRHN-D-004 on record. MRHN-D-005 (Bucket 1 decomposition) established this screen.</p>
+    </section>
+  </aside>
+
+  <!-- Support panels -->
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header"><h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header"><h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header"><h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header"><h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header"><h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <footer role="contentinfo">
+    <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    function syncToggleStates(name) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === name ? 'true' : 'false');
+      });
+    }
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const p = btn.dataset.panel;
+        if (getActivePanel() === p) { closeAll(); syncToggleStates(null); }
+        else { openPanel(p, btn); syncToggleStates(p); }
+      });
+    });
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => { closeAll(); syncToggleStates(null); });
+    });
+  </script>
+
+  <script type="module">
+    const toggle = document.getElementById('annotations-toggle');
+    const list   = document.getElementById('annotations-list');
+    const label  = toggle.querySelector('.toggle-label');
+    toggle.addEventListener('click', () => {
+      const nowExpanded = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(nowExpanded));
+      label.textContent = nowExpanded ? 'Hide Annotations' : 'Show Annotations';
+      if (nowExpanded) list.removeAttribute('hidden');
+      else list.setAttribute('hidden', '');
+    });
+  </script>
+
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.4a';
+    document.getElementById('pt-screen').textContent       = '3';
+    document.getElementById('pt-screen-total').textContent = '5';
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- TEMPLATE: replace with decision-specific description (≤155 chars) -->
+  <meta name="description" content="[DESCRIPTION — one sentence describing what decision the learner must make on this screen]">
+  <!-- TEMPLATE: replace with "Decision Point: Title — Lesson X.X — ARCH Method Practitioner Credential — Proof Point Learning" -->
+  <title>[Decision Point: Title] — Lesson [X.X] — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links — do not modify
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header — banner landmark — do not modify
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">1</span> of <span id="pt-screen-total">4</span></span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary"
+              aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel"
+              aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer"
+              aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory"
+              aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel"
+              aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation — TEMPLATE: set aria-current="page" on
+       the link matching the current module.
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link" aria-current="false">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link" aria-current="false">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link" aria-current="false">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link" aria-current="false">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link" aria-current="false">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content — main landmark
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <!-- =========================================================
+           DECISION POINT WITH BRANCHING TEMPLATE
+           Template type: interactive, branching feedback per option
+           Each option has its own feedback — not correct/incorrect.
+           Decision and rationale are logged to localStorage.
+           Revision is offered before Continue on first submission.
+           After one revision, Continue is the only forward path.
+
+           SCREEN_ID must be set in the screen-specific script below.
+           It is used as the localStorage key for the decision log.
+           ========================================================= -->
+      <article class="decision-point" aria-labelledby="decision-title">
+
+        <header class="decision-point__header">
+          <span class="screen-type-label">Decision Point</span>
+          <!-- TEMPLATE: update lesson label -->
+          <p class="lesson-label" aria-label="Lesson [X.X]">Lesson [X.X]</p>
+          <!-- TEMPLATE: update title — this is the page's h1 -->
+          <h1 id="decision-title" class="decision-point__title">[Decision Point Title]</h1>
+        </header>
+
+        <!-- ---- Scenario ---- -->
+        <section class="decision-scenario" aria-labelledby="scenario-heading">
+          <h2 id="scenario-heading" class="decision-scenario__heading">Scenario</h2>
+
+          <div class="scenario-context" role="note" aria-label="Scenario context">
+            <span class="scenario-label">Scenario:</span>
+            <!-- TEMPLATE: one-sentence MRHN situation framing this decision -->
+            Meridian Regional Health Network — [one-sentence situation framing what the learner must decide]
+          </div>
+
+          <!-- TEMPLATE: 2–4 paragraphs of scenario narrative.
+               Give enough detail for the learner to make a reasoned choice.
+               Reference MRHN stakeholders, constraints, or artifacts as needed.
+               Do not signal a preferred answer in the narrative. -->
+          <div class="scenario-body">
+            <p>[Scenario paragraph 1 — establish context and stakes.]</p>
+            <p>[Scenario paragraph 2 — introduce the specific decision trigger.]</p>
+            <!-- TEMPLATE: optional supporting detail or evidence block -->
+            <!-- <figure class="scenario-evidence" aria-label="[Description]">
+              <blockquote>[Quoted excerpt or data point]</blockquote>
+              <figcaption>[Source within the MRHN scenario]</figcaption>
+            </figure> -->
+          </div>
+
+        </section>
+
+        <!-- ---- Decision form ---- -->
+        <form class="decision-form"
+              id="decision-form"
+              novalidate
+              aria-label="Decision activity">
+
+          <!-- Decision options -->
+          <fieldset class="decision-fieldset" id="decision-fieldset">
+            <!-- TEMPLATE: replace legend with the decision question -->
+            <legend class="decision-fieldset__legend">
+              [Decision question — e.g., "Given this situation, which course architecture choice is most defensible?"]
+            </legend>
+
+            <!-- TEMPLATE: 3–4 decision options.
+                 All options must be plausible — avoid obvious distractors.
+                 Each option must have a corresponding entry in BRANCH_FEEDBACK
+                 in the decision script below. Values must match those keys. -->
+
+            <div class="decision-option">
+              <input type="radio"
+                     id="opt-a"
+                     name="decision-choice"
+                     value="a"
+                     class="decision-input">
+              <label for="opt-a" class="decision-label">
+                <span class="decision-option-marker" aria-hidden="true">A</span>
+                <span class="decision-option-text">[Option A — defensible but not optimal choice]</span>
+              </label>
+            </div>
+
+            <div class="decision-option">
+              <input type="radio"
+                     id="opt-b"
+                     name="decision-choice"
+                     value="b"
+                     class="decision-input">
+              <label for="opt-b" class="decision-label">
+                <span class="decision-option-marker" aria-hidden="true">B</span>
+                <span class="decision-option-text">[Option B — strongest choice given the constraints]</span>
+              </label>
+            </div>
+
+            <div class="decision-option">
+              <input type="radio"
+                     id="opt-c"
+                     name="decision-choice"
+                     value="c"
+                     class="decision-input">
+              <label for="opt-c" class="decision-label">
+                <span class="decision-option-marker" aria-hidden="true">C</span>
+                <span class="decision-option-text">[Option C — common but problematic choice]</span>
+              </label>
+            </div>
+
+            <div class="decision-option">
+              <input type="radio"
+                     id="opt-d"
+                     name="decision-choice"
+                     value="d"
+                     class="decision-input">
+              <label for="opt-d" class="decision-label">
+                <span class="decision-option-marker" aria-hidden="true">D</span>
+                <span class="decision-option-text">[Option D — reasonable but incomplete choice]</span>
+              </label>
+            </div>
+
+          </fieldset>
+
+          <!-- Rationale field.
+               Required on first submission. Logged alongside the decision.
+               Preserved across the Revise cycle so the learner can refine
+               their rationale without retyping from scratch. -->
+          <div class="rationale-field">
+            <label for="decision-rationale" class="rationale-label">
+              Your Rationale
+              <span class="field-required" aria-hidden="true">*</span>
+              <span class="sr-only">(required)</span>
+            </label>
+            <p class="rationale-hint" id="rationale-hint">
+              In 2–3 sentences, explain why you chose this option given the MRHN scenario.
+              Reference a specific constraint or evidence from the scenario.
+            </p>
+            <textarea id="decision-rationale"
+                      name="decision-rationale"
+                      class="rationale-textarea"
+                      rows="5"
+                      aria-describedby="rationale-hint rationale-error"
+                      aria-required="true"
+                      placeholder="I chose this option because..."></textarea>
+            <!-- Validation error — hidden until a submit attempt with empty rationale -->
+            <p id="rationale-error"
+               class="field-error"
+               role="alert"
+               hidden>
+              Please explain your reasoning before submitting.
+            </p>
+          </div>
+
+          <!-- Validation error for no option selected -->
+          <p id="selection-error"
+             class="field-error"
+             role="alert"
+             hidden>
+            Please select one of the options above before submitting.
+          </p>
+
+          <button type="submit"
+                  id="btn-submit"
+                  class="btn btn--primary btn--submit">
+            Submit My Decision
+          </button>
+
+        </form>
+
+        <!-- ---- Branching feedback region ----
+             Hidden until submission. Each option produces distinct feedback.
+             Focus moves to #feedback-heading on reveal.
+             On first submission: Revise + Continue both shown.
+             After revision and resubmit: Continue only.
+             tabindex="-1" on heading enables programmatic focus. -->
+        <section id="feedback-region"
+                 class="feedback-region"
+                 aria-labelledby="feedback-heading"
+                 hidden>
+
+          <div class="feedback-icon" aria-hidden="true">
+            <!-- Populated by script per option tier (strong/adequate/limited) -->
+          </div>
+
+          <div class="feedback-body">
+
+            <!-- Script populates heading with option-specific label:
+                 "Strong choice." | "Adequate choice." | "Consider this." -->
+            <h2 id="feedback-heading"
+                class="feedback-heading"
+                tabindex="-1"></h2>
+
+            <!-- Script populates with option-specific explanation -->
+            <p id="feedback-explanation" class="feedback-explanation"></p>
+
+            <!-- Consequence: what happens in the MRHN scenario if this choice is made.
+                 Script populates from BRANCH_FEEDBACK per option. -->
+            <div class="feedback-consequence" id="feedback-consequence">
+              <h3 class="feedback-consequence__heading">In the MRHN Scenario</h3>
+              <p id="feedback-consequence-body"></p>
+            </div>
+
+            <!-- Decision log confirmation — shown after logging -->
+            <p class="feedback-log-confirm" id="feedback-log-confirm" aria-live="polite"></p>
+
+          </div>
+
+          <div class="feedback-actions">
+
+            <!-- Revise My Decision: re-enables form, preserves previous selection.
+                 Visible on first submission only. Hidden after revision is used
+                 or after learner confirms without revising. -->
+            <button type="button"
+                    id="btn-revise"
+                    class="btn btn--secondary"
+                    hidden>
+              Revise My Decision
+            </button>
+
+            <!-- Continue: navigates to next screen.
+                 Hidden until learner has been offered revision (visible after
+                 first submission alongside Revise, and after revision resubmit).
+                 TEMPLATE: update href to next screen filename. -->
+            <a id="btn-continue"
+               href="[NEXT_SCREEN].html"
+               class="btn btn--primary"
+               hidden>
+              Continue
+            </a>
+
+          </div>
+
+        </section>
+
+        <!-- Screen navigation (previous only — Continue in feedback is the forward path) -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <!-- TEMPLATE: update href to previous screen filename -->
+          <a href="[PREV_SCREEN].html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources — complementary landmark
+       Decision screens especially benefit from artifact + history
+       references so learners can make informed choices.
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <!-- TEMPLATE: list artifacts the learner should consult when making this decision -->
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <!-- TEMPLATE: list prior decisions that constrain or inform this one -->
+    </section>
+  </aside>
+
+  <!-- ============================================================
+       Support Panels — do not modify — managed by panelManager.js
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer — contentinfo landmark — do not modify
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script — do not modify
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    import { getItem, setItem } from './js/storage.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Decision point script — do not modify
+       ============================================================ -->
+  <script type="module">
+    import { setItem } from './js/storage.js';
+
+    /* ---- Screen identity ----
+       SCREEN_ID is injected by the screen-specific script below.
+       It becomes the localStorage key: decision_[SCREEN_ID]. */
+    let SCREEN_ID = null;
+
+    /* ---- Branch feedback map ----
+       TEMPLATE: define in the screen-specific script below, then
+       assign to window.__branchFeedback before this script runs.
+       Structure required:
+       {
+         '[optionValue]': {
+           tier:        'strong' | 'adequate' | 'limited',
+           heading:     string,   // e.g. "Strong choice."
+           explanation: string,   // why this option lands where it does
+           consequence: string    // what happens in the MRHN scenario
+         },
+         ...
+       }
+       Tier controls the feedback icon and heading color class. */
+    let BRANCH_FEEDBACK = null;
+
+    /* SVG icons keyed by tier */
+    const TIER_ICONS = {
+      strong: `<svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="14" stroke="var(--color-success-border)" stroke-width="2"/>
+        <path d="M9 16l5 5 9-9" stroke="var(--color-success-text)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>`,
+      adequate: `<svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="14" stroke="var(--color-warning-border)" stroke-width="2"/>
+        <path d="M16 10v7M16 21v1" stroke="var(--color-warning-text)" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>`,
+      limited: `<svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="14" stroke="var(--color-warning-border)" stroke-width="2"/>
+        <path d="M11 11l10 10M21 11l-10 10" stroke="var(--color-warning-text)" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>`
+    };
+
+    /* DOM references */
+    const form            = document.getElementById('decision-form');
+    const fieldset        = document.getElementById('decision-fieldset');
+    const rationaleField  = document.getElementById('decision-rationale');
+    const rationaleError  = document.getElementById('rationale-error');
+    const selectionError  = document.getElementById('selection-error');
+    const btnSubmit       = document.getElementById('btn-submit');
+    const feedbackRegion  = document.getElementById('feedback-region');
+    const feedbackIcon    = feedbackRegion.querySelector('.feedback-icon');
+    const feedbackHdg     = document.getElementById('feedback-heading');
+    const feedbackExp     = document.getElementById('feedback-explanation');
+    const feedbackConsq   = document.getElementById('feedback-consequence-body');
+    const logConfirm      = document.getElementById('feedback-log-confirm');
+    const btnRevise       = document.getElementById('btn-revise');
+    const btnContinue     = document.getElementById('btn-continue');
+    const announcer       = document.getElementById('sr-announcer');
+
+    /* State */
+    let submissionCount = 0;
+    let lastChoice      = null;
+
+    /* ---- Validate form inputs ---- */
+    function validate() {
+      const chosen    = form.querySelector('[name="decision-choice"]:checked');
+      const rationale = rationaleField.value.trim();
+      let valid = true;
+
+      selectionError.hidden = !!chosen;
+      rationaleError.hidden = !!rationale;
+
+      if (!chosen) {
+        valid = false;
+        selectionError.removeAttribute('hidden');
+      }
+      if (!rationale) {
+        valid = false;
+        rationaleError.removeAttribute('hidden');
+        if (chosen) rationaleField.focus();
+      }
+      if (!chosen) {
+        form.querySelector('.decision-input').focus();
+      }
+      return valid;
+    }
+
+    /* ---- Log decision to localStorage ---- */
+    function logDecision(choice, choiceLabel, rationale, revised) {
+      if (!SCREEN_ID) return;
+      const entry = {
+        screenId:    SCREEN_ID,
+        decision:    choice,
+        decisionLabel: choiceLabel,
+        rationale:   rationale,
+        revised:     revised,
+        timestamp:   new Date().toISOString()
+      };
+      setItem('decision_' + SCREEN_ID, JSON.stringify(entry));
+    }
+
+    /* ---- Show branching feedback ---- */
+    function showFeedback(choice, isRevision) {
+      if (!BRANCH_FEEDBACK) {
+        console.warn('decision-point: BRANCH_FEEDBACK not defined. Set window.__branchFeedback in the screen-specific script.');
+        return;
+      }
+      const branch = BRANCH_FEEDBACK[choice];
+      if (!branch) {
+        console.warn('decision-point: no feedback entry for option "' + choice + '"');
+        return;
+      }
+
+      /* Apply tier class to feedback region */
+      feedbackRegion.className = 'feedback-region feedback-region--' + branch.tier;
+      feedbackIcon.innerHTML   = TIER_ICONS[branch.tier] || '';
+      feedbackHdg.textContent  = branch.heading;
+      feedbackExp.textContent  = branch.explanation;
+      feedbackConsq.textContent = branch.consequence;
+
+      /* Log the decision */
+      const choiceLabel = form.querySelector('[for="opt-' + choice + '"] .decision-option-text')?.textContent?.trim() || choice;
+      logDecision(choice, choiceLabel, rationaleField.value.trim(), isRevision);
+      logConfirm.textContent = 'Your decision has been recorded.';
+
+      /* Show feedback region */
+      feedbackRegion.removeAttribute('hidden');
+
+      /* Revision is offered on first submission only.
+         After revision resubmit, only Continue is shown. */
+      if (submissionCount === 1) {
+        btnRevise.hidden   = false;
+        btnContinue.hidden = false;
+      } else {
+        btnRevise.hidden   = true;
+        btnContinue.hidden = false;
+      }
+
+      /* Move focus to feedback heading — announces result to all AT */
+      feedbackHdg.focus();
+
+      /* Brief status to live region */
+      announcer.textContent = '';
+      requestAnimationFrame(() => {
+        announcer.textContent = branch.heading + ' Feedback available. ' +
+          (submissionCount === 1 ? 'You may revise your decision or continue.' : 'Select Continue to proceed.');
+      });
+    }
+
+    /* ---- Lock form after submission ---- */
+    function lockForm() {
+      fieldset.querySelectorAll('input').forEach(el => el.setAttribute('disabled', ''));
+      rationaleField.setAttribute('disabled', '');
+      btnSubmit.setAttribute('disabled', '');
+    }
+
+    /* ---- Reset form for revision ---- */
+    function enableRevision() {
+      fieldset.querySelectorAll('input').forEach(el => el.removeAttribute('disabled'));
+      rationaleField.removeAttribute('disabled');
+      btnSubmit.removeAttribute('disabled');
+      btnSubmit.textContent = 'Resubmit My Decision';
+      feedbackRegion.setAttribute('hidden', '');
+      feedbackRegion.className = 'feedback-region';
+      logConfirm.textContent = '';
+
+      /* Return focus to first option so keyboard users start at the top of the form */
+      const firstOption = fieldset.querySelector('.decision-input');
+      if (firstOption) firstOption.focus();
+    }
+
+    /* ---- Form submit ---- */
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      /* Clear previous validation errors */
+      selectionError.hidden = true;
+      rationaleError.hidden = true;
+
+      if (!validate()) return;
+
+      submissionCount++;
+      const chosen = form.querySelector('[name="decision-choice"]:checked');
+      lastChoice   = chosen.value;
+
+      lockForm();
+      showFeedback(lastChoice, submissionCount > 1);
+    });
+
+    /* ---- Revise My Decision ---- */
+    btnRevise.addEventListener('click', () => {
+      enableRevision();
+      btnRevise.hidden   = true;
+      btnContinue.hidden = true;
+    });
+
+    /* ---- Expose SCREEN_ID setter for screen-specific script ---- */
+    window.__setDecisionScreenId = id => { SCREEN_ID = id; };
+    window.__setBranchFeedback   = fb => { BRANCH_FEEDBACK = fb; };
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script — TEMPLATE: update all values below
+       ============================================================ -->
+  <script type="module">
+    /* Progress tracker */
+    document.getElementById('pt-module').textContent       = '[X]';
+    document.getElementById('pt-lesson').textContent       = '[X.X]';
+    document.getElementById('pt-phase').textContent        = '[X]';
+    document.getElementById('pt-step').textContent         = '[X]';
+    document.getElementById('pt-screen').textContent       = '[X]';
+    document.getElementById('pt-screen-total').textContent = '[Y]';
+
+    /* Module nav aria-current */
+    document.querySelectorAll('.module-nav-link').forEach(link => link.removeAttribute('aria-current'));
+    const activeLink = document.querySelector('.module-nav-link[href="[MODULE_HREF].html"]');
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+
+    /* TEMPLATE: set a unique ID for this decision screen.
+       Used as the localStorage key: decision_[SCREEN_ID].
+       Convention: module[N]_lesson[N]_decision[N]
+       Example: 'module1_lesson1_decision1' */
+    window.__setDecisionScreenId('[MODULE]_[LESSON]_[DECISION_N]');
+
+    /* TEMPLATE: define branching feedback for each option value.
+       Every option in the fieldset above must have an entry here.
+       Tier values: 'strong' | 'adequate' | 'limited'
+       'strong'   — most defensible given constraints (success token colors)
+       'adequate' — reasonable but incomplete (warning token colors)
+       'limited'  — problematic or commonly misunderstood (warning token colors)
+       No option is "wrong" — every option receives substantive, scenario-specific feedback. */
+    window.__setBranchFeedback({
+      'a': {
+        tier:        'adequate',
+        heading:     'Adequate choice.',
+        explanation: '[Explain what is reasonable about option A and what it misses.]',
+        consequence: '[Describe what would happen in the MRHN scenario if the learner chose option A.]'
+      },
+      'b': {
+        tier:        'strong',
+        heading:     'Strong choice.',
+        explanation: '[Explain why option B is the most defensible given the scenario constraints.]',
+        consequence: '[Describe what would happen in the MRHN scenario if the learner chose option B.]'
+      },
+      'c': {
+        tier:        'limited',
+        heading:     'Consider this.',
+        explanation: '[Explain the appeal of option C and why it creates problems in practice.]',
+        consequence: '[Describe the downstream consequences of option C in the MRHN scenario.]'
+      },
+      'd': {
+        tier:        'adequate',
+        heading:     'Adequate choice.',
+        explanation: '[Explain what option D gets right and where it falls short.]',
+        consequence: '[Describe what would happen in the MRHN scenario if the learner chose option D.]'
+      }
+    });
+  </script>
+
+</body>
+</html>

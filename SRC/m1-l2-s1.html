@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lesson 1.2 introduction: Defining Course Boundaries. Steps 2 and 3 -- Bucket Scope Items into Logical Categories and Evaluate Bucket Balance. Produces the MRHN Bucket Map.">
+  <title>Lesson 1.2: Defining Course Boundaries — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l2-s1 -- Lesson 1.2 Introduction
+       Phase 1, Steps 2 and 3.
+       All color values use CSS tokens. No hard-coded hex values.
+       ================================================================ */
+
+    .lesson-intro-header {
+      margin: 0 0 1.75rem;
+    }
+
+    .module-label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+      margin: 0 0 0.1875rem;
+    }
+
+    .lesson-label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-link);
+      margin: 0 0 0.25rem;
+    }
+
+    .lesson-title {
+      margin: 0 0 0.75rem;
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.15;
+    }
+
+    /* ---- Step badge strip ---- */
+    .step-badge-strip {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0 0 0.875rem;
+    }
+
+    .step-badge-strip__label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+    }
+
+    .step-badge {
+      display: inline-block;
+      padding: 0.25rem 0.625rem;
+      background: var(--color-bg-page);
+      border: 1.5px solid var(--color-text-link);
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-link);
+      white-space: nowrap;
+    }
+
+    /* ---- Lesson meta row (time, screen count) ---- */
+    .lesson-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 3px;
+      padding: 0.1875rem 0.5625rem;
+    }
+
+    .meta-chip svg { flex-shrink: 0; }
+
+    /* ---- Two-step scope note ---- */
+    .two-step-note {
+      display: flex;
+      gap: 0.75rem;
+      padding: 0.875rem 1rem;
+      margin: 0 0 2rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-left: 3px solid var(--color-brand-teal);
+      border-radius: 0 5px 5px 0;
+    }
+
+    .two-step-note__icon {
+      flex-shrink: 0;
+      color: var(--color-brand-teal);
+      margin-top: 0.125rem;
+    }
+
+    .two-step-note__body { min-width: 0; }
+
+    .two-step-note__heading {
+      margin: 0 0 0.25rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .two-step-note__text {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    /* ---- Lesson body sections ---- */
+    .lesson-body {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    .lesson-section {
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .lesson-section__header {
+      padding: 0.625rem 1rem;
+      background: var(--color-bg-subtle);
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .lesson-section__heading {
+      margin: 0;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+    }
+
+    .lesson-section__body {
+      padding: 1rem 1.125rem;
+    }
+
+    .section-text {
+      margin: 0 0 0.875rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    .section-text:last-child { margin-bottom: 0; }
+
+    /* ---- Step task blocks (inside What You Will Do) ---- */
+    .step-block {
+      margin: 0 0 1.375rem;
+      padding: 0 0 1.375rem;
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .step-block:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .step-block__label-row {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      margin: 0 0 0.5rem;
+    }
+
+    .step-block__badge {
+      display: inline-block;
+      padding: 0.1875rem 0.5rem;
+      background: var(--color-bg-page);
+      border: 1.5px solid var(--color-text-link);
+      border-radius: 3px;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--color-text-link);
+      white-space: nowrap;
+    }
+
+    .step-block__title {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .step-block__desc {
+      margin: 0 0 0.625rem;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    .step-task-list {
+      margin: 0;
+      padding-left: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .step-task-list li {
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.55;
+    }
+
+    /* ---- Artifact production card ---- */
+    .artifact-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 1.125rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-left: 3px solid var(--color-brand-navy);
+      border-radius: 0 5px 5px 0;
+    }
+
+    .artifact-card__icon {
+      flex-shrink: 0;
+      color: var(--color-brand-navy);
+      margin-top: 0.25rem;
+    }
+
+    .artifact-card__body { min-width: 0; }
+
+    .artifact-card__name {
+      display: block;
+      margin: 0 0 0.1875rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .artifact-card__filename {
+      display: block;
+      margin: 0 0 0.375rem;
+      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro',
+                   Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+      font-size: 0.875rem;
+      color: var(--color-text-link);
+      font-weight: 600;
+    }
+
+    .artifact-card__desc {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+    }
+
+    .artifact-contents {
+      margin: 0.625rem 0 0;
+      padding-left: 1.125rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .artifact-contents li {
+      font-size: 0.8125rem;
+      color: var(--color-text-primary);
+      line-height: 1.5;
+    }
+
+    /* ---- Connection note (links to prior lesson) ---- */
+    .connection-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.625rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 4px;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+    }
+
+    .connection-note__icon {
+      flex-shrink: 0;
+      color: var(--color-text-secondary);
+      margin-top: 0.125rem;
+    }
+
+    /* High contrast */
+    @media (prefers-contrast: more) {
+      .two-step-note { border-color: var(--color-border-strong); border-left-color: var(--color-border-strong); }
+      .lesson-section { border-color: var(--color-border-strong); }
+      .lesson-section__header { border-bottom-color: var(--color-border-strong); }
+      .step-block { border-bottom-color: var(--color-border-strong); }
+      .artifact-card { border-color: var(--color-border-strong); border-left-color: var(--color-border-strong); }
+      .connection-note { border-color: var(--color-border-strong); }
+      .step-badge, .step-block__badge { border-color: var(--color-border-strong); color: var(--color-text-primary); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.2</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">2</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">1</span> of <span id="pt-screen-total">6</span></span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary"
+              aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel"
+              aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer"
+              aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory"
+              aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel"
+              aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <article aria-labelledby="lesson-title">
+
+        <!-- Lesson header -->
+        <header class="lesson-intro-header">
+
+          <span class="module-label">Module 1 -- Bound the Course</span>
+          <span class="lesson-label">Lesson 1.2</span>
+          <h1 id="lesson-title" class="lesson-title">
+            Defining Course Boundaries
+          </h1>
+
+          <!-- Step badge strip -->
+          <div class="step-badge-strip"
+               role="group"
+               aria-label="Steps covered in this lesson">
+            <span class="step-badge-strip__label">Phase 1 --</span>
+            <span class="step-badge"
+                  aria-label="Step 2: Bucket Scope Items into Logical Categories">
+              Step 2: Bucket Scope Items
+            </span>
+            <span class="step-badge"
+                  aria-label="Step 3: Evaluate Bucket Balance">
+              Step 3: Evaluate Bucket Balance
+            </span>
+          </div>
+
+          <!-- Lesson meta: time and screen count -->
+          <div class="lesson-meta-row" aria-label="Lesson details">
+            <span class="meta-chip"
+                  aria-label="Estimated time: 90 to 110 minutes">
+              <svg aria-hidden="true" focusable="false" width="13" height="13"
+                   viewBox="0 0 13 13" fill="none">
+                <circle cx="6.5" cy="6.5" r="5.75"
+                        stroke="currentColor" stroke-width="1.25"/>
+                <path d="M6.5 3.5v3l2 1.5"
+                      stroke="currentColor" stroke-width="1.25"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              90&ndash;110 min
+            </span>
+            <span class="meta-chip"
+                  aria-label="6 screens in this lesson">
+              <svg aria-hidden="true" focusable="false" width="13" height="13"
+                   viewBox="0 0 13 13" fill="none">
+                <rect x="1" y="1" width="11" height="11" rx="2"
+                      stroke="currentColor" stroke-width="1.25"/>
+                <path d="M4 6.5h5M4 4.5h5M4 8.5h3"
+                      stroke="currentColor" stroke-width="1.25"
+                      stroke-linecap="round"/>
+              </svg>
+              6 screens
+            </span>
+          </div>
+
+        </header>
+
+        <!-- Two-step scope note -->
+        <div class="two-step-note"
+             role="note"
+             aria-label="Two-step lesson note">
+          <svg class="two-step-note__icon"
+               aria-hidden="true"
+               focusable="false"
+               width="18" height="18"
+               viewBox="0 0 18 18"
+               fill="none">
+            <circle cx="9" cy="9" r="8"
+                    stroke="currentColor" stroke-width="1.5"/>
+            <path d="M9 5v4.5M9 11.5v1"
+                  stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round"/>
+          </svg>
+          <div class="two-step-note__body">
+            <p class="two-step-note__heading">This lesson covers two Phase 1 steps.</p>
+            <p class="two-step-note__text">
+              Step 2 (Bucket Scope Items) and Step 3 (Evaluate Bucket Balance) work
+              as a single design cycle: you group scope items into logical categories,
+              then immediately evaluate whether the groupings hold up against the
+              constraint set. Screens 2 through 4 cover Step 2; Screens 5 and 6
+              cover Step 3 and the lesson reflection.
+            </p>
+          </div>
+        </div>
+
+        <!-- Lesson body -->
+        <div class="lesson-body">
+
+          <!-- Purpose -->
+          <section class="lesson-section"
+                   aria-labelledby="purpose-heading">
+            <div class="lesson-section__header">
+              <h2 id="purpose-heading" class="lesson-section__heading">
+                Purpose
+              </h2>
+            </div>
+            <div class="lesson-section__body">
+              <p class="section-text">
+                Lesson 1.1b produced the MRHN constraint set and established the
+                documentation conventions that govern all downstream artifacts.
+                Lesson 1.2 takes the next step: converting the 16 declared scope
+                items (SI-01 through SI-16) into the structured, bounded categories
+                that will become the organizational skeleton of the course.
+              </p>
+              <p class="section-text">
+                This is where the Bucket Map gets its name. A bucket is a named
+                logical category that groups related scope items. The Bucket Map
+                records which scope items belong to which bucket, why they belong
+                there, and whether the resulting groupings are balanced enough to
+                support a coherent, constraint-compliant architecture.
+              </p>
+              <p class="section-text">
+                Bucketing is not content organization in the familiar sense --
+                it is a structural decision that determines how the course will
+                hold together through decomposition, sequencing, and stress-testing
+                in Modules 2 and 3. Buckets built on weak rationale will produce
+                architecture that fails the balance check. Buckets built on
+                constraint logic will survive all the way to Structural Freeze.
+              </p>
+            </div>
+          </section>
+
+          <!-- Connection to prior lesson -->
+          <div class="connection-note"
+               role="note"
+               aria-label="Connection to Lesson 1.1b">
+            <svg class="connection-note__icon"
+                 aria-hidden="true"
+                 focusable="false"
+                 width="16" height="16"
+                 viewBox="0 0 16 16"
+                 fill="none">
+              <path d="M8 3v10M5 6l3-3 3 3"
+                    stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>
+              <strong>Carrying forward from Lesson 1.1b:</strong> The constraint map
+              (PC-1 through SC-2) and scope items (SI-01 through SI-16) from Steps 1
+              and 1.5 are the inputs to this lesson. The documentation conventions --
+              including SI identifiers and the five-field governance rule -- govern
+              every decision recorded here.
+            </span>
+          </div>
+
+          <!-- What You Will Do -->
+          <section class="lesson-section"
+                   aria-labelledby="todo-heading">
+            <div class="lesson-section__header">
+              <h2 id="todo-heading" class="lesson-section__heading">
+                What You Will Do
+              </h2>
+            </div>
+            <div class="lesson-section__body">
+
+              <div class="step-block">
+                <div class="step-block__label-row">
+                  <span class="step-block__badge"
+                        aria-label="Step 2">Step 2</span>
+                  <span class="step-block__title">
+                    Bucket Scope Items into Logical Categories
+                  </span>
+                </div>
+                <p class="step-block__desc">
+                  Review all 16 MRHN scope items and group them into named
+                  logical categories. Buckets are defined by procedural
+                  sequence, content type, or shared performance context --
+                  not by topic alone. Every scope item belongs to exactly
+                  one bucket.
+                </p>
+                <ul class="step-task-list">
+                  <li>Read all 16 scope items as a set before assigning any to a bucket</li>
+                  <li>Identify natural groupings based on when and how each item
+                      appears in an incident response workflow</li>
+                  <li>Name each bucket with a precise label that reflects its
+                      functional role, not just its subject area</li>
+                  <li>Assign every SI-XX identifier to exactly one bucket
+                      with a written rationale</li>
+                  <li>Record each bucketing decision using the five-field
+                      governance rule established in Step 1.5</li>
+                </ul>
+              </div>
+
+              <div class="step-block">
+                <div class="step-block__label-row">
+                  <span class="step-block__badge"
+                        aria-label="Step 3">Step 3</span>
+                  <span class="step-block__title">
+                    Evaluate Bucket Balance
+                  </span>
+                </div>
+                <p class="step-block__desc">
+                  With scope items assigned, evaluate whether the resulting
+                  buckets are appropriately balanced. Balance means each
+                  bucket is achievable within the project constraints and
+                  is sized appropriately relative to the others. Imbalanced
+                  buckets require documented adjustment.
+                </p>
+                <ul class="step-task-list">
+                  <li>Check each bucket against the binding constraint set --
+                      can this bucket be taught within the SME access cap,
+                      timeline, and delivery format?</li>
+                  <li>Flag overloaded buckets: too many scope items, or
+                      content complexity that exceeds constraint tolerance</li>
+                  <li>Flag thin buckets: items too sparse or too narrow
+                      to justify a standalone category</li>
+                  <li>Evaluate whether bucket sequence reflects instructional
+                      prerequisite logic, not just content grouping</li>
+                  <li>Document any re-bucketing decisions with constraint
+                      references and governance checkpoint linkage</li>
+                </ul>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- What You Will Produce -->
+          <section class="lesson-section"
+                   aria-labelledby="produce-heading">
+            <div class="lesson-section__header">
+              <h2 id="produce-heading" class="lesson-section__heading">
+                What You Will Produce
+              </h2>
+            </div>
+            <div class="lesson-section__body">
+              <div class="artifact-card"
+                   role="region"
+                   aria-label="Primary artifact: MRHN Bucket Map">
+                <svg class="artifact-card__icon"
+                     aria-hidden="true"
+                     focusable="false"
+                     width="22" height="22"
+                     viewBox="0 0 22 22"
+                     fill="none">
+                  <rect x="2" y="3" width="18" height="16" rx="2"
+                        stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M2 7h18"
+                        stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M7 7v12M15 7v12"
+                        stroke="currentColor" stroke-width="1.25"
+                        stroke-dasharray="2 2"/>
+                  <path d="M6 11h3M6 14.5h3M12 11h4M12 14.5h4"
+                        stroke="currentColor" stroke-width="1.25"
+                        stroke-linecap="round"/>
+                </svg>
+                <div class="artifact-card__body">
+                  <span class="artifact-card__name">
+                    Bucket Map and Scope Organization Package
+                  </span>
+                  <code class="artifact-card__filename"
+                        aria-label="Filename: MRHN underscore BucketMap underscore v1 underscore Date">
+                    MRHN_BucketMap_v1_[Date]
+                  </code>
+                  <p class="artifact-card__desc">
+                    The Bucket Map is the first major architecture artifact of the
+                    ARCH Method. It organizes the 16 declared scope items into
+                    named, bounded categories and records the balance evaluation
+                    that confirms the groupings are constraint-compliant.
+                  </p>
+                  <ul class="artifact-contents">
+                    <li>All 16 scope items (SI-01 through SI-16) assigned to named buckets</li>
+                    <li>Bucket rationale for each grouping decision</li>
+                    <li>Balance evaluation notes for every bucket</li>
+                    <li>Governance decision records for any adjustment decisions</li>
+                    <li>Bucket sequence with prerequisite logic documented</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /.lesson-body -->
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l1b-s6.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen: Lesson 1.1b reflection">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="m1-l2-s2.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen: Step 2 worked example">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+
+    <section id="artifact-reference"
+             tabindex="-1"
+             aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">
+        This lesson produces MRHN_BucketMap_v1. The Bucket Map artifact
+        is completed in Screen 4.
+      </p>
+    </section>
+
+    <section id="decision-history"
+             tabindex="-1"
+             aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">
+        Bucketing and balance decisions will be recorded using the
+        five-field governance rule from Step 1.5.
+      </p>
+    </section>
+
+  </aside>
+
+  <!-- ============================================================
+       Support Panels
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12"
+                placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded',
+          btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script
+       ============================================================ -->
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.2';
+    document.getElementById('pt-phase').textContent        = '1';
+    document.getElementById('pt-step').textContent         = '2';
+    document.getElementById('pt-screen').textContent       = '1';
+    document.getElementById('pt-screen-total').textContent = '6';
+
+    document.querySelectorAll('.module-nav-link').forEach(link => {
+      link.removeAttribute('aria-current');
+    });
+    const activeLink = document.querySelector(
+      '.module-nav-link[href="module-1.html"]'
+    );
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+  </script>
+
+</body>
+</html>

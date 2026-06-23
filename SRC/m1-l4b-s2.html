@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Worked example: an expert applies unit optimization criteria to three DC components from MRHN_DecompositionMap_v1 -- one split, one merged, one confirmed correct -- and produces governance record MRHN-D-007.">
+  <title>Worked Example: Unit Optimization -- Lesson 1.4b -- ARCH Method Practitioner Credential -- Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l4b-s2 -- Worked Example: Step 7 Unit Optimization
+       Phase 2, Step 7. All color values use CSS tokens only.
+       ================================================================ */
+
+    .worked-example__meta { display: flex; align-items: center; gap: 0.75rem; margin: 0 0 0.25rem; flex-wrap: wrap; }
+    .screen-type-label { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-secondary); }
+    .time-estimate { font-size: 0.75rem; color: var(--color-text-secondary); background: var(--color-bg-subtle); border: 1px solid var(--color-border-default); border-radius: 3px; padding: 0.125rem 0.5rem; }
+    .lesson-label { display: block; margin: 0 0 0.25rem; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-link); }
+
+    .worked-example__title { margin: 0 0 0.5rem; font-size: 1.5rem; font-weight: 800; color: var(--color-text-primary); line-height: 1.2; }
+    .step-badge { display: inline-block; margin: 0 0 0.875rem; padding: 0.25rem 0.625rem; background: var(--color-bg-page); border: 1.5px solid var(--color-text-link); border-radius: 3px; font-size: 0.75rem; font-weight: 600; color: var(--color-text-link); }
+
+    .scenario-context { display: flex; align-items: baseline; gap: 0.375rem; padding: 0.625rem 0.875rem; background: var(--color-bg-subtle); border-left: 3px solid var(--color-border-strong); border-radius: 0 4px 4px 0; font-size: 0.875rem; color: var(--color-text-primary); margin: 0 0 1.5rem; line-height: 1.65; }
+    .scenario-label { font-weight: 700; color: var(--color-text-secondary); flex-shrink: 0; }
+
+    /* ---- Two-column layout ---- */
+    .worked-example__layout { display: grid; grid-template-columns: 1fr 20rem; gap: 2rem; align-items: start; }
+    @media (max-width: 900px) { .worked-example__layout { grid-template-columns: 1fr; } }
+
+    .worked-example__content { display: flex; flex-direction: column; gap: 2.25rem; }
+
+    .example-step { display: grid; grid-template-columns: 2.75rem 1fr; gap: 0 1rem; }
+    .step-marker { display: flex; align-items: flex-start; justify-content: center; padding-top: 0.125rem; }
+    .step-marker span { display: flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: var(--color-text-link); color: var(--color-text-inverse); font-size: 0.8125rem; font-weight: 700; flex-shrink: 0; }
+    .step-body { min-width: 0; }
+    .step-heading { margin: 0.25rem 0 0.625rem; font-size: 1.0625rem; font-weight: 700; color: var(--color-text-primary); line-height: 1.3; }
+    .step-content { margin: 0 0 0.875rem; font-size: 0.9375rem; color: var(--color-text-primary); line-height: 1.7; }
+    .step-content:last-child { margin-bottom: 0; }
+    .step-content strong { font-weight: 700; }
+
+    /* ---- Optimization criteria cards ---- */
+    .criteria-cards { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; margin: 0 0 0.875rem; }
+    .criteria-card { display: grid; grid-template-columns: 6rem 1fr; }
+    .criteria-card + .criteria-card { border-top: 1px solid var(--color-border-default); }
+    .criteria-card__key { padding: 0.625rem 0.75rem; background: var(--color-bg-subtle); border-right: 1px solid var(--color-border-default); }
+    .criteria-card__key-label { display: block; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-secondary); margin-bottom: 0.2rem; }
+    .criteria-card__key-q { font-size: 0.8125rem; font-style: italic; color: var(--color-text-primary); line-height: 1.45; }
+    .criteria-card__val { padding: 0.625rem 0.875rem; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; background: var(--color-bg-page); }
+    .criteria-card__val strong { font-weight: 700; }
+
+    /* ---- Component cards ---- */
+    .component-card { border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; margin: 0 0 1rem; }
+    .component-card--split { border-top: 3px solid var(--color-error-border); }
+    .component-card--merge { border-top: 3px solid var(--color-warning-border); }
+    .component-card--pass  { border-top: 3px solid var(--color-success-border); }
+
+    .component-card__header { display: flex; align-items: center; gap: 0.625rem; padding: 0.5rem 0.875rem; background: var(--color-brand-navy); color: var(--color-text-inverse); }
+    .component-id { font-family: monospace; font-size: 0.875rem; font-weight: 700; }
+    .component-parent { font-size: 0.75rem; opacity: 0.75; }
+    .component-verdict { margin-left: auto; font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.125rem 0.4375rem; border-radius: 10px; white-space: nowrap; }
+    .component-verdict--split { background: var(--color-error-bg); color: var(--color-error-text); border: 1px solid var(--color-error-border); }
+    .component-verdict--merge { background: var(--color-warning-bg); color: var(--color-warning-text); border: 1px solid var(--color-warning-border); }
+    .component-verdict--pass  { background: var(--color-success-bg); color: var(--color-success-text); border: 1px solid var(--color-success-border); }
+
+    .component-card__body { padding: 0.875rem; background: var(--color-bg-page); }
+
+    .component-field { margin: 0 0 0.625rem; }
+    .component-field:last-child { margin-bottom: 0; }
+    .component-field__label { display: block; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-secondary); margin-bottom: 0.25rem; }
+    .component-field__value { font-size: 0.9375rem; color: var(--color-text-primary); line-height: 1.6; margin: 0; }
+    .component-field__value--mono { font-family: monospace; font-size: 0.875rem; }
+    .component-field__value--italic { font-style: italic; }
+    .component-field__value--strike { text-decoration: line-through; text-decoration-color: var(--color-error-text); color: var(--color-text-secondary); }
+
+    /* ---- Test results grid ---- */
+    .opt-test-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin: 0 0 0.75rem; }
+    @media (max-width: 480px) { .opt-test-grid { grid-template-columns: 1fr; } }
+
+    .opt-test-cell { padding: 0.5rem 0.625rem; border: 1px solid var(--color-border-default); border-radius: 4px; background: var(--color-bg-subtle); }
+    .opt-test-cell__q { font-size: 0.75rem; font-weight: 700; color: var(--color-text-secondary); margin: 0 0 0.25rem; }
+    .opt-test-cell__result { font-size: 0.8125rem; color: var(--color-text-primary); line-height: 1.55; margin: 0; }
+
+    /* ---- Resolution block ---- */
+    .resolution-block { border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; margin: 0 0 0.875rem; }
+    .resolution-block__header { padding: 0.4375rem 0.875rem; background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border-default); }
+    .resolution-block__label { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-secondary); }
+    .resolution-block__body { padding: 0.875rem; background: var(--color-bg-page); display: flex; flex-direction: column; gap: 0.875rem; }
+
+    .resolved-component { border: 1px solid var(--color-success-border); border-radius: 4px; overflow: hidden; }
+    .resolved-component__id-row { display: flex; align-items: center; gap: 0.5rem; padding: 0.375rem 0.625rem; background: var(--color-success-bg); border-bottom: 1px solid var(--color-success-border); }
+    .resolved-component__id { font-family: monospace; font-size: 0.8125rem; font-weight: 700; color: var(--color-success-text); }
+    .resolved-component__parent { font-size: 0.75rem; color: var(--color-success-text); opacity: 0.8; }
+    .resolved-component__desc { padding: 0.5rem 0.625rem; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.6; margin: 0; font-style: italic; }
+
+    .merge-arrow { display: flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0; }
+    .merge-arrow__line { flex: 1; height: 1px; background: var(--color-border-default); }
+    .merge-arrow__label { font-size: 0.6875rem; font-weight: 700; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
+
+    .merge-source { border: 1px solid var(--color-border-default); border-radius: 4px; overflow: hidden; margin-bottom: 0.25rem; }
+    .merge-source__id-row { display: flex; align-items: center; gap: 0.5rem; padding: 0.3125rem 0.625rem; background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border-default); }
+    .merge-source__id { font-family: monospace; font-size: 0.8125rem; font-weight: 700; color: var(--color-text-secondary); }
+    .merge-source__status { font-size: 0.6875rem; font-weight: 700; color: var(--color-error-text); margin-left: auto; text-transform: uppercase; }
+    .merge-source__desc { padding: 0.4375rem 0.625rem; font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.5; margin: 0; font-style: italic; text-decoration: line-through; text-decoration-color: var(--color-error-border); }
+
+    /* ---- Pass-through confirmation ---- */
+    .pass-confirmation { padding: 0.75rem 0.875rem; background: var(--color-success-bg); border: 1px solid var(--color-success-border); border-radius: 5px; margin: 0 0 0.875rem; }
+    .pass-confirmation__label { display: block; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-success-text); margin-bottom: 0.375rem; }
+    .pass-confirmation__text { margin: 0; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; }
+    .pass-confirmation__text strong { font-weight: 700; }
+
+    /* ---- Optimization summary table ---- */
+    .opt-summary-wrap { border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; margin: 0 0 0.875rem; }
+    .opt-summary-table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
+    .opt-summary-table thead th { padding: 0.375rem 0.625rem; background: var(--color-brand-navy); color: var(--color-text-inverse); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; text-align: left; }
+    .opt-summary-table tbody td { padding: 0.4375rem 0.625rem; border-bottom: 1px solid var(--color-border-default); vertical-align: middle; line-height: 1.5; }
+    .opt-summary-table tbody tr:last-child td { border-bottom: none; }
+    .opt-summary-table tbody tr:nth-child(even) td { background: var(--color-bg-subtle); }
+    .dc-ref { font-family: monospace; font-weight: 700; color: var(--color-text-primary); }
+
+    /* ---- Validation chips ---- */
+    .val-chip { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.6875rem; font-weight: 700; padding: 0.1875rem 0.4375rem; border-radius: 3px; white-space: nowrap; }
+    .val-chip--pass { background: var(--color-success-bg); color: var(--color-success-text); border: 1px solid var(--color-success-border); }
+    .val-chip--fail { background: var(--color-error-bg); color: var(--color-error-text); border: 1px solid var(--color-error-border); }
+    .val-chip--split { background: var(--color-error-bg); color: var(--color-error-text); border: 1px solid var(--color-error-border); }
+    .val-chip--merge { background: var(--color-warning-bg); color: var(--color-warning-text); border: 1px solid var(--color-warning-border); }
+    .val-chip--resolved { background: var(--color-bg-subtle); color: var(--color-text-link); border: 1px solid var(--color-text-link); }
+    .val-chip--note { background: var(--color-warning-bg); color: var(--color-warning-text); border: 1px solid var(--color-warning-border); }
+
+    .validation-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.625rem; padding-top: 0.625rem; border-top: 1px solid var(--color-border-default); }
+
+    /* ---- Artifact block ---- */
+    .artifact-block { border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; margin: 0 0 0.875rem; }
+    .artifact-block__header { display: flex; align-items: center; gap: 0.625rem; padding: 0.5625rem 0.875rem; background: var(--color-brand-navy); color: var(--color-text-inverse); }
+    .artifact-id { font-family: monospace; font-size: 0.875rem; font-weight: 700; }
+    .artifact-version { font-size: 0.75rem; opacity: 0.7; margin-left: auto; }
+    .artifact-section { padding: 0.875rem; border-bottom: 1px solid var(--color-border-default); background: var(--color-bg-page); }
+    .artifact-section:last-child { border-bottom: none; }
+    .artifact-section-label { display: block; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-secondary); margin-bottom: 0.5rem; }
+
+    /* ---- Governance record ---- */
+    .gov-record { border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; margin: 0 0 0.875rem; }
+    .gov-record__header { display: flex; align-items: center; gap: 0.625rem; padding: 0.5rem 0.875rem; background: var(--color-brand-navy); color: var(--color-text-inverse); }
+    .gov-record__id { font-family: monospace; font-size: 0.875rem; font-weight: 700; }
+    .gov-record__title { font-size: 0.9375rem; font-weight: 700; }
+    .gov-record__row { display: grid; grid-template-columns: 9.5rem 1fr; border-bottom: 1px solid var(--color-border-default); }
+    .gov-record__row:last-child { border-bottom: none; }
+    @media (max-width: 480px) { .gov-record__row { grid-template-columns: 1fr; } }
+    .gov-record__key { padding: 0.5rem 0.875rem; background: var(--color-bg-subtle); font-size: 0.75rem; font-weight: 700; color: var(--color-text-secondary); border-right: 1px solid var(--color-border-default); line-height: 1.5; }
+    @media (max-width: 480px) { .gov-record__key { border-right: none; border-bottom: 1px solid var(--color-border-default); } }
+    .gov-record__val { padding: 0.5rem 0.875rem; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; background: var(--color-bg-page); }
+    .gov-record__val strong { font-weight: 700; }
+    .gov-record__val ul { margin: 0.25rem 0 0; padding-left: 1.25rem; font-size: 0.875rem; line-height: 1.6; }
+    .gov-record__val ul li { margin-bottom: 0.25rem; }
+
+    /* ---- Think-aloud column ---- */
+    .worked-example__think-aloud { position: sticky; top: 1.5rem; background: var(--color-bg-subtle); border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; }
+    @media (max-width: 900px) { .worked-example__think-aloud { position: static; } }
+    .think-aloud__header { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-border-default); background: var(--color-bg-page); }
+    .think-aloud__heading { margin: 0; font-size: 0.875rem; font-weight: 700; color: var(--color-text-primary); }
+    .think-aloud__list { padding: 0.875rem 1rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .annotation-item { display: grid; grid-template-columns: 1.625rem 1fr; gap: 0 0.625rem; align-items: start; }
+    .annotation-marker { display: flex; align-items: center; justify-content: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; border: 1.5px solid var(--color-border-strong); font-size: 0.6875rem; font-weight: 700; color: var(--color-text-secondary); flex-shrink: 0; margin-top: 0.0625rem; }
+    .annotation-text { margin: 0; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; }
+    .btn--toggle { font-size: 0.75rem; padding: 0.25rem 0.625rem; border: 1px solid var(--color-border-default); border-radius: 4px; background: var(--color-bg-page); color: var(--color-text-secondary); cursor: pointer; white-space: nowrap; }
+    .btn--toggle:hover { background: var(--color-bg-subtle); color: var(--color-text-primary); }
+    .btn--toggle:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+
+    @media (prefers-contrast: more) {
+      .criteria-cards, .component-card, .resolution-block, .pass-confirmation,
+      .opt-summary-wrap, .artifact-block, .gov-record { border-color: var(--color-border-strong); }
+      .criteria-card + .criteria-card { border-top-color: var(--color-border-strong); }
+      .criteria-card__key { border-right-color: var(--color-border-strong); }
+      .gov-record__row { border-bottom-color: var(--color-border-strong); }
+      .gov-record__key { border-right-color: var(--color-border-strong); }
+      .worked-example__think-aloud { border-color: var(--color-border-strong); }
+      .opt-test-cell { border-color: var(--color-border-strong); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <header role="banner">
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+    <div id="progress-tracker" role="group" aria-label="Course progress" tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.4b</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">2</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">7</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">2</span> of <span id="pt-screen-total">6</span></span>
+    </div>
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel" aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer" aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory" aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel" aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+  </header>
+
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item"><a href="intro-0.1.html" class="module-nav-link">Introduction</a></li>
+      <li class="module-nav-item"><a href="module-1.html" class="module-nav-link" aria-current="page">Module 1: Bound the Course</a></li>
+      <li class="module-nav-item"><a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a></li>
+      <li class="module-nav-item"><a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a></li>
+      <li class="module-nav-item"><a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a></li>
+    </ol>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <section id="current-activity" tabindex="-1" aria-label="Current activity">
+      <article class="worked-example" aria-labelledby="example-title">
+
+        <header class="worked-example__header">
+          <div class="worked-example__meta">
+            <span class="screen-type-label">Worked Example</span>
+            <span class="time-estimate" aria-label="Estimated reading time: 20 to 25 minutes">20&ndash;25 min</span>
+          </div>
+          <p class="lesson-label">Lesson 1.4b</p>
+          <h1 id="example-title" class="worked-example__title">
+            Unit Optimization: Testing Whether Each DC Component Is the Right Size
+          </h1>
+          <span class="step-badge">Phase 2 -- Step 7</span>
+          <div class="scenario-context" role="note" aria-label="Scenario context">
+            <span class="scenario-label">Scenario:</span>
+            Meridian Regional Health Network. MRHN_DecompositionMap_v1 (DC-01 through
+            DC-48) is the input. An expert applies the two-question optimization test
+            to selected components, splits one component that bundles two distinct
+            assessment demands, merges one component that cannot be assessed
+            independently, and confirms one component that is correctly granular.
+            Produces governance record MRHN-D-007.
+          </div>
+        </header>
+
+        <div class="worked-example__layout">
+
+          <!-- ==================================================
+               Left column
+               ================================================== -->
+          <div class="worked-example__content">
+
+            <!-- Step 01 -->
+            <div class="example-step" id="step-1">
+              <div class="step-marker" aria-label="Step 1"><span aria-hidden="true">01</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">The Optimization Criteria -- Two Questions Every Component Must Answer</h2>
+                <p class="step-content">
+                  Unit optimization is not a judgment about whether a component is
+                  important. It is a structural check: is this component the right
+                  unit for independent instruction and assessment? A component that
+                  covers too much cannot be assessed cleanly -- the assessment item
+                  would be measuring two or three distinct things at once. A component
+                  that covers too little has no instructional value on its own -- it
+                  is a sub-behavior that only makes sense embedded inside a larger skill.
+                </p>
+                <p class="step-content">
+                  Every DC component in MRHN_DecompositionMap_v1 must pass both questions
+                  before the map advances to Step 8. A fail on either question triggers
+                  a split (if too large) or a merge (if too small). The test does not
+                  require consulting the calibration annotations -- but any optimization
+                  decision that affects a component with a calibration constraint must
+                  preserve that constraint in the resulting component or components.
+                </p>
+
+                <div class="criteria-cards" role="region" aria-label="Two unit optimization test questions">
+                  <div class="criteria-card">
+                    <div class="criteria-card__key">
+                      <span class="criteria-card__key-label">Question 1</span>
+                      <span class="criteria-card__key-q">Can this be taught as one instructional unit?</span>
+                    </div>
+                    <div class="criteria-card__val">
+                      <strong>Teachability:</strong> a single instructional unit addresses one skill
+                      or one cluster of tightly coupled sub-behaviors that have no meaning in
+                      isolation. If a component requires a learner to perform two distinct cognitive
+                      operations that could each be the subject of a standalone learning activity,
+                      the component is too large. The signal: a designer building instruction for
+                      this component would have to choose between two different activity types
+                      because the component spans two different kinds of performance.
+                    </div>
+                  </div>
+                  <div class="criteria-card">
+                    <div class="criteria-card__key">
+                      <span class="criteria-card__key-label">Question 2</span>
+                      <span class="criteria-card__key-q">Can this be assessed by one well-formed item?</span>
+                    </div>
+                    <div class="criteria-card__val">
+                      <strong>Assessability:</strong> a well-formed assessment item tests one
+                      competency claim. If writing an item for this component produces a compound
+                      question ("can the learner do X and Y"), the component is too large and
+                      must be split. Conversely, if the only plausible item would be testing a
+                      lookup behavior ("can the learner find the document that lists X"), the
+                      component is too small -- that behavior is embedded in whatever skill uses
+                      the document, not a learnable competency in its own right.
+                    </div>
+                  </div>
+                </div>
+
+                <p class="step-content">
+                  I will work through three representative cases from MRHN_DecompositionMap_v1:
+                  one component that fails by being too large, one that fails by being too
+                  small, and one that passes both questions and should not be changed.
+                  The same logic applies to the remaining 45 components not shown here --
+                  Step 7 requires running both questions against every component in the map.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 02 -->
+            <div class="example-step" id="step-2">
+              <div class="step-marker" aria-label="Step 2"><span aria-hidden="true">02</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Case 1: DC-18 Must Be Split -- Two Distinct Assessment Demands</h2>
+                <p class="step-content">
+                  DC-18 comes from Bucket 2, parent scope item SI-09 (Evaluate MRHN clinical
+                  system interdependencies for network segmentation risk). SI-09 carries a
+                  domain authenticity annotation from Step 4: network segmentation at MRHN
+                  must account for EHR, imaging, and billing system relationships -- the
+                  Analysis-level demand comes from having to evaluate those relationships
+                  before applying any segmentation procedure, not just from knowing the
+                  procedure itself. I need to check whether DC-18 as written preserves
+                  that analytical demand in a single assessable unit.
+                </p>
+
+                <!-- DC-18 as written -->
+                <div class="component-card component-card--split" role="region" aria-label="DC-18 component as written in version 1">
+                  <div class="component-card__header">
+                    <span class="component-id">DC-18</span>
+                    <span class="component-parent">Parent: SI-09 &bull; Bucket 2 &bull; Analysis level</span>
+                    <span class="component-verdict component-verdict--split">Split Required</span>
+                  </div>
+                  <div class="component-card__body">
+                    <div class="component-field">
+                      <span class="component-field__label">Component Description (v1)</span>
+                      <p class="component-field__value component-field__value--italic">
+                        "Evaluate clinical system interdependency relationships at active MRHN
+                        facilities to identify network segmentation risks to patient care systems,
+                        and document the containment decision rationale with reference to identified
+                        interdependencies and PC-3 authority boundaries."
+                      </p>
+                    </div>
+
+                    <div class="opt-test-grid" role="group" aria-label="Optimization test results for DC-18">
+                      <div class="opt-test-cell">
+                        <p class="opt-test-cell__q">Q1: Can this be taught as one instructional unit?</p>
+                        <p class="opt-test-cell__result"><strong>Fail.</strong> The component spans two different activity types: a clinical system analysis activity (evaluate interdependency relationships) and a documentation activity (document decision rationale). A designer building instruction for DC-18 would have to choose between a scenario-based analysis task and a structured documentation exercise -- because the component requires both.</p>
+                      </div>
+                      <div class="opt-test-cell">
+                        <p class="opt-test-cell__q">Q2: Can this be assessed by one well-formed item?</p>
+                        <p class="opt-test-cell__result"><strong>Fail.</strong> A single assessment item would have to ask "can the learner both evaluate interdependency risks AND produce a documented rationale?" -- a compound question measuring two competency claims. A learner could correctly analyze the interdependencies and then produce a non-compliant rationale document, or vice versa. These are separately assessable.</p>
+                      </div>
+                    </div>
+
+                    <div class="validation-row" aria-label="DC-18 optimization result">
+                      <span class="val-chip val-chip--split">Q1: Fails -- two activity types</span>
+                      <span class="val-chip val-chip--split">Q2: Fails -- compound assessment</span>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="step-content">
+                  DC-18 bundles an analytical competency (evaluate interdependency relationships
+                  to identify segmentation risk) with a documentation competency (produce a
+                  rationale record). These are different cognitive operations: the first is
+                  Analysis-level evaluation of a complex system relationship; the second is
+                  Application-level structured documentation. Combining them means the calibration
+                  annotation from Step 4 -- which governs the Analysis-level evaluation -- is
+                  diluted by a lower-level documentation task. The split is required both for
+                  instructional coherence and to preserve the SI-09 calibration constraint
+                  in its correct component.
+                </p>
+
+                <!-- Resolution: DC-18a and DC-18b -->
+                <div class="resolution-block" role="region" aria-label="DC-18 split resolution">
+                  <div class="resolution-block__header">
+                    <span class="resolution-block__label">Resolution: DC-18 Split into DC-18a and DC-18b</span>
+                  </div>
+                  <div class="resolution-block__body">
+
+                    <div class="resolved-component">
+                      <div class="resolved-component__id-row">
+                        <span class="resolved-component__id">DC-18a</span>
+                        <span class="resolved-component__parent">Parent: SI-09 &bull; Analysis level &bull; Calibration annotation applies</span>
+                      </div>
+                      <p class="resolved-component__desc">
+                        Evaluate clinical system interdependency relationships (EHR, imaging,
+                        and billing systems) at the affected MRHN facility to identify patient
+                        care system exposure risks before applying network segmentation procedures.
+                      </p>
+                    </div>
+
+                    <div class="resolved-component">
+                      <div class="resolved-component__id-row">
+                        <span class="resolved-component__id">DC-18b</span>
+                        <span class="resolved-component__parent">Parent: SI-09 &bull; Application level &bull; PC-3 authority constraint applies</span>
+                      </div>
+                      <p class="resolved-component__desc">
+                        Document the network segmentation containment decision with reference to
+                        identified clinical system interdependencies, the rationale for scope of
+                        isolation applied, and the PC-3 authority boundary governing the decision.
+                      </p>
+                    </div>
+
+                  </div>
+                </div>
+
+                <p class="step-content">
+                  After the split: DC-18a carries the Analysis-level calibration constraint
+                  from SI-09 (the clinical system interdependency evaluation is the
+                  authenticity-critical skill). DC-18b is Application level -- producing
+                  a compliant documentation record -- and references PC-3 authority
+                  explicitly. The split adds one component to the map (48 becomes 49
+                  at this point); the merge in Case 2 restores the count to 48.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 03 -->
+            <div class="example-step" id="step-3">
+              <div class="step-marker" aria-label="Step 3"><span aria-hidden="true">03</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Case 2: DC-07 Must Be Merged -- Not Independently Assessable</h2>
+                <p class="step-content">
+                  DC-07 comes from Bucket 1, parent scope item SI-01 (Incident classification
+                  using the MRHN severity rubric). SI-01 sits at Application level in the
+                  calibrated scope map -- the skill is applying the rubric to classify a
+                  potential incident, not describing what the rubric contains. I look at
+                  DC-07 and DC-08 together because they were decomposed from the same scope
+                  item and the test applies to whether each component is independently
+                  assessable.
+                </p>
+
+                <!-- DC-07 and DC-08 as written -->
+                <div class="component-card component-card--merge" role="region" aria-label="DC-07 and DC-08 components as written">
+                  <div class="component-card__header">
+                    <span class="component-id">DC-07 and DC-08</span>
+                    <span class="component-parent">Parent: SI-01 &bull; Bucket 1 &bull; Application level</span>
+                    <span class="component-verdict component-verdict--merge">Merge Required</span>
+                  </div>
+                  <div class="component-card__body">
+
+                    <div class="component-field">
+                      <span class="component-field__label">DC-07 (v1 description)</span>
+                      <p class="component-field__value component-field__value--italic">
+                        "Locate the MRHN incident severity rubric within the IR-2024 protocol
+                        documentation and identify the four severity classification criteria."
+                      </p>
+                    </div>
+
+                    <div class="component-field">
+                      <span class="component-field__label">DC-08 (v1 description)</span>
+                      <p class="component-field__value component-field__value--italic">
+                        "Apply the MRHN severity rubric criteria to a potential incident event
+                        to assign a documented severity level."
+                      </p>
+                    </div>
+
+                    <div class="opt-test-grid" role="group" aria-label="Optimization test results for DC-07">
+                      <div class="opt-test-cell">
+                        <p class="opt-test-cell__q">Q1 applied to DC-07: Can this be taught as one instructional unit?</p>
+                        <p class="opt-test-cell__result"><strong>Borderline.</strong> "Locate a document and identify its criteria" is a single teachable behavior. But the question is whether it has instructional value as a standalone unit.</p>
+                      </div>
+                      <div class="opt-test-cell">
+                        <p class="opt-test-cell__q">Q2 applied to DC-07: Can this be assessed by one well-formed item?</p>
+                        <p class="opt-test-cell__result"><strong>Fail.</strong> The only plausible item would test lookup behavior: "open IR-2024 and locate the rubric." That is not a learnable competency -- it is an embedded prerequisite behavior within DC-08. A learner who cannot locate the rubric cannot perform DC-08, so the inability will surface there. Assessing DC-07 independently adds nothing to the architecture.</p>
+                      </div>
+                    </div>
+
+                    <div class="validation-row" aria-label="DC-07 optimization result">
+                      <span class="val-chip val-chip--merge">Q2: Fails -- lookup behavior only, not independently assessable</span>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="step-content">
+                  The problem with DC-07 is not that locating the rubric is unimportant --
+                  it is that locating a document is not a competency that belongs in the
+                  map as a standalone unit. At Application level, the SI-01 skill is using
+                  the rubric to classify incidents, not finding the rubric. "Locate and
+                  identify" is the prerequisite behavior embedded within "apply." If DC-07
+                  traveled to Module 2 as a standalone component, a designer would be asked
+                  to build an activity for it -- and there is no meaningful activity to build
+                  beyond a lookup exercise that tests nothing relevant to incident classification
+                  competence. DC-07 must be merged into DC-08, which already captures the
+                  application-level skill that the scoping of SI-01 requires.
+                </p>
+
+                <!-- Resolution: DC-07 merged into DC-08 -->
+                <div class="resolution-block" role="region" aria-label="DC-07 merge resolution">
+                  <div class="resolution-block__header">
+                    <span class="resolution-block__label">Resolution: DC-07 Retired -- Merged into DC-08</span>
+                  </div>
+                  <div class="resolution-block__body">
+
+                    <div class="merge-source">
+                      <div class="merge-source__id-row">
+                        <span class="merge-source__id">DC-07 (retired)</span>
+                        <span class="merge-source__status">Designation retired</span>
+                      </div>
+                      <p class="merge-source__desc">
+                        "Locate the MRHN incident severity rubric within the IR-2024 protocol
+                        documentation and identify the four severity classification criteria."
+                      </p>
+                    </div>
+
+                    <div class="merge-arrow" aria-hidden="true">
+                      <div class="merge-arrow__line"></div>
+                      <span class="merge-arrow__label">merged into</span>
+                      <div class="merge-arrow__line"></div>
+                    </div>
+
+                    <div class="resolved-component">
+                      <div class="resolved-component__id-row">
+                        <span class="resolved-component__id">DC-07</span>
+                        <span class="resolved-component__parent">Parent: SI-01 &bull; Application level &bull; (formerly DC-08, renumbered)</span>
+                      </div>
+                      <p class="resolved-component__desc">
+                        Apply the MRHN incident severity rubric criteria (IR-2024) to a
+                        potential incident event to assign and document a severity level,
+                        distinguishing security incidents from non-incident system events
+                        using the rubric's four classification criteria.
+                      </p>
+                    </div>
+
+                  </div>
+                </div>
+
+                <p class="step-content">
+                  After the merge: the revised DC-07 incorporates "using the rubric's
+                  four classification criteria" as embedded context -- the locating
+                  behavior is implied by application of the criteria. The "distinguishing
+                  security incidents from non-incident system events" language connects
+                  this component to the SI-01 calibration: the rubric is the tool, but
+                  the distinction-making is the skill. Net component count: DC-07 retired
+                  and DC-08 renumbered to DC-07, returning the map to 48 components after
+                  the DC-18 split added one.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 04 -->
+            <div class="example-step" id="step-4">
+              <div class="step-marker" aria-label="Step 4"><span aria-hidden="true">04</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Case 3: DC-35 Is Correctly Granular -- Do Not Change It</h2>
+                <p class="step-content">
+                  DC-35 comes from Bucket 3, parent scope item SI-10 (HIPAA 72-hour breach
+                  notification clock management). SI-10 is one of the highest-stakes components
+                  in the entire map: it carries the domain authenticity annotation from Step 4
+                  identifying the "reasonably should have known" discovery trigger under 45 CFR
+                  164.404, and the Bucket 3 sub-arc was revised in Step 5 specifically because
+                  of this component. I approach DC-35 with heightened attention -- a component
+                  that looks narrow may still be covering the essential analytical skill that
+                  makes the HIPAA compliance training meaningful.
+                </p>
+
+                <!-- DC-35 as written -->
+                <div class="component-card component-card--pass" role="region" aria-label="DC-35 component confirmation">
+                  <div class="component-card__header">
+                    <span class="component-id">DC-35</span>
+                    <span class="component-parent">Parent: SI-10 &bull; Bucket 3 &bull; Analysis level &bull; Calibration annotation: MRHN-D-003</span>
+                    <span class="component-verdict component-verdict--pass">Confirmed Correct</span>
+                  </div>
+                  <div class="component-card__body">
+                    <div class="component-field">
+                      <span class="component-field__label">Component Description (v1)</span>
+                      <p class="component-field__value component-field__value--italic">
+                        "Evaluate the facts of a potential security incident to determine whether
+                        the 'reasonably should have known' discovery trigger under 45 CFR 164.404
+                        has been met, and identify the point at which the HIPAA 72-hour breach
+                        notification clock begins."
+                      </p>
+                    </div>
+
+                    <div class="opt-test-grid" role="group" aria-label="Optimization test results for DC-35">
+                      <div class="opt-test-cell">
+                        <p class="opt-test-cell__q">Q1: Can this be taught as one instructional unit?</p>
+                        <p class="opt-test-cell__result"><strong>Pass.</strong> The component asks learners to do one thing: evaluate incident facts against the legal standard for the discovery trigger. "Identify the clock start point" is the direct consequence of that evaluation -- it is not a separate cognitive operation but the output of the same analytical judgment. This is one instructional unit.</p>
+                      </div>
+                      <div class="opt-test-cell">
+                        <p class="opt-test-cell__q">Q2: Can this be assessed by one well-formed item?</p>
+                        <p class="opt-test-cell__result"><strong>Pass.</strong> A single scenario-based item can present incident facts and ask: "At what point should MRHN have determined they reasonably knew of the potential breach, and when does the 72-hour clock begin?" This is one competency claim -- the trigger evaluation -- with one expected reasoning output.</p>
+                      </div>
+                    </div>
+
+                    <div class="validation-row" aria-label="DC-35 confirmation result">
+                      <span class="val-chip val-chip--pass">Q1: Pass -- single analytical unit</span>
+                      <span class="val-chip val-chip--pass">Q2: Pass -- one well-formed item possible</span>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="step-content">
+                  The optimization instinct here might be to split DC-35: "evaluate trigger
+                  conditions" and "identify clock start point" could look like two components.
+                  That split would be wrong. Identifying the clock start point is not a
+                  separable skill -- it is the outcome of the trigger evaluation, not an
+                  independent competency. A learner who correctly evaluates the trigger has
+                  by definition identified the start point. Splitting here would create a
+                  DC component ("identify the point at which the clock begins") that could
+                  only be assessed by restating DC-35's scenario item -- making it a redundant
+                  component, not an independent one.
+                </p>
+
+                <div class="pass-confirmation" role="note" aria-label="Why DC-35 must not be split">
+                  <span class="pass-confirmation__label">Why the impulse to split DC-35 is wrong</span>
+                  <p class="pass-confirmation__text">
+                    The calibration annotation on SI-10 names the "reasonably should have known"
+                    trigger as the authenticity-critical skill -- the one that generic HIPAA training
+                    gets wrong. <strong>That critical skill is exactly what DC-35 covers, and only
+                    what it covers.</strong> Any split would either dilute the trigger evaluation into
+                    a lower-stakes component or create a downstream component with no independent
+                    instructional value. DC-35 is correctly granular because it was decomposed
+                    from an authenticity-annotated item by a practitioner who read the annotation.
+                    The optimization check confirms that -- it does not override it.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 05 -->
+            <div class="example-step" id="step-5">
+              <div class="step-marker" aria-label="Step 5"><span aria-hidden="true">05</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Optimization Summary: What Changed Across All 48 Components</h2>
+                <p class="step-content">
+                  The three cases above are representative, not exhaustive. Every component
+                  in MRHN_DecompositionMap_v1 was evaluated against both optimization
+                  questions. Two components required action. The remaining 46 were
+                  confirmed without change. The net component count remains 48: one
+                  split (+1) is offset by one merge (-1), but two DC designations changed
+                  (DC-07 revised and renumbered; DC-18 retired in favor of DC-18a and DC-18b).
+                </p>
+
+                <div class="opt-summary-wrap" role="region" aria-label="Optimization summary for all changed components">
+                  <table class="opt-summary-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Component (v1)</th>
+                        <th scope="col">Parent SI</th>
+                        <th scope="col">Optimization Action</th>
+                        <th scope="col">Result (v2)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span class="dc-ref">DC-07</span> (v1)</td>
+                        <td>SI-01 &bull; Bucket 1</td>
+                        <td><span class="val-chip val-chip--merge">Merged</span> DC-07 retired -- lookup behavior embedded into application component</td>
+                        <td><span class="dc-ref">DC-07</span> revised (formerly DC-08); DC-08 designation retired</td>
+                      </tr>
+                      <tr>
+                        <td><span class="dc-ref">DC-18</span> (v1)</td>
+                        <td>SI-09 &bull; Bucket 2</td>
+                        <td><span class="val-chip val-chip--split">Split</span> Two distinct assessment demands separated: Analysis-level evaluation and Application-level documentation</td>
+                        <td><span class="dc-ref">DC-18a</span> (evaluation, Analysis) + <span class="dc-ref">DC-18b</span> (documentation, Application); DC-18 designation retired</td>
+                      </tr>
+                      <tr>
+                        <td>All other DCs</td>
+                        <td>All buckets</td>
+                        <td><span class="val-chip val-chip--pass">Confirmed</span> Both optimization questions passed without action</td>
+                        <td>Unchanged from v1 (46 components)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="step-content">
+                  The practical significance of these two changes: the DC-18 split
+                  ensures the Analysis-level calibration constraint on SI-09 is
+                  isolated in DC-18a, where a Module 2 designer will build the
+                  clinical interdependency analysis activity -- not buried inside a
+                  component that also asks for documentation. The DC-07 merge removes
+                  a component that would have generated a low-value lookup activity
+                  in Module 2, replacing it with a single application-level component
+                  that correctly targets SI-01's competency demand.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 06 -->
+            <div class="example-step" id="step-6">
+              <div class="step-marker" aria-label="Step 6"><span aria-hidden="true">06</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Governance Record MRHN-D-007: Unit Optimization</h2>
+                <p class="step-content">
+                  The optimization decisions are formalized in MRHN-D-007. This record
+                  documents what changed, why the optimization criteria required the
+                  change, and what constraints must be preserved in the revised components.
+                  It travels with the map into Step 8 and then into Module 2 as the
+                  decision record for any question about why DC-18 has two sub-designations
+                  or why there is no standalone DC-08.
+                </p>
+
+                <div class="gov-record" role="region" aria-label="Governance record MRHN-D-007">
+                  <div class="gov-record__header">
+                    <span class="gov-record__id">MRHN-D-007</span>
+                    <span class="gov-record__title">Unit Optimization Record -- Phase 2 Step 7</span>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Decision</div>
+                    <div class="gov-record__val">
+                      Applied two-question unit optimization criteria to all 48 components in
+                      MRHN_DecompositionMap_v1. Two optimization actions taken. DC-18 (SI-09,
+                      Bucket 2) split into DC-18a and DC-18b: component bundled an Analysis-level
+                      clinical system evaluation with an Application-level documentation task,
+                      failing both optimization questions. DC-07 (SI-01, Bucket 1) merged into
+                      the revised DC-07 (formerly DC-08): original DC-07 described only a document
+                      lookup behavior with no independent assessment value. Net count: 48 components
+                      (unchanged). DC-08 and DC-18 designations retired.
+                    </div>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Constraint Reference</div>
+                    <div class="gov-record__val">
+                      SI-09 domain authenticity annotation (MRHN-D-003): clinical system
+                      interdependency evaluation is the Analysis-level skill; this constraint
+                      is now isolated in DC-18a. PC-3 authority boundary (system isolation):
+                      referenced explicitly in DC-18b documentation component. SI-01 Application
+                      level (MRHN_CalibratedScopeMap_v1): rubric application is the competency
+                      claim; lookup behavior is not independently assessable.
+                    </div>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Rationale</div>
+                    <div class="gov-record__val">
+                      DC-18 required a split because bundling an Analysis-level evaluation with
+                      an Application-level documentation task in a single component dilutes the
+                      calibration annotation on SI-09 -- the analytical demand (evaluate
+                      interdependencies to identify segmentation risk) would be partially
+                      obscured by the documentation demand in a Module 2 design brief. The
+                      split surfaces the Analysis-level component cleanly. DC-07 required a
+                      merge because "locate a document and identify its criteria" is an embedded
+                      prerequisite behavior, not a learnable competency. An assessment item
+                      for DC-07 would only test whether a learner can open a document -- not
+                      whether they can use it. The DC-08 (now DC-07) application component
+                      renders DC-07 (v1) redundant.
+                    </div>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Risk Note</div>
+                    <div class="gov-record__val">
+                      <strong>Risk 1:</strong> If a Module 2 designer combines DC-18a and DC-18b
+                      back into a single activity, the Analysis-level calibration constraint on
+                      SI-09 will be lost in a mixed-level task. DC-18a and DC-18b must be
+                      treated as independent instructional units in Module 2 design briefs.<br><br>
+                      <strong>Risk 2:</strong> The DC-08 designation no longer exists. Any
+                      reference to DC-08 in existing documentation (notes, drafts, or working
+                      files from Lesson 1.4a) refers to the component now designated DC-07
+                      (revised). This must be noted in the Scope Trace Audit conducted in Step 8.
+                    </div>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Checkpoint Linkage</div>
+                    <div class="gov-record__val">
+                      <ul>
+                        <li><strong>Step 8 Scope Trace Audit:</strong> the audit must use the
+                        revised component structure (DC-18a, DC-18b, revised DC-07; DC-08 and
+                        DC-18 designations retired). Both DC-18a and DC-18b must trace to SI-09.
+                        The revised DC-07 must trace to SI-01.</li>
+                        <li><strong>Module 2 Design Briefs:</strong> DC-18a must be assigned
+                        Analysis-level activity design. DC-18b is Application-level. A design
+                        brief that assigns both to the same activity type misreads the optimization.</li>
+                        <li><strong>Gate 1.TG.1:</strong> MRHN-D-007 is a required gate record.
+                        Optimization decisions must be on file before the gate review.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div><!-- /.worked-example__content -->
+
+          <!-- ==================================================
+               Right column: think-aloud
+               ================================================== -->
+          <aside class="worked-example__think-aloud" aria-label="Expert think-aloud annotations">
+            <div class="think-aloud__header">
+              <h2 class="think-aloud__heading">Expert Think-Aloud</h2>
+              <button type="button" id="annotations-toggle" class="btn--toggle"
+                      aria-controls="annotations-list" aria-expanded="true">
+                <span class="toggle-label">Hide Annotations</span>
+              </button>
+            </div>
+            <div id="annotations-list" class="think-aloud__list">
+
+              <div class="annotation-item" data-step="1" aria-label="Annotation for step 1">
+                <span class="annotation-marker" aria-hidden="true">01</span>
+                <p class="annotation-text">
+                  I apply both questions to every component, not just to the ones I suspect
+                  have a problem. The map has 48 components; I have seen experienced designers
+                  produce well-formed decompositions where one component in a set of four
+                  siblings quietly bundles two skills because both skills were on the
+                  same training slide in a predecessor course. The problem is invisible
+                  until you ask whether the component can be assessed by a single item.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="2" aria-label="Annotation for step 2">
+                <span class="annotation-marker" aria-hidden="true">02</span>
+                <p class="annotation-text">
+                  The signal that DC-18 needed a split was the phrase "and document."
+                  That conjunction is almost always a warning sign in a component
+                  description. "Evaluate X and document Y" is two competencies unless
+                  documentation is so tightly coupled to the evaluation that it cannot
+                  be assessed separately. Here it can be: a learner who correctly evaluates
+                  the interdependency risk might still produce a non-compliant documentation
+                  record. Those are different failure modes, which means they need
+                  different components.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="3" aria-label="Annotation for step 3">
+                <span class="annotation-marker" aria-hidden="true">03</span>
+                <p class="annotation-text">
+                  DC-07 is the kind of component that appears in first-draft decompositions
+                  produced by designers who are still thinking in content terms ("learners
+                  need to know where the rubric is") rather than performance terms ("learners
+                  need to apply the rubric"). The test question cuts through it: can you
+                  write one non-trivial item for this? If the only item is "find the rubric
+                  in IR-2024," the component does not belong in the map. The rubric-finding
+                  behavior will be established in the activity for DC-07 (revised) -- it
+                  does not need its own component.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="4" aria-label="Annotation for step 4">
+                <span class="annotation-marker" aria-hidden="true">04</span>
+                <p class="annotation-text">
+                  I spend extra time on DC-35 because the calibration annotation creates
+                  pressure to split. The "reasonably should have known" trigger seems like
+                  it could be separated from "identify when the clock starts." The reason
+                  I do not split is that identifying when the clock starts is not an
+                  independent cognitive operation -- it is the immediate output of the
+                  trigger evaluation. There is no assessable gap between "you have evaluated
+                  the trigger" and "you know when the clock starts." Splitting here produces
+                  a redundant item, not an independent competency.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="5" aria-label="Annotation for step 5">
+                <span class="annotation-marker" aria-hidden="true">05</span>
+                <p class="annotation-text">
+                  The two changes are not arbitrary revisions to the decomposition --
+                  they are corrections to structural problems that would have cost Module
+                  2 designers time and produced weaker instruction. If DC-18 had reached
+                  Module 2 unchanged, a designer building that component would have to
+                  make an implicit split decision during activity design with no documented
+                  rationale. Doing it here, with the calibration record in front of me,
+                  produces a better decision than one made under Module 2 time pressure.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="6" aria-label="Annotation for step 6">
+                <span class="annotation-marker" aria-hidden="true">06</span>
+                <p class="annotation-text">
+                  MRHN-D-007 is a short record because the optimization changes were
+                  limited. In a messier decomposition -- one that produced a first draft
+                  with five or six over-bundled components -- this record would be much
+                  longer. The length of the optimization record is a rough indicator of
+                  decomposition quality from Step 6. A short MRHN-D-007 means the
+                  Step 6 decomposition was disciplined. A long one means the
+                  decomposition needed significant repair before it could be audited.
+                </p>
+              </div>
+
+            </div>
+          </aside>
+
+        </div><!-- /.worked-example__layout -->
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l4b-s1.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen: Lesson 1.4b introduction">
+            <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="m1-l4b-s3.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen: Step 7 guided practice, unit optimization">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+    </section>
+  </main>
+
+  <!-- Supplementary resources -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">
+        Input: MRHN_DecompositionMap_v1 (DC-01 through DC-48). Optimization actions this
+        screen: DC-18 split into DC-18a and DC-18b; DC-07 merged into revised DC-07
+        (DC-08 designation retired). Net count: 48 components. MRHN-D-007 established.
+      </p>
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">
+        MRHN-D-001 through MRHN-D-006 on record from Lessons 1.1a through 1.4a.
+        MRHN-D-007 (Unit Optimization) established this screen.
+      </p>
+    </section>
+  </aside>
+
+  <!-- Support panels -->
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header"><h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header"><h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header"><h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header"><h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header"><h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <footer role="contentinfo">
+    <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    function syncToggleStates(name) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === name ? 'true' : 'false');
+      });
+    }
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const p = btn.dataset.panel;
+        if (getActivePanel() === p) { closeAll(); syncToggleStates(null); }
+        else { openPanel(p, btn); syncToggleStates(p); }
+      });
+    });
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => { closeAll(); syncToggleStates(null); });
+    });
+  </script>
+
+  <script type="module">
+    const toggle = document.getElementById('annotations-toggle');
+    const list   = document.getElementById('annotations-list');
+    const label  = toggle.querySelector('.toggle-label');
+    toggle.addEventListener('click', () => {
+      const nowExpanded = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(nowExpanded));
+      label.textContent = nowExpanded ? 'Hide Annotations' : 'Show Annotations';
+      if (nowExpanded) list.removeAttribute('hidden');
+      else list.setAttribute('hidden', '');
+    });
+  </script>
+
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.4b';
+    document.getElementById('pt-screen').textContent       = '2';
+    document.getElementById('pt-screen-total').textContent = '6';
+  </script>
+
+</body>
+</html>

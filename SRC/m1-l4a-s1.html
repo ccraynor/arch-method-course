@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lesson 1.4a introduction: Performance Arc and Decomposition. Step 5 validates the macro performance arc for the MRHN course. Step 6 decomposes all 16 scope items into DC-01 through DC-48 -- the structural input to Module 2.">
+  <title>Lesson 1.4a — Performance Arc and Decomposition — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l4a-s1 -- Lesson 1.4a Introduction
+       Phase 1 Step 5 / Phase 2 Step 6. All color values use CSS tokens only.
+       ================================================================ */
+
+    .lesson-intro__meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 0 0.25rem;
+      flex-wrap: wrap;
+    }
+
+    .screen-type-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    .lesson-label {
+      display: block;
+      margin: 0 0 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-link);
+    }
+
+    .lesson-intro__title {
+      margin: 0 0 0.5rem;
+      font-size: 1.625rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    .step-badge-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 0 0 1.25rem;
+    }
+
+    .step-badge {
+      display: inline-block;
+      padding: 0.25rem 0.625rem;
+      background: var(--color-bg-page);
+      border: 1.5px solid var(--color-text-link);
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-link);
+    }
+
+    .lesson-intro__lead {
+      margin: 0 0 1.5rem;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+
+    /* ---- Continuation banner ---- */
+    .continuation-banner {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.875rem 1rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      margin: 0 0 2rem;
+    }
+
+    .continuation-banner__body { flex: 1; min-width: 0; }
+
+    .continuation-banner__label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+      margin: 0 0 0.375rem;
+    }
+
+    .continuation-banner__text {
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      margin: 0 0 0.625rem;
+      line-height: 1.6;
+    }
+
+    .continuation-items {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .continuation-items li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.5;
+    }
+
+    .continuation-items li::before {
+      content: '';
+      display: inline-block;
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: var(--color-brand-teal);
+      flex-shrink: 0;
+      margin-top: 0.375rem;
+    }
+
+    .continuation-items strong { font-weight: 700; }
+
+    /* ---- Step overview cards ---- */
+    .step-overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 0 0 2rem;
+    }
+
+    @media (max-width: 680px) { .step-overview-grid { grid-template-columns: 1fr; } }
+
+    .step-overview-card {
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .step-overview-card__header {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+    }
+
+    .step-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: var(--color-text-inverse);
+      color: var(--color-brand-navy);
+      font-size: 0.875rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .step-overview-card__meta { flex: 1; min-width: 0; }
+
+    .step-overview-card__num {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      opacity: 0.75;
+      display: block;
+    }
+
+    .step-overview-card__name {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      display: block;
+      line-height: 1.3;
+    }
+
+    .step-overview-card__phase-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.125rem 0.4375rem;
+      border-radius: 10px;
+      font-size: 0.625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.35);
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .step-overview-card__body {
+      padding: 0.875rem;
+      background: var(--color-bg-page);
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    .step-overview-card__body p { margin: 0 0 0.625rem; }
+    .step-overview-card__body p:last-child { margin-bottom: 0; }
+
+    .step-question {
+      font-style: italic;
+      color: var(--color-text-secondary);
+      font-size: 0.875rem;
+      border-left: 2px solid var(--color-border-strong);
+      padding-left: 0.625rem;
+      margin: 0 0 0.625rem !important;
+    }
+
+    .step-output-row {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      margin-top: 0.625rem;
+      padding-top: 0.625rem;
+      border-top: 1px solid var(--color-border-default);
+    }
+
+    .step-output-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      white-space: nowrap;
+    }
+
+    .artifact-name {
+      font-family: monospace;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--color-text-link);
+      background: var(--color-bg-subtle);
+      padding: 0.125rem 0.375rem;
+      border-radius: 3px;
+    }
+
+    /* ---- Lesson plan ---- */
+    .lesson-plan-heading {
+      margin: 0 0 1rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .lesson-plan-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .lesson-plan-item {
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .lesson-plan-item:last-child { border-bottom: none; }
+    .lesson-plan-item--current { background: var(--color-bg-subtle); }
+
+    .lesson-plan-item__num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 0;
+      background: var(--color-bg-subtle);
+      border-right: 1px solid var(--color-border-default);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+    }
+
+    .lesson-plan-item--current .lesson-plan-item__num {
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+    }
+
+    .lesson-plan-item__body {
+      padding: 0.625rem 0.875rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .lesson-plan-item__type {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .lesson-plan-item__title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      flex: 1;
+    }
+
+    .lesson-plan-item--current .lesson-plan-item__title { font-weight: 700; }
+
+    .you-are-here {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      font-size: 0.625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-brand-teal);
+      border: 1px solid var(--color-brand-teal);
+      border-radius: 3px;
+      padding: 0.0625rem 0.3125rem;
+      flex-shrink: 0;
+    }
+
+    /* ---- Artifact flow ---- */
+    .artifact-flow-heading {
+      margin: 0 0 1rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .artifact-flow {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      margin: 0 0 2rem;
+      flex-wrap: wrap;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .artifact-flow__node {
+      flex: 1;
+      min-width: 10rem;
+      padding: 0.875rem 1rem;
+      background: var(--color-bg-page);
+      border-right: 1px solid var(--color-border-default);
+    }
+
+    .artifact-flow__node:last-child { border-right: none; }
+
+    .artifact-flow__node-label {
+      display: block;
+      font-size: 0.625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-secondary);
+      margin: 0 0 0.5rem;
+    }
+
+    .artifact-flow__node-name {
+      display: block;
+      font-family: monospace;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin: 0 0 0.375rem;
+    }
+
+    .artifact-flow__node-desc {
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+
+    .artifact-flow__node--input { background: var(--color-bg-subtle); }
+
+    .artifact-flow__node--step5 { border-top: 3px solid var(--color-brand-teal); }
+    .artifact-flow__node--step6 { border-top: 3px solid var(--color-text-link); }
+
+    .artifact-flow__arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 0.25rem;
+      background: var(--color-bg-subtle);
+      border-right: 1px solid var(--color-border-default);
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 580px) {
+      .artifact-flow { flex-direction: column; }
+      .artifact-flow__node { border-right: none; border-bottom: 1px solid var(--color-border-default); }
+      .artifact-flow__node:last-child { border-bottom: none; }
+      .artifact-flow__arrow { padding: 0.375rem 1rem; border-right: none; border-bottom: 1px solid var(--color-border-default); }
+    }
+
+    .where-used-note {
+      display: block;
+      font-size: 0.6875rem;
+      color: var(--color-text-secondary);
+      margin-top: 0.375rem;
+      font-style: italic;
+    }
+
+    /* ---- Why callout ---- */
+    .why-callout {
+      display: flex;
+      gap: 0.875rem;
+      align-items: flex-start;
+      padding: 1rem 1.125rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-left: 4px solid var(--color-brand-teal);
+      border-radius: 0 6px 6px 0;
+      margin: 0 0 2rem;
+    }
+
+    .why-callout__body { flex: 1; }
+
+    .why-callout__heading {
+      margin: 0 0 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .why-callout__text {
+      margin: 0 0 0.5rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    .why-callout__text:last-child { margin-bottom: 0; }
+    .why-callout__text strong { font-weight: 700; }
+
+    /* ---- DC count callout ---- */
+    .dc-count-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 0 0 2rem;
+    }
+
+    @media (max-width: 500px) { .dc-count-strip { grid-template-columns: 1fr 1fr; } }
+
+    .dc-count-cell {
+      padding: 0.875rem 0.75rem;
+      background: var(--color-bg-page);
+      border-right: 1px solid var(--color-border-default);
+      text-align: center;
+    }
+
+    .dc-count-cell:last-child { border-right: none; }
+
+    .dc-count-cell__num {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text-link);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .dc-count-cell__label {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      line-height: 1.4;
+    }
+
+    .dc-count-cell__range {
+      display: block;
+      font-family: monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-top: 0.25rem;
+    }
+
+    /* High contrast */
+    @media (prefers-contrast: more) {
+      .continuation-banner { border-color: var(--color-border-strong); }
+      .step-overview-card { border-color: var(--color-border-strong); }
+      .lesson-plan-list { border-color: var(--color-border-strong); }
+      .lesson-plan-item { border-bottom-color: var(--color-border-strong); }
+      .lesson-plan-item__num { border-right-color: var(--color-border-strong); }
+      .artifact-flow { border-color: var(--color-border-strong); }
+      .artifact-flow__node { border-right-color: var(--color-border-strong); }
+      .artifact-flow__arrow { border-right-color: var(--color-border-strong); }
+      .why-callout { border-color: var(--color-border-strong); border-left-color: var(--color-text-primary); }
+      .dc-count-strip { border-color: var(--color-border-strong); }
+      .dc-count-cell { border-right-color: var(--color-border-strong); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <header role="banner">
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+    <div id="progress-tracker" role="group" aria-label="Course progress" tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.4a</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phases <span id="pt-phase">1&ndash;2</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Steps <span id="pt-step">5&ndash;6</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">1</span> of <span id="pt-screen-total">5</span></span>
+    </div>
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel" aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer" aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory" aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel" aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+  </header>
+
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item"><a href="intro-0.1.html" class="module-nav-link">Introduction</a></li>
+      <li class="module-nav-item"><a href="module-1.html" class="module-nav-link" aria-current="page">Module 1: Bound the Course</a></li>
+      <li class="module-nav-item"><a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a></li>
+      <li class="module-nav-item"><a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a></li>
+      <li class="module-nav-item"><a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a></li>
+    </ol>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <section id="current-activity" tabindex="-1" aria-label="Current activity">
+
+      <div class="lesson-intro__meta">
+        <span class="screen-type-label">Lesson Introduction</span>
+        <span class="screen-type-label" aria-hidden="true">&bull;</span>
+        <span class="screen-type-label">5 screens</span>
+      </div>
+      <p class="lesson-label" aria-label="Lesson 1.4a of Module 1">Lesson 1.4a</p>
+      <h1 class="lesson-intro__title">Performance Arc and Decomposition</h1>
+
+      <div class="step-badge-group" aria-label="Steps covered in this lesson">
+        <span class="step-badge">Phase 1 -- Step 5: Validate Macro Performance Arc</span>
+        <span class="step-badge">Phase 2 -- Step 6: Decompose Scope Items</span>
+      </div>
+
+      <p class="lesson-intro__lead">
+        The MRHN scope is bounded and calibrated. Lesson 1.4a uses it to answer
+        two questions that must be resolved before Module 2 can begin: what does
+        fully competent end-of-course performance look like (Step 5), and what
+        are the discrete, teachable units that build toward it (Step 6)?
+        Together, Steps 5 and 6 produce the structural blueprint that
+        Module 2 will engineer into instruction.
+      </p>
+
+      <!-- Continuation banner -->
+      <div class="continuation-banner" role="note" aria-label="Artifacts on record from Lesson 1.3">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"
+             style="flex-shrink:0;margin-top:0.125rem;color:var(--color-brand-teal)">
+          <rect x="3" y="2" width="11" height="15" rx="2" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M6 7h6M6 10h6M6 13h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M13 14l2 2 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(-1,-1)"/>
+        </svg>
+        <div class="continuation-banner__body">
+          <span class="continuation-banner__label">Continuing from Lesson 1.3</span>
+          <p class="continuation-banner__text">
+            MRHN_CalibratedScopeMap_v1 is on record. All 16 scope items have bucket
+            assignments, taxonomy levels, and calibration annotations. This map is the
+            primary input to both steps in Lesson 1.4a.
+          </p>
+          <ul class="continuation-items" aria-label="What is on record">
+            <li><strong>MRHN_CalibratedScopeMap_v1</strong> -- 16 SI items, four buckets, taxonomy levels for all items, MRHN-D-003 on record</li>
+            <li><strong>5 domain authenticity annotations</strong> carried forward: SI-09, SI-10, SI-14, SI-07, SI-13</li>
+            <li><strong>3 taxonomy level adjustments</strong> from initial assignment: SI-10 (Ap to An), SI-13 (Ap to Ev), SI-09 (Ap to An)</li>
+            <li><strong>MRHN_BucketMap_v1</strong> on record with balance check and MRHN-D-002</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Step overview cards -->
+      <h2 class="lesson-plan-heading" style="margin-bottom:1rem">What Steps 5 and 6 Do</h2>
+      <div class="step-overview-grid" role="region" aria-label="Step 5 and Step 6 overview">
+
+        <div class="step-overview-card">
+          <div class="step-overview-card__header">
+            <span class="step-circle" aria-hidden="true">5</span>
+            <span class="step-overview-card__meta">
+              <span class="step-overview-card__num">Phase 1</span>
+              <span class="step-overview-card__name">Validate Macro Performance Arc</span>
+            </span>
+            <span class="step-overview-card__phase-chip">Step 5</span>
+          </div>
+          <div class="step-overview-card__body">
+            <p class="step-question">"What should a learner be able to do at the end of this course that they cannot do now?"</p>
+            <p>
+              The macro performance arc is the explicit statement of end-of-course
+              competence -- what fully capable performance looks like for an MRHN
+              healthcare IT professional who completes this course. Step 5 does not
+              create the arc from scratch: the scope items, bucket structure, and
+              calibration already implied it. Step 5 makes the arc explicit,
+              validates it against the constraint set, and confirms it is coherent,
+              authentic, and feasible before decomposition begins.
+            </p>
+            <p>
+              The arc operates at two levels: a <strong>macro arc</strong> covering
+              the full course, and four <strong>bucket-level sub-arcs</strong> -- one
+              per bucket -- that describe the trajectory of competence within each
+              workflow phase.
+            </p>
+            <div class="step-output-row">
+              <span class="step-output-label">Produces:</span>
+              <span class="artifact-name">MRHN_PerformanceArc_v1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-overview-card">
+          <div class="step-overview-card__header">
+            <span class="step-circle" aria-hidden="true">6</span>
+            <span class="step-overview-card__meta">
+              <span class="step-overview-card__num">Phase 2</span>
+              <span class="step-overview-card__name">Decompose Scope Items into Subcomponents</span>
+            </span>
+            <span class="step-overview-card__phase-chip">Step 6</span>
+          </div>
+          <div class="step-overview-card__body">
+            <p class="step-question">"What are the discrete, teachable units that build toward the performance arc?"</p>
+            <p>
+              Step 6 breaks each of the 16 scope items into discrete decomposition
+              components (DC components) -- the units that Module 2 will engineer
+              into instruction sequences, activities, and assessments. Each DC
+              component is a learnable unit: specific enough to be taught and assessed
+              independently, bounded enough to fit within a coherent lesson.
+            </p>
+            <p>
+              Calibration annotations from Step 4 govern every component. A scope item
+              calibrated at Analysis level produces DC components requiring analytical
+              practice -- not procedure-following activities. A domain authenticity flag
+              on the parent item produces a component-level constraint on content.
+              Step 4 work travels into every decomposition decision in Step 6.
+            </p>
+            <div class="step-output-row">
+              <span class="step-output-label">Produces:</span>
+              <span class="artifact-name">MRHN_DecompositionMap_v1</span>
+              <span style="font-size:0.75rem;color:var(--color-text-secondary)">(DC-01 through DC-48)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Why arc precedes decomposition -->
+      <div class="why-callout" role="note" aria-label="Why Step 5 precedes Step 6">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"
+             style="flex-shrink:0;margin-top:0.125rem;color:var(--color-brand-teal)">
+          <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M10 9v5M10 7v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <div class="why-callout__body">
+          <h2 class="why-callout__heading">Why the Arc Precedes Decomposition</h2>
+          <p class="why-callout__text">
+            The performance arc sets the ceiling. Decomposition builds toward it. If
+            you decompose before validating the arc, you risk producing DC components
+            that collectively fall short of genuine competence -- because no one
+            checked what genuine competence actually requires.
+          </p>
+          <p class="why-callout__text">
+            The arc also prevents over-decomposition. <strong>Not every sub-skill that
+            could be taught needs to be taught.</strong> Step 5 establishes which
+            capabilities a healthcare IT professional at MRHN must be able to exercise
+            independently at end of course, and which capabilities they may rely on
+            colleagues, tools, or established procedures to provide. Decomposition in
+            Step 6 is bounded by that distinction: only capabilities that belong in
+            the arc get DC components.
+          </p>
+          <p class="why-callout__text">
+            Step 5 is also the last point at which feasibility can be checked before
+            significant decomposition effort is invested. If the arc as stated cannot
+            be achieved within the constraint set (LC-1 scope, PC-3 through PC-5
+            authority, RC-1 through RC-3 documentation requirements), it must be
+            adjusted here -- not discovered as a gap in Module 3 stress-testing.
+          </p>
+        </div>
+      </div>
+
+      <!-- DC component preview -->
+      <h2 class="lesson-plan-heading">Decomposition at a Glance: DC-01 through DC-48</h2>
+      <div class="dc-count-strip" role="region" aria-label="Decomposition component distribution across four buckets">
+        <div class="dc-count-cell">
+          <span class="dc-count-cell__num">15</span>
+          <span class="dc-count-cell__label">Bucket 1 components</span>
+          <span class="dc-count-cell__range">DC-01 -- DC-15</span>
+        </div>
+        <div class="dc-count-cell">
+          <span class="dc-count-cell__num">12</span>
+          <span class="dc-count-cell__label">Bucket 2 components</span>
+          <span class="dc-count-cell__range">DC-16 -- DC-27</span>
+        </div>
+        <div class="dc-count-cell">
+          <span class="dc-count-cell__num">12</span>
+          <span class="dc-count-cell__label">Bucket 3 components</span>
+          <span class="dc-count-cell__range">DC-28 -- DC-39</span>
+        </div>
+        <div class="dc-count-cell">
+          <span class="dc-count-cell__num">9</span>
+          <span class="dc-count-cell__label">Bucket 4 components</span>
+          <span class="dc-count-cell__range">DC-40 -- DC-48</span>
+        </div>
+      </div>
+
+      <!-- Artifact flow -->
+      <h2 class="artifact-flow-heading">Artifact Flow: Lesson 1.4a</h2>
+      <div class="artifact-flow" role="region" aria-label="Artifact input and outputs for Lesson 1.4a">
+
+        <div class="artifact-flow__node artifact-flow__node--input">
+          <span class="artifact-flow__node-label">Input (from Lesson 1.3)</span>
+          <span class="artifact-flow__node-name">MRHN_CalibratedScopeMap_v1</span>
+          <span class="artifact-flow__node-desc">
+            16 SI items &bull; 4 buckets &bull; taxonomy levels &bull; 5 domain annotations &bull; MRHN-D-003
+          </span>
+        </div>
+
+        <div class="artifact-flow__arrow" aria-hidden="true">
+          <svg focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M4 8h8M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="artifact-flow__node artifact-flow__node--step5">
+          <span class="artifact-flow__node-label">Step 5 Output (Screen 2)</span>
+          <span class="artifact-flow__node-name">MRHN_PerformanceArc_v1</span>
+          <span class="artifact-flow__node-desc">
+            Macro arc &bull; 4 bucket sub-arcs &bull; feasibility notes &bull; MRHN-D-004
+          </span>
+          <span class="where-used-note">Used as ceiling in Step 6 decomposition</span>
+        </div>
+
+        <div class="artifact-flow__arrow" aria-hidden="true">
+          <svg focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M4 8h8M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="artifact-flow__node artifact-flow__node--step6">
+          <span class="artifact-flow__node-label">Step 6 Output (Screens 3&ndash;4; completed in Lesson 1.4b)</span>
+          <span class="artifact-flow__node-name">MRHN_DecompositionMap_v1</span>
+          <span class="artifact-flow__node-desc">
+            DC-01 through DC-48 &bull; 16 SI items decomposed &bull; calibration constraints noted per component
+          </span>
+          <span class="where-used-note">Primary structural input to Module 2</span>
+        </div>
+
+      </div>
+
+      <!-- 5-screen lesson plan -->
+      <h2 class="lesson-plan-heading">Lesson 1.4a -- 5 Screens</h2>
+      <ol class="lesson-plan-list" aria-label="Lesson 1.4a screen-by-screen plan">
+        <li class="lesson-plan-item lesson-plan-item--current" aria-current="true">
+          <span class="lesson-plan-item__num" aria-label="Screen 1">1</span>
+          <span class="lesson-plan-item__body">
+            <span class="lesson-plan-item__type">Introduction</span>
+            <span class="lesson-plan-item__title">Performance Arc and Decomposition -- Steps 5 and 6 overview, artifact map, DC component distribution</span>
+            <span class="you-are-here" aria-label="You are here">Here</span>
+          </span>
+        </li>
+        <li class="lesson-plan-item">
+          <span class="lesson-plan-item__num" aria-label="Screen 2">2</span>
+          <span class="lesson-plan-item__body">
+            <span class="lesson-plan-item__type">Worked Example</span>
+            <span class="lesson-plan-item__title">Step 5: Expert validates the MRHN macro performance arc and four bucket sub-arcs. Produces MRHN_PerformanceArc_v1 with feasibility check and governance record MRHN-D-004.</span>
+          </span>
+        </li>
+        <li class="lesson-plan-item">
+          <span class="lesson-plan-item__num" aria-label="Screen 3">3</span>
+          <span class="lesson-plan-item__body">
+            <span class="lesson-plan-item__type">Worked Example</span>
+            <span class="lesson-plan-item__title">Step 6, Part 1: Expert decomposes Bucket 1 scope items (SI-08, SI-01, SI-16, SI-06, SI-02) into DC-01 through DC-15. Decomposition methodology shown in full for SI-08 and SI-10 as the two most complex items.</span>
+          </span>
+        </li>
+        <li class="lesson-plan-item">
+          <span class="lesson-plan-item__num" aria-label="Screen 4">4</span>
+          <span class="lesson-plan-item__body">
+            <span class="lesson-plan-item__type">Worked Example</span>
+            <span class="lesson-plan-item__title">Step 6, Part 2: Expert decomposes Buckets 2, 3, and 4 (DC-16 through DC-48). Complete MRHN_DecompositionMap_v1 reference table produced. Calibration constraint notes shown per component.</span>
+          </span>
+        </li>
+        <li class="lesson-plan-item">
+          <span class="lesson-plan-item__num" aria-label="Screen 5">5</span>
+          <span class="lesson-plan-item__body">
+            <span class="lesson-plan-item__type">Reflection</span>
+            <span class="lesson-plan-item__title">Lesson 1.4a reflection -- identifies which decomposition decision from this lesson would most change your practice. Transition note to Lesson 1.4b (guided practice: learners complete their own decomposition map).</span>
+          </span>
+        </li>
+      </ol>
+
+      <!-- Screen navigation -->
+      <nav class="screen-nav" aria-label="Screen navigation">
+        <a href="m1-l3-s5.html"
+           class="btn btn--nav btn--prev"
+           rel="prev"
+           aria-label="Go to previous screen: Lesson 1.3 reflection">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Previous
+        </a>
+        <a href="m1-l4a-s2.html"
+           class="btn btn--nav btn--next"
+           rel="next"
+           aria-label="Go to next screen: Step 5 worked example, macro performance arc">
+          Next
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </nav>
+
+    </section>
+  </main>
+
+  <!-- Supplementary resources -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">
+        Input: MRHN_CalibratedScopeMap_v1. Outputs this lesson: MRHN_PerformanceArc_v1 (Screen 2),
+        MRHN_DecompositionMap_v1 reference (Screens 3&ndash;4).
+      </p>
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">
+        MRHN-D-001 through MRHN-D-003 on record. MRHN-D-004 (performance arc feasibility)
+        established in Screen 2.
+      </p>
+    </section>
+  </aside>
+
+  <!-- Support panels -->
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header"><h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header"><h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header"><h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header"><h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header"><h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <footer role="contentinfo">
+    <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    function syncToggleStates(name) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === name ? 'true' : 'false');
+      });
+    }
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const p = btn.dataset.panel;
+        if (getActivePanel() === p) { closeAll(); syncToggleStates(null); }
+        else { openPanel(p, btn); syncToggleStates(p); }
+      });
+    });
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => { closeAll(); syncToggleStates(null); });
+    });
+  </script>
+
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.4a';
+    document.getElementById('pt-screen').textContent       = '1';
+    document.getElementById('pt-screen-total').textContent = '5';
+  </script>
+
+</body>
+</html>

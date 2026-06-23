@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lesson 1.4b introduction: Unit Optimization and Scope Trace Audit. Step 7 tests whether each DC component is the right size. Step 8 verifies that all 48 components trace to a scope item with no orphan content.">
+  <title>Lesson 1.4b -- Unit Optimization and Scope Trace Audit -- ARCH Method Practitioner Credential -- Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l4b-s1 -- Lesson 1.4b Introduction
+       Phase 2 Steps 7 and 8. All color values use CSS tokens only.
+       ================================================================ */
+
+    .lesson-intro__meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 0 0.25rem;
+      flex-wrap: wrap;
+    }
+
+    .screen-type-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    .lesson-label {
+      display: block;
+      margin: 0 0 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-link);
+    }
+
+    .lesson-intro__title {
+      margin: 0 0 0.5rem;
+      font-size: 1.625rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    .step-badge-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 0 0 1.25rem;
+    }
+
+    .step-badge {
+      display: inline-block;
+      padding: 0.25rem 0.625rem;
+      background: var(--color-bg-page);
+      border: 1.5px solid var(--color-text-link);
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-link);
+    }
+
+    .lesson-intro__lead {
+      margin: 0 0 1.5rem;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+
+    /* ---- Continuation banner ---- */
+    .continuation-banner {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.875rem 1rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      margin: 0 0 2rem;
+    }
+
+    .continuation-banner__body { flex: 1; min-width: 0; }
+
+    .continuation-banner__label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+      margin: 0 0 0.375rem;
+    }
+
+    .continuation-banner__text {
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      margin: 0 0 0.625rem;
+      line-height: 1.6;
+    }
+
+    .continuation-items {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .continuation-items li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.5;
+    }
+
+    .continuation-items li::before {
+      content: '';
+      display: inline-block;
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: var(--color-brand-teal);
+      flex-shrink: 0;
+      margin-top: 0.375rem;
+    }
+
+    .continuation-items strong { font-weight: 700; }
+
+    /* ---- Step overview cards ---- */
+    .step-overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 0 0 2rem;
+    }
+
+    @media (max-width: 680px) { .step-overview-grid { grid-template-columns: 1fr; } }
+
+    .step-overview-card {
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .step-overview-card__header {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+    }
+
+    .step-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: var(--color-text-inverse);
+      color: var(--color-brand-navy);
+      font-size: 0.875rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .step-overview-card__meta { flex: 1; min-width: 0; }
+
+    .step-overview-card__num {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      opacity: 0.75;
+      display: block;
+    }
+
+    .step-overview-card__name {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      display: block;
+      line-height: 1.3;
+    }
+
+    .step-overview-card__phase-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.125rem 0.4375rem;
+      border-radius: 10px;
+      font-size: 0.625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.35);
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .step-overview-card__body {
+      padding: 0.875rem;
+      background: var(--color-bg-page);
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    .step-overview-card__body p { margin: 0 0 0.625rem; }
+    .step-overview-card__body p:last-child { margin-bottom: 0; }
+
+    .step-question {
+      font-style: italic;
+      color: var(--color-text-secondary);
+      font-size: 0.875rem;
+      border-left: 2px solid var(--color-border-strong);
+      padding-left: 0.625rem;
+      margin: 0 0 0.625rem !important;
+    }
+
+    .step-output-row {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      margin-top: 0.625rem;
+      padding-top: 0.625rem;
+      border-top: 1px solid var(--color-border-default);
+    }
+
+    .step-output-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      white-space: nowrap;
+    }
+
+    .artifact-name {
+      font-family: monospace;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--color-text-link);
+      background: var(--color-bg-subtle);
+      padding: 0.125rem 0.375rem;
+      border-radius: 3px;
+    }
+
+    /* ---- Why callout ---- */
+    .why-callout {
+      display: flex;
+      gap: 0.875rem;
+      align-items: flex-start;
+      padding: 1rem 1.125rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-left: 4px solid var(--color-brand-teal);
+      border-radius: 0 6px 6px 0;
+      margin: 0 0 2rem;
+    }
+
+    .why-callout__body { flex: 1; }
+
+    .why-callout__heading {
+      margin: 0 0 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .why-callout__text {
+      margin: 0 0 0.5rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    .why-callout__text:last-child { margin-bottom: 0; }
+    .why-callout__text strong { font-weight: 700; }
+
+    /* ---- Audit metric strip ---- */
+    .audit-metric-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 0 0 2rem;
+    }
+
+    @media (max-width: 500px) { .audit-metric-strip { grid-template-columns: 1fr 1fr; } }
+
+    .audit-metric-cell {
+      padding: 0.875rem 0.75rem;
+      background: var(--color-bg-page);
+      border-right: 1px solid var(--color-border-default);
+      text-align: center;
+    }
+
+    .audit-metric-cell:last-child { border-right: none; }
+
+    .audit-metric-cell__num {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text-link);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .audit-metric-cell__label {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      line-height: 1.4;
+    }
+
+    .audit-metric-cell__sublabel {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-top: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ---- Lesson plan ---- */
+    .lesson-plan-heading {
+      margin: 0 0 1rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .lesson-plan-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .lesson-plan-item {
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .lesson-plan-item:last-child { border-bottom: none; }
+    .lesson-plan-item--current { background: var(--color-bg-subtle); }
+
+    .lesson-plan-item__num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 0;
+      background: var(--color-bg-subtle);
+      border-right: 1px solid var(--color-border-default);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+    }
+
+    .lesson-plan-item--current .lesson-plan-item__num {
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+    }
+
+    .lesson-plan-item__body {
+      padding: 0.625rem 0.875rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .lesson-plan-item__type {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .lesson-plan-item__title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      flex: 1;
+    }
+
+    .lesson-plan-item--current .lesson-plan-item__title { font-weight: 700; }
+
+    .you-are-here {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      font-size: 0.625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-brand-teal);
+      border: 1px solid var(--color-brand-teal);
+      border-radius: 3px;
+      padding: 0.0625rem 0.3125rem;
+      flex-shrink: 0;
+    }
+
+    /* ---- Artifact flow ---- */
+    .artifact-flow-heading {
+      margin: 0 0 1rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .artifact-flow {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      margin: 0 0 2rem;
+      flex-wrap: wrap;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .artifact-flow__node {
+      flex: 1;
+      min-width: 10rem;
+      padding: 0.875rem 1rem;
+      background: var(--color-bg-page);
+      border-right: 1px solid var(--color-border-default);
+    }
+
+    .artifact-flow__node:last-child { border-right: none; }
+
+    .artifact-flow__node-label {
+      display: block;
+      font-size: 0.625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-secondary);
+      margin: 0 0 0.5rem;
+    }
+
+    .artifact-flow__node-name {
+      display: block;
+      font-family: monospace;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin: 0 0 0.375rem;
+    }
+
+    .artifact-flow__node-desc {
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+
+    .artifact-flow__node--input { background: var(--color-bg-subtle); }
+    .artifact-flow__node--step7 { border-top: 3px solid var(--color-brand-teal); }
+    .artifact-flow__node--step8 { border-top: 3px solid var(--color-text-link); }
+
+    .artifact-flow__arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 0.25rem;
+      background: var(--color-bg-subtle);
+      border-right: 1px solid var(--color-border-default);
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+    }
+
+    .where-used-note {
+      display: block;
+      font-size: 0.6875rem;
+      color: var(--color-text-secondary);
+      margin-top: 0.375rem;
+      font-style: italic;
+    }
+
+    @media (max-width: 580px) {
+      .artifact-flow { flex-direction: column; }
+      .artifact-flow__node { border-right: none; border-bottom: 1px solid var(--color-border-default); }
+      .artifact-flow__node:last-child { border-bottom: none; }
+      .artifact-flow__arrow { padding: 0.375rem 1rem; border-right: none; border-bottom: 1px solid var(--color-border-default); }
+    }
+
+    /* High contrast */
+    @media (prefers-contrast: more) {
+      .continuation-banner { border-color: var(--color-border-strong); }
+      .step-overview-card { border-color: var(--color-border-strong); }
+      .lesson-plan-list { border-color: var(--color-border-strong); }
+      .lesson-plan-item { border-bottom-color: var(--color-border-strong); }
+      .lesson-plan-item__num { border-right-color: var(--color-border-strong); }
+      .artifact-flow { border-color: var(--color-border-strong); }
+      .artifact-flow__node { border-right-color: var(--color-border-strong); }
+      .artifact-flow__arrow { border-right-color: var(--color-border-strong); }
+      .why-callout { border-color: var(--color-border-strong); border-left-color: var(--color-text-primary); }
+      .audit-metric-strip { border-color: var(--color-border-strong); }
+      .audit-metric-cell { border-right-color: var(--color-border-strong); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <header role="banner">
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+    <div id="progress-tracker" role="group" aria-label="Course progress" tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.4b</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">2</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Steps <span id="pt-step">7&ndash;8</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">1</span> of <span id="pt-screen-total">6</span></span>
+    </div>
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel" aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer" aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory" aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel" aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+  </header>
+
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item"><a href="intro-0.1.html" class="module-nav-link">Introduction</a></li>
+      <li class="module-nav-item"><a href="module-1.html" class="module-nav-link" aria-current="page">Module 1: Bound the Course</a></li>
+      <li class="module-nav-item"><a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a></li>
+      <li class="module-nav-item"><a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a></li>
+      <li class="module-nav-item"><a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a></li>
+    </ol>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <section id="current-activity" tabindex="-1" aria-label="Current activity">
+
+      <div class="lesson-intro__meta">
+        <span class="screen-type-label">Lesson Introduction</span>
+        <span class="screen-type-label" aria-hidden="true">&bull;</span>
+        <span class="screen-type-label">6 screens</span>
+      </div>
+      <p class="lesson-label" aria-label="Lesson 1.4b of Module 1">Lesson 1.4b</p>
+      <h1 class="lesson-intro__title">Unit Optimization and Scope Trace Audit</h1>
+
+      <div class="step-badge-group" aria-label="Steps covered in this lesson">
+        <span class="step-badge">Phase 2 -- Step 7: Optimize for Unit Structure</span>
+        <span class="step-badge">Phase 2 -- Step 8: Scope Trace Audit</span>
+      </div>
+
+      <p class="lesson-intro__lead">
+        MRHN_DecompositionMap_v1 is on record with all 48 DC components mapped across
+        16 scope items. Before this map can drive Module 2 instruction design, two
+        quality checks must pass. Step 7 tests whether each component is the right
+        size for independent teaching and assessment. Step 8 audits the full map
+        for scope integrity -- every component must trace to a parent scope item,
+        every scope item must generate at least one component, and no component may
+        exist outside LC-1 scope boundaries. Together, Steps 7 and 8 produce
+        MRHN_DecompositionMap_v2: the validated structural input that Module 2
+        will use to engineer instruction.
+      </p>
+
+      <!-- Continuation banner -->
+      <div class="continuation-banner" role="note" aria-label="Artifacts on record from Lesson 1.4a">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"
+             style="flex-shrink:0;margin-top:0.125rem;color:var(--color-brand-teal)">
+          <rect x="3" y="2" width="11" height="15" rx="2" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M6 7h6M6 10h6M6 13h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M13 14l2 2 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(-1,-1)"/>
+        </svg>
+        <div class="continuation-banner__body">
+          <span class="continuation-banner__label">Continuing from Lesson 1.4a</span>
+          <p class="continuation-banner__text">
+            MRHN_DecompositionMap_v1 is complete. All 16 scope items have been decomposed
+            and all 48 DC components are on record. This map is the input to both
+            Steps 7 and 8 in Lesson 1.4b.
+          </p>
+          <ul class="continuation-items" aria-label="What is on record">
+            <li><strong>MRHN_DecompositionMap_v1</strong> -- 48 DC components across 4 buckets, calibration constraint notes per component, MRHN-D-005 and MRHN-D-006 on record</li>
+            <li><strong>MRHN_PerformanceArc_v1</strong> -- macro arc and 4 bucket sub-arcs, feasibility check passed, MRHN-D-004 on record</li>
+            <li><strong>Calibration constraints carried forward:</strong> 5 domain authenticity annotations (SI-09, SI-10, SI-14, SI-07, SI-13) and taxonomy-level demands govern every affected component</li>
+            <li><strong>Decomposition rule established:</strong> only capabilities the arc requires of the learner independently receive DC components -- arc ceiling governs scope of decomposition</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Step overview cards -->
+      <h2 class="lesson-plan-heading" style="margin-bottom:1rem">What Steps 7 and 8 Do</h2>
+      <div class="step-overview-grid" role="region" aria-label="Step 7 and Step 8 overview">
+
+        <div class="step-overview-card">
+          <div class="step-overview-card__header">
+            <span class="step-circle" aria-hidden="true">7</span>
+            <span class="step-overview-card__meta">
+              <span class="step-overview-card__num">Phase 2</span>
+              <span class="step-overview-card__name">Optimize for Unit Structure</span>
+            </span>
+            <span class="step-overview-card__phase-chip">Step 7</span>
+          </div>
+          <div class="step-overview-card__body">
+            <p class="step-question">"Is each DC component the right size -- specific enough to teach independently, bounded enough to assess cleanly?"</p>
+            <p>
+              Step 7 applies the unit optimization criteria to every component in
+              MRHN_DecompositionMap_v1. A component fails the optimization check
+              if it is too large -- covering multiple distinct skills that cannot
+              be assessed by a single item -- or too small, fragmenting a coherent
+              skill into sub-steps that have no instructional value in isolation.
+            </p>
+            <p>
+              Optimization decisions are not about preference. Each check is governed
+              by two questions: can this component be taught in a single instructional
+              unit, and can learner competence on this component be assessed by a
+              single, well-formed item? Components that fail either check are split,
+              merged, or redescribed before Step 8 begins.
+            </p>
+            <div class="step-output-row">
+              <span class="step-output-label">Interim output:</span>
+              <span class="artifact-name">MRHN_DecompositionMap_v1</span>
+              <span style="font-size:0.75rem;color:var(--color-text-secondary)">(optimized draft)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-overview-card">
+          <div class="step-overview-card__header">
+            <span class="step-circle" aria-hidden="true">8</span>
+            <span class="step-overview-card__meta">
+              <span class="step-overview-card__num">Phase 2</span>
+              <span class="step-overview-card__name">Scope Trace Audit</span>
+            </span>
+            <span class="step-overview-card__phase-chip">Step 8</span>
+          </div>
+          <div class="step-overview-card__body">
+            <p class="step-question">"Does every component trace to a scope item? Does every scope item have at least one component? Are there orphans?"</p>
+            <p>
+              Step 8 audits the optimized decomposition map against the scope registry.
+              The audit runs three checks: a forward trace (every SI item in the scope
+              registry generates at least one DC component), a backward trace (every
+              DC component maps to exactly one parent SI item), and an orphan check
+              (no component exists without a valid parent, and no parent SI item is
+              unrepresented in the map).
+            </p>
+            <p>
+              The Scope Trace Audit is the final gate before Module 2. A failed
+              audit -- any DC component that cannot be traced to an SI item in the
+              scope registry -- means something outside LC-1 scope has entered the
+              map, or a scope item was silently dropped during decomposition.
+              Either condition must be resolved before Module 2 engineering begins.
+            </p>
+            <div class="step-output-row">
+              <span class="step-output-label">Produces:</span>
+              <span class="artifact-name">MRHN_DecompositionMap_v2</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Why optimization before audit -->
+      <div class="why-callout" role="note" aria-label="Why Step 7 precedes Step 8">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"
+             style="flex-shrink:0;margin-top:0.125rem;color:var(--color-brand-teal)">
+          <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M10 9v5M10 7v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <div class="why-callout__body">
+          <h2 class="why-callout__heading">Why Optimization Precedes the Audit</h2>
+          <p class="why-callout__text">
+            The Scope Trace Audit runs against whatever is in the map at the time of
+            the audit. If you audit before optimizing, you may pass the trace check
+            on a component that will later be split -- producing two components,
+            one of which may not trace clearly to the original parent SI item.
+            Running Step 7 first means the map being audited is the map that
+            will actually go to Module 2.
+          </p>
+          <p class="why-callout__text">
+            Optimization also surfaces a structural problem the audit cannot catch:
+            <strong>components that are technically traceable but instructionally
+            incoherent.</strong> A component that traces to SI-09 but bundles three
+            distinct analysis skills will pass the audit and fail in Module 2, when
+            the design team discovers the component cannot be sequenced or assessed
+            as a unit. Step 7 catches that problem before the audit locks the map.
+          </p>
+        </div>
+      </div>
+
+      <!-- Audit scope metrics -->
+      <h2 class="lesson-plan-heading">Scope Trace Audit: What the Map Enters With</h2>
+      <div class="audit-metric-strip" role="region" aria-label="Decomposition map scope metrics entering the audit">
+        <div class="audit-metric-cell">
+          <span class="audit-metric-cell__num">48</span>
+          <span class="audit-metric-cell__label">DC components to optimize and audit</span>
+          <span class="audit-metric-cell__sublabel">DC-01 to DC-48</span>
+        </div>
+        <div class="audit-metric-cell">
+          <span class="audit-metric-cell__num">16</span>
+          <span class="audit-metric-cell__label">Parent scope items in registry</span>
+          <span class="audit-metric-cell__sublabel">SI-01 to SI-16</span>
+        </div>
+        <div class="audit-metric-cell">
+          <span class="audit-metric-cell__num">4</span>
+          <span class="audit-metric-cell__label">Buckets in scope structure</span>
+          <span class="audit-metric-cell__sublabel">Buckets 1 through 4</span>
+        </div>
+        <div class="audit-metric-cell">
+          <span class="audit-metric-cell__num">0</span>
+          <span class="audit-metric-cell__label">Acceptable orphan components</span>
+          <span class="audit-metric-cell__sublabel">Audit target</span>
+        </div>
+      </div>
+
+      <!-- Artifact flow -->
+      <h2 class="artifact-flow-heading">Artifact Flow: Lesson 1.4b</h2>
+      <div class="artifact-flow" role="region" aria-label="Artifact input and outputs for Lesson 1.4b">
+
+        <div class="artifact-flow__node artifact-flow__node--input">
+          <span class="artifact-flow__node-label">Input (from Lesson 1.4a)</span>
+          <span class="artifact-flow__node-name">MRHN_DecompositionMap_v1</span>
+          <span class="artifact-flow__node-desc">
+            DC-01 through DC-48 &bull; 16 SI items decomposed &bull; calibration constraints noted &bull; MRHN-D-005, MRHN-D-006
+          </span>
+        </div>
+
+        <div class="artifact-flow__arrow" aria-hidden="true">
+          <svg focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M4 8h8M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="artifact-flow__node artifact-flow__node--step7">
+          <span class="artifact-flow__node-label">Step 7 (Screens 2&ndash;3)</span>
+          <span class="artifact-flow__node-name">Unit Optimization</span>
+          <span class="artifact-flow__node-desc">
+            Each DC component checked against teachability and assessability criteria &bull; MRHN-D-007
+          </span>
+          <span class="where-used-note">Optimized map feeds directly into Step 8 audit</span>
+        </div>
+
+        <div class="artifact-flow__arrow" aria-hidden="true">
+          <svg focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M4 8h8M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="artifact-flow__node artifact-flow__node--step8">
+          <span class="artifact-flow__node-label">Step 8 Output (Screens 4&ndash;5)</span>
+          <span class="artifact-flow__node-name">MRHN_DecompositionMap_v2</span>
+          <span class="artifact-flow__node-desc">
+            All 48 components trace to parent SI &bull; 0 orphans &bull; Scope Trace Audit passed &bull; MRHN-D-008
+          </span>
+          <span class="where-used-note">Primary structural input to Module 2</span>
+        </div>
+
+      </div>
+
+      <!-- 6-screen lesson plan -->
+      <h2 class="lesson-plan-heading">Lesson 1.4b -- 6 Screens</h2>
+      <ol class="lesson-plan-list" aria-label="Lesson 1.4b screen-by-screen plan">
+        <li class="lesson-plan-item lesson-plan-item--current" aria-current="true">
+          <span class="lesson-plan-item__num" aria-label="Screen 1">1</span>
+          <span class="lesson-plan-item__body">
+            <span class="lesson-plan-item__type">Introduction</span>
+            <span class="lesson-plan-item__title">Unit Optimization and Scope Trace Audit -- Steps 7 and 8 overview, audit scope metrics, artifact flow</span>
+            <span class="you-are-here" aria-label="You are here">Here</span>
+          </span>
+        </li>
+        <li class="lesson-plan-item">
+          <span class="lesson-plan-item__num" aria-label="Screen 2">2</span>
+          <span class="lesson-plan-item__body">
+            <span class="lesson-plan-item__type">Worked Example</span>
+            <span class="lesson-plan-item__title">Step 7: Expert applies unit optimization criteria to selected MRHN components. Three cases shown -- one component that passes, one that is split, one that is merged. Produces MRHN-D-007.</span>
+          </span>
+        </li>
+        <li class="lesson-plan-item">
+          <span class="lesson-plan-item__num" aria-label="Screen 3">3</span>
+          <span class="lesson-plan-item__body">
+            <span class="lesson-plan-item__type">Worked Example</span>
+            <span class="lesson-plan-item__title">Step 8: Expert conducts the full Scope Trace Audit on the optimized MRHN map. Forward trace, backward trace, and orphan check demonstrated. One parent misattribution found and resolved. Audit passes -- MRHN_DecompositionMap_v2 produced with MRHN-D-008.</span>
+          </span>
+        </li>
+        <li class="lesson-plan-item">
+          <span class="lesson-plan-item__num" aria-label="Screen 4">4</span>
+          <span class="lesson-plan-item__body">
+            <span class="lesson-plan-item__type">Guided Practice</span>
+            <span class="lesson-plan-item__title">Steps 7 and 8 combined: Learner applies unit optimization criteria to three components from a provided partial MRHN map, then runs the Scope Trace Audit on the optimized result. Expert comparison follows each task.</span>
+          </span>
+        </li>
+        <li class="lesson-plan-item">
+          <span class="lesson-plan-item__num" aria-label="Screen 5">5</span>
+          <span class="lesson-plan-item__body">
+            <span class="lesson-plan-item__type">Calibration</span>
+            <span class="lesson-plan-item__title">Expert review of Screen 4 guided practice decisions. Annotation of the governing criterion for each optimization and trace finding. Learner identifies the decision they were least confident about and names the principle that resolves it.</span>
+          </span>
+        </li>
+        <li class="lesson-plan-item">
+          <span class="lesson-plan-item__num" aria-label="Screen 6">6</span>
+          <span class="lesson-plan-item__body">
+            <span class="lesson-plan-item__type">Reflection</span>
+            <span class="lesson-plan-item__title">Lesson 1.4b reflection -- what does the unit optimization check reveal about the quality of the original decomposition? Transition note to Gate 1.TG.1: Module 1 Threshold Check.</span>
+          </span>
+        </li>
+      </ol>
+
+      <!-- Screen navigation -->
+      <nav class="screen-nav" aria-label="Screen navigation">
+        <a href="m1-l4a-s5.html"
+           class="btn btn--nav btn--prev"
+           rel="prev"
+           aria-label="Go to previous screen: Lesson 1.4a reflection checkpoint">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Previous
+        </a>
+        <a href="m1-l4b-s2.html"
+           class="btn btn--nav btn--next"
+           rel="next"
+           aria-label="Go to next screen: Step 7 worked example, unit optimization criteria applied to MRHN components">
+          Next
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </nav>
+
+    </section>
+  </main>
+
+  <!-- Supplementary resources -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">
+        Input: MRHN_DecompositionMap_v1 (DC-01 through DC-48, MRHN-D-005, MRHN-D-006 from Lesson 1.4a).
+        Output this lesson: MRHN_DecompositionMap_v2 (optimized, Scope Trace Audit passed, MRHN-D-007, MRHN-D-008).
+      </p>
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">
+        MRHN-D-001 through MRHN-D-006 on record from Lessons 1.1a through 1.4a.
+        MRHN-D-007 (Unit Optimization) established in Screen 2.
+        MRHN-D-008 (Scope Trace Audit) established in Screen 4.
+      </p>
+    </section>
+  </aside>
+
+  <!-- Support panels -->
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header"><h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header"><h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header"><h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header"><h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header"><h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <footer role="contentinfo">
+    <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    function syncToggleStates(name) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === name ? 'true' : 'false');
+      });
+    }
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const p = btn.dataset.panel;
+        if (getActivePanel() === p) { closeAll(); syncToggleStates(null); }
+        else { openPanel(p, btn); syncToggleStates(p); }
+      });
+    });
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => { closeAll(); syncToggleStates(null); });
+    });
+  </script>
+
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.4b';
+    document.getElementById('pt-screen').textContent       = '1';
+    document.getElementById('pt-screen-total').textContent = '6';
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ARCH Method vs quality review frameworks. ARCH is a design workflow used before development; QM, OLC, and OSCQR are evaluation rubrics used after development. Complementary tools.">
+  <title>ARCH Method and Quality Review Frameworks — Introduction — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/scaffolds/persistentStepTracker.css">
+  <style>
+    /* ================================================================
+       Screen 0.2 — Comparison Graphic Styles
+       All color values reference CSS tokens. No hard-coded hex values.
+       ================================================================ */
+
+    .lesson-intro__lead {
+      margin: 0 0 1.5rem;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+      max-width: 68ch;
+    }
+
+    /* Figure container: allows horizontal scroll on narrow viewports
+       so the SVG stays readable at its minimum width. */
+    .comparison-figure {
+      margin: 0 0 1.5rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* The SVG scales down with the viewport but never below 580px,
+       which keeps the comparison text readable (min ~10px rendered). */
+    .comparison-graphic {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-width: 580px;
+    }
+
+    .comparison-caption {
+      margin-top: 0.875rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--color-border-default);
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      max-width: 720px;
+    }
+
+    /* Scroll hint visible only when figure container is scrollable
+       (i.e., viewport narrower than min-width of SVG). */
+    .comparison-scroll-hint {
+      display: none;
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 639px) {
+      .comparison-scroll-hint {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">
+        Module <span id="pt-module">Intro</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        <span id="pt-lesson">Introduction</span>
+      </span>
+      <!-- Phase and Step are not part of the introduction sequence and are hidden. -->
+      <span class="pt-divider" aria-hidden="true" id="pt-phase-divider" hidden>&bull;</span>
+      <span class="pt-item" id="pt-phase-item" hidden>
+        Phase <span id="pt-phase">0</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true" id="pt-step-divider" hidden>&bull;</span>
+      <span class="pt-item" id="pt-step-item" hidden>
+        Step <span id="pt-step">0</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Screen <span id="pt-screen">2</span> of <span id="pt-screen-total">9</span>
+      </span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button"
+              class="support-toggle"
+              data-panel="glossary"
+              aria-controls="glossary"
+              aria-expanded="false">Glossary</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="supportPanel"
+              aria-controls="supportPanel"
+              aria-expanded="false">Support</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="artifactDrawer"
+              aria-controls="artifactDrawer"
+              aria-expanded="false">Artifacts</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="decisionHistory"
+              aria-controls="decisionHistory"
+              aria-expanded="false">Decision History</button>
+      <button type="button"
+              class="support-toggle"
+              data-panel="annotationPanel"
+              aria-controls="annotationPanel"
+              aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link" aria-current="page">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <article class="lesson-intro" aria-labelledby="lesson-title">
+
+        <header class="lesson-intro__header">
+          <p class="lesson-label" aria-label="Introduction, Screen 2 of 9">Introduction &bull; Screen 2 of 9</p>
+          <h1 id="lesson-title" class="lesson-intro__title">ARCH Method and Quality Review Frameworks</h1>
+        </header>
+
+        <p class="lesson-intro__lead">
+          Many instructional designers already use quality review frameworks such as Quality Matters,
+          the OLC Quality Scorecard, or OSCQR. The ARCH Method is not a replacement for those tools.
+          It is a design workflow that operates at a different point in the process and answers a
+          different question. The comparison below clarifies the distinction.
+        </p>
+
+        <!-- =========================================================
+             Comparison Graphic: ARCH Method vs Quality Review Frameworks
+             Inline SVG uses CSS custom properties throughout.
+             All color values reference semantic tokens from tokens.css.
+             role="img" + aria-labelledby + aria-describedby satisfies
+             WCAG 1.1.1 for complex graphic content.
+
+             Alt text (rendered in <desc>):
+             ARCH is a design workflow used before development to build a
+             defensible course architecture. Quality review frameworks such
+             as QM, OLC, and OSCQR are evaluation rubrics used after
+             development to judge whether a finished course meets standards.
+             They have different purposes and are complementary tools.
+             ========================================================= -->
+
+        <p class="comparison-scroll-hint" aria-hidden="true">
+          Scroll right to view the full comparison.
+        </p>
+
+        <figure class="comparison-figure"
+                role="group"
+                aria-labelledby="cmp-fig-caption">
+
+          <svg class="comparison-graphic"
+               viewBox="0 0 720 440"
+               xmlns="http://www.w3.org/2000/svg"
+               role="img"
+               aria-labelledby="cmp-svg-title"
+               aria-describedby="cmp-svg-desc">
+
+            <title id="cmp-svg-title">ARCH Method vs Quality Review Frameworks</title>
+            <desc id="cmp-svg-desc">ARCH is a design workflow used before development to build a defensible course architecture. Quality review frameworks such as QM, OLC, and OSCQR are evaluation rubrics used after development to judge whether a finished course meets standards. They have different purposes and are complementary tools.</desc>
+
+            <style>
+              /* SVG classes reference CSS tokens from tokens.css.
+                 Inline SVG in HTML inherits the page's CSS custom properties.
+                 All color values adapt automatically to dark mode and high contrast
+                 because the token values change via media queries in tokens.css. */
+              .cmp-bg-l    { fill: var(--color-bg-subtle); }
+              .cmp-bg-r    { fill: var(--color-surface-raised); }
+              .cmp-border  { fill: none; stroke: var(--color-border-default); stroke-width: 1; }
+              .cmp-strip   { fill: var(--color-text-link); }
+              .cmp-head    { fill: var(--color-text-primary);
+                             font-family: system-ui, -apple-system, sans-serif;
+                             font-size: 16px;
+                             font-weight: 700; }
+              .cmp-sub     { fill: var(--color-text-link);
+                             font-family: system-ui, -apple-system, sans-serif;
+                             font-size: 10px;
+                             font-weight: 700;
+                             letter-spacing: 0.08em; }
+              .cmp-dim     { fill: var(--color-text-secondary);
+                             font-family: system-ui, -apple-system, sans-serif;
+                             font-size: 9.5px;
+                             font-weight: 700;
+                             letter-spacing: 0.07em; }
+              .cmp-val     { fill: var(--color-text-primary);
+                             font-family: system-ui, -apple-system, sans-serif;
+                             font-size: 13px; }
+              .cmp-rule    { stroke: var(--color-border-default); stroke-width: 1; }
+              .cmp-vs-bg   { fill: var(--color-text-link); }
+              .cmp-vs-text { fill: var(--color-text-inverse);
+                             font-family: system-ui, -apple-system, sans-serif;
+                             font-size: 13px;
+                             font-weight: 800; }
+
+              /* High contrast: increase text weight and border visibility */
+              @media (prefers-contrast: more) {
+                .cmp-border { stroke: var(--color-border-strong); stroke-width: 1.5; }
+                .cmp-rule   { stroke: var(--color-border-strong); stroke-width: 1.5; }
+                .cmp-dim    { fill: var(--color-text-primary); }
+                .cmp-head   { font-size: 17px; }
+              }
+            </style>
+
+            <!-- ========== LEFT PANEL: ARCH Method (x=0, w=335) ========== -->
+
+            <!-- Panel background and border -->
+            <rect class="cmp-bg-l"   x="0"   y="0"   width="335" height="440" rx="8"/>
+            <rect class="cmp-border" x="0.5" y="0.5" width="334" height="439" rx="8"/>
+            <!-- Teal left-edge accent strip (inset from corners by rx amount) -->
+            <rect class="cmp-strip"  x="0"   y="8"   width="4"   height="424" rx="2"/>
+
+            <!-- Column heading -->
+            <text class="cmp-head" x="176" y="36" text-anchor="middle">ARCH Method</text>
+            <text class="cmp-sub"  x="176" y="54" text-anchor="middle">DESIGN WORKFLOW</text>
+            <line class="cmp-rule" x1="16" y1="68" x2="319" y2="68"/>
+
+            <!-- Row 1: Purpose -->
+            <text class="cmp-dim" x="16" y="88">PURPOSE</text>
+            <text class="cmp-val" x="16" y="108">Build a defensible course architecture</text>
+            <text class="cmp-val" x="16" y="126">before development begins</text>
+            <line class="cmp-rule" x1="16" y1="144" x2="319" y2="144"/>
+
+            <!-- Row 2: When Applied -->
+            <text class="cmp-dim" x="16" y="164">WHEN APPLIED</text>
+            <text class="cmp-val" x="16" y="184">Before and during</text>
+            <text class="cmp-val" x="16" y="202">the development phase</text>
+            <line class="cmp-rule" x1="16" y1="218" x2="319" y2="218"/>
+
+            <!-- Row 3: Central Question -->
+            <text class="cmp-dim" x="16" y="240">CENTRAL QUESTION</text>
+            <text class="cmp-val" x="16" y="260">What architecture will best</text>
+            <text class="cmp-val" x="16" y="278">serve this learner?</text>
+            <line class="cmp-rule" x1="16" y1="296" x2="319" y2="296"/>
+
+            <!-- Row 4: Used By -->
+            <text class="cmp-dim" x="16" y="316">USED BY</text>
+            <text class="cmp-val" x="16" y="336">Instructional designer</text>
+            <text class="cmp-val" x="16" y="354">during course design</text>
+            <line class="cmp-rule" x1="16" y1="370" x2="319" y2="370"/>
+
+            <!-- Row 5: Output -->
+            <text class="cmp-dim" x="16" y="390">OUTPUT</text>
+            <text class="cmp-val" x="16" y="410">Course scope statement and</text>
+            <text class="cmp-val" x="16" y="428">architecture document</text>
+
+            <!-- ========== RIGHT PANEL: Quality Review Frameworks (x=385, w=335) ========== -->
+
+            <!-- Panel background and border -->
+            <rect class="cmp-bg-r"   x="385"   y="0"   width="335" height="440" rx="8"/>
+            <rect class="cmp-border" x="385.5" y="0.5" width="334" height="439" rx="8"/>
+            <!-- Teal left-edge accent strip -->
+            <rect class="cmp-strip"  x="385"   y="8"   width="4"   height="424" rx="2"/>
+
+            <!-- Column heading -->
+            <text class="cmp-head" x="552" y="36" text-anchor="middle">Quality Review Frameworks</text>
+            <!-- Subtitle lists the specific frameworks learners may already know -->
+            <text class="cmp-sub"  x="552" y="54" text-anchor="middle">EVALUATION RUBRIC &#x2022; QM, OLC, OSCQR</text>
+            <line class="cmp-rule" x1="401" y1="68" x2="704" y2="68"/>
+
+            <!-- Row 1: Purpose -->
+            <text class="cmp-dim" x="401" y="88">PURPOSE</text>
+            <text class="cmp-val" x="401" y="108">Evaluate whether a finished course</text>
+            <text class="cmp-val" x="401" y="126">meets published quality standards</text>
+            <line class="cmp-rule" x1="401" y1="144" x2="704" y2="144"/>
+
+            <!-- Row 2: When Applied -->
+            <text class="cmp-dim" x="401" y="164">WHEN APPLIED</text>
+            <text class="cmp-val" x="401" y="184">After development</text>
+            <text class="cmp-val" x="401" y="202">is complete</text>
+            <line class="cmp-rule" x1="401" y1="218" x2="704" y2="218"/>
+
+            <!-- Row 3: Central Question -->
+            <text class="cmp-dim" x="401" y="240">CENTRAL QUESTION</text>
+            <text class="cmp-val" x="401" y="260">Does this course meet</text>
+            <text class="cmp-val" x="401" y="278">established standards?</text>
+            <line class="cmp-rule" x1="401" y1="296" x2="704" y2="296"/>
+
+            <!-- Row 4: Used By -->
+            <text class="cmp-dim" x="401" y="316">USED BY</text>
+            <text class="cmp-val" x="401" y="336">Quality reviewer or QA team</text>
+            <text class="cmp-val" x="401" y="354">after development</text>
+            <line class="cmp-rule" x1="401" y1="370" x2="704" y2="370"/>
+
+            <!-- Row 5: Output -->
+            <text class="cmp-dim" x="401" y="390">OUTPUT</text>
+            <text class="cmp-val" x="401" y="410">Review report and</text>
+            <text class="cmp-val" x="401" y="428">quality scorecard</text>
+
+            <!-- ========== VS BADGE ==========
+                 Rendered last so it sits on top of both panels.
+                 Centered in the 50px gap between panels (x=335 to x=385),
+                 at the visual midpoint of the SVG (y=220).
+                 ================================ -->
+            <circle class="cmp-vs-bg"   cx="360" cy="220" r="26"/>
+            <text   class="cmp-vs-text" x="360"  y="220"
+                    text-anchor="middle"
+                    dominant-baseline="middle">vs</text>
+
+          </svg>
+
+          <figcaption class="comparison-caption" id="cmp-fig-caption">
+            The ARCH Method and quality review frameworks serve different purposes and are
+            complementary tools. Use the ARCH Method during course design to build a defensible
+            architecture before a single piece of content is developed. Use quality review frameworks
+            after development to evaluate the finished course against published standards. Neither
+            replaces the other.
+          </figcaption>
+
+        </figure>
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="intro-0.1.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true"
+                 focusable="false"
+                 width="16"
+                 height="16"
+                 viewBox="0 0 16 16"
+                 fill="none">
+              <path d="M10 12L6 8l4-4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="intro-0.3.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen">
+            Next
+            <svg aria-hidden="true"
+                 focusable="false"
+                 width="16"
+                 height="16"
+                 viewBox="0 0 16 16"
+                 fill="none">
+              <path d="M6 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+
+    <section id="artifact-reference"
+             tabindex="-1"
+             aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">No artifacts have been started yet. Your first artifact begins in Module 1.</p>
+    </section>
+
+    <section id="decision-history"
+             tabindex="-1"
+             aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">No decisions recorded yet. Decision points begin in Module 1.</p>
+    </section>
+
+  </aside>
+
+  <!-- ============================================================
+       Support Panels — managed by panelManager.js
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script
+       ============================================================ -->
+  <script type="module">
+    import { init } from './js/scaffolds/persistentStepTracker.js';
+
+    init({
+      module:   0,
+      lesson:   'Introduction',
+      phase:    0,
+      step:     0,
+      screen:   2,
+      total:    9,
+      announce: false,
+    });
+
+    /* ptUpdate() sets pt-module to '0'. Override to display 'Intro'. */
+    document.getElementById('pt-module').textContent = 'Intro';
+  </script>
+
+</body>
+</html>

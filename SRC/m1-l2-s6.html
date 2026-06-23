@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lesson 1.2 reflection checkpoint. Identify the bucket balance decision you found most difficult to evaluate and explain what made it difficult.">
+  <title>Lesson Reflection — Lesson 1.2 — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l2-s6 -- Lesson Reflection Checkpoint
+       Phase 1, Steps 2 and 3.
+       All color values use CSS tokens only.
+       ================================================================ */
+
+    .reflection__meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 0 0.25rem;
+    }
+
+    .screen-type-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    .lesson-label {
+      display: block;
+      margin: 0 0 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-link);
+    }
+
+    .reflection__title {
+      margin: 0 0 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    .step-badge-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 0 0 1.5rem;
+    }
+
+    .step-badge {
+      display: inline-block;
+      padding: 0.25rem 0.625rem;
+      background: var(--color-bg-page);
+      border: 1.5px solid var(--color-text-link);
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-link);
+    }
+
+    /* ---- Lesson summary card ---- */
+    .lesson-summary {
+      margin: 0 0 2rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .lesson-summary__header {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.625rem 1rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+    }
+
+    .lesson-summary__heading {
+      margin: 0;
+      font-size: 0.9375rem;
+      font-weight: 700;
+    }
+
+    .lesson-summary__body {
+      padding: 0;
+    }
+
+    .summary-step-row {
+      display: grid;
+      grid-template-columns: 2.25rem 1fr;
+      gap: 0 0.75rem;
+      align-items: baseline;
+      padding: 0.625rem 1rem;
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .summary-step-row:last-child { border-bottom: none; }
+    .summary-step-row:nth-child(even) { background: var(--color-bg-subtle); }
+
+    .summary-step-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: var(--color-text-link);
+      color: var(--color-text-inverse);
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .summary-step-content {
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    .summary-step-content strong { font-weight: 700; }
+
+    /* ---- Reflection prompt area ---- */
+    .reflection-prompt-area {
+      margin: 0 0 1.75rem;
+    }
+
+    .reflection-prompt-label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-secondary);
+      margin: 0 0 0.625rem;
+    }
+
+    .reflection-prompt {
+      padding: 1rem 1.125rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-left: 4px solid var(--color-brand-teal);
+      border-radius: 0 5px 5px 0;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      line-height: 1.75;
+    }
+
+    /* ---- Textarea and controls ---- */
+    .reflection-input-area {
+      margin: 0 0 1.75rem;
+    }
+
+    .reflection-input-label {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin: 0 0 0.5rem;
+    }
+
+    .reflection-input-label-text {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .word-count {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .reflection-textarea {
+      width: 100%;
+      min-height: 11rem;
+      padding: 0.75rem 0.875rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 4px;
+      background: var(--color-bg-page);
+      color: var(--color-text-primary);
+      font-family: inherit;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+
+    .reflection-textarea:focus {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 1px;
+      border-color: var(--color-text-link);
+    }
+
+    /* Autosave status */
+    .autosave-status {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      margin: 0.5rem 0 0;
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      min-height: 1.25rem;
+    }
+
+    .autosave-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: var(--color-border-default);
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+
+    .autosave-dot--saving  { background: var(--color-warning-text); }
+    .autosave-dot--saved   { background: var(--color-success-text); }
+    .autosave-dot--error   { background: var(--color-error-text); }
+
+    /* ---- Guidance cues ---- */
+    .guidance-cues {
+      margin: 0 0 1.75rem;
+      padding: 0.875rem 1rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+    }
+
+    .guidance-cues__label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+      margin: 0 0 0.5rem;
+    }
+
+    .guidance-list {
+      margin: 0;
+      padding: 0 0 0 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .guidance-list li {
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+    }
+
+    /* ---- Lesson transition note ---- */
+    .lesson-transition {
+      margin: 0 0 2rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .lesson-transition__header {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.625rem 1rem;
+      background: var(--color-bg-subtle);
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .lesson-transition__label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+    }
+
+    .lesson-transition__body {
+      padding: 1rem 1.125rem;
+    }
+
+    .lesson-transition__next {
+      display: flex;
+      align-items: baseline;
+      gap: 0.625rem;
+      margin: 0 0 0.625rem;
+    }
+
+    .next-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+    }
+
+    .next-lesson-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .lesson-transition__step-strip {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 0 0 0.75rem;
+    }
+
+    .transition-step-badge {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      background: var(--color-bg-page);
+      border: 1px solid var(--color-border-default);
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+    }
+
+    .lesson-transition__desc {
+      margin: 0;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    .lesson-transition__desc strong { font-weight: 700; }
+
+    .lesson-transition__artifact {
+      margin: 0.75rem 0 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: var(--color-bg-page);
+      border: 1px solid var(--color-border-default);
+      border-radius: 4px;
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+    }
+
+    .artifact-tag {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+    }
+
+    .artifact-name {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      font-family: monospace;
+    }
+
+    /* ---- Completion badge ---- */
+    .completion-strip {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--color-success-bg);
+      border: 1px solid var(--color-success-border);
+      border-radius: 5px;
+      margin: 0 0 1.75rem;
+    }
+
+    .completion-strip__text {
+      flex: 1;
+    }
+
+    .completion-strip__label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-success-text);
+      margin-bottom: 0.125rem;
+    }
+
+    .completion-strip__msg {
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.55;
+    }
+
+    /* High contrast */
+    @media (prefers-contrast: more) {
+      .lesson-summary { border-color: var(--color-border-strong); }
+      .summary-step-row { border-bottom-color: var(--color-border-strong); }
+      .reflection-prompt { border-color: var(--color-border-strong); border-left-color: var(--color-text-primary); }
+      .reflection-textarea { border-color: var(--color-border-strong); }
+      .guidance-cues { border-color: var(--color-border-strong); }
+      .lesson-transition { border-color: var(--color-border-strong); }
+      .lesson-transition__header { border-bottom-color: var(--color-border-strong); }
+      .lesson-transition__artifact { border-color: var(--color-border-strong); }
+      .transition-step-badge { border-color: var(--color-border-strong); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <header role="banner">
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+    <div id="progress-tracker" role="group" aria-label="Course progress" tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.2</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Steps <span id="pt-step">2&ndash;3</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">6</span> of <span id="pt-screen-total">6</span></span>
+    </div>
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel" aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer" aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory" aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel" aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+  </header>
+
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item"><a href="intro-0.1.html" class="module-nav-link">Introduction</a></li>
+      <li class="module-nav-item"><a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a></li>
+      <li class="module-nav-item"><a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a></li>
+      <li class="module-nav-item"><a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a></li>
+      <li class="module-nav-item"><a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a></li>
+    </ol>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <section id="current-activity" tabindex="-1" aria-label="Current activity">
+      <article class="reflection" aria-labelledby="reflection-title">
+
+        <header class="reflection__header">
+          <div class="reflection__meta">
+            <span class="screen-type-label">Lesson Reflection</span>
+          </div>
+          <p class="lesson-label" aria-label="Lesson 1.2">Lesson 1.2</p>
+          <h1 id="reflection-title" class="reflection__title">
+            Lesson Reflection Checkpoint
+          </h1>
+          <div class="step-badge-group">
+            <span class="step-badge">Step 2</span>
+            <span class="step-badge">Step 3</span>
+          </div>
+        </header>
+
+        <!-- ---- Lesson completion strip ---- -->
+        <div class="completion-strip" role="status">
+          <svg aria-hidden="true" focusable="false" width="28" height="28"
+               viewBox="0 0 28 28" fill="none" style="flex-shrink:0;">
+            <circle cx="14" cy="14" r="12.5" stroke="var(--color-success-text)" stroke-width="2"/>
+            <path d="M8.5 14l4 4 7-7" stroke="var(--color-success-text)" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="completion-strip__text">
+            <span class="completion-strip__label">Lesson 1.2 Complete</span>
+            <span class="completion-strip__msg">
+              You have completed Defining Course Boundaries. Steps 2 and 3 are done.
+            </span>
+          </div>
+        </div>
+
+        <!-- ---- Lesson summary ---- -->
+        <div class="lesson-summary" role="region" aria-label="Lesson 1.2 summary">
+          <div class="lesson-summary__header">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M5 8l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h2 class="lesson-summary__heading">What You Practiced in Lesson 1.2</h2>
+          </div>
+          <div class="lesson-summary__body">
+            <div class="summary-step-row">
+              <span class="summary-step-num" aria-label="Step 2">2</span>
+              <div class="summary-step-content">
+                <strong>Bucket Scope Items:</strong> You read all 16 Meridian scope items
+                and organized them into four workflow-based buckets -- Threat Recognition
+                and Triage, Containment and Control, Active Response Execution, and
+                Post-Incident Close-Out. You saw why workflow logic produces more defensible
+                buckets than topic familiarity, and you applied the bucketing step yourself
+                in the guided practice.
+              </div>
+            </div>
+            <div class="summary-step-row">
+              <span class="summary-step-num" aria-label="Step 3">3</span>
+              <div class="summary-step-content">
+                <strong>Evaluate Bucket Balance:</strong> You applied four criteria --
+                constraint compliance, item volume, instructional coherence, and sequence
+                position -- to each of the four MRHN buckets. You learned that balance is
+                a fitness test, not a counting exercise, and you worked through the
+                thin-bucket evaluation to determine why the three-item Post-Incident
+                Close-Out bucket passes the balance check. Both a flag and a pass are
+                meaningful outputs of this step.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---- Reflection prompt ---- -->
+        <div class="reflection-prompt-area">
+          <span class="reflection-prompt-label" aria-hidden="true">Reflection Prompt</span>
+          <div class="reflection-prompt" role="note" aria-label="Reflection prompt">
+            In the balance evaluation you completed on Screen 5, which bucket balance
+            decision did you find most difficult to evaluate? Identify the specific
+            bucket and criterion. Then explain what made it difficult: was it the
+            criterion itself, the items in that bucket, the constraint context, the
+            absence of a clear rule, or something else? Be as specific as you can.
+          </div>
+        </div>
+
+        <!-- ---- Guidance cues ---- -->
+        <div class="guidance-cues" role="note" aria-label="Guidance for reflection">
+          <span class="guidance-cues__label">Things worth considering</span>
+          <ul class="guidance-list">
+            <li>Was the difficulty about the criterion -- for example, is "instructional coherence" harder to evaluate than "sequence position"?</li>
+            <li>Was it the specific items -- for example, did the constraint density in Bucket 3 make constraint compliance harder to call than you expected?</li>
+            <li>Was it the absence of a quantitative rule -- for example, did "item volume" feel subjective without a minimum or maximum count?</li>
+            <li>Did the thin-bucket evaluation for Bucket 4 change a judgment you had already made, and if so, what shifted?</li>
+            <li>How might this difficulty surface in a real project, where you would not have the four criteria spelled out in front of you?</li>
+          </ul>
+        </div>
+
+        <!-- ---- Textarea ---- -->
+        <div class="reflection-input-area">
+          <div class="reflection-input-label">
+            <label class="reflection-input-label-text" for="reflection-textarea">
+              Your response
+            </label>
+            <span class="word-count" aria-live="polite" aria-label="Word count">
+              <span id="word-count-num">0</span> words
+            </span>
+          </div>
+          <textarea id="reflection-textarea"
+                    class="reflection-textarea"
+                    rows="10"
+                    maxlength="4000"
+                    aria-describedby="autosave-status-text"
+                    placeholder="Identify the bucket and criterion you found most difficult, then explain what made it difficult..."></textarea>
+          <div class="autosave-status" aria-live="polite" aria-label="Autosave status">
+            <span id="autosave-dot" class="autosave-dot" aria-hidden="true"></span>
+            <span id="autosave-status-text" class="sr-only-until-focus">Your response is saved automatically.</span>
+            <span id="autosave-label" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <!-- ---- Lesson transition note ---- -->
+        <div class="lesson-transition" role="region" aria-label="Coming up next: Lesson 1.3">
+          <div class="lesson-transition__header">
+            <svg aria-hidden="true" focusable="false" width="14" height="14"
+                 viewBox="0 0 14 14" fill="none">
+              <path d="M7 1v12M1 7h12" stroke="var(--color-text-secondary)" stroke-width="1.5"
+                    stroke-linecap="round"/>
+            </svg>
+            <span class="lesson-transition__label">Coming Up Next</span>
+          </div>
+          <div class="lesson-transition__body">
+            <div class="lesson-transition__next">
+              <span class="next-label">Lesson 1.3</span>
+              <span class="next-lesson-name">Bucket Mapping and Domain Calibration</span>
+            </div>
+            <div class="lesson-transition__step-strip">
+              <span class="transition-step-badge">Step 3</span>
+              <span class="transition-step-badge">Step 4</span>
+            </div>
+            <p class="lesson-transition__desc">
+              Lesson 1.3 extends the balance evaluation into domain calibration -- the
+              process of verifying that each bucket's scope items reflect the actual
+              knowledge demands of the performance context, not just the workflow structure.
+              You will see how a bucket map that passes the four balance criteria can still
+              require calibration when the domain expertise required by individual scope
+              items outpaces what the learner population brings to the course.
+              <strong>Step 4 introduces the Domain Calibration tool</strong>, which produces
+              a calibrated scope map before the architecture moves into decomposition.
+            </p>
+            <div class="lesson-transition__artifact">
+              <span class="artifact-tag">Next Artifact</span>
+              <span class="artifact-name">MRHN_CalibratedScopeMap_v1_[Date]</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---- Screen navigation ---- -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l2-s5.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="m1-l3-s1.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Begin Lesson 1.3">
+            Begin Lesson 1.3
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+    </section>
+  </main>
+
+  <!-- Supplementary resources -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">
+        MRHN_BucketMap_v1 is complete. MRHN-D-002 (balance check decision)
+        is recorded. Lesson 1.3 introduces MRHN_CalibratedScopeMap_v1.
+      </p>
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">
+        MRHN-D-001 (Step 1.5 documentation), MRHN-D-002 (bucket balance
+        check). No new decisions on this screen.
+      </p>
+    </section>
+  </aside>
+
+  <!-- Support panels -->
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- Panel manager -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) { closeAll(); syncToggleStates(null); }
+        else { openPanel(panelName, btn); syncToggleStates(panelName); }
+      });
+    });
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => { closeAll(); syncToggleStates(null); });
+    });
+  </script>
+
+  <!-- Progress tracker -->
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.2';
+    document.getElementById('pt-phase').textContent        = '1';
+    document.getElementById('pt-screen').textContent       = '6';
+    document.getElementById('pt-screen-total').textContent = '6';
+    document.querySelectorAll('.module-nav-link').forEach(link => link.removeAttribute('aria-current'));
+    const activeLink = document.querySelector('.module-nav-link[href="module-1.html"]');
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+  </script>
+
+  <!-- ============================================================
+       Reflection autosave
+       ============================================================ -->
+  <script type="module">
+    import { getItem, setItem } from './js/storage.js';
+
+    const SCREEN_ID   = 'm1-l2-s6';
+    const STORAGE_KEY = 'reflection_' + SCREEN_ID;
+
+    const textarea   = document.getElementById('reflection-textarea');
+    const countEl    = document.getElementById('word-count-num');
+    const dotEl      = document.getElementById('autosave-dot');
+    const labelEl    = document.getElementById('autosave-label');
+    const announcer  = document.getElementById('sr-announcer');
+
+    let saveTimer = null;
+
+    function announce(msg) {
+      announcer.textContent = '';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => { announcer.textContent = msg; });
+      });
+    }
+
+    function wordCount(text) {
+      const trimmed = text.trim();
+      if (!trimmed) return 0;
+      return trimmed.split(/\s+/).length;
+    }
+
+    function updateWordCount() {
+      countEl.textContent = wordCount(textarea.value);
+    }
+
+    function setStatus(state) {
+      dotEl.className = 'autosave-dot';
+      if (state === 'saving') {
+        dotEl.classList.add('autosave-dot--saving');
+        labelEl.textContent = 'Saving...';
+      } else if (state === 'saved') {
+        dotEl.classList.add('autosave-dot--saved');
+        labelEl.textContent = 'Saved';
+      } else if (state === 'error') {
+        dotEl.classList.add('autosave-dot--error');
+        labelEl.textContent = 'Could not save';
+      } else {
+        labelEl.textContent = '';
+      }
+    }
+
+    function save() {
+      setStatus('saving');
+      try {
+        setItem(STORAGE_KEY, textarea.value);
+        setStatus('saved');
+      } catch {
+        setStatus('error');
+        announce('Autosave failed. Check your browser storage settings.');
+      }
+    }
+
+    function scheduleSave() {
+      clearTimeout(saveTimer);
+      setStatus('saving');
+      saveTimer = setTimeout(save, 1500);
+    }
+
+    function restoreContent() {
+      const saved = getItem(STORAGE_KEY);
+      if (saved) {
+        textarea.value = saved;
+        updateWordCount();
+        setStatus('saved');
+      }
+    }
+
+    // Entry point -- matches the pattern used on reflection screens
+    window.__setReflectionScreenId = function(screenId) {
+      restoreContent();
+      textarea.addEventListener('input', () => {
+        updateWordCount();
+        scheduleSave();
+      });
+    };
+
+    window.__setReflectionScreenId(SCREEN_ID);
+  </script>
+
+</body>
+</html>

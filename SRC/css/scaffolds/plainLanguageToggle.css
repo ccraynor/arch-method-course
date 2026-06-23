@@ -1,0 +1,158 @@
+/* =============================================================================
+   plainLanguageToggle.css
+   Scaffold Component 7 of 10 -- Plain-Language Summary Toggle
+   Requires: css/tokens.css loaded first (all color values from tokens)
+
+   LAYOUT SUMMARY
+   The toggle button is injected by JS as the first child of each .plst
+   container. .plst__standard and .plst__simplified hold the instructional
+   text. JS toggles [hidden] to switch between them. CSS provides:
+   -- Button appearance in standard and simplified modes
+   -- Visual border indicator on the container when simplified mode is active
+   -- Warning-colored styles for the TODO placeholder block
+
+   BUTTON LABEL PATTERN (reminder from JS)
+   Standard mode active: button reads "Simplify Instructions"
+   Simplified mode active: button reads "Show Standard Instructions"
+   No aria-pressed -- the changing label is self-descriptive.
+   ============================================================================= */
+
+/* ============================================================
+   CONTAINER
+   .plst--simplified class is added by JS when simplified mode
+   is active. Used here as a CSS hook for mode-aware styles.
+   ============================================================ */
+
+.plst {
+  /* No visual container styles needed -- block-level grouping only */
+}
+
+/* Left-edge accent in simplified mode -- supplemental visual indicator.
+   Color only (border color change) is NOT the sole signal -- the button
+   label also changes. This purely decorative; not relied on for meaning. */
+.plst--simplified {
+  border-left: 3px solid var(--color-border-strong);
+  padding-left: 1rem;
+}
+
+/* ============================================================
+   TOGGLE BUTTON
+   Outlined secondary style -- communicates it's a feature/mode
+   control, not a primary action. Appears above instructional text.
+   ============================================================ */
+
+.plst__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  min-height: 44px;
+  background: none;
+  border: 1px solid var(--color-border-default);
+  border-radius: 4px;
+  color: var(--color-text-primary);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+  /* Smooth border-color transition for mode change signal */
+  transition: border-color 150ms ease, color 150ms ease;
+}
+
+.plst__toggle:hover {
+  background-color: var(--color-bg-subtle);
+  border-color: var(--color-border-strong);
+}
+
+.plst__toggle:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Button appearance when simplified mode is active.
+   The border color shift reinforces the mode change alongside the label change.
+   Text color shifts to match -- never color-only communication. */
+.plst--simplified .plst__toggle {
+  border-color: var(--color-border-strong);
+  background-color: var(--color-bg-subtle);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plst__toggle {
+    transition: none;
+  }
+}
+
+/* ============================================================
+   STANDARD CONTENT
+   No special styling needed -- inherits from surrounding context.
+   .plst__standard is a semantic grouping container only.
+   ============================================================ */
+
+.plst__standard {
+  /* No custom styles -- content rendered at surrounding context size */
+}
+
+/* ============================================================
+   SIMPLIFIED CONTENT
+   Inherits from surrounding context when authored content is present.
+   Warning styles applied only when the TODO placeholder is active.
+   ============================================================ */
+
+.plst__simplified {
+  /* No custom styles for authored simplified content */
+}
+
+/* ============================================================
+   TODO PLACEHOLDER
+   Applied by JS when .plst__simplified does not yet exist in the HTML.
+   Warning colors make the placeholder impossible to miss during review.
+   Remove .plst__simplified--todo and replace placeholder text with
+   authored simplified content before launch.
+   ============================================================ */
+
+.plst__simplified--todo {
+  background-color: var(--color-warning-bg);
+  border: 1px solid var(--color-warning-border);
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.plst__todo-text {
+  margin: 0;
+  color: var(--color-warning-text);
+  font-size: 0.875rem;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+/* ============================================================
+   HIGH CONTRAST
+   ============================================================ */
+
+@media (prefers-contrast: more) {
+  .plst__toggle {
+    border-width: 2px;
+    font-weight: 700;
+  }
+
+  .plst__toggle:focus-visible {
+    outline-width: 3px;
+  }
+
+  .plst--simplified {
+    border-left-width: 4px;
+  }
+
+  .plst__simplified--todo {
+    border-width: 2px;
+  }
+}
+
+/* ============================================================
+   DARK MODE
+   Token system handles color inversion automatically.
+   No overrides needed here -- all values reference CSS custom properties.
+   ============================================================ */

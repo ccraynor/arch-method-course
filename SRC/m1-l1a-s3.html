@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An expert instructional designer reads the Meridian project brief to identify learner characteristics, required performance, design constraints, and implied out-of-scope items.">
+  <title>Worked Example: Reading the Brief for Design Constraints — Lesson 1.1a — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l1a-s3 — Worked Example: Reading the Brief
+       Worked example layout styles. All color values use CSS tokens.
+       ================================================================ */
+
+    /* ---- Screen header ---- */
+    .worked-example__meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 0 0.25rem;
+    }
+
+    .screen-type-label {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    .time-estimate {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 3px;
+      padding: 0.125rem 0.5rem;
+    }
+
+    .lesson-label {
+      display: block;
+      margin: 0 0 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-link);
+    }
+
+    .worked-example__title {
+      margin: 0 0 0.75rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    /* Scenario context strip */
+    .scenario-context {
+      display: flex;
+      align-items: baseline;
+      gap: 0.375rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border-left: 3px solid var(--color-border-strong);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      margin: 0 0 1.5rem;
+    }
+
+    .scenario-label {
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+    }
+
+    /* ---- Two-column layout ---- */
+    .worked-example__layout {
+      display: grid;
+      grid-template-columns: 1fr 20rem;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .worked-example__layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ---- Left column: expert steps ---- */
+    .worked-example__content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .example-step {
+      display: grid;
+      grid-template-columns: 2.75rem 1fr;
+      gap: 0 1rem;
+    }
+
+    .step-marker {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 0.125rem;
+    }
+
+    .step-marker span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      background: var(--color-text-link);
+      color: var(--color-text-inverse);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .step-body {
+      min-width: 0;
+    }
+
+    .step-heading {
+      margin: 0.25rem 0 0.625rem;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+    }
+
+    .step-content {
+      margin: 0 0 0.75rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    .step-content:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Brief extract block -- shows the key text the expert is analyzing.
+       Navy left border links it visually to the source document (Screen 2).
+       Color supplemented by the "From the brief:" label. */
+    .step-extract {
+      margin: 0 0 0.875rem;
+      padding: 0.75rem 1rem;
+      background: var(--color-bg-subtle);
+      border-left: 3px solid var(--color-border-strong);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .step-extract__label {
+      display: block;
+      margin: 0 0 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+    }
+
+    .step-extract__text {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      font-style: italic;
+      line-height: 1.65;
+    }
+
+    /* Out-of-scope list in step 04 */
+    .scope-boundary {
+      margin: 0.5rem 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .scope-boundary__category {
+      display: grid;
+      grid-template-columns: 8.5rem 1fr;
+      gap: 0.125rem 0.625rem;
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 520px) {
+      .scope-boundary__category {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .scope-boundary__label {
+      font-weight: 700;
+      color: var(--color-text-secondary);
+    }
+
+    .scope-boundary__value {
+      color: var(--color-text-primary);
+    }
+
+    /* ---- Right column: think-aloud annotations ---- */
+    .worked-example__think-aloud {
+      position: sticky;
+      top: 1.5rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 900px) {
+      .worked-example__think-aloud {
+        position: static;
+      }
+    }
+
+    .think-aloud__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--color-border-default);
+      background: var(--color-bg-page);
+    }
+
+    .think-aloud__heading {
+      margin: 0;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .think-aloud__list {
+      padding: 0.875rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .annotation-item {
+      display: grid;
+      grid-template-columns: 1.625rem 1fr;
+      gap: 0 0.625rem;
+      align-items: start;
+    }
+
+    .annotation-marker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      border: 1.5px solid var(--color-border-strong);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+      margin-top: 0.0625rem;
+    }
+
+    .annotation-text {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    /* ---- Toggle button ---- */
+    .btn--toggle {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.625rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 4px;
+      background: var(--color-bg-page);
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn--toggle:hover {
+      background: var(--color-bg-subtle);
+      color: var(--color-text-primary);
+    }
+
+    .btn--toggle:focus-visible {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 2px;
+    }
+
+    /* High contrast adjustments */
+    @media (prefers-contrast: more) {
+      .scenario-context,
+      .step-extract {
+        border-left-color: var(--color-border-strong);
+      }
+      .think-aloud__header,
+      .worked-example__think-aloud {
+        border-color: var(--color-border-strong);
+      }
+      .annotation-marker {
+        border-color: var(--color-text-primary);
+        color: var(--color-text-primary);
+      }
+      .screen-type-label,
+      .lesson-label {
+        color: var(--color-text-primary);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.1a</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">0</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">3</span> of <span id="pt-screen-total">5</span></span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary"
+              aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel"
+              aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer"
+              aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory"
+              aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel"
+              aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <article class="worked-example" aria-labelledby="example-title">
+
+        <!-- Screen header -->
+        <header class="worked-example__header">
+          <div class="worked-example__meta">
+            <span class="screen-type-label">Worked Example</span>
+            <span class="time-estimate"
+                  aria-label="Estimated reading time: 10 to 14 minutes">
+              10&ndash;14 min
+            </span>
+          </div>
+          <p class="lesson-label" aria-label="Lesson 1.1a">Lesson 1.1a</p>
+          <h1 id="example-title"
+              class="worked-example__title">Reading the Brief for Design Constraints</h1>
+          <div class="scenario-context" role="note" aria-label="Scenario context">
+            <span class="scenario-label">Scenario:</span>
+            Meridian Regional Health Network -- Priya Okonkwo's project brief
+            has been received. An expert instructional designer reads it to
+            extract the four categories of information that govern every
+            subsequent design decision.
+          </div>
+        </header>
+
+        <!-- Two-column layout -->
+        <div class="worked-example__layout">
+
+          <!-- Left column: expert steps -->
+          <div class="worked-example__content">
+
+            <!-- ============================================
+                 Step 01: Who are the learners?
+                 ============================================ -->
+            <div class="example-step" id="step-1">
+              <div class="step-marker" aria-label="Step 1">
+                <span aria-hidden="true">01</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">Identify the Learner Population and the Gap</h2>
+
+                <p class="step-content">
+                  I read the "Target Learners" section first -- not because it is
+                  the most important part of the brief, but because I need a mental
+                  model of who I am designing for before anything else can be
+                  interpreted correctly.
+                </p>
+                <p class="step-content">
+                  The brief identifies approximately 120 healthcare IT professionals
+                  across three sites. Roles include systems administrators, network
+                  engineers, help desk staff, and IT managers. Prior knowledge is
+                  described as general IT competency with limited incident response
+                  training. All learners completed a HIPAA awareness module in 2022.
+                </p>
+                <p class="step-content">
+                  More important than the demographics is the capability gap the
+                  background section makes explicit:
+                </p>
+
+                <figure class="step-extract" role="figure"
+                        aria-label="Excerpt from the Meridian project brief, Background section">
+                  <p class="step-extract__label">From the brief -- Background section:</p>
+                  <p class="step-extract__text">
+                    "IT staff could not execute the documented incident response protocol
+                    (IR-2024) without supervisor escalation for every decision. Staff also
+                    could not make appropriate isolation calls within their role authority
+                    or communicate status to clinical leadership without scripted guidance."
+                  </p>
+                </figure>
+
+                <p class="step-content">
+                  That failure is my design target. I am not building a course for
+                  IT generalists who need to learn what a cyber incident is. I am
+                  building for people who already work in healthcare IT but cannot yet
+                  act independently in this specific, high-stakes procedural context
+                  under time pressure.
+                </p>
+              </div>
+            </div>
+
+            <!-- ============================================
+                 Step 02: What performance is required?
+                 ============================================ -->
+            <div class="example-step" id="step-2">
+              <div class="step-marker" aria-label="Step 2">
+                <span aria-hidden="true">02</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">Read the Required Performance Items for Specificity</h2>
+
+                <p class="step-content">
+                  I read every performance requirement and note its specificity.
+                  Clients who write behavioral performance requirements are telling
+                  me exactly what the course must produce. The Meridian brief is
+                  unusually specific in three ways.
+                </p>
+                <p class="step-content">
+                  First, every item is protocol-specific. The requirement is not to
+                  "respond to cyber incidents." The requirement is to execute
+                  IR-2024 -- Meridian's internal protocol, adopted January 2024.
+                  That distinction eliminates a large body of generic incident
+                  response content I might otherwise consider including.
+                </p>
+
+                <figure class="step-extract" role="figure"
+                        aria-label="Excerpt from the Meridian project brief, Required Performance section, item 2">
+                  <p class="step-extract__label">From the brief -- Required Performance, item 2:</p>
+                  <p class="step-extract__text">
+                    "Execute Tier 1 and Tier 2 IR-2024 protocol decisions independently,
+                    within their role authority."
+                  </p>
+                </figure>
+
+                <p class="step-content">
+                  Second, the phrase "within their role authority" appears across
+                  multiple items. This tells me the course must address what different
+                  roles can and cannot do. A systems administrator has different
+                  decision authority than a help desk staffer. If I design a single
+                  uniform learner path without role differentiation, I will miss
+                  a performance requirement.
+                </p>
+                <p class="step-content">
+                  Third, item 5 specifies "Meridian communication templates." Not
+                  generic incident communication. Meridian's templates. This is
+                  often the last item on a client's list and the first to get cut
+                  from an underdeveloped scope. I flag it now.
+                </p>
+              </div>
+            </div>
+
+            <!-- ============================================
+                 Step 03: What constraints govern the design?
+                 ============================================ -->
+            <div class="example-step" id="step-3">
+              <div class="step-marker" aria-label="Step 3">
+                <span aria-hidden="true">03</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">Extract Every Design Constraint and Rank Them</h2>
+
+                <p class="step-content">
+                  Design constraints are not obstacles. They are inputs. I read
+                  the "Project Constraints" section methodically and I rank the
+                  constraints by their impact on scope decisions.
+                </p>
+
+                <div class="scope-boundary">
+                  <div class="scope-boundary__category">
+                    <span class="scope-boundary__label">SME Access:</span>
+                    <span class="scope-boundary__value">
+                      4 hours total with the IR team lead. This is the binding
+                      constraint. It ranks first.
+                    </span>
+                  </div>
+                  <div class="scope-boundary__category">
+                    <span class="scope-boundary__label">Timeline:</span>
+                    <span class="scope-boundary__value">
+                      Delivery-ready within 90 days of project start.
+                    </span>
+                  </div>
+                  <div class="scope-boundary__category">
+                    <span class="scope-boundary__label">Format:</span>
+                    <span class="scope-boundary__value">
+                      Self-paced online, SCORM 1.2. No synchronous delivery option.
+                    </span>
+                  </div>
+                  <div class="scope-boundary__category">
+                    <span class="scope-boundary__label">Starting Point:</span>
+                    <span class="scope-boundary__value">
+                      IR-2024 protocol document only. No prior course content.
+                    </span>
+                  </div>
+                  <div class="scope-boundary__category">
+                    <span class="scope-boundary__label">Budget:</span>
+                    <span class="scope-boundary__value">
+                      Fixed. No travel or in-person delivery.
+                    </span>
+                  </div>
+                </div>
+
+                <p class="step-content" style="margin-top: 0.875rem;">
+                  Four hours of SME access for a course that requires demonstrated
+                  IR-2024 proficiency is tight. I cannot afford to use that time
+                  for content review and revision. I need scope locked and validated
+                  before the first SME meeting -- which means Step 0 is not a
+                  formality for this project. It is a prerequisite for every hour
+                  of SME time I have.
+                </p>
+                <p class="step-content">
+                  The self-paced SCORM format also shapes my options for practice.
+                  No live cohort, no instructor feedback loop. Whatever assessment
+                  and calibration I design has to work without a facilitator. This
+                  raises the bar for scenario design.
+                </p>
+              </div>
+            </div>
+
+            <!-- ============================================
+                 Step 04: What is out of scope?
+                 ============================================ -->
+            <div class="example-step" id="step-4">
+              <div class="step-marker" aria-label="Step 4">
+                <span aria-hidden="true">04</span>
+              </div>
+              <div class="step-body">
+                <h2 class="step-heading">Derive the Implied Out-of-Scope Boundaries</h2>
+
+                <p class="step-content">
+                  The brief does not include an explicit out-of-scope list, but
+                  the specificity of what is in scope allows me to derive one.
+                  Anything that is not covered by the client's stated learner
+                  population, performance requirements, and constraints is
+                  outside the boundary until the client says otherwise.
+                </p>
+                <p class="step-content">
+                  I document these boundaries immediately. The most expensive scope
+                  creep does not come from items the client asked for and I
+                  declined. It comes from items that were never discussed, arrived
+                  late in the project, and had no documented boundary to point to.
+                </p>
+
+                <div class="scope-boundary">
+                  <div class="scope-boundary__category">
+                    <span class="scope-boundary__label">Out of scope:</span>
+                    <span class="scope-boundary__value">
+                      Clinical staff, administrative staff, and executive leadership
+                      training -- the brief names IT professionals only
+                    </span>
+                  </div>
+                  <div class="scope-boundary__category">
+                    <span class="scope-boundary__label">Out of scope:</span>
+                    <span class="scope-boundary__value">
+                      Policy revision or IR-2024 protocol updates -- the course
+                      trains to IR-2024 as written, not as revised
+                    </span>
+                  </div>
+                  <div class="scope-boundary__category">
+                    <span class="scope-boundary__label">Out of scope:</span>
+                    <span class="scope-boundary__value">
+                      Vendor and third-party coordination procedures -- not
+                      referenced in the performance requirements
+                    </span>
+                  </div>
+                  <div class="scope-boundary__category">
+                    <span class="scope-boundary__label">Out of scope:</span>
+                    <span class="scope-boundary__value">
+                      General security awareness content -- the client explicitly
+                      rejected the compliance-checkbox model
+                    </span>
+                  </div>
+                  <div class="scope-boundary__category">
+                    <span class="scope-boundary__label">Out of scope:</span>
+                    <span class="scope-boundary__value">
+                      Physical security and facility access procedures -- not
+                      mentioned in the brief, not an IT professional domain
+                    </span>
+                  </div>
+                </div>
+
+                <p class="step-content" style="margin-top: 0.875rem;">
+                  These out-of-scope items will appear in my written scope
+                  declaration in Step 0. Not as a defensive posture, but because
+                  the client deserves to know exactly what they are receiving and
+                  exactly what falls outside this project. A scope statement
+                  without out-of-scope boundaries is an incomplete scope statement.
+                </p>
+              </div>
+            </div>
+
+          </div><!-- /.worked-example__content -->
+
+          <!-- Right column: think-aloud annotations -->
+          <aside class="worked-example__think-aloud"
+                 aria-label="Expert think-aloud annotations">
+
+            <div class="think-aloud__header">
+              <h2 class="think-aloud__heading">Expert Think-Aloud</h2>
+              <button type="button"
+                      id="annotations-toggle"
+                      class="btn btn--toggle"
+                      aria-controls="annotations-list"
+                      aria-expanded="true">
+                <span class="toggle-label">Hide Annotations</span>
+              </button>
+            </div>
+
+            <div id="annotations-list" class="think-aloud__list">
+
+              <div class="annotation-item" data-step="1"
+                   aria-label="Annotation for step 1">
+                <span class="annotation-marker" aria-hidden="true">01</span>
+                <p class="annotation-text">
+                  Notice the 2022 HIPAA awareness module. It tells me learners
+                  have regulatory framing but no incident response training.
+                  I will not build from zero on HIPAA. But I cannot assume any
+                  IR protocol knowledge whatsoever. The design gap is between
+                  "works in healthcare IT" and "executes IR-2024 independently
+                  under time pressure."
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="2"
+                   aria-label="Annotation for step 2">
+                <span class="annotation-marker" aria-hidden="true">02</span>
+                <p class="annotation-text">
+                  When a client writes "this is not a compliance checkbox course,"
+                  they are rejecting a model they have seen before. I take that
+                  seriously. My performance tasks need to require demonstrated
+                  decision-making under realistic conditions -- not multiple-choice
+                  recall. The specificity of these five performance items supports
+                  scenario-based design, which is consistent with what the client
+                  is asking for.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="3"
+                   aria-label="Annotation for step 3">
+                <span class="annotation-marker" aria-hidden="true">03</span>
+                <p class="annotation-text">
+                  Four hours of SME time is the constraint that controls my
+                  approach to Step 0 most directly. If scope is wrong, I will
+                  discover it after the SME budget is spent. This is why scope
+                  declaration is not optional or approximate. I need a precise,
+                  bounded scope statement before I book the first SME meeting.
+                  The SME validates scope; the SME does not create it.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="4"
+                   aria-label="Annotation for step 4">
+                <span class="annotation-marker" aria-hidden="true">04</span>
+                <p class="annotation-text">
+                  Documenting out-of-scope items is as important as documenting
+                  what is in scope. Both protect the client and the designer. In
+                  Step 0, out-of-scope items are not negotiating positions. They
+                  are explicit, shared agreements about what falls outside this
+                  project. If the client later decides an out-of-scope item
+                  belongs in scope, that becomes a visible scope change -- with
+                  visible timeline and budget implications.
+                </p>
+              </div>
+
+            </div><!-- /#annotations-list -->
+
+          </aside><!-- /.worked-example__think-aloud -->
+
+        </div><!-- /.worked-example__layout -->
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l1a-s2.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="m1-l1a-s4.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+
+    <section id="artifact-reference"
+             tabindex="-1"
+             aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">
+        No artifacts produced yet. Your first named artifact begins in Lesson 1.1b.
+      </p>
+    </section>
+
+    <section id="decision-history"
+             tabindex="-1"
+             aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">
+        No decisions recorded yet. Design decisions begin in Lesson 1.1b.
+      </p>
+    </section>
+
+  </aside>
+
+  <!-- ============================================================
+       Support Panels
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12"
+                placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    import { getItem, setItem } from './js/storage.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded',
+          btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Think-aloud annotation toggle
+       ============================================================ -->
+  <script type="module">
+    const toggle = document.getElementById('annotations-toggle');
+    const list   = document.getElementById('annotations-list');
+    const label  = toggle.querySelector('.toggle-label');
+
+    toggle.addEventListener('click', () => {
+      const nowExpanded = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(nowExpanded));
+      label.textContent = nowExpanded ? 'Hide Annotations' : 'Show Annotations';
+      if (nowExpanded) {
+        list.removeAttribute('hidden');
+      } else {
+        list.setAttribute('hidden', '');
+      }
+    });
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script
+       ============================================================ -->
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.1a';
+    document.getElementById('pt-phase').textContent        = '1';
+    document.getElementById('pt-step').textContent         = '0';
+    document.getElementById('pt-screen').textContent       = '3';
+    document.getElementById('pt-screen-total').textContent = '5';
+
+    document.querySelectorAll('.module-nav-link').forEach(link => {
+      link.removeAttribute('aria-current');
+    });
+    const activeLink = document.querySelector(
+      '.module-nav-link[href="module-1.html"]'
+    );
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+  </script>
+
+</body>
+</html>

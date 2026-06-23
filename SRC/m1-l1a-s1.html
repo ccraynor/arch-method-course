@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Review the Meridian project intake package before declaring a locked scope. Phase 1, Step 0 of the ARCH Method.">
+  <title>Lesson 1.1a: Meridian Project Intake Review — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Lesson Intro Layout — m1-l1a-s1.html
+       Shared by all lesson-intro-template screens across all modules.
+       All color values reference CSS tokens. No hard-coded hex values.
+       ================================================================ */
+
+    /* ---- Lesson header ---- */
+    .lesson-intro__header {
+      margin: 0 0 1.75rem;
+    }
+
+    .lesson-label {
+      display: block;
+      margin: 0 0 0.375rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-link);
+    }
+
+    .lesson-intro__title {
+      margin: 0;
+      font-size: 1.625rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    /* ---- Phase/Step badge strip ----
+       A narrow band below the h1 showing the ARCH phase and step
+       this lesson belongs to. Secondary text, no color-only meaning
+       (the label text itself carries the information). */
+    .lesson-phase-strip {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 0.625rem;
+      flex-wrap: wrap;
+    }
+
+    .lesson-phase-strip__badge {
+      display: inline-flex;
+      align-items: center;
+      height: 1.5rem;
+      padding: 0 0.625rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-text-primary);
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 3px;
+    }
+
+    /* ---- Purpose section ---- */
+    .lesson-intro__purpose {
+      margin: 0 0 1.75rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--color-border-default);
+      max-width: 68ch;
+    }
+
+    .lesson-intro__section-heading {
+      margin: 0 0 0.5rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    .lesson-intro__purpose-text {
+      margin: 0;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    /* ---- Outcomes grid ----
+       Two columns (Do / Produce) on desktop, stacked on narrow viewports. */
+    .lesson-intro__outcomes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem 2.5rem;
+      margin: 0 0 2rem;
+      max-width: 760px;
+    }
+
+    @media (max-width: 560px) {
+      .lesson-intro__outcomes {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .lesson-intro__list {
+      margin: 0.375rem 0 0;
+      padding-left: 1.25rem;
+      list-style: disc;
+    }
+
+    .lesson-intro__list li {
+      margin-bottom: 0.5rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.55;
+    }
+
+    .lesson-intro__list li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ---- Preparatory note (replaces artifact list when no artifact is produced) ---- */
+    .lesson-intro__prep-note {
+      margin: 0.375rem 0 0;
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* High contrast adjustments */
+    @media (prefers-contrast: more) {
+      .lesson-phase-strip__badge {
+        border-color: var(--color-border-strong);
+      }
+      .lesson-intro__purpose {
+        border-bottom-color: var(--color-border-strong);
+      }
+      .lesson-intro__section-heading,
+      .lesson-label {
+        color: var(--color-text-primary);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">
+        Module <span id="pt-module">1</span> of 4
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Lesson <span id="pt-lesson">1.1a</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Phase <span id="pt-phase">1</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Step <span id="pt-step">0</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Screen <span id="pt-screen">1</span> of <span id="pt-screen-total">5</span>
+      </span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary"
+              aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel"
+              aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer"
+              aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory"
+              aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel"
+              aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation
+       aria-current="page" set on Module 1 link by screen script.
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <!-- =========================================================
+           LESSON INTRODUCTION
+           Lesson 1.1a: Meridian Project Intake Review
+           Phase 1, Step 0: Declare Locked Scope
+           Template: lesson-intro-template.html
+           Word budget: ≤200 words across Purpose + Do + Produce
+           ========================================================= -->
+      <article class="lesson-intro" aria-labelledby="lesson-title">
+
+        <header class="lesson-intro__header">
+          <p class="lesson-label" aria-label="Lesson 1.1a">Lesson 1.1a</p>
+          <h1 id="lesson-title" class="lesson-intro__title">
+            Meridian Project Intake Review
+          </h1>
+
+          <!-- Phase/Step badge strip — shows ARCH position without
+               relying on the progress tracker alone. -->
+          <div class="lesson-phase-strip" aria-label="ARCH Method position">
+            <span class="lesson-phase-strip__badge">Phase 1: Bound the Course</span>
+            <span class="lesson-phase-strip__badge">Step 0: Declare Locked Scope</span>
+          </div>
+        </header>
+
+        <!-- Purpose ─────────────────────────────────────────────
+             Why this lesson exists. ≤75 words.
+        ──────────────────────────────────────────────────────── -->
+        <section class="lesson-intro__purpose"
+                 aria-labelledby="purpose-heading">
+          <h2 id="purpose-heading"
+              class="lesson-intro__section-heading">Purpose</h2>
+          <p class="lesson-intro__purpose-text">
+            The ARCH Method begins not with designing, but with reading. Before you can
+            declare a scope or make a single architectural decision, you need to understand
+            the project you have been handed. This lesson presents the Meridian project
+            intake package -- the project brief, learner profile, and constraint
+            documentation that Priya Okonkwo has provided. Step 0 asks you to review this
+            material and confirm you have enough to proceed to scope declaration.
+          </p>
+        </section>
+
+        <!-- Outcomes grid ────────────────────────────────────────
+             What You Will Do / What You Will Produce. ≤125 words combined.
+        ──────────────────────────────────────────────────────── -->
+        <div class="lesson-intro__outcomes">
+
+          <section class="lesson-intro__do"
+                   aria-labelledby="do-heading">
+            <h2 id="do-heading"
+                class="lesson-intro__section-heading">What You Will Do</h2>
+            <ul class="lesson-intro__list">
+              <li>
+                Read the Meridian project brief submitted by
+                Priya Okonkwo at Meridian Regional Health Network
+              </li>
+              <li>
+                Review the learner population profile and the
+                stated on-the-job performance context
+              </li>
+              <li>
+                Identify the regulatory and institutional
+                constraints that will govern the course design
+              </li>
+              <li>
+                Assess the completeness of the intake package
+                before proceeding to scope declaration in
+                Lesson 1.1b
+              </li>
+            </ul>
+          </section>
+
+          <section class="lesson-intro__produce"
+                   aria-labelledby="produce-heading">
+            <h2 id="produce-heading"
+                class="lesson-intro__section-heading">What You Will Produce</h2>
+            <p class="lesson-intro__prep-note">
+              This is a review and orientation lesson. No MRHN-named artifact is produced
+              here. Your intake review directly informs the scope declaration in Lesson
+              1.1b, which produces the first component of your Scope Organization Package.
+            </p>
+          </section>
+
+        </div>
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="intro-0.9.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="m1-l1a-s2.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+
+    <section id="artifact-reference"
+             tabindex="-1"
+             aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">
+        No artifacts produced yet. Your first named artifact begins in Lesson 1.1b.
+      </p>
+    </section>
+
+    <section id="decision-history"
+             tabindex="-1"
+             aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">
+        No decisions recorded yet. Design decisions begin in Lesson 1.1b.
+      </p>
+    </section>
+
+  </aside>
+
+  <!-- ============================================================
+       Support Panels — managed by panelManager.js
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12"
+                placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    import { getItem, setItem } from './js/storage.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded',
+          btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script
+       Sets progress tracker values and marks Module 1 as current
+       in the module nav.
+       ============================================================ -->
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.1a';
+    document.getElementById('pt-phase').textContent        = '1';
+    document.getElementById('pt-step').textContent         = '0';
+    document.getElementById('pt-screen').textContent       = '1';
+    document.getElementById('pt-screen-total').textContent = '5';
+
+    /* Set aria-current="page" on the Module 1 nav link */
+    document.querySelectorAll('.module-nav-link').forEach(link => {
+      link.removeAttribute('aria-current');
+    });
+    const activeLink = document.querySelector(
+      '.module-nav-link[href="module-1.html"]'
+    );
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+/* =============================================================================
+   hoverGlossary.css
+   Scaffold Component 6 of 10 -- Hover Glossary System
+   Requires: css/tokens.css loaded first (all color values from tokens)
+
+   SR-ONLY UTILITY
+   .sr-only is defined here because no global base.css exists yet.
+   When a global base.css is built, this definition should move there.
+   If both files define .sr-only identically, the duplicate is harmless.
+   ============================================================================= */
+
+/* ---- Visually hidden but accessible to screen readers ---- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ============================================================
+   CONTAINER
+   inline, position: relative so the popover can be absolute-positioned
+   relative to the term's location in the text flow.
+   ============================================================ */
+
+.gls {
+  position: relative;
+  display: inline;
+}
+
+/* ============================================================
+   TRIGGER BUTTON
+   Appears as inline decorated text, not a button.
+   Dotted underline distinguishes glossary terms from hyperlinks
+   (which use solid underlines).
+   ============================================================ */
+
+.gls__trigger {
+  display: inline;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: 600;
+  color: var(--color-text-link);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  cursor: help;
+}
+
+/* Hover state -- slightly stronger underline to confirm interactivity */
+.gls__trigger:hover {
+  text-decoration-style: solid;
+}
+
+/* Focus ring -- inset so it does not disrupt surrounding text flow */
+.gls__trigger:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* When expanded, shift to primary text color -- the definition is now the focus */
+.gls__trigger[aria-expanded="true"] {
+  color: var(--color-text-primary);
+  text-decoration-color: var(--color-text-primary);
+}
+
+/* ============================================================
+   POPOVER
+   Positioned above the term. JS toggles [hidden] to show/hide.
+   Contains the definition text and a visual close hint.
+
+   POSITIONING NOTE
+   bottom: calc(100% + 8px) places the popover above the trigger with
+   an 8px gap. left: 50% + transform centers it horizontally over the
+   trigger. If the term appears near the left or right viewport edge,
+   the popover may partially overflow -- this is a known scaffold
+   limitation for the current build phase.
+
+   Z-INDEX
+   z-index: 200 places the popover above course content but below
+   the support panel overlays (which should be set higher).
+   ============================================================ */
+
+.gls__popover {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  max-width: calc(100vw - 2rem);
+  background-color: var(--color-surface-overlay);
+  border: 1px solid var(--color-border-default);
+  border-radius: 6px;
+  padding: 0.875rem 1rem 0.75rem;
+  z-index: 200;
+  /* No box-shadow: no shadow token is defined; border provides elevation signal */
+}
+
+/* ---- Down-pointing arrow: border layer ---- */
+.gls__popover::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: var(--color-border-default);
+  pointer-events: none;
+}
+
+/* ---- Down-pointing arrow: fill layer (overlaps border layer) ---- */
+.gls__popover::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-top-color: var(--color-surface-overlay);
+  margin-top: -1px;  /* shifts fill up to overlap the border arrow */
+  pointer-events: none;
+}
+
+/* ---- Definition text ---- */
+.gls__def-text {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--color-text-primary);
+}
+
+/* ---- Visual close hint (sighted users; AT users hear it via sr-announcer) ---- */
+.gls__close-hint {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+/* ============================================================
+   HIGH CONTRAST
+   ============================================================ */
+
+@media (prefers-contrast: more) {
+  .gls__trigger {
+    font-weight: 700;
+    text-decoration-thickness: 2px;
+  }
+
+  .gls__trigger:focus-visible {
+    outline-width: 3px;
+  }
+
+  .gls__popover {
+    border-color: var(--color-border-strong);
+    border-width: 2px;
+  }
+
+  /* Thicken the arrow border in high contrast */
+  .gls__popover::before {
+    border-top-color: var(--color-border-strong);
+    border-width: 9px;
+  }
+
+  /* Adjust fill arrow to match thicker border */
+  .gls__popover::after {
+    border-width: 7px;
+    border-top-color: var(--color-surface-overlay);
+    margin-top: -2px;
+  }
+}

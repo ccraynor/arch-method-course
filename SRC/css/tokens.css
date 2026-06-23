@@ -1,0 +1,169 @@
+/* =============================================================================
+   ARCH Method Practitioner Credential — Design Tokens
+   Proof Point Learning
+   tokens.css
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   Brand Primitives
+   Source-of-truth values. Reference these in semantic tokens below.
+   Never reference primitives directly in components or templates.
+   --------------------------------------------------------------------------- */
+:root {
+  --color-brand-navy: #1B3A5C;
+  --color-brand-teal: #2E7D8C;
+}
+
+/* ---------------------------------------------------------------------------
+   Semantic Tokens — Light Mode (default)
+   --------------------------------------------------------------------------- */
+:root {
+  /* Background */
+  --color-bg-page:   #FFFFFF;
+  --color-bg-subtle: #F4F7FA;
+
+  /* Surface */
+  --color-surface-default: #FFFFFF;
+  --color-surface-raised:  #F9FAFB;
+  --color-surface-overlay: #FFFFFF;
+
+  /* Text */
+  --color-text-primary:   var(--color-brand-navy);
+  --color-text-secondary: #4A6581;
+  --color-text-disabled:  #9BAFC2;
+  --color-text-inverse:   #FFFFFF;
+  --color-text-link:      var(--color-brand-teal);
+
+  /* Border */
+  --color-border-default: #CBD8E4;
+  --color-border-strong:  var(--color-brand-navy);
+
+  /* Focus */
+  --color-focus-ring: var(--color-brand-teal);
+
+  /* Success */
+  --color-success-bg:     #EAF7F0;
+  --color-success-text:   #1A6B40;
+  --color-success-border: #2D9E5F;
+
+  /* Warning */
+  --color-warning-bg:     #FEF8EC;
+  --color-warning-text:   #7A4F00;
+  --color-warning-border: #D4920A;
+
+  /* Error */
+  --color-error-bg:     #FEF0EF;
+  --color-error-text:   #B91C1C;
+  --color-error-border: #DC2626;
+}
+
+/* ---------------------------------------------------------------------------
+   Dark Mode
+   --------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Background */
+    --color-bg-page:   #0F1E2D;
+    --color-bg-subtle: #162333;
+
+    /* Surface */
+    --color-surface-default: #1C2D3E;
+    --color-surface-raised:  #243648;
+    --color-surface-overlay: #1C2D3E;
+
+    /* Text */
+    --color-text-primary:   #E8EFF5;
+    --color-text-secondary: #A8BCCE;
+    --color-text-disabled:  #5A7089;
+    --color-text-inverse:   #0F1E2D;
+    --color-text-link:      #4AAFC0;
+
+    /* Border */
+    --color-border-default: #2D4A61;
+    --color-border-strong:  #5A8AAB;
+
+    /* Focus */
+    --color-focus-ring: #4AAFC0;
+
+    /* Success */
+    --color-success-bg:     #0D2B1A;
+    --color-success-text:   #5EC994;
+    --color-success-border: #2D9E5F;
+
+    /* Warning */
+    --color-warning-bg:     #2B1F00;
+    --color-warning-text:   #F5C842;
+    --color-warning-border: #D4920A;
+
+    /* Error */
+    --color-error-bg:     #2B0F0F;
+    --color-error-text:   #F87171;
+    --color-error-border: #DC2626;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   High Contrast — Light
+   Overrides tokens where contrast ratios need hardening.
+   Layout, spacing, and brand primitive tokens are unchanged.
+   --------------------------------------------------------------------------- */
+@media (prefers-contrast: more) {
+  :root {
+    /* Text */
+    --color-text-primary:   #000000;
+    --color-text-secondary: #1A2E3F;
+    --color-text-disabled:  #4A5E70;
+    --color-text-link:      #1A5A66;
+
+    /* Border */
+    --color-border-default: var(--color-brand-navy);
+    --color-border-strong:  #000000;
+
+    /* Focus */
+    --color-focus-ring: #000000;
+
+    /* Success */
+    --color-success-text:   #0D4726;
+    --color-success-border: #0D4726;
+
+    /* Warning */
+    --color-warning-text:   #4A3000;
+    --color-warning-border: #4A3000;
+
+    /* Error */
+    --color-error-text:   #7F1010;
+    --color-error-border: #7F1010;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   High Contrast — Dark
+   --------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) and (prefers-contrast: more) {
+  :root {
+    /* Text */
+    --color-text-primary:   #FFFFFF;
+    --color-text-secondary: #E0EBF4;
+    --color-text-disabled:  #8AACBF;
+    --color-text-link:      #7DD6E8;
+
+    /* Border */
+    --color-border-default: #5A8AAB;
+    --color-border-strong:  #FFFFFF;
+
+    /* Focus */
+    --color-focus-ring: #FFFFFF;
+
+    /* Success */
+    --color-success-text:   #7EEAB0;
+    --color-success-border: #7EEAB0;
+
+    /* Warning */
+    --color-warning-text:   #FFE066;
+    --color-warning-border: #FFE066;
+
+    /* Error */
+    --color-error-text:   #FFA0A0;
+    --color-error-border: #FFA0A0;
+  }
+}

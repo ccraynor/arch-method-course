@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guided practice: apply Domain Authenticity and Taxonomy Calibration lenses to MRHN scope items and produce MRHN_CalibratedScopeMap_v1.">
+  <title>Guided Practice: Calibration Lenses — Lesson 1.3 — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l3-s4 -- Guided Practice: Step 4 Calibration
+       All color values via CSS tokens only.
+       ================================================================ */
+
+    .lesson-label {
+      display: block;
+      margin: 0 0 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-link);
+    }
+
+    .gp-title {
+      margin: 0 0 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    .gp-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 0 0.875rem;
+      flex-wrap: wrap;
+    }
+
+    .screen-type-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    .time-estimate {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 3px;
+      padding: 0.125rem 0.5rem;
+    }
+
+    .step-badge {
+      display: inline-block;
+      padding: 0.25rem 0.625rem;
+      background: var(--color-bg-page);
+      border: 1.5px solid var(--color-text-link);
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-link);
+    }
+
+    .scenario-context {
+      display: flex;
+      align-items: baseline;
+      gap: 0.375rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border-left: 3px solid var(--color-border-strong);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      margin: 0 0 1.5rem;
+      line-height: 1.65;
+    }
+
+    .scenario-label {
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+    }
+
+    /* ---- Progress track ---- */
+    .gp-progress-track {
+      margin: 0 0 1.5rem;
+      padding: 1rem 1.125rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+    }
+
+    .gp-progress-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin: 0 0 0.625rem;
+    }
+
+    .gp-progress-label {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .gp-progress-count {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-link);
+      white-space: nowrap;
+    }
+
+    .gp-progress-bar-wrap {
+      height: 0.5rem;
+      background: var(--color-border-default);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 0 0 0.5rem;
+    }
+
+    .gp-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: var(--color-brand-teal);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .gp-progress-note {
+      margin: 0;
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+    }
+
+    /* ---- Lens quick reference ---- */
+    .lens-ref {
+      margin: 0 0 1.5rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .lens-ref summary {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+    }
+
+    .lens-ref summary::-webkit-details-marker { display: none; }
+    .lens-ref summary:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: -2px; }
+
+    .lens-ref-chevron {
+      margin-left: auto;
+      transition: transform 0.2s;
+      color: var(--color-text-secondary);
+    }
+
+    .lens-ref[open] .lens-ref-chevron { transform: rotate(180deg); }
+
+    .lens-ref__body {
+      padding: 0.875rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.875rem;
+      border-top: 1px solid var(--color-border-default);
+    }
+
+    @media (max-width: 600px) { .lens-ref__body { grid-template-columns: 1fr; } }
+
+    .lens-ref-card {
+      padding: 0.625rem 0.75rem;
+      background: var(--color-bg-page);
+      border: 1px solid var(--color-border-default);
+      border-radius: 4px;
+      font-size: 0.8125rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+    }
+
+    .lens-ref-card strong { font-weight: 700; display: block; margin-bottom: 0.25rem; }
+
+    .tax-levels {
+      margin: 0.375rem 0 0;
+      padding: 0 0 0 1rem;
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+    }
+
+    .tax-levels li { margin-bottom: 0.2rem; }
+
+    /* ---- Item cards ---- */
+    .gp-items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+      margin: 0 0 2rem;
+    }
+
+    .gp-item-card {
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .gp-item-card[data-status="active"] { border-color: var(--color-brand-teal); }
+
+    .gp-item-card[data-status="both"] { border-color: var(--color-success-border); }
+    .gp-item-card[data-status="partial"] { border-color: var(--color-warning-border); }
+    .gp-item-card[data-status="neither"] { border-color: var(--color-error-border); }
+
+    .gp-item-card__header {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.75rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .gp-item-card[data-status="active"] .gp-item-card__header { background: var(--color-bg-page); }
+
+    .gp-item-num {
+      font-family: monospace;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--color-text-link);
+      flex-shrink: 0;
+      min-width: 3rem;
+    }
+
+    .gp-item-name {
+      flex: 1;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+    }
+
+    .gp-item-bucket {
+      font-size: 0.6875rem;
+      color: var(--color-text-secondary);
+      white-space: nowrap;
+    }
+
+    .gp-item-status-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      padding: 0.125rem 0.375rem;
+      border-radius: 3px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .gp-item-status-chip--both {
+      background: var(--color-success-bg);
+      color: var(--color-success-text);
+      border: 1px solid var(--color-success-border);
+    }
+
+    .gp-item-status-chip--partial {
+      background: var(--color-warning-bg);
+      color: var(--color-warning-text);
+      border: 1px solid var(--color-warning-border);
+    }
+
+    .gp-item-status-chip--neither {
+      background: var(--color-error-bg);
+      color: var(--color-error-text);
+      border: 1px solid var(--color-error-border);
+    }
+
+    .btn--start, .btn--redo {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      padding: 0.3125rem 0.75rem;
+      border-radius: 4px;
+      cursor: pointer;
+      flex-shrink: 0;
+      border: 1.5px solid var(--color-text-link);
+      background: var(--color-bg-page);
+      color: var(--color-text-link);
+    }
+
+    .btn--start:hover, .btn--redo:hover { background: var(--color-bg-subtle); }
+    .btn--start:focus-visible, .btn--redo:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+
+    /* ---- Item form ---- */
+    .gp-item-card__form {
+      padding: 1.125rem;
+      display: none;
+      flex-direction: column;
+      gap: 1.125rem;
+    }
+
+    .gp-item-card[data-status="active"] .gp-item-card__form { display: flex; }
+
+    .gp-item-desc {
+      margin: 0;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      border-left: 3px solid var(--color-border-strong);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    .gp-fieldset {
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .gp-fieldset-legend {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .gp-fieldset-sub {
+      display: block;
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+      font-weight: 400;
+      margin-top: 0.125rem;
+    }
+
+    .gp-radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .gp-radio-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 4px;
+      cursor: pointer;
+      background: var(--color-bg-page);
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .gp-radio-option:hover { background: var(--color-bg-subtle); }
+
+    .gp-radio-option input[type="radio"] {
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+      accent-color: var(--color-brand-teal);
+      width: 1rem;
+      height: 1rem;
+      cursor: pointer;
+    }
+
+    .gp-radio-option input[type="radio"]:focus-visible {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 2px;
+    }
+
+    .gp-radio-label {
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.5;
+    }
+
+    .gp-radio-label strong { font-weight: 700; }
+    .gp-radio-label em { color: var(--color-text-secondary); font-size: 0.8125rem; font-style: normal; display: block; margin-top: 0.1rem; }
+
+    .gp-radio-option:has(input:checked) {
+      background: var(--color-bg-subtle);
+      border-color: var(--color-brand-teal);
+    }
+
+    /* conditional flag note */
+    .gp-flag-note-wrap {
+      margin-top: 0.625rem;
+      display: none;
+    }
+
+    .gp-flag-note-wrap.is-visible { display: block; }
+
+    .gp-textarea-label {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: 0.375rem;
+    }
+
+    .gp-textarea {
+      display: block;
+      width: 100%;
+      padding: 0.5rem 0.625rem;
+      font-size: 0.875rem;
+      font-family: inherit;
+      color: var(--color-text-primary);
+      background: var(--color-bg-page);
+      border: 1.5px solid var(--color-border-default);
+      border-radius: 4px;
+      resize: vertical;
+      min-height: 4.5rem;
+      line-height: 1.6;
+      box-sizing: border-box;
+    }
+
+    .gp-textarea:focus-visible {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 1px;
+      border-color: var(--color-brand-teal);
+    }
+
+    .gp-textarea::placeholder { color: var(--color-text-secondary); }
+
+    .gp-validation-msg {
+      display: none;
+      margin-top: 0.25rem;
+      font-size: 0.8125rem;
+      color: var(--color-error-text);
+      font-weight: 600;
+    }
+
+    .gp-validation-msg.is-visible { display: block; }
+
+    .btn--submit-item {
+      align-self: flex-start;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 4px;
+      background: var(--color-brand-teal);
+      color: var(--color-text-inverse);
+      cursor: pointer;
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    .btn--submit-item:hover { opacity: 0.9; }
+    .btn--submit-item:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+
+    /* ---- Feedback panel ---- */
+    .gp-feedback {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+    }
+
+    .gp-feedback.is-visible { display: flex; }
+
+    .gp-feedback__results {
+      display: flex;
+      gap: 0.625rem;
+      flex-wrap: wrap;
+    }
+
+    .result-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.3125rem 0.625rem;
+      border-radius: 4px;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    .result-chip--correct {
+      background: var(--color-success-bg);
+      color: var(--color-success-text);
+      border-color: var(--color-success-border);
+    }
+
+    .result-chip--incorrect {
+      background: var(--color-error-bg);
+      color: var(--color-error-text);
+      border-color: var(--color-error-border);
+    }
+
+    .gp-feedback__section-heading {
+      margin: 0 0 0.375rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+    }
+
+    .gp-feedback__text {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    .gp-feedback__text strong { font-weight: 700; }
+
+    .gp-note-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 560px) { .gp-note-compare { grid-template-columns: 1fr; } }
+
+    .gp-note-compare__col {
+      padding: 0.625rem 0.75rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 4px;
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      background: var(--color-bg-page);
+      color: var(--color-text-primary);
+    }
+
+    .gp-note-compare__col-label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.375rem;
+    }
+
+    .gp-self-check {
+      margin: 0;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-page);
+      border-left: 3px solid var(--color-brand-teal);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.875rem;
+      font-style: italic;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    .btn--continue {
+      align-self: flex-start;
+      padding: 0.4375rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1.5px solid var(--color-border-strong);
+      border-radius: 4px;
+      background: var(--color-bg-page);
+      color: var(--color-text-primary);
+      cursor: pointer;
+      min-height: 44px;
+    }
+
+    .btn--continue:hover { background: var(--color-bg-subtle); }
+    .btn--continue:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+
+    /* ---- Artifact section ---- */
+    .gp-artifact-section {
+      margin: 0 0 2rem;
+    }
+
+    .gp-artifact-locked {
+      padding: 1.5rem;
+      background: var(--color-bg-subtle);
+      border: 1px dashed var(--color-border-strong);
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .gp-artifact-locked__heading {
+      margin: 0 0 0.5rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+    }
+
+    .gp-artifact-locked__note {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+    }
+
+    .gp-artifact-locked__remaining {
+      display: block;
+      margin-top: 0.375rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .gp-artifact-unlocked { display: none; }
+    .gp-artifact-unlocked.is-visible { display: block; }
+
+    .artifact-section-heading {
+      margin: 0 0 0.75rem;
+      font-size: 1.125rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+    }
+
+    .artifact-section-intro {
+      margin: 0 0 1.125rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    /* ---- Full calibration map table ---- */
+    .full-cal-wrap {
+      margin: 0 0 1.5rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .full-cal-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+    }
+
+    .full-cal-table thead th {
+      padding: 0.4375rem 0.625rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      text-align: left;
+    }
+
+    .full-cal-table thead th:first-child { width: 3.5rem; }
+    .full-cal-table thead th:nth-child(3) { width: 4.5rem; }
+    .full-cal-table thead th:last-child { width: 2rem; }
+
+    .full-cal-table .bucket-row td {
+      padding: 0.3125rem 0.625rem;
+      background: var(--color-bg-subtle);
+      border-top: 2px solid var(--color-border-strong);
+      border-bottom: 1px solid var(--color-border-default);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+    }
+
+    .full-cal-table .bucket-row:first-of-type td { border-top: none; }
+
+    .full-cal-table .item-row td {
+      padding: 0.4375rem 0.625rem;
+      border-bottom: 1px solid var(--color-border-default);
+      vertical-align: top;
+      line-height: 1.45;
+      color: var(--color-text-primary);
+    }
+
+    .full-cal-table .item-row:last-child td { border-bottom: none; }
+    .full-cal-table .item-row:nth-child(even) td { background: var(--color-bg-subtle); }
+    .full-cal-table .item-row.learner-practiced td { background: var(--color-warning-bg); }
+
+    .si-num { font-family: monospace; font-weight: 700; color: var(--color-text-link); white-space: nowrap; }
+
+    .bucket-num-sm {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.125rem;
+      height: 1.125rem;
+      border-radius: 50%;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+      font-size: 0.5625rem;
+      font-weight: 800;
+      margin-right: 0.25rem;
+      vertical-align: middle;
+    }
+
+    .tax-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.125rem 0.375rem;
+      border-radius: 3px;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      border: 1px solid var(--color-border-default);
+    }
+
+    .tax-chip--R  { background: var(--color-bg-subtle); color: var(--color-text-secondary); }
+    .tax-chip--Ap { background: var(--color-bg-page); color: var(--color-text-link); border-color: var(--color-text-link); }
+    .tax-chip--An { background: var(--color-warning-bg); color: var(--color-warning-text); border-color: var(--color-warning-border); }
+    .tax-chip--Ev { background: var(--color-error-bg); color: var(--color-error-text); border-color: var(--color-error-border); }
+
+    .flag-dot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.125rem;
+      height: 1.125rem;
+    }
+
+    .cal-note-cell {
+      font-size: 0.75rem;
+      color: var(--color-text-primary);
+      line-height: 1.4;
+    }
+
+    .cal-note-cell em { color: var(--color-warning-text); font-style: normal; font-weight: 600; }
+
+    /* ---- Governance record ---- */
+    .gov-record {
+      margin: 0 0 1.5rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .gov-record__header {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+    }
+
+    .gov-record__id {
+      font-family: monospace;
+      font-size: 0.875rem;
+      font-weight: 700;
+    }
+
+    .gov-record__title {
+      font-size: 0.9375rem;
+      font-weight: 700;
+    }
+
+    .gov-record__row {
+      display: grid;
+      grid-template-columns: 10rem 1fr;
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .gov-record__row:last-child { border-bottom: none; }
+
+    @media (max-width: 500px) { .gov-record__row { grid-template-columns: 1fr; } }
+
+    .gov-record__key {
+      padding: 0.5625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      border-right: 1px solid var(--color-border-default);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 500px) { .gov-record__key { border-right: none; border-bottom: 1px solid var(--color-border-default); } }
+
+    .gov-record__val {
+      padding: 0.5625rem 0.875rem;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+      background: var(--color-bg-page);
+    }
+
+    .gov-record__val strong { font-weight: 700; }
+
+    .gov-record__val ul {
+      margin: 0.25rem 0 0;
+      padding-left: 1.25rem;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    .gov-record__val ul li { margin-bottom: 0.25rem; }
+
+    /* ---- Artifact stamp ---- */
+    .artifact-stamp { display: none; }
+    .artifact-stamp.is-visible {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      padding: 1rem 1.125rem;
+      background: var(--color-success-bg);
+      border: 1.5px solid var(--color-success-border);
+      border-radius: 6px;
+      margin: 0 0 1.5rem;
+    }
+
+    .artifact-stamp__name {
+      font-family: monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-success-text);
+    }
+
+    .artifact-stamp__note {
+      font-size: 0.8125rem;
+      color: var(--color-text-primary);
+      margin-top: 0.25rem;
+    }
+
+    .btn--finalize {
+      padding: 0.625rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 4px;
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+      cursor: pointer;
+      min-height: 44px;
+      min-width: 44px;
+      margin: 0 0 1rem;
+    }
+
+    .btn--finalize:hover { opacity: 0.9; }
+    .btn--finalize:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+    .btn--finalize:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .practiced-legend {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      margin: 0 0 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+    }
+
+    .practiced-swatch {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      background: var(--color-warning-bg);
+      border: 1px solid var(--color-warning-border);
+      border-radius: 2px;
+    }
+
+    @media (prefers-contrast: more) {
+      .gp-item-card { border-color: var(--color-border-strong); }
+      .gp-radio-option { border-color: var(--color-border-strong); }
+      .gov-record { border-color: var(--color-border-strong); }
+      .gov-record__key { border-right-color: var(--color-border-strong); }
+      .gov-record__row { border-bottom-color: var(--color-border-strong); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <header role="banner">
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+    <div id="progress-tracker" role="group" aria-label="Course progress" tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.3</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">4</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">4</span> of <span id="pt-screen-total">5</span></span>
+    </div>
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel" aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer" aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory" aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel" aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+  </header>
+
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item"><a href="intro-0.1.html" class="module-nav-link">Introduction</a></li>
+      <li class="module-nav-item"><a href="module-1.html" class="module-nav-link" aria-current="page">Module 1: Bound the Course</a></li>
+      <li class="module-nav-item"><a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a></li>
+      <li class="module-nav-item"><a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a></li>
+      <li class="module-nav-item"><a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a></li>
+    </ol>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <section id="current-activity" tabindex="-1" aria-label="Current activity">
+
+      <div class="gp-meta">
+        <span class="screen-type-label">Guided Practice</span>
+        <span class="time-estimate" aria-label="Estimated time: 35 to 45 minutes">35&ndash;45 min</span>
+        <span class="step-badge">Step 4</span>
+      </div>
+      <p class="lesson-label">Lesson 1.3</p>
+      <h1 class="gp-title">Apply the Two Calibration Lenses: Domain Authenticity and Taxonomy</h1>
+
+      <div class="scenario-context" role="note" aria-label="Scenario context">
+        <span class="scenario-label">Scenario:</span>
+        You have reviewed the expert calibration of the MRHN scope map. Now you apply
+        both lenses yourself. For each item below, assess domain authenticity, assign
+        a taxonomy level, and note any calibration adjustments needed before
+        decomposition begins. Complete at least 4 of 6 items to assemble
+        MRHN_CalibratedScopeMap_v1.
+      </div>
+
+      <!-- Progress track -->
+      <div class="gp-progress-track" role="region" aria-label="Practice progress">
+        <div class="gp-progress-header">
+          <span class="gp-progress-label">Calibration Progress</span>
+          <span class="gp-progress-count" id="completed-count" aria-live="polite" aria-atomic="true">0 of 6 items calibrated</span>
+        </div>
+        <div class="gp-progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" aria-label="Items completed" id="progress-bar-wrap">
+          <div class="gp-progress-bar" id="progress-bar" style="width:0%"></div>
+        </div>
+        <p class="gp-progress-note" id="progress-note">Complete at least 4 items to unlock artifact assembly.</p>
+      </div>
+
+      <!-- Lens quick reference -->
+      <details class="lens-ref" id="lens-ref">
+        <summary>
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0">
+            <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8 7v5M8 5.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Quick Reference: Two Calibration Lenses
+          <svg class="lens-ref-chevron" aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </summary>
+        <div class="lens-ref__body">
+          <div class="lens-ref-card">
+            <strong>Lens A -- Domain Authenticity</strong>
+            "Would a generic course produce content for this item that is meaningfully wrong for MRHN's healthcare IT context?"
+            <br><br>
+            Pass: the item accurately describes the authentic task.<br>
+            Flag: the item requires a calibration annotation to prevent generic treatment.
+          </div>
+          <div class="lens-ref-card">
+            <strong>Lens B -- Taxonomy Calibration</strong>
+            "What is the actual cognitive demand for a healthcare IT professional who knows their systems but has never managed a cybersecurity incident?"
+            <ul class="tax-levels">
+              <li><strong>R -- Recall:</strong> remember facts, definitions, prescribed steps</li>
+              <li><strong>Ap -- Application:</strong> apply a known procedure to a recognizable situation</li>
+              <li><strong>An -- Analysis:</strong> evaluate a situation, make distinctions, apply judgment</li>
+              <li><strong>Ev -- Evaluation:</strong> decide under genuine ambiguity; weigh competing constraints</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <!-- Item cards -->
+      <div class="gp-items-list" id="gp-items-list" role="list" aria-label="Practice items">
+
+        <!-- Item cards generated by JS below -->
+
+      </div>
+
+      <!-- Artifact assembly section -->
+      <section class="gp-artifact-section" aria-labelledby="artifact-assembly-heading" id="artifact-assembly">
+        <h2 id="artifact-assembly-heading" class="artifact-section-heading">
+          Assemble MRHN_CalibratedScopeMap_v1
+        </h2>
+
+        <!-- Locked state -->
+        <div class="gp-artifact-locked" id="artifact-locked" aria-live="polite">
+          <h3 class="gp-artifact-locked__heading">Artifact Assembly Locked</h3>
+          <p class="gp-artifact-locked__note">
+            Complete at least 4 of 6 calibration items to unlock.
+            <span class="gp-artifact-locked__remaining" id="remaining-note">4 more items needed.</span>
+          </p>
+        </div>
+
+        <!-- Unlocked state -->
+        <div class="gp-artifact-unlocked" id="artifact-unlocked">
+
+          <p class="artifact-section-intro">
+            The full calibration map below combines your calibration work (highlighted
+            rows) with the expert calibration for the remaining items. Together they
+            form MRHN_CalibratedScopeMap_v1. Review the complete map, then review
+            governance record MRHN-D-003 before finalizing.
+          </p>
+
+          <!-- Artifact stamp (shown after finalize) -->
+          <div class="artifact-stamp" id="artifact-stamp" role="alert" aria-live="assertive">
+            <svg aria-hidden="true" focusable="false" width="28" height="28" viewBox="0 0 28 28" fill="none"
+                 style="flex-shrink:0;color:var(--color-success-text)">
+              <circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="2"/>
+              <path d="M8 14l4 4 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <div class="artifact-stamp__name" id="artifact-name-display">MRHN_CalibratedScopeMap_v1_[Date]</div>
+              <div class="artifact-stamp__note">Artifact finalized and saved. Governance record MRHN-D-003 established. Proceed to Lesson 1.3 Screen 5.</div>
+            </div>
+          </div>
+
+          <!-- Full calibration map -->
+          <div class="practiced-legend" aria-label="Legend">
+            <span class="practiced-swatch" aria-hidden="true"></span>
+            Items you calibrated
+          </div>
+
+          <div class="full-cal-wrap" role="region" aria-label="Complete MRHN Calibrated Scope Map -- all 16 items">
+            <table class="full-cal-table">
+              <thead>
+                <tr>
+                  <th scope="col">SI #</th>
+                  <th scope="col">Scope Item</th>
+                  <th scope="col">Level</th>
+                  <th scope="col">Calibration Note</th>
+                  <th scope="col" aria-label="Flag">F</th>
+                </tr>
+              </thead>
+              <tbody id="full-cal-tbody">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Governance record MRHN-D-003 -->
+          <div class="gov-record" role="region" aria-label="Governance record MRHN-D-003">
+            <div class="gov-record__header">
+              <span class="gov-record__id">MRHN-D-003</span>
+              <span class="gov-record__title">Calibration Adjustment Record</span>
+            </div>
+            <div class="gov-record__row">
+              <div class="gov-record__key">Decision</div>
+              <div class="gov-record__val">
+                MRHN_BucketMap_v1 calibrated using Domain Authenticity and Taxonomy Calibration
+                lenses to produce MRHN_CalibratedScopeMap_v1. Five scope items received domain
+                authenticity annotations. Three items had taxonomy level adjusted based on learner
+                population analysis. No scope items were added or removed from the bucket map.
+              </div>
+            </div>
+            <div class="gov-record__row">
+              <div class="gov-record__key">Constraint Reference</div>
+              <div class="gov-record__val">
+                HIPAA 45 CFR 164.404 (breach discovery definition); HIPAA 45 CFR 164.408 (OCR
+                notification data elements); IR-2024 RC-2 (deviation documentation language
+                requirements); LC-1 (scope boundary -- 16 SI items, no additions); PC-3 through
+                PC-5 (operational authority and communication constraints)
+              </div>
+            </div>
+            <div class="gov-record__row">
+              <div class="gov-record__key">Rationale</div>
+              <div class="gov-record__val">
+                Domain authenticity scan identified five items where generic instruction would
+                mislead Module 2 decomposition: SI-09 (multi-site MRHN network topology
+                interdependencies), SI-10 (HIPAA discovery trigger misapplied in generic courses),
+                SI-14 (IR-2024 deviation justification language requirements under RC-2),
+                SI-07 (OCR notification requires 8 specific data elements under 45 CFR 164.408),
+                SI-13 (lessons learned documents are discoverable in healthcare litigation).
+                Taxonomy calibration for healthcare IT professionals elevated three items from
+                their initial Application assignment: SI-10 to Analysis (legal reasoning required
+                under ambiguous discovery facts), SI-13 to Evaluation (judgment required on legal
+                exposure of documented findings), SI-09 to Analysis (clinical system interdependency
+                evaluation required before segmentation). SI-08 and SI-06 assigned Analysis despite
+                procedural names because this population lacks practiced pattern recognition for
+                threat identification and escalation decision-making under incident conditions.
+              </div>
+            </div>
+            <div class="gov-record__row">
+              <div class="gov-record__key">Risk Note</div>
+              <div class="gov-record__val">
+                <strong>Risk 1 (Compliance):</strong> If the SI-10 domain annotation is not
+                preserved into Module 2 decomposition, learners will be taught the incorrect
+                HIPAA clock trigger, producing systematic non-compliance risk at MRHN when
+                learners apply this skill in practice.<br><br>
+                <strong>Risk 2 (Legal):</strong> If the SI-13 Evaluation assignment is downgraded
+                to Application during decomposition, learners will not develop the judgment
+                required to protect MRHN from litigation exposure in post-incident documentation.
+              </div>
+            </div>
+            <div class="gov-record__row">
+              <div class="gov-record__key">Checkpoint Linkage</div>
+              <div class="gov-record__val">
+                <ul>
+                  <li><strong>Gate 1.TG.1:</strong> MRHN_CalibratedScopeMap_v1 is a required gate
+                  artifact; calibration must be complete and governance record must be established
+                  before advancing to Module 2.</li>
+                  <li><strong>Module 2 Decomposition:</strong> All five domain-flagged items (SI-09,
+                  SI-10, SI-14, SI-07, SI-13) must carry their annotations forward. Taxonomy level
+                  assignments govern decomposition complexity targets and assessment design
+                  throughout Module 2.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn--finalize" id="btn-finalize">
+            Finalize MRHN_CalibratedScopeMap_v1
+          </button>
+
+        </div>
+      </section>
+
+    </section>
+  </main>
+
+  <!-- Supplementary resources -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">Input: MRHN_BucketMap_v1 (from Lesson 1.3 Screen 2). Output: MRHN_CalibratedScopeMap_v1 (this screen).</p>
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">MRHN-D-001 (Step 1.5), MRHN-D-002 (balance check), MRHN-D-003 (calibration, established this screen).</p>
+    </section>
+  </aside>
+
+  <!-- Support panels -->
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header"><h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header"><h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header"><h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header"><h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header"><h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- Screen navigation -->
+  <nav class="screen-nav" aria-label="Screen navigation">
+    <a href="m1-l3-s3.html"
+       class="btn btn--nav btn--prev"
+       rel="prev"
+       aria-label="Go to previous screen: Worked example, domain authenticity and taxonomy calibration">
+      <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Previous
+    </a>
+    <a href="m1-l3-s5.html"
+       class="btn btn--nav btn--next"
+       rel="next"
+       id="next-link"
+       aria-label="Go to next screen: Lesson 1.3 reflection">
+      Next
+      <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </nav>
+
+  <footer role="contentinfo">
+    <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- Panel manager -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    function syncToggleStates(name) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === name ? 'true' : 'false');
+      });
+    }
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const p = btn.dataset.panel;
+        if (getActivePanel() === p) { closeAll(); syncToggleStates(null); }
+        else { openPanel(p, btn); syncToggleStates(p); }
+      });
+    });
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => { closeAll(); syncToggleStates(null); });
+    });
+  </script>
+
+  <!-- Progress tracker labels -->
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.3';
+    document.getElementById('pt-phase').textContent        = '1';
+    document.getElementById('pt-step').textContent         = '4';
+    document.getElementById('pt-screen').textContent       = '4';
+    document.getElementById('pt-screen-total').textContent = '5';
+  </script>
+
+  <!-- Main guided practice logic -->
+  <script type="module">
+    import { getItem, setItem } from './js/storage.js';
+
+    const STORAGE_KEY = 'archMethod_m1l3s4_progress';
+    const ARTIFACT_KEY = 'archMethod_calibratedScopeMap_v1';
+
+    /* ============================================================
+       Expert calibration data for all 16 items
+       (used to build the full calibration map in artifact assembly)
+       ============================================================ */
+    const ALL_ITEMS = [
+      // Bucket 1
+      { id:'SI-08', name:'Threat Identification and Classification',       bucket:1, level:'An', flag:false, note:'Ambiguous indicator scenarios required; assess reasoning, not just classification output' },
+      { id:'SI-01', name:'Tier 1 Protocol Execution',                      bucket:1, level:'Ap', flag:false, note:'' },
+      { id:'SI-16', name:'Incident Severity Classification',               bucket:1, level:'Ap', flag:false, note:'' },
+      { id:'SI-06', name:'Escalation Decision Protocol',                   bucket:1, level:'An', flag:false, note:'Non-escalation scenarios required; assess criteria application, not reflexive escalation' },
+      { id:'SI-02', name:'Tier 2 Protocol Execution',                      bucket:1, level:'Ap', flag:false, note:'' },
+      // Bucket 2
+      { id:'SI-03', name:'System Isolation Procedures',                    bucket:2, level:'Ap', flag:false, note:'' },
+      { id:'SI-11', name:'Evidence Preservation Chain',                    bucket:2, level:'Ap', flag:false, note:'' },
+      { id:'SI-09', name:'Network Segmentation Procedures',                bucket:2, level:'An', flag:true,  note:'MRHN multi-site topology: EHR, imaging, and billing interdependencies must be evaluated before segmentation; clinical availability tradeoff scenarios required' },
+      { id:'SI-15', name:'External Notification Protocols',                bucket:2, level:'Ap', flag:false, note:'' },
+      // Bucket 3
+      { id:'SI-04', name:'Real-Time Incident Documentation',               bucket:3, level:'Ap', flag:false, note:'' },
+      { id:'SI-05', name:'Leadership and Communication Notification',      bucket:3, level:'Ap', flag:false, note:'' },
+      { id:'SI-10', name:'HIPAA 72-Hour Breach Notification Clock',        bucket:3, level:'An', flag:true,  note:'Clock triggers at "reasonably should have known" (45 CFR 164.404), not forensic confirmation; discovery-timing evaluation scenarios required' },
+      { id:'SI-14', name:'IR-2024 Protocol Deviation Documentation',       bucket:3, level:'An', flag:true,  note:'RC-2 requires specific justification language, not notation only; deviation vs. adaptation distinction must be taught and assessed' },
+      // Bucket 4
+      { id:'SI-12', name:'Recovery Verification Procedures',               bucket:4, level:'Ap', flag:false, note:'' },
+      { id:'SI-07', name:'OCR Breach Documentation',                       bucket:4, level:'Ap', flag:true,  note:'45 CFR 164.408 requires 8 specific data elements; checklist-completion component required in decomposition' },
+      { id:'SI-13', name:'Lessons Learned Documentation',                  bucket:4, level:'Ev', flag:true,  note:'Document may be discoverable in litigation; distinguish operational notes from formal record; legal review required before filing' }
+    ];
+
+    /* ============================================================
+       Practice items with full expert feedback
+       ============================================================ */
+    const PRACTICE_ITEMS = [
+      {
+        id: 'SI-01',
+        name: 'Tier 1 Protocol Execution',
+        bucketLabel: 'Bucket 1 -- Threat Recognition and Triage',
+        description: 'Execute the Tier 1 containment and documentation protocol once an incident has been classified and initial severity assigned.',
+        expertDomain: 'pass',
+        expertTaxonomy: 'Ap',
+        expertDomainReason: 'The item accurately reflects the authentic task. Tier 1 protocol execution is a defined procedure applied to a confirmed incident. No MRHN-specific constraint changes the nature of the task from what a generic course would teach.',
+        expertFlagNote: null,
+        expertTaxonomyReason: 'Application level for this population. Learners know the protocol; the challenge is accurate execution under time pressure, not analytical complexity. The procedure is prescribed and the situation is recognizable once the incident is confirmed and classified.'
+      },
+      {
+        id: 'SI-08',
+        name: 'Threat Identification and Classification',
+        bucketLabel: 'Bucket 1 -- Threat Recognition and Triage',
+        description: 'Identify indicators of a potential cybersecurity incident, distinguish them from non-incident system events, and assign an initial threat classification.',
+        expertDomain: 'pass',
+        expertTaxonomy: 'An',
+        expertDomainReason: 'The item passes domain authenticity. The task description accurately reflects the genuine skill of threat identification and classification without implying a generic shortcut that would mislead decomposition.',
+        expertFlagNote: null,
+        expertTaxonomyReason: 'Analysis level -- not Application -- for this population. Healthcare IT professionals must distinguish security incidents from system failures, user errors, and hardware problems, all of which can produce similar surface symptoms. Without a practiced pattern library, they must reason through indicators rather than recall them. That reasoning process is analytical. If you assigned Application, consider: an Application task requires applying a known procedure to a recognizable situation. Threat identification for a first-time responder is not recognizable -- it is ambiguous.'
+      },
+      {
+        id: 'SI-10',
+        name: 'HIPAA 72-Hour Breach Notification Clock Management',
+        bucketLabel: 'Bucket 3 -- Active Response Execution',
+        description: 'Identify the point at which the 72-hour HIPAA breach notification clock is triggered and manage documentation and notification actions within the required window.',
+        expertDomain: 'flag',
+        expertTaxonomy: 'An',
+        expertDomainReason: 'Domain authenticity flag required. Generic courses present the 72-hour clock as starting when a breach is confirmed -- after forensic analysis. HIPAA 45 CFR 164.404 defines the trigger differently: the clock starts when the covered entity "knew or reasonably should have known" that a breach occurred. This is not the same as confirmed forensic verification. A covered entity that waits for forensic confirmation before starting the clock may already be out of compliance.',
+        expertFlagNote: 'Clock triggers at "reasonably should have known" (45 CFR 164.404), not forensic confirmation. Decomposition must include discovery-timing evaluation scenarios with ambiguous real-time facts. Assessment must require learners to justify when they started the clock, not just demonstrate that they started one.',
+        expertTaxonomyReason: 'Analysis level after the domain annotation. Learners must evaluate when "reasonably should have known" applies in ambiguous situations -- this is legal reasoning under uncertainty, not timer management. The MRHN learner population has general HIPAA compliance awareness but has not applied this definitional standard under real incident pressure. If you assigned Application, consider: Application requires applying a known procedure to a recognizable situation. But determining when "reasonable knowledge" exists is not a procedure -- it is a judgment call about a legal standard applied to ambiguous facts.'
+      },
+      {
+        id: 'SI-06',
+        name: 'Escalation Decision Protocol',
+        bucketLabel: 'Bucket 1 -- Threat Recognition and Triage',
+        description: 'Evaluate the active incident against Tier 1 response capacity and apply the escalation decision criteria to determine whether to escalate to Tier 2.',
+        expertDomain: 'pass',
+        expertTaxonomy: 'An',
+        expertDomainReason: 'The item passes domain authenticity. The escalation decision criteria are consistent with general incident response practice. No MRHN-specific constraint changes the nature of the task -- the same criteria apply across healthcare and general cybersecurity contexts.',
+        expertFlagNote: null,
+        expertTaxonomyReason: 'Analysis level -- not Application -- despite the word "protocol" in the item name. The authentic task requires evaluating whether current team capability is sufficient to contain without escalation. Healthcare IT professionals without incident response experience have a strong default toward escalating everything, which is not always the correct decision and can delay response. The assessment must expose this behavioral pattern and require learners to apply the criteria even when not escalating is the correct answer. If you assigned Application, the word "protocol" may have anchored your assessment -- but the decision being made (escalate or not, based on capability evaluation) is analytical, not procedural.'
+      },
+      {
+        id: 'SI-07',
+        name: 'OCR Breach Documentation',
+        bucketLabel: 'Bucket 4 -- Post-Incident Close-Out',
+        description: 'Prepare and file the formal HIPAA breach notification with the Office for Civil Rights (OCR), including all required regulatory data elements.',
+        expertDomain: 'flag',
+        expertTaxonomy: 'Ap',
+        expertDomainReason: 'Domain authenticity flag required. Generic courses treat OCR notification as "file a report." HIPAA Breach Notification Rule (45 CFR 164.408) requires eight specific data elements: the nature of the PHI involved, the number of individuals affected, the date of the breach, the date of discovery, a description of the PHI involved, a description of what safeguards were in place, what the covered entity is doing to investigate and mitigate, and contact information. Missing any one of these elements creates a deficient notification that requires OCR follow-up.',
+        expertFlagNote: 'Must reference 45 CFR 164.408 eight required data elements explicitly. Decomposition must include a checklist-completion component where learners populate all eight elements from the incident record and identify which elements require additional documentation beyond what the incident log already contains.',
+        expertTaxonomyReason: 'Application level -- but at higher procedural specificity than the item implies. After the domain annotation, learners must populate eight required data elements from the incident record. The task remains procedure-governed; there is a prescribed checklist and a defined outcome. If you assigned Analysis, reconsider: the learner is not evaluating ambiguous criteria -- they are executing a defined regulatory procedure. The challenge is completeness and accuracy, not judgment under uncertainty.'
+      },
+      {
+        id: 'SI-13',
+        name: 'Lessons Learned Documentation',
+        bucketLabel: 'Bucket 4 -- Post-Incident Close-Out',
+        description: 'Conduct a post-incident retrospective and produce a lessons learned document identifying what occurred, what worked, what failed, and what changes are recommended.',
+        expertDomain: 'flag',
+        expertTaxonomy: 'Ev',
+        expertDomainReason: 'Domain authenticity flag required. In healthcare, lessons learned documents may be discoverable in subsequent litigation arising from the breach. Statements that acknowledge procedural failures can become admissions in legal proceedings. Generic retrospective framing will produce documents that expose MRHN to legal risk. Authentic practice requires learners to understand what can be documented freely and what must be channeled through legal counsel before inclusion in the formal record.',
+        expertFlagNote: 'Lessons learned document is a governed record subject to legal review before final filing. Decomposition must include a component distinguishing operational notes (freely documented, for internal improvement) from the formal lessons learned record (legal exposure, requires counsel review). Assessment must present scenarios requiring learners to decide what belongs in each category.',
+        expertTaxonomyReason: 'Evaluation level -- the highest taxonomy level in this scope map. Learners must judge what findings to document in the formal record versus operational notes, weighing improvement value against legal exposure. There is no prescribed answer: different incidents produce different tradeoffs. This is genuine decision-making under competing constraints. If you assigned Analysis, consider: Analysis requires making distinctions and applying judgment within a defined framework. Evaluation goes further -- the framework itself requires the learner to construct the criteria for what to include, balancing improvement goals against legal risk. That is Evaluation.'
+      }
+    ];
+
+    /* ============================================================
+       State
+       ============================================================ */
+    const state = {}; // { 'SI-01': { domain, flagNote, taxonomy, reasoning, submitted, domainCorrect, taxonomyCorrect } }
+
+    // Load saved state
+    const saved = getItem(STORAGE_KEY);
+    if (saved) { Object.assign(state, saved); }
+
+    const announce = (msg) => {
+      const el = document.getElementById('sr-announcer');
+      el.textContent = '';
+      requestAnimationFrame(() => requestAnimationFrame(() => { el.textContent = msg; }));
+    };
+
+    /* ============================================================
+       Render item cards
+       ============================================================ */
+    const list = document.getElementById('gp-items-list');
+
+    PRACTICE_ITEMS.forEach((item, idx) => {
+      const saved = state[item.id] || {};
+      const card = document.createElement('div');
+      card.className = 'gp-item-card';
+      card.setAttribute('role', 'listitem');
+      card.dataset.id = item.id;
+      card.dataset.status = saved.submitted
+        ? (saved.domainCorrect && saved.taxonomyCorrect ? 'both' : (saved.domainCorrect || saved.taxonomyCorrect ? 'partial' : 'neither'))
+        : 'pristine';
+
+      const statusChipHtml = saved.submitted ? buildStatusChip(saved.domainCorrect, saved.taxonomyCorrect) : '';
+
+      card.innerHTML = `
+        <div class="gp-item-card__header">
+          <span class="gp-item-num">${item.id}</span>
+          <span class="gp-item-name">${item.name}</span>
+          <span class="gp-item-bucket">${item.bucketLabel}</span>
+          ${statusChipHtml}
+          ${!saved.submitted
+            ? `<button type="button" class="btn--start" data-id="${item.id}" aria-expanded="false" aria-controls="form-${item.id}">
+                 Start
+               </button>`
+            : `<button type="button" class="btn--redo" data-id="${item.id}" aria-expanded="false" aria-controls="form-${item.id}">
+                 Review
+               </button>`}
+        </div>
+        <div class="gp-item-card__form" id="form-${item.id}" aria-label="Calibration form for ${item.id}: ${item.name}">
+          <p class="gp-item-desc">${item.description}</p>
+
+          <fieldset class="gp-fieldset" id="fieldset-domain-${item.id}">
+            <legend class="gp-fieldset-legend">
+              Lens A -- Domain Authenticity
+              <span class="gp-fieldset-sub">Does this item reflect real MRHN practice, or would a generic course produce meaningfully wrong content?</span>
+            </legend>
+            <div class="gp-radio-group" role="group" aria-labelledby="domain-label-${item.id}">
+              <label class="gp-radio-option">
+                <input type="radio" name="domain-${item.id}" value="pass" ${saved.domain === 'pass' ? 'checked' : ''}>
+                <span class="gp-radio-label"><strong>Pass</strong>
+                <em>The item accurately describes the authentic task. No annotation needed.</em></span>
+              </label>
+              <label class="gp-radio-option">
+                <input type="radio" name="domain-${item.id}" value="flag" ${saved.domain === 'flag' ? 'checked' : ''}>
+                <span class="gp-radio-label"><strong>Flag</strong>
+                <em>The item requires a calibration annotation. Generic treatment would mislead decomposition.</em></span>
+              </label>
+            </div>
+            <div class="gp-flag-note-wrap ${saved.domain === 'flag' ? 'is-visible' : ''}" id="flag-note-wrap-${item.id}">
+              <label class="gp-textarea-label" for="flag-note-${item.id}">
+                What requires annotation? Describe what a generic course would get wrong for this item in the MRHN context.
+              </label>
+              <textarea class="gp-textarea" id="flag-note-${item.id}" name="flagNote-${item.id}"
+                        rows="3" placeholder="Describe the domain authenticity issue..."
+                        aria-required="true">${saved.flagNote || ''}</textarea>
+            </div>
+            <div class="gp-validation-msg" id="val-domain-${item.id}">Please select a domain authenticity verdict before submitting.</div>
+          </fieldset>
+
+          <fieldset class="gp-fieldset" id="fieldset-tax-${item.id}">
+            <legend class="gp-fieldset-legend">
+              Lens B -- Taxonomy Level
+              <span class="gp-fieldset-sub">What is the actual cognitive demand for healthcare IT professionals who are not cybersecurity specialists?</span>
+            </legend>
+            <div class="gp-radio-group">
+              <label class="gp-radio-option">
+                <input type="radio" name="tax-${item.id}" value="R" ${saved.taxonomy === 'R' ? 'checked' : ''}>
+                <span class="gp-radio-label"><strong>R -- Recall</strong>
+                <em>Remember facts, definitions, or steps in a prescribed sequence</em></span>
+              </label>
+              <label class="gp-radio-option">
+                <input type="radio" name="tax-${item.id}" value="Ap" ${saved.taxonomy === 'Ap' ? 'checked' : ''}>
+                <span class="gp-radio-label"><strong>Ap -- Application</strong>
+                <em>Apply a known procedure to a recognizable situation</em></span>
+              </label>
+              <label class="gp-radio-option">
+                <input type="radio" name="tax-${item.id}" value="An" ${saved.taxonomy === 'An' ? 'checked' : ''}>
+                <span class="gp-radio-label"><strong>An -- Analysis</strong>
+                <em>Evaluate a situation, make distinctions, apply judgment between options</em></span>
+              </label>
+              <label class="gp-radio-option">
+                <input type="radio" name="tax-${item.id}" value="Ev" ${saved.taxonomy === 'Ev' ? 'checked' : ''}>
+                <span class="gp-radio-label"><strong>Ev -- Evaluation</strong>
+                <em>Decide under genuine ambiguity; weigh competing constraints with no prescribed answer</em></span>
+              </label>
+            </div>
+            <div class="gp-validation-msg" id="val-tax-${item.id}">Please select a taxonomy level before submitting.</div>
+          </fieldset>
+
+          <div>
+            <label class="gp-textarea-label" for="reasoning-${item.id}">
+              Reasoning
+              <span class="gp-fieldset-sub" style="font-weight:400">Why does this taxonomy level apply for MRHN healthcare IT professionals who are not cybersecurity specialists? If you flagged the item, explain what the annotation must address.</span>
+            </label>
+            <textarea class="gp-textarea" id="reasoning-${item.id}" name="reasoning-${item.id}"
+                      rows="4" placeholder="Explain your calibration reasoning...">${saved.reasoning || ''}</textarea>
+            <div class="gp-validation-msg" id="val-reasoning-${item.id}">Please enter your calibration reasoning before submitting.</div>
+          </div>
+
+          ${!saved.submitted
+            ? `<button type="button" class="btn--submit-item" data-id="${item.id}">Submit Calibration</button>`
+            : ''}
+
+          <div class="gp-feedback ${saved.submitted ? 'is-visible' : ''}" id="feedback-${item.id}" aria-live="polite">
+            ${saved.submitted ? buildFeedbackHtml(item, saved) : ''}
+          </div>
+        </div>
+      `;
+
+      list.appendChild(card);
+    });
+
+    /* ============================================================
+       Card open/close
+       ============================================================ */
+    list.addEventListener('click', (e) => {
+      const startBtn = e.target.closest('.btn--start, .btn--redo');
+      if (!startBtn) return;
+      const id = startBtn.dataset.id;
+      const card = list.querySelector(`[data-id="${id}"]`);
+      const form = card.querySelector('.gp-item-card__form');
+      const isOpen = card.dataset.status === 'active';
+
+      // Close any other open card
+      list.querySelectorAll('.gp-item-card[data-status="active"]').forEach(c => {
+        if (c !== card) {
+          const prevId = c.dataset.id;
+          const prevSaved = state[prevId];
+          c.dataset.status = prevSaved && prevSaved.submitted
+            ? (prevSaved.domainCorrect && prevSaved.taxonomyCorrect ? 'both' : prevSaved.domainCorrect || prevSaved.taxonomyCorrect ? 'partial' : 'neither')
+            : 'pristine';
+          c.querySelector('.btn--start, .btn--redo').setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (isOpen) {
+        // Close this card
+        const existingSaved = state[id];
+        card.dataset.status = existingSaved && existingSaved.submitted
+          ? (existingSaved.domainCorrect && existingSaved.taxonomyCorrect ? 'both' : existingSaved.domainCorrect || existingSaved.taxonomyCorrect ? 'partial' : 'neither')
+          : 'pristine';
+        startBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        card.dataset.status = 'active';
+        startBtn.setAttribute('aria-expanded', 'true');
+        requestAnimationFrame(() => {
+          form.querySelector('input, textarea, button') && form.querySelector('input, textarea, button').focus();
+        });
+      }
+    });
+
+    /* ============================================================
+       Domain radio reveal flag note
+       ============================================================ */
+    list.addEventListener('change', (e) => {
+      if (e.target.type !== 'radio') return;
+      const name = e.target.name;
+      if (!name.startsWith('domain-')) return;
+      const id = name.replace('domain-', '');
+      const wrap = document.getElementById(`flag-note-wrap-${id}`);
+      const textarea = document.getElementById(`flag-note-${id}`);
+      if (e.target.value === 'flag') {
+        wrap.classList.add('is-visible');
+        textarea.setAttribute('aria-required', 'true');
+      } else {
+        wrap.classList.remove('is-visible');
+        textarea.removeAttribute('aria-required');
+      }
+    });
+
+    /* ============================================================
+       Submit
+       ============================================================ */
+    list.addEventListener('click', (e) => {
+      const btn = e.target.closest('.btn--submit-item');
+      if (!btn) return;
+      const id = btn.dataset.id;
+      const item = PRACTICE_ITEMS.find(i => i.id === id);
+
+      // Gather values
+      const domainEl = list.querySelector(`input[name="domain-${id}"]:checked`);
+      const taxEl    = list.querySelector(`input[name="tax-${id}"]:checked`);
+      const reasoning = document.getElementById(`reasoning-${id}`).value.trim();
+      const flagNote  = document.getElementById(`flag-note-${id}`) ? document.getElementById(`flag-note-${id}`).value.trim() : '';
+      const domain    = domainEl ? domainEl.value : null;
+      const taxonomy  = taxEl ? taxEl.value : null;
+
+      // Validate
+      let valid = true;
+      const showVal = (id, show) => {
+        const el = document.getElementById(id);
+        if (show) el.classList.add('is-visible'); else el.classList.remove('is-visible');
+      };
+
+      showVal(`val-domain-${id}`,    !domain);
+      showVal(`val-tax-${id}`,       !taxonomy);
+      showVal(`val-reasoning-${id}`, !reasoning);
+
+      const needFlagNote = domain === 'flag' && !flagNote;
+      // no separate msg for flag note -- it's inside the conditional wrap
+
+      if (!domain || !taxonomy || !reasoning) {
+        valid = false;
+        if (!domain) document.getElementById(`val-domain-${id}`).focus();
+        else if (!taxonomy) document.getElementById(`val-tax-${id}`).focus();
+        else document.getElementById(`val-reasoning-${id}`).focus();
+      }
+
+      if (!valid) return;
+
+      // Score
+      const domainCorrect  = domain === item.expertDomain;
+      const taxonomyCorrect = taxonomy === item.expertTaxonomy;
+
+      // Save state
+      state[id] = { domain, flagNote, taxonomy, reasoning, submitted: true, domainCorrect, taxonomyCorrect };
+      setItem(STORAGE_KEY, state);
+
+      // Update card status
+      const card = list.querySelector(`[data-id="${id}"]`);
+      const newStatus = domainCorrect && taxonomyCorrect ? 'both' : (domainCorrect || taxonomyCorrect ? 'partial' : 'neither');
+      card.dataset.status = 'active'; // keep open to show feedback
+
+      // Inject feedback and status chip
+      const feedbackEl = document.getElementById(`feedback-${id}`);
+      feedbackEl.innerHTML = buildFeedbackHtml(item, state[id]);
+      feedbackEl.classList.add('is-visible');
+
+      // Update header chip
+      const header = card.querySelector('.gp-item-card__header');
+      const existingChip = header.querySelector('.gp-item-status-chip');
+      if (existingChip) existingChip.remove();
+      header.insertAdjacentHTML('beforeend', buildStatusChip(domainCorrect, taxonomyCorrect));
+
+      // Replace submit button with none (feedback has continue button)
+      btn.remove();
+
+      // Update progress
+      updateProgress();
+
+      const score = domainCorrect && taxonomyCorrect ? 'Expert match on both lenses' : (domainCorrect ? 'Domain correct, review taxonomy' : 'Review needed on domain authenticity');
+      announce(`${id} submitted. ${score}.`);
+
+      // Scroll to feedback
+      requestAnimationFrame(() => feedbackEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' }));
+    });
+
+    /* ============================================================
+       Continue button (collapse card)
+       ============================================================ */
+    list.addEventListener('click', (e) => {
+      const btn = e.target.closest('.btn--continue');
+      if (!btn) return;
+      const id = btn.dataset.id;
+      const saved = state[id];
+      const card = list.querySelector(`[data-id="${id}"]`);
+      card.dataset.status = saved.domainCorrect && saved.taxonomyCorrect ? 'both' : (saved.domainCorrect || saved.taxonomyCorrect ? 'partial' : 'neither');
+      card.querySelector('.btn--redo').setAttribute('aria-expanded', 'false');
+
+      // Auto-focus next incomplete item
+      const nextCard = [...list.querySelectorAll('.gp-item-card')].find(c => c.dataset.status === 'pristine');
+      if (nextCard) {
+        nextCard.querySelector('.btn--start').focus();
+      }
+    });
+
+    /* ============================================================
+       Progress update
+       ============================================================ */
+    function updateProgress() {
+      const done = Object.values(state).filter(s => s.submitted).length;
+      const total = PRACTICE_ITEMS.length;
+      const pct = Math.round((done / total) * 100);
+
+      document.getElementById('completed-count').textContent = `${done} of ${total} items calibrated`;
+      document.getElementById('progress-bar').style.width = pct + '%';
+      document.getElementById('progress-bar-wrap').setAttribute('aria-valuenow', done);
+
+      const remaining = Math.max(0, 4 - done);
+      if (remaining === 0) {
+        document.getElementById('progress-note').textContent = 'Minimum complete. Artifact assembly is unlocked.';
+        unlockArtifact();
+      } else {
+        document.getElementById('remaining-note').textContent = `${remaining} more item${remaining > 1 ? 's' : ''} needed.`;
+        document.getElementById('progress-note').textContent = `Complete ${remaining} more item${remaining > 1 ? 's' : ''} to unlock artifact assembly.`;
+      }
+    }
+
+    function unlockArtifact() {
+      document.getElementById('artifact-locked').style.display = 'none';
+      document.getElementById('artifact-unlocked').classList.add('is-visible');
+      buildFullCalTable();
+    }
+
+    /* ============================================================
+       Full calibration map
+       ============================================================ */
+    function buildFullCalTable() {
+      const tbody = document.getElementById('full-cal-tbody');
+      if (tbody.children.length > 0) return; // already built
+
+      const BUCKET_NAMES = {
+        1: 'Bucket 1: Threat Recognition and Triage',
+        2: 'Bucket 2: Containment and Control',
+        3: 'Bucket 3: Active Response Execution',
+        4: 'Bucket 4: Post-Incident Close-Out'
+      };
+
+      let currentBucket = 0;
+      ALL_ITEMS.forEach(item => {
+        const practiced = !!state[item.id];
+
+        if (item.bucket !== currentBucket) {
+          currentBucket = item.bucket;
+          const bRow = document.createElement('tr');
+          bRow.className = 'bucket-row';
+          bRow.innerHTML = `<td colspan="5"><span class="bucket-num-sm" aria-hidden="true">${currentBucket}</span>${BUCKET_NAMES[currentBucket]}</td>`;
+          tbody.appendChild(bRow);
+        }
+
+        const taxClass = `tax-chip--${item.level}`;
+        const flagHtml = item.flag
+          ? `<span class="flag-dot" aria-label="Domain flag"><svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none" style="color:var(--color-warning-text)"><path d="M7 1.5L13 12.5H1L7 1.5Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 5.5v3M7 10.5v.3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/></svg></span>`
+          : '';
+
+        const row = document.createElement('tr');
+        row.className = `item-row${practiced ? ' learner-practiced' : ''}`;
+        row.innerHTML = `
+          <td><span class="si-num">${item.id}</span></td>
+          <td>${item.name}${practiced ? ' <span class="sr-only">(you calibrated this item)</span>' : ''}</td>
+          <td><span class="tax-chip ${taxClass}">${item.level}</span></td>
+          <td class="cal-note-cell">${item.note || '&mdash;'}</td>
+          <td>${flagHtml}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    /* ============================================================
+       Finalize artifact
+       ============================================================ */
+    document.getElementById('btn-finalize').addEventListener('click', () => {
+      const dateStr = new Date().toISOString().slice(0, 10);
+      const artifactName = `MRHN_CalibratedScopeMap_v1_${dateStr}`;
+
+      setItem(ARTIFACT_KEY, {
+        name: artifactName,
+        finalizedAt: new Date().toISOString(),
+        items: ALL_ITEMS,
+        govRecord: 'MRHN-D-003'
+      });
+      setItem('archMethod_govRecord_MRHN_D_003', { id: 'MRHN-D-003', artifactName, date: dateStr });
+
+      document.getElementById('artifact-name-display').textContent = artifactName;
+      document.getElementById('artifact-stamp').classList.add('is-visible');
+      document.getElementById('btn-finalize').disabled = true;
+
+      announce(`Artifact finalized: ${artifactName}. Governance record MRHN-D-003 established.`);
+      document.getElementById('artifact-stamp').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    /* ============================================================
+       Build status chip HTML
+       ============================================================ */
+    function buildStatusChip(domainCorrect, taxonomyCorrect) {
+      if (domainCorrect && taxonomyCorrect) {
+        return `<span class="gp-item-status-chip gp-item-status-chip--both" aria-label="Expert match on both lenses">Expert Match</span>`;
+      } else if (domainCorrect || taxonomyCorrect) {
+        return `<span class="gp-item-status-chip gp-item-status-chip--partial" aria-label="Partial match">Partial Match</span>`;
+      } else {
+        return `<span class="gp-item-status-chip gp-item-status-chip--neither" aria-label="Review needed on both lenses">Review Needed</span>`;
+      }
+    }
+
+    /* ============================================================
+       Build feedback HTML
+       ============================================================ */
+    function buildFeedbackHtml(item, saved) {
+      const { domain, flagNote, taxonomy, reasoning, domainCorrect, taxonomyCorrect } = saved;
+
+      const domainChip = domainCorrect
+        ? `<span class="result-chip result-chip--correct">Domain Authenticity: Correct</span>`
+        : `<span class="result-chip result-chip--incorrect">Domain Authenticity: Review Needed</span>`;
+
+      const taxChip = taxonomyCorrect
+        ? `<span class="result-chip result-chip--correct">Taxonomy Level: Correct (${item.expertTaxonomy})</span>`
+        : `<span class="result-chip result-chip--incorrect">Taxonomy Level: Needs Review (Expert: ${item.expertTaxonomy}, Yours: ${taxonomy})</span>`;
+
+      const domainSection = `
+        <div>
+          <h3 class="gp-feedback__section-heading">Domain Authenticity</h3>
+          <p class="gp-feedback__text">${item.expertDomainReason}</p>
+        </div>`;
+
+      let flagCompare = '';
+      if (item.expertFlagNote) {
+        const yourNote = domain === 'flag' && flagNote
+          ? flagNote
+          : `<em style="color:var(--color-text-secondary)">(You selected Pass -- no flag note entered)</em>`;
+        flagCompare = `
+          <div>
+            <h3 class="gp-feedback__section-heading">Flag Note Comparison</h3>
+            <div class="gp-note-compare">
+              <div class="gp-note-compare__col">
+                <span class="gp-note-compare__col-label">Your Flag Note</span>
+                ${typeof yourNote === 'string' && yourNote.startsWith('<') ? yourNote : escapeHtml(yourNote)}
+              </div>
+              <div class="gp-note-compare__col">
+                <span class="gp-note-compare__col-label">Expert Flag Note</span>
+                ${escapeHtml(item.expertFlagNote)}
+              </div>
+            </div>
+          </div>`;
+      }
+
+      const taxSection = `
+        <div>
+          <h3 class="gp-feedback__section-heading">Taxonomy Reasoning</h3>
+          <p class="gp-feedback__text">${item.expertTaxonomyReason}</p>
+        </div>`;
+
+      const selfCheck = `
+        <p class="gp-self-check">
+          Compare your reasoning to the expert explanations above. What did your reasoning capture
+          accurately? What did you miss or phrase differently? The goal is not to match the expert
+          word for word -- it is to identify whether your reasoning would lead decomposition in the
+          same direction.
+        </p>`;
+
+      return `
+        <div class="gp-feedback__results">${domainChip}${taxChip}</div>
+        ${domainSection}
+        ${flagCompare}
+        ${taxSection}
+        ${selfCheck}
+        <button type="button" class="btn--continue" data-id="${item.id}">Close and continue</button>
+      `;
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    /* ============================================================
+       Init: restore progress
+       ============================================================ */
+    updateProgress();
+
+    // If already have 4+ complete from prior session, unlock
+    const doneCount = Object.values(state).filter(s => s.submitted).length;
+    if (doneCount >= 4) unlockArtifact();
+
+    // Restore artifact stamp if already finalized
+    const savedArtifact = getItem(ARTIFACT_KEY);
+    if (savedArtifact && savedArtifact.name) {
+      document.getElementById('artifact-name-display').textContent = savedArtifact.name;
+      document.getElementById('artifact-stamp').classList.add('is-visible');
+      document.getElementById('btn-finalize').disabled = true;
+    }
+
+  </script>
+
+</body>
+</html>

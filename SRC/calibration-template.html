@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- TEMPLATE: replace with calibration-specific description (≤155 chars) -->
+  <meta name="description" content="[DESCRIPTION — one sentence describing what the learner compares at this calibration checkpoint]">
+  <!-- TEMPLATE: replace with "Compare to Expert: Title — Lesson X.X — ARCH Method Practitioner Credential — Proof Point Learning" -->
+  <title>[Compare to Expert: Title] — Lesson [X.X] — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links — do not modify
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header — banner landmark — do not modify
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">1</span> of <span id="pt-screen-total">4</span></span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary"
+              aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel"
+              aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer"
+              aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory"
+              aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel"
+              aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation — TEMPLATE: set aria-current="page" on
+       the link matching the current module.
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link" aria-current="false">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link" aria-current="false">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link" aria-current="false">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link" aria-current="false">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link" aria-current="false">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content — main landmark
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <!-- =========================================================
+           COMPARE-TO-EXPERT CALIBRATION TEMPLATE
+           Template type: comparison, read-only panels + reflection input
+
+           LAYOUT MODES
+           Desktop (≥1024px): CSS grid, two columns.
+             Visual order: [learner | expert gate/content] [criteria] [reflection]
+             DOM order:    learner → criteria → expert → reflection
+             CSS assigns grid-area per panel; visual and DOM order differ.
+           Tablet (600–1023px): stacked, full-width panels in DOM order.
+           Mobile (<600px): linear, DOM order, linear mode active by default.
+
+           LINEAR ACCESSIBLE MODE
+           Available at every breakpoint via the toggle button in the
+           article header. When active, adds .calibration-layout--linear
+           which removes grid-area assignments, reverting all panels to
+           DOM order full-width display. This resolves the focus/visual
+           mismatch on desktop for keyboard and low-vision users.
+           Mobile sets .calibration-layout--linear via CSS; the toggle
+           is hidden on mobile (no visual difference to switch to).
+
+           DOM READING ORDER (always): learner → criteria → expert → reflection
+           Focus order matches DOM order. Sighted keyboard users on desktop
+           who experience the visual/focus mismatch should use linear mode.
+
+           EXPERT REVEAL
+           Expert panel shows a gate by default. When "Show Expert Response"
+           is activated: gate hides, expert content shows, focus moves to
+           expert heading, sr-announcer fires "Expert comparison available."
+
+           LEARNER RESPONSE SOURCE
+           Pulled from localStorage via window.__setCalibrationConfig().
+           The config includes a parse() function to handle any stored
+           format (reflection JSON, decision JSON, plain string).
+
+           CALIBRATION NOTES
+           Saved on blur and on manual save. Key: calibration_[SCREEN_ID]_notes.
+           ========================================================= -->
+      <article class="calibration" aria-labelledby="calibration-title">
+
+        <header class="calibration__header">
+          <span class="screen-type-label">Compare to Expert</span>
+          <!-- TEMPLATE: update lesson label -->
+          <p class="lesson-label" aria-label="Lesson [X.X]">Lesson [X.X]</p>
+          <!-- TEMPLATE: update title — this is the page's h1 -->
+          <h1 id="calibration-title" class="calibration__title">[Calibration Activity Title]</h1>
+
+          <div class="calibration__controls">
+            <!-- Linear mode toggle.
+                 aria-pressed="false" = side-by-side active (desktop default).
+                 aria-pressed="true"  = linear mode active.
+                 Hidden on mobile via CSS (linear is always active on mobile). -->
+            <button type="button"
+                    id="btn-linear-mode"
+                    class="btn btn--toggle btn--linear-toggle"
+                    aria-pressed="false">
+              <svg aria-hidden="true" focusable="false" width="16" height="16"
+                   viewBox="0 0 16 16" fill="none">
+                <path d="M2 4h12M2 8h12M2 12h12"
+                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="toggle-label">Switch to Linear View</span>
+            </button>
+          </div>
+        </header>
+
+        <!-- Calibration layout container.
+             CSS classes applied here control the grid layout.
+             .calibration-layout--linear disables grid; all panels go full-width in DOM order.
+             The script manages this class; CSS media query also applies it on mobile. -->
+        <div class="calibration-layout" id="calibration-layout">
+
+          <!-- ==================================================
+               PANEL 1: LEARNER RESPONSE
+               DOM order: 1st. CSS grid-area: learner (top-left on desktop).
+               Content populated from localStorage by the calibration script.
+               ================================================== -->
+          <section class="calibration-panel calibration-panel--learner"
+                   aria-labelledby="learner-heading">
+
+            <h2 id="learner-heading" class="calibration-panel__heading">
+              <svg aria-hidden="true" focusable="false" width="18" height="18"
+                   viewBox="0 0 18 18" fill="none">
+                <circle cx="9" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3 15c0-3.314 2.686-6 6-6s6 2.686 6 6"
+                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              Your Response
+            </h2>
+
+            <!-- Populated by calibration script from localStorage.
+                 Shows formatted learner text or an empty state. -->
+            <div class="learner-response__body" id="learner-response-body">
+              <!-- Script populates one of: -->
+
+              <!-- A) Stored response found — script injects as a blockquote: -->
+              <!-- <blockquote class="learner-response__quote">
+                     [Learner's stored text]
+                   </blockquote>
+                   <p class="learner-response__source">
+                     Saved from [source screen label]
+                   </p> -->
+
+              <!-- B) No stored response — script shows empty state: -->
+              <!-- <p class="learner-response__empty">
+                     No saved response found for this activity.
+                     <a href="[SOURCE_SCREEN].html">Return to [Lesson X.X]</a>
+                     to complete the activity, or continue to view the expert response.
+                   </p> -->
+            </div>
+
+          </section>
+          <!-- END PANEL 1 -->
+
+          <!-- ==================================================
+               PANEL 2: COMPARISON CRITERIA
+               DOM order: 2nd. CSS grid-area: criteria (full-width below panels on desktop).
+               Keyboard focus reaches this panel second, after learner response.
+               "Show Expert Response" button is at the end of this panel so
+               the learner reads all criteria before revealing expert content.
+               ================================================== -->
+          <section class="calibration-panel calibration-panel--criteria"
+                   aria-labelledby="criteria-heading">
+
+            <h2 id="criteria-heading" class="calibration-panel__heading">
+              <svg aria-hidden="true" focusable="false" width="18" height="18"
+                   viewBox="0 0 18 18" fill="none">
+                <path d="M3 5h12M3 9h8M3 13h10"
+                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              Comparison Criteria
+            </h2>
+
+            <p class="criteria-intro">
+              <!-- TEMPLATE: one sentence explaining what to look for in the comparison -->
+              Use the criteria below to evaluate your response before viewing the expert.
+              [Add specific instruction for what the learner should self-assess.]
+            </p>
+
+            <!-- TEMPLATE: 3–5 criteria items.
+                 Each criterion names a quality indicator the learner should check for.
+                 Criteria must be observable and specific to this lesson's content. -->
+            <ol class="criteria-list" aria-label="Comparison criteria">
+
+              <li class="criteria-item">
+                <span class="criteria-item__label">[Criterion 1 name]</span>
+                <p class="criteria-item__description">
+                  [What does strong performance on this criterion look like?
+                  Be specific enough that the learner can self-assess against it.]
+                </p>
+              </li>
+
+              <li class="criteria-item">
+                <span class="criteria-item__label">[Criterion 2 name]</span>
+                <p class="criteria-item__description">
+                  [Description of criterion 2.]
+                </p>
+              </li>
+
+              <li class="criteria-item">
+                <span class="criteria-item__label">[Criterion 3 name]</span>
+                <p class="criteria-item__description">
+                  [Description of criterion 3.]
+                </p>
+              </li>
+
+              <!-- TEMPLATE: add up to 2 more criteria items here -->
+
+            </ol>
+
+            <!-- Reveal trigger.
+                 Placed at end of criteria panel so learner reads all criteria first.
+                 aria-controls references the expert panel's content region.
+                 aria-expanded reflects whether expert content is visible. -->
+            <div class="reveal-trigger">
+              <p class="reveal-prompt">
+                When you have reviewed the criteria and are ready to compare:
+              </p>
+              <button type="button"
+                      id="btn-reveal-expert"
+                      class="btn btn--primary btn--reveal"
+                      aria-controls="expert-content"
+                      aria-expanded="false">
+                <svg aria-hidden="true" focusable="false" width="16" height="16"
+                     viewBox="0 0 16 16" fill="none">
+                  <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M1 8s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5z"
+                        stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                Show Expert Response
+              </button>
+            </div>
+
+          </section>
+          <!-- END PANEL 2 -->
+
+          <!-- ==================================================
+               PANEL 3: EXPERT RESPONSE
+               DOM order: 3rd. CSS grid-area: expert (top-right on desktop).
+               Panel is always present in DOM and visible in layout.
+               Content is gated: .expert-gate shows until reveal; .expert-content
+               shows after reveal. This keeps the panel visually present on
+               desktop (no empty right column) while gating the content.
+               tabindex="-1" on heading allows programmatic focus on reveal.
+               ================================================== -->
+          <section class="calibration-panel calibration-panel--expert"
+                   id="expert-panel"
+                   aria-labelledby="expert-heading">
+
+            <h2 id="expert-heading"
+                class="calibration-panel__heading"
+                tabindex="-1">
+              <svg aria-hidden="true" focusable="false" width="18" height="18"
+                   viewBox="0 0 18 18" fill="none">
+                <path d="M9 2l2.09 4.26L16 7.27l-3.5 3.41.83 4.82L9 13.25l-4.33 2.25.83-4.82L2 7.27l4.91-.71L9 2z"
+                      stroke="currentColor" stroke-width="1.5"
+                      stroke-linejoin="round"/>
+              </svg>
+              Expert Response
+            </h2>
+
+            <!-- Gate: visible until learner activates the reveal button.
+                 Communicates why content is hidden. Not a barrier — learner
+                 can scroll past and return. -->
+            <div class="expert-gate" id="expert-gate" aria-label="Expert response is available after reviewing criteria">
+              <svg class="expert-gate__icon"
+                   aria-hidden="true"
+                   focusable="false"
+                   width="32"
+                   height="32"
+                   viewBox="0 0 32 32"
+                   fill="none">
+                <rect x="8" y="14" width="16" height="13" rx="2"
+                      stroke="currentColor" stroke-width="1.5"/>
+                <path d="M11 14v-3a5 5 0 0110 0v3"
+                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <p class="expert-gate__message">
+                Review your response and the comparison criteria,
+                then select <strong>Show Expert Response</strong> to compare.
+              </p>
+            </div>
+
+            <!-- Expert content: hidden until revealed.
+                 id="expert-content" is the aria-controls target of btn-reveal-expert. -->
+            <div id="expert-content" class="expert-content" hidden>
+
+              <!-- TEMPLATE: expert response content.
+                   Format should mirror the learner response format so comparison
+                   is direct. If the learner wrote prose, show prose. If the
+                   source was a decision rationale, show a decision rationale. -->
+
+              <div class="expert-response__body">
+                <!-- TEMPLATE: the actual expert response -->
+                <p>[Expert response paragraph 1 — models the thinking pattern the learner is developing.]</p>
+                <p>[Expert response paragraph 2 — applies ARCH Method concepts explicitly.]</p>
+                <!-- TEMPLATE: optional annotation on why the expert responded this way -->
+              </div>
+
+              <!-- Expert rationale: explains the reasoning behind the response.
+                   TEMPLATE: remove if expert content is self-explanatory. -->
+              <details class="expert-rationale">
+                <summary class="expert-rationale__summary">
+                  Why this response works
+                </summary>
+                <div class="expert-rationale__body">
+                  <!-- TEMPLATE: brief explanation of what makes the expert response strong -->
+                  <p>[Explain which criteria the expert response satisfies and why.
+                     Connect to the ARCH Method Phase and Step this calibration addresses.]</p>
+                </div>
+              </details>
+
+            </div><!-- /#expert-content -->
+
+          </section>
+          <!-- END PANEL 3 -->
+
+          <!-- ==================================================
+               PANEL 4: CALIBRATION REFLECTION
+               DOM order: 4th. CSS grid-area: reflection (full-width, below both panels).
+               Visible at all times — learner can begin noting observations
+               before revealing the expert, though this is uncommon in practice.
+               ================================================== -->
+          <section class="calibration-panel calibration-panel--reflection"
+                   aria-labelledby="reflection-heading">
+
+            <h2 id="reflection-heading" class="calibration-panel__heading">
+              <svg aria-hidden="true" focusable="false" width="18" height="18"
+                   viewBox="0 0 18 18" fill="none">
+                <path d="M9 2v14M2 9h14"
+                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              Calibration Notes
+            </h2>
+
+            <p class="reflection-intro" id="reflection-intro">
+              <!-- TEMPLATE: 1–2 sentences directing the learner's reflection -->
+              After comparing your response to the expert, note what you observed.
+              [Specific prompt — e.g., "Identify one thing you got right, one gap, and one adjustment you will make."]
+            </p>
+
+            <!-- TEMPLATE: 1–3 guiding questions.
+                 Keep brief — this is a post-comparison note, not a full reflection. -->
+            <div class="reflection-prompts" aria-label="Reflection prompts">
+              <ol class="reflection-prompt-list">
+                <li>[What did your response get right, compared to the expert?]</li>
+                <li>[What was the most significant gap you noticed?]</li>
+                <li>[What is one adjustment you would make if you were revising your response?]</li>
+              </ol>
+            </div>
+
+            <label for="calibration-notes" class="calibration-notes__label">
+              Your Notes
+            </label>
+            <p class="calibration-notes__hint" id="calibration-notes-hint">
+              Your notes save automatically when you leave this field.
+            </p>
+            <textarea id="calibration-notes"
+                      name="calibration-notes"
+                      class="calibration-notes__textarea"
+                      rows="6"
+                      aria-describedby="reflection-intro calibration-notes-hint"
+                      placeholder="What did you notice in the comparison?"></textarea>
+
+            <!-- Save controls -->
+            <div class="save-controls" role="group" aria-label="Save controls">
+              <button type="button"
+                      id="btn-save-notes"
+                      class="btn btn--secondary btn--save">
+                <svg aria-hidden="true" focusable="false" width="16" height="16"
+                     viewBox="0 0 16 16" fill="none">
+                  <path d="M13 13H3a1 1 0 01-1-1V4l3-3h7l2 2v9a1 1 0 01-1 1z"
+                        stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M5 13V9h6v4M5 1v4h5"
+                        stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Save Notes
+              </button>
+
+              <p id="notes-save-status"
+                 class="save-status"
+                 aria-live="polite"
+                 aria-atomic="true">
+                Not yet saved
+              </p>
+            </div>
+
+          </section>
+          <!-- END PANEL 4 -->
+
+        </div><!-- /.calibration-layout -->
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <!-- TEMPLATE: update href values -->
+          <a href="[PREV_SCREEN].html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="[NEXT_SCREEN].html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources — complementary landmark
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <!-- TEMPLATE: list artifacts relevant to this comparison -->
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <!-- TEMPLATE: list decisions relevant to this calibration -->
+    </section>
+  </aside>
+
+  <!-- ============================================================
+       Support Panels — do not modify — managed by panelManager.js
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer — contentinfo landmark — do not modify
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script — do not modify
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    import { getItem, setItem } from './js/storage.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Calibration script — do not modify
+       ============================================================ -->
+  <script type="module">
+    import { getItem, setItem } from './js/storage.js';
+
+    let SCREEN_ID = null;
+    let CONFIG    = null;
+
+    /* DOM references */
+    const layout          = document.getElementById('calibration-layout');
+    const btnLinear       = document.getElementById('btn-linear-mode');
+    const linearLabel     = btnLinear.querySelector('.toggle-label');
+    const btnReveal       = document.getElementById('btn-reveal-expert');
+    const expertGate      = document.getElementById('expert-gate');
+    const expertContent   = document.getElementById('expert-content');
+    const expertHeading   = document.getElementById('expert-heading');
+    const learnerBody     = document.getElementById('learner-response-body');
+    const notesArea       = document.getElementById('calibration-notes');
+    const btnSaveNotes    = document.getElementById('btn-save-notes');
+    const notesSaveStatus = document.getElementById('notes-save-status');
+    const announcer       = document.getElementById('sr-announcer');
+
+    /* ---- Linear mode toggle ---- */
+    btnLinear.addEventListener('click', () => {
+      const nowLinear = btnLinear.getAttribute('aria-pressed') !== 'true';
+      btnLinear.setAttribute('aria-pressed', String(nowLinear));
+      layout.classList.toggle('calibration-layout--linear', nowLinear);
+      linearLabel.textContent = nowLinear
+        ? 'Switch to Side-by-Side View'
+        : 'Switch to Linear View';
+    });
+
+    /* ---- Expert reveal ---- */
+    btnReveal.addEventListener('click', () => {
+      /* Hide gate, show content */
+      expertGate.setAttribute('hidden', '');
+      expertContent.removeAttribute('hidden');
+
+      /* Update button state */
+      btnReveal.setAttribute('aria-expanded', 'true');
+      btnReveal.setAttribute('disabled', '');
+      btnReveal.textContent = 'Expert Response Shown';
+
+      /* Announce to screen readers via live region first,
+         then move focus to expert heading.
+         Two-signal approach: live region fires "Expert comparison available,"
+         then focus move announces the heading text. */
+      announcer.textContent = '';
+      requestAnimationFrame(() => {
+        announcer.textContent = 'Expert comparison available.';
+        /* Focus after live region has a chance to fire */
+        setTimeout(() => { expertHeading.focus(); }, 100);
+      });
+    });
+
+    /* ---- Calibration notes: save on blur ---- */
+    notesArea.addEventListener('blur', () => saveNotes('blur'));
+
+    /* ---- Calibration notes: manual save ---- */
+    btnSaveNotes.addEventListener('click', () => saveNotes('manual'));
+
+    /* ---- Save on navigation ---- */
+    document.querySelectorAll('.btn--nav').forEach(link => {
+      link.addEventListener('click', () => saveNotes('exit'));
+    });
+
+    function saveNotes(source) {
+      if (!SCREEN_ID) return;
+      try {
+        const value     = notesArea.value;
+        const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        setItem('calibration_' + SCREEN_ID + '_notes',     value);
+        setItem('calibration_' + SCREEN_ID + '_savedAt',   timestamp);
+        const message   = 'Saved at ' + timestamp;
+        const announce  = source === 'manual';
+
+        notesSaveStatus.setAttribute('aria-live', announce ? 'polite' : 'off');
+        notesSaveStatus.textContent = '';
+        requestAnimationFrame(() => { notesSaveStatus.textContent = message; });
+
+        if (announce) {
+          announcer.textContent = '';
+          requestAnimationFrame(() => { announcer.textContent = message; });
+        }
+      } catch {
+        notesSaveStatus.setAttribute('aria-live', 'polite');
+        notesSaveStatus.textContent = 'Save failed. Storage may be unavailable.';
+      }
+    }
+
+    function restoreNotes() {
+      if (!SCREEN_ID) return;
+      const stored  = getItem('calibration_' + SCREEN_ID + '_notes');
+      const savedAt = getItem('calibration_' + SCREEN_ID + '_savedAt');
+      if (stored !== null) {
+        notesArea.value = stored;
+        notesSaveStatus.textContent = savedAt ? 'Last saved at ' + savedAt : 'Draft restored';
+      }
+    }
+
+    /* ---- Load learner response from localStorage ----
+       CONFIG.source.parse() extracts the displayable text from stored value.
+       Returns a plain string or null. */
+    function loadLearnerResponse() {
+      if (!CONFIG || !CONFIG.source) return;
+      const stored = getItem(CONFIG.source.key);
+
+      if (!stored) {
+        /* Empty state */
+        const empty = document.createElement('p');
+        empty.className = 'learner-response__empty';
+        empty.innerHTML =
+          'No saved response found for this activity. ' +
+          '<a href="' + (CONFIG.source.fallbackHref || '#') + '">' +
+          'Return to ' + (CONFIG.source.fallbackLabel || 'the previous activity') +
+          '</a> to complete it, or continue to view the expert response.';
+        learnerBody.appendChild(empty);
+        return;
+      }
+
+      let text = '';
+      try {
+        text = CONFIG.source.parse(stored);
+      } catch {
+        text = stored;
+      }
+
+      if (!text || !text.trim()) {
+        const empty = document.createElement('p');
+        empty.className = 'learner-response__empty';
+        empty.textContent = 'Your saved response appears to be empty. You may have left that field blank.';
+        learnerBody.appendChild(empty);
+        return;
+      }
+
+      const quote = document.createElement('blockquote');
+      quote.className = 'learner-response__quote';
+      /* Preserve line breaks from textarea input */
+      quote.innerHTML = text.split('\n')
+        .filter(line => line.trim())
+        .map(line => '<p>' + escapeHtml(line) + '</p>')
+        .join('');
+
+      const source = document.createElement('p');
+      source.className = 'learner-response__source';
+      source.textContent = 'Saved from ' + (CONFIG.source.label || 'a previous activity');
+
+      learnerBody.appendChild(quote);
+      learnerBody.appendChild(source);
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    /* ---- Public config setter called by screen-specific script ---- */
+    window.__setCalibrationConfig = function (config) {
+      SCREEN_ID = config.screenId;
+      CONFIG    = config;
+      loadLearnerResponse();
+      restoreNotes();
+    };
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script — TEMPLATE: update all values below
+       ============================================================ -->
+  <script type="module">
+    /* Progress tracker */
+    document.getElementById('pt-module').textContent       = '[X]';
+    document.getElementById('pt-lesson').textContent       = '[X.X]';
+    document.getElementById('pt-phase').textContent        = '[X]';
+    document.getElementById('pt-step').textContent         = '[X]';
+    document.getElementById('pt-screen').textContent       = '[X]';
+    document.getElementById('pt-screen-total').textContent = '[Y]';
+
+    /* Module nav aria-current */
+    document.querySelectorAll('.module-nav-link').forEach(link => link.removeAttribute('aria-current'));
+    const activeLink = document.querySelector('.module-nav-link[href="[MODULE_HREF].html"]');
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+
+    /* TEMPLATE: configure the calibration screen.
+       screenId    — unique ID for this screen (used for notes localStorage key).
+       source.key  — localStorage key where the learner's response is stored.
+       source.parse — function that extracts displayable text from the stored value.
+                      Return a plain string. Throw or return '' for empty states.
+       source.label — human-readable name of the source screen (shown in citation).
+       source.fallbackHref  — href to return to if no response found.
+       source.fallbackLabel — link text for the empty state.
+
+       Examples:
+
+       // Source is a reflection checkpoint (JSON object with field IDs as keys):
+       source: {
+         key: 'reflection_module2_lesson2_reflection1',
+         parse: stored => JSON.parse(stored)['reflection-field-1'] || '',
+         label: 'Lesson 2.2 Reflection',
+         fallbackHref: 'module2-lesson2-reflection.html',
+         fallbackLabel: 'Lesson 2.2'
+       }
+
+       // Source is a decision point rationale:
+       source: {
+         key: 'decision_module1_lesson1_decision1',
+         parse: stored => JSON.parse(stored).rationale || '',
+         label: 'Lesson 1.1 Decision Point',
+         fallbackHref: 'module1-lesson1-decision.html',
+         fallbackLabel: 'Lesson 1.1'
+       }
+
+       // Source is a plain string (e.g. learnerCommitmentNote):
+       source: {
+         key: 'learnerCommitmentNote',
+         parse: stored => stored,
+         label: 'Introduction Commitment',
+         fallbackHref: 'intro-0.9.html',
+         fallbackLabel: 'Introduction Screen 0.9'
+       }
+    */
+    window.__setCalibrationConfig({
+      screenId: '[MODULE]_[LESSON]_[CALIBRATION_N]',
+      source: {
+        key:          '[STORAGE_KEY]',
+        parse:        stored => { /* TEMPLATE: replace */ return stored; },
+        label:        '[Source screen label]',
+        fallbackHref: '[source-screen].html',
+        fallbackLabel:'[Lesson X.X]'
+      }
+    });
+  </script>
+
+</body>
+</html>

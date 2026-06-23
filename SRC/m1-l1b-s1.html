@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Analyze the Meridian source documents to extract and rank non-negotiable design constraints, then establish the documentation conventions for all downstream artifacts.">
+  <title>Lesson 1.1b: Constraint Identification and Prioritization — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l1b-s1 — Lesson Introduction
+       All color values use CSS tokens. No hard-coded hex values.
+       ================================================================ */
+
+    /* ---- Lesson header ---- */
+    .lesson-label {
+      display: block;
+      margin: 0 0 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-link);
+    }
+
+    .lesson-intro__title {
+      margin: 0 0 0.875rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    /* Phase and Step badge strip -- appears below H1.
+       Two step badges shown because this lesson covers Steps 1 and 1.5.
+       Color is supplemented by the "Phase" and "Step" text labels so
+       no meaning is conveyed by color alone. */
+    .lesson-phase-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem;
+      margin: 0 0 1.75rem;
+    }
+
+    .lesson-phase-strip__badge {
+      display: inline-block;
+      padding: 0.25rem 0.625rem;
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    /* Phase badge: navy background */
+    .lesson-phase-strip__badge--phase {
+      background: var(--color-brand-navy);
+      color: var(--color-text-inverse);
+    }
+
+    /* Step badge: teal border, teal text */
+    .lesson-phase-strip__badge--step {
+      background: var(--color-bg-page);
+      color: var(--color-text-link);
+      border: 1.5px solid var(--color-text-link);
+    }
+
+    /* ---- Lesson intro sections ---- */
+    .lesson-intro__purpose {
+      margin: 0 0 1.75rem;
+      max-width: 680px;
+    }
+
+    .lesson-intro__section-heading {
+      margin: 0 0 0.5rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    .lesson-intro__purpose-text {
+      margin: 0;
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    /* Two-column outcomes grid */
+    .lesson-intro__outcomes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem 2rem;
+      margin: 0 0 2rem;
+      max-width: 800px;
+    }
+
+    @media (max-width: 580px) {
+      .lesson-intro__outcomes {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .lesson-intro__do,
+    .lesson-intro__produce {
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      padding: 1rem;
+    }
+
+    .lesson-intro__list {
+      margin: 0;
+      padding-left: 1.125rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4375rem;
+    }
+
+    .lesson-intro__list li {
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+    }
+
+    /* Artifact names are set in a slightly stronger weight to help
+       learners distinguish the artifact from its description. */
+    .lesson-intro__list li strong {
+      font-weight: 700;
+    }
+
+    /* Lesson start note -- draws attention to the fact this lesson
+       covers two steps, so learners know what to expect structurally. */
+    .lesson-scope-note {
+      max-width: 680px;
+      margin: 0 0 2rem;
+      padding: 0.75rem 1rem;
+      background: var(--color-bg-subtle);
+      border-left: 3px solid var(--color-border-strong);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.65;
+    }
+
+    .lesson-scope-note strong {
+      font-weight: 700;
+    }
+
+    /* High contrast adjustments */
+    @media (prefers-contrast: more) {
+      .lesson-intro__do,
+      .lesson-intro__produce {
+        border-color: var(--color-border-strong);
+      }
+      .lesson-scope-note {
+        border-left-color: var(--color-border-strong);
+      }
+      .lesson-phase-strip__badge--step {
+        border-color: var(--color-border-strong);
+        color: var(--color-text-primary);
+      }
+      .lesson-label {
+        color: var(--color-text-primary);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">
+        Module <span id="pt-module">1</span> of 4
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Lesson <span id="pt-lesson">1.1b</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Phase <span id="pt-phase">1</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Step <span id="pt-step">1</span>
+      </span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">
+        Screen <span id="pt-screen">1</span> of <span id="pt-screen-total">6</span>
+      </span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary"
+              aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel"
+              aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer"
+              aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory"
+              aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel"
+              aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <article class="lesson-intro" aria-labelledby="lesson-title">
+
+        <header class="lesson-intro__header">
+          <p class="lesson-label" aria-label="Lesson 1.1b">Lesson 1.1b</p>
+          <h1 id="lesson-title"
+              class="lesson-intro__title">Constraint Identification and Prioritization</h1>
+
+          <!-- Phase and Step badge strip.
+               This lesson covers two steps, so both are shown.
+               Phase badge uses navy fill; Step badges use teal outline. -->
+          <div class="lesson-phase-strip"
+               role="group"
+               aria-label="Phase and Steps covered in this lesson">
+            <span class="lesson-phase-strip__badge lesson-phase-strip__badge--phase">
+              Phase 1: Bound the Course
+            </span>
+            <span class="lesson-phase-strip__badge lesson-phase-strip__badge--step">
+              Step 1: Design Document Synthesis
+            </span>
+            <span class="lesson-phase-strip__badge lesson-phase-strip__badge--step">
+              Step 1.5: Output Style Gate and Snapshot Protocol
+            </span>
+          </div>
+        </header>
+
+        <!-- Two-step scope note -->
+        <p class="lesson-scope-note">
+          This lesson covers two consecutive steps.
+          <strong>Step 1</strong> produces the constraint map.
+          <strong>Step 1.5</strong> establishes the documentation conventions
+          that all subsequent MRHN artifacts must follow. Both steps are
+          completed before you leave this lesson.
+        </p>
+
+        <!-- Purpose -->
+        <section class="lesson-intro__purpose"
+                 aria-labelledby="purpose-heading">
+          <h2 id="purpose-heading"
+              class="lesson-intro__section-heading">Purpose</h2>
+          <p class="lesson-intro__purpose-text">
+            Scope declared in Lesson 1.1a is boundary-setting. Constraint
+            identification is diagnostic -- it surfaces the non-negotiable
+            conditions already present in your source documents that must
+            govern every architecture decision downstream. Step 1 extracts
+            and ranks those conditions from the Meridian materials. Step 1.5
+            locks the naming and versioning conventions that make all MRHN
+            artifacts reviewable, traceable, and consistent through Structural
+            Freeze.
+          </p>
+        </section>
+
+        <!-- Outcomes: What You Will Do + What You Will Produce -->
+        <div class="lesson-intro__outcomes">
+
+          <section class="lesson-intro__do"
+                   aria-labelledby="do-heading">
+            <h2 id="do-heading"
+                class="lesson-intro__section-heading">What You Will Do</h2>
+            <ul class="lesson-intro__list">
+              <li>Apply the Design Document Synthesis protocol to the Meridian project brief and IR-2024 regulatory context</li>
+              <li>Extract non-negotiable constraints and categorize them by constraint type: performance, regulatory, logistical, and stakeholder</li>
+              <li>Rank constraints by their impact on architecture decisions, separating binding constraints from negotiable preferences</li>
+              <li>Apply the Output Style Gate to establish artifact naming, versioning, and snapshot conventions for all MRHN deliverables</li>
+              <li>Produce the first named artifact of the credential</li>
+            </ul>
+          </section>
+
+          <section class="lesson-intro__produce"
+                   aria-labelledby="produce-heading">
+            <h2 id="produce-heading"
+                class="lesson-intro__section-heading">What You Will Produce</h2>
+            <ul class="lesson-intro__list">
+              <li>
+                <strong>MRHN Bucket Map and Scope Organization Package</strong>
+                -- a structured constraint map organized by type and ranked
+                by design impact, with your scope declaration attached and
+                the Output Style Gate conventions documented
+              </li>
+            </ul>
+          </section>
+
+        </div><!-- /.lesson-intro__outcomes -->
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l1a-s5.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen: Lesson 1.1a">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="m1-l1b-s2.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+
+    <section id="artifact-reference"
+             tabindex="-1"
+             aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">
+        Your first named artifact -- the MRHN Bucket Map and Scope Organization
+        Package -- is produced in this lesson.
+      </p>
+    </section>
+
+    <section id="decision-history"
+             tabindex="-1"
+             aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">
+        Design decisions begin in this lesson. Your constraint ranking choices
+        will appear here as you work through Screens 2 through 5.
+      </p>
+    </section>
+
+  </aside>
+
+  <!-- ============================================================
+       Support Panels
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12"
+                placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded',
+          btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script
+       ============================================================ -->
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.1b';
+    document.getElementById('pt-phase').textContent        = '1';
+    document.getElementById('pt-step').textContent         = '1';
+    document.getElementById('pt-screen').textContent       = '1';
+    document.getElementById('pt-screen-total').textContent = '6';
+
+    document.querySelectorAll('.module-nav-link').forEach(link => {
+      link.removeAttribute('aria-current');
+    });
+    const activeLink = document.querySelector(
+      '.module-nav-link[href="module-1.html"]'
+    );
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+  </script>
+
+</body>
+</html>

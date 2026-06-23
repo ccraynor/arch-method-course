@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Worked example: an expert derives the MRHN macro performance arc, validates each of the four bucket sub-arcs against coherence, authenticity, and feasibility tests, revises the Bucket 3 sub-arc based on Step 4 calibration annotations, and produces MRHN_PerformanceArc_v1 with governance record MRHN-D-004.">
+  <title>Worked Example: Validate Macro Performance Arc — Lesson 1.4a — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l4a-s2 -- Worked Example: Step 5 Performance Arc
+       Phase 1, Step 5. All color values use CSS tokens only.
+       ================================================================ */
+
+    .worked-example__meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 0 0.25rem;
+      flex-wrap: wrap;
+    }
+
+    .screen-type-label { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-secondary); }
+    .time-estimate { font-size: 0.75rem; color: var(--color-text-secondary); background: var(--color-bg-subtle); border: 1px solid var(--color-border-default); border-radius: 3px; padding: 0.125rem 0.5rem; }
+    .lesson-label { display: block; margin: 0 0 0.25rem; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-link); }
+
+    .worked-example__title {
+      margin: 0 0 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    .step-badge { display: inline-block; margin: 0 0 0.875rem; padding: 0.25rem 0.625rem; background: var(--color-bg-page); border: 1.5px solid var(--color-text-link); border-radius: 3px; font-size: 0.75rem; font-weight: 600; color: var(--color-text-link); }
+
+    .scenario-context { display: flex; align-items: baseline; gap: 0.375rem; padding: 0.625rem 0.875rem; background: var(--color-bg-subtle); border-left: 3px solid var(--color-border-strong); border-radius: 0 4px 4px 0; font-size: 0.875rem; color: var(--color-text-primary); margin: 0 0 1.5rem; line-height: 1.65; }
+    .scenario-label { font-weight: 700; color: var(--color-text-secondary); flex-shrink: 0; }
+
+    /* ---- Two-column layout ---- */
+    .worked-example__layout { display: grid; grid-template-columns: 1fr 20rem; gap: 2rem; align-items: start; }
+    @media (max-width: 900px) { .worked-example__layout { grid-template-columns: 1fr; } }
+
+    .worked-example__content { display: flex; flex-direction: column; gap: 2.25rem; }
+
+    .example-step { display: grid; grid-template-columns: 2.75rem 1fr; gap: 0 1rem; }
+    .step-marker { display: flex; align-items: flex-start; justify-content: center; padding-top: 0.125rem; }
+    .step-marker span { display: flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: var(--color-text-link); color: var(--color-text-inverse); font-size: 0.8125rem; font-weight: 700; flex-shrink: 0; }
+    .step-body { min-width: 0; }
+    .step-heading { margin: 0.25rem 0 0.625rem; font-size: 1.0625rem; font-weight: 700; color: var(--color-text-primary); line-height: 1.3; }
+    .step-content { margin: 0 0 0.875rem; font-size: 0.9375rem; color: var(--color-text-primary); line-height: 1.7; }
+    .step-content:last-child { margin-bottom: 0; }
+    .step-content strong { font-weight: 700; }
+
+    /* ---- Three validation tests ---- */
+    .test-cards { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; margin: 0 0 0.875rem; }
+
+    .test-card { display: grid; grid-template-columns: 6.5rem 1fr; }
+
+    .test-card + .test-card { border-top: 1px solid var(--color-border-default); }
+
+    .test-card__key { padding: 0.625rem 0.75rem; background: var(--color-bg-subtle); border-right: 1px solid var(--color-border-default); }
+    .test-card__key-label { display: block; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-secondary); margin-bottom: 0.2rem; }
+    .test-card__key-q { font-size: 0.8125rem; font-style: italic; color: var(--color-text-primary); line-height: 1.45; }
+
+    .test-card__val { padding: 0.625rem 0.875rem; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; background: var(--color-bg-page); }
+
+    /* ---- Macro arc statement ---- */
+    .arc-statement-card { padding: 1.125rem 1.25rem; background: var(--color-brand-navy); border-radius: 6px; margin: 0 0 0.875rem; }
+    .arc-statement-label { display: block; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: rgba(255,255,255,0.6); margin: 0 0 0.625rem; }
+    .arc-statement-text { margin: 0; font-size: 1rem; font-weight: 700; color: var(--color-text-inverse); line-height: 1.6; }
+    .arc-statement-text em { font-style: normal; opacity: 0.8; }
+
+    /* ---- Bucket sub-arc cards ---- */
+    .bucket-arc-list { display: flex; flex-direction: column; gap: 1rem; margin: 0 0 0.875rem; }
+
+    .bucket-arc-card { border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; }
+
+    .bucket-arc-card__header { display: flex; align-items: center; gap: 0.625rem; padding: 0.5rem 0.875rem; background: var(--color-brand-navy); color: var(--color-text-inverse); }
+
+    .bucket-num { display: flex; align-items: center; justify-content: center; width: 1.625rem; height: 1.625rem; border-radius: 50%; background: rgba(255,255,255,0.18); font-size: 0.75rem; font-weight: 800; flex-shrink: 0; }
+    .bucket-arc-card__bucket-name { font-size: 0.875rem; font-weight: 700; flex: 1; }
+
+    .bucket-arc-card__body { padding: 0.875rem; background: var(--color-bg-page); }
+
+    .arc-draft-label { display: block; font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-secondary); margin-bottom: 0.3125rem; }
+
+    .arc-text { font-size: 0.9375rem; font-weight: 600; color: var(--color-text-primary); line-height: 1.55; font-style: italic; margin: 0 0 0.75rem; }
+
+    .arc-text--revised { color: var(--color-text-primary); border-left: 3px solid var(--color-brand-teal); padding-left: 0.625rem; }
+    .arc-text--draft { color: var(--color-text-secondary); text-decoration: line-through; text-decoration-color: var(--color-error-text); }
+
+    .revision-reason { font-size: 0.8125rem; color: var(--color-text-primary); line-height: 1.6; padding: 0.5rem 0.625rem; background: var(--color-warning-bg); border: 1px solid var(--color-warning-border); border-radius: 4px; margin: 0 0 0.75rem; }
+    .revision-reason strong { font-weight: 700; }
+
+    /* Validation row */
+    .validation-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.625rem; padding-top: 0.625rem; border-top: 1px solid var(--color-border-default); }
+
+    .val-chip { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.6875rem; font-weight: 700; padding: 0.1875rem 0.4375rem; border-radius: 3px; white-space: nowrap; }
+    .val-chip--pass { background: var(--color-success-bg); color: var(--color-success-text); border: 1px solid var(--color-success-border); }
+    .val-chip--note { background: var(--color-warning-bg); color: var(--color-warning-text); border: 1px solid var(--color-warning-border); }
+    .val-chip--fail { background: var(--color-error-bg); color: var(--color-error-text); border: 1px solid var(--color-error-border); }
+    .val-chip--revised { background: var(--color-bg-subtle); color: var(--color-text-link); border: 1px solid var(--color-text-link); }
+
+    /* ---- Validation summary table ---- */
+    .val-summary-wrap { border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; margin: 0 0 0.875rem; }
+    .val-summary-table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
+    .val-summary-table thead th { padding: 0.375rem 0.625rem; background: var(--color-brand-navy); color: var(--color-text-inverse); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; text-align: left; }
+    .val-summary-table thead th:first-child { width: 9rem; }
+    .val-summary-table tbody td { padding: 0.4375rem 0.625rem; border-bottom: 1px solid var(--color-border-default); vertical-align: middle; }
+    .val-summary-table tbody tr:last-child td { border-bottom: none; }
+    .val-summary-table tbody tr:nth-child(even) td { background: var(--color-bg-subtle); }
+    .test-name { font-weight: 700; color: var(--color-text-primary); }
+
+    /* ---- Artifact block ---- */
+    .artifact-block { border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; margin: 0 0 0.875rem; }
+    .artifact-block__header { display: flex; align-items: center; gap: 0.625rem; padding: 0.5625rem 0.875rem; background: var(--color-brand-navy); color: var(--color-text-inverse); }
+    .artifact-id { font-family: monospace; font-size: 0.875rem; font-weight: 700; }
+    .artifact-version { font-size: 0.75rem; opacity: 0.7; margin-left: auto; }
+
+    .artifact-section { padding: 0.875rem; border-bottom: 1px solid var(--color-border-default); background: var(--color-bg-page); }
+    .artifact-section:last-child { border-bottom: none; }
+    .artifact-section-label { display: block; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-secondary); margin-bottom: 0.5rem; }
+
+    /* ---- Governance record ---- */
+    .gov-record { border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; margin: 0 0 0.875rem; }
+    .gov-record__header { display: flex; align-items: center; gap: 0.625rem; padding: 0.5rem 0.875rem; background: var(--color-brand-navy); color: var(--color-text-inverse); }
+    .gov-record__id { font-family: monospace; font-size: 0.875rem; font-weight: 700; }
+    .gov-record__title { font-size: 0.9375rem; font-weight: 700; }
+    .gov-record__row { display: grid; grid-template-columns: 9.5rem 1fr; border-bottom: 1px solid var(--color-border-default); }
+    .gov-record__row:last-child { border-bottom: none; }
+    @media (max-width: 480px) { .gov-record__row { grid-template-columns: 1fr; } }
+    .gov-record__key { padding: 0.5rem 0.875rem; background: var(--color-bg-subtle); font-size: 0.75rem; font-weight: 700; color: var(--color-text-secondary); border-right: 1px solid var(--color-border-default); line-height: 1.5; }
+    @media (max-width: 480px) { .gov-record__key { border-right: none; border-bottom: 1px solid var(--color-border-default); } }
+    .gov-record__val { padding: 0.5rem 0.875rem; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; background: var(--color-bg-page); }
+    .gov-record__val strong { font-weight: 700; }
+    .gov-record__val ul { margin: 0.25rem 0 0; padding-left: 1.25rem; font-size: 0.875rem; line-height: 1.6; }
+    .gov-record__val ul li { margin-bottom: 0.25rem; }
+
+    /* ---- Think-aloud column ---- */
+    .worked-example__think-aloud { position: sticky; top: 1.5rem; background: var(--color-bg-subtle); border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; }
+    @media (max-width: 900px) { .worked-example__think-aloud { position: static; } }
+
+    .think-aloud__header { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-border-default); background: var(--color-bg-page); }
+    .think-aloud__heading { margin: 0; font-size: 0.875rem; font-weight: 700; color: var(--color-text-primary); }
+
+    .think-aloud__list { padding: 0.875rem 1rem; display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .annotation-item { display: grid; grid-template-columns: 1.625rem 1fr; gap: 0 0.625rem; align-items: start; }
+    .annotation-marker { display: flex; align-items: center; justify-content: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; border: 1.5px solid var(--color-border-strong); font-size: 0.6875rem; font-weight: 700; color: var(--color-text-secondary); flex-shrink: 0; margin-top: 0.0625rem; }
+    .annotation-text { margin: 0; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; }
+
+    .btn--toggle { font-size: 0.75rem; padding: 0.25rem 0.625rem; border: 1px solid var(--color-border-default); border-radius: 4px; background: var(--color-bg-page); color: var(--color-text-secondary); cursor: pointer; white-space: nowrap; }
+    .btn--toggle:hover { background: var(--color-bg-subtle); color: var(--color-text-primary); }
+    .btn--toggle:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+
+    @media (prefers-contrast: more) {
+      .test-cards, .bucket-arc-card, .val-summary-wrap, .artifact-block, .gov-record { border-color: var(--color-border-strong); }
+      .test-card__key { border-right-color: var(--color-border-strong); }
+      .test-card + .test-card { border-top-color: var(--color-border-strong); }
+      .gov-record__row { border-bottom-color: var(--color-border-strong); }
+      .gov-record__key { border-right-color: var(--color-border-strong); }
+      .worked-example__think-aloud { border-color: var(--color-border-strong); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <header role="banner">
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+    <div id="progress-tracker" role="group" aria-label="Course progress" tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.4a</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">5</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">2</span> of <span id="pt-screen-total">5</span></span>
+    </div>
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel" aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer" aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory" aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel" aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+  </header>
+
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item"><a href="intro-0.1.html" class="module-nav-link">Introduction</a></li>
+      <li class="module-nav-item"><a href="module-1.html" class="module-nav-link" aria-current="page">Module 1: Bound the Course</a></li>
+      <li class="module-nav-item"><a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a></li>
+      <li class="module-nav-item"><a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a></li>
+      <li class="module-nav-item"><a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a></li>
+    </ol>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <section id="current-activity" tabindex="-1" aria-label="Current activity">
+      <article class="worked-example" aria-labelledby="example-title">
+
+        <header class="worked-example__header">
+          <div class="worked-example__meta">
+            <span class="screen-type-label">Worked Example</span>
+            <span class="time-estimate" aria-label="Estimated reading time: 25 to 30 minutes">25&ndash;30 min</span>
+          </div>
+          <p class="lesson-label">Lesson 1.4a</p>
+          <h1 id="example-title" class="worked-example__title">
+            Validate the Macro Performance Arc: Deriving and Testing What MRHN Learners Must Be Able to Do
+          </h1>
+          <span class="step-badge">Phase 1 -- Step 5</span>
+          <div class="scenario-context" role="note" aria-label="Scenario context">
+            <span class="scenario-label">Scenario:</span>
+            Meridian Regional Health Network. MRHN_CalibratedScopeMap_v1 is the input.
+            An expert derives the end-of-course performance arc from the four buckets,
+            validates each bucket sub-arc against three tests, revises one sub-arc
+            where the authenticity test fails, and produces MRHN_PerformanceArc_v1
+            with governance record MRHN-D-004.
+          </div>
+        </header>
+
+        <div class="worked-example__layout">
+
+          <!-- ====================================================
+               Left column
+               ==================================================== -->
+          <div class="worked-example__content">
+
+            <!-- Step 01 -->
+            <div class="example-step" id="step-1">
+              <div class="step-marker" aria-label="Step 1"><span aria-hidden="true">01</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">What Arc Validation Does -- and Three Tests That Govern It</h2>
+                <p class="step-content">
+                  The performance arc is not a learning objective. Learning objectives
+                  describe what learners will do inside the course. The arc describes
+                  what learners will be able to do outside the course -- in real MRHN
+                  incidents -- when the course is over. The distinction matters because
+                  it sets the ceiling for decomposition. DC components must build toward
+                  independent, authentic performance, not just course completion.
+                </p>
+                <p class="step-content">
+                  Arc validation runs three tests in sequence. A sub-arc that fails
+                  any test is adjusted before decomposition begins.
+                </p>
+
+                <div class="test-cards" role="region" aria-label="Three arc validation tests">
+                  <div class="test-card">
+                    <div class="test-card__key">
+                      <span class="test-card__key-label">Test 1</span>
+                      <span class="test-card__key-q">Is the arc internally consistent?</span>
+                    </div>
+                    <div class="test-card__val">
+                      <strong>Coherence:</strong> does the arc statement hang together as a complete
+                      capability trajectory? A coherent arc has a clear starting point (what the
+                      learner cannot do now), a clear end state (what they can do after the course),
+                      and no internal contradictions. Incoherence usually appears as a vague end
+                      state ("understand incident response") or a gap in the trajectory.
+                    </div>
+                  </div>
+                  <div class="test-card">
+                    <div class="test-card__key">
+                      <span class="test-card__key-label">Test 2</span>
+                      <span class="test-card__key-q">Does it reflect real MRHN practice?</span>
+                    </div>
+                    <div class="test-card__val">
+                      <strong>Authenticity:</strong> does the arc describe what MRHN actually needs
+                      from its healthcare IT professionals in a real incident -- or a generic,
+                      idealized version? This test applies the same lens as the domain authenticity
+                      scan in Step 4. Calibration annotations from MRHN-D-003 are the primary
+                      reference: any annotation that changed a scope item's interpretation must
+                      be reflected in the sub-arc that contains that item.
+                    </div>
+                  </div>
+                  <div class="test-card">
+                    <div class="test-card__key">
+                      <span class="test-card__key-label">Test 3</span>
+                      <span class="test-card__key-q">Can this arc be reached in this course?</span>
+                    </div>
+                    <div class="test-card__val">
+                      <strong>Feasibility:</strong> can healthcare IT professionals at MRHN reach this
+                      arc within the scope boundary (LC-1: 16 SI items) and under the operational
+                      constraints (PC-3 through PC-5: authority, communication, documentation)?
+                      An arc that requires capabilities outside LC-1 scope must be narrowed. An
+                      arc that requires competencies the constraint set does not permit must be
+                      annotated with a prerequisite note.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 02 -->
+            <div class="example-step" id="step-2">
+              <div class="step-marker" aria-label="Step 2"><span aria-hidden="true">02</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Derive the Macro Arc: What the Whole Course Must Produce</h2>
+                <p class="step-content">
+                  The macro arc is a single statement covering all four buckets. I
+                  derive it by reading across the bucket sequence -- Threat Recognition
+                  and Triage, Containment and Control, Active Response Execution,
+                  Post-Incident Close-Out -- and asking what a learner who can perform
+                  all four buckets competently can do in a real MRHN incident from
+                  start to finish.
+                </p>
+                <p class="step-content">
+                  The macro arc must pass all three tests before any sub-arc work
+                  begins. A macro arc that fails the feasibility test means the
+                  scope itself is too broad -- that must be resolved now, not
+                  discovered in Module 3 stress-testing.
+                </p>
+
+                <div class="arc-statement-card" role="region" aria-label="MRHN macro performance arc">
+                  <span class="arc-statement-label">MRHN Macro Performance Arc</span>
+                  <p class="arc-statement-text">
+                    Given a confirmed or suspected cybersecurity incident at any MRHN
+                    facility, independently execute the appropriate Tier 1 or Tier 2
+                    response protocol -- including threat recognition and triage,
+                    containment and control, active response execution, and post-incident
+                    close-out -- in compliance with HIPAA breach notification requirements,
+                    IR-2024 protocol constraints, and MRHN multi-site operational
+                    boundaries, producing complete documentation at each phase.
+                  </p>
+                </div>
+
+                <p class="step-content">
+                  This arc passes coherence (clear start: cannot currently manage a
+                  cybersecurity incident; clear end: can independently execute the full
+                  response cycle), authenticity (names HIPAA and IR-2024 explicitly,
+                  names multi-site operational reality), and feasibility (bounded to
+                  16 SI items, all within LC-1 scope; does not require capabilities
+                  outside PC-3 through PC-5 authority). I proceed to the four bucket
+                  sub-arcs.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 03 -->
+            <div class="example-step" id="step-3">
+              <div class="step-marker" aria-label="Step 3"><span aria-hidden="true">03</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Deep Dive: Validate the Bucket 1 Sub-Arc</h2>
+                <p class="step-content">
+                  I work through Bucket 1 in detail because it contains two Analysis-level
+                  scope items -- SI-08 (Threat Identification) and SI-06 (Escalation
+                  Decision) -- and the sub-arc statement must capture that analytical
+                  demand. A Bucket 1 arc that reads like a procedure checklist will
+                  under-scope the decomposition for both items.
+                </p>
+
+                <div class="bucket-arc-card" role="region" aria-label="Bucket 1 sub-arc validation">
+                  <div class="bucket-arc-card__header">
+                    <span class="bucket-num" aria-hidden="true">1</span>
+                    <span class="bucket-arc-card__bucket-name">Bucket 1 -- Threat Recognition and Triage</span>
+                  </div>
+                  <div class="bucket-arc-card__body">
+                    <span class="arc-draft-label">Sub-Arc (first draft)</span>
+                    <p class="arc-text">
+                      "Correctly identify and classify a suspected cybersecurity incident,
+                      assign a severity level using the MRHN rubric, and make the
+                      Tier 1 / Tier 2 escalation decision."
+                    </p>
+
+                    <p style="font-size:0.875rem;color:var(--color-text-primary);line-height:1.65;margin:0 0 0.5rem">
+                      <strong>Coherence check: Pass.</strong> The arc covers the full Bucket 1
+                      workflow from detection through triage decision with documentation implied
+                      by "classify" and "assign."
+                    </p>
+                    <p style="font-size:0.875rem;color:var(--color-text-primary);line-height:1.65;margin:0 0 0.5rem">
+                      <strong>Authenticity check: Conditional pass -- requires refinement.</strong>
+                      "Correctly identify" is ambiguous. For a trained incident responder it
+                      implies pattern-matching from experience. For MRHN healthcare IT professionals,
+                      SI-08 is calibrated at Analysis level because they must distinguish security
+                      incidents from system failures, user errors, and hardware problems without
+                      a practiced pattern library. The arc statement must reflect that
+                      distinction-making demand, not just "correct identification."
+                      Similarly, "make the Tier 1 / Tier 2 escalation decision" could be
+                      satisfied by consulting a lookup table. SI-06 is Analysis level because
+                      the authentic decision requires evaluating whether current team capability
+                      is sufficient -- not just applying criteria. The arc must name that
+                      evaluation explicitly.
+                    </p>
+                    <p style="font-size:0.875rem;color:var(--color-text-primary);line-height:1.65;margin:0 0 0.75rem">
+                      <strong>Feasibility check: Pass.</strong> All five Bucket 1 items are within
+                      LC-1 scope. The Analysis-level assignments are achievable for healthcare
+                      IT professionals over the course duration.
+                    </p>
+
+                    <span class="arc-draft-label">Sub-Arc (refined)</span>
+                    <p class="arc-text arc-text--revised">
+                      "Evaluate indicators of a potential cybersecurity incident to distinguish
+                      it from non-incident system events, apply the MRHN severity rubric to
+                      produce a documented severity classification, and evaluate whether Tier 1
+                      containment capacity is sufficient -- escalating to Tier 2 when indicated
+                      and documenting the escalation decision with criteria-based rationale."
+                    </p>
+
+                    <div class="validation-row" aria-label="Validation results">
+                      <span class="val-chip val-chip--pass">Coherence: Pass</span>
+                      <span class="val-chip val-chip--revised">Authenticity: Refined (Analysis demand explicit)</span>
+                      <span class="val-chip val-chip--pass">Feasibility: Pass</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 04 -->
+            <div class="example-step" id="step-4">
+              <div class="step-marker" aria-label="Step 4"><span aria-hidden="true">04</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Deep Dive: Validate the Bucket 3 Sub-Arc -- Authenticity Test Fails</h2>
+                <p class="step-content">
+                  Bucket 3 is where the most consequential domain authenticity annotation
+                  lives: SI-10 (HIPAA 72-Hour Clock). The initial Bucket 3 sub-arc
+                  fails the authenticity test because it describes the HIPAA clock in
+                  generic terms that carry exactly the error the Step 4 annotation was
+                  written to prevent.
+                </p>
+
+                <div class="bucket-arc-card" role="region" aria-label="Bucket 3 sub-arc validation -- authenticity failure and revision">
+                  <div class="bucket-arc-card__header">
+                    <span class="bucket-num" aria-hidden="true">3</span>
+                    <span class="bucket-arc-card__bucket-name">Bucket 3 -- Active Response Execution</span>
+                  </div>
+                  <div class="bucket-arc-card__body">
+                    <span class="arc-draft-label">Sub-Arc (initial draft -- FAILS authenticity test)</span>
+                    <p class="arc-text arc-text--draft">
+                      "Execute the active response sequence including real-time incident
+                      documentation, leadership notification, and HIPAA breach notification
+                      clock management within the 72-hour window."
+                    </p>
+
+                    <div class="revision-reason" role="note" aria-label="Authenticity failure reason">
+                      <strong>Why this fails:</strong> "HIPAA breach notification clock management
+                      within the 72-hour window" implies the clock starts when the breach is confirmed.
+                      MRHN-D-003 annotation for SI-10 is explicit: the clock triggers at "reasonably
+                      should have known" (45 CFR 164.404), not at forensic confirmation. An arc
+                      statement that uses "within the 72-hour window" without specifying the trigger
+                      point will produce DC components that teach the wrong start condition.
+                      If this arc travels into Step 6 unchanged, decomposition will produce
+                      instruction that creates systematic HIPAA non-compliance at MRHN.
+                    </div>
+
+                    <p style="font-size:0.875rem;color:var(--color-text-primary);line-height:1.65;margin:0 0 0.5rem">
+                      <strong>Coherence check: Pass.</strong> The arc covers the full Bucket 3
+                      workflow. The coherence failure is not the issue.
+                    </p>
+                    <p style="font-size:0.875rem;color:var(--color-text-primary);line-height:1.65;margin:0 0 0.5rem">
+                      <strong>Authenticity check: Fail.</strong> Generic treatment of the HIPAA clock
+                      trigger. MRHN-D-003 SI-10 annotation must be incorporated. Additionally,
+                      "IR-2024 protocol deviation documentation" is missing from the arc entirely
+                      -- SI-14 (RC-2 justification language requirement) is a Bucket 3 item and
+                      must appear. Two authenticity failures; both corrected in the revision.
+                    </p>
+                    <p style="font-size:0.875rem;color:var(--color-text-primary);line-height:1.65;margin:0 0 0.75rem">
+                      <strong>Feasibility check: Pass</strong> (runs after revision -- additional
+                      specificity does not add scope).
+                    </p>
+
+                    <span class="arc-draft-label">Sub-Arc (revised)</span>
+                    <p class="arc-text arc-text--revised">
+                      "Execute the active response sequence -- real-time incident documentation,
+                      leadership notification per the PC-5 communication chain, management of
+                      the HIPAA 72-hour breach notification clock (evaluating the 'reasonably
+                      should have known' discovery trigger under 45 CFR 164.404), and protocol
+                      deviation documentation using RC-2 justification language when departure
+                      from IR-2024 protocol is required -- producing complete records at each step."
+                    </p>
+
+                    <div class="validation-row" aria-label="Validation results after revision">
+                      <span class="val-chip val-chip--pass">Coherence: Pass</span>
+                      <span class="val-chip val-chip--fail">Authenticity: Initially Failed</span>
+                      <span class="val-chip val-chip--revised">Authenticity: Revised (two corrections applied)</span>
+                      <span class="val-chip val-chip--pass">Feasibility: Pass</span>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="step-content">
+                  This revision is the most important Step 5 decision in the MRHN arc.
+                  The "reasonably should have known" clause must now appear in every DC
+                  component that touches SI-10 in Step 6. The arc is the source of truth
+                  for that constraint going forward -- the governance record for MRHN-D-003
+                  noted the risk; the arc makes it permanent in the architecture.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 05 -->
+            <div class="example-step" id="step-5">
+              <div class="step-marker" aria-label="Step 5"><span aria-hidden="true">05</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Complete the Picture: Buckets 2 and 4</h2>
+                <p class="step-content">
+                  Buckets 2 and 4 pass all three tests with notes. I record the notes
+                  here because they constrain Step 6 decomposition for specific items.
+                </p>
+
+                <div class="bucket-arc-list" role="region" aria-label="Bucket 2 and Bucket 4 sub-arc validation">
+
+                  <div class="bucket-arc-card">
+                    <div class="bucket-arc-card__header">
+                      <span class="bucket-num" aria-hidden="true">2</span>
+                      <span class="bucket-arc-card__bucket-name">Bucket 2 -- Containment and Control</span>
+                    </div>
+                    <div class="bucket-arc-card__body">
+                      <span class="arc-draft-label">Sub-Arc (validated)</span>
+                      <p class="arc-text arc-text--revised">
+                        "Apply MRHN-specific containment procedures -- authority-bounded system
+                        isolation (PC-3), network segmentation with clinical system interdependency
+                        awareness, evidence preservation using the chain-of-custody procedure, and
+                        external notification per contractual and regulatory requirements --
+                        without disrupting patient care at active MRHN facilities."
+                      </p>
+                      <p style="font-size:0.875rem;color:var(--color-text-primary);line-height:1.65;margin:0 0 0.75rem">
+                        The "clinical system interdependency awareness" clause reflects the
+                        MRHN-D-003 annotation for SI-09: network segmentation at MRHN requires
+                        evaluating EHR, imaging, and billing system relationships before applying
+                        segmentation procedures. "Without disrupting patient care" names the
+                        highest-stakes constraint that makes SI-09 Analysis level for this
+                        population. Both must carry forward into the SI-09 DC components in Step 6.
+                      </p>
+                      <div class="validation-row" aria-label="Validation results">
+                        <span class="val-chip val-chip--pass">Coherence: Pass</span>
+                        <span class="val-chip val-chip--note">Authenticity: Pass (SI-09 annotation incorporated)</span>
+                        <span class="val-chip val-chip--pass">Feasibility: Pass</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bucket-arc-card">
+                    <div class="bucket-arc-card__header">
+                      <span class="bucket-num" aria-hidden="true">4</span>
+                      <span class="bucket-arc-card__bucket-name">Bucket 4 -- Post-Incident Close-Out</span>
+                    </div>
+                    <div class="bucket-arc-card__body">
+                      <span class="arc-draft-label">Sub-Arc (validated)</span>
+                      <p class="arc-text arc-text--revised">
+                        "Complete recovery verification against system restoration criteria,
+                        prepare and file the OCR breach notification with all eight required
+                        data elements (45 CFR 164.408), and produce a lessons learned document
+                        that distinguishes operational notes from the formal governed record
+                        subject to legal review -- in compliance with MRHN-D-003 calibration
+                        constraints for all three items."
+                      </p>
+                      <p style="font-size:0.875rem;color:var(--color-text-primary);line-height:1.65;margin:0 0 0.75rem">
+                        Two MRHN-D-003 annotations are explicit in this arc. The "eight required
+                        data elements" clause reflects the SI-07 annotation (45 CFR 164.408 requires
+                        specific enumeration, not generic "file a report" treatment). The
+                        "operational notes from the formal governed record" clause reflects the
+                        SI-13 Evaluation-level assignment -- learners must judge what to document
+                        and where, not just conduct a retrospective. Both constraints must appear
+                        in the relevant DC components.
+                      </p>
+                      <div class="validation-row" aria-label="Validation results">
+                        <span class="val-chip val-chip--pass">Coherence: Pass</span>
+                        <span class="val-chip val-chip--note">Authenticity: Pass (SI-07 and SI-13 annotations incorporated)</span>
+                        <span class="val-chip val-chip--pass">Feasibility: Pass</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 06 -->
+            <div class="example-step" id="step-6">
+              <div class="step-marker" aria-label="Step 6"><span aria-hidden="true">06</span></div>
+              <div class="step-body">
+                <h2 class="step-heading">Produce MRHN_PerformanceArc_v1 and Governance Record MRHN-D-004</h2>
+                <p class="step-content">
+                  The validated arc is assembled into the formal artifact. The validation
+                  summary table documents which tests passed clean, which required
+                  refinement, and which required a full revision. This table travels
+                  into Step 6 as the constraint record -- any DC component touching
+                  a revised sub-arc item must respect the revision.
+                </p>
+
+                <!-- Validation summary table -->
+                <div class="val-summary-wrap" role="region" aria-label="Arc validation summary table">
+                  <table class="val-summary-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Test</th>
+                        <th scope="col">Bucket 1</th>
+                        <th scope="col">Bucket 2</th>
+                        <th scope="col">Bucket 3</th>
+                        <th scope="col">Bucket 4</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span class="test-name">Coherence</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="test-name">Authenticity</span></td>
+                        <td><span class="val-chip val-chip--revised">Refined</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                        <td><span class="val-chip val-chip--fail">Revised (2 corrections)</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="test-name">Feasibility</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                        <td><span class="val-chip val-chip--pass">Pass</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Artifact -->
+                <div class="artifact-block" role="region" aria-label="MRHN_PerformanceArc_v1 artifact">
+                  <div class="artifact-block__header">
+                    <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" style="color:rgba(255,255,255,0.75)">
+                      <rect x="2.5" y="1.5" width="11" height="13" rx="1.5" stroke="currentColor" stroke-width="1.25"/>
+                      <path d="M5 5.5h6M5 8h6M5 10.5h4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+                    </svg>
+                    <span class="artifact-id">MRHN_PerformanceArc_v1</span>
+                    <span class="artifact-version">Step 5 output -- pre-decomposition baseline</span>
+                  </div>
+
+                  <div class="artifact-section">
+                    <span class="artifact-section-label">Macro Performance Arc</span>
+                    <p style="font-size:0.9375rem;font-weight:700;color:var(--color-text-primary);line-height:1.6;margin:0;font-style:italic">
+                      Given a confirmed or suspected cybersecurity incident at any MRHN
+                      facility, independently execute the appropriate Tier 1 or Tier 2
+                      response protocol -- including threat recognition and triage,
+                      containment and control, active response execution, and post-incident
+                      close-out -- in compliance with HIPAA breach notification requirements,
+                      IR-2024 protocol constraints, and MRHN multi-site operational
+                      boundaries, producing complete documentation at each phase.
+                    </p>
+                  </div>
+
+                  <div class="artifact-section">
+                    <span class="artifact-section-label">Bucket Sub-Arcs (all four validated)</span>
+                    <div style="display:flex;flex-direction:column;gap:0.875rem">
+
+                      <div>
+                        <span style="display:flex;align-items:center;gap:0.375rem;font-size:0.75rem;font-weight:700;color:var(--color-text-secondary);margin-bottom:0.3125rem">
+                          <span style="display:inline-flex;align-items:center;justify-content:center;width:1.25rem;height:1.25rem;border-radius:50%;background:var(--color-brand-navy);color:var(--color-text-inverse);font-size:0.625rem;font-weight:800" aria-hidden="true">1</span>
+                          Threat Recognition and Triage
+                        </span>
+                        <p style="font-size:0.875rem;color:var(--color-text-primary);line-height:1.6;margin:0;padding-left:1.625rem;font-style:italic">
+                          Evaluate indicators of a potential cybersecurity incident to distinguish
+                          it from non-incident system events, apply the MRHN severity rubric to
+                          produce a documented severity classification, and evaluate whether Tier 1
+                          containment capacity is sufficient -- escalating to Tier 2 when indicated
+                          and documenting the escalation decision with criteria-based rationale.
+                        </p>
+                      </div>
+
+                      <div>
+                        <span style="display:flex;align-items:center;gap:0.375rem;font-size:0.75rem;font-weight:700;color:var(--color-text-secondary);margin-bottom:0.3125rem">
+                          <span style="display:inline-flex;align-items:center;justify-content:center;width:1.25rem;height:1.25rem;border-radius:50%;background:var(--color-brand-navy);color:var(--color-text-inverse);font-size:0.625rem;font-weight:800" aria-hidden="true">2</span>
+                          Containment and Control
+                        </span>
+                        <p style="font-size:0.875rem;color:var(--color-text-primary);line-height:1.6;margin:0;padding-left:1.625rem;font-style:italic">
+                          Apply MRHN-specific containment procedures -- authority-bounded system
+                          isolation (PC-3), network segmentation with clinical system interdependency
+                          awareness, evidence preservation using the chain-of-custody procedure, and
+                          external notification per contractual and regulatory requirements --
+                          without disrupting patient care at active MRHN facilities.
+                        </p>
+                      </div>
+
+                      <div>
+                        <span style="display:flex;align-items:center;gap:0.375rem;font-size:0.75rem;font-weight:700;color:var(--color-text-secondary);margin-bottom:0.3125rem">
+                          <span style="display:inline-flex;align-items:center;justify-content:center;width:1.25rem;height:1.25rem;border-radius:50%;background:var(--color-brand-navy);color:var(--color-text-inverse);font-size:0.625rem;font-weight:800" aria-hidden="true">3</span>
+                          Active Response Execution
+                          <span style="font-size:0.625rem;font-weight:700;padding:0.0625rem 0.3125rem;border-radius:3px;background:var(--color-warning-bg);color:var(--color-warning-text);border:1px solid var(--color-warning-border)">Revised</span>
+                        </span>
+                        <p style="font-size:0.875rem;color:var(--color-text-primary);line-height:1.6;margin:0;padding-left:1.625rem;font-style:italic">
+                          Execute the active response sequence -- real-time incident documentation,
+                          leadership notification per the PC-5 communication chain, management of
+                          the HIPAA 72-hour breach notification clock (evaluating the 'reasonably
+                          should have known' discovery trigger under 45 CFR 164.404), and protocol
+                          deviation documentation using RC-2 justification language when departure
+                          from IR-2024 protocol is required -- producing complete records at each step.
+                        </p>
+                      </div>
+
+                      <div>
+                        <span style="display:flex;align-items:center;gap:0.375rem;font-size:0.75rem;font-weight:700;color:var(--color-text-secondary);margin-bottom:0.3125rem">
+                          <span style="display:inline-flex;align-items:center;justify-content:center;width:1.25rem;height:1.25rem;border-radius:50%;background:var(--color-brand-navy);color:var(--color-text-inverse);font-size:0.625rem;font-weight:800" aria-hidden="true">4</span>
+                          Post-Incident Close-Out
+                        </span>
+                        <p style="font-size:0.875rem;color:var(--color-text-primary);line-height:1.6;margin:0;padding-left:1.625rem;font-style:italic">
+                          Complete recovery verification against system restoration criteria,
+                          prepare and file the OCR breach notification with all eight required
+                          data elements (45 CFR 164.408), and produce a lessons learned document
+                          that distinguishes operational notes from the formal governed record
+                          subject to legal review -- in compliance with MRHN-D-003 calibration
+                          constraints for all three items.
+                        </p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Governance record MRHN-D-004 -->
+                <div class="gov-record" role="region" aria-label="Governance record MRHN-D-004">
+                  <div class="gov-record__header">
+                    <span class="gov-record__id">MRHN-D-004</span>
+                    <span class="gov-record__title">Performance Arc Validation Record</span>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Decision</div>
+                    <div class="gov-record__val">
+                      MRHN_PerformanceArc_v1 established as the ceiling for Step 6 decomposition.
+                      Macro arc and four bucket sub-arcs validated. Bucket 1 sub-arc refined to
+                      make Analysis-level cognitive demand explicit. Bucket 3 sub-arc required
+                      full revision: two authenticity failures corrected (HIPAA discovery trigger
+                      specificity; missing SI-14 IR-2024 deviation documentation). Buckets 2 and
+                      4 passed with calibration annotation notes incorporated.
+                    </div>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Constraint Reference</div>
+                    <div class="gov-record__val">
+                      LC-1 (scope boundary: 16 SI items, no additions); PC-3 (system isolation
+                      authority); PC-4 (evidence handling); PC-5 (communication chain); RC-1
+                      through RC-3 (documentation requirements); HIPAA 45 CFR 164.404 (discovery
+                      trigger definition); HIPAA 45 CFR 164.408 (OCR notification data elements);
+                      IR-2024 RC-2 (deviation justification language); MRHN-D-003 (calibration
+                      annotations, incorporated into revised sub-arcs)
+                    </div>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Rationale</div>
+                    <div class="gov-record__val">
+                      Bucket 3 revision was required because the initial arc described the HIPAA
+                      clock in generic terms ("within the 72-hour window") that would produce
+                      DC components teaching the wrong clock trigger. The MRHN-D-003 annotation
+                      for SI-10 identified this risk at calibration; the arc revision makes the
+                      correct trigger (45 CFR 164.404 "reasonably should have known") permanent
+                      in the architecture. Bucket 1 refinement captured the Analysis-level
+                      cognitive demand (evaluate and distinguish, not just identify) implied
+                      by the SI-08 and SI-06 taxonomy assignments.
+                    </div>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Risk Note</div>
+                    <div class="gov-record__val">
+                      <strong>Risk 1:</strong> If the Bucket 3 "reasonably should have known" clause
+                      is removed or paraphrased during Step 6 decomposition, the DC components
+                      for SI-10 will revert to the incorrect trigger. The clause must appear
+                      verbatim or by explicit cross-reference in SI-10 DC components.<br><br>
+                      <strong>Risk 2:</strong> If the Bucket 4 "formal governed record" language
+                      is softened, the SI-13 Evaluation-level assignment will be undermined and
+                      decomposition will produce Application-level instruction for a task with
+                      legal consequences at the Evaluation level.
+                    </div>
+                  </div>
+                  <div class="gov-record__row">
+                    <div class="gov-record__key">Checkpoint Linkage</div>
+                    <div class="gov-record__val">
+                      <ul>
+                        <li><strong>Step 6 Decomposition:</strong> each DC component must be traceable
+                        to the bucket sub-arc that contains its parent SI item. Revised sub-arc
+                        language constrains component content.</li>
+                        <li><strong>Gate 1.TG.1:</strong> MRHN_PerformanceArc_v1 is a required gate
+                        artifact. Arc must be complete and validated before gate review.</li>
+                        <li><strong>Module 3 Outcome Mapping:</strong> the macro arc is the benchmark
+                        against which assessment alignment is tested. Sub-arc specificity (especially
+                        Bucket 3 revision) is what makes that test meaningful.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div><!-- /.worked-example__content -->
+
+          <!-- ====================================================
+               Right column: think-aloud
+               ==================================================== -->
+          <aside class="worked-example__think-aloud" aria-label="Expert think-aloud annotations">
+            <div class="think-aloud__header">
+              <h2 class="think-aloud__heading">Expert Think-Aloud</h2>
+              <button type="button" id="annotations-toggle" class="btn--toggle"
+                      aria-controls="annotations-list" aria-expanded="true">
+                <span class="toggle-label">Hide Annotations</span>
+              </button>
+            </div>
+            <div id="annotations-list" class="think-aloud__list">
+
+              <div class="annotation-item" data-step="1" aria-label="Annotation for step 1">
+                <span class="annotation-marker" aria-hidden="true">01</span>
+                <p class="annotation-text">
+                  I run the three tests in order for a reason. Coherence first because an
+                  incoherent arc is not worth testing for authenticity. Authenticity second
+                  because an inauthentic arc may still be feasible -- but feasibility of the
+                  wrong arc is irrelevant. I only run the feasibility test on arcs that have
+                  already passed the first two. This order prevents time wasted validating
+                  arcs that should be revised.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="2" aria-label="Annotation for step 2">
+                <span class="annotation-marker" aria-hidden="true">02</span>
+                <p class="annotation-text">
+                  The macro arc is a single sentence (or a tight compound sentence). If I
+                  cannot state it in one coherent sentence, the arc is probably too broad.
+                  The macro arc is not a course description -- it is the one thing a learner
+                  can do after completing the course that proves the course was worth taking.
+                  Everything in the course should be traceable back to this sentence.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="3" aria-label="Annotation for step 3">
+                <span class="annotation-marker" aria-hidden="true">03</span>
+                <p class="annotation-text">
+                  "Correctly identify" is language that sounds precise but is not. It describes
+                  the outcome without specifying the cognitive process. For an expert, correct
+                  identification comes from pattern recognition. For a healthcare IT professional
+                  who has never managed a security incident, it requires active evaluation of
+                  competing hypotheses. The arc must name the process, not just the outcome,
+                  because the process is what instruction and assessment must target.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="4" aria-label="Annotation for step 4">
+                <span class="annotation-marker" aria-hidden="true">04</span>
+                <p class="annotation-text">
+                  The Bucket 3 authenticity failure is not a surprising discovery -- it was
+                  predictable from MRHN-D-003. The risk was flagged at calibration. Step 5
+                  is the enforcement mechanism: a flag in MRHN-D-003 that does not appear
+                  in the arc is a flag that will be forgotten by the time a Module 2 designer
+                  builds the SI-10 DC components. The arc is how calibration constraints
+                  survive the handoff to decomposition.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="5" aria-label="Annotation for step 5">
+                <span class="annotation-marker" aria-hidden="true">05</span>
+                <p class="annotation-text">
+                  The SI-13 constraint in the Bucket 4 arc is subtle. "Lessons learned document"
+                  sounds like one thing. The arc makes it two things: operational notes (freely
+                  documented) and the formal governed record (legal review required). A decomposition
+                  designer who doesn't see that distinction in the arc will build one component
+                  where there should be two, and miss the Evaluation-level demand entirely.
+                </p>
+              </div>
+
+              <div class="annotation-item" data-step="6" aria-label="Annotation for step 6">
+                <span class="annotation-marker" aria-hidden="true">06</span>
+                <p class="annotation-text">
+                  MRHN_PerformanceArc_v1 is the ceiling. Decomposition builds toward it -- not
+                  past it, not short of it. Every DC component I write in Steps 3 and 4 of
+                  this lesson will be answering the same question: does this component,
+                  combined with the others, get a learner to the arc? If I cannot answer yes,
+                  the component should not exist. If a gap exists between the components and
+                  the arc, a component is missing.
+                </p>
+              </div>
+
+            </div>
+          </aside>
+
+        </div><!-- /.worked-example__layout -->
+
+        <!-- Screen navigation -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l4a-s1.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen: Lesson 1.4a introduction">
+            <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="m1-l4a-s3.html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen: Step 6 decomposition, Bucket 1">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+    </section>
+  </main>
+
+  <!-- Supplementary resources -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">MRHN_PerformanceArc_v1 produced this screen. Bucket 3 sub-arc revised (2 authenticity corrections). MRHN-D-004 established.</p>
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">MRHN-D-001 through MRHN-D-003 on record. MRHN-D-004 (performance arc validation) established this screen.</p>
+    </section>
+  </aside>
+
+  <!-- Support panels -->
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header"><h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header"><h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header"><h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header"><h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header"><h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <footer role="contentinfo">
+    <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    function syncToggleStates(name) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === name ? 'true' : 'false');
+      });
+    }
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const p = btn.dataset.panel;
+        if (getActivePanel() === p) { closeAll(); syncToggleStates(null); }
+        else { openPanel(p, btn); syncToggleStates(p); }
+      });
+    });
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => { closeAll(); syncToggleStates(null); });
+    });
+  </script>
+
+  <script type="module">
+    const toggle = document.getElementById('annotations-toggle');
+    const list   = document.getElementById('annotations-list');
+    const label  = toggle.querySelector('.toggle-label');
+    toggle.addEventListener('click', () => {
+      const nowExpanded = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(nowExpanded));
+      label.textContent = nowExpanded ? 'Hide Annotations' : 'Show Annotations';
+      if (nowExpanded) list.removeAttribute('hidden');
+      else list.setAttribute('hidden', '');
+    });
+  </script>
+
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.4a';
+    document.getElementById('pt-screen').textContent       = '2';
+    document.getElementById('pt-screen-total').textContent = '5';
+  </script>
+
+</body>
+</html>

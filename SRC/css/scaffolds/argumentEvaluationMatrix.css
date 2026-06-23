@@ -1,0 +1,216 @@
+/* =============================================================================
+   argumentEvaluationMatrix.css
+   Scaffold Component 5 of 10 -- Argument Evaluation Matrix
+   Requires: css/tokens.css loaded first (all color values from tokens)
+
+   LAYOUT SWITCHING
+   JS toggles [hidden] on .aem__table-wrapper and .aem__accordion based on
+   matchMedia('(max-width: 639px)'). No CSS media queries are needed to
+   show/hide layouts -- [hidden] handles it.
+
+   DIFFERENCES FROM constraintEvaluationMatrix.css
+   -- Class prefix: aem__ instead of cem__
+   -- Five columns (min-width 680px) instead of four (580px)
+   -- All column cells are plain text; no Required?/Yes/No color modifiers
+   -- Option column carries font-weight: 600 to visually anchor each row
+   ============================================================================= */
+
+/* ============================================================
+   TABLE LAYOUT (>= 640px -- desktop and tablet)
+   ============================================================ */
+
+/* Scrollable wrapper -- keyboard-focusable for arrow-key horizontal scroll */
+.aem__table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--color-border-default);
+  border-radius: 4px;
+}
+
+.aem__table-wrapper:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.aem__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  /* Five columns need more minimum width than four-column CEM */
+  min-width: 680px;
+}
+
+/* ---- Column headers ---- */
+.aem__th {
+  padding: 0.75rem 1rem;
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-align: left;
+  border-bottom: 2px solid var(--color-border-strong);
+  white-space: nowrap;
+}
+
+/* Column widths -- Constraints gets slightly more room for longer text */
+.aem__th--option       { width: 18%; }
+.aem__th--evidence     { width: 20%; }
+.aem__th--constraints  { width: 22%; }
+.aem__th--traceability { width: 20%; }
+.aem__th--riskCoverage { width: 20%; }
+
+/* ---- Table cells ---- */
+.aem__td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border-default);
+  vertical-align: top;
+  color: var(--color-text-primary);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+/* Option column: heavier weight to visually anchor each row */
+.aem__td--option {
+  font-weight: 600;
+}
+
+/* Alternating row stripe -- supplemental only; meaning not conveyed by color */
+.aem__tr--alt .aem__td {
+  background-color: var(--color-bg-subtle);
+}
+
+/* Last row: remove bottom border to avoid doubling with wrapper border */
+.aem__tr:last-child .aem__td {
+  border-bottom: none;
+}
+
+/* ============================================================
+   ACCORDION LAYOUT (< 640px -- mobile)
+   ============================================================ */
+
+.aem__accordion {
+  border: 1px solid var(--color-border-default);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Each option row becomes an accordion item */
+.aem__item {
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.aem__item:last-child {
+  border-bottom: none;
+}
+
+/* Trigger -- Option text is the visible label */
+.aem__item-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  color: var(--color-text-primary);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.aem__item-trigger:hover {
+  background-color: var(--color-bg-subtle);
+}
+
+.aem__item-trigger:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
+}
+
+/* Option label text */
+.aem__item-label {
+  flex: 1;
+}
+
+/* Chevron icon */
+.aem__item-chevron {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+  transition: transform 200ms ease;
+}
+
+.aem__item-trigger--expanded .aem__item-chevron {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aem__item-chevron {
+    transition: none;
+  }
+}
+
+/* Accordion body */
+.aem__item-body {
+  border-top: 1px solid var(--color-border-default);
+  background-color: var(--color-surface-raised);
+}
+
+/* Definition list -- two-column grid: label | value */
+.aem__item-dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.625rem 1rem;
+  margin: 0;
+  padding: 1rem;
+}
+
+.aem__item-dt {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  align-self: start;
+  /* Optical alignment with dd text */
+  padding-top: 0.125rem;
+}
+
+.aem__item-dd {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   HIGH CONTRAST
+   ============================================================ */
+
+@media (prefers-contrast: more) {
+  .aem__table-wrapper,
+  .aem__accordion {
+    border-color: var(--color-border-strong);
+  }
+
+  .aem__th {
+    border-bottom-color: var(--color-border-strong);
+  }
+
+  .aem__td,
+  .aem__item,
+  .aem__item-body {
+    border-color: var(--color-border-strong);
+  }
+
+  .aem__table-wrapper:focus-visible,
+  .aem__item-trigger:focus-visible {
+    outline-width: 3px;
+  }
+}

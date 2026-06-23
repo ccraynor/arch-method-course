@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Apply Step 0 to the Meridian brief: write a three-part scope boundary statement identifying what is included, excluded, and the governing rationale.">
+  <title>Guided Practice: Declaring Locked Scope for Meridian — Lesson 1.1a — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ================================================================
+       Screen m1-l1a-s4 — Guided Practice: Declaring Locked Scope
+       All color values use CSS tokens. No hard-coded hex values.
+       ================================================================ */
+
+    /* ---- Screen header ---- */
+    .screen-type-label {
+      display: inline-block;
+      margin: 0 0 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-secondary);
+    }
+
+    .lesson-label {
+      display: block;
+      margin: 0 0 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-text-link);
+    }
+
+    .guided-practice__title {
+      margin: 0 0 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    /* ---- Practice context blocks ---- */
+    .practice-context {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: 0 0 2rem;
+      max-width: 800px;
+    }
+
+    @media (max-width: 640px) {
+      .practice-context {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .context-block {
+      padding: 0.875rem 1rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 5px;
+      background: var(--color-bg-subtle);
+    }
+
+    .context-block__heading {
+      margin: 0 0 0.5rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-secondary);
+    }
+
+    .context-block p,
+    .context-block li {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+    }
+
+    .context-block ol,
+    .context-block ul {
+      margin: 0;
+      padding-left: 1.125rem;
+    }
+
+    .context-block li + li {
+      margin-top: 0.3125rem;
+    }
+
+    /* Purpose block gets a teal left accent */
+    .context-block--purpose {
+      border-left: 3px solid var(--color-text-link);
+    }
+
+    /* ---- Form-level error summary ---- */
+    .form-error-summary {
+      margin: 0 0 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--color-error-bg);
+      border: 1px solid var(--color-error-border);
+      border-radius: 4px;
+      font-size: 0.875rem;
+      color: var(--color-error-text);
+    }
+
+    .form-error-summary:empty {
+      display: none;
+    }
+
+    /* ---- Scope input fields ---- */
+    .practice-form {
+      max-width: 700px;
+    }
+
+    .scope-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin: 0 0 1.5rem;
+    }
+
+    .scope-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .scope-field__label {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .scope-field__hint {
+      margin: 0;
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+    }
+
+    .scope-textarea {
+      width: 100%;
+      padding: 0.625rem 0.75rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 4px;
+      background: var(--color-bg-page);
+      color: var(--color-text-primary);
+      font-size: 0.9375rem;
+      font-family: inherit;
+      line-height: 1.6;
+      resize: vertical;
+      min-height: 7rem;
+      box-sizing: border-box;
+    }
+
+    .scope-textarea:focus {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 2px;
+      border-color: var(--color-focus-ring);
+    }
+
+    .scope-textarea[aria-invalid="true"] {
+      border-color: var(--color-error-border);
+    }
+
+    .scope-textarea[disabled] {
+      background: var(--color-bg-subtle);
+      color: var(--color-text-secondary);
+      cursor: not-allowed;
+    }
+
+    /* Per-field error -- starts empty; display:none via :empty */
+    .scope-field__error {
+      font-size: 0.8125rem;
+      color: var(--color-error-text);
+      font-weight: 600;
+    }
+
+    .scope-field__error:empty {
+      display: none;
+    }
+
+    /* ---- Submit button ---- */
+    .btn--submit {
+      margin-top: 0.5rem;
+    }
+
+    /* ---- Feedback region ---- */
+    .feedback-region {
+      max-width: 700px;
+      margin: 2rem 0 0;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--color-border-default);
+    }
+
+    .feedback-region--correct {
+      border-color: var(--color-success-border);
+    }
+
+    .feedback-region--incomplete {
+      border-color: var(--color-warning-border);
+    }
+
+    .feedback-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.875rem;
+      padding: 1.125rem 1.25rem;
+    }
+
+    .feedback-region--correct .feedback-top {
+      background: var(--color-success-bg);
+    }
+
+    .feedback-region--incomplete .feedback-top {
+      background: var(--color-warning-bg);
+    }
+
+    .feedback-icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .feedback-heading {
+      margin: 0 0 0.375rem;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+    }
+
+    .feedback-explanation {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+    }
+
+    /* ---- Evaluation summary (4 checks) ---- */
+    .eval-summary {
+      padding: 1rem 1.25rem;
+      border-top: 1px solid var(--color-border-default);
+      background: var(--color-bg-page);
+    }
+
+    .eval-summary__heading {
+      margin: 0 0 0.625rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+    }
+
+    .eval-checks {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .eval-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    .eval-check__icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.25rem;
+      height: 1.25rem;
+      margin-top: 0.0625rem;
+    }
+
+    .eval-check--pass .eval-check__text {
+      color: var(--color-success-text);
+    }
+
+    .eval-check--gap .eval-check__text {
+      color: var(--color-warning-text);
+    }
+
+    /* ---- Expert reference ---- */
+    .feedback-reference {
+      padding: 1rem 1.25rem 1.25rem;
+      border-top: 1px solid var(--color-border-default);
+      background: var(--color-bg-subtle);
+    }
+
+    .feedback-reference__heading {
+      margin: 0 0 0.875rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .reference-section {
+      margin: 0 0 1rem;
+    }
+
+    .reference-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .reference-section__heading {
+      margin: 0 0 0.375rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-secondary);
+      padding-bottom: 0.25rem;
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .reference-list {
+      margin: 0;
+      padding-left: 1.125rem;
+    }
+
+    .reference-list li {
+      margin-bottom: 0.375rem;
+      font-size: 0.875rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+    }
+
+    .reference-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ---- Feedback actions ---- */
+    .feedback-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.875rem 1.25rem;
+      border-top: 1px solid var(--color-border-default);
+      background: var(--color-bg-page);
+    }
+
+    /* High contrast adjustments */
+    @media (prefers-contrast: more) {
+      .context-block {
+        border-color: var(--color-border-strong);
+      }
+      .scope-textarea {
+        border-color: var(--color-border-strong);
+      }
+      .feedback-region {
+        border-color: var(--color-border-strong);
+      }
+      .feedback-region--correct {
+        border-color: var(--color-success-border);
+      }
+      .feedback-region--incomplete {
+        border-color: var(--color-warning-border);
+      }
+      .screen-type-label,
+      .lesson-label {
+        color: var(--color-text-primary);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.1a</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">0</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">4</span> of <span id="pt-screen-total">5</span></span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary"
+              aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel"
+              aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer"
+              aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory"
+              aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel"
+              aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <article class="guided-practice" aria-labelledby="practice-title">
+
+        <header class="guided-practice__header">
+          <span class="screen-type-label">Guided Practice</span>
+          <p class="lesson-label" aria-label="Lesson 1.1a">Lesson 1.1a</p>
+          <h1 id="practice-title"
+              class="guided-practice__title">Declaring Locked Scope for Meridian</h1>
+        </header>
+
+        <!-- =========================================================
+             Practice context -- visible before learner attempts
+             ========================================================= -->
+        <section class="practice-context"
+                 aria-labelledby="context-heading">
+          <h2 id="context-heading" class="sr-only">Activity Context</h2>
+
+          <div class="context-block context-block--purpose">
+            <h3 class="context-block__heading">Purpose</h3>
+            <p>Writing a scope boundary statement is the first output of Step 0. This practice builds your ability to extract binding constraints from a client brief and translate them into a written declaration precise enough to present to a client.</p>
+          </div>
+
+          <div class="context-block context-block--instructions">
+            <h3 class="context-block__heading">Instructions</h3>
+            <ol>
+              <li>Review the Meridian brief on Screen 2 if needed.</li>
+              <li>Complete all three sections of the scope boundary statement below.</li>
+              <li>Select <strong>Check My Work</strong> when you are ready.</li>
+            </ol>
+          </div>
+
+          <div class="context-block context-block--criteria">
+            <h3 class="context-block__heading">Success Criteria</h3>
+            <ul>
+              <li>In-scope statement names the specific learner roles and references IR-2024 by name</li>
+              <li>Out-of-scope statement identifies at least two categories of excluded content or audiences</li>
+              <li>Rationale connects to a specific binding constraint from the brief</li>
+            </ul>
+          </div>
+
+          <div class="context-block context-block--evidence">
+            <h3 class="context-block__heading">Expected Evidence</h3>
+            <p>A three-part scope boundary statement precise enough to present to Priya Okonkwo and to guide your first SME meeting without additional explanation.</p>
+          </div>
+
+        </section>
+
+        <!-- =========================================================
+             Practice form -- three scope input fields
+             All validation handled in JS. novalidate suppresses
+             browser default validation UI.
+             ========================================================= -->
+        <form class="practice-form"
+              id="practice-form"
+              novalidate
+              aria-label="Scope boundary statement">
+
+          <!-- Form-level error summary -- empty start; :empty collapses it -->
+          <div id="form-error-summary"
+               class="form-error-summary"
+               role="alert"
+               aria-atomic="true"></div>
+
+          <div class="scope-fields">
+
+            <!-- Field 1: In Scope -->
+            <div class="scope-field">
+              <label for="input-inscope"
+                     class="scope-field__label">
+                What is in scope for this course?
+              </label>
+              <p class="scope-field__hint" id="hint-inscope">
+                Include the target learner population (with role specificity), the
+                performance domain (reference IR-2024 by name), and the delivery
+                parameters.
+              </p>
+              <textarea id="input-inscope"
+                        name="input-inscope"
+                        class="scope-textarea"
+                        rows="5"
+                        aria-describedby="hint-inscope error-inscope"
+                        placeholder="Identify what this course addresses..."></textarea>
+              <p id="error-inscope"
+                 class="scope-field__error"
+                 aria-atomic="true"></p>
+            </div>
+
+            <!-- Field 2: Out of Scope -->
+            <div class="scope-field">
+              <label for="input-outscope"
+                     class="scope-field__label">
+                What is out of scope for this course?
+              </label>
+              <p class="scope-field__hint" id="hint-outscope">
+                Identify at least two categories of content, audiences, or activities
+                that fall outside this course's boundaries. Draw from the brief's
+                specificity about who and what is in scope.
+              </p>
+              <textarea id="input-outscope"
+                        name="input-outscope"
+                        class="scope-textarea"
+                        rows="5"
+                        aria-describedby="hint-outscope error-outscope"
+                        placeholder="Identify what this course does not address..."></textarea>
+              <p id="error-outscope"
+                 class="scope-field__error"
+                 aria-atomic="true"></p>
+            </div>
+
+            <!-- Field 3: Governing Rationale -->
+            <div class="scope-field">
+              <label for="input-rationale"
+                     class="scope-field__label">
+                What is the governing rationale for these boundaries?
+              </label>
+              <p class="scope-field__hint" id="hint-rationale">
+                In 2 to 3 sentences, explain which specific constraints from the
+                Meridian brief shaped these boundaries.
+              </p>
+              <textarea id="input-rationale"
+                        name="input-rationale"
+                        class="scope-textarea"
+                        rows="5"
+                        aria-describedby="hint-rationale error-rationale"
+                        placeholder="Explain why these boundaries are appropriate..."></textarea>
+              <p id="error-rationale"
+                 class="scope-field__error"
+                 aria-atomic="true"></p>
+            </div>
+
+          </div><!-- /.scope-fields -->
+
+          <button type="submit"
+                  id="btn-submit"
+                  class="btn btn--primary btn--submit">
+            Check My Work
+          </button>
+
+        </form>
+
+        <!-- =========================================================
+             Feedback region
+             Hidden until form submission. Focus moves to
+             #feedback-heading on reveal.
+             ========================================================= -->
+        <section id="feedback-region"
+                 class="feedback-region"
+                 aria-labelledby="feedback-heading"
+                 hidden>
+
+          <!-- Status row: icon + heading + summary sentence -->
+          <div class="feedback-top">
+            <div class="feedback-icon" aria-hidden="true">
+              <!-- Populated by script -->
+            </div>
+            <div class="feedback-body-top">
+              <h2 id="feedback-heading"
+                  class="feedback-heading"
+                  tabindex="-1">
+                <!-- Populated by script -->
+              </h2>
+              <p id="feedback-explanation"
+                 class="feedback-explanation">
+                <!-- Populated by script -->
+              </p>
+            </div>
+          </div>
+
+          <!-- Evaluation summary: 4 checks -->
+          <div id="eval-summary"
+               class="eval-summary"
+               aria-label="Evaluation details">
+            <p class="eval-summary__heading">What your response addressed:</p>
+            <div id="eval-checks" class="eval-checks">
+              <!-- Populated by script -->
+            </div>
+          </div>
+
+          <!-- Expert reference scope boundary statement -->
+          <div class="feedback-reference">
+            <h3 class="feedback-reference__heading">Expert Scope Boundary Statement</h3>
+            <div id="feedback-reference-body">
+              <!-- Populated by script -->
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="feedback-actions">
+            <button type="button"
+                    id="btn-try-again"
+                    class="btn btn--secondary"
+                    hidden>
+              Try Again
+            </button>
+            <a id="btn-continue"
+               href="m1-l1a-s5.html"
+               class="btn btn--primary"
+               hidden>
+              Continue
+            </a>
+          </div>
+
+        </section><!-- /#feedback-region -->
+
+        <!-- Screen navigation (Previous only -- Continue surfaces after submit) -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l1a-s3.html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+
+    <section id="artifact-reference"
+             tabindex="-1"
+             aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">
+        No artifacts produced yet. Your first named artifact begins in Lesson 1.1b.
+      </p>
+    </section>
+
+    <section id="decision-history"
+             tabindex="-1"
+             aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">
+        No decisions recorded yet. Design decisions begin in Lesson 1.1b.
+      </p>
+    </section>
+
+  </aside>
+
+  <!-- ============================================================
+       Support Panels
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus
+              aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20"
+             viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12"
+                placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script -- panelManager
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded',
+          btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Screen script -- progress tracker, evaluation, feedback
+       ============================================================ -->
+  <script type="module">
+    /* ---- Progress tracker ---- */
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.1a';
+    document.getElementById('pt-phase').textContent        = '1';
+    document.getElementById('pt-step').textContent         = '0';
+    document.getElementById('pt-screen').textContent       = '4';
+    document.getElementById('pt-screen-total').textContent = '5';
+
+    document.querySelectorAll('.module-nav-link').forEach(link => {
+      link.removeAttribute('aria-current');
+    });
+    const activeLink = document.querySelector(
+      '.module-nav-link[href="module-1.html"]'
+    );
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+
+    /* ---- DOM references ---- */
+    const form          = document.getElementById('practice-form');
+    const inscopeEl     = document.getElementById('input-inscope');
+    const outscopeEl    = document.getElementById('input-outscope');
+    const rationaleEl   = document.getElementById('input-rationale');
+    const errInscope    = document.getElementById('error-inscope');
+    const errOutscope   = document.getElementById('error-outscope');
+    const errRationale  = document.getElementById('error-rationale');
+    const errSummary    = document.getElementById('form-error-summary');
+    const btnSubmit     = document.getElementById('btn-submit');
+    const feedbackRegion = document.getElementById('feedback-region');
+    const feedbackIcon  = feedbackRegion.querySelector('.feedback-icon');
+    const feedbackHdg   = document.getElementById('feedback-heading');
+    const feedbackExp   = document.getElementById('feedback-explanation');
+    const evalChecks    = document.getElementById('eval-checks');
+    const refBody       = document.getElementById('feedback-reference-body');
+    const btnTryAgain   = document.getElementById('btn-try-again');
+    const btnContinue   = document.getElementById('btn-continue');
+    const announcer     = document.getElementById('sr-announcer');
+
+    /* ---- Inline SVG icons (currentColor pattern; no external libs) ---- */
+    const SVG_CHECK = (color) => `
+      <svg aria-hidden="true" focusable="false" width="20" height="20"
+           viewBox="0 0 20 20" fill="none" style="color:${color}">
+        <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"
+                fill="currentColor" fill-opacity="0.12"/>
+        <path d="M5.5 10l3 3 6-6" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>`;
+
+    const SVG_GAP = (color) => `
+      <svg aria-hidden="true" focusable="false" width="20" height="20"
+           viewBox="0 0 20 20" fill="none" style="color:${color}">
+        <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"
+                fill="currentColor" fill-opacity="0.12"/>
+        <path d="M10 6v5" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round"/>
+        <circle cx="10" cy="14" r="1" fill="currentColor"/>
+      </svg>`;
+
+    const SVG_RESULT_PASS = `
+      <svg aria-hidden="true" focusable="false" width="28" height="28"
+           viewBox="0 0 28 28" fill="none" style="color:var(--color-success-text)">
+        <circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="1.5"
+                fill="currentColor" fill-opacity="0.12"/>
+        <path d="M8 14l4 4 8-8" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>`;
+
+    const SVG_RESULT_PARTIAL = `
+      <svg aria-hidden="true" focusable="false" width="28" height="28"
+           viewBox="0 0 28 28" fill="none" style="color:var(--color-warning-text)">
+        <circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="1.5"
+                fill="currentColor" fill-opacity="0.12"/>
+        <path d="M14 8v7" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round"/>
+        <circle cx="14" cy="19" r="1.5" fill="currentColor"/>
+      </svg>`;
+
+    /* ---- Expert reference content ---- */
+    const REFERENCE_HTML = `
+      <div class="reference-section">
+        <h4 class="reference-section__heading">In Scope</h4>
+        <ul class="reference-list">
+          <li>Target learners: Approximately 120 healthcare IT professionals at Meridian Regional Health Network -- systems administrators, network engineers, help desk staff, and IT managers -- across three sites</li>
+          <li>Performance domain: Cybersecurity incident response per IR-2024, including Tier 1 and Tier 2 protocol execution, role-bounded isolation decisions, real-time SIEM documentation, and clinical status communication using Meridian's approved templates</li>
+          <li>Delivery: Self-paced online, SCORM 1.2, estimated 4 to 6 hours</li>
+        </ul>
+      </div>
+      <div class="reference-section">
+        <h4 class="reference-section__heading">Out of Scope</h4>
+        <ul class="reference-list">
+          <li>Training for clinical staff, administrative staff, and executive leadership</li>
+          <li>Revision or updates to the IR-2024 protocol</li>
+          <li>Vendor and third-party incident coordination procedures</li>
+          <li>General cybersecurity awareness or HIPAA awareness content</li>
+          <li>Physical security and facility access procedures</li>
+        </ul>
+      </div>
+      <div class="reference-section">
+        <h4 class="reference-section__heading">Governing Rationale</h4>
+        <ul class="reference-list">
+          <li>The Q3 2024 ransomware incident revealed a specific performance gap: IT staff could not execute IR-2024 without supervisor escalation at every decision</li>
+          <li>An OCR audit (2023) established an 18-month documented improvement timeline, anchoring scope to demonstrable workforce performance</li>
+          <li>SME access is limited to 4 hours total -- scope must be locked before the first meeting to preserve that time for validation, not for revision</li>
+          <li>The client explicitly rejected the compliance-checkbox model, requiring a design that produces demonstrated IR-2024 proficiency, not knowledge recall</li>
+        </ul>
+      </div>`;
+
+    /* ---- Evaluate all three fields ---- */
+    function evaluateFields(inscope, outscope, rationale) {
+      const inLow  = inscope.toLowerCase();
+      const outLow = outscope.toLowerCase();
+      const ratLow = rationale.toLowerCase();
+
+      /* In-scope check 1: learner population named with IT role specificity */
+      const hasPopulation =
+        inLow.includes('healthcare it')   ||
+        inLow.includes('it professional') ||
+        inLow.includes('it staff')        ||
+        inLow.includes('it professional') ||
+        inLow.includes('systems admin')   ||
+        inLow.includes('network engineer') ||
+        inLow.includes('help desk')       ||
+        inLow.includes('it manager')      ||
+        /* broad fallback: "120" or "three sites" or explicit role terms */
+        (inLow.includes('120') && inLow.includes('it')) ||
+        (inLow.includes('administrator') && inLow.includes('it'));
+
+      /* In-scope check 2: IR-2024 referenced by name */
+      const hasProtocol =
+        inLow.includes('ir-2024')    ||
+        inLow.includes('ir 2024')    ||
+        inLow.includes('ir2024');
+
+      /* Out-of-scope check: at least two exclusion categories identified.
+         Each group counts as one category regardless of how many terms match. */
+      const outGroups = [
+        ['clinical'],
+        ['executive', 'leadership'],
+        ['administrat'],
+        ['vendor', 'third-party', 'third party'],
+        ['general', 'awareness'],
+        ['physical'],
+        ['policy', 'protocol update', 'revision'],
+        ['HIPAA awareness', 'hipaa awareness']
+      ];
+      let outCount = 0;
+      outGroups.forEach(terms => {
+        if (terms.some(t => outLow.includes(t))) outCount++;
+      });
+      const hasOutScope = outCount >= 2;
+
+      /* Rationale check: references a binding constraint from the brief */
+      const ratConstraints = [
+        'hipaa', 'ocr', 'ransomware', 'sme', '4 hour', 'four hour',
+        'constraint', 'gap', 'timeline', 'audit', 'could not', 'cannot',
+        'escalat', 'compliance', '90 day', 'ninety day'
+      ];
+      const hasRationale = ratConstraints.some(t => ratLow.includes(t));
+
+      return {
+        hasPopulation,
+        hasProtocol,
+        hasOutScope,
+        hasRationale,
+        allOk: hasPopulation && hasProtocol && hasOutScope && hasRationale
+      };
+    }
+
+    /* ---- Per-field validation ---- */
+    const FIELDS = [
+      {
+        input: inscopeEl,
+        error: errInscope,
+        msg: 'Enter what is in scope before submitting.'
+      },
+      {
+        input: outscopeEl,
+        error: errOutscope,
+        msg: 'Enter what is out of scope before submitting.'
+      },
+      {
+        input: rationaleEl,
+        error: errRationale,
+        msg: 'Enter the governing rationale before submitting.'
+      }
+    ];
+
+    function validate() {
+      let valid = true;
+      let firstInvalid = null;
+      FIELDS.forEach(({ input, error, msg }) => {
+        if (!input.value.trim() || input.value.trim().length < 8) {
+          input.setAttribute('aria-invalid', 'true');
+          error.textContent = msg;
+          if (!firstInvalid) firstInvalid = input;
+          valid = false;
+        } else {
+          input.removeAttribute('aria-invalid');
+          error.textContent = '';
+        }
+      });
+      return { valid, firstInvalid };
+    }
+
+    /* Clear per-field errors on input */
+    FIELDS.forEach(({ input, error }) => {
+      input.addEventListener('input', () => {
+        if (input.value.trim().length >= 8) {
+          input.removeAttribute('aria-invalid');
+          error.textContent = '';
+          /* Clear summary if all fields are now valid */
+          const anyInvalid = FIELDS.some(f => f.input.getAttribute('aria-invalid') === 'true');
+          if (!anyInvalid) errSummary.textContent = '';
+        }
+      });
+    });
+
+    /* ---- Build feedback UI ---- */
+    function buildCheckItem(passed, label) {
+      const div = document.createElement('div');
+      div.className = 'eval-check ' + (passed ? 'eval-check--pass' : 'eval-check--gap');
+      div.setAttribute('aria-label', (passed ? 'Addressed: ' : 'Needs attention: ') + label);
+      div.innerHTML = `
+        <span class="eval-check__icon">
+          ${passed
+            ? SVG_CHECK('var(--color-success-text)')
+            : SVG_GAP('var(--color-warning-text)')}
+        </span>
+        <span class="eval-check__text">${label}</span>`;
+      return div;
+    }
+
+    function showFeedback(results) {
+      const { hasPopulation, hasProtocol, hasOutScope, hasRationale, allOk } = results;
+
+      /* Status icon */
+      feedbackIcon.innerHTML = allOk ? SVG_RESULT_PASS : SVG_RESULT_PARTIAL;
+      feedbackRegion.classList.remove('feedback-region--correct', 'feedback-region--incomplete');
+      feedbackRegion.classList.add(allOk ? 'feedback-region--correct' : 'feedback-region--incomplete');
+
+      /* Heading and explanation */
+      if (allOk) {
+        feedbackHdg.textContent = 'Comprehensive scope boundary statement.';
+        feedbackExp.textContent =
+          'Your declaration addresses the key constraints from the Meridian brief. ' +
+          'Compare your response to the expert reference below.';
+      } else {
+        feedbackHdg.textContent = 'Scope statement needs more specificity.';
+        const gaps = [];
+        if (!hasPopulation) gaps.push('name the IT roles from the brief in your in-scope statement');
+        if (!hasProtocol)   gaps.push('reference IR-2024 by name in your in-scope statement');
+        if (!hasOutScope)   gaps.push('identify at least two categories of excluded content');
+        if (!hasRationale)  gaps.push('ground your rationale in a specific constraint from the brief');
+        feedbackExp.textContent =
+          'To strengthen it: ' + gaps.join('; ') + '.';
+      }
+
+      /* Four-check evaluation summary */
+      evalChecks.innerHTML = '';
+      evalChecks.appendChild(buildCheckItem(hasPopulation, 'IT learner roles named in in-scope statement'));
+      evalChecks.appendChild(buildCheckItem(hasProtocol,   'IR-2024 referenced by name'));
+      evalChecks.appendChild(buildCheckItem(hasOutScope,   'At least two out-of-scope categories identified'));
+      evalChecks.appendChild(buildCheckItem(hasRationale,  'Rationale grounded in a specific brief constraint'));
+
+      /* Expert reference -- always shown */
+      refBody.innerHTML = REFERENCE_HTML;
+
+      /* Actions */
+      btnTryAgain.hidden = allOk;
+      btnContinue.hidden = false;
+
+      /* Reveal and focus */
+      feedbackRegion.removeAttribute('hidden');
+      feedbackHdg.focus();
+
+      /* Live region status */
+      announcer.textContent = '';
+      requestAnimationFrame(() => {
+        announcer.textContent = allOk
+          ? 'Comprehensive scope statement. Continue to the next screen.'
+          : 'Scope statement needs more specificity. Review the feedback and the expert reference.';
+      });
+    }
+
+    /* ---- Lock / reset form ---- */
+    function lockForm() {
+      [inscopeEl, outscopeEl, rationaleEl].forEach(el => {
+        el.setAttribute('disabled', '');
+      });
+      btnSubmit.setAttribute('disabled', '');
+    }
+
+    function resetForm() {
+      [inscopeEl, outscopeEl, rationaleEl].forEach(el => {
+        el.removeAttribute('disabled');
+        el.removeAttribute('aria-invalid');
+      });
+      FIELDS.forEach(({ error }) => { error.textContent = ''; });
+      errSummary.textContent = '';
+      btnSubmit.removeAttribute('disabled');
+      feedbackRegion.setAttribute('hidden', '');
+      feedbackRegion.classList.remove('feedback-region--correct', 'feedback-region--incomplete');
+      evalChecks.innerHTML = '';
+      refBody.innerHTML = '';
+      /* Focus first textarea to encourage revision */
+      inscopeEl.focus();
+    }
+
+    /* ---- Form submission ---- */
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const { valid, firstInvalid } = validate();
+      if (!valid) {
+        errSummary.textContent =
+          'Complete all three sections before checking your work.';
+        announcer.textContent = '';
+        requestAnimationFrame(() => {
+          announcer.textContent =
+            'Some sections are incomplete. Please fill in all three fields before submitting.';
+        });
+        if (firstInvalid) firstInvalid.focus();
+        return;
+      }
+
+      const results = evaluateFields(
+        inscopeEl.value.trim(),
+        outscopeEl.value.trim(),
+        rationaleEl.value.trim()
+      );
+
+      lockForm();
+      showFeedback(results);
+    });
+
+    /* ---- Try Again ---- */
+    btnTryAgain.addEventListener('click', resetForm);
+
+  </script>
+
+</body>
+</html>

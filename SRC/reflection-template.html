@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- TEMPLATE: replace with reflection-specific description (≤155 chars) -->
+  <meta name="description" content="[DESCRIPTION — one sentence describing what the learner reflects on at this checkpoint]">
+  <!-- TEMPLATE: replace with "Reflection Checkpoint: Title — Lesson X.X — ARCH Method Practitioner Credential — Proof Point Learning" -->
+  <title>[Reflection Checkpoint: Title] — Lesson [X.X] — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links — do not modify
+       ============================================================ -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       class="sr-only"></div>
+
+  <!-- ============================================================
+       Header — banner landmark — do not modify
+       ============================================================ -->
+  <header role="banner">
+
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method Practitioner Credential</span>
+    </div>
+
+    <div id="progress-tracker"
+         role="group"
+         aria-label="Course progress"
+         tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">1</span> of <span id="pt-screen-total">4</span></span>
+    </div>
+
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary"
+              aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel"
+              aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer"
+              aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory"
+              aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel"
+              aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+
+  </header>
+
+  <!-- ============================================================
+       Primary Navigation — TEMPLATE: set aria-current="page" on
+       the link matching the current module.
+       ============================================================ -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item">
+        <a href="intro-0.1.html" class="module-nav-link" aria-current="false">Introduction</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-1.html" class="module-nav-link" aria-current="false">Module 1: Bound the Course</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-2.html" class="module-nav-link" aria-current="false">Module 2: Engineer the Learning</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-3.html" class="module-nav-link" aria-current="false">Module 3: Stress-Test the Design</a>
+      </li>
+      <li class="module-nav-item">
+        <a href="module-4.html" class="module-nav-link" aria-current="false">Module 4: Structural Freeze</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================
+       Main Content — main landmark
+       ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <section id="current-activity"
+             tabindex="-1"
+             aria-label="Current activity">
+
+      <!-- =========================================================
+           REFLECTION CHECKPOINT TEMPLATE
+           Template type: open-ended writing, autosave + manual save
+           Layout: two-column on desktop (prompt | writing area).
+                   Single-column on mobile (prompt above writing area).
+           The prompt column is sticky so it remains visible while
+           the learner writes in the textarea(s) at any scroll depth.
+
+           Autosave fires every 30 seconds and on textarea blur.
+           Manual Save button records a visible timestamp.
+           All save events are announced to screen readers.
+           Content is restored from localStorage on page load.
+
+           SCREEN_ID must be set in the screen-specific script.
+           It becomes the localStorage key: reflection_[SCREEN_ID].
+
+           TEMPLATE: supports 1–3 reflection fields.
+           Remove unused .writing-field blocks as needed.
+           All fields save together as a single JSON object.
+           ========================================================= -->
+      <article class="reflection-checkpoint" aria-labelledby="reflection-title">
+
+        <header class="reflection-checkpoint__header">
+          <span class="screen-type-label">Reflection Checkpoint</span>
+          <!-- TEMPLATE: update lesson label -->
+          <p class="lesson-label" aria-label="Lesson [X.X]">Lesson [X.X]</p>
+          <!-- TEMPLATE: update title — this is the page's h1 -->
+          <h1 id="reflection-title" class="reflection-checkpoint__title">[Reflection Checkpoint Title]</h1>
+        </header>
+
+        <!-- Two-column layout.
+             CSS: display grid, [prompt-col] [writing-col] on desktop.
+             .reflection-prompts has position:sticky so it tracks scroll.
+             On mobile: flex-direction column, prompt first. -->
+        <div class="reflection-layout">
+
+          <!-- ---- Left column: prompt (sticky) ---- -->
+          <div class="reflection-prompts">
+
+            <section class="prompt-block" aria-labelledby="prompt-heading">
+              <h2 id="prompt-heading" class="prompt-block__heading">Reflection Prompt</h2>
+
+              <!-- TEMPLATE: 1–2 sentences on why this reflection matters here -->
+              <p class="prompt-context">
+                [Explain why this reflection moment is placed here in the course and
+                what insight or transfer it is designed to produce.]
+              </p>
+
+              <!-- TEMPLATE: the actual questions the learner should address.
+                   Use an ordered list if the fields below correspond to each item.
+                   Use a paragraph if the writing area is a single open response. -->
+              <ol class="prompt-questions">
+                <li class="prompt-question">
+                  <!-- TEMPLATE: question 1 — must match writing-field-1 below -->
+                  [Question 1 — connects lesson content to learner's own practice context]
+                </li>
+                <li class="prompt-question">
+                  <!-- TEMPLATE: question 2 — must match writing-field-2 below -->
+                  [Question 2 — asks learner to identify a specific challenge or tension]
+                </li>
+                <li class="prompt-question">
+                  <!-- TEMPLATE: question 3 — must match writing-field-3 below -->
+                  [Question 3 — asks learner to name a concrete next step or commitment]
+                </li>
+              </ol>
+            </section>
+
+            <!-- Optional writing guidance block.
+                 TEMPLATE: remove if not needed for this checkpoint. -->
+            <section class="prompt-guidance" aria-labelledby="guidance-heading">
+              <h2 id="guidance-heading" class="prompt-guidance__heading">Writing Guidance</h2>
+              <ul class="guidance-list">
+                <!-- TEMPLATE: 3–4 concise tips for quality reflection at this point -->
+                <li>[Tip 1 — e.g., ground your response in a specific situation from your own context]</li>
+                <li>[Tip 2 — e.g., name the constraint driving your decision, not just the decision itself]</li>
+                <li>[Tip 3 — e.g., your next step should be actionable within the next two weeks]</li>
+              </ul>
+            </section>
+
+          </div><!-- /.reflection-prompts -->
+
+          <!-- ---- Right column: writing area ---- -->
+          <div class="reflection-writing">
+
+            <!-- Writing field 1 — corresponds to prompt question 1.
+                 TEMPLATE: remove this block if using single-field reflection. -->
+            <div class="writing-field" id="writing-field-1">
+              <!-- TEMPLATE: label text should echo or rephrase prompt question 1 -->
+              <label for="reflection-field-1" class="writing-field__label">
+                [Short label for question 1 — e.g., "Connection to Your Context"]
+              </label>
+              <p class="writing-field__hint" id="hint-field-1">
+                <!-- TEMPLATE: 1-sentence writing cue -->
+                [Writing hint — e.g., "Describe a specific course or program you are currently designing."]
+              </p>
+              <textarea id="reflection-field-1"
+                        name="reflection-field-1"
+                        class="reflection-textarea"
+                        rows="5"
+                        aria-describedby="hint-field-1"
+                        placeholder="[Optional placeholder]"></textarea>
+            </div>
+
+            <!-- Writing field 2 — corresponds to prompt question 2. -->
+            <div class="writing-field" id="writing-field-2">
+              <label for="reflection-field-2" class="writing-field__label">
+                [Short label for question 2 — e.g., "A Tension You Are Navigating"]
+              </label>
+              <p class="writing-field__hint" id="hint-field-2">
+                [Writing hint for question 2.]
+              </p>
+              <textarea id="reflection-field-2"
+                        name="reflection-field-2"
+                        class="reflection-textarea"
+                        rows="5"
+                        aria-describedby="hint-field-2"
+                        placeholder="[Optional placeholder]"></textarea>
+            </div>
+
+            <!-- Writing field 3 — corresponds to prompt question 3. -->
+            <div class="writing-field" id="writing-field-3">
+              <label for="reflection-field-3" class="writing-field__label">
+                [Short label for question 3 — e.g., "Your Next Step"]
+              </label>
+              <p class="writing-field__hint" id="hint-field-3">
+                [Writing hint for question 3.]
+              </p>
+              <textarea id="reflection-field-3"
+                        name="reflection-field-3"
+                        class="reflection-textarea"
+                        rows="5"
+                        aria-describedby="hint-field-3"
+                        placeholder="[Optional placeholder]"></textarea>
+            </div>
+
+            <!-- Save controls.
+                 Save status is a visible element with aria-live="polite".
+                 It doubles as the AT announcement — no separate sr-only
+                 region needed because the status message is already
+                 meaningful as visible text ("Saved at 2:34 PM").
+                 Autosave status uses aria-live="off" to avoid announcing
+                 every 30-second tick; only manual saves announce. -->
+            <div class="save-controls" role="group" aria-label="Save controls">
+
+              <button type="button"
+                      id="btn-save-manual"
+                      class="btn btn--secondary btn--save">
+                <svg aria-hidden="true"
+                     focusable="false"
+                     width="16"
+                     height="16"
+                     viewBox="0 0 16 16"
+                     fill="none">
+                  <path d="M13 13H3a1 1 0 01-1-1V4l3-3h7l2 2v9a1 1 0 01-1 1z"
+                        stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M5 13V9h6v4M5 1v4h5"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Save Now
+              </button>
+
+              <!-- Visible save status.
+                   aria-live="polite" — announces on manual save and restore.
+                   aria-live is switched to "off" during autosave ticks
+                   via the data-announce attribute managed by the script. -->
+              <p id="save-status"
+                 class="save-status"
+                 aria-live="polite"
+                 aria-atomic="true"
+                 data-announce="polite">
+                <!-- Script populates: "Not yet saved" | "Saved at 2:34 PM" | "Saving..." | "Save failed" -->
+                Not yet saved
+              </p>
+
+            </div><!-- /.save-controls -->
+
+          </div><!-- /.reflection-writing -->
+
+        </div><!-- /.reflection-layout -->
+
+        <!-- Screen navigation — both directions available.
+             Navigation triggers a final save via click handler in the script.
+             Learner is not blocked from navigating with unsaved or empty content. -->
+        <nav class="screen-nav" aria-label="Screen navigation">
+          <!-- TEMPLATE: update href values -->
+          <a href="[PREV_SCREEN].html"
+             class="btn btn--nav btn--prev"
+             rel="prev"
+             aria-label="Go to previous screen">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="[NEXT_SCREEN].html"
+             class="btn btn--nav btn--next"
+             rel="next"
+             aria-label="Go to next screen">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16"
+                 viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Supplementary Resources — complementary landmark
+       ============================================================ -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <!-- TEMPLATE: list artifacts the learner may want to consult while reflecting -->
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <!-- TEMPLATE: list prior decisions the learner may want to reference while reflecting -->
+    </section>
+  </aside>
+
+  <!-- ============================================================
+       Support Panels — do not modify — managed by panelManager.js
+       ============================================================ -->
+
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Footer — contentinfo landmark — do not modify
+       ============================================================ -->
+  <footer role="contentinfo">
+    <p class="footer-copy">
+      &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
+    </p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- ============================================================
+       Base script — do not modify
+       ============================================================ -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    import { getItem, setItem } from './js/storage.js';
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) {
+          closeAll();
+          syncToggleStates(null);
+        } else {
+          openPanel(panelName, btn);
+          syncToggleStates(panelName);
+        }
+      });
+    });
+
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeAll();
+        syncToggleStates(null);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+       Reflection save script — do not modify
+       ============================================================ -->
+  <script type="module">
+    import { getItem, setItem } from './js/storage.js';
+
+    const AUTOSAVE_INTERVAL_MS = 30000;
+
+    /* SCREEN_ID injected by screen-specific script via window.__setReflectionScreenId() */
+    let SCREEN_ID        = null;
+    let lastSavedContent = null;
+    let autoSaveTimer    = null;
+
+    const saveStatus  = document.getElementById('save-status');
+    const btnSave     = document.getElementById('btn-save-manual');
+    const announcer   = document.getElementById('sr-announcer');
+    const textareas   = Array.from(document.querySelectorAll('.reflection-textarea'));
+
+    /* ---- Collect all field values as a serializable object ---- */
+    function collectContent() {
+      const fields = {};
+      textareas.forEach(el => { fields[el.id] = el.value; });
+      return fields;
+    }
+
+    /* ---- Update the visible save status label ----
+       announce: true  — update aria-live="polite" (manual save, restore, error)
+       announce: false — update text only, silence live region (autosave ticks) */
+    function setStatus(message, announce) {
+      if (announce) {
+        /* Temporarily ensure polite live region is active */
+        saveStatus.setAttribute('aria-live', 'polite');
+        /* Clear first so identical repeated messages still fire */
+        saveStatus.textContent = '';
+        requestAnimationFrame(() => { saveStatus.textContent = message; });
+      } else {
+        /* Silence the live region for this update */
+        saveStatus.setAttribute('aria-live', 'off');
+        saveStatus.textContent = message;
+      }
+    }
+
+    /* ---- Core save function ----
+       source: 'auto' | 'blur' | 'manual' | 'exit'
+       Auto and blur saves are silent (no AT announcement) if content unchanged.
+       Manual and exit saves always write and always announce. */
+    function save(source) {
+      if (!SCREEN_ID) return;
+
+      const content    = collectContent();
+      const serialized = JSON.stringify(content);
+      const changed    = serialized !== lastSavedContent;
+
+      /* Skip silent autosave if nothing changed */
+      if ((source === 'auto' || source === 'blur') && !changed) return;
+
+      try {
+        setItem('reflection_' + SCREEN_ID, serialized);
+        const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        setItem('reflection_' + SCREEN_ID + '_savedAt', timestamp);
+        lastSavedContent = serialized;
+
+        const message  = 'Saved at ' + timestamp;
+        const announce = source === 'manual' || source === 'exit';
+        setStatus(message, announce);
+
+        /* For manual save: also push to sr-announcer for maximum AT compatibility */
+        if (source === 'manual') {
+          announcer.textContent = '';
+          requestAnimationFrame(() => { announcer.textContent = message; });
+        }
+      } catch {
+        /* Storage write failed (quota, security) */
+        setStatus('Save failed. Your browser may be blocking storage.', true);
+      }
+    }
+
+    /* ---- Restore saved content on page load ---- */
+    function restore() {
+      if (!SCREEN_ID) return;
+      const stored = getItem('reflection_' + SCREEN_ID);
+      if (!stored) return;
+
+      try {
+        const content = JSON.parse(stored);
+        textareas.forEach(el => {
+          if (Object.prototype.hasOwnProperty.call(content, el.id)) {
+            el.value = content[el.id];
+          }
+        });
+        lastSavedContent = stored;
+
+        const savedAt = getItem('reflection_' + SCREEN_ID + '_savedAt');
+        setStatus(savedAt ? 'Last saved at ' + savedAt : 'Draft restored', true);
+      } catch {
+        /* Corrupted storage — start fresh, do not block learner */
+      }
+    }
+
+    /* ---- Start autosave timer ---- */
+    function startAutosave() {
+      autoSaveTimer = setInterval(() => save('auto'), AUTOSAVE_INTERVAL_MS);
+    }
+
+    /* ---- Blur: save on field exit ---- */
+    textareas.forEach(el => {
+      el.addEventListener('blur', () => save('blur'));
+    });
+
+    /* ---- Manual save ---- */
+    btnSave.addEventListener('click', () => save('manual'));
+
+    /* ---- Navigation: save before leaving ----
+       Fires on both Previous and Next link clicks.
+       Does not block navigation. */
+    document.querySelectorAll('.btn--nav').forEach(link => {
+      link.addEventListener('click', () => save('exit'));
+    });
+
+    /* ---- Expose SCREEN_ID setter ----
+       Called by screen-specific script below. Triggers restore after ID is set. */
+    window.__setReflectionScreenId = function (id) {
+      SCREEN_ID = id;
+      restore();
+      startAutosave();
+    };
+  </script>
+
+  <!-- ============================================================
+       Screen-specific script — TEMPLATE: update all values below
+       ============================================================ -->
+  <script type="module">
+    /* Progress tracker */
+    document.getElementById('pt-module').textContent       = '[X]';
+    document.getElementById('pt-lesson').textContent       = '[X.X]';
+    document.getElementById('pt-phase').textContent        = '[X]';
+    document.getElementById('pt-step').textContent         = '[X]';
+    document.getElementById('pt-screen').textContent       = '[X]';
+    document.getElementById('pt-screen-total').textContent = '[Y]';
+
+    /* Module nav aria-current */
+    document.querySelectorAll('.module-nav-link').forEach(link => link.removeAttribute('aria-current'));
+    const activeLink = document.querySelector('.module-nav-link[href="[MODULE_HREF].html"]');
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+
+    /* TEMPLATE: set a unique ID for this reflection screen.
+       Used as localStorage key: reflection_[SCREEN_ID]
+       Convention: module[N]_lesson[N]_reflection[N]
+       Example: 'module2_lesson3_reflection1'
+       Calling this triggers content restore and starts the autosave timer. */
+    window.__setReflectionScreenId('[MODULE]_[LESSON]_[REFLECTION_N]');
+  </script>
+
+</body>
+</html>
