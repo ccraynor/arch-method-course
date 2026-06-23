@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Welcome to the ARCH Method Practitioner Credential. Nine-screen orientation to the course structure, scenario, support tools, and your learning commitment.">
-  <title>Welcome: Introduction — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <meta name="description" content="Welcome to the ARCH Method™ Practitioner Credential. Nine-screen orientation to the course structure, scenario, support tools, and your learning commitment.">
+  <title>Welcome: Introduction — ARCH Method™ Practitioner Credential — Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/scaffolds/persistentStepTracker.css">
@@ -35,7 +35,7 @@
 
     <div class="header-brand">
       <span class="brand-org">Proof Point Learning</span>
-      <span class="brand-course">ARCH Method Practitioner Credential</span>
+      <span class="brand-course">ARCH Method™ Practitioner Credential</span>
     </div>
 
     <div id="progress-tracker"
@@ -104,16 +104,16 @@
         <a href="intro-0.1.html" class="module-nav-link" aria-current="page">Introduction</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+        <a href="m1-l1a-s1.html" class="module-nav-link">Module 1: Bound the Course</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+        <a href="module-2.html" aria-disabled="true" title="Module 2 not yet available" class="module-nav-link">Module 2: Engineer the Learning</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+        <a href="module-3.html" aria-disabled="true" title="Module 3 not yet available" class="module-nav-link">Module 3: Stress-Test the Design</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+        <a href="module-4.html" aria-disabled="true" title="Module 4 not yet available" class="module-nav-link">Module 4: Structural Freeze</a>
       </li>
     </ol>
   </nav>
@@ -131,13 +131,13 @@
 
         <header class="lesson-intro__header">
           <p class="lesson-label" aria-label="Introduction, Screen 1 of 9">Introduction &bull; Screen 1 of 9</p>
-          <h1 id="lesson-title" class="lesson-intro__title">Welcome to the ARCH Method Practitioner Credential</h1>
+          <h1 id="lesson-title" class="lesson-intro__title">Welcome to the ARCH Method™ Practitioner Credential</h1>
         </header>
 
         <section class="lesson-intro__purpose" aria-labelledby="purpose-heading">
           <h2 id="purpose-heading" class="lesson-intro__section-heading">Purpose</h2>
           <p class="lesson-intro__purpose-text">
-            The ARCH Method is a constraint-governed workflow for course architecture design.
+            The ARCH Method™ is a constraint-governed workflow for course architecture design.
             Before you begin the four core modules, this nine-screen introduction orients you
             to the method, the course structure, and the tools you will use throughout. It also
             introduces Meridian Regional Health Network, the scenario that anchors every decision
@@ -150,7 +150,7 @@
           <section class="lesson-intro__do" aria-labelledby="do-heading">
             <h2 id="do-heading" class="lesson-intro__section-heading">What You Will Do</h2>
             <ul class="lesson-intro__list">
-              <li>Review how the ARCH Method compares to other course design frameworks you may already use</li>
+              <li>Review how the ARCH Method™ compares to other course design frameworks you may already use</li>
               <li>Explore the four-module structure and the performance tasks that benchmark your progress</li>
               <li>Understand the Gradual Release model that governs how support is structured and withdrawn across the credential</li>
               <li>Learn how to use the support tools, artifact drawer, and decision history built into this course environment</li>
@@ -355,5 +355,15 @@
     document.getElementById('pt-module').textContent = 'Intro';
   </script>
 
+
+  <!-- Shared JS modules: tracker redesign, breadcrumb, completion signal, panel init -->
+  <script type="module">
+    import { redesignTracker } from './js/trackerRedesign.js';
+    import { initCompletionSignal } from './js/completionSignal.js';
+    import './js/breadcrumb.js';
+    import './js/panelInit.js';
+    redesignTracker();
+    initCompletionSignal();
+  </script>
 </body>
 </html>

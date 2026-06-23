@@ -84,4 +84,7 @@ developing a Cybersecurity Incident Response course for healthcare IT profession
 - Do not add or remove options from decision point screens -- each 
   screen has a fixed option count per the Stage 3 Decision Point 
   Catalog. Check the catalog before building any decision point screen.
+- Images: SVG diagrams do not need click-to-expand. 
+If screenshots or complex images are added in 
+Modules 2-4, use a lightbox component.
 ```

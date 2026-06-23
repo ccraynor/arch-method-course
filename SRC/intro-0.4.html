@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The ARCH Method Practitioner Credential assesses four competencies through four cumulative performance tasks. Learn the competencies, performance tasks, and mastery threshold before beginning Module 1.">
-  <title>Credential Structure | Introduction | ARCH Method Practitioner Credential | Proof Point Learning</title>
+  <meta name="description" content="The ARCH Method™ Practitioner Credential assesses four competencies through four cumulative performance tasks. Learn the competencies, performance tasks, and mastery threshold before beginning Module 1.">
+  <title>Credential Structure | Introduction | ARCH Method™ Practitioner Credential | Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/scaffolds/persistentStepTracker.css">
@@ -320,7 +320,7 @@
 
     <div class="header-brand">
       <span class="brand-org">Proof Point Learning</span>
-      <span class="brand-course">ARCH Method Practitioner Credential</span>
+      <span class="brand-course">ARCH Method™ Practitioner Credential</span>
     </div>
 
     <div id="progress-tracker"
@@ -387,16 +387,16 @@
         <a href="intro-0.1.html" class="module-nav-link" aria-current="page">Introduction</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+        <a href="m1-l1a-s1.html" class="module-nav-link">Module 1: Bound the Course</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+        <a href="module-2.html" aria-disabled="true" title="Module 2 not yet available" class="module-nav-link">Module 2: Engineer the Learning</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+        <a href="module-3.html" aria-disabled="true" title="Module 3 not yet available" class="module-nav-link">Module 3: Stress-Test the Design</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+        <a href="module-4.html" aria-disabled="true" title="Module 4 not yet available" class="module-nav-link">Module 4: Structural Freeze</a>
       </li>
     </ol>
   </nav>
@@ -422,7 +422,7 @@
           at the end of each module. Each performance task builds directly on the work you completed
           in the previous module, so your output compounds across all four. By the final performance
           task, you will have produced a complete course architecture for Meridian using every Phase
-          and Step of the ARCH Method.
+          and Step of the ARCH Method™.
         </p>
 
         <!-- =====================================================
@@ -447,7 +447,7 @@
             <p class="competency-card__name">Course Architecture Development</p>
             <p class="competency-card__desc">
               Design a complete course architecture from initial constraints through scope definition
-              and learning design, applying each Phase and Step of the ARCH Method in sequence.
+              and learning design, applying each Phase and Step of the ARCH Method™ in sequence.
             </p>
           </div>
 
@@ -580,7 +580,7 @@
               <div>
                 <p class="mastery-threshold__criterion-name">ARCH Workflow Application</p>
                 <p class="mastery-threshold__criterion-desc">
-                  Applied each Phase and Step of the ARCH Method correctly and in the intended
+                  Applied each Phase and Step of the ARCH Method™ correctly and in the intended
                   sequence across all four modules.
                 </p>
               </div>
@@ -821,5 +821,15 @@
     document.getElementById('pt-module').textContent = 'Intro';
   </script>
 
+
+  <!-- Shared JS modules: tracker redesign, breadcrumb, completion signal, panel init -->
+  <script type="module">
+    import { redesignTracker } from './js/trackerRedesign.js';
+    import { initCompletionSignal } from './js/completionSignal.js';
+    import './js/breadcrumb.js';
+    import './js/panelInit.js';
+    redesignTracker();
+    initCompletionSignal();
+  </script>
 </body>
 </html>

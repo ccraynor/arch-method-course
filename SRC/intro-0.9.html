@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Record the architecture challenge you are bringing into this credential. Your response is saved privately and returned to you at the start of Module 4.">
-  <title>Your Commitment | Introduction | ARCH Method Practitioner Credential | Proof Point Learning</title>
+  <title>Your Commitment | Introduction | ARCH Method™ Practitioner Credential | Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/scaffolds/persistentStepTracker.css">
@@ -267,7 +267,7 @@
 
     <div class="header-brand">
       <span class="brand-org">Proof Point Learning</span>
-      <span class="brand-course">ARCH Method Practitioner Credential</span>
+      <span class="brand-course">ARCH Method™ Practitioner Credential</span>
     </div>
 
     <div id="progress-tracker"
@@ -319,16 +319,16 @@
         <a href="intro-0.1.html" class="module-nav-link" aria-current="page">Introduction</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+        <a href="m1-l1a-s1.html" class="module-nav-link">Module 1: Bound the Course</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+        <a href="module-2.html" aria-disabled="true" title="Module 2 not yet available" class="module-nav-link">Module 2: Engineer the Learning</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+        <a href="module-3.html" aria-disabled="true" title="Module 3 not yet available" class="module-nav-link">Module 3: Stress-Test the Design</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+        <a href="module-4.html" aria-disabled="true" title="Module 4 not yet available" class="module-nav-link">Module 4: Structural Freeze</a>
       </li>
     </ol>
   </nav>
@@ -781,5 +781,15 @@
     });
   </script>
 
+
+  <!-- Shared JS modules: tracker redesign, breadcrumb, completion signal, panel init -->
+  <script type="module">
+    import { redesignTracker } from './js/trackerRedesign.js';
+    import { initCompletionSignal } from './js/completionSignal.js';
+    import './js/breadcrumb.js';
+    import './js/panelInit.js';
+    redesignTracker();
+    initCompletionSignal();
+  </script>
 </body>
 </html>

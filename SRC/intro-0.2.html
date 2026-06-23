@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ARCH Method vs quality review frameworks. ARCH is a design workflow used before development; QM, OLC, and OSCQR are evaluation rubrics used after development. Complementary tools.">
-  <title>ARCH Method and Quality Review Frameworks — Introduction — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <meta name="description" content="ARCH Method™ vs quality review frameworks. ARCH is a design workflow used before development; QM, OLC, and OSCQR are evaluation rubrics used after development. Complementary tools.">
+  <title>ARCH Method™ and Quality Review Frameworks — Introduction — ARCH Method™ Practitioner Credential — Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/scaffolds/persistentStepTracker.css">
@@ -91,7 +91,7 @@
 
     <div class="header-brand">
       <span class="brand-org">Proof Point Learning</span>
-      <span class="brand-course">ARCH Method Practitioner Credential</span>
+      <span class="brand-course">ARCH Method™ Practitioner Credential</span>
     </div>
 
     <div id="progress-tracker"
@@ -159,16 +159,16 @@
         <a href="intro-0.1.html" class="module-nav-link" aria-current="page">Introduction</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+        <a href="m1-l1a-s1.html" class="module-nav-link">Module 1: Bound the Course</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+        <a href="module-2.html" aria-disabled="true" title="Module 2 not yet available" class="module-nav-link">Module 2: Engineer the Learning</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+        <a href="module-3.html" aria-disabled="true" title="Module 3 not yet available" class="module-nav-link">Module 3: Stress-Test the Design</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+        <a href="module-4.html" aria-disabled="true" title="Module 4 not yet available" class="module-nav-link">Module 4: Structural Freeze</a>
       </li>
     </ol>
   </nav>
@@ -186,18 +186,18 @@
 
         <header class="lesson-intro__header">
           <p class="lesson-label" aria-label="Introduction, Screen 2 of 9">Introduction &bull; Screen 2 of 9</p>
-          <h1 id="lesson-title" class="lesson-intro__title">ARCH Method and Quality Review Frameworks</h1>
+          <h1 id="lesson-title" class="lesson-intro__title">ARCH Method™ and Quality Review Frameworks</h1>
         </header>
 
         <p class="lesson-intro__lead">
           Many instructional designers already use quality review frameworks such as Quality Matters,
-          the OLC Quality Scorecard, or OSCQR. The ARCH Method is not a replacement for those tools.
+          the OLC Quality Scorecard, or OSCQR. The ARCH Method™ is not a replacement for those tools.
           It is a design workflow that operates at a different point in the process and answers a
           different question. The comparison below clarifies the distinction.
         </p>
 
         <!-- =========================================================
-             Comparison Graphic: ARCH Method vs Quality Review Frameworks
+             Comparison Graphic: ARCH Method™ vs Quality Review Frameworks
              Inline SVG uses CSS custom properties throughout.
              All color values reference semantic tokens from tokens.css.
              role="img" + aria-labelledby + aria-describedby satisfies
@@ -226,7 +226,7 @@
                aria-labelledby="cmp-svg-title"
                aria-describedby="cmp-svg-desc">
 
-            <title id="cmp-svg-title">ARCH Method vs Quality Review Frameworks</title>
+            <title id="cmp-svg-title">ARCH Method™ vs Quality Review Frameworks</title>
             <desc id="cmp-svg-desc">ARCH is a design workflow used before development to build a defensible course architecture. Quality review frameworks such as QM, OLC, and OSCQR are evaluation rubrics used after development to judge whether a finished course meets standards. They have different purposes and are complementary tools.</desc>
 
             <style>
@@ -280,7 +280,7 @@
             <rect class="cmp-strip"  x="0"   y="8"   width="4"   height="424" rx="2"/>
 
             <!-- Column heading -->
-            <text class="cmp-head" x="176" y="36" text-anchor="middle">ARCH Method</text>
+            <text class="cmp-head" x="176" y="36" text-anchor="middle">ARCH Method™</text>
             <text class="cmp-sub"  x="176" y="54" text-anchor="middle">DESIGN WORKFLOW</text>
             <line class="cmp-rule" x1="16" y1="68" x2="319" y2="68"/>
 
@@ -369,8 +369,8 @@
           </svg>
 
           <figcaption class="comparison-caption" id="cmp-fig-caption">
-            The ARCH Method and quality review frameworks serve different purposes and are
-            complementary tools. Use the ARCH Method during course design to build a defensible
+            The ARCH Method™ and quality review frameworks serve different purposes and are
+            complementary tools. Use the ARCH Method™ during course design to build a defensible
             architecture before a single piece of content is developed. Use quality review frameworks
             after development to evaluate the finished course against published standards. Neither
             replaces the other.
@@ -580,5 +580,15 @@
     document.getElementById('pt-module').textContent = 'Intro';
   </script>
 
+
+  <!-- Shared JS modules: tracker redesign, breadcrumb, completion signal, panel init -->
+  <script type="module">
+    import { redesignTracker } from './js/trackerRedesign.js';
+    import { initCompletionSignal } from './js/completionSignal.js';
+    import './js/breadcrumb.js';
+    import './js/panelInit.js';
+    redesignTracker();
+    initCompletionSignal();
+  </script>
 </body>
 </html>

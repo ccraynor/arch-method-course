@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Meridian Regional Health Network is the organizational scenario used in every module of this credential. Learn who Meridian is, what course you will design, and why this scenario anchors the ARCH Method practice.">
-  <title>The Meridian Scenario | Introduction | ARCH Method Practitioner Credential | Proof Point Learning</title>
+  <meta name="description" content="Meridian Regional Health Network is the organizational scenario used in every module of this credential. Learn who Meridian is, what course you will design, and why this scenario anchors the ARCH Method™ practice.">
+  <title>The Meridian Scenario | Introduction | ARCH Method™ Practitioner Credential | Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/scaffolds/persistentStepTracker.css">
@@ -161,7 +161,7 @@
 
     <div class="header-brand">
       <span class="brand-org">Proof Point Learning</span>
-      <span class="brand-course">ARCH Method Practitioner Credential</span>
+      <span class="brand-course">ARCH Method™ Practitioner Credential</span>
     </div>
 
     <div id="progress-tracker"
@@ -228,16 +228,16 @@
         <a href="intro-0.1.html" class="module-nav-link" aria-current="page">Introduction</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+        <a href="m1-l1a-s1.html" class="module-nav-link">Module 1: Bound the Course</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+        <a href="module-2.html" aria-disabled="true" title="Module 2 not yet available" class="module-nav-link">Module 2: Engineer the Learning</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+        <a href="module-3.html" aria-disabled="true" title="Module 3 not yet available" class="module-nav-link">Module 3: Stress-Test the Design</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+        <a href="module-4.html" aria-disabled="true" title="Module 4 not yet available" class="module-nav-link">Module 4: Structural Freeze</a>
       </li>
     </ol>
   </nav>
@@ -261,7 +261,7 @@
         <p class="lesson-intro__lead">
           Every decision point, worked example, and performance task in this credential uses the same
           organizational context: Meridian Regional Health Network. Working with one scenario across all
-          four modules lets you practice the ARCH Method on a realistic design problem without switching
+          four modules lets you practice the ARCH Method™ on a realistic design problem without switching
           contexts between lessons. You will complete the Meridian course architecture progressively as
           you work through each Phase and Step of the method.
         </p>
@@ -342,11 +342,11 @@
         </div>
 
         <p class="lesson-intro__body-text">
-          You are not expected to be a cybersecurity expert or a healthcare professional. The ARCH Method
+          You are not expected to be a cybersecurity expert or a healthcare professional. The ARCH Method™
           operates at the level of course architecture, not subject-matter expertise. Meridian's
           subject-matter experts will develop the content. Your job is to build an architecture that makes
           that content development purposeful and defensible. The distinction between the architect's role
-          and the developer's role is one of the core arguments the ARCH Method makes.
+          and the developer's role is one of the core arguments the ARCH Method™ makes.
         </p>
 
         <!-- =====================================================
@@ -355,7 +355,7 @@
         <h2 class="lesson-intro__section-heading">Why This Scenario</h2>
 
         <p class="lesson-intro__body-text">
-          Healthcare is not a higher education context, and that distance is intentional. The ARCH Method
+          Healthcare is not a higher education context, and that distance is intentional. The ARCH Method™
           is domain-agnostic: the same Phases and Steps apply whether you are designing a clinical
           training, an onboarding program, or a graduate seminar. Using a scenario outside your typical
           domain asks you to engage with the method as method rather than relying on context familiarity.
@@ -366,7 +366,7 @@
           heterogeneous learner population, high-stakes performance requirements, and a clear
           organizational trigger that explains why the training must exist. Those features create the
           conditions where course architecture decisions have genuine consequences. That is exactly where
-          the ARCH Method is most valuable.
+          the ARCH Method™ is most valuable.
         </p>
 
         <!-- Screen navigation -->
@@ -571,5 +571,15 @@
     document.getElementById('pt-module').textContent = 'Intro';
   </script>
 
+
+  <!-- Shared JS modules: tracker redesign, breadcrumb, completion signal, panel init -->
+  <script type="module">
+    import { redesignTracker } from './js/trackerRedesign.js';
+    import { initCompletionSignal } from './js/completionSignal.js';
+    import './js/breadcrumb.js';
+    import './js/panelInit.js';
+    redesignTracker();
+    initCompletionSignal();
+  </script>
 </body>
 </html>

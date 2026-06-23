@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Worked example: an expert applies unit optimization criteria to three DC components from MRHN_DecompositionMap_v1 -- one split, one merged, one confirmed correct -- and produces governance record MRHN-D-007.">
-  <title>Worked Example: Unit Optimization -- Lesson 1.4b -- ARCH Method Practitioner Credential -- Proof Point Learning</title>
+  <title>Worked Example: Unit Optimization -- Lesson 1.4b -- ARCH Method™ Practitioner Credential -- Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <style>
@@ -197,7 +197,7 @@
   <header role="banner">
     <div class="header-brand">
       <span class="brand-org">Proof Point Learning</span>
-      <span class="brand-course">ARCH Method Practitioner Credential</span>
+      <span class="brand-course">ARCH Method™ Practitioner Credential</span>
     </div>
     <div id="progress-tracker" role="group" aria-label="Course progress" tabindex="-1">
       <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
@@ -222,10 +222,10 @@
   <nav aria-label="Course modules" id="course-nav">
     <ol class="module-nav-list">
       <li class="module-nav-item"><a href="intro-0.1.html" class="module-nav-link">Introduction</a></li>
-      <li class="module-nav-item"><a href="module-1.html" class="module-nav-link" aria-current="page">Module 1: Bound the Course</a></li>
-      <li class="module-nav-item"><a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a></li>
-      <li class="module-nav-item"><a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a></li>
-      <li class="module-nav-item"><a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a></li>
+      <li class="module-nav-item"><a href="m1-l1a-s1.html" class="module-nav-link" aria-current="page">Module 1: Bound the Course</a></li>
+      <li class="module-nav-item"><a href="module-2.html" aria-disabled="true" title="Module 2 not yet available" class="module-nav-link">Module 2: Engineer the Learning</a></li>
+      <li class="module-nav-item"><a href="module-3.html" aria-disabled="true" title="Module 3 not yet available" class="module-nav-link">Module 3: Stress-Test the Design</a></li>
+      <li class="module-nav-item"><a href="module-4.html" aria-disabled="true" title="Module 4 not yet available" class="module-nav-link">Module 4: Structural Freeze</a></li>
     </ol>
   </nav>
 
@@ -1030,5 +1030,15 @@
     document.getElementById('pt-screen-total').textContent = '6';
   </script>
 
+
+  <!-- Shared JS modules: tracker redesign, breadcrumb, completion signal, panel init -->
+  <script type="module">
+    import { redesignTracker } from './js/trackerRedesign.js';
+    import { initCompletionSignal } from './js/completionSignal.js';
+    import './js/breadcrumb.js';
+    import './js/panelInit.js';
+    redesignTracker();
+    initCompletionSignal();
+  </script>
 </body>
 </html>

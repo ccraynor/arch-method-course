@@ -15,6 +15,26 @@
 }
 
 /* ---------------------------------------------------------------------------
+   Typography Scale
+   Four-level scale used consistently across all screen templates.
+   --------------------------------------------------------------------------- */
+:root {
+  --font-size-label:   0.75rem;   /* uppercase tracked labels, phase/step indicators */
+  --font-size-body:    1rem;      /* all body text, bullet points */
+  --font-size-heading: 1.25rem;   /* section headings -- Purpose, What You Will Do, etc. */
+  --font-size-title:   1.75rem;   /* H1 screen titles */
+
+  --line-height-body:    1.6;
+  --line-height-heading: 1.3;
+  --line-height-title:   1.2;
+
+  --letter-spacing-label: 0.08em;
+
+  --space-section: 2rem;          /* minimum vertical space between content sections */
+  --content-max-width: 72ch;      /* comfortable reading line length for body text */
+}
+
+/* ---------------------------------------------------------------------------
    Semantic Tokens — Light Mode (default)
    --------------------------------------------------------------------------- */
 :root {

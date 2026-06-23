@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Lesson 1.2 introduction: Defining Course Boundaries. Steps 2 and 3 -- Bucket Scope Items into Logical Categories and Evaluate Bucket Balance. Produces the MRHN Bucket Map.">
-  <title>Lesson 1.2: Defining Course Boundaries — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <title>Lesson 1.2: Defining Course Boundaries — ARCH Method™ Practitioner Credential — Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <style>
@@ -346,7 +346,7 @@
 
     <div class="header-brand">
       <span class="brand-org">Proof Point Learning</span>
-      <span class="brand-course">ARCH Method Practitioner Credential</span>
+      <span class="brand-course">ARCH Method™ Practitioner Credential</span>
     </div>
 
     <div id="progress-tracker"
@@ -388,16 +388,16 @@
         <a href="intro-0.1.html" class="module-nav-link">Introduction</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-1.html" class="module-nav-link">Module 1: Bound the Course</a>
+        <a href="m1-l1a-s1.html" class="module-nav-link">Module 1: Bound the Course</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-2.html" class="module-nav-link">Module 2: Engineer the Learning</a>
+        <a href="module-2.html" aria-disabled="true" title="Module 2 not yet available" class="module-nav-link">Module 2: Engineer the Learning</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-3.html" class="module-nav-link">Module 3: Stress-Test the Design</a>
+        <a href="module-3.html" aria-disabled="true" title="Module 3 not yet available" class="module-nav-link">Module 3: Stress-Test the Design</a>
       </li>
       <li class="module-nav-item">
-        <a href="module-4.html" class="module-nav-link">Module 4: Structural Freeze</a>
+        <a href="module-4.html" aria-disabled="true" title="Module 4 not yet available" class="module-nav-link">Module 4: Structural Freeze</a>
       </li>
     </ol>
   </nav>
@@ -665,7 +665,7 @@
                   </code>
                   <p class="artifact-card__desc">
                     The Bucket Map is the first major architecture artifact of the
-                    ARCH Method. It organizes the 16 declared scope items into
+                    ARCH Method™. It organizes the 16 declared scope items into
                     named, bounded categories and records the balance evaluation
                     that confirms the groupings are constraint-compliant.
                   </p>
@@ -889,10 +889,20 @@
       link.removeAttribute('aria-current');
     });
     const activeLink = document.querySelector(
-      '.module-nav-link[href="module-1.html"]'
+      '.module-nav-link[href="m1-l1a-s1.html"]'
     );
     if (activeLink) activeLink.setAttribute('aria-current', 'page');
   </script>
 
+
+  <!-- Shared JS modules: tracker redesign, breadcrumb, completion signal, panel init -->
+  <script type="module">
+    import { redesignTracker } from './js/trackerRedesign.js';
+    import { initCompletionSignal } from './js/completionSignal.js';
+    import './js/breadcrumb.js';
+    import './js/panelInit.js';
+    redesignTracker();
+    initCompletionSignal();
+  </script>
 </body>
 </html>

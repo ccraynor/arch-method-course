@@ -4,8 +4,6 @@
    SRC/css/global.css
 
    Requires: css/tokens.css loaded first
-   Provides: base reset, page layout, shared chrome, buttons, forms,
-             accessibility utilities, dark mode, high contrast, responsive
    ============================================================================= */
 
 /* ============================================================
@@ -26,8 +24,8 @@ body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
                'Helvetica Neue', Arial, sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
   color: var(--color-text-primary);
   background-color: var(--color-bg-page);
   display: grid;
@@ -43,7 +41,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  line-height: 1.25;
+  line-height: var(--line-height-heading);
 }
 
 p {
@@ -107,7 +105,7 @@ a {
   padding: 0.5rem 1rem;
   background: var(--color-brand-navy);
   color: var(--color-text-inverse);
-  font-size: 0.875rem;
+  font-size: var(--font-size-body);
   font-weight: 700;
   text-decoration: none;
   border-radius: 0.25rem;
@@ -136,7 +134,7 @@ main#main-content          { grid-area: main; min-width: 0; }
 #supplementary-resources   { grid-area: supp; min-width: 0; }
 footer[role="contentinfo"] { grid-area: ftr; }
 
-/* Support panel asides: fixed overlays, removed from grid flow */
+/* Support panel asides: fixed overlays, out of grid flow */
 #artifactDrawer,
 #decisionHistory,
 #glossary,
@@ -150,8 +148,8 @@ footer[role="contentinfo"] { grid-area: ftr; }
   max-width: 90vw;
   z-index: 400;
   background: var(--color-surface-overlay);
-  border-left: 1px solid var(--color-border-default);
-  box-shadow: -2px 0 20px rgba(0, 0, 0, 0.12);
+  border-left: 2px solid var(--color-border-default);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.14);
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -175,72 +173,121 @@ header[role="banner"] {
   z-index: 200;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 0.5rem 1.25rem;
+  gap: 1.25rem;
+  padding: 0.625rem 1.5rem;
   background: var(--color-brand-navy);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  min-height: 3.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  min-height: 3.75rem;
 }
+
+/* ---- Brand identity ---- */
 
 .header-brand {
   display: flex;
   flex-direction: column;
-  gap: 0.0625rem;
+  gap: 0.125rem;
   flex-shrink: 0;
   min-width: 0;
 }
 
 .brand-org {
-  font-size: 0.625rem;
+  font-size: var(--font-size-label);
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--letter-spacing-label);
   text-transform: uppercase;
-  color: var(--color-text-inverse);
-  opacity: 0.6;
+  color: var(--color-text-inverse);    /* pure white in light mode */
+  opacity: 1;
+  line-height: 1.2;
 }
 
 .brand-course {
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;               /* slightly larger than before for readability */
   font-weight: 700;
-  color: var(--color-text-inverse);
-  line-height: 1.3;
+  color: var(--color-text-inverse);    /* pure white */
+  line-height: 1.25;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 /* ============================================================
-   PROGRESS TRACKER -- location bar items
-   Higher specificity than persistentStepTracker.css to ensure
-   the pt-item and pt-divider text is visible on the navy header.
+   PROGRESS TRACKER -- two-line redesign
    ============================================================ */
 
 #progress-tracker {
   flex: 1;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.1875rem;
+  min-width: 0;
+}
+
+/* Row 1: Module · Lesson  |  Row 2: Activity Type · X.Y of Z */
+.pt-row {
+  display: flex;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 0;
   min-width: 0;
 }
 
+.pt-row--location {
+  /* Module and Lesson info */
+}
+
+.pt-row--activity {
+  /* Activity type and position */
+}
+
+/* Individual text items */
+.pt-item,
 header[role="banner"] #progress-tracker .pt-item {
   display: inline-flex;
   align-items: center;
-  font-size: 0.8125rem;
+  font-size: var(--font-size-label);
+  font-weight: 600;
   color: var(--color-text-inverse);
-  opacity: 0.8;
+  opacity: 0.92;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+.pt-item--type {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.pt-item--position {
+  opacity: 0.72;
+}
+
+/* Bullet separators */
+.pt-divider,
 header[role="banner"] #progress-tracker .pt-divider {
   display: inline-block;
-  padding: 0 0.375rem;
+  padding: 0 0.4375rem;
   color: var(--color-text-inverse);
-  opacity: 0.35;
-  font-size: 0.75rem;
+  opacity: 0.4;
+  font-size: var(--font-size-label);
   line-height: 1;
   user-select: none;
+  flex-shrink: 0;
+}
+
+/* Legacy single-row items (screens not yet redesigned by trackerRedesign.js) */
+#progress-tracker > .pt-item {
+  font-size: var(--font-size-label);
+  font-weight: 600;
+  color: var(--color-text-inverse);
+  opacity: 0.88;
+}
+
+#progress-tracker > .pt-divider {
+  padding: 0 0.375rem;
+  color: var(--color-text-inverse);
+  opacity: 0.38;
 }
 
 /* ============================================================
@@ -258,21 +305,25 @@ header nav[aria-label="Support tools"] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.75rem;
-  padding: 0 0.75rem;
-  background: rgba(255, 255, 255, 0.12);
+  height: 2.75rem;            /* 44px touch target */
+  min-width: 2.75rem;
+  padding: 0 0.875rem;
+  background: rgba(255, 255, 255, 0.1);
   color: var(--color-text-inverse);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.25rem;
   font-family: inherit;
-  font-size: 0.75rem;
+  font-size: var(--font-size-label);
   font-weight: 600;
+  letter-spacing: 0.01em;
   cursor: pointer;
   white-space: nowrap;
+  transition: background 0.12s, border-color 0.12s;
 }
 
 .support-toggle:hover {
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .support-toggle:focus-visible {
@@ -281,8 +332,9 @@ header nav[aria-label="Support tools"] {
 }
 
 .support-toggle[aria-expanded="true"] {
-  background: rgba(255, 255, 255, 0.28);
-  border-color: rgba(255, 255, 255, 0.45);
+  background: var(--color-brand-teal);
+  border-color: var(--color-brand-teal);
+  color: var(--color-text-inverse);
 }
 
 /* ============================================================
@@ -292,14 +344,13 @@ header nav[aria-label="Support tools"] {
 #course-nav {
   background: var(--color-bg-subtle);
   border-bottom: 1px solid var(--color-border-default);
-  padding: 0 1.25rem;
+  padding: 0 1.5rem;
   overflow-x: auto;
 }
 
 .module-nav-list {
   display: flex;
   align-items: stretch;
-  gap: 0;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -313,24 +364,32 @@ header nav[aria-label="Support tools"] {
 .module-nav-link {
   display: inline-flex;
   align-items: center;
-  padding: 0 0.875rem;
+  padding: 0 1rem;
   min-height: 2.75rem;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--color-text-secondary);
   text-decoration: none;
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid transparent;
   white-space: nowrap;
+  transition: color 0.1s, border-color 0.1s;
 }
 
 .module-nav-link:hover {
   color: var(--color-text-primary);
+  border-bottom-color: var(--color-border-default);
 }
 
 .module-nav-link[aria-current="page"] {
-  color: var(--color-text-primary);
+  color: var(--color-brand-teal);
   border-bottom-color: var(--color-brand-teal);
   font-weight: 700;
+}
+
+.module-nav-link[aria-disabled="true"] {
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .module-nav-link:focus-visible {
@@ -340,16 +399,71 @@ header nav[aria-label="Support tools"] {
 }
 
 /* ============================================================
+   BREADCRUMB NAVIGATION
+   ============================================================ */
+
+.breadcrumb {
+  margin-bottom: 0.875rem;
+}
+
+.breadcrumb__list {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.breadcrumb__item {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-label);
+}
+
+.breadcrumb__item + .breadcrumb__item::before {
+  content: '>';
+  display: inline-block;
+  padding: 0 0.375rem;
+  color: var(--color-text-disabled);
+  font-weight: 400;
+}
+
+.breadcrumb__item a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+.breadcrumb__item a:hover {
+  color: var(--color-text-link);
+  text-decoration: underline;
+}
+
+.breadcrumb__item [aria-current="page"] {
+  color: var(--color-text-link);
+}
+
+.breadcrumb__item:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ============================================================
    MAIN CONTENT AREA
    ============================================================ */
 
 main#main-content {
-  padding: 2rem 1.75rem 3rem;
+  padding: 2rem 2rem 3rem;
   overflow-y: auto;
 }
 
 #current-activity {
-  max-width: 58rem;
+  max-width: 56rem;
 }
 
 /* ============================================================
@@ -358,12 +472,12 @@ main#main-content {
 
 #supplementary-resources {
   background: var(--color-bg-subtle);
-  border-left: 1px solid var(--color-border-default);
-  padding: 1.25rem 1rem 2rem;
+  border-left: 2px solid var(--color-border-default);
+  padding: 1.5rem 1.25rem 2rem;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--space-section);
 }
 
 #supplementary-resources section {
@@ -371,21 +485,47 @@ main#main-content {
   flex-direction: column;
 }
 
+/* Stronger heading treatment -- visual separation from main */
 .aside-heading {
-  margin: 0 0 0.625rem;
-  padding-bottom: 0.375rem;
-  font-size: 0.6875rem;
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.5rem;
+  font-size: var(--font-size-label);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.09em;
-  color: var(--color-text-secondary);
-  border-bottom: 1px solid var(--color-border-default);
+  letter-spacing: var(--letter-spacing-label);
+  color: var(--color-text-primary);          /* stronger than secondary */
+  border-bottom: 2px solid var(--color-border-default);
 }
 
 .aside-empty {
-  font-size: 0.8125rem;
-  color: var(--color-text-disabled);
-  line-height: 1.6;
+  font-size: var(--font-size-body);          /* up from 0.8125rem */
+  color: var(--color-text-primary);          /* up from disabled */
+  line-height: var(--line-height-body);
+}
+
+/* ---- Commitment section in sidebar ---- */
+.aside-commitment {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.aside-commitment__text {
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-body);
+  font-style: italic;
+  padding: 0.75rem;
+  background: var(--color-surface-raised);
+  border-left: 3px solid var(--color-brand-teal);
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.aside-commitment__link {
+  font-size: var(--font-size-label);
+  font-weight: 600;
+  color: var(--color-text-link);
+  text-decoration: underline;
 }
 
 /* ============================================================
@@ -397,7 +537,7 @@ main#main-content {
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  padding: 0.875rem 1rem;
+  padding: 1rem 1.25rem;
   border-bottom: 1px solid var(--color-border-default);
   background: var(--color-surface-raised);
   flex-shrink: 0;
@@ -405,7 +545,7 @@ main#main-content {
 
 .panel-title {
   margin: 0;
-  font-size: 0.9375rem;
+  font-size: var(--font-size-heading);
   font-weight: 700;
   color: var(--color-text-primary);
 }
@@ -415,7 +555,7 @@ main#main-content {
   align-items: center;
   justify-content: center;
   width: 2.75rem;
-  height: 2.75rem;
+  height: 2.75rem;       /* 44px */
   flex-shrink: 0;
   background: transparent;
   color: var(--color-text-secondary);
@@ -423,6 +563,7 @@ main#main-content {
   border-radius: 0.25rem;
   cursor: pointer;
   font-family: inherit;
+  transition: background 0.1s, color 0.1s;
 }
 
 .panel-close:hover {
@@ -437,20 +578,30 @@ main#main-content {
 
 .panel-body {
   flex: 1;
-  padding: 1rem;
+  padding: 1.25rem;
   overflow-y: auto;
+}
+
+/* ---- Panel first-use description ---- */
+.panel-description {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-body);
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border-default);
 }
 
 .panel-body textarea {
   width: 100%;
-  padding: 0.625rem 0.75rem;
+  padding: 0.75rem;
   background: var(--color-surface-default);
   color: var(--color-text-primary);
   border: 1px solid var(--color-border-default);
   border-radius: 0.25rem;
   font-family: inherit;
-  font-size: 0.875rem;
-  line-height: 1.6;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
   resize: vertical;
 }
 
@@ -467,11 +618,11 @@ main#main-content {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.375rem;
+  gap: 0.5rem;
   min-height: 2.75rem;
-  padding: 0 1.25rem;
+  padding: 0 1.375rem;
   font-family: inherit;
-  font-size: 0.875rem;
+  font-size: var(--font-size-body);
   font-weight: 600;
   text-decoration: none;
   border: 1px solid transparent;
@@ -479,6 +630,7 @@ main#main-content {
   cursor: pointer;
   white-space: nowrap;
   line-height: 1.2;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
 }
 
 .btn:focus-visible {
@@ -486,6 +638,7 @@ main#main-content {
   outline-offset: 2px;
 }
 
+/* Primary: teal fill */
 .btn--primary {
   background: var(--color-brand-teal);
   color: var(--color-text-inverse);
@@ -497,6 +650,7 @@ main#main-content {
   border-color: var(--color-brand-navy);
 }
 
+/* Secondary: outlined */
 .btn--secondary {
   background: transparent;
   color: var(--color-text-primary);
@@ -508,17 +662,24 @@ main#main-content {
   border-color: var(--color-border-strong);
 }
 
+/* Nav (Prev/Next): prominent, minimum 48px height */
 .btn--nav {
+  min-height: 3rem;              /* 48px -- visually prominent */
+  padding: 0 1.5rem;
   background: var(--color-bg-subtle);
   color: var(--color-text-primary);
-  border-color: var(--color-border-default);
-  padding: 0 1.125rem;
+  border: 2px solid var(--color-border-default);
+  border-radius: 0.375rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
 }
 
 .btn--nav:hover {
   background: var(--color-border-default);
+  border-color: var(--color-border-strong);
 }
 
+/* Save / Submit */
 .btn--save {
   background: transparent;
   color: var(--color-text-primary);
@@ -533,7 +694,7 @@ main#main-content {
   background: var(--color-brand-teal);
   color: var(--color-text-inverse);
   border-color: var(--color-brand-teal);
-  padding: 0 1.75rem;
+  padding: 0 2rem;
 }
 
 .btn--submit:hover {
@@ -548,6 +709,13 @@ main#main-content {
   pointer-events: none;
 }
 
+/* Completion signal: dot fill on Next click */
+.btn--next.is-completing {
+  background: var(--color-success-bg);
+  border-color: var(--color-success-border);
+  color: var(--color-success-text);
+}
+
 /* ============================================================
    SCREEN NAVIGATION
    ============================================================ */
@@ -556,14 +724,35 @@ main#main-content {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 0.75rem;
-  margin-top: 2.5rem;
+  gap: 0.875rem;
+  margin-top: var(--space-section);
   padding-top: 1.5rem;
   border-top: 1px solid var(--color-border-default);
 }
 
 .screen-nav:has(.btn--prev) {
   justify-content: space-between;
+}
+
+/* ============================================================
+   CARD / CONTENT BLOCK SHARED TREATMENT
+   ============================================================ */
+
+.card,
+.form-section,
+.gate-record-card,
+.record-card,
+.worked-example__card,
+.decision-option,
+.calibration-panel,
+.decision-record,
+.artifact-preview,
+.reflection-card {
+  padding: 1.5rem;              /* minimum 1.5rem per spec */
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border-default);
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 /* ============================================================
@@ -576,24 +765,24 @@ footer[role="contentinfo"] {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.75rem;
-  padding: 0.875rem 1.25rem;
+  padding: 1rem 1.5rem;
   background: var(--color-bg-subtle);
   border-top: 1px solid var(--color-border-default);
 }
 
 .footer-copy {
-  font-size: 0.75rem;
+  font-size: var(--font-size-label);
   color: var(--color-text-secondary);
 }
 
 footer[role="contentinfo"] nav {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 footer[role="contentinfo"] nav a {
-  font-size: 0.75rem;
+  font-size: var(--font-size-label);
   color: var(--color-text-secondary);
   text-decoration: underline;
 }
@@ -610,76 +799,72 @@ footer[role="contentinfo"] nav a:focus-visible {
 
 /* ============================================================
    LESSON INTRO CONTENT
-   Used by intro-0.1.html and any lesson-intro-template screens
-   that do not define these classes inline.
+   (intro-0.1.html and lesson-intro screens without inline styles)
    ============================================================ */
 
 .lesson-intro {
-  max-width: 58rem;
+  max-width: 56rem;
 }
 
 .lesson-intro__header {
-  margin-bottom: 1.75rem;
+  margin-bottom: var(--space-section);
 }
 
 .lesson-label {
   display: block;
   margin-bottom: 0.375rem;
-  font-size: 0.6875rem;
+  font-size: var(--font-size-label);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.09em;
+  letter-spacing: var(--letter-spacing-label);
   color: var(--color-text-link);
 }
 
 .lesson-intro__title {
   margin: 0;
-  font-size: 1.625rem;
+  font-size: var(--font-size-title);
   font-weight: 800;
   color: var(--color-text-primary);
-  line-height: 1.2;
+  line-height: var(--line-height-title);
 }
 
 .lesson-intro__lead {
   margin-top: 0.75rem;
   font-size: 1.0625rem;
   color: var(--color-text-secondary);
-  line-height: 1.65;
+  line-height: var(--line-height-body);
+  max-width: var(--content-max-width);
 }
 
 .lesson-intro__purpose {
-  margin-bottom: 1.75rem;
+  margin-bottom: var(--space-section);
   padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--color-border-default);
-  max-width: 68ch;
+  max-width: var(--content-max-width);
 }
 
 .lesson-intro__section-heading {
   margin-bottom: 0.5rem;
-  font-size: 0.6875rem;
+  font-size: var(--font-size-label);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.09em;
+  letter-spacing: var(--letter-spacing-label);
   color: var(--color-text-secondary);
 }
 
-.lesson-intro__purpose-text {
-  font-size: 1rem;
-  color: var(--color-text-primary);
-  line-height: 1.7;
-}
-
+.lesson-intro__purpose-text,
 .lesson-intro__body-text {
-  font-size: 1rem;
+  font-size: var(--font-size-body);
   color: var(--color-text-primary);
-  line-height: 1.7;
+  line-height: var(--line-height-body);
+  max-width: var(--content-max-width);
 }
 
 .lesson-intro__outcomes {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.25rem 2.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-section);
   max-width: 760px;
 }
 
@@ -693,15 +878,14 @@ footer[role="contentinfo"] nav a:focus-visible {
 }
 
 .lesson-intro__list li {
-  font-size: 0.9375rem;
+  font-size: var(--font-size-body);
   color: var(--color-text-primary);
-  line-height: 1.55;
+  line-height: var(--line-height-body);
+  max-width: var(--content-max-width);
 }
 
 /* ============================================================
-   GOVERNANCE FORM ARTICLE
-   Default styles for screens using the governance-form-template.
-   Inline styles per screen override these when present.
+   GOVERNANCE FORM ARTICLE (default styles for template screens)
    ============================================================ */
 
 .governance-form-article {
@@ -709,7 +893,7 @@ footer[role="contentinfo"] nav a:focus-visible {
 }
 
 .governance-form-article__header {
-  margin-bottom: 1.75rem;
+  margin-bottom: var(--space-section);
   padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--color-border-default);
 }
@@ -717,36 +901,37 @@ footer[role="contentinfo"] nav a:focus-visible {
 .screen-type-label {
   display: inline-block;
   margin-bottom: 0.375rem;
-  padding: 0.125rem 0.5rem;
+  padding: 0.1875rem 0.625rem;
   background: var(--color-bg-subtle);
   border: 1px solid var(--color-border-default);
   border-radius: 3px;
-  font-size: 0.6875rem;
+  font-size: var(--font-size-label);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--letter-spacing-label);
   color: var(--color-text-secondary);
 }
 
 .governance-form-article__title {
   margin: 0.5rem 0 0.75rem;
-  font-size: 1.625rem;
+  font-size: var(--font-size-title);
   font-weight: 800;
   color: var(--color-text-primary);
-  line-height: 1.2;
+  line-height: var(--line-height-title);
 }
 
 .governance-form-article__intro {
-  font-size: 0.9375rem;
+  font-size: var(--font-size-body);
   color: var(--color-text-secondary);
-  line-height: 1.6;
+  line-height: var(--line-height-body);
+  max-width: var(--content-max-width);
 }
 
 /* ---- Error summary ---- */
 
 .error-summary {
   margin-bottom: 1.5rem;
-  padding: 1rem 1.25rem;
+  padding: 1.25rem 1.5rem;
   background: var(--color-error-bg);
   border: 1px solid var(--color-error-border);
   border-left: 4px solid var(--color-error-border);
@@ -755,7 +940,7 @@ footer[role="contentinfo"] nav a:focus-visible {
 
 .error-summary__heading {
   margin-bottom: 0.5rem;
-  font-size: 1rem;
+  font-size: var(--font-size-heading);
   font-weight: 700;
   color: var(--color-error-text);
 }
@@ -768,7 +953,7 @@ footer[role="contentinfo"] nav a:focus-visible {
 
 .error-summary__list li {
   margin-bottom: 0.25rem;
-  font-size: 0.875rem;
+  font-size: var(--font-size-body);
 }
 
 .error-summary__list a {
@@ -779,19 +964,20 @@ footer[role="contentinfo"] nav a:focus-visible {
 /* ---- Form progress indicator ---- */
 
 .form-progress {
-  margin-bottom: 2rem;
-  padding: 1rem 1.25rem;
+  margin-bottom: var(--space-section);
+  padding: 1.25rem 1.5rem;
   background: var(--color-surface-raised);
   border: 1px solid var(--color-border-default);
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .form-progress__heading {
-  margin-bottom: 0.625rem;
-  font-size: 0.6875rem;
+  margin-bottom: 0.75rem;
+  font-size: var(--font-size-label);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.09em;
+  letter-spacing: var(--letter-spacing-label);
   color: var(--color-text-secondary);
 }
 
@@ -813,14 +999,14 @@ footer[role="contentinfo"] nav a:focus-visible {
 
 .form-progress__count {
   margin-bottom: 0.875rem;
-  font-size: 0.8125rem;
+  font-size: var(--font-size-body);
   color: var(--color-text-secondary);
 }
 
 .form-progress__sections {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.375rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -832,7 +1018,7 @@ footer[role="contentinfo"] nav a:focus-visible {
   justify-content: space-between;
   gap: 1rem;
   padding: 0.25rem 0;
-  font-size: 0.8125rem;
+  font-size: var(--font-size-body);
 }
 
 .progress-section__name {
@@ -840,7 +1026,7 @@ footer[role="contentinfo"] nav a:focus-visible {
 }
 
 .progress-section__status {
-  font-size: 0.75rem;
+  font-size: var(--font-size-label);
   font-weight: 600;
   color: var(--color-text-secondary);
   white-space: nowrap;
@@ -857,20 +1043,21 @@ footer[role="contentinfo"] nav a:focus-visible {
 /* ---- Form sections (fieldsets) ---- */
 
 .form-section {
-  margin-bottom: 2rem;
-  padding: 1.5rem 1.25rem 1.25rem;
+  margin-bottom: var(--space-section);
+  padding: 1.5rem;
   background: var(--color-surface-raised);
   border: 1px solid var(--color-border-default);
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .form-section__legend {
   display: flex;
   align-items: center;
-  gap: 0.625rem;
+  gap: 0.75rem;
   padding: 0;
   margin-bottom: 1.25rem;
-  font-size: 1rem;
+  font-size: var(--font-size-heading);
   font-weight: 700;
   color: var(--color-text-primary);
   width: 100%;
@@ -887,12 +1074,12 @@ footer[role="contentinfo"] nav a:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.75rem;
-  height: 1.75rem;
-  min-width: 1.75rem;
+  width: 1.875rem;
+  height: 1.875rem;
+  min-width: 1.875rem;
   background: var(--color-brand-navy);
   color: var(--color-text-inverse);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 700;
   border-radius: 50%;
 }
@@ -900,13 +1087,13 @@ footer[role="contentinfo"] nav a:focus-visible {
 /* ---- Form fields ---- */
 
 .form-field {
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
 }
 
 .form-field__label {
   display: block;
-  margin-bottom: 0.375rem;
-  font-size: 0.875rem;
+  margin-bottom: 0.4375rem;
+  font-size: var(--font-size-body);
   font-weight: 600;
   color: var(--color-text-primary);
   line-height: 1.4;
@@ -914,9 +1101,10 @@ footer[role="contentinfo"] nav a:focus-visible {
 
 .form-field__hint {
   margin-bottom: 0.5rem;
-  font-size: 0.8125rem;
+  font-size: var(--font-size-body);
   color: var(--color-text-secondary);
-  line-height: 1.5;
+  line-height: var(--line-height-body);
+  max-width: var(--content-max-width);
 }
 
 .field-required {
@@ -927,7 +1115,7 @@ footer[role="contentinfo"] nav a:focus-visible {
 
 .field-optional {
   margin-left: 0.375rem;
-  font-size: 0.75rem;
+  font-size: var(--font-size-label);
   font-weight: 400;
   color: var(--color-text-secondary);
 }
@@ -935,7 +1123,7 @@ footer[role="contentinfo"] nav a:focus-visible {
 .field-error {
   display: block;
   margin-top: 0.375rem;
-  font-size: 0.8125rem;
+  font-size: var(--font-size-body);
   font-weight: 600;
   color: var(--color-error-text);
 }
@@ -947,14 +1135,14 @@ footer[role="contentinfo"] nav a:focus-visible {
 .governance-select {
   display: block;
   width: 100%;
-  padding: 0.5rem 0.75rem;
+  padding: 0.625rem 0.875rem;
   background: var(--color-surface-default);
   color: var(--color-text-primary);
   border: 1px solid var(--color-border-default);
   border-radius: 0.25rem;
   font-family: inherit;
-  font-size: 0.9375rem;
-  line-height: 1.5;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
 }
 
 .governance-input:focus,
@@ -974,15 +1162,15 @@ footer[role="contentinfo"] nav a:focus-visible {
 
 .governance-textarea {
   resize: vertical;
-  min-height: 5rem;
+  min-height: 5.5rem;
 }
 
 .governance-select {
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%234A6581' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 0.625rem center;
-  padding-right: 2.25rem;
+  background-position: right 0.75rem center;
+  padding-right: 2.5rem;
 }
 
 /* ---- Radio and checkbox controls ---- */
@@ -990,8 +1178,8 @@ footer[role="contentinfo"] nav a:focus-visible {
 .radio-option {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.625rem;
+  gap: 0.625rem;
+  margin-top: 0.75rem;
 }
 
 .governance-radio,
@@ -1012,12 +1200,12 @@ footer[role="contentinfo"] nav a:focus-visible {
 .form-field--checkbox {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
-  margin-top: 1.25rem;
+  gap: 0.875rem;
+  margin-top: 1.5rem;
 }
 
 .form-field--checkbox .governance-checkbox {
-  margin-top: 0.1875rem;
+  margin-top: 0.2rem;
   flex-shrink: 0;
 }
 
@@ -1032,12 +1220,12 @@ footer[role="contentinfo"] nav a:focus-visible {
 .save-controls {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin: 1.5rem 0 0.75rem;
+  gap: 1.25rem;
+  margin: 1.75rem 0 0.875rem;
 }
 
 .save-status {
-  font-size: 0.8125rem;
+  font-size: var(--font-size-body);
   color: var(--color-text-secondary);
 }
 
@@ -1046,14 +1234,15 @@ footer[role="contentinfo"] nav a:focus-visible {
 .form-submit-row {
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
-  margin-top: 0.75rem;
+  gap: 0.75rem;
+  margin-top: 0.875rem;
 }
 
 .submit-note {
-  font-size: 0.8125rem;
+  font-size: var(--font-size-body);
   color: var(--color-text-secondary);
-  line-height: 1.5;
+  line-height: var(--line-height-body);
+  max-width: var(--content-max-width);
 }
 
 /* ---- Submit success ---- */
@@ -1061,12 +1250,12 @@ footer[role="contentinfo"] nav a:focus-visible {
 .submit-success {
   display: flex;
   align-items: flex-start;
-  gap: 0.875rem;
-  margin-top: 1.25rem;
-  padding: 1rem 1.25rem;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
   background: var(--color-success-bg);
   border: 1px solid var(--color-success-border);
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
 }
 
 .submit-success__icon {
@@ -1076,13 +1265,13 @@ footer[role="contentinfo"] nav a:focus-visible {
 
 .submit-success__heading {
   margin-bottom: 0.25rem;
-  font-size: 0.9375rem;
+  font-size: var(--font-size-heading);
   font-weight: 700;
   color: var(--color-success-text);
 }
 
 .submit-success__detail {
-  font-size: 0.8125rem;
+  font-size: var(--font-size-body);
   color: var(--color-success-text);
 }
 
@@ -1096,21 +1285,25 @@ footer[role="contentinfo"] nav a:focus-visible {
     border-bottom-color: var(--color-border-default);
   }
 
-  .brand-org {
-    color: var(--color-text-secondary);
-    opacity: 1;
-  }
-
+  .brand-org,
   .brand-course {
     color: var(--color-text-primary);
   }
 
-  header[role="banner"] #progress-tracker .pt-item {
+  .brand-org {
+    opacity: 0.75;
+  }
+
+  header[role="banner"] #progress-tracker .pt-item,
+  #progress-tracker > .pt-item,
+  .pt-row .pt-item {
     color: var(--color-text-secondary);
     opacity: 1;
   }
 
-  header[role="banner"] #progress-tracker .pt-divider {
+  header[role="banner"] #progress-tracker .pt-divider,
+  #progress-tracker > .pt-divider,
+  .pt-row .pt-divider {
     color: var(--color-border-default);
     opacity: 1;
   }
@@ -1126,8 +1319,9 @@ footer[role="contentinfo"] nav a:focus-visible {
   }
 
   .support-toggle[aria-expanded="true"] {
-    background: rgba(255, 255, 255, 0.16);
-    border-color: var(--color-border-strong);
+    background: var(--color-brand-teal);
+    border-color: var(--color-brand-teal);
+    color: var(--color-text-inverse);
   }
 
   .governance-select {
@@ -1139,7 +1333,7 @@ footer[role="contentinfo"] nav a:focus-visible {
   #glossary,
   #supportPanel,
   #annotationPanel {
-    box-shadow: -2px 0 20px rgba(0, 0, 0, 0.45);
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.5);
   }
 
   .form-section__number {
@@ -1156,8 +1350,12 @@ footer[role="contentinfo"] nav a:focus-visible {
     border-width: 2px;
   }
 
+  .btn--nav {
+    border-width: 3px;
+  }
+
   .module-nav-link[aria-current="page"] {
-    border-bottom-width: 3px;
+    border-bottom-width: 4px;
   }
 
   .support-toggle {
@@ -1179,7 +1377,11 @@ footer[role="contentinfo"] nav a:focus-visible {
   }
 
   #supplementary-resources {
-    border-left-width: 2px;
+    border-left-width: 3px;
+  }
+
+  .aside-heading {
+    border-bottom-width: 3px;
   }
 }
 
@@ -1192,13 +1394,17 @@ footer[role="contentinfo"] nav a:focus-visible {
     scroll-behavior: auto;
   }
 
-  .form-progress__bar-fill {
+  .form-progress__bar-fill,
+  .btn,
+  .support-toggle,
+  .module-nav-link,
+  .panel-close {
     transition: none;
   }
 }
 
 /* ============================================================
-   RESPONSIVE -- narrow viewports (< 768px)
+   RESPONSIVE: 768px -- sidebar stacks below main
    ============================================================ */
 
 @media (max-width: 767px) {
@@ -1214,27 +1420,10 @@ footer[role="contentinfo"] nav a:focus-visible {
 
   #supplementary-resources {
     border-left: none;
-    border-top: 1px solid var(--color-border-default);
-  }
-
-  header nav[aria-label="Support tools"] {
-    gap: 0.25rem;
-  }
-
-  .support-toggle {
-    padding: 0 0.5rem;
-    font-size: 0.6875rem;
-  }
-
-  main#main-content {
-    padding: 1.25rem 1rem 2rem;
+    border-top: 2px solid var(--color-border-default);
   }
 
   .lesson-intro__outcomes {
-    grid-template-columns: 1fr;
-  }
-
-  .worked-example__layout {
     grid-template-columns: 1fr;
   }
 
@@ -1245,18 +1434,73 @@ footer[role="contentinfo"] nav a:focus-visible {
   }
 }
 
+/* ============================================================
+   RESPONSIVE: 375px -- mobile fine-tuning
+   ============================================================ */
+
 @media (max-width: 479px) {
-  .brand-course {
-    font-size: 0.6875rem;
-    max-width: 10rem;
+  header[role="banner"] {
+    gap: 0.625rem;
+    padding: 0.5rem 0.875rem;
   }
 
-  header[role="banner"] {
-    gap: 0.5rem;
+  .brand-course {
+    font-size: 0.8125rem;
+    max-width: 9rem;
+  }
+
+  /* Support toggles: compact on small screens */
+  header nav[aria-label="Support tools"] {
+    gap: 0.1875rem;
   }
 
   .support-toggle {
-    font-size: 0.625rem;
-    padding: 0 0.375rem;
+    padding: 0 0.5rem;
+    font-size: 0.6875rem;
+  }
+
+  /* Progress tracker dots: wrap allowed */
+  #progress-tracker {
+    flex-wrap: wrap;
+  }
+
+  /* Panel overlays: near full-width */
+  #artifactDrawer,
+  #decisionHistory,
+  #glossary,
+  #supportPanel,
+  #annotationPanel {
+    width: calc(100vw - 2rem);
+  }
+
+  /* Nav buttons: stack vertically, full width */
+  .screen-nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .screen-nav .btn--nav {
+    width: 100%;
+    min-height: 3rem;         /* 48px */
+    justify-content: center;
+  }
+
+  main#main-content {
+    padding: 1.25rem 1rem 2rem;
+  }
+}
+
+/* Enforce minimum 16px (1rem) on mobile for all text -- WCAG 1.4.4 */
+@media (max-width: 479px) {
+  body,
+  .pt-item,
+  .btn,
+  .form-field__label,
+  .form-field__hint,
+  .submit-note,
+  .save-status,
+  .aside-empty,
+  p, li, td, th {
+    font-size: max(var(--font-size-body), 1rem);
   }
 }
