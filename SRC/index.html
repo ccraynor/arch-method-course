@@ -1,1 +1,205 @@
-<meta http-equiv="refresh" content="0; url=intro-0.1.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ARCH Method Practitioner Credential by Proof Point Learning. A constraint-governed workflow for course architecture design. Begin the introduction or preview Module 1.">
+  <title>ARCH Method&#x2122; Practitioner Credential -- Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    /* ================================================================
+       Landing page (Prompt C Section 8). Layout only; all colors via
+       tokens. No hard-coded color values.
+       ================================================================ */
+
+    .landing-wrap { max-width: 64rem; margin: 0 auto; padding: 0 1.25rem; }
+
+    /* Header / wordmark */
+    .landing-header { padding: 1.25rem 0 0.5rem; }
+    .landing-wordmark { font-size: 1rem; font-weight: 800; letter-spacing: 0.01em; color: var(--color-brand-navy); }
+
+    /* Hero */
+    .landing-hero { padding: 2rem 0 2.5rem; border-bottom: 1px solid var(--color-border-default); }
+    .landing-hero__title { margin: 0 0 0.625rem; font-size: 2rem; font-weight: 800; line-height: 1.15; color: var(--color-text-primary); }
+    .landing-hero__tagline { margin: 0 0 1rem; font-size: 1.125rem; color: var(--color-text-secondary); line-height: 1.5; }
+    .landing-hero__stance { margin: 0; max-width: 60ch; font-size: 1rem; line-height: 1.7; color: var(--color-text-primary); padding-left: 0.875rem; border-left: 3px solid var(--color-brand-teal); }
+
+    /* Teal-outlined button (decision 3): brand-teal border + text */
+    .btn--outline-teal { background: transparent; color: var(--color-text-link); border-color: var(--color-brand-teal); }
+    .btn--outline-teal:hover { background: var(--color-bg-subtle); border-color: var(--color-brand-teal); }
+
+    /* Section scaffolding */
+    .landing-section { padding: 2.25rem 0; border-bottom: 1px solid var(--color-border-default); }
+    .landing-section__heading { margin: 0 0 1.25rem; font-size: 1.375rem; font-weight: 800; color: var(--color-text-primary); }
+
+    /* Get Started cards */
+    .start-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; }
+    .start-card { display: flex; flex-direction: column; gap: 0.625rem; padding: 1.25rem; border: 1px solid var(--color-border-default); border-radius: 8px; background: var(--color-bg-page); }
+    .start-card__title { margin: 0; font-size: 1.0625rem; font-weight: 800; color: var(--color-text-primary); }
+    .start-card__body { margin: 0; flex: 1; font-size: 0.9375rem; line-height: 1.6; color: var(--color-text-secondary); }
+    .start-card .btn { align-self: flex-start; }
+
+    /* Module tiles */
+    .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+    .module-tile { display: block; padding: 1.125rem 1.25rem; border: 1px solid var(--color-border-default); border-radius: 8px; background: var(--color-bg-page); }
+    a.module-tile { text-decoration: none; color: inherit; transition: border-color 0.15s, background 0.15s; }
+    a.module-tile:hover { border-color: var(--color-brand-teal); background: var(--color-bg-subtle); }
+    a.module-tile:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+    .module-tile--soon { opacity: 0.85; }
+    .module-tile__top { display: flex; align-items: center; justify-content: space-between; gap: 0.625rem; margin: 0 0 0.375rem; }
+    .module-tile__name { font-size: 1rem; font-weight: 800; color: var(--color-text-primary); }
+    .module-tile__desc { margin: 0; font-size: 0.875rem; line-height: 1.55; color: var(--color-text-secondary); }
+    .module-status { flex-shrink: 0; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.125rem 0.5rem; border-radius: 0.75rem; }
+    .module-status--available { color: var(--color-success-text); background: var(--color-success-bg); border: 1px solid var(--color-success-border); }
+    .module-status--soon { color: var(--color-text-secondary); background: var(--color-bg-subtle); border: 1px solid var(--color-border-default); }
+
+    .landing-prose { margin: 1.5rem 0 0; max-width: 70ch; font-size: 0.9375rem; line-height: 1.7; color: var(--color-text-primary); }
+
+    /* Study plan */
+    .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+    .plan-card { padding: 1.125rem 1.25rem; border: 1px solid var(--color-border-default); border-radius: 8px; background: var(--color-bg-page); }
+    .plan-card__name { margin: 0 0 0.5rem; font-size: 1rem; font-weight: 800; color: var(--color-text-primary); }
+    .plan-card__detail { margin: 0; font-size: 0.9375rem; line-height: 1.6; color: var(--color-text-secondary); }
+
+    /* Footer */
+    .landing-footer { padding: 1.5rem 0 2.5rem; }
+    .landing-footer__text { margin: 0; font-size: 0.8125rem; color: var(--color-text-secondary); }
+
+    @media (max-width: 560px) {
+      .landing-hero__title { font-size: 1.625rem; }
+      .start-grid, .module-grid, .plan-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-contrast: more) {
+      .start-card, .module-tile, .plan-card, .landing-hero { border-color: var(--color-border-strong); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+  </nav>
+
+  <header role="banner" class="landing-header">
+    <div class="landing-wrap">
+      <span class="landing-wordmark">Proof Point Learning</span>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+
+    <section class="landing-hero" aria-label="Credential overview">
+      <div class="landing-wrap">
+        <h1 class="landing-hero__title">ARCH Method&#x2122; Practitioner Credential</h1>
+        <p class="landing-hero__tagline">A constraint-governed workflow for course architecture design</p>
+        <p class="landing-hero__stance">
+          A well-designed course architecture makes the intended learning visible before development begins.
+          Constraint-governed design does not limit creativity. It makes every creative decision defensible.
+        </p>
+      </div>
+    </section>
+
+    <section class="landing-section" aria-labelledby="get-started-heading">
+      <div class="landing-wrap">
+        <h2 id="get-started-heading" class="landing-section__heading">Get Started</h2>
+        <div class="start-grid">
+
+          <article class="start-card">
+            <h3 class="start-card__title">Start the Credential</h3>
+            <p class="start-card__body">Begin with the introduction, meet the Meridian scenario, and write your learner commitment note.</p>
+            <a href="intro-0.1.html" class="btn btn--primary">Begin Introduction</a>
+          </article>
+
+          <article class="start-card">
+            <h3 class="start-card__title">Preview the Course</h3>
+            <p class="start-card__body">Jump directly to Module 1 content. Explore lesson structure, worked examples, and guided practice.</p>
+            <a href="m1-overview.html" class="btn btn--outline-teal">Enter Module 1</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-section" aria-labelledby="modules-heading">
+      <div class="landing-wrap">
+        <h2 id="modules-heading" class="landing-section__heading">The Four Modules</h2>
+        <div class="module-grid">
+
+          <a href="m1-overview.html" class="module-tile">
+            <div class="module-tile__top">
+              <span class="module-tile__name">Module 1: Bound the Course</span>
+              <span class="module-status module-status--available">Available</span>
+            </div>
+            <p class="module-tile__desc">Scope definition, bucket mapping, and decomposition.</p>
+          </a>
+
+          <div class="module-tile module-tile--soon" aria-label="Module 2, coming soon">
+            <div class="module-tile__top">
+              <span class="module-tile__name">Module 2: Engineer the Learning</span>
+              <span class="module-status module-status--soon">Coming Soon</span>
+            </div>
+            <p class="module-tile__desc">Sequencing, spiral reinforcement, and learning science.</p>
+          </div>
+
+          <div class="module-tile module-tile--soon" aria-label="Module 3, coming soon">
+            <div class="module-tile__top">
+              <span class="module-tile__name">Module 3: Stress-Test the Design</span>
+              <span class="module-status module-status--soon">Coming Soon</span>
+            </div>
+            <p class="module-tile__desc">Structural diagnostics and governance checkpoints.</p>
+          </div>
+
+          <div class="module-tile module-tile--soon" aria-label="Module 4, coming soon">
+            <div class="module-tile__top">
+              <span class="module-tile__name">Module 4: Structural Freeze</span>
+              <span class="module-status module-status--soon">Coming Soon</span>
+            </div>
+            <p class="module-tile__desc">Learner simulation, refinement, and freeze declaration.</p>
+          </div>
+
+        </div>
+
+        <p class="landing-prose">
+          This credential demonstrates advanced course design capability through a structured project-based experience.
+          The designer produces a complete, governance-documented course architecture for a complex real-world scenario.
+          It is the kind of design package most institutions never require and most instructional designers have never produced.
+        </p>
+      </div>
+    </section>
+
+    <section class="landing-section" aria-labelledby="study-plan-heading">
+      <div class="landing-wrap">
+        <h2 id="study-plan-heading" class="landing-section__heading">Study Plan</h2>
+        <div class="plan-grid">
+
+          <article class="plan-card">
+            <h3 class="plan-card__name">Intensive</h3>
+            <p class="plan-card__detail">8 weeks. 3 sessions per week. 60 to 90 minutes per session.</p>
+          </article>
+
+          <article class="plan-card">
+            <h3 class="plan-card__name">Standard</h3>
+            <p class="plan-card__detail">12 weeks. 2 sessions per week. 60 to 90 minutes per session.</p>
+          </article>
+
+          <article class="plan-card">
+            <h3 class="plan-card__name">Flexible</h3>
+            <p class="plan-card__detail">Self-paced, with suggested natural stopping points at the end of each lesson reflection screen.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer role="contentinfo" class="landing-footer">
+    <div class="landing-wrap">
+      <p class="landing-footer__text">&copy; 2026 Proof Point Learning. All rights reserved. Built with the ARCH Method&#x2122;</p>
+    </div>
+  </footer>
+
+</body>
+</html>
