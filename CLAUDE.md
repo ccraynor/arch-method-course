@@ -18,9 +18,12 @@ Meridian Regional Health Network — a multi-site healthcare organization
 developing a Cybersecurity Incident Response course for healthcare IT professionals.
 
 ### Architecture
-- 115 screens total across 4 modules plus introduction
-- 21 lessons
-- 9 introduction screens (0.1 through 0.9)
+
+Module 1 is built. Modules 2-4 are planned. The course also has a
+9-screen introduction and a landing page (index.html).
+
+- 21 lessons total across the four modules
+- 9 introduction screens (intro-0.1 through intro-0.9)
 - Module 1: Bound the Course (Lessons 1.1a, 1.1b, 1.2, 1.3, 1.4a, 1.4b + Gate 1.TG.1)
   - Lesson 1.1b has 8 screens: s5 = Tasks 1+2, s6 = Task 3, s7 = reflection; s4b = faded example (Output Style Gate) inserted between s4 and s5
   - Lesson 1.4a has 6 screens: s3b = faded example (complete the SI-09 decomposition) inserted between s3 and s4
@@ -30,6 +33,36 @@ developing a Cybersecurity Incident Response course for healthcare IT profession
   - Lesson 3.3 has 7 screens. Section Alignment Check (Step 16) spans both 
     Lesson 3.3 and Lesson 3.4. Step 17 belongs to Module 4 Lesson 4.1 only.
 - Module 4: Structural Freeze (Lessons 4.1, 4.2, 4.3, 4.4, 4.5)
+
+#### Current Screen Counts (verified, Module 1 built)
+- Lesson 1 (1.1a): 5 screens
+- Lesson 2 (1.1b): 8 screens (includes s4b faded example)
+- Lesson 3 (1.2): 7 screens (m1-l2-s5.html is a redirect stub, not a learner screen)
+- Lesson 4 (1.3): 5 screens
+- Lesson 5 (1.4a): 6 screens (includes s3b faded example)
+- Lesson 6 (1.4b): 7 screens
+- Gate: 1 screen
+- Total lesson screens: 39 (38 lesson screens + 1 gate)
+- Hub screens: 7 (m1-hub-l1 through m1-hub-l6 and m1-hub-gate)
+- Module overview: 1 (m1-overview.html)
+- Introduction screens: 9 (intro-0.1 through intro-0.9)
+- Landing page: 1 (index.html)
+- Total learner-facing screens built: 56 (9 introduction + 39 lesson and gate + 7 hub + 1 module overview), plus the landing page
+
+#### Lesson Template (required sequence for every lesson in every module)
+Screen count varies per lesson. Element sequence does not vary.
+1. Introduction screen: prediction prompt, retrieval warm-up (Lessons 2 onward), scaffolding badge, prior knowledge activation, commitment note callout, purpose statement, ARCH Method mindset callout, and New in This Lesson vocabulary callout.
+2. Worked example: progressive disclosure and curiosity gap opener.
+3. Faded example: Lesson 2 and Lesson 5 in Module 1 only. Identify equivalent lessons in Modules 2-4 via ZPD analysis before building.
+4. Guided practice: success criteria callout, articulation requirement, confidence rating, cognitive mode transition banner, developmental feedback, and error type label.
+5. Calibration or decision point.
+6. Reflection screen: prediction callback, four-question transfer framework, lesson complete block, and permission to stop statement.
+
+#### Module Overview Screen (required first screen)
+Every module must open with a module overview screen (m[N]-overview.html) before Lesson 1 begins. Required content: ARCH Method phase name, lessons in this module with lesson names and estimated times, artifacts produced with one-sentence descriptions, estimated total module time, connection backward to prior module output, and connection forward to next module input. Build this screen first when starting each new module build.
+
+#### Spaced Repetition Map (required before Module 2 build)
+Each Module 2-4 lesson introduction screen must include one explicit callback to a Module 1 concept at increasing Bloom's level. Draft callbacks are in Docs/ARCH_Build_Governance.md. Verify callbacks against actual Module 2-4 lesson content before building.
 
 ### File Naming Convention
 - m[module]-l[lesson]-s[screen].html
@@ -90,6 +123,13 @@ This does NOT apply to: expert think-aloud annotation text in worked
 example step divs. Expert analysis sections stay at expert reading level.
 Do not rewrite expert analysis content for reading level.
 
+Audience: Senior instructional designer primary; accessible to an 
+experienced instructional designer with appropriate scaffolding.
+
+Glossary: 18 terms in js/scaffolds/hoverGlossary.js. Every term must be 
+marked with the hover glossary trigger class (span.gls[data-gls-term]) 
+on first use per module.
+
 ### Do Not Do These Things
 - Do not use em dashes anywhere in course content
 - Do not use hard-coded color values -- use CSS tokens only
@@ -121,3 +161,9 @@ Do not rewrite expert analysis content for reading level.
   to Grade 8 level. Expert analysis sections are intentionally written at 
   practitioner reading level. Grade 8 rewrites apply only to instructional 
   prose (see Grade 8 FK section above).
+- Do not add a click-to-expand lightbox on SVG diagrams -- browser zoom 
+  handles this. (Lightbox is only for screenshots or complex raster images.)
+- Do not add `user-scalable=no` to the viewport meta tag.
+- Do not write developer documentation language in learner-facing content.
+- Do not assume prior knowledge of Bloom's taxonomy, CBE, cognitive load, 
+  or prerequisite dependency -- define on first use per module.
