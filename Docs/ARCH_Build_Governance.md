@@ -1001,8 +1001,23 @@ activation, commitment surfacing, partially completed
 practice items, gate review criteria, failure
 scenario grounding. COMMITTED.
 Prompt C Section 4: Brief panel on all Module 1
-and introduction screens. COMMITTED.
-Prompt C Sections 5-9: NOT YET RUN.
+and introduction screens. COMMITTED c96639d.
+Prompt C Section 5: Hub screens, module overview,
+Return-to-Hub navigation, module nav rewiring,
+completion signal keys, governance doc update.
+COMMITTED 261e9a1.
+Prompt C Section 6: Glossary expanded to 18 terms,
+course-wide wiring, first-use markup, vocabulary
+foundation callout, governance path correction.
+COMMITTED 539757f.
+Prompt C Section 7: Verification only, no changes.
+Prompt C Section 8: Landing page built, meta refresh
+removed, signature stance, study plan, module tiles.
+COMMITTED 1e16884.
+Prompt C Section 9: CLAUDE.md updated with screen
+counts, lesson template, module overview requirement,
+spaced repetition placeholder, reading level, glossary,
+do not rules. COMMITTED 609c19d.
 
 Prompt D: Chunking, pacing, time estimates, lesson
 completion signals, module progress map, artifact
