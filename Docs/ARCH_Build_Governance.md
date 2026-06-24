@@ -381,7 +381,8 @@ JavaScript components (SRC/js/components/):
 - confidenceRating.js: three-point rating, saves to
   localStorage, echoes with feedback. Supports per-
   item feedback via data-feedback-match.
-- hoverGlossary.js: hover term definitions. 18 terms
+- hoverGlossary.js (located at SRC/js/scaffolds/hoverGlossary.js,
+  not js/components/): hover term definitions. 18 terms
   as of Module 1 completion.
 - briefPanel.js: injects five collapsible Meridian
   brief sections into #briefPanel .panel-body.

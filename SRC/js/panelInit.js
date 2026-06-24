@@ -3,12 +3,14 @@
    commitment section into the supplementary sidebar, groups artifact
    and decision sections under a "Your Progress" heading (Item 18),
    adds a decision count badge to the Decision History header button (Item 19),
-   and injects the Meridian brief into the Brief panel (Section 4, item 27). */
+   and injects the Meridian brief into the Brief panel (Section 4, item 27).
+   Also initializes the hover glossary course-wide (Section 6, item 32). */
 
 import { initBriefPanel } from './components/briefPanel.js';
+import { initAll as initGlossary } from './scaffolds/hoverGlossary.js';
 
 const PANEL_DESCRIPTIONS = {
-  glossary: 'Eight key ARCH Method terms are available here. Hover over any highlighted term in the course to see its definition, or browse all terms below.',
+  glossary: 'Eighteen key ARCH Method terms are available here. Hover over any highlighted term in the course to see its definition, or browse all terms below.',
   supportPanel: 'Context-sensitive guidance appears here as you work through each unit.',
   annotationPanel: 'Your personal notes are saved here automatically as you type.',
 };
@@ -152,3 +154,4 @@ initCommitmentSidebar();
 initYourProgressGroup();
 initDecisionHistoryButton();
 initBriefPanel();
+initGlossary();

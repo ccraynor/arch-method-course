@@ -90,7 +90,7 @@
 
 const ANNOUNCER_ID = 'sr-announcer';
 
-/* ---- Eight defined terms ---- */
+/* ---- Eighteen defined terms (8 original + 10 added in Prompt C Section 6) ---- */
 const TERMS = {
   architecture: {
     label:      'Architecture',
@@ -123,6 +123,46 @@ const TERMS = {
   tradeoff: {
     label:      'Tradeoff',
     definition: 'A design choice in which gaining one benefit requires accepting a corresponding limitation or cost.',
+  },
+  bloomsTaxonomy: {
+    label:      "Bloom's taxonomy",
+    definition: 'A framework for categorizing learning objectives by cognitive complexity. This credential uses four levels: Recall (remember facts), Application (use a procedure), Analysis (break down and evaluate), and Evaluation (judge and justify).',
+  },
+  cognitiveLoad: {
+    label:      'Cognitive load',
+    definition: 'The mental effort required to process information. Good instructional design reduces unnecessary cognitive load so learners can focus on the content itself.',
+  },
+  prerequisiteDependency: {
+    label:      'Prerequisite dependency',
+    definition: 'A relationship between two learning components where one must be mastered before the other can be learned. Identifying prerequisites governs sequencing decisions.',
+  },
+  transfer: {
+    label:      'Transfer',
+    definition: 'The ability to apply what you learned in one context to a new and different context. Transfer is the highest goal of instructional design.',
+  },
+  cbe: {
+    label:      'CBE',
+    definition: 'Competency-Based Education. A model where learners advance by demonstrating mastery of specific competencies rather than by completing seat time.',
+  },
+  formativeAssessment: {
+    label:      'Formative assessment',
+    definition: 'Assessment used during learning to provide feedback and guide improvement. Not graded for final evaluation.',
+  },
+  summativeAssessment: {
+    label:      'Summative assessment',
+    definition: 'Assessment used at the end of learning to evaluate mastery. Performance tasks in this credential are summative.',
+  },
+  scopeCreep: {
+    label:      'Scope creep',
+    definition: 'The gradual expansion of a course beyond its original boundaries, usually caused by undocumented decisions or unstated assumptions.',
+  },
+  sme: {
+    label:      'SME',
+    definition: 'Subject Matter Expert. The domain expert who validates content accuracy and authenticity in course design projects.',
+  },
+  learningObjective: {
+    label:      'Learning objective',
+    definition: 'A specific statement describing what a learner will be able to do after instruction. Distinguished from a topic or activity.',
   },
 };
 

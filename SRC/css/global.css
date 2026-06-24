@@ -6,6 +6,10 @@
    Requires: css/tokens.css loaded first
    ============================================================================= */
 
+/* Hover glossary styles, loaded course-wide (Prompt C Section 6).
+   @import must precede all style rules. */
+@import url("scaffolds/hoverGlossary.css");
+
 /* ============================================================
    BASE RESET
    ============================================================ */
