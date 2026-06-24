@@ -194,6 +194,7 @@
     </div>
     <nav aria-label="Support tools">
       <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="briefPanel" aria-controls="briefPanel" aria-expanded="false">Brief</button>
       <button type="button" class="support-toggle" data-panel="supportPanel" aria-controls="supportPanel" aria-expanded="false">Support</button>
       <button type="button" class="support-toggle" data-panel="artifactDrawer" aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
       <button type="button" class="support-toggle" data-panel="decisionHistory" aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
@@ -950,6 +951,16 @@
     </div>
     <div class="panel-body"></div>
   </aside>
+  <aside id="briefPanel" aria-label="Meridian brief" hidden>
+    <div class="panel-header">
+      <h2 class="panel-title">Meridian Brief</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close Meridian brief">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+
   <aside id="supportPanel" aria-label="Support" hidden>
     <div class="panel-header"><h2 class="panel-title">Support</h2>
       <button type="button" class="panel-close" aria-label="Close support panel">

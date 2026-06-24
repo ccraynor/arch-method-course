@@ -1,8 +1,11 @@
 /* panelInit.js
    Populates support panels with first-use descriptions, wires the
    commitment section into the supplementary sidebar, groups artifact
-   and decision sections under a "Your Progress" heading (Item 18), and
-   adds a decision count badge to the Decision History header button (Item 19). */
+   and decision sections under a "Your Progress" heading (Item 18),
+   adds a decision count badge to the Decision History header button (Item 19),
+   and injects the Meridian brief into the Brief panel (Section 4, item 27). */
+
+import { initBriefPanel } from './components/briefPanel.js';
 
 const PANEL_DESCRIPTIONS = {
   glossary: 'Eight key ARCH Method terms are available here. Hover over any highlighted term in the course to see its definition, or browse all terms below.',
@@ -148,3 +151,4 @@ initPanelDescriptions();
 initCommitmentSidebar();
 initYourProgressGroup();
 initDecisionHistoryButton();
+initBriefPanel();
