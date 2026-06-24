@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Guided practice: apply the two-question optimization test to three DC components, then conduct a forward scope trace on six components to identify one misattribution.">
-  <title>Guided Practice: Steps 7 and 8 -- Lesson 1.4b -- ARCH Method™ Practitioner Credential -- Proof Point Learning</title>
+  <meta name="description" content="Guided practice: apply the two-question optimization test to three MRHN decomposition components and make optimization verdicts.">
+  <title>Guided Practice: Step 7 -- Lesson 1.4b -- ARCH Method™ Practitioner Credential -- Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <style>
     /* ================================================================
-       Screen m1-l4b-s4 -- Guided Practice: Steps 7 and 8
-       Phase 2, Steps 7-8. All color values use CSS tokens only.
+       Screen m1-l4b-s4 -- Guided Practice: Step 7
+       Phase 2, Step 7. All color values use CSS tokens only.
        ================================================================ */
 
     .lesson-label { display: block; margin: 0 0 0.25rem; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-link); }
@@ -62,28 +62,6 @@
     .revision-textarea { padding: 0.375rem 0.5rem; border: 1px solid var(--color-border-default); border-radius: 4px; background: var(--color-bg-page); color: var(--color-text-primary); font-size: 0.875rem; line-height: 1.6; width: 100%; resize: vertical; font-family: inherit; }
     .revision-textarea:focus { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
 
-    /* Trace table */
-    .trace-table { border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; margin: 0 0 1rem; }
-    .trace-item { border-bottom: 1px solid var(--color-border-default); }
-    .trace-item:last-child { border-bottom: none; }
-    .trace-item__head { padding: 0.5625rem 0.875rem; background: var(--color-bg-subtle); display: flex; align-items: flex-start; gap: 0.75rem; flex-wrap: wrap; }
-    .trace-dc-id { font-family: monospace; font-size: 0.875rem; font-weight: 800; color: var(--color-text-primary); flex-shrink: 0; min-width: 3.5rem; }
-    .trace-desc { font-size: 0.8125rem; color: var(--color-text-primary); line-height: 1.55; flex: 1; min-width: 0; }
-    .trace-listed { padding: 0.3125rem 0.875rem; font-size: 0.75rem; color: var(--color-text-secondary); background: var(--color-bg-page); border-top: 1px solid var(--color-border-default); }
-    .trace-listed strong { color: var(--color-text-primary); }
-    .trace-item__controls { padding: 0.5rem 0.875rem 0.625rem; background: var(--color-bg-page); display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; border-top: 1px solid var(--color-border-default); }
-
-    .trace-verdict-group { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .trace-verdict-option { display: flex; align-items: center; gap: 0.3125rem; }
-    .trace-verdict-option input[type="radio"] { width: 1rem; height: 1rem; accent-color: var(--color-text-link); flex-shrink: 0; }
-    .trace-verdict-option input[type="radio"]:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
-    .trace-verdict-option label { font-size: 0.875rem; color: var(--color-text-primary); cursor: pointer; padding: 0.375rem 0; min-height: 44px; display: flex; align-items: center; }
-
-    .trace-correction { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
-    .trace-correction-label { font-size: 0.75rem; font-weight: 700; color: var(--color-text-secondary); white-space: nowrap; }
-    .trace-correction-select { padding: 0.3125rem 0.5rem; border: 1px solid var(--color-border-default); border-radius: 4px; background: var(--color-bg-page); color: var(--color-text-primary); font-size: 0.8125rem; min-height: 44px; max-width: 28rem; }
-    .trace-correction-select:focus { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
-
     /* Validation error */
     .form-error { display: none; padding: 0.5rem 0.875rem; background: var(--color-error-bg); border: 1px solid var(--color-error-border); border-radius: 4px; font-size: 0.875rem; color: var(--color-error-text); margin-bottom: 1rem; }
     .form-error.is-visible { display: block; }
@@ -117,24 +95,12 @@
     .opt-fb-result { padding: 0.5rem 0.75rem; background: var(--color-bg-subtle); border-left: 3px solid var(--color-brand-teal); font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.6; border-radius: 0 4px 4px 0; }
     .opt-fb-result__label { display: block; font-size: 0.5625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-brand-teal); margin-bottom: 0.25rem; }
 
-    /* Trace feedback items */
-    .trace-fb-item { border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; margin: 0 0 0.75rem; }
-    .trace-fb-header { padding: 0.5rem 0.875rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
-    .trace-fb-header--correct { background: var(--color-success-bg); border-bottom: 1px solid var(--color-success-border); }
-    .trace-fb-header--error { background: var(--color-error-bg); border-bottom: 1px solid var(--color-error-border); }
-    .trace-fb-status { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 0.125rem 0.4375rem; border-radius: 3px; }
-    .trace-fb-status--correct { background: var(--color-success-bg); color: var(--color-success-text); border: 1px solid var(--color-success-border); }
-    .trace-fb-status--error { background: var(--color-error-bg); color: var(--color-error-text); border: 1px solid var(--color-error-border); }
-    .trace-fb-body { padding: 0.625rem 0.875rem; background: var(--color-bg-page); font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; display: flex; flex-direction: column; gap: 0.5rem; }
-    .trace-fb-correction { padding: 0.4375rem 0.625rem; background: var(--color-bg-subtle); border-left: 3px solid var(--color-brand-teal); font-size: 0.8125rem; color: var(--color-text-primary); line-height: 1.55; border-radius: 0 4px 4px 0; }
-    .trace-fb-correction__label { display: block; font-size: 0.5625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-brand-teal); margin-bottom: 0.1875rem; }
-
     .feedback-actions { display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--color-border-default); }
 
     @media (prefers-contrast: more) {
-      .opt-item, .trace-table, .trace-item, .opt-fb-item, .trace-fb-item,
+      .opt-item, .opt-fb-item,
       .context-block { border-color: var(--color-border-strong); }
-      .revision-textarea, .trace-correction-select { border-color: var(--color-border-strong); }
+      .revision-textarea { border-color: var(--color-border-strong); }
       .opt-criteria-box { border-color: var(--color-border-strong); }
     }
     @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
@@ -164,9 +130,9 @@
       <span class="pt-divider" aria-hidden="true">&bull;</span>
       <span class="pt-item">Phase <span id="pt-phase">2</span></span>
       <span class="pt-divider" aria-hidden="true">&bull;</span>
-      <span class="pt-item">Steps <span id="pt-step">7-8</span></span>
+      <span class="pt-item">Step <span id="pt-step">7</span></span>
       <span class="pt-divider" aria-hidden="true">&bull;</span>
-      <span class="pt-item">Screen <span id="pt-screen">4</span> of <span id="pt-screen-total">6</span></span>
+      <span class="pt-item">Screen <span id="pt-screen">4</span> of <span id="pt-screen-total">7</span></span>
     </div>
     <nav aria-label="Support tools">
       <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
@@ -195,7 +161,7 @@
           <span class="screen-type-label">Guided Practice</span>
           <p class="lesson-label">Lesson 1.4b</p>
           <h1 id="practice-title" class="guided-practice__title">
-            Apply Steps 7 and 8: Optimize Components and Audit the Trace
+            Apply Step 7: Optimize Decomposition Components
           </h1>
         </header>
 
@@ -203,15 +169,14 @@
 
           <div class="context-block">
             <h2 class="context-block__heading">Purpose</h2>
-            <p>Apply the two-question optimization test (Step 7) and a forward scope trace (Step 8) to a new set of MRHN components -- separate from those modeled in Screens 2 and 3. This practice transfers both skills from observed expert execution to independent application.</p>
+            <p>Apply the two-question optimization test to three MRHN decomposition components drawn from the working map. Transfer the optimization skill from observed expert execution to independent application.</p>
           </div>
 
           <div class="context-block">
             <h2 class="context-block__heading">Instructions</h2>
             <ol>
-              <li><strong>Part 1:</strong> Apply the teachability and assessability questions to each component. Select Split, Merge, or Confirm. If you select Split or Merge, describe the revised component(s).</li>
-              <li><strong>Part 2:</strong> Review each component's listed parent SI. Flag any misattribution and select the correct parent.</li>
-              <li>Select <strong>Check My Work</strong> to see expert analysis for all items.</li>
+              <li>Apply the teachability and assessability questions to each component. Select Split, Merge, or Confirm. If you select Split or Merge, describe the revised component(s).</li>
+              <li>Select <strong>Check My Work</strong> to see expert reasoning for all three components.</li>
             </ol>
           </div>
 
@@ -220,23 +185,22 @@
             <ul>
               <li>Each verdict (Split / Merge / Confirm) matches the expert for the right reason -- not by coincidence</li>
               <li>Revised descriptions preserve the original instructional obligation while correcting the granularity problem</li>
-              <li>The misattributed component in Part 2 is correctly identified and its parent reassigned</li>
             </ul>
           </div>
 
           <div class="context-block">
             <h2 class="context-block__heading">Expected Evidence</h2>
-            <p>Three optimization verdicts with revised descriptions where applicable; six scope trace judgments with one corrected parent attribution. Expert reasoning is shown for all nine items after submission regardless of your answers.</p>
+            <p>Three optimization verdicts with revised descriptions where applicable. Expert reasoning is shown for all three components after you submit.</p>
           </div>
         </section>
 
-        <form id="practice-form" novalidate aria-label="Optimization and scope trace practice">
+        <form id="practice-form" novalidate aria-label="Optimization practice">
 
           <!-- ===================================================
                PART 1 -- Unit Optimization
                =================================================== -->
           <div class="practice-part">
-            <h2 class="practice-part__heading">Part 1 -- Unit Optimization</h2>
+            <h2 class="practice-part__heading">Unit Optimization</h2>
             <p class="practice-part__intro">
               Apply the two-question test to each component.
               <strong>Q1 (Teachability):</strong> Can this be taught as one instructional unit without losing coherence?
@@ -377,293 +341,8 @@
               </div>
             </div>
           </div><!-- /.practice-part -->
-
-          <!-- ===================================================
-               PART 2 -- Scope Trace Audit
-               =================================================== -->
-          <div class="practice-part">
-            <h2 class="practice-part__heading">Part 2 -- Scope Trace Audit</h2>
-            <p class="practice-part__intro">
-              The six components below are drawn from a working draft of the MRHN decomposition map as it appeared before the audit was complete. Parent SI assignments reflect what was listed in the draft -- at least one is incorrect. For each component, judge whether the listed parent is correct. If you flag a misattribution, select the correct parent SI from the dropdown.
-            </p>
-
-            <div class="trace-table" role="table" aria-label="Scope trace items">
-
-              <!-- Trace 1: DC-19 / SI-09 -- CORRECT -->
-              <div class="trace-item" role="row">
-                <div class="trace-item__head" role="cell">
-                  <span class="trace-dc-id">DC-19</span>
-                  <span class="trace-desc">Evaluate clinical system interdependencies (EHR, imaging, billing) before applying network segmentation to determine which systems cannot be isolated without disrupting active patient care at the affected MRHN facility.</span>
-                </div>
-                <div class="trace-listed" role="cell">
-                  Listed parent: <strong>SI-09 -- Network Segmentation with Clinical System Interdependency</strong> (Bucket 2, Analysis)
-                </div>
-                <div class="trace-item__controls" role="cell">
-                  <div class="trace-verdict-group" role="group" aria-label="Attribution verdict for DC-19">
-                    <div class="trace-verdict-option">
-                      <input type="radio" id="t1-correct" name="trace-1" value="correct">
-                      <label for="t1-correct">Correctly attributed</label>
-                    </div>
-                    <div class="trace-verdict-option">
-                      <input type="radio" id="t1-wrong" name="trace-1" value="wrong">
-                      <label for="t1-wrong">Misattributed</label>
-                    </div>
-                  </div>
-                  <div class="trace-correction" id="t1-correction" hidden>
-                    <span class="trace-correction-label" id="t1-lbl">Correct parent:</span>
-                    <select class="trace-correction-select" name="trace-1-correction" aria-labelledby="t1-lbl">
-                      <option value="">-- Select SI --</option>
-                      <option value="si01">SI-01 -- Severity Classification</option>
-                      <option value="si02">SI-02 -- Initial Notification</option>
-                      <option value="si03">SI-03 -- System Isolation and Authority Boundaries</option>
-                      <option value="si04">SI-04 -- Evidence Preservation and Chain of Custody</option>
-                      <option value="si05">SI-05 -- Threat Assessment</option>
-                      <option value="si06">SI-06 -- Incident Documentation</option>
-                      <option value="si07">SI-07 -- Communication</option>
-                      <option value="si08">SI-08 -- IR Team Activation</option>
-                      <option value="si09">SI-09 -- Network Segmentation with Clinical System Interdependency</option>
-                      <option value="si10">SI-10 -- HIPAA Breach Notification Clock Management</option>
-                      <option value="si11">SI-11 -- Regulatory Reporting</option>
-                      <option value="si12">SI-12 -- Leadership Notification</option>
-                      <option value="si13">SI-13 -- Post-Incident Lessons Learned</option>
-                      <option value="si14">SI-14 -- Protocol Deviation Documentation</option>
-                      <option value="si15">SI-15 -- Recovery Verification</option>
-                      <option value="si16">SI-16 -- After-Action Review</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Trace 2: DC-30 / SI-12 -- CORRECT -->
-              <div class="trace-item" role="row">
-                <div class="trace-item__head" role="cell">
-                  <span class="trace-dc-id">DC-30</span>
-                  <span class="trace-desc">Identify which leadership levels require notification for this incident based on the confirmed severity classification and the PC-5 communication chain requirements.</span>
-                </div>
-                <div class="trace-listed" role="cell">
-                  Listed parent: <strong>SI-12 -- Leadership Notification</strong> (Bucket 3, Application)
-                </div>
-                <div class="trace-item__controls" role="cell">
-                  <div class="trace-verdict-group" role="group" aria-label="Attribution verdict for DC-30">
-                    <div class="trace-verdict-option">
-                      <input type="radio" id="t2-correct" name="trace-2" value="correct">
-                      <label for="t2-correct">Correctly attributed</label>
-                    </div>
-                    <div class="trace-verdict-option">
-                      <input type="radio" id="t2-wrong" name="trace-2" value="wrong">
-                      <label for="t2-wrong">Misattributed</label>
-                    </div>
-                  </div>
-                  <div class="trace-correction" id="t2-correction" hidden>
-                    <span class="trace-correction-label" id="t2-lbl">Correct parent:</span>
-                    <select class="trace-correction-select" name="trace-2-correction" aria-labelledby="t2-lbl">
-                      <option value="">-- Select SI --</option>
-                      <option value="si01">SI-01 -- Severity Classification</option>
-                      <option value="si02">SI-02 -- Initial Notification</option>
-                      <option value="si03">SI-03 -- System Isolation and Authority Boundaries</option>
-                      <option value="si04">SI-04 -- Evidence Preservation and Chain of Custody</option>
-                      <option value="si05">SI-05 -- Threat Assessment</option>
-                      <option value="si06">SI-06 -- Incident Documentation</option>
-                      <option value="si07">SI-07 -- Communication</option>
-                      <option value="si08">SI-08 -- IR Team Activation</option>
-                      <option value="si09">SI-09 -- Network Segmentation with Clinical System Interdependency</option>
-                      <option value="si10">SI-10 -- HIPAA Breach Notification Clock Management</option>
-                      <option value="si11">SI-11 -- Regulatory Reporting</option>
-                      <option value="si12">SI-12 -- Leadership Notification</option>
-                      <option value="si13">SI-13 -- Post-Incident Lessons Learned</option>
-                      <option value="si14">SI-14 -- Protocol Deviation Documentation</option>
-                      <option value="si15">SI-15 -- Recovery Verification</option>
-                      <option value="si16">SI-16 -- After-Action Review</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Trace 3: DC-34 / SI-10 -- CORRECT -->
-              <div class="trace-item" role="row">
-                <div class="trace-item__head" role="cell">
-                  <span class="trace-dc-id">DC-34</span>
-                  <span class="trace-desc">Record the clock trigger determination with documented reasoning that names the specific evidence establishing the "reasonably should have known" finding, the 45 CFR 164.404 standard applied, and the precise clock start timestamp.</span>
-                </div>
-                <div class="trace-listed" role="cell">
-                  Listed parent: <strong>SI-10 -- HIPAA Breach Notification Clock Management</strong> (Bucket 3, Analysis)
-                </div>
-                <div class="trace-item__controls" role="cell">
-                  <div class="trace-verdict-group" role="group" aria-label="Attribution verdict for DC-34">
-                    <div class="trace-verdict-option">
-                      <input type="radio" id="t3-correct" name="trace-3" value="correct">
-                      <label for="t3-correct">Correctly attributed</label>
-                    </div>
-                    <div class="trace-verdict-option">
-                      <input type="radio" id="t3-wrong" name="trace-3" value="wrong">
-                      <label for="t3-wrong">Misattributed</label>
-                    </div>
-                  </div>
-                  <div class="trace-correction" id="t3-correction" hidden>
-                    <span class="trace-correction-label" id="t3-lbl">Correct parent:</span>
-                    <select class="trace-correction-select" name="trace-3-correction" aria-labelledby="t3-lbl">
-                      <option value="">-- Select SI --</option>
-                      <option value="si01">SI-01 -- Severity Classification</option>
-                      <option value="si02">SI-02 -- Initial Notification</option>
-                      <option value="si03">SI-03 -- System Isolation and Authority Boundaries</option>
-                      <option value="si04">SI-04 -- Evidence Preservation and Chain of Custody</option>
-                      <option value="si05">SI-05 -- Threat Assessment</option>
-                      <option value="si06">SI-06 -- Incident Documentation</option>
-                      <option value="si07">SI-07 -- Communication</option>
-                      <option value="si08">SI-08 -- IR Team Activation</option>
-                      <option value="si09">SI-09 -- Network Segmentation with Clinical System Interdependency</option>
-                      <option value="si10">SI-10 -- HIPAA Breach Notification Clock Management</option>
-                      <option value="si11">SI-11 -- Regulatory Reporting</option>
-                      <option value="si12">SI-12 -- Leadership Notification</option>
-                      <option value="si13">SI-13 -- Post-Incident Lessons Learned</option>
-                      <option value="si14">SI-14 -- Protocol Deviation Documentation</option>
-                      <option value="si15">SI-15 -- Recovery Verification</option>
-                      <option value="si16">SI-16 -- After-Action Review</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Trace 4: DC-38 / listed SI-15 -- MISATTRIBUTED (correct: SI-14) -->
-              <div class="trace-item" role="row">
-                <div class="trace-item__head" role="cell">
-                  <span class="trace-dc-id">DC-38</span>
-                  <span class="trace-desc">Document each protocol deviation using RC-2 justification language: naming the IR-2024 protocol requirement deviated from, the reason for deviation, and the alternative action taken.</span>
-                </div>
-                <div class="trace-listed" role="cell">
-                  Listed parent: <strong>SI-15 -- Recovery Verification</strong> (Bucket 4, Application)
-                </div>
-                <div class="trace-item__controls" role="cell">
-                  <div class="trace-verdict-group" role="group" aria-label="Attribution verdict for DC-38">
-                    <div class="trace-verdict-option">
-                      <input type="radio" id="t4-correct" name="trace-4" value="correct">
-                      <label for="t4-correct">Correctly attributed</label>
-                    </div>
-                    <div class="trace-verdict-option">
-                      <input type="radio" id="t4-wrong" name="trace-4" value="wrong">
-                      <label for="t4-wrong">Misattributed</label>
-                    </div>
-                  </div>
-                  <div class="trace-correction" id="t4-correction" hidden>
-                    <span class="trace-correction-label" id="t4-lbl">Correct parent:</span>
-                    <select class="trace-correction-select" name="trace-4-correction" aria-labelledby="t4-lbl">
-                      <option value="">-- Select SI --</option>
-                      <option value="si01">SI-01 -- Severity Classification</option>
-                      <option value="si02">SI-02 -- Initial Notification</option>
-                      <option value="si03">SI-03 -- System Isolation and Authority Boundaries</option>
-                      <option value="si04">SI-04 -- Evidence Preservation and Chain of Custody</option>
-                      <option value="si05">SI-05 -- Threat Assessment</option>
-                      <option value="si06">SI-06 -- Incident Documentation</option>
-                      <option value="si07">SI-07 -- Communication</option>
-                      <option value="si08">SI-08 -- IR Team Activation</option>
-                      <option value="si09">SI-09 -- Network Segmentation with Clinical System Interdependency</option>
-                      <option value="si10">SI-10 -- HIPAA Breach Notification Clock Management</option>
-                      <option value="si11">SI-11 -- Regulatory Reporting</option>
-                      <option value="si12">SI-12 -- Leadership Notification</option>
-                      <option value="si13">SI-13 -- Post-Incident Lessons Learned</option>
-                      <option value="si14">SI-14 -- Protocol Deviation Documentation</option>
-                      <option value="si15">SI-15 -- Recovery Verification</option>
-                      <option value="si16">SI-16 -- After-Action Review</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Trace 5: DC-43 / SI-15 -- CORRECT -->
-              <div class="trace-item" role="row">
-                <div class="trace-item__head" role="cell">
-                  <span class="trace-dc-id">DC-43</span>
-                  <span class="trace-desc">Evaluate restored MRHN systems against the RC-3 technical thresholds to determine restoration clearance for clinical use, documenting the evaluation outcome and any systems deferred for additional verification.</span>
-                </div>
-                <div class="trace-listed" role="cell">
-                  Listed parent: <strong>SI-15 -- Recovery Verification</strong> (Bucket 4, Application)
-                </div>
-                <div class="trace-item__controls" role="cell">
-                  <div class="trace-verdict-group" role="group" aria-label="Attribution verdict for DC-43">
-                    <div class="trace-verdict-option">
-                      <input type="radio" id="t5-correct" name="trace-5" value="correct">
-                      <label for="t5-correct">Correctly attributed</label>
-                    </div>
-                    <div class="trace-verdict-option">
-                      <input type="radio" id="t5-wrong" name="trace-5" value="wrong">
-                      <label for="t5-wrong">Misattributed</label>
-                    </div>
-                  </div>
-                  <div class="trace-correction" id="t5-correction" hidden>
-                    <span class="trace-correction-label" id="t5-lbl">Correct parent:</span>
-                    <select class="trace-correction-select" name="trace-5-correction" aria-labelledby="t5-lbl">
-                      <option value="">-- Select SI --</option>
-                      <option value="si01">SI-01 -- Severity Classification</option>
-                      <option value="si02">SI-02 -- Initial Notification</option>
-                      <option value="si03">SI-03 -- System Isolation and Authority Boundaries</option>
-                      <option value="si04">SI-04 -- Evidence Preservation and Chain of Custody</option>
-                      <option value="si05">SI-05 -- Threat Assessment</option>
-                      <option value="si06">SI-06 -- Incident Documentation</option>
-                      <option value="si07">SI-07 -- Communication</option>
-                      <option value="si08">SI-08 -- IR Team Activation</option>
-                      <option value="si09">SI-09 -- Network Segmentation with Clinical System Interdependency</option>
-                      <option value="si10">SI-10 -- HIPAA Breach Notification Clock Management</option>
-                      <option value="si11">SI-11 -- Regulatory Reporting</option>
-                      <option value="si12">SI-12 -- Leadership Notification</option>
-                      <option value="si13">SI-13 -- Post-Incident Lessons Learned</option>
-                      <option value="si14">SI-14 -- Protocol Deviation Documentation</option>
-                      <option value="si15">SI-15 -- Recovery Verification</option>
-                      <option value="si16">SI-16 -- After-Action Review</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Trace 6: DC-48 / SI-16 -- CORRECT -->
-              <div class="trace-item" role="row">
-                <div class="trace-item__head" role="cell">
-                  <span class="trace-dc-id">DC-48</span>
-                  <span class="trace-desc">Produce the formal MRHN after-action report in RC-4 format, distinguishing operational observations from governance-required findings subject to legal review, and submit to the designated MRHN governance repository.</span>
-                </div>
-                <div class="trace-listed" role="cell">
-                  Listed parent: <strong>SI-16 -- After-Action Review</strong> (Bucket 4, Analysis)
-                </div>
-                <div class="trace-item__controls" role="cell">
-                  <div class="trace-verdict-group" role="group" aria-label="Attribution verdict for DC-48">
-                    <div class="trace-verdict-option">
-                      <input type="radio" id="t6-correct" name="trace-6" value="correct">
-                      <label for="t6-correct">Correctly attributed</label>
-                    </div>
-                    <div class="trace-verdict-option">
-                      <input type="radio" id="t6-wrong" name="trace-6" value="wrong">
-                      <label for="t6-wrong">Misattributed</label>
-                    </div>
-                  </div>
-                  <div class="trace-correction" id="t6-correction" hidden>
-                    <span class="trace-correction-label" id="t6-lbl">Correct parent:</span>
-                    <select class="trace-correction-select" name="trace-6-correction" aria-labelledby="t6-lbl">
-                      <option value="">-- Select SI --</option>
-                      <option value="si01">SI-01 -- Severity Classification</option>
-                      <option value="si02">SI-02 -- Initial Notification</option>
-                      <option value="si03">SI-03 -- System Isolation and Authority Boundaries</option>
-                      <option value="si04">SI-04 -- Evidence Preservation and Chain of Custody</option>
-                      <option value="si05">SI-05 -- Threat Assessment</option>
-                      <option value="si06">SI-06 -- Incident Documentation</option>
-                      <option value="si07">SI-07 -- Communication</option>
-                      <option value="si08">SI-08 -- IR Team Activation</option>
-                      <option value="si09">SI-09 -- Network Segmentation with Clinical System Interdependency</option>
-                      <option value="si10">SI-10 -- HIPAA Breach Notification Clock Management</option>
-                      <option value="si11">SI-11 -- Regulatory Reporting</option>
-                      <option value="si12">SI-12 -- Leadership Notification</option>
-                      <option value="si13">SI-13 -- Post-Incident Lessons Learned</option>
-                      <option value="si14">SI-14 -- Protocol Deviation Documentation</option>
-                      <option value="si15">SI-15 -- Recovery Verification</option>
-                      <option value="si16">SI-16 -- After-Action Review</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-            </div><!-- /.trace-table -->
-          </div><!-- /.practice-part -->
-
           <p id="form-error" class="form-error" role="alert" aria-live="assertive">
-            Please make a selection for every item before checking your work. If you flagged a misattribution, select the correct parent SI from the dropdown.
+            Please select a verdict for every component before checking your work.
           </p>
 
           <div class="form-footer">
@@ -678,12 +357,12 @@
         <section id="feedback-region" class="feedback-region" aria-labelledby="feedback-heading" hidden>
           <h2 id="feedback-heading" class="feedback-heading" tabindex="-1">Expert Analysis</h2>
           <p class="feedback-summary">
-            Expert reasoning is shown for all nine items below, regardless of whether your answer matched. Focus on the reasoning behind each verdict -- the logic is what transfers to new decomposition maps.
+            Expert reasoning is shown for all three components below, regardless of whether your answer matched. Focus on the reasoning behind each verdict -- the logic is what transfers to new decomposition maps.
           </p>
           <div id="feedback-body"></div>
           <div class="feedback-actions">
             <a id="btn-continue" href="m1-l4b-s5.html" class="btn btn--primary">
-              Continue to Calibration
+              Continue to Scope Trace Audit
             </a>
           </div>
         </section>
@@ -708,11 +387,11 @@
   <aside aria-label="Supplementary resources" id="supplementary-resources">
     <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
       <h2 class="aside-heading">Artifact Reference</h2>
-      <p class="aside-empty">Practice applies the methodology from MRHN-D-007 (Unit Optimization) and MRHN-D-008 (Scope Trace Audit) to additional components from the MRHN decomposition map. Governance records and MRHN_DecompositionMap_v2 are available in the Artifact Drawer.</p>
+      <p class="aside-empty">Practice applies the methodology from MRHN-D-007 (Unit Optimization) to additional components from the MRHN decomposition map. Governance records and MRHN_DecompositionMap_v2 are available in the Artifact Drawer.</p>
     </section>
     <section id="decision-history" tabindex="-1" aria-label="Decision history">
       <h2 class="aside-heading">Decision History</h2>
-      <p class="aside-empty">MRHN-D-007 and MRHN-D-008 govern the optimization and audit methodology applied in this practice. Prior decisions MRHN-D-001 through MRHN-D-006 established the scope items and decomposition map this practice draws from.</p>
+      <p class="aside-empty">MRHN-D-007 governs the optimization methodology applied in this practice. Prior decisions MRHN-D-001 through MRHN-D-006 established the scope items and decomposition map this practice draws from.</p>
     </section>
   </aside>
 
@@ -818,37 +497,8 @@
       }
     };
 
-    const TRACE_EXPERT = [
-      {
-        dc: 'DC-19', listed: 'SI-09', isWrong: false,
-        reasoning: 'Correctly attributed. DC-19 evaluates clinical system interdependencies (EHR, imaging, billing) specifically to inform network segmentation decisions -- the defining cognitive task of SI-09 (Network Segmentation with Clinical System Interdependency). The description names the clinical systems identified in the Bucket 2 calibration constraint and references patient care continuity, confirming SI-09 as the correct parent.'
-      },
-      {
-        dc: 'DC-30', listed: 'SI-12', isWrong: false,
-        reasoning: 'Correctly attributed. DC-30 identifies which leadership levels require notification using the PC-5 communication chain -- a prerequisite step within the SI-12 (Leadership Notification) scope item. The PC-5 reference is the distinguishing marker: PC-5 governs the leadership notification chain, not the IR team activation chain (SI-08) or regulatory notification chain (SI-11).'
-      },
-      {
-        dc: 'DC-34', listed: 'SI-10', isWrong: false,
-        reasoning: 'Correctly attributed. DC-34 documents the "reasonably should have known" clock trigger determination with reasoning referencing 45 CFR 164.404 -- the legal standard at the center of SI-10 (HIPAA Breach Notification Clock Management). The combination of the clock trigger subject matter and the explicit regulatory citation confirms SI-10 as the correct parent without ambiguity.'
-      },
-      {
-        dc: 'DC-38', listed: 'SI-15', isWrong: true, correctParent: 'si14',
-        correctParentName: 'SI-14 -- Protocol Deviation Documentation',
-        reasoning: 'Misattributed. DC-38 documents protocol deviations using RC-2 justification language, naming departures from IR-2024 protocol. This is the defining obligation of SI-14 (Protocol Deviation Documentation) -- not SI-15 (Recovery Verification). SI-15 concerns evaluating restored systems against RC-3 technical thresholds; its subject matter is systems restoration clearance, not protocol compliance documentation. The likely cause: DC-38 and the SI-15 components (DC-43, DC-44, DC-46) were entered in adjacent sessions during decomposition, and both involve documentation language, making the parent field susceptible to carry-over error. The RC-2 format requirement and the IR-2024 reference make SI-14 the unambiguous correct parent.',
-        correctionNote: 'Parent corrected: DC-38 reassigned from SI-15 to SI-14 (Protocol Deviation Documentation). SI-14 has three children (DC-37, DC-38, DC-39) representing the complete protocol deviation workflow: identify deviations (DC-37), document with RC-2 justification language (DC-38), verify documentation before close-out (DC-39).'
-      },
-      {
-        dc: 'DC-43', listed: 'SI-15', isWrong: false,
-        reasoning: 'Correctly attributed. DC-43 evaluates restored MRHN systems against RC-3 technical thresholds to determine restoration clearance for clinical use -- the core evaluative behavior of SI-15 (Recovery Verification). The RC-3 reference and the clinical-use clearance purpose are both markers specific to SI-15. Note: DC-38 (the misattributed component) uses similar documentation language but concerns IR-2024 protocol deviations, not RC-3 restoration criteria -- the subject matter distinction is the key to distinguishing the two SI-15 impostors.'
-      },
-      {
-        dc: 'DC-48', listed: 'SI-16', isWrong: false,
-        reasoning: 'Correctly attributed. DC-48 produces the formal after-action report in RC-4 format, distinguishing operational observations from governance-required findings subject to legal review. This is a core output obligation of SI-16 (After-Action Review). The RC-4 format reference and the operational/governance distinction confirm SI-16 as the correct parent. DC-48 should be read alongside DC-47a (which facilitates the review) -- together they represent the full SI-16 scope.'
-      }
-    ];
-
     /* ============================================================
-       Conditional visibility: revision textareas (Part 1)
+       Conditional visibility: revision textareas
        ============================================================ */
     ['a', 'b', 'c'].forEach(key => {
       document.querySelectorAll(`[name="opt-${key}-verdict"]`).forEach(radio => {
@@ -859,19 +509,6 @@
         });
       });
     });
-
-    /* ============================================================
-       Conditional visibility: correction selects (Part 2)
-       ============================================================ */
-    for (let i = 1; i <= 6; i++) {
-      document.querySelectorAll(`[name="trace-${i}"]`).forEach(radio => {
-        radio.addEventListener('change', () => {
-          const val = document.querySelector(`[name="trace-${i}"]:checked`)?.value;
-          const el = document.getElementById(`t${i}-correction`);
-          val === 'wrong' ? el.removeAttribute('hidden') : el.setAttribute('hidden', '');
-        });
-      });
-    }
 
     /* ============================================================
        Form submit
@@ -889,36 +526,27 @@
       /* Validation */
       const optKeys = ['a', 'b', 'c'];
       const allOpt  = optKeys.every(k => document.querySelector(`[name="opt-${k}-verdict"]:checked`));
-      const allTrace = [1,2,3,4,5,6].every(i => document.querySelector(`[name="trace-${i}"]:checked`));
-      const missingCorrection = [1,2,3,4,5,6].some(i => {
-        const v = document.querySelector(`[name="trace-${i}"]:checked`)?.value;
-        return v === 'wrong' && !document.querySelector(`[name="trace-${i}-correction"]`)?.value;
-      });
 
-      if (!allOpt || !allTrace || missingCorrection) {
+      if (!allOpt) {
         formError.classList.add('is-visible');
         formError.focus();
         return;
       }
       formError.classList.remove('is-visible');
 
-      /* Save submission to localStorage for Screen 5 calibration */
+      /* Save opt data; Screen 5 will merge trace data under the same key */
       try {
+        let prior = {};
+        try { const s = localStorage.getItem('m1_l4b_s4_submission'); if (s) prior = JSON.parse(s); } catch {}
         const submission = {
+          ...prior,
           savedAt: new Date().toISOString(),
           opt: {
             a: { dc: 'DC-47', verdict: document.querySelector('[name="opt-a-verdict"]:checked')?.value || '', revision: document.getElementById('opt-a-revision-text')?.value || '' },
             b: { dc: 'DC-40', verdict: document.querySelector('[name="opt-b-verdict"]:checked')?.value || '', revision: document.getElementById('opt-b-revision-text')?.value || '' },
             c: { dc: 'DC-32', verdict: document.querySelector('[name="opt-c-verdict"]:checked')?.value || '', revision: '' }
           },
-          trace: [
-            { dc: 'DC-19', listed: 'SI-09', verdict: document.querySelector('[name="trace-1"]:checked')?.value || '', correction: document.querySelector('[name="trace-1-correction"]')?.value || '' },
-            { dc: 'DC-30', listed: 'SI-12', verdict: document.querySelector('[name="trace-2"]:checked')?.value || '', correction: document.querySelector('[name="trace-2-correction"]')?.value || '' },
-            { dc: 'DC-34', listed: 'SI-10', verdict: document.querySelector('[name="trace-3"]:checked')?.value || '', correction: document.querySelector('[name="trace-3-correction"]')?.value || '' },
-            { dc: 'DC-38', listed: 'SI-15', verdict: document.querySelector('[name="trace-4"]:checked')?.value || '', correction: document.querySelector('[name="trace-4-correction"]')?.value || '' },
-            { dc: 'DC-43', listed: 'SI-15', verdict: document.querySelector('[name="trace-5"]:checked')?.value || '', correction: document.querySelector('[name="trace-5-correction"]')?.value || '' },
-            { dc: 'DC-48', listed: 'SI-16', verdict: document.querySelector('[name="trace-6"]:checked')?.value || '', correction: document.querySelector('[name="trace-6-correction"]')?.value || '' }
-          ]
+          trace: prior.trace || []
         };
         setItem('m1_l4b_s4_submission', JSON.stringify(submission));
       } catch { /* storage unavailable -- continue without saving */ }
@@ -931,8 +559,7 @@
       const vBadge = { split: 'expert-verdict-badge--split', merge: 'expert-verdict-badge--merge', confirm: 'expert-verdict-badge--confirm' };
       let html = '';
 
-      /* Part 1 */
-      html += `<div class="fb-part"><h3 class="fb-part__heading">Part 1 -- Unit Optimization</h3>`;
+      html += `<div class="fb-part"><h3 class="fb-part__heading">Unit Optimization</h3>`;
       optKeys.forEach(key => {
         const ex = OPT_EXPERT[key];
         const lv = document.querySelector(`[name="opt-${key}-verdict"]:checked`)?.value || '';
@@ -960,56 +587,13 @@
       });
       html += `</div>`;
 
-      /* Part 2 */
-      html += `<div class="fb-part"><h3 class="fb-part__heading">Part 2 -- Scope Trace Audit</h3>`;
-      TRACE_EXPERT.forEach((item, idx) => {
-        const i = idx + 1;
-        const lv = document.querySelector(`[name="trace-${i}"]:checked`)?.value || '';
-        const learnerFlagged = lv === 'wrong';
-        const correct = item.isWrong ? learnerFlagged : !learnerFlagged;
-        const hClass = item.isWrong ? 'trace-fb-header--error' : 'trace-fb-header--correct';
-        const sClass = item.isWrong ? 'trace-fb-status--error' : 'trace-fb-status--correct';
-        const sLabel = item.isWrong ? 'Misattributed' : 'Correctly Attributed';
-        const lvLabel = learnerFlagged ? 'Misattributed' : 'Correctly attributed';
-        const mClass  = correct ? 'match-chip--match' : 'match-chip--mismatch';
-        const mLabel  = correct ? 'Match' : 'Mismatch';
-
-        let correctionHtml = '';
-        if (item.isWrong) {
-          const sel = document.querySelector(`[name="trace-${i}-correction"]`)?.value || '';
-          const selCorrect = sel === item.correctParent;
-          const selChip = selCorrect
-            ? `<span class="match-chip match-chip--match" style="margin-left:0">Correct parent selected</span>`
-            : `<span class="match-chip match-chip--mismatch" style="margin-left:0">Incorrect parent -- correct answer: ${item.correctParentName}</span>`;
-          correctionHtml = `<div class="trace-fb-correction">
-            <span class="trace-fb-correction__label">Correction</span>
-            ${item.correctionNote} ${selChip}
-          </div>`;
-        }
-
-        html += `
-          <div class="trace-fb-item">
-            <div class="trace-fb-header ${hClass}">
-              <span class="fb-dc-id">${item.dc}</span>
-              <span class="trace-fb-status ${sClass}">Expert: ${sLabel}</span>
-              <span class="learner-answer">Your answer: ${lvLabel}</span>
-              <span class="match-chip ${mClass}">${mLabel}</span>
-            </div>
-            <div class="trace-fb-body">
-              <p style="margin:0">${item.reasoning}</p>
-              ${correctionHtml}
-            </div>
-          </div>`;
-      });
-      html += `</div>`;
-
       fbBody.innerHTML = html;
       fbRegion.removeAttribute('hidden');
       fbHeading.focus();
 
       announcer.textContent = '';
       requestAnimationFrame(() => {
-        announcer.textContent = 'Expert analysis is now visible. Review the reasoning for all nine items, then continue to the next screen.';
+        announcer.textContent = 'Expert analysis is now visible. Review the reasoning for all three components, then continue to the next screen.';
       });
     });
 
@@ -1017,9 +601,9 @@
     document.getElementById('pt-module').textContent       = '1';
     document.getElementById('pt-lesson').textContent       = '1.4b';
     document.getElementById('pt-phase').textContent        = '2';
-    document.getElementById('pt-step').textContent         = '7-8';
+    document.getElementById('pt-step').textContent         = '7';
     document.getElementById('pt-screen').textContent       = '4';
-    document.getElementById('pt-screen-total').textContent = '6';
+    document.getElementById('pt-screen-total').textContent = '7';
   </script>
 
 

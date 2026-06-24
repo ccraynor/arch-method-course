@@ -3,266 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Calibration: review your nine practice decisions from Screen 4, compare to expert analysis, then identify the item you were least confident about and explain what additional information would have helped.">
-  <title>Compare to Expert: Steps 7 and 8 Decisions -- Lesson 1.4b -- ARCH Method™ Practitioner Credential -- Proof Point Learning</title>
+  <meta name="description" content="Guided practice: conduct a forward scope trace on six MRHN decomposition components to identify one misattribution and select the correct parent SI.">
+  <title>Guided Practice: Step 8 -- Lesson 1.4b -- ARCH Method™ Practitioner Credential -- Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <style>
     /* ================================================================
-       Screen m1-l4b-s5 -- Calibration: Steps 7 and 8
-       Phase 2, Steps 7-8. All color values use CSS tokens only.
+       Screen m1-l4b-s5 -- Guided Practice: Step 8
+       Phase 2, Step 8. All color values use CSS tokens only.
        ================================================================ */
 
     .lesson-label { display: block; margin: 0 0 0.25rem; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-link); }
+    .guided-practice__title { margin: 0 0 1.5rem; font-size: 1.5rem; font-weight: 800; color: var(--color-text-primary); line-height: 1.2; }
 
-    .calibration__header { margin: 0 0 1.5rem; }
-    .calibration__title { margin: 0.25rem 0 0.875rem; font-size: 1.5rem; font-weight: 800; color: var(--color-text-primary); line-height: 1.2; }
-    .calibration__controls { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    /* Context blocks */
+    .practice-context { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 0 0 2rem; }
+    @media (max-width: 700px) { .practice-context { grid-template-columns: 1fr; } }
+    .context-block { border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; }
+    .context-block__heading { margin: 0; padding: 0.4375rem 0.875rem; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-inverse); background: var(--color-brand-navy); }
+    .context-block > :not(.context-block__heading) { padding: 0.625rem 0.875rem; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; background: var(--color-bg-page); }
+    .context-block p { margin: 0 0 0.375rem; }
+    .context-block p:last-child { margin-bottom: 0; }
+    .context-block ol, .context-block ul { margin: 0; padding-left: 1.25rem; }
+    .context-block li { margin-bottom: 0.25rem; }
 
-    /* Linear mode toggle -- hidden on mobile (always linear below 600px) */
-    .btn--linear-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.375rem;
-      padding: 0.375rem 0.75rem;
-      border: 1px solid var(--color-border-default);
-      border-radius: 4px;
-      background: var(--color-bg-page);
-      color: var(--color-text-secondary);
-      font-size: 0.8125rem;
-      font-weight: 600;
-      cursor: pointer;
-      min-height: 44px;
-    }
-    .btn--linear-toggle:hover { background: var(--color-bg-subtle); }
-    .btn--linear-toggle:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
-    .btn--linear-toggle[aria-pressed="true"] { background: var(--color-bg-subtle); color: var(--color-text-primary); border-color: var(--color-brand-navy); }
-    @media (max-width: 599px) { .btn--linear-toggle { display: none; } }
+    /* Mode transition note */
+    .mode-transition { padding: 0.625rem 0.875rem; background: var(--color-bg-subtle); border-left: 3px solid var(--color-brand-teal); border-radius: 0 5px 5px 0; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; margin: 0 0 1.5rem; }
 
-    /* ---- Calibration layout ----
-       Desktop (≥1024px): 2-column grid.
-       DOM order:    learner → criteria → expert → reflection.
-       Visual order: [learner | expert] [criteria] [reflection].
-       grid-area assignments create the visual/DOM split. */
-    .calibration-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-areas:
-        "learner expert"
-        "criteria criteria"
-        "reflection reflection";
-      gap: 1.5rem;
-      align-items: start;
-      margin: 0 0 2rem;
-    }
+    /* Constraint reference card */
+    .conv-ref { border: 1px solid var(--color-border-default); border-radius: 6px; margin: 0 0 1.75rem; overflow: hidden; }
+    .conv-ref summary { display: flex; align-items: center; gap: 0.5rem; padding: 0.625rem 0.875rem; background: var(--color-bg-subtle); cursor: pointer; font-size: 0.8125rem; font-weight: 700; color: var(--color-text-secondary); list-style: none; justify-content: space-between; }
+    .conv-ref summary::-webkit-details-marker { display: none; }
+    .conv-ref summary:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: -2px; }
+    .conv-ref[open] summary { border-bottom: 1px solid var(--color-border-default); }
+    .conv-ref-chevron { transition: transform 0.15s; flex-shrink: 0; }
+    .conv-ref[open] .conv-ref-chevron { transform: rotate(180deg); }
+    .conv-ref__body { padding: 0.75rem 0.875rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .conv-ref__item { font-size: 0.8125rem; color: var(--color-text-primary); line-height: 1.6; margin: 0; }
 
-    /* On tablet and below: revert to single-column DOM order */
-    @media (max-width: 1023px) {
-      .calibration-layout {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-          "learner"
-          "criteria"
-          "expert"
-          "reflection";
-      }
-    }
+    /* Trace table */
+    .trace-table { border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; margin: 0 0 1rem; }
+    .trace-item { border-bottom: 1px solid var(--color-border-default); }
+    .trace-item:last-child { border-bottom: none; }
+    .trace-item__head { padding: 0.5625rem 0.875rem; background: var(--color-bg-subtle); display: flex; align-items: flex-start; gap: 0.75rem; flex-wrap: wrap; }
+    .trace-dc-id { font-family: monospace; font-size: 0.875rem; font-weight: 800; color: var(--color-text-primary); flex-shrink: 0; min-width: 3.5rem; }
+    .trace-desc { font-size: 0.8125rem; color: var(--color-text-primary); line-height: 1.55; flex: 1; min-width: 0; }
+    .trace-listed { padding: 0.3125rem 0.875rem; font-size: 0.75rem; color: var(--color-text-secondary); background: var(--color-bg-page); border-top: 1px solid var(--color-border-default); }
+    .trace-listed strong { color: var(--color-text-primary); }
+    .trace-item__controls { padding: 0.5rem 0.875rem 0.625rem; background: var(--color-bg-page); display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; border-top: 1px solid var(--color-border-default); }
 
-    /* Linear mode: removes grid-area assignments; all panels flow in DOM order */
-    .calibration-layout--linear {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .calibration-layout--linear .calibration-panel { grid-area: unset !important; }
+    .trace-verdict-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .trace-verdict-option { display: flex; align-items: center; gap: 0.3125rem; }
+    .trace-verdict-option input[type="radio"] { width: 1rem; height: 1rem; accent-color: var(--color-text-link); flex-shrink: 0; }
+    .trace-verdict-option input[type="radio"]:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+    .trace-verdict-option label { font-size: 0.875rem; color: var(--color-text-primary); cursor: pointer; padding: 0.375rem 0; min-height: 44px; display: flex; align-items: center; }
 
-    /* ---- Panel base ---- */
-    .calibration-panel {
-      border: 1px solid var(--color-border-default);
-      border-radius: 6px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    .calibration-panel--learner   { grid-area: learner; }
-    .calibration-panel--criteria  { grid-area: criteria; }
-    .calibration-panel--expert    { grid-area: expert; }
-    .calibration-panel--reflection { grid-area: reflection; }
+    .trace-correction { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .trace-correction-label { font-size: 0.75rem; font-weight: 700; color: var(--color-text-secondary); white-space: nowrap; }
+    .trace-correction-select { padding: 0.3125rem 0.5rem; border: 1px solid var(--color-border-default); border-radius: 4px; background: var(--color-bg-page); color: var(--color-text-primary); font-size: 0.8125rem; min-height: 44px; max-width: 28rem; }
+    .trace-correction-select:focus { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
 
-    .calibration-panel__heading {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin: 0;
-      padding: 0.5625rem 0.875rem;
-      font-size: 0.875rem;
-      font-weight: 700;
-      color: var(--color-text-inverse);
-      background: var(--color-brand-navy);
-      line-height: 1.3;
-    }
-    .calibration-panel__heading svg { flex-shrink: 0; opacity: 0.85; }
+    /* Validation error */
+    .form-error { display: none; padding: 0.5rem 0.875rem; background: var(--color-error-bg); border: 1px solid var(--color-error-border); border-radius: 4px; font-size: 0.875rem; color: var(--color-error-text); margin-bottom: 1rem; }
+    .form-error.is-visible { display: block; }
+    .form-footer { display: flex; justify-content: flex-end; padding-top: 0.5rem; }
 
-    .calibration-panel__body { padding: 0.875rem; background: var(--color-bg-page); flex: 1; display: flex; flex-direction: column; gap: 0.875rem; }
+    /* Feedback */
+    .feedback-region { margin-top: 1.5rem; }
+    .feedback-heading { font-size: 1.25rem; font-weight: 800; color: var(--color-text-primary); margin: 0 0 0.5rem; }
+    .feedback-summary { font-size: 0.9375rem; color: var(--color-text-primary); line-height: 1.65; margin: 0 0 1.75rem; }
+    .feedback-actions { display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--color-border-default); }
 
-    /* ---- Learner response panel ---- */
-    .learner-response__quote {
-      margin: 0;
-      padding: 0.75rem;
-      background: var(--color-bg-subtle);
-      border-left: 3px solid var(--color-brand-teal);
-      border-radius: 0 4px 4px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-    .learner-response__quote p { margin: 0; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.6; }
-    .learner-response__source { margin: 0; font-size: 0.75rem; color: var(--color-text-secondary); font-style: italic; }
-    .learner-response__empty { margin: 0; font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.65; }
-    .learner-response__empty a { color: var(--color-text-link); }
-
-    .learner-response__note {
-      margin: 0;
-      padding: 0.5rem 0.75rem;
-      background: var(--color-bg-subtle);
-      border: 1px solid var(--color-border-default);
-      border-radius: 4px;
-      font-size: 0.75rem;
-      color: var(--color-text-secondary);
-      line-height: 1.55;
-    }
-
-    /* ---- Criteria panel ---- */
-    .criteria-intro { margin: 0; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; }
-
-    .criteria-list { margin: 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 0.875rem; counter-reset: criteria-counter; }
-    .criteria-item {
-      display: grid;
-      grid-template-columns: 1.5rem 1fr;
-      gap: 0 0.625rem;
-      counter-increment: criteria-counter;
-    }
-    .criteria-item::before {
-      content: counter(criteria-counter);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 1.5rem;
-      height: 1.5rem;
-      border-radius: 50%;
-      background: var(--color-brand-navy);
-      color: var(--color-text-inverse);
-      font-size: 0.6875rem;
-      font-weight: 700;
-      flex-shrink: 0;
-      margin-top: 0.125rem;
-    }
-    .criteria-item__content { min-width: 0; }
-    .criteria-item__label { display: block; font-size: 0.875rem; font-weight: 700; color: var(--color-text-primary); margin-bottom: 0.25rem; }
-    .criteria-item__description { margin: 0; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; }
-
-    .reveal-trigger { margin-top: auto; padding-top: 1.25rem; border-top: 1px solid var(--color-border-default); display: flex; flex-direction: column; gap: 0.5rem; }
-    .reveal-prompt { margin: 0; font-size: 0.875rem; color: var(--color-text-secondary); }
-
-    .btn--reveal {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.375rem;
-      align-self: flex-start;
-    }
-    .btn--reveal:disabled { opacity: 0.6; cursor: default; }
-
-    /* ---- Expert panel ---- */
-    .expert-gate {
-      padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.875rem;
-      text-align: center;
-      background: var(--color-bg-subtle);
-      flex: 1;
-    }
-    .expert-gate__icon { opacity: 0.35; color: var(--color-text-secondary); }
-    .expert-gate__message { margin: 0; font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.65; max-width: 22rem; }
-
-    .expert-content { display: flex; flex-direction: column; gap: 0; flex: 1; }
-    .expert-response__body { padding: 0.875rem; background: var(--color-bg-page); display: flex; flex-direction: column; gap: 0.75rem; }
-    .expert-response__body p { margin: 0; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.7; }
-
-    .expert-rationale { border-top: 1px solid var(--color-border-default); }
-    .expert-rationale__summary {
-      padding: 0.625rem 0.875rem;
-      background: var(--color-bg-subtle);
-      font-size: 0.8125rem;
-      font-weight: 700;
-      color: var(--color-text-secondary);
-      cursor: pointer;
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 0.375rem;
-      min-height: 44px;
-    }
-    .expert-rationale__summary::-webkit-details-marker { display: none; }
-    .expert-rationale__summary::before {
-      content: '';
-      display: inline-block;
-      width: 0.5rem;
-      height: 0.5rem;
-      border-right: 1.5px solid currentColor;
-      border-bottom: 1.5px solid currentColor;
-      transform: rotate(-45deg);
-      transition: transform 0.15s;
-      flex-shrink: 0;
-    }
-    .expert-rationale[open] .expert-rationale__summary::before { transform: rotate(45deg); }
-    .expert-rationale__summary:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: -2px; }
-    .expert-rationale__body { padding: 0.75rem 0.875rem; background: var(--color-bg-page); font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; display: flex; flex-direction: column; gap: 0.625rem; }
-    .expert-rationale__body p { margin: 0; }
-
-    /* ---- Reflection panel ---- */
-    .reflection-intro { margin: 0; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; }
-
-    .reflection-prompts { padding: 0.625rem 0.875rem; background: var(--color-bg-subtle); border: 1px solid var(--color-border-default); border-radius: 4px; }
-    .reflection-prompt-list { margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.375rem; }
-    .reflection-prompt-list li { font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.6; }
-
-    .calibration-notes__label { font-size: 0.875rem; font-weight: 700; color: var(--color-text-primary); display: block; }
-    .calibration-notes__hint { margin: 0.1875rem 0 0; font-size: 0.75rem; color: var(--color-text-secondary); }
-    .calibration-notes__textarea {
-      padding: 0.5rem 0.625rem;
-      border: 1px solid var(--color-border-default);
-      border-radius: 4px;
-      background: var(--color-bg-page);
-      color: var(--color-text-primary);
-      font-size: 0.9375rem;
-      font-family: inherit;
-      line-height: 1.6;
-      resize: vertical;
-      width: 100%;
-      margin-top: 0.5rem;
-    }
-    .calibration-notes__textarea:focus { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
-
-    .save-controls { display: flex; align-items: center; gap: 0.875rem; padding-top: 0.375rem; }
-    .btn--save { display: inline-flex; align-items: center; gap: 0.375rem; flex-shrink: 0; }
-    .save-status { font-size: 0.8125rem; color: var(--color-text-secondary); margin: 0; }
+    /* Trace feedback items */
+    .trace-fb-item { border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; margin: 0 0 0.75rem; }
+    .trace-fb-header { padding: 0.5rem 0.875rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .trace-fb-header--correct { background: var(--color-success-bg); border-bottom: 1px solid var(--color-success-border); }
+    .trace-fb-header--error { background: var(--color-error-bg); border-bottom: 1px solid var(--color-error-border); }
+    .trace-fb-status { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 0.125rem 0.4375rem; border-radius: 3px; }
+    .trace-fb-status--correct { background: var(--color-success-bg); color: var(--color-success-text); border: 1px solid var(--color-success-border); }
+    .trace-fb-status--error { background: var(--color-error-bg); color: var(--color-error-text); border: 1px solid var(--color-error-border); }
+    .trace-fb-body { padding: 0.625rem 0.875rem; background: var(--color-bg-page); font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.65; display: flex; flex-direction: column; gap: 0.5rem; }
+    .trace-fb-correction { padding: 0.4375rem 0.625rem; background: var(--color-bg-subtle); border-left: 3px solid var(--color-brand-teal); font-size: 0.8125rem; color: var(--color-text-primary); line-height: 1.55; border-radius: 0 4px 4px 0; }
+    .trace-fb-correction__label { display: block; font-size: 0.5625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-brand-teal); margin-bottom: 0.1875rem; }
+    .fb-dc-id { font-family: monospace; font-size: 0.9375rem; font-weight: 800; }
+    .learner-answer { font-size: 0.75rem; color: var(--color-text-secondary); }
+    .match-chip { font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.125rem 0.4375rem; border-radius: 3px; margin-left: auto; }
+    .match-chip--match { background: var(--color-success-bg); color: var(--color-success-text); border: 1px solid var(--color-success-border); }
+    .match-chip--mismatch { background: var(--color-error-bg); color: var(--color-error-text); border: 1px solid var(--color-error-border); }
 
     @media (prefers-contrast: more) {
-      .calibration-panel { border-color: var(--color-border-strong); }
-      .expert-rationale, .reveal-trigger { border-color: var(--color-border-strong); }
-      .calibration-notes__textarea, .reflection-prompts { border-color: var(--color-border-strong); }
+      .trace-table, .trace-item, .trace-fb-item,
+      .context-block { border-color: var(--color-border-strong); }
+      .trace-correction-select { border-color: var(--color-border-strong); }
     }
     @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
   </style>
 </head>
 <body>
-
   <nav aria-label="Skip links" class="skip-links">
-    <a class="skip-link" href="#main-content">Skip to Main Content</a>
-    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
-    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <a class="skip-link" href="#current-activity">Skip to current activity</a>
+    <a class="skip-link" href="#supplementary-resources">Skip to supplementary resources</a>
     <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
     <a class="skip-link" href="#decision-history">Skip to Decision History</a>
   </nav>
@@ -281,9 +122,9 @@
       <span class="pt-divider" aria-hidden="true">&bull;</span>
       <span class="pt-item">Phase <span id="pt-phase">2</span></span>
       <span class="pt-divider" aria-hidden="true">&bull;</span>
-      <span class="pt-item">Steps <span id="pt-step">7-8</span></span>
+      <span class="pt-item">Step <span id="pt-step">8</span></span>
       <span class="pt-divider" aria-hidden="true">&bull;</span>
-      <span class="pt-item">Screen <span id="pt-screen">5</span> of <span id="pt-screen-total">6</span></span>
+      <span class="pt-item">Screen <span id="pt-screen">5</span> of <span id="pt-screen-total">7</span></span>
     </div>
     <nav aria-label="Support tools">
       <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
@@ -306,269 +147,384 @@
 
   <main id="main-content" tabindex="-1">
     <section id="current-activity" tabindex="-1" aria-label="Current activity">
-      <article class="calibration" aria-labelledby="calibration-title">
+      <article class="guided-practice" aria-labelledby="practice-title">
 
-        <header class="calibration__header">
-          <span class="screen-type-label">Compare to Expert</span>
-          <p class="lesson-label" aria-label="Lesson 1.4b">Lesson 1.4b</p>
-          <h1 id="calibration-title" class="calibration__title">
-            Calibrate Your Confidence: Steps 7 and 8 Decisions
+        <header class="guided-practice__header">
+          <span class="screen-type-label">Guided Practice</span>
+          <p class="lesson-label">Lesson 1.4b</p>
+          <h1 id="practice-title" class="guided-practice__title">
+            Apply Step 8: Audit the Scope Trace
           </h1>
-          <div class="calibration__controls">
-            <button type="button"
-                    id="btn-linear-mode"
-                    class="btn btn--toggle btn--linear-toggle"
-                    aria-pressed="false">
-              <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-              <span class="toggle-label">Switch to Linear View</span>
-            </button>
-          </div>
         </header>
 
-        <div class="calibration-layout" id="calibration-layout">
+        <section class="practice-context" aria-label="Activity Context">
 
-          <!-- ==================================================
-               PANEL 1: YOUR DECISIONS (from Screen 4)
-               DOM order: 1st. Visual: top-left on desktop.
-               ================================================== -->
-          <section class="calibration-panel calibration-panel--learner"
-                   aria-labelledby="learner-heading">
+          <div class="context-block">
+            <h2 class="context-block__heading">Purpose</h2>
+            <p>Conduct a forward scope trace on six MRHN decomposition components. Check whether each component is assigned to the correct parent SI. Find the one misattribution and correct it.</p>
+          </div>
 
-            <h2 id="learner-heading" class="calibration-panel__heading">
-              <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <circle cx="9" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M3 15c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <div class="context-block">
+            <h2 class="context-block__heading">Instructions</h2>
+            <ol>
+              <li>Review each component's listed parent SI. Judge whether the attribution is correct.</li>
+              <li>If a component is misattributed, flag it and select the correct parent SI from the dropdown.</li>
+              <li>Select <strong>Check My Work</strong> to see expert reasoning for all six components.</li>
+            </ol>
+          </div>
+
+          <div class="context-block">
+            <h2 class="context-block__heading">Success Criteria</h2>
+            <ul>
+              <li>The one misattributed component is correctly identified</li>
+              <li>The correct parent SI is selected and the reason is clear</li>
+              <li>The five correctly attributed components are not flagged as errors</li>
+            </ul>
+          </div>
+
+          <div class="context-block">
+            <h2 class="context-block__heading">Expected Evidence</h2>
+            <p>Six scope trace judgments with one corrected parent attribution. Expert reasoning is shown for all six components after you submit, regardless of your answers.</p>
+          </div>
+
+        </section>
+
+        <div class="mode-transition" role="note" aria-label="Cognitive shift">
+          <strong>Shift your focus.</strong> Screen 4 asked about granularity: can each component be taught and assessed as one unit? This screen asks about attribution: is each component assigned to the correct parent SI? The audit logic is different -- you are checking the map's structure, not the size of its pieces.
+        </div>
+
+        <details class="conv-ref" id="constraint-ref">
+          <summary>
+            <span style="display:flex;align-items:center;gap:0.5rem;">
+              <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 16 16" fill="none" style="flex-shrink:0">
+                <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8 7v5M8 5.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
               </svg>
-              Your Screen 4 Decisions
-            </h2>
+              Quick Reference: Constraint Codes
+            </span>
+            <svg class="conv-ref-chevron" aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="conv-ref__body">
+            <p class="conv-ref__item"><strong>RC-1 (HIPAA 45 CFR 164.308(a)(5)):</strong> Workforce security training is a covered entity obligation. The course must fulfill it documentably -- the training must exist, be delivered, and be verifiable for audit purposes.</p>
+            <p class="conv-ref__item"><strong>RC-2 (IR-2024 Alignment):</strong> Course content must align to IR-2024 as adopted, not a revised or idealized version. Scope items and decomposition components draw from the protocol in its current adopted form.</p>
+            <p class="conv-ref__item"><strong>RC-3 (OCR 18-Month Timeline):</strong> Delivery must occur within the OCR audit remediation window. The timeline is a binding constraint -- it governs scheduling regardless of project or instructional preferences.</p>
+          </div>
+        </details>
 
-            <div class="calibration-panel__body">
-              <div id="learner-response-body">
-                <!-- Populated by calibration script from localStorage -->
+        <form id="trace-form" novalidate aria-label="Scope trace practice">
+
+          <div class="trace-table" role="table" aria-label="Scope trace items">
+
+            <!-- Trace 1: DC-19 / SI-09 -- CORRECT -->
+            <div class="trace-item" role="row">
+              <div class="trace-item__head" role="cell">
+                <span class="trace-dc-id">DC-19</span>
+                <span class="trace-desc">Evaluate clinical system interdependencies (EHR, imaging, billing) before applying network segmentation to determine which systems cannot be isolated without disrupting active patient care at the affected MRHN facility.</span>
               </div>
-              <p class="learner-response__note">
-                These are your nine decisions as submitted in Screen 4. Use them as reference while reviewing the criteria and expert analysis below.
-              </p>
-            </div>
-
-          </section>
-
-          <!-- ==================================================
-               PANEL 2: COMPARISON CRITERIA
-               DOM order: 2nd. Visual: full-width below panels on desktop.
-               "Show Expert Response" button is at the end of this panel.
-               ================================================== -->
-          <section class="calibration-panel calibration-panel--criteria"
-                   aria-labelledby="criteria-heading">
-
-            <h2 id="criteria-heading" class="calibration-panel__heading">
-              <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M3 5h12M3 9h8M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-              Comparison Criteria
-            </h2>
-
-            <div class="calibration-panel__body">
-              <p class="criteria-intro">
-                The calibration prompt asks you to identify the one decision from your nine that you were least confident about, and to explain what additional information would have helped. Before comparing to the expert, use these criteria to assess what a strong response to that prompt looks like.
-              </p>
-
-              <ol class="criteria-list" aria-label="Calibration criteria">
-
-                <li class="criteria-item">
-                  <div class="criteria-item__content">
-                    <span class="criteria-item__label">Item precision</span>
-                    <p class="criteria-item__description">
-                      Names a single specific item by DC number and verdict -- not a general category ("the optimization items were hard") or a method complaint ("the two-question test was unclear"). Strong calibration points to one item.
-                    </p>
-                  </div>
-                </li>
-
-                <li class="criteria-item">
-                  <div class="criteria-item__content">
-                    <span class="criteria-item__label">Uncertainty source</span>
-                    <p class="criteria-item__description">
-                      Identifies what specifically created the uncertainty: the component description wording, one of the Q1/Q2 test questions failing to resolve clearly, the adjacent component context (for Part 1), or the listed parent assignment (for Part 2). "I wasn't sure" is not an uncertainty source -- the source is what produced the ambiguity.
-                    </p>
-                  </div>
-                </li>
-
-                <li class="criteria-item">
-                  <div class="criteria-item__content">
-                    <span class="criteria-item__label">Information specificity</span>
-                    <p class="criteria-item__description">
-                      Describes a specific piece of information that was missing -- not a general request for "more context." Examples: "the full descriptions of other SI-16 components" or "the RC-2 document language itself" or "whether SI-16's arc constraint lists both facilitation and report production as co-obligations."
-                    </p>
-                  </div>
-                </li>
-
-                <li class="criteria-item">
-                  <div class="criteria-item__content">
-                    <span class="criteria-item__label">Method connection</span>
-                    <p class="criteria-item__description">
-                      Ties the information need to the specific optimization criterion (Q1 teachability, Q2 assessability) or the attribution method (subject matter anchoring by referenced standard). Strong calibration names the test, not just the feeling of uncertainty.
-                    </p>
-                  </div>
-                </li>
-
-              </ol>
-
-              <div class="reveal-trigger">
-                <p class="reveal-prompt">When you have reviewed the criteria and are ready to compare:</p>
-                <button type="button"
-                        id="btn-reveal-expert"
-                        class="btn btn--primary btn--reveal"
-                        aria-controls="expert-content"
-                        aria-expanded="false">
-                  <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/>
-                    <path d="M1 8s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5z" stroke="currentColor" stroke-width="1.5"/>
-                  </svg>
-                  Show Expert Response
-                </button>
+              <div class="trace-listed" role="cell">
+                Listed parent: <strong>SI-09 -- Network Segmentation with Clinical System Interdependency</strong> (Bucket 2, Analysis)
               </div>
-            </div>
-
-          </section>
-
-          <!-- ==================================================
-               PANEL 3: EXPERT RESPONSE
-               DOM order: 3rd. Visual: top-right on desktop.
-               Gated until reveal.
-               ================================================== -->
-          <section class="calibration-panel calibration-panel--expert"
-                   id="expert-panel"
-                   aria-labelledby="expert-heading">
-
-            <h2 id="expert-heading" class="calibration-panel__heading" tabindex="-1">
-              <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M9 2l2.09 4.26L16 7.27l-3.5 3.41.83 4.82L9 13.25l-4.33 2.25.83-4.82L2 7.27l4.91-.71L9 2z"
-                      stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-              </svg>
-              Expert Response
-            </h2>
-
-            <div class="expert-gate" id="expert-gate" aria-label="Expert response available after reviewing criteria">
-              <svg class="expert-gate__icon" aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                <rect x="8" y="14" width="16" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M11 14v-3a5 5 0 0110 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-              <p class="expert-gate__message">
-                Review your decisions and the comparison criteria, then select <strong>Show Expert Response</strong> to compare.
-              </p>
-            </div>
-
-            <div id="expert-content" class="expert-content" hidden>
-              <div class="expert-response__body">
-                <p>
-                  My least confident decision was DC-47 -- the Split verdict. The conjunction "and" in "conduct the after-action review and produce the formal lessons learned report" is a reliable split signal, and both Q1 and Q2 fail on close examination. My uncertainty came specifically from Q1. Both activities belong to the same post-incident process: the review generates the findings, and the report formalizes them into the RC-4 governed record. I had to decide whether that sequential relationship made them one instructional unit or two adjacent units.
-                </p>
-                <p>
-                  What resolved it: I asked whether a learner who had developed strong AAR facilitation skills but could not produce an RC-4 governed report would be considered competent for SI-16. The answer is no in both directions. A learner can become an effective MRHN AAR facilitator without ever producing the formal report -- those are organizationally separable roles. And a report writer can master the RC-4 format requirements without knowing how to run the review that generates the content. That directional independence is what Q1 is testing. The "same process" relationship makes them adjacent units that should be sequenced -- not merged.
-                </p>
-                <p>
-                  The additional information that would have most reduced my uncertainty: the full SI-16 arc language, specifically whether the arc constraint names "facilitate" and "produce report" as co-obligations within one scope item or as sequential obligations. If the arc constraint treated them as one obligation ("conduct and produce"), my uncertainty about splitting would have been higher. If the arc constraint listed them separately, the split would have been unambiguous.
-                </p>
-                <p>
-                  For DC-38 in Part 2 -- the misattribution -- my uncertainty was lower once I identified the subject matter anchor. When two SI items share the same bucket, level, and general documentation language, the referenced standard in the component description is the reliable distinguishing marker: RC-2 (protocol deviation justification language) belongs to SI-14; RC-3 (technical restoration thresholds) belongs to SI-15. DC-38 references IR-2024 protocol deviations and RC-2 -- that is SI-14 subject matter, not SI-15 recovery verification subject matter.
-                </p>
-              </div>
-
-              <details class="expert-rationale">
-                <summary class="expert-rationale__summary">Why this response works</summary>
-                <div class="expert-rationale__body">
-                  <p>
-                    This response names a single item (DC-47, Split), identifies the specific test question that produced uncertainty (Q1 -- whether the sequential relationship makes them one unit or two), and names the specific information that would have resolved it (the SI-16 arc language and whether it treats facilitation and report production as co-obligations or sequential obligations).
-                  </p>
-                  <p>
-                    The response also models what strong calibration looks like for DC-38: it names the subject matter anchor (referenced standard) as the resolution mechanism rather than describing a general comparison process. Strong calibration identifies the mechanism that resolves uncertainty, not just the verdict.
-                  </p>
+              <div class="trace-item__controls" role="cell">
+                <div class="trace-verdict-group" role="group" aria-label="Attribution verdict for DC-19">
+                  <div class="trace-verdict-option">
+                    <input type="radio" id="t1-correct" name="trace-1" value="correct">
+                    <label for="t1-correct">Correctly attributed</label>
+                  </div>
+                  <div class="trace-verdict-option">
+                    <input type="radio" id="t1-wrong" name="trace-1" value="wrong">
+                    <label for="t1-wrong">Misattributed</label>
+                  </div>
                 </div>
-              </details>
-            </div>
-
-          </section>
-
-          <!-- ==================================================
-               PANEL 4: CALIBRATION NOTES
-               DOM order: 4th. Visual: full-width at bottom.
-               ================================================== -->
-          <section class="calibration-panel calibration-panel--reflection"
-                   aria-labelledby="reflection-heading">
-
-            <h2 id="reflection-heading" class="calibration-panel__heading">
-              <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M3 3h12v10a2 2 0 01-2 2H5a2 2 0 01-2-2V3z" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M6 7h6M6 10h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-              Calibration Notes
-            </h2>
-
-            <div class="calibration-panel__body">
-              <p class="reflection-intro" id="reflection-intro">
-                After reviewing the expert response, write your own calibration. Identify the one decision from your nine that you were least confident about, describe what made it uncertain, and explain what specific additional information would have helped you decide with more certainty.
-              </p>
-
-              <div class="reflection-prompts" aria-label="Calibration prompts">
-                <ol class="reflection-prompt-list">
-                  <li>Which specific item (by DC number and your verdict) was hardest to commit to?</li>
-                  <li>What created the uncertainty -- the description wording, Q1, Q2, the adjacent component, or the listed parent?</li>
-                  <li>What one piece of additional information would have most reduced your uncertainty before you submitted?</li>
-                </ol>
-              </div>
-
-              <label for="calibration-notes" class="calibration-notes__label">Your Notes</label>
-              <p class="calibration-notes__hint" id="calibration-notes-hint">
-                Your notes save automatically when you leave this field.
-              </p>
-              <textarea id="calibration-notes"
-                        name="calibration-notes"
-                        class="calibration-notes__textarea"
-                        rows="8"
-                        aria-describedby="reflection-intro calibration-notes-hint"
-                        placeholder="My least confident decision was... The uncertainty came from... What would have helped was..."></textarea>
-
-              <div class="save-controls" role="group" aria-label="Save controls">
-                <button type="button" id="btn-save-notes" class="btn btn--secondary btn--save">
-                  <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M13 13H3a1 1 0 01-1-1V4l3-3h7l2 2v9a1 1 0 01-1 1z"
-                          stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                    <path d="M5 13V9h6v4M5 1v4h5"
-                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                  Save Notes
-                </button>
-                <p id="notes-save-status" class="save-status" aria-live="polite" aria-atomic="true">
-                  Not yet saved
-                </p>
+                <div class="trace-correction" id="t1-correction" hidden>
+                  <span class="trace-correction-label" id="t1-lbl">Correct parent:</span>
+                  <select class="trace-correction-select" name="trace-1-correction" aria-labelledby="t1-lbl">
+                    <option value="">-- Select SI --</option>
+                    <option value="si01">SI-01 -- Severity Classification</option>
+                    <option value="si02">SI-02 -- Initial Notification</option>
+                    <option value="si03">SI-03 -- System Isolation and Authority Boundaries</option>
+                    <option value="si04">SI-04 -- Evidence Preservation and Chain of Custody</option>
+                    <option value="si05">SI-05 -- Threat Assessment</option>
+                    <option value="si06">SI-06 -- Incident Documentation</option>
+                    <option value="si07">SI-07 -- Communication</option>
+                    <option value="si08">SI-08 -- IR Team Activation</option>
+                    <option value="si09">SI-09 -- Network Segmentation with Clinical System Interdependency</option>
+                    <option value="si10">SI-10 -- HIPAA Breach Notification Clock Management</option>
+                    <option value="si11">SI-11 -- Regulatory Reporting</option>
+                    <option value="si12">SI-12 -- Leadership Notification</option>
+                    <option value="si13">SI-13 -- Post-Incident Lessons Learned</option>
+                    <option value="si14">SI-14 -- Protocol Deviation Documentation</option>
+                    <option value="si15">SI-15 -- Recovery Verification</option>
+                    <option value="si16">SI-16 -- After-Action Review</option>
+                  </select>
+                </div>
               </div>
             </div>
 
-          </section>
+            <!-- Trace 2: DC-30 / SI-12 -- CORRECT -->
+            <div class="trace-item" role="row">
+              <div class="trace-item__head" role="cell">
+                <span class="trace-dc-id">DC-30</span>
+                <span class="trace-desc">Identify which leadership levels require notification for this incident based on the confirmed severity classification and the PC-5 communication chain requirements.</span>
+              </div>
+              <div class="trace-listed" role="cell">
+                Listed parent: <strong>SI-12 -- Leadership Notification</strong> (Bucket 3, Application)
+              </div>
+              <div class="trace-item__controls" role="cell">
+                <div class="trace-verdict-group" role="group" aria-label="Attribution verdict for DC-30">
+                  <div class="trace-verdict-option">
+                    <input type="radio" id="t2-correct" name="trace-2" value="correct">
+                    <label for="t2-correct">Correctly attributed</label>
+                  </div>
+                  <div class="trace-verdict-option">
+                    <input type="radio" id="t2-wrong" name="trace-2" value="wrong">
+                    <label for="t2-wrong">Misattributed</label>
+                  </div>
+                </div>
+                <div class="trace-correction" id="t2-correction" hidden>
+                  <span class="trace-correction-label" id="t2-lbl">Correct parent:</span>
+                  <select class="trace-correction-select" name="trace-2-correction" aria-labelledby="t2-lbl">
+                    <option value="">-- Select SI --</option>
+                    <option value="si01">SI-01 -- Severity Classification</option>
+                    <option value="si02">SI-02 -- Initial Notification</option>
+                    <option value="si03">SI-03 -- System Isolation and Authority Boundaries</option>
+                    <option value="si04">SI-04 -- Evidence Preservation and Chain of Custody</option>
+                    <option value="si05">SI-05 -- Threat Assessment</option>
+                    <option value="si06">SI-06 -- Incident Documentation</option>
+                    <option value="si07">SI-07 -- Communication</option>
+                    <option value="si08">SI-08 -- IR Team Activation</option>
+                    <option value="si09">SI-09 -- Network Segmentation with Clinical System Interdependency</option>
+                    <option value="si10">SI-10 -- HIPAA Breach Notification Clock Management</option>
+                    <option value="si11">SI-11 -- Regulatory Reporting</option>
+                    <option value="si12">SI-12 -- Leadership Notification</option>
+                    <option value="si13">SI-13 -- Post-Incident Lessons Learned</option>
+                    <option value="si14">SI-14 -- Protocol Deviation Documentation</option>
+                    <option value="si15">SI-15 -- Recovery Verification</option>
+                    <option value="si16">SI-16 -- After-Action Review</option>
+                  </select>
+                </div>
+              </div>
+            </div>
 
-        </div><!-- /.calibration-layout -->
+            <!-- Trace 3: DC-34 / SI-10 -- CORRECT -->
+            <div class="trace-item" role="row">
+              <div class="trace-item__head" role="cell">
+                <span class="trace-dc-id">DC-34</span>
+                <span class="trace-desc">Record the clock trigger determination with documented reasoning that names the specific evidence establishing the "reasonably should have known" finding, the 45 CFR 164.404 standard applied, and the precise clock start timestamp.</span>
+              </div>
+              <div class="trace-listed" role="cell">
+                Listed parent: <strong>SI-10 -- HIPAA Breach Notification Clock Management</strong> (Bucket 3, Analysis)
+              </div>
+              <div class="trace-item__controls" role="cell">
+                <div class="trace-verdict-group" role="group" aria-label="Attribution verdict for DC-34">
+                  <div class="trace-verdict-option">
+                    <input type="radio" id="t3-correct" name="trace-3" value="correct">
+                    <label for="t3-correct">Correctly attributed</label>
+                  </div>
+                  <div class="trace-verdict-option">
+                    <input type="radio" id="t3-wrong" name="trace-3" value="wrong">
+                    <label for="t3-wrong">Misattributed</label>
+                  </div>
+                </div>
+                <div class="trace-correction" id="t3-correction" hidden>
+                  <span class="trace-correction-label" id="t3-lbl">Correct parent:</span>
+                  <select class="trace-correction-select" name="trace-3-correction" aria-labelledby="t3-lbl">
+                    <option value="">-- Select SI --</option>
+                    <option value="si01">SI-01 -- Severity Classification</option>
+                    <option value="si02">SI-02 -- Initial Notification</option>
+                    <option value="si03">SI-03 -- System Isolation and Authority Boundaries</option>
+                    <option value="si04">SI-04 -- Evidence Preservation and Chain of Custody</option>
+                    <option value="si05">SI-05 -- Threat Assessment</option>
+                    <option value="si06">SI-06 -- Incident Documentation</option>
+                    <option value="si07">SI-07 -- Communication</option>
+                    <option value="si08">SI-08 -- IR Team Activation</option>
+                    <option value="si09">SI-09 -- Network Segmentation with Clinical System Interdependency</option>
+                    <option value="si10">SI-10 -- HIPAA Breach Notification Clock Management</option>
+                    <option value="si11">SI-11 -- Regulatory Reporting</option>
+                    <option value="si12">SI-12 -- Leadership Notification</option>
+                    <option value="si13">SI-13 -- Post-Incident Lessons Learned</option>
+                    <option value="si14">SI-14 -- Protocol Deviation Documentation</option>
+                    <option value="si15">SI-15 -- Recovery Verification</option>
+                    <option value="si16">SI-16 -- After-Action Review</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trace 4: DC-38 / listed SI-15 -- MISATTRIBUTED (correct: SI-14) -->
+            <div class="trace-item" role="row">
+              <div class="trace-item__head" role="cell">
+                <span class="trace-dc-id">DC-38</span>
+                <span class="trace-desc">Document each protocol deviation using RC-2 justification language: naming the IR-2024 protocol requirement deviated from, the reason for deviation, and the alternative action taken.</span>
+              </div>
+              <div class="trace-listed" role="cell">
+                Listed parent: <strong>SI-15 -- Recovery Verification</strong> (Bucket 4, Application)
+              </div>
+              <div class="trace-item__controls" role="cell">
+                <div class="trace-verdict-group" role="group" aria-label="Attribution verdict for DC-38">
+                  <div class="trace-verdict-option">
+                    <input type="radio" id="t4-correct" name="trace-4" value="correct">
+                    <label for="t4-correct">Correctly attributed</label>
+                  </div>
+                  <div class="trace-verdict-option">
+                    <input type="radio" id="t4-wrong" name="trace-4" value="wrong">
+                    <label for="t4-wrong">Misattributed</label>
+                  </div>
+                </div>
+                <div class="trace-correction" id="t4-correction" hidden>
+                  <span class="trace-correction-label" id="t4-lbl">Correct parent:</span>
+                  <select class="trace-correction-select" name="trace-4-correction" aria-labelledby="t4-lbl">
+                    <option value="">-- Select SI --</option>
+                    <option value="si01">SI-01 -- Severity Classification</option>
+                    <option value="si02">SI-02 -- Initial Notification</option>
+                    <option value="si03">SI-03 -- System Isolation and Authority Boundaries</option>
+                    <option value="si04">SI-04 -- Evidence Preservation and Chain of Custody</option>
+                    <option value="si05">SI-05 -- Threat Assessment</option>
+                    <option value="si06">SI-06 -- Incident Documentation</option>
+                    <option value="si07">SI-07 -- Communication</option>
+                    <option value="si08">SI-08 -- IR Team Activation</option>
+                    <option value="si09">SI-09 -- Network Segmentation with Clinical System Interdependency</option>
+                    <option value="si10">SI-10 -- HIPAA Breach Notification Clock Management</option>
+                    <option value="si11">SI-11 -- Regulatory Reporting</option>
+                    <option value="si12">SI-12 -- Leadership Notification</option>
+                    <option value="si13">SI-13 -- Post-Incident Lessons Learned</option>
+                    <option value="si14">SI-14 -- Protocol Deviation Documentation</option>
+                    <option value="si15">SI-15 -- Recovery Verification</option>
+                    <option value="si16">SI-16 -- After-Action Review</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trace 5: DC-43 / SI-15 -- CORRECT -->
+            <div class="trace-item" role="row">
+              <div class="trace-item__head" role="cell">
+                <span class="trace-dc-id">DC-43</span>
+                <span class="trace-desc">Evaluate restored MRHN systems against the RC-3 technical thresholds to determine restoration clearance for clinical use, documenting the evaluation outcome and any systems deferred for additional verification.</span>
+              </div>
+              <div class="trace-listed" role="cell">
+                Listed parent: <strong>SI-15 -- Recovery Verification</strong> (Bucket 4, Application)
+              </div>
+              <div class="trace-item__controls" role="cell">
+                <div class="trace-verdict-group" role="group" aria-label="Attribution verdict for DC-43">
+                  <div class="trace-verdict-option">
+                    <input type="radio" id="t5-correct" name="trace-5" value="correct">
+                    <label for="t5-correct">Correctly attributed</label>
+                  </div>
+                  <div class="trace-verdict-option">
+                    <input type="radio" id="t5-wrong" name="trace-5" value="wrong">
+                    <label for="t5-wrong">Misattributed</label>
+                  </div>
+                </div>
+                <div class="trace-correction" id="t5-correction" hidden>
+                  <span class="trace-correction-label" id="t5-lbl">Correct parent:</span>
+                  <select class="trace-correction-select" name="trace-5-correction" aria-labelledby="t5-lbl">
+                    <option value="">-- Select SI --</option>
+                    <option value="si01">SI-01 -- Severity Classification</option>
+                    <option value="si02">SI-02 -- Initial Notification</option>
+                    <option value="si03">SI-03 -- System Isolation and Authority Boundaries</option>
+                    <option value="si04">SI-04 -- Evidence Preservation and Chain of Custody</option>
+                    <option value="si05">SI-05 -- Threat Assessment</option>
+                    <option value="si06">SI-06 -- Incident Documentation</option>
+                    <option value="si07">SI-07 -- Communication</option>
+                    <option value="si08">SI-08 -- IR Team Activation</option>
+                    <option value="si09">SI-09 -- Network Segmentation with Clinical System Interdependency</option>
+                    <option value="si10">SI-10 -- HIPAA Breach Notification Clock Management</option>
+                    <option value="si11">SI-11 -- Regulatory Reporting</option>
+                    <option value="si12">SI-12 -- Leadership Notification</option>
+                    <option value="si13">SI-13 -- Post-Incident Lessons Learned</option>
+                    <option value="si14">SI-14 -- Protocol Deviation Documentation</option>
+                    <option value="si15">SI-15 -- Recovery Verification</option>
+                    <option value="si16">SI-16 -- After-Action Review</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trace 6: DC-48 / SI-16 -- CORRECT -->
+            <div class="trace-item" role="row">
+              <div class="trace-item__head" role="cell">
+                <span class="trace-dc-id">DC-48</span>
+                <span class="trace-desc">Produce the formal MRHN after-action report in RC-4 format, distinguishing operational observations from governance-required findings subject to legal review, and submit to the designated MRHN governance repository.</span>
+              </div>
+              <div class="trace-listed" role="cell">
+                Listed parent: <strong>SI-16 -- After-Action Review</strong> (Bucket 4, Analysis)
+              </div>
+              <div class="trace-item__controls" role="cell">
+                <div class="trace-verdict-group" role="group" aria-label="Attribution verdict for DC-48">
+                  <div class="trace-verdict-option">
+                    <input type="radio" id="t6-correct" name="trace-6" value="correct">
+                    <label for="t6-correct">Correctly attributed</label>
+                  </div>
+                  <div class="trace-verdict-option">
+                    <input type="radio" id="t6-wrong" name="trace-6" value="wrong">
+                    <label for="t6-wrong">Misattributed</label>
+                  </div>
+                </div>
+                <div class="trace-correction" id="t6-correction" hidden>
+                  <span class="trace-correction-label" id="t6-lbl">Correct parent:</span>
+                  <select class="trace-correction-select" name="trace-6-correction" aria-labelledby="t6-lbl">
+                    <option value="">-- Select SI --</option>
+                    <option value="si01">SI-01 -- Severity Classification</option>
+                    <option value="si02">SI-02 -- Initial Notification</option>
+                    <option value="si03">SI-03 -- System Isolation and Authority Boundaries</option>
+                    <option value="si04">SI-04 -- Evidence Preservation and Chain of Custody</option>
+                    <option value="si05">SI-05 -- Threat Assessment</option>
+                    <option value="si06">SI-06 -- Incident Documentation</option>
+                    <option value="si07">SI-07 -- Communication</option>
+                    <option value="si08">SI-08 -- IR Team Activation</option>
+                    <option value="si09">SI-09 -- Network Segmentation with Clinical System Interdependency</option>
+                    <option value="si10">SI-10 -- HIPAA Breach Notification Clock Management</option>
+                    <option value="si11">SI-11 -- Regulatory Reporting</option>
+                    <option value="si12">SI-12 -- Leadership Notification</option>
+                    <option value="si13">SI-13 -- Post-Incident Lessons Learned</option>
+                    <option value="si14">SI-14 -- Protocol Deviation Documentation</option>
+                    <option value="si15">SI-15 -- Recovery Verification</option>
+                    <option value="si16">SI-16 -- After-Action Review</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /.trace-table -->
+
+          <p id="form-error" class="form-error" role="alert" aria-live="assertive">
+            Please make a selection for every component before checking your work. If you flagged a misattribution, select the correct parent SI from the dropdown.
+          </p>
+
+          <div class="form-footer">
+            <button type="submit" class="btn btn--primary">Check My Work</button>
+          </div>
+
+        </form><!-- /#trace-form -->
+
+        <!-- ===================================================
+             Feedback region
+             =================================================== -->
+        <section id="feedback-region" class="feedback-region" aria-labelledby="feedback-heading" hidden>
+          <h2 id="feedback-heading" class="feedback-heading" tabindex="-1">Expert Analysis</h2>
+          <p class="feedback-summary">
+            Expert reasoning is shown for all six components below. One component is misattributed -- the analysis confirms which one and explains why.
+          </p>
+          <div id="feedback-body"></div>
+          <div class="feedback-actions">
+            <a id="btn-continue" href="m1-l4b-s6.html" class="btn btn--primary">
+              Continue to Calibration
+            </a>
+          </div>
+        </section>
 
         <!-- Screen navigation -->
         <nav class="screen-nav" aria-label="Screen navigation">
           <a href="m1-l4b-s4.html"
              class="btn btn--nav btn--prev"
              rel="prev"
-             aria-label="Go to previous screen: Steps 7 and 8 guided practice">
+             aria-label="Go to previous screen: Step 7 optimization practice">
             <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             Previous
-          </a>
-          <a href="m1-l4b-s6.html"
-             class="btn btn--nav btn--next"
-             rel="next"
-             aria-label="Go to next screen: Lesson 1.4b reflection and transition to Module 1 gate">
-            Next
-            <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
           </a>
         </nav>
 
@@ -579,18 +535,18 @@
   <aside aria-label="Supplementary resources" id="supplementary-resources">
     <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
       <h2 class="aside-heading">Artifact Reference</h2>
-      <p class="aside-empty">MRHN_DecompositionMap_v2 is the artifact produced by the Steps 7 and 8 process. Governance records MRHN-D-007 (Unit Optimization) and MRHN-D-008 (Scope Trace Audit) document the decisions that produced the v2 map.</p>
+      <p class="aside-empty">Practice applies the methodology from MRHN-D-008 (Scope Trace Audit) to additional components from the MRHN decomposition map. MRHN_DecompositionMap_v2 is available in the Artifact Drawer.</p>
     </section>
     <section id="decision-history" tabindex="-1" aria-label="Decision history">
       <h2 class="aside-heading">Decision History</h2>
-      <p class="aside-empty">MRHN-D-007 and MRHN-D-008 govern the optimization and audit decisions this calibration reviews. Prior records MRHN-D-001 through MRHN-D-006 established the scope items and initial decomposition map.</p>
+      <p class="aside-empty">MRHN-D-008 governs the scope trace audit methodology applied in this practice. Prior decisions MRHN-D-001 through MRHN-D-007 established the scope items and decomposition map this practice draws from.</p>
     </section>
   </aside>
 
   <!-- Support panels -->
   <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
     <div class="panel-header"><h2 class="panel-title">Artifact Drawer</h2>
-      <button type="button" class="panel-close" data-panel-focus aria-label="Close artifact drawer">
+      <button type="button" class="panel-close" aria-label="Close artifact drawer">
         <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
     </div>
@@ -598,7 +554,7 @@
   </aside>
   <aside id="decisionHistory" aria-label="Decision history panel" hidden>
     <div class="panel-header"><h2 class="panel-title">Decision History</h2>
-      <button type="button" class="panel-close" data-panel-focus aria-label="Close decision history panel">
+      <button type="button" class="panel-close" aria-label="Close decision history panel">
         <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
     </div>
@@ -606,7 +562,7 @@
   </aside>
   <aside id="glossary" aria-label="Glossary" hidden>
     <div class="panel-header"><h2 class="panel-title">Glossary</h2>
-      <button type="button" class="panel-close" data-panel-focus aria-label="Close glossary">
+      <button type="button" class="panel-close" aria-label="Close glossary">
         <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
     </div>
@@ -614,7 +570,7 @@
   </aside>
   <aside id="supportPanel" aria-label="Support" hidden>
     <div class="panel-header"><h2 class="panel-title">Support</h2>
-      <button type="button" class="panel-close" data-panel-focus aria-label="Close support panel">
+      <button type="button" class="panel-close" aria-label="Close support panel">
         <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
     </div>
@@ -622,7 +578,7 @@
   </aside>
   <aside id="annotationPanel" aria-label="Annotation" hidden>
     <div class="panel-header"><h2 class="panel-title">Notes</h2>
-      <button type="button" class="panel-close" data-panel-focus aria-label="Close annotation panel">
+      <button type="button" class="panel-close" aria-label="Close annotation panel">
         <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
     </div>
@@ -640,23 +596,36 @@
     </nav>
   </footer>
 
+  <!-- Constraint reference card persistence -->
+  <script>
+    (function() {
+      var ref = document.getElementById('constraint-ref');
+      if (!ref) return;
+      var KEY = 'archMethod_constraintRefOpen';
+      var saved = localStorage.getItem(KEY);
+      if (saved === null || saved === 'true') {
+        ref.setAttribute('open', '');
+      }
+      ref.addEventListener('toggle', function() {
+        localStorage.setItem(KEY, ref.open ? 'true' : 'false');
+      });
+    })();
+  </script>
+
   <!-- Base script -->
   <script type="module">
     import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
-    import { getItem, setItem } from './js/storage.js';
-
     document.getElementById('footer-year').textContent = new Date().getFullYear();
-
-    function syncToggleStates(activeName) {
+    function syncToggleStates(name) {
       document.querySelectorAll('.support-toggle').forEach(btn => {
-        btn.setAttribute('aria-expanded', btn.dataset.panel === activeName ? 'true' : 'false');
+        btn.setAttribute('aria-expanded', btn.dataset.panel === name ? 'true' : 'false');
       });
     }
     document.querySelectorAll('.support-toggle').forEach(btn => {
       btn.addEventListener('click', () => {
-        const panelName = btn.dataset.panel;
-        if (getActivePanel() === panelName) { closeAll(); syncToggleStates(null); }
-        else { openPanel(panelName, btn); syncToggleStates(panelName); }
+        const p = btn.dataset.panel;
+        if (getActivePanel() === p) { closeAll(); syncToggleStates(null); }
+        else { openPanel(p, btn); syncToggleStates(p); }
       });
     });
     document.querySelectorAll('.panel-close').forEach(btn => {
@@ -664,200 +633,165 @@
     });
   </script>
 
-  <!-- Calibration script -->
+  <!-- Practice interaction script -->
   <script type="module">
-    import { getItem, setItem } from './js/storage.js';
+    import { setItem } from './js/storage.js';
 
-    let SCREEN_ID = null;
-    let CONFIG    = null;
+    /* ============================================================
+       Expert data
+       ============================================================ */
+    const TRACE_EXPERT = [
+      {
+        dc: 'DC-19', listed: 'SI-09', isWrong: false,
+        reasoning: 'Correctly attributed. DC-19 evaluates clinical system interdependencies (EHR, imaging, billing) specifically to inform network segmentation decisions -- the defining cognitive task of SI-09 (Network Segmentation with Clinical System Interdependency). The description names the clinical systems identified in the Bucket 2 calibration constraint and references patient care continuity, confirming SI-09 as the correct parent.'
+      },
+      {
+        dc: 'DC-30', listed: 'SI-12', isWrong: false,
+        reasoning: 'Correctly attributed. DC-30 identifies which leadership levels require notification using the PC-5 communication chain -- a prerequisite step within the SI-12 (Leadership Notification) scope item. The PC-5 reference is the distinguishing marker: PC-5 governs the leadership notification chain, not the IR team activation chain (SI-08) or regulatory notification chain (SI-11).'
+      },
+      {
+        dc: 'DC-34', listed: 'SI-10', isWrong: false,
+        reasoning: 'Correctly attributed. DC-34 documents the "reasonably should have known" clock trigger determination with reasoning referencing 45 CFR 164.404 -- the legal standard at the center of SI-10 (HIPAA Breach Notification Clock Management). The combination of the clock trigger subject matter and the explicit regulatory citation confirms SI-10 as the correct parent without ambiguity.'
+      },
+      {
+        dc: 'DC-38', listed: 'SI-15', isWrong: true, correctParent: 'si14',
+        correctParentName: 'SI-14 -- Protocol Deviation Documentation',
+        reasoning: 'Misattributed. DC-38 documents protocol deviations using RC-2 justification language, naming departures from IR-2024 protocol. This is the defining obligation of SI-14 (Protocol Deviation Documentation) -- not SI-15 (Recovery Verification). SI-15 concerns evaluating restored systems against RC-3 technical thresholds; its subject matter is systems restoration clearance, not protocol compliance documentation. The likely cause: DC-38 and the SI-15 components (DC-43, DC-44, DC-46) were entered in adjacent sessions during decomposition, and both involve documentation language, making the parent field susceptible to carry-over error. The RC-2 format requirement and the IR-2024 reference make SI-14 the unambiguous correct parent.',
+        correctionNote: 'Parent corrected: DC-38 reassigned from SI-15 to SI-14 (Protocol Deviation Documentation). SI-14 has three children (DC-37, DC-38, DC-39) representing the complete protocol deviation workflow: identify deviations (DC-37), document with RC-2 justification language (DC-38), verify documentation before close-out (DC-39).'
+      },
+      {
+        dc: 'DC-43', listed: 'SI-15', isWrong: false,
+        reasoning: 'Correctly attributed. DC-43 evaluates restored MRHN systems against RC-3 technical thresholds to determine restoration clearance for clinical use -- the core evaluative behavior of SI-15 (Recovery Verification). The RC-3 reference and the clinical-use clearance purpose are both markers specific to SI-15. Note: DC-38 (the misattributed component) uses similar documentation language but concerns IR-2024 protocol deviations, not RC-3 restoration criteria -- the subject matter distinction is the key to distinguishing the two SI-15 impostors.'
+      },
+      {
+        dc: 'DC-48', listed: 'SI-16', isWrong: false,
+        reasoning: 'Correctly attributed. DC-48 produces the formal after-action report in RC-4 format, distinguishing operational observations from governance-required findings subject to legal review. This is a core output obligation of SI-16 (After-Action Review). The RC-4 format reference and the operational/governance distinction confirm SI-16 as the correct parent. DC-48 should be read alongside DC-47a (which facilitates the review) -- together they represent the full SI-16 scope.'
+      }
+    ];
 
-    const layout          = document.getElementById('calibration-layout');
-    const btnLinear       = document.getElementById('btn-linear-mode');
-    const linearLabel     = btnLinear.querySelector('.toggle-label');
-    const btnReveal       = document.getElementById('btn-reveal-expert');
-    const expertGate      = document.getElementById('expert-gate');
-    const expertContent   = document.getElementById('expert-content');
-    const expertHeading   = document.getElementById('expert-heading');
-    const learnerBody     = document.getElementById('learner-response-body');
-    const notesArea       = document.getElementById('calibration-notes');
-    const btnSaveNotes    = document.getElementById('btn-save-notes');
-    const notesSaveStatus = document.getElementById('notes-save-status');
-    const announcer       = document.getElementById('sr-announcer');
+    /* ============================================================
+       Conditional visibility: correction selects
+       ============================================================ */
+    for (let i = 1; i <= 6; i++) {
+      document.querySelectorAll(`[name="trace-${i}"]`).forEach(radio => {
+        radio.addEventListener('change', () => {
+          const val = document.querySelector(`[name="trace-${i}"]:checked`)?.value;
+          const el = document.getElementById(`t${i}-correction`);
+          val === 'wrong' ? el.removeAttribute('hidden') : el.setAttribute('hidden', '');
+        });
+      });
+    }
 
-    /* ---- Linear mode toggle ---- */
-    btnLinear.addEventListener('click', () => {
-      const nowLinear = btnLinear.getAttribute('aria-pressed') !== 'true';
-      btnLinear.setAttribute('aria-pressed', String(nowLinear));
-      layout.classList.toggle('calibration-layout--linear', nowLinear);
-      linearLabel.textContent = nowLinear ? 'Switch to Side-by-Side View' : 'Switch to Linear View';
-    });
+    /* ============================================================
+       Form submit
+       ============================================================ */
+    const form      = document.getElementById('trace-form');
+    const formError = document.getElementById('form-error');
+    const fbRegion  = document.getElementById('feedback-region');
+    const fbHeading = document.getElementById('feedback-heading');
+    const fbBody    = document.getElementById('feedback-body');
+    const announcer = document.getElementById('sr-announcer');
 
-    /* ---- Expert reveal ---- */
-    btnReveal.addEventListener('click', () => {
-      expertGate.setAttribute('hidden', '');
-      expertContent.removeAttribute('hidden');
-      btnReveal.setAttribute('aria-expanded', 'true');
-      btnReveal.setAttribute('disabled', '');
-      btnReveal.textContent = 'Expert Response Shown';
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      /* Validation */
+      const allTrace = [1,2,3,4,5,6].every(i => document.querySelector(`[name="trace-${i}"]:checked`));
+      const missingCorrection = [1,2,3,4,5,6].some(i => {
+        const v = document.querySelector(`[name="trace-${i}"]:checked`)?.value;
+        return v === 'wrong' && !document.querySelector(`[name="trace-${i}-correction"]`)?.value;
+      });
+
+      if (!allTrace || missingCorrection) {
+        formError.classList.add('is-visible');
+        formError.focus();
+        return;
+      }
+      formError.classList.remove('is-visible');
+
+      /* Merge trace data into the existing s4 submission object */
+      try {
+        let prior = {};
+        try { const s = localStorage.getItem('m1_l4b_s4_submission'); if (s) prior = JSON.parse(s); } catch {}
+        const submission = {
+          ...prior,
+          savedAt: new Date().toISOString(),
+          trace: [
+            { dc: 'DC-19', listed: 'SI-09', verdict: document.querySelector('[name="trace-1"]:checked')?.value || '', correction: document.querySelector('[name="trace-1-correction"]')?.value || '' },
+            { dc: 'DC-30', listed: 'SI-12', verdict: document.querySelector('[name="trace-2"]:checked')?.value || '', correction: document.querySelector('[name="trace-2-correction"]')?.value || '' },
+            { dc: 'DC-34', listed: 'SI-10', verdict: document.querySelector('[name="trace-3"]:checked')?.value || '', correction: document.querySelector('[name="trace-3-correction"]')?.value || '' },
+            { dc: 'DC-38', listed: 'SI-15', verdict: document.querySelector('[name="trace-4"]:checked')?.value || '', correction: document.querySelector('[name="trace-4-correction"]')?.value || '' },
+            { dc: 'DC-43', listed: 'SI-15', verdict: document.querySelector('[name="trace-5"]:checked')?.value || '', correction: document.querySelector('[name="trace-5-correction"]')?.value || '' },
+            { dc: 'DC-48', listed: 'SI-16', verdict: document.querySelector('[name="trace-6"]:checked')?.value || '', correction: document.querySelector('[name="trace-6-correction"]')?.value || '' }
+          ]
+        };
+        setItem('m1_l4b_s4_submission', JSON.stringify(submission));
+      } catch { /* storage unavailable -- continue without saving */ }
+
+      /* Lock all controls */
+      form.querySelectorAll('input, select, button').forEach(el => el.setAttribute('disabled', ''));
+
+      /* Build feedback HTML */
+      let html = '';
+
+      TRACE_EXPERT.forEach((item, idx) => {
+        const i = idx + 1;
+        const lv = document.querySelector(`[name="trace-${i}"]:checked`)?.value || '';
+        const learnerFlagged = lv === 'wrong';
+        const correct = item.isWrong ? learnerFlagged : !learnerFlagged;
+        const hClass = item.isWrong ? 'trace-fb-header--error' : 'trace-fb-header--correct';
+        const sClass = item.isWrong ? 'trace-fb-status--error' : 'trace-fb-status--correct';
+        const sLabel = item.isWrong ? 'Misattributed' : 'Correctly Attributed';
+        const lvLabel = learnerFlagged ? 'Misattributed' : 'Correctly attributed';
+        const mClass  = correct ? 'match-chip--match' : 'match-chip--mismatch';
+        const mLabel  = correct ? 'Match' : 'Mismatch';
+
+        let correctionHtml = '';
+        if (item.isWrong) {
+          const sel = document.querySelector(`[name="trace-${i}-correction"]`)?.value || '';
+          const selCorrect = sel === item.correctParent;
+          const selChip = selCorrect
+            ? `<span class="match-chip match-chip--match" style="margin-left:0">Correct parent selected</span>`
+            : `<span class="match-chip match-chip--mismatch" style="margin-left:0">Incorrect parent -- correct answer: ${item.correctParentName}</span>`;
+          correctionHtml = `<div class="trace-fb-correction">
+            <span class="trace-fb-correction__label">Correction</span>
+            ${item.correctionNote} ${selChip}
+          </div>`;
+        }
+
+        html += `
+          <div class="trace-fb-item">
+            <div class="trace-fb-header ${hClass}">
+              <span class="fb-dc-id">${item.dc}</span>
+              <span class="trace-fb-status ${sClass}">Expert: ${sLabel}</span>
+              <span class="learner-answer">Your answer: ${lvLabel}</span>
+              <span class="match-chip ${mClass}">${mLabel}</span>
+            </div>
+            <div class="trace-fb-body">
+              <p style="margin:0">${item.reasoning}</p>
+              ${correctionHtml}
+            </div>
+          </div>`;
+      });
+
+      fbBody.innerHTML = html;
+      fbRegion.removeAttribute('hidden');
+      fbHeading.focus();
+
       announcer.textContent = '';
       requestAnimationFrame(() => {
-        announcer.textContent = 'Expert comparison available.';
-        setTimeout(() => { expertHeading.focus(); }, 100);
+        announcer.textContent = 'Expert analysis is now visible. Review the reasoning for all six components, then continue to the next screen.';
       });
     });
 
-    /* ---- Notes: save on blur ---- */
-    notesArea.addEventListener('blur', () => saveNotes('blur'));
-    btnSaveNotes.addEventListener('click', () => saveNotes('manual'));
-    document.querySelectorAll('.btn--nav').forEach(link => {
-      link.addEventListener('click', () => saveNotes('exit'));
-    });
-
-    function saveNotes(source) {
-      if (!SCREEN_ID) return;
-      try {
-        const value     = notesArea.value;
-        const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        setItem('calibration_' + SCREEN_ID + '_notes',   value);
-        setItem('calibration_' + SCREEN_ID + '_savedAt', timestamp);
-        const message  = 'Saved at ' + timestamp;
-        const announce = source === 'manual';
-        notesSaveStatus.setAttribute('aria-live', announce ? 'polite' : 'off');
-        notesSaveStatus.textContent = '';
-        requestAnimationFrame(() => { notesSaveStatus.textContent = message; });
-        if (announce) {
-          announcer.textContent = '';
-          requestAnimationFrame(() => { announcer.textContent = message; });
-        }
-      } catch {
-        notesSaveStatus.setAttribute('aria-live', 'polite');
-        notesSaveStatus.textContent = 'Save failed. Storage may be unavailable.';
-      }
-    }
-
-    function restoreNotes() {
-      if (!SCREEN_ID) return;
-      const stored  = getItem('calibration_' + SCREEN_ID + '_notes');
-      const savedAt = getItem('calibration_' + SCREEN_ID + '_savedAt');
-      if (stored !== null) {
-        notesArea.value = stored;
-        notesSaveStatus.textContent = savedAt ? 'Last saved at ' + savedAt : 'Draft restored';
-      }
-    }
-
-    function escapeHtml(str) {
-      return str
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
-    }
-
-    function loadLearnerResponse() {
-      if (!CONFIG || !CONFIG.source) return;
-      const stored = getItem(CONFIG.source.key);
-
-      if (!stored) {
-        const empty = document.createElement('p');
-        empty.className = 'learner-response__empty';
-        empty.innerHTML =
-          'No saved response found for this activity. ' +
-          '<a href="' + (CONFIG.source.fallbackHref || '#') + '">' +
-          'Return to ' + (CONFIG.source.fallbackLabel || 'the previous activity') +
-          '</a> to complete it, or continue to view the expert response.';
-        learnerBody.appendChild(empty);
-        return;
-      }
-
-      let text = '';
-      try { text = CONFIG.source.parse(stored); } catch { text = stored; }
-
-      if (!text || !text.trim()) {
-        const empty = document.createElement('p');
-        empty.className = 'learner-response__empty';
-        empty.textContent = 'Your saved response appears to be empty.';
-        learnerBody.appendChild(empty);
-        return;
-      }
-
-      const quote = document.createElement('blockquote');
-      quote.className = 'learner-response__quote';
-      quote.innerHTML = text.split('\n')
-        .filter(line => line.trim())
-        .map(line => '<p>' + escapeHtml(line) + '</p>')
-        .join('');
-
-      const source = document.createElement('p');
-      source.className = 'learner-response__source';
-      source.textContent = 'Saved from ' + (CONFIG.source.label || 'a previous activity');
-
-      learnerBody.appendChild(quote);
-      learnerBody.appendChild(source);
-    }
-
-    window.__setCalibrationConfig = function (config) {
-      SCREEN_ID = config.screenId;
-      CONFIG    = config;
-      loadLearnerResponse();
-      restoreNotes();
-    };
-  </script>
-
-  <!-- Screen-specific script -->
-  <script type="module">
+    /* Progress tracker */
     document.getElementById('pt-module').textContent       = '1';
     document.getElementById('pt-lesson').textContent       = '1.4b';
     document.getElementById('pt-phase').textContent        = '2';
-    document.getElementById('pt-step').textContent         = '7-8';
+    document.getElementById('pt-step').textContent         = '8';
     document.getElementById('pt-screen').textContent       = '5';
-    document.getElementById('pt-screen-total').textContent = '6';
-
-    document.querySelectorAll('.module-nav-link').forEach(link => link.removeAttribute('aria-current'));
-    const active = document.querySelector('.module-nav-link[href="m1-l1a-s1.html"]');
-    if (active) active.setAttribute('aria-current', 'page');
-
-    const vLabel = { split: 'Split', merge: 'Merge', confirm: 'Confirm' };
-    const tLabel = { correct: 'Correctly attributed', wrong: 'Misattributed' };
-    const siNames = {
-      si01:'SI-01', si02:'SI-02', si03:'SI-03', si04:'SI-04',
-      si05:'SI-05', si06:'SI-06', si07:'SI-07', si08:'SI-08',
-      si09:'SI-09', si10:'SI-10', si11:'SI-11', si12:'SI-12',
-      si13:'SI-13', si14:'SI-14 (Protocol Deviation Documentation)',
-      si15:'SI-15', si16:'SI-16'
-    };
-
-    window.__setCalibrationConfig({
-      screenId: 'm1_l4b_calibration1',
-      source: {
-        key: 'm1_l4b_s4_submission',
-        parse: stored => {
-          const d = JSON.parse(stored);
-          const lines = [
-            'Part 1 -- Unit Optimization',
-            'DC-47 (SI-16, Bucket 4): ' + (vLabel[d.opt.a.verdict] || 'not answered'),
-            'DC-40 (SI-15, Bucket 4): ' + (vLabel[d.opt.b.verdict] || 'not answered'),
-            'DC-32 (SI-12, Bucket 3): ' + (vLabel[d.opt.c.verdict] || 'not answered'),
-            ' ',
-            'Part 2 -- Scope Trace Audit',
-            'DC-19 (listed SI-09): '  + (tLabel[d.trace[0].verdict] || 'not answered'),
-            'DC-30 (listed SI-12): '  + (tLabel[d.trace[1].verdict] || 'not answered'),
-            'DC-34 (listed SI-10): '  + (tLabel[d.trace[2].verdict] || 'not answered'),
-            'DC-38 (listed SI-15): '  + (tLabel[d.trace[3].verdict] || 'not answered')
-              + (d.trace[3].verdict === 'wrong' && d.trace[3].correction
-                  ? ' -- corrected to ' + (siNames[d.trace[3].correction] || d.trace[3].correction)
-                  : ''),
-            'DC-43 (listed SI-15): '  + (tLabel[d.trace[4].verdict] || 'not answered'),
-            'DC-48 (listed SI-16): '  + (tLabel[d.trace[5].verdict] || 'not answered')
-          ];
-          return lines.join('\n');
-        },
-        label:        'Screen 4 -- Guided Practice (Steps 7 and 8)',
-        fallbackHref: 'm1-l4b-s4.html',
-        fallbackLabel: 'Lesson 1.4b Screen 4'
-      }
-    });
+    document.getElementById('pt-screen-total').textContent = '7';
   </script>
-
 
   <!-- Shared JS modules: tracker redesign, breadcrumb, completion signal, panel init -->
   <script type="module">

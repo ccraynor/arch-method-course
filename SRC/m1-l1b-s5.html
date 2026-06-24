@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Guided practice: apply the Output Style Gate to produce your own MRHN documentation snapshot. Write the naming convention, assign SI identifiers to scope items, and complete one governance record using all five fields.">
-  <title>Guided Practice: Output Style Gate and Snapshot Protocol -- Lesson 1.1b -- ARCH Method™ Practitioner Credential -- Proof Point Learning</title>
+  <meta name="description" content="Guided practice Tasks 1 and 2: write the MRHN artifact naming convention and assign SI identifiers to scope items.">
+  <title>Guided Practice: Output Style Gate, Tasks 1 and 2 -- Lesson 1.1b -- ARCH Method™ Practitioner Credential -- Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <style>
     /* ================================================================
-       Screen m1-l1b-s5 -- Guided Practice: Output Style Gate
-       Step 1.5 -- three-task snapshot protocol exercise.
+       Screen m1-l1b-s5 -- Guided Practice: Output Style Gate, Tasks 1 and 2
+       Step 1.5 -- naming convention and SI identifier practice.
        All color values use CSS tokens. No hard-coded hex values.
        ================================================================ */
 
@@ -30,7 +30,6 @@
       gap: 0.75rem;
       margin: 0 0 0.25rem;
     }
-
 
     .time-estimate {
       font-size: 0.75rem;
@@ -68,7 +67,7 @@
       flex-wrap: wrap;
       gap: 0.25rem 0.5rem;
       padding: 0.625rem 0.875rem;
-      margin: 0 0 1.75rem;
+      margin: 0 0 1.5rem;
       background: var(--color-bg-subtle);
       border-left: 3px solid var(--color-border-strong);
       border-radius: 0 4px 4px 0;
@@ -80,6 +79,59 @@
       font-weight: 700;
       color: var(--color-text-secondary);
       flex-shrink: 0;
+    }
+
+    /* ---- Convention reference card ---- */
+    .conv-ref {
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      margin: 0 0 1.75rem;
+      overflow: hidden;
+    }
+
+    .conv-ref summary {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--color-bg-subtle);
+      cursor: pointer;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      list-style: none;
+      justify-content: space-between;
+    }
+
+    .conv-ref summary::-webkit-details-marker { display: none; }
+    .conv-ref summary:focus-visible {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: -2px;
+    }
+
+    .conv-ref[open] summary {
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .conv-ref-chevron {
+      transition: transform 0.15s;
+      flex-shrink: 0;
+    }
+
+    .conv-ref[open] .conv-ref-chevron { transform: rotate(180deg); }
+
+    .conv-ref__body {
+      padding: 0.75rem 0.875rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .conv-ref__item {
+      font-size: 0.8125rem;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      margin: 0;
     }
 
     /* ---- Task sections ---- */
@@ -238,51 +290,6 @@
       font-size: 0.8125rem;
       color: var(--color-text-secondary);
       font-style: italic;
-    }
-
-    /* ---- Governance record form ---- */
-    .gov-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .gov-field-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.375rem;
-    }
-
-    .gov-field-label {
-      display: flex;
-      align-items: baseline;
-      gap: 0.5rem;
-    }
-
-    .gov-field-num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 1.25rem;
-      height: 1.25rem;
-      border-radius: 50%;
-      background: var(--color-text-link);
-      color: var(--color-text-inverse);
-      font-size: 0.6875rem;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    .gov-field-name {
-      font-size: 0.875rem;
-      font-weight: 700;
-      color: var(--color-text-primary);
-    }
-
-    .gov-field-desc {
-      font-size: 0.8125rem;
-      color: var(--color-text-secondary);
-      font-weight: 400;
     }
 
     /* ---- Submit controls ---- */
@@ -463,75 +470,6 @@
       white-space: nowrap;
     }
 
-    /* Expert governance record */
-    .gov-record {
-      border: 1px solid var(--color-border-default);
-      border-radius: 5px;
-      overflow: hidden;
-    }
-
-    .gov-record__header {
-      padding: 0.5rem 1rem;
-      background: var(--color-brand-navy);
-      color: var(--color-text-inverse);
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .gov-record__field {
-      display: grid;
-      grid-template-columns: 10.5rem 1fr;
-      border-bottom: 1px solid var(--color-border-default);
-    }
-
-    .gov-record__field:last-child { border-bottom: none; }
-
-    @media (max-width: 540px) {
-      .gov-record__field { grid-template-columns: 1fr; }
-    }
-
-    .gov-record__key {
-      padding: 0.625rem 0.875rem;
-      background: var(--color-bg-subtle);
-      font-size: 0.8125rem;
-      font-weight: 700;
-      color: var(--color-text-secondary);
-      line-height: 1.5;
-      border-right: 1px solid var(--color-border-default);
-    }
-
-    @media (max-width: 540px) {
-      .gov-record__key {
-        border-right: none;
-        border-bottom: 1px solid var(--color-border-default);
-      }
-    }
-
-    .gov-record__val {
-      padding: 0.625rem 0.875rem;
-      font-size: 0.875rem;
-      color: var(--color-text-primary);
-      line-height: 1.6;
-      background: var(--color-bg-page);
-    }
-
-    .field-num-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 1.25rem;
-      height: 1.25rem;
-      border-radius: 50%;
-      background: var(--color-text-link);
-      color: var(--color-text-inverse);
-      font-size: 0.6875rem;
-      font-weight: 700;
-      margin-right: 0.375rem;
-      vertical-align: middle;
-    }
-
     /* Navigation controls inside feedback */
     .feedback-controls {
       display: flex;
@@ -544,6 +482,8 @@
     /* High contrast adjustments */
     @media (prefers-contrast: more) {
       .brief-reference { border-left-color: var(--color-border-strong); }
+      .conv-ref { border-color: var(--color-border-strong); }
+      .conv-ref[open] summary { border-bottom-color: var(--color-border-strong); }
       .task-section { border-color: var(--color-border-strong); }
       .task-section__header { border-bottom-color: var(--color-border-strong); }
       textarea, input[type="text"] { border-color: var(--color-border-strong); }
@@ -551,11 +491,10 @@
       .pattern-reminder { border-color: var(--color-border-strong); }
       .snapshot-convention { border-color: var(--color-border-strong); }
       .si-table th, .si-table td { border-color: var(--color-border-strong); }
-      .gov-record { border-color: var(--color-border-strong); }
-      .gov-record__field { border-bottom-color: var(--color-border-strong); }
-      .gov-record__key { border-right-color: var(--color-border-strong); }
       .result-banner--pass,
       .result-banner--partial { border-width: 2px; }
+      .step-badge { border-color: var(--color-border-strong); color: var(--color-text-primary); }
+      .lesson-label { color: var(--color-text-primary); }
     }
   </style>
 </head>
@@ -600,7 +539,7 @@
       <span class="pt-divider" aria-hidden="true">&bull;</span>
       <span class="pt-item">Step <span id="pt-step">1.5</span></span>
       <span class="pt-divider" aria-hidden="true">&bull;</span>
-      <span class="pt-item">Screen <span id="pt-screen">5</span> of <span id="pt-screen-total">6</span></span>
+      <span class="pt-item">Screen <span id="pt-screen">5</span> of <span id="pt-screen-total">7</span></span>
     </div>
 
     <nav aria-label="Support tools">
@@ -656,13 +595,13 @@
           <div class="screen-meta">
             <span class="screen-type-label">Guided Practice</span>
             <span class="time-estimate"
-                  aria-label="Estimated time: 20 to 25 minutes">
-              20&ndash;25 min
+                  aria-label="Estimated time: 10 to 12 minutes">
+              10&ndash;12 min
             </span>
           </div>
           <p class="lesson-label" aria-label="Lesson 1.1b">Lesson 1.1b</p>
           <h1 id="screen-title" class="screen-title">
-            Apply the Output Style Gate: MRHN Documentation Snapshot
+            Apply the Output Style Gate: Tasks 1 and 2
           </h1>
           <span class="step-badge">Step 1.5</span>
 
@@ -680,7 +619,34 @@
 
         <form id="snapshot-form"
               novalidate
-              aria-label="MRHN documentation snapshot practice">
+              aria-label="MRHN documentation snapshot practice, Tasks 1 and 2">
+
+          <!-- Convention reference card -->
+          <details class="conv-ref" id="conv-ref">
+            <summary>
+              <span style="display:flex;align-items:center;gap:0.5rem;">
+                <svg aria-hidden="true" focusable="false" width="15" height="15"
+                     viewBox="0 0 16 16" fill="none" style="flex-shrink:0">
+                  <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M8 7v5M8 5.5v.5" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round"/>
+                </svg>
+                Quick Reference: Output Style Gate Conventions
+              </span>
+              <svg class="conv-ref-chevron" aria-hidden="true" focusable="false"
+                   width="15" height="15" viewBox="0 0 16 16" fill="none">
+                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </summary>
+            <div class="conv-ref__body">
+              <p class="conv-ref__item"><strong>1. Artifact Naming:</strong> MRHN_[ArtifactName]_v[Version]_[Date]. Four segments. CamelCase name, no spaces. Integer version starting at 1. Date format: YYYY-MM-DD.</p>
+              <p class="conv-ref__item"><strong>2. SI Identifiers:</strong> SI-01 through SI-16. Assigned in Bucket Map order. Never reused; retired identifiers leave a gap in the sequence.</p>
+              <p class="conv-ref__item"><strong>3. DC Identifiers:</strong> DC-01 through DC-48. Assigned during Module 2 decomposition, grouped by SI parent. Same retirement rule as SI identifiers.</p>
+              <p class="conv-ref__item"><strong>4. Governance Record:</strong> Every decision requires all five fields -- Decision Statement, Constraint Reference, Rationale, Risk Note, Governance Checkpoint Linkage.</p>
+              <p class="conv-ref__item"><strong>5. Version Control:</strong> Revisions happen only after documented governance review. Create a new file with an incremented version. Never edit a previous version in place.</p>
+            </div>
+          </details>
 
           <!-- ======================================================
                Task 1: Artifact Naming Convention
@@ -823,127 +789,12 @@
             </div>
           </div>
 
-          <!-- ======================================================
-               Task 3: Governance Decision Record
-               ====================================================== -->
-          <div class="task-section" role="group" aria-labelledby="task3-heading">
-            <div class="task-section__header">
-              <span class="task-num" aria-hidden="true">3</span>
-              <h2 id="task3-heading" class="task-section__title">
-                Complete One Five-Field Governance Decision Record
-              </h2>
-            </div>
-            <div class="task-section__body">
-              <p class="task-instruction">
-                Choose any one design decision you would make for the Meridian
-                project based on the constraints you identified. Complete all
-                five fields of the governance documentation rule. Your
-                Constraint Reference field must include at least one specific
-                constraint code (PC-1, RC-2, LC-1, SC-1, etc.) or SI
-                identifier.
-              </p>
-              <div class="gov-form">
-
-                <div class="gov-field-group">
-                  <label class="gov-field-label" for="field-decision">
-                    <span class="gov-field-num" aria-hidden="true">1</span>
-                    <span class="gov-field-name">Decision Statement</span>
-                  </label>
-                  <span class="gov-field-desc" id="desc-decision">
-                    What was decided -- written as a precise, present-tense declaration.
-                  </span>
-                  <textarea id="field-decision"
-                            name="field-decision"
-                            rows="3"
-                            aria-required="true"
-                            aria-describedby="desc-decision error-governance"
-                            autocomplete="off"
-                            placeholder="The MRHN course will..."></textarea>
-                </div>
-
-                <div class="gov-field-group">
-                  <label class="gov-field-label" for="field-constraint">
-                    <span class="gov-field-num" aria-hidden="true">2</span>
-                    <span class="gov-field-name">Constraint Reference</span>
-                  </label>
-                  <span class="gov-field-desc" id="desc-constraint">
-                    Which SI-XX identifier or named binding constraint (PC-1, RC-2, LC-1, SC-1, etc.) governs this decision.
-                  </span>
-                  <textarea id="field-constraint"
-                            name="field-constraint"
-                            rows="2"
-                            aria-required="true"
-                            aria-describedby="desc-constraint error-governance"
-                            autocomplete="off"
-                            placeholder="PC-1, RC-2... or SI-01..."></textarea>
-                </div>
-
-                <div class="gov-field-group">
-                  <label class="gov-field-label" for="field-rationale">
-                    <span class="gov-field-num" aria-hidden="true">3</span>
-                    <span class="gov-field-name">Rationale</span>
-                  </label>
-                  <span class="gov-field-desc" id="desc-rationale">
-                    Why this decision follows from the constraint -- not a restatement of the decision.
-                  </span>
-                  <textarea id="field-rationale"
-                            name="field-rationale"
-                            rows="3"
-                            aria-required="true"
-                            aria-describedby="desc-rationale error-governance"
-                            autocomplete="off"
-                            placeholder="This decision follows from the constraint because..."></textarea>
-                </div>
-
-                <div class="gov-field-group">
-                  <label class="gov-field-label" for="field-risk">
-                    <span class="gov-field-num" aria-hidden="true">4</span>
-                    <span class="gov-field-name">Risk Note</span>
-                  </label>
-                  <span class="gov-field-desc" id="desc-risk">
-                    What could go wrong if this decision is incorrect or needs to change.
-                  </span>
-                  <textarea id="field-risk"
-                            name="field-risk"
-                            rows="3"
-                            aria-required="true"
-                            aria-describedby="desc-risk error-governance"
-                            autocomplete="off"
-                            placeholder="If this decision is wrong or needs to change..."></textarea>
-                </div>
-
-                <div class="gov-field-group">
-                  <label class="gov-field-label" for="field-checkpoint">
-                    <span class="gov-field-num" aria-hidden="true">5</span>
-                    <span class="gov-field-name">Governance Checkpoint Linkage</span>
-                  </label>
-                  <span class="gov-field-desc" id="desc-checkpoint">
-                    Which checkpoint (Gate 1.TG.1, Module 3 Outcome Mapping, etc.) will verify or revisit this decision.
-                  </span>
-                  <textarea id="field-checkpoint"
-                            name="field-checkpoint"
-                            rows="2"
-                            aria-required="true"
-                            aria-describedby="desc-checkpoint error-governance"
-                            autocomplete="off"
-                            placeholder="Gate 1.TG.1 will verify..."></textarea>
-                </div>
-
-                <p id="error-governance"
-                   class="field-error"
-                   role="alert"
-                   aria-live="polite"></p>
-
-              </div>
-            </div>
-          </div>
-
           <!-- Submit controls -->
           <div class="form-controls">
             <button type="submit"
                     id="submit-btn"
                     class="btn btn--primary">
-              Submit Snapshot
+              Submit Tasks 1 and 2
             </button>
           </div>
 
@@ -959,7 +810,7 @@
                  hidden>
 
           <div class="feedback-header">
-            <h2 id="feedback-heading" class="feedback-heading">Snapshot Review</h2>
+            <h2 id="feedback-heading" class="feedback-heading">Snapshot Review: Tasks 1 and 2</h2>
           </div>
 
           <div class="feedback-body">
@@ -973,7 +824,7 @@
 
             <!-- Expert snapshot -- always shown -->
             <div class="expert-snapshot"
-                 aria-label="Expert documentation snapshot">
+                 aria-label="Expert documentation snapshot for Tasks 1 and 2">
 
               <p class="expert-snapshot__heading">Expert Snapshot Record</p>
 
@@ -1052,80 +903,6 @@
                 </tbody>
               </table>
 
-              <!-- Expert governance record -->
-              <p class="expert-snapshot__heading"
-                 style="margin-top:0;">
-                Expert Governance Decision Record -- MRHN-D-001
-              </p>
-              <div class="gov-record"
-                   role="region"
-                   aria-label="Expert governance decision record MRHN D 001">
-                <div class="gov-record__header">
-                  MRHN-D-001: IR-2024 Version Alignment
-                </div>
-                <div class="gov-record__field">
-                  <div class="gov-record__key">
-                    <span class="field-num-badge" aria-hidden="true">1</span>
-                    Decision Statement
-                  </div>
-                  <div class="gov-record__val">
-                    The MRHN course aligns to IR-2024 as adopted in January 2024.
-                    Revisions to IR-2024 occurring after project start are out of
-                    scope without a documented scope change request and governance
-                    review.
-                  </div>
-                </div>
-                <div class="gov-record__field">
-                  <div class="gov-record__key">
-                    <span class="field-num-badge" aria-hidden="true">2</span>
-                    Constraint Reference
-                  </div>
-                  <div class="gov-record__val">
-                    RC-2 (IR-2024 as adopted); PC-1 (IR-2024 protocol alignment);
-                    LC-1 (4 hours total SME access)
-                  </div>
-                </div>
-                <div class="gov-record__field">
-                  <div class="gov-record__key">
-                    <span class="field-num-badge" aria-hidden="true">3</span>
-                    Rationale
-                  </div>
-                  <div class="gov-record__val">
-                    The OCR remediation timeline (RC-3) and SME access cap (LC-1)
-                    mean scope cannot flex after the first SME meeting. Aligning
-                    to IR-2024 as a fixed document prevents drift that cannot be
-                    absorbed within project constraints. The client brief names
-                    IR-2024 by adoption date, establishing it as the governing
-                    reference.
-                  </div>
-                </div>
-                <div class="gov-record__field">
-                  <div class="gov-record__key">
-                    <span class="field-num-badge" aria-hidden="true">4</span>
-                    Risk Note
-                  </div>
-                  <div class="gov-record__val">
-                    If Meridian updates IR-2024 during the project window, the
-                    delivered course will not reflect the change. This risk is
-                    accepted given the timeline and SME constraints. Any
-                    post-launch protocol update requires a documented v2 revision
-                    under the version control protocol.
-                  </div>
-                </div>
-                <div class="gov-record__field">
-                  <div class="gov-record__key">
-                    <span class="field-num-badge" aria-hidden="true">5</span>
-                    Checkpoint Linkage
-                  </div>
-                  <div class="gov-record__val">
-                    Gate 1.TG.1 (Transition Gate, Module 1) will verify that all
-                    performance items trace to IR-2024 as adopted. Module 3
-                    Outcome Mapping will confirm no performance item references
-                    a protocol version not covered by the course content.
-                  </div>
-                </div>
-              </div>
-
             </div><!-- /.expert-snapshot -->
 
             <!-- Navigation inside feedback -->
@@ -1134,13 +911,13 @@
                       id="try-again-btn"
                       class="btn btn--secondary"
                       hidden>
-                Revise Snapshot
+                Revise Tasks 1 and 2
               </button>
               <a href="m1-l1b-s6.html"
                  id="continue-link"
                  class="btn btn--primary"
                  hidden>
-                Continue to Lesson Reflection
+                Continue to Task 3
               </a>
             </div>
 
@@ -1181,7 +958,7 @@
              aria-label="Artifact reference">
       <h2 class="aside-heading">Artifact Reference</h2>
       <p class="aside-empty">
-        The documentation conventions you establish on this screen govern
+        The naming convention and SI identifiers you establish here govern
         MRHN_BucketMap_v1 and all subsequent MRHN artifacts through
         Structural Freeze.
       </p>
@@ -1193,8 +970,8 @@
       <h2 class="aside-heading">Decision History</h2>
       <p class="aside-empty">
         MRHN-D-001 (IR-2024 version alignment) is the first governance
-        record for the project. It is modeled in Screen 4 and shown in
-        full in the expert snapshot below after you submit.
+        record for the project. You will complete a governance record in
+        Task 3 on the next screen.
       </p>
     </section>
 
@@ -1342,7 +1119,7 @@
     document.getElementById('pt-phase').textContent        = '1';
     document.getElementById('pt-step').textContent         = '1.5';
     document.getElementById('pt-screen').textContent       = '5';
-    document.getElementById('pt-screen-total').textContent = '6';
+    document.getElementById('pt-screen-total').textContent = '7';
 
     document.querySelectorAll('.module-nav-link').forEach(link => {
       link.removeAttribute('aria-current');
@@ -1359,12 +1136,7 @@
     }
 
     function evaluate() {
-      const namingVal     = document.getElementById('field-naming').value.trim().toLowerCase();
-      const constraintVal = document.getElementById('field-constraint').value.toLowerCase();
-      const riskVal       = document.getElementById('field-risk').value.trim();
-      const decisionVal   = document.getElementById('field-decision').value.trim();
-      const rationaleVal  = document.getElementById('field-rationale').value.trim();
-      const checkpointVal = document.getElementById('field-checkpoint').value.trim();
+      const namingVal = document.getElementById('field-naming').value.trim().toLowerCase();
 
       // SI fields: count those with at least 4 words
       const siInputs = document.querySelectorAll('.si-scope-input');
@@ -1386,30 +1158,10 @@
       // Check 2: At least 4 SI fields have substantive descriptions
       const siOk = siComplete >= 4;
 
-      // Check 3: All five governance fields have meaningful content
-      const govOk =
-        wordCount(decisionVal)   >= 8  &&
-        wordCount(constraintVal) >= 2  &&
-        wordCount(rationaleVal)  >= 10 &&
-        wordCount(riskVal)       >= 10 &&
-        wordCount(checkpointVal) >= 5;
-
-      // Check 4: Constraint reference contains actual constraint codes or SI identifiers
-      const constraintOk =
-        /\b(pc|rc|lc|sc)-?\d+\b/i.test(constraintVal) ||
-        /\bsi-\d+\b/i.test(constraintVal);
-
-      // Check 5: Risk note contains risk language beyond a minimal word count
-      const riskOk =
-        wordCount(riskVal) >= 12 &&
-        /\b(risk|change|wrong|fail|incorrect|gap|miss|error|not|if|could|would|may|should)\b/i
-          .test(riskVal);
-
-      const checks    = [namingOk, siOk, govOk, constraintOk, riskOk];
+      const checks    = [namingOk, siOk];
       const passCount = checks.filter(Boolean).length;
 
-      return { namingOk, siOk, govOk, constraintOk, riskOk,
-               passCount, isComplete: passCount >= 4 };
+      return { namingOk, siOk, passCount, isComplete: passCount >= 2 };
     }
 
     // ---- Announce to screen reader (double rAF for SR reliability) ----
@@ -1425,17 +1177,12 @@
 
     // ---- Clear per-field errors ----
     function clearErrors() {
-      document.getElementById('error-naming').textContent     = '';
-      document.getElementById('error-si').textContent         = '';
-      document.getElementById('error-governance').textContent = '';
+      document.getElementById('error-naming').textContent = '';
+      document.getElementById('error-si').textContent     = '';
 
       document.getElementById('field-naming').removeAttribute('aria-invalid');
       document.querySelectorAll('.si-scope-input').forEach(input => {
         input.removeAttribute('aria-invalid');
-      });
-      ['field-decision','field-constraint','field-rationale',
-       'field-risk','field-checkpoint'].forEach(id => {
-        document.getElementById(id).removeAttribute('aria-invalid');
       });
     }
 
@@ -1450,41 +1197,11 @@
       if (!result.siOk) {
         document.getElementById('error-si').textContent =
           'At least four SI identifier rows need a scope item description of four or more words.';
-        // Mark any sparse rows
         document.querySelectorAll('.si-scope-input').forEach((input, i) => {
           if (i < 4 && wordCount(input.value) < 4) {
             input.setAttribute('aria-invalid', 'true');
           }
         });
-      }
-
-      const govFields  = ['field-decision','field-constraint',
-                          'field-rationale','field-risk','field-checkpoint'];
-      const govMinWords = [8, 2, 10, 12, 5];
-      let   govMsgs    = [];
-
-      if (!result.govOk) {
-        govFields.forEach((id, i) => {
-          if (wordCount(document.getElementById(id).value) < govMinWords[i]) {
-            document.getElementById(id).setAttribute('aria-invalid', 'true');
-            const names = ['Decision Statement','Constraint Reference','Rationale',
-                           'Risk Note','Checkpoint Linkage'];
-            govMsgs.push(names[i]);
-          }
-        });
-      }
-      if (!result.constraintOk && !govMsgs.includes('Constraint Reference')) {
-        document.getElementById('field-constraint').setAttribute('aria-invalid', 'true');
-        govMsgs.push('Constraint Reference (needs a specific code: PC-1, RC-2, etc.)');
-      }
-      if (!result.riskOk && !govMsgs.includes('Risk Note')) {
-        document.getElementById('field-risk').setAttribute('aria-invalid', 'true');
-        govMsgs.push('Risk Note (describe what could go wrong if this decision changes)');
-      }
-
-      if (govMsgs.length > 0) {
-        document.getElementById('error-governance').textContent =
-          'Governance record needs more detail in: ' + govMsgs.join('; ') + '.';
       }
     }
 
@@ -1505,20 +1222,11 @@
                               stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>`;
 
-        let detail = '';
-        if (!result.constraintOk || !result.riskOk) {
-          const notes = [];
-          if (!result.constraintOk) notes.push('add at least one specific constraint code to your Constraint Reference field');
-          if (!result.riskOk)       notes.push('expand your Risk Note to describe what could go wrong and acknowledge the condition clearly');
-          detail = `<ul class="gap-list">${notes.map(n => `<li>${n}</li>`).join('')}</ul>`;
-        }
-
         banner.innerHTML = `${icon}
           <div>
-            <span class="result-banner__label">Convention applied correctly.</span>
-            Your naming pattern, SI assignments, and governance record demonstrate
-            sound documentation practice. Compare your record against the expert
-            snapshot below.${detail}
+            <span class="result-banner__label">Tasks 1 and 2 complete.</span>
+            Your naming pattern and SI identifier assignments match the expert record.
+            Compare your work to the snapshot below before continuing to Task 3.
           </div>`;
 
       } else {
@@ -1537,18 +1245,11 @@
           gaps.push('Naming convention: include the full four-segment pattern with MRHN prefix, version indicator, and date format');
         if (!result.siOk)
           gaps.push('SI assignments: complete at least four rows with a description of four or more words each');
-        if (!result.govOk)
-          gaps.push('Governance record: all five fields need substantive content');
-        if (!result.constraintOk)
-          gaps.push('Constraint Reference: name at least one specific constraint code (PC-1, RC-2, LC-1, SC-1, etc.) or SI identifier');
-        if (!result.riskOk)
-          gaps.push('Risk Note: describe what could go wrong and the condition under which the risk materializes');
 
         banner.innerHTML = `${icon}
           <div>
-            <span class="result-banner__label">Snapshot needs revision.</span>
-            Review the expert record below, then use Revise Snapshot to
-            strengthen the following:
+            <span class="result-banner__label">Review needed.</span>
+            Check the expert snapshot below, then use Revise to strengthen:
             <ul class="gap-list">
               ${gaps.map(g => `<li>${g}</li>`).join('')}
             </ul>
@@ -1568,7 +1269,6 @@
       const result = evaluate();
 
       if (!result.isComplete) {
-        // Surface per-field errors and stop if nothing substantive submitted
         const namingVal = document.getElementById('field-naming').value.trim();
         if (!namingVal) {
           document.getElementById('error-naming').textContent =
@@ -1589,21 +1289,17 @@
       feedbackSection.removeAttribute('hidden');
       renderFeedback(result);
 
-      // Hide pre-submission nav; feedback has its own Continue link
       preNav.setAttribute('hidden', '');
 
-      // Disable form fields
       form.querySelectorAll('textarea, input, button[type="submit"]').forEach(el => {
         el.setAttribute('disabled', '');
       });
 
-      // Announce result
       const msg = result.isComplete
-        ? 'Snapshot submitted. Convention applied correctly. Expert snapshot record is now visible below.'
-        : 'Snapshot submitted with gaps. See the feedback for what to revise.';
+        ? 'Tasks 1 and 2 submitted. Naming and SI assignments are correct. Expert snapshot is now visible below.'
+        : 'Tasks 1 and 2 submitted with gaps. See the feedback for what to revise.';
       announce(msg);
 
-      // Focus feedback heading
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           document.getElementById('feedback-heading').focus();
@@ -1611,11 +1307,11 @@
       });
     });
 
-    // ---- Revise Snapshot ----
+    // ---- Revise button ----
     document.getElementById('try-again-btn').addEventListener('click', () => {
-      const form           = document.getElementById('snapshot-form');
+      const form            = document.getElementById('snapshot-form');
       const feedbackSection = document.getElementById('feedback-section');
-      const preNav         = document.getElementById('screen-nav-pre');
+      const preNav          = document.getElementById('screen-nav-pre');
 
       feedbackSection.setAttribute('hidden', '');
 
@@ -1630,10 +1326,23 @@
         document.getElementById('field-naming').focus();
       });
 
-      announce('Form re-enabled. Update your snapshot and resubmit.');
+      announce('Form re-enabled. Update your work and resubmit.');
     });
-  </script>
 
+    // Convention reference card: open on first visit; remember state
+    (function() {
+      const ref = document.getElementById('conv-ref');
+      if (!ref) return;
+      const KEY = 'archMethod_convRefOpen';
+      const saved = localStorage.getItem(KEY);
+      if (saved === null || saved === 'true') {
+        ref.setAttribute('open', '');
+      }
+      ref.addEventListener('toggle', () => {
+        localStorage.setItem(KEY, ref.open ? 'true' : 'false');
+      });
+    })();
+  </script>
 
   <!-- Shared JS modules: tracker redesign, breadcrumb, completion signal, panel init -->
   <script type="module">

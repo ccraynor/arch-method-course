@@ -1832,6 +1832,22 @@
   </script>
 
 
+  <!-- Lens reference card: open on first visit; remember open/closed state -->
+  <script>
+    (function() {
+      var ref = document.getElementById('lens-ref');
+      if (!ref) return;
+      var KEY = 'archMethod_lensRefOpen';
+      var saved = localStorage.getItem(KEY);
+      if (saved === null || saved === 'true') {
+        ref.setAttribute('open', '');
+      }
+      ref.addEventListener('toggle', function() {
+        localStorage.setItem(KEY, ref.open ? 'true' : 'false');
+      });
+    })();
+  </script>
+
   <!-- Shared JS modules: tracker redesign, breadcrumb, completion signal, panel init -->
   <script type="module">
     import { redesignTracker } from './js/trackerRedesign.js';

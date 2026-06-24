@@ -513,7 +513,7 @@
       <span class="pt-divider" aria-hidden="true">&bull;</span>
       <span class="pt-item">Step <span id="pt-step">1.5</span></span>
       <span class="pt-divider" aria-hidden="true">&bull;</span>
-      <span class="pt-item">Screen <span id="pt-screen">4</span> of <span id="pt-screen-total">6</span></span>
+      <span class="pt-item">Screen <span id="pt-screen">4</span> of <span id="pt-screen-total">7</span></span>
     </div>
 
     <nav aria-label="Support tools">
@@ -1318,7 +1318,7 @@
     document.getElementById('pt-phase').textContent        = '1';
     document.getElementById('pt-step').textContent         = '1.5';
     document.getElementById('pt-screen').textContent       = '4';
-    document.getElementById('pt-screen-total').textContent = '6';
+    document.getElementById('pt-screen-total').textContent = '7';
 
     document.querySelectorAll('.module-nav-link').forEach(link => {
       link.removeAttribute('aria-current');
@@ -1337,6 +1337,7 @@
     import './js/breadcrumb.js';
     import './js/panelInit.js';
     import './js/previewMode.js';
+    import './js/components/workedExampleDisclosure.js';
     redesignTracker();
     initCompletionSignal();
   </script>

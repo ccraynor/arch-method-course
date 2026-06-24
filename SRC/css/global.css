@@ -933,6 +933,88 @@ footer[role="contentinfo"] nav a:focus-visible {
 }
 
 /* ============================================================
+   WORKED EXAMPLE PROGRESSIVE DISCLOSURE (Item 11)
+   ============================================================ */
+
+/* Hidden steps: JS adds .step-hidden; print removes it */
+.example-step.step-hidden,
+.annotation-item.step-hidden {
+  display: none;
+}
+
+/* Controls bar above the two-column layout */
+.wex-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 1rem;
+}
+
+.wex-show-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.3125rem 0.75rem;
+  background: transparent;
+  border: 1px solid var(--color-border-default);
+  border-radius: 4px;
+  font-size: var(--font-size-label);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.wex-show-all-btn:hover {
+  border-color: var(--color-brand-teal);
+  color: var(--color-text-primary);
+  background: var(--color-bg-subtle);
+}
+
+.wex-show-all-btn:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* "Show Next Step" button at end of each step body */
+.step-reveal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0.5rem 1.25rem;
+  background: var(--color-brand-navy);
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-inverse);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.step-reveal-btn:hover {
+  background: #264d7a;
+}
+
+.step-reveal-btn:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+
+/* Print: show all steps, hide control buttons */
+@media print {
+  .example-step.step-hidden,
+  .annotation-item.step-hidden {
+    display: block !important;
+  }
+
+  .wex-controls,
+  .step-reveal-btn {
+    display: none !important;
+  }
+}
+
+/* ============================================================
    GOVERNANCE FORM ARTICLE (default styles for template screens)
    ============================================================ */
 
