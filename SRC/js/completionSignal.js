@@ -1,8 +1,24 @@
 /* completionSignal.js
    When the learner clicks the Next button, the current progress dot
-   fills with success color and a 300ms transition plays before navigation. */
+   fills with success color and a 300ms transition plays before navigation.
+   Also records lightweight per-screen progress for the lesson hub screens
+   (Section 5): archMethod_visited_<screenId> on load and
+   archMethod_continued_<screenId> when Next is clicked. */
+
+import { setItem } from './storage.js';
+
+function currentScreenId() {
+  const file = location.pathname.split('/').pop() || '';
+  return file.replace(/\.html$/, '');
+}
 
 export function initCompletionSignal() {
+  /* Mark this screen visited (drives the In Progress status on the hub) */
+  const screenId = currentScreenId();
+  if (screenId) {
+    try { setItem('visited_' + screenId, 'true'); } catch { /* storage unavailable */ }
+  }
+
   document.querySelectorAll('.btn--next').forEach(btn => {
     const href = btn.getAttribute('href');
     if (!href || btn.getAttribute('aria-disabled') === 'true') return;
@@ -12,6 +28,11 @@ export function initCompletionSignal() {
       if (e.metaKey || e.ctrlKey || e.shiftKey) return;
 
       e.preventDefault();
+
+      /* Record that the learner advanced from this screen (drives Complete) */
+      if (screenId) {
+        try { setItem('continued_' + screenId, 'true'); } catch { /* storage unavailable */ }
+      }
 
       /* Visual signal on button */
       btn.classList.add('is-completing');

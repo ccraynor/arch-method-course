@@ -476,11 +476,20 @@ Panel state keys:
 - archMethod_briefPanelOpen
 - archMethod_contextPanelOpen
 
+Progress tracking keys (Prompt C Section 5):
+- archMethod_visited_[screenId] (written on screen load;
+  drives the In Progress status on lesson hub screens)
+- archMethod_continued_[screenId] (written when the
+  learner clicks Next; drives the Complete status on
+  lesson hub screens)
+
 Note: Prompt D adds archMethod_lastVisitDate.
 Note: Prompt E adds archMethod_pacingMode,
 archMethod_diag_q1/q2, archMethod_reasoning_[screenId],
 archMethod_prediction_l[N], archMethod_flag_[screenId],
 archMethod_showExpert_[screenId].
+Note: Prompt C Section 5 adds archMethod_visited_[screenId]
+and archMethod_continued_[screenId].
 Verify all keys present in CLAUDE.md after Prompt F.
 
 ---

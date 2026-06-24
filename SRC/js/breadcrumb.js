@@ -20,7 +20,7 @@ function buildCrumbs(filename) {
   /* Gate screen */
   if (filename === 'm1-gate-s1') {
     return [
-      { label: 'Module 1', href: 'm1-l1a-s1.html' },
+      { label: 'Module 1', href: 'm1-overview.html' },
       { label: 'Module Gate', current: true },
     ];
   }
@@ -34,7 +34,7 @@ function buildCrumbs(filename) {
     const lessonKey  = 'l2';
     const lessonName = LESSON_NAMES[lessonKey];
     return [
-      { label: 'Module 1', href: 'm1-l1a-s1.html' },
+      { label: 'Module 1', href: 'm1-overview.html' },
       { label: lessonName, href: 'm1-l2-s1.html' },
       { label: POSITION_OVERRIDE[filename], current: true },
     ];
@@ -53,7 +53,7 @@ function buildCrumbs(filename) {
     const lessonNum = lessonNums[lessonKey] || 0;
     const position  = `${lessonNum}.${screenNum}`;
     return [
-      { label: 'Module 1', href: 'm1-l1a-s1.html' },
+      { label: 'Module 1', href: 'm1-overview.html' },
       { label: lessonName, href: lessonHref },
       { label: position, current: true },
     ];
@@ -62,42 +62,66 @@ function buildCrumbs(filename) {
   return [];
 }
 
+/* Section 5: Return to Lesson Hub link target per Module 1 unit screen. */
+function hubFor(filename) {
+  if (filename === 'm1-gate-s1') {
+    return { href: 'm1-hub-gate.html', label: 'Return to Module Gate Hub' };
+  }
+  const m = filename.match(/^m1-(l1a|l1b|l2|l3|l4a|l4b)-s/);
+  if (!m) return null;
+  const lessonNum = { l1a: '1', l1b: '2', l2: '3', l3: '4', l4a: '5', l4b: '6' }[m[1]];
+  return { href: 'm1-hub-l' + lessonNum + '.html', label: 'Return to Lesson Hub' };
+}
+
 function initBreadcrumb() {
   const filename = window.location.pathname.split('/').pop().replace('.html', '');
-  const crumbs = buildCrumbs(filename);
-  if (!crumbs.length) return;
-
-  const nav = document.createElement('nav');
-  nav.setAttribute('aria-label', 'Breadcrumb');
-  nav.className = 'breadcrumb';
-
-  const ol = document.createElement('ol');
-  ol.className = 'breadcrumb__list';
-
-  crumbs.forEach(crumb => {
-    const li = document.createElement('li');
-    li.className = 'breadcrumb__item';
-
-    if (crumb.current) {
-      const span = document.createElement('span');
-      span.setAttribute('aria-current', 'page');
-      span.textContent = crumb.label;
-      li.appendChild(span);
-    } else {
-      const a = document.createElement('a');
-      a.href = crumb.href;
-      a.textContent = crumb.label;
-      li.appendChild(a);
-    }
-
-    ol.appendChild(li);
-  });
-
-  nav.appendChild(ol);
-
   const h1 = document.querySelector('#current-activity h1');
-  if (h1) {
+  if (!h1) return;
+
+  /* Breadcrumb (skipped on screens with no crumb mapping, e.g. faded examples) */
+  const crumbs = buildCrumbs(filename);
+  if (crumbs.length) {
+    const nav = document.createElement('nav');
+    nav.setAttribute('aria-label', 'Breadcrumb');
+    nav.className = 'breadcrumb';
+
+    const ol = document.createElement('ol');
+    ol.className = 'breadcrumb__list';
+
+    crumbs.forEach(crumb => {
+      const li = document.createElement('li');
+      li.className = 'breadcrumb__item';
+
+      if (crumb.current) {
+        const span = document.createElement('span');
+        span.setAttribute('aria-current', 'page');
+        span.textContent = crumb.label;
+        li.appendChild(span);
+      } else {
+        const a = document.createElement('a');
+        a.href = crumb.href;
+        a.textContent = crumb.label;
+        li.appendChild(a);
+      }
+
+      ol.appendChild(li);
+    });
+
+    nav.appendChild(ol);
     h1.parentNode.insertBefore(nav, h1);
+  }
+
+  /* Return to Lesson Hub link, placed directly below the breadcrumb
+     (Section 5, item 30). Inserted before the H1, after the breadcrumb. */
+  const hub = hubFor(filename);
+  if (hub) {
+    const p = document.createElement('p');
+    p.className = 'return-hub';
+    const a = document.createElement('a');
+    a.href = hub.href;
+    a.textContent = hub.label;
+    p.appendChild(a);
+    h1.parentNode.insertBefore(p, h1);
   }
 }
 
