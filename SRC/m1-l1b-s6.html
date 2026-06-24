@@ -31,13 +31,6 @@
       margin: 0 0 0.25rem;
     }
 
-    .screen-type-label {
-      font-size: 0.6875rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: var(--color-text-secondary);
-    }
 
     .time-estimate {
       font-size: 0.75rem;
@@ -575,11 +568,10 @@
                  aria-label="Reflection prompt">
               <span class="prompt-card__label">Reflection Prompt</span>
               <p class="prompt-card__text">
-                Of the five documentation conventions you established in
-                Step 1.5, which do you expect to be most useful in your own
-                design practice? Explain why -- including the specific problem
-                it solves, and whether that problem is one you have encountered
-                before or anticipate encountering in your work.
+                Of the five documentation conventions from Step 1.5, which one
+                do you expect to be most useful in your own practice? Explain
+                why. Name the specific problem it solves. Note whether that
+                problem is one you have encountered before or expect to encounter.
               </p>
             </div>
 
@@ -722,10 +714,10 @@
                     <p class="next-lesson__desc">
                       You will use the constraint set from Step 1 to define
                       what the MRHN course will and will not include. The
-                      central artifact is the Scope Boundary Statement --
-                      a formal declaration that converts binding constraints
-                      into explicit in-scope and out-of-scope decisions and
-                      prepares the Bucket Map for population.
+                      central artifact is the Scope Boundary Statement. It
+                      converts binding constraints into explicit in-scope and
+                      out-of-scope decisions and prepares the Bucket Map
+                      for population.
                     </p>
                   </div>
                 </div>
@@ -1121,6 +1113,7 @@
     import { initCompletionSignal } from './js/completionSignal.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
+    import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
   </script>

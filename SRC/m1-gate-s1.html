@@ -14,13 +14,6 @@
        All color values use CSS tokens only.
        ================================================================ */
 
-    .screen-type-label {
-      font-size: 0.6875rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: var(--color-text-secondary);
-    }
 
     /* ---- Gate banner ---- */
     .gate-banner {
@@ -566,7 +559,7 @@
              ================================================================ -->
         <div class="gate-banner" role="banner" aria-label="Gate 1.TG.1 header">
           <div class="gate-banner__icon" aria-hidden="true">
-            <svg focusable="false" width="26" height="26" viewBox="0 0 26 26" fill="none">
+            <svg aria-hidden="true" focusable="false" width="26" height="26" viewBox="0 0 26 26" fill="none">
               <rect x="3" y="11" width="20" height="13" rx="2.5" stroke="rgba(255,255,255,0.9)" stroke-width="1.75"/>
               <path d="M8 11V8a5 5 0 0110 0v3" stroke="rgba(255,255,255,0.9)" stroke-width="1.75" stroke-linecap="round"/>
               <circle cx="13" cy="17.5" r="1.75" fill="rgba(255,255,255,0.9)"/>
@@ -587,15 +580,14 @@
           <h2 class="gate-purpose__heading">What This Gate Does</h2>
           <p class="gate-purpose__body">
             Gate 1.TG.1 is the readiness checkpoint at the end of Module 1. It is not a scored
-            test. It is a structured review of your governance record log -- a check that all eight
-            records are present, internally consistent, and coherent with one another before you
+            test. It is a structured review of your governance record log. All eight records must
+            be present, internally consistent, and coherent with one another. Only then should you
             advance to Module 2: Engineer the Learning.
           </p>
           <p class="gate-purpose__body">
-            Passing the gate means your structural design is ready to receive the learning
-            engineering work that begins in Module 2. If you identify a gap or contradiction
-            during this review, return to the relevant lesson screen and resolve it before
-            confirming the checkpoint below.
+            Passing the gate means your structural design is ready for the learning engineering
+            work in Module 2. If you find a gap or contradiction, return to the relevant lesson
+            screen and resolve it. Then confirm the checkpoint below.
           </p>
         </div>
 
@@ -937,7 +929,7 @@
                  tabindex="-1"
                  hidden>
               <div class="gate-cleared__icon" aria-hidden="true">
-                <svg focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <path d="M4 10l5 5 7-8" stroke="currentColor" stroke-width="2.25"
                         stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -952,7 +944,7 @@
             </div>
 
             <!-- Clearance button: disabled until all 4 confirmations are checked -->
-            <a href="m2-l1-s1.html"
+            <a href="#"
                id="btn-clear-gate"
                class="btn btn--primary btn--gate"
                aria-disabled="true"
@@ -1207,15 +1199,17 @@
       } catch { /* corrupted storage */ }
     }
 
-    /* Intercept click on disabled clearance link */
+    /* Intercept clearance link -- always prevent default since Module 2 is not yet built */
     clearBtn.addEventListener('click', e => {
-      if (clearBtn.getAttribute('aria-disabled') === 'true') {
-        e.preventDefault();
-        announcer.textContent = '';
-        requestAnimationFrame(() => {
+      e.preventDefault();
+      announcer.textContent = '';
+      requestAnimationFrame(() => {
+        if (clearBtn.getAttribute('aria-disabled') === 'true') {
           announcer.textContent = 'Complete all four confirmation checks to clear the gate.';
-        });
-      }
+        } else {
+          announcer.textContent = 'Gate cleared. Module 2 is not yet available. It will be released in a future update.';
+        }
+      });
     });
 
     /* Checkbox change handler */
@@ -1252,6 +1246,7 @@
     import { initCompletionSignal } from './js/completionSignal.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
+    import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
   </script>

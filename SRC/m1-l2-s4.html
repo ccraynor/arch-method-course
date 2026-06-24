@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Worked example: an expert applies the four bucket balance checks to the Meridian bucket map, evaluates why the three-item Post-Incident Close-Out bucket passes despite its smaller size, and records the balance decision using the five-field governance rule.">
-  <title>Worked Example: Evaluate Bucket Balance — Lesson 1.2 — ARCH Method™ Practitioner Credential — Proof Point Learning</title>
+  <title>Worked Example: Evaluate Bucket Balance -- Lesson 1.2 -- ARCH Method™ Practitioner Credential -- Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <style>
@@ -21,13 +21,6 @@
       margin: 0 0 0.25rem;
     }
 
-    .screen-type-label {
-      font-size: 0.6875rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: var(--color-text-secondary);
-    }
 
     .time-estimate {
       font-size: 0.75rem;
@@ -653,7 +646,7 @@
       <span class="pt-divider" aria-hidden="true">&bull;</span>
       <span class="pt-item">Step <span id="pt-step">3</span></span>
       <span class="pt-divider" aria-hidden="true">&bull;</span>
-      <span class="pt-item">Screen <span id="pt-screen">4</span> of <span id="pt-screen-total">6</span></span>
+      <span class="pt-item">Screen <span id="pt-screen">4</span> of <span id="pt-screen-total">7</span></span>
     </div>
     <nav aria-label="Support tools">
       <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
@@ -1321,7 +1314,7 @@
                       </div>
                     </div>
                     <div class="sequence-arrow" aria-hidden="true">
-                      <svg class="sequence-arrow__svg" focusable="false" width="20" height="16"
+                      <svg aria-hidden="true" class="sequence-arrow__svg" focusable="false" width="20" height="16"
                            viewBox="0 0 20 16" fill="none">
                         <path d="M2 8h14M12 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"
                               stroke-linecap="round" stroke-linejoin="round"/>
@@ -1336,7 +1329,7 @@
                       </div>
                     </div>
                     <div class="sequence-arrow" aria-hidden="true">
-                      <svg class="sequence-arrow__svg" focusable="false" width="20" height="16"
+                      <svg aria-hidden="true" class="sequence-arrow__svg" focusable="false" width="20" height="16"
                            viewBox="0 0 20 16" fill="none">
                         <path d="M2 8h14M12 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"
                               stroke-linecap="round" stroke-linejoin="round"/>
@@ -1351,7 +1344,7 @@
                       </div>
                     </div>
                     <div class="sequence-arrow" aria-hidden="true">
-                      <svg class="sequence-arrow__svg" focusable="false" width="20" height="16"
+                      <svg aria-hidden="true" class="sequence-arrow__svg" focusable="false" width="20" height="16"
                            viewBox="0 0 20 16" fill="none">
                         <path d="M2 8h14M12 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"
                               stroke-linecap="round" stroke-linejoin="round"/>
@@ -1572,7 +1565,7 @@
             </svg>
             Previous
           </a>
-          <a href="m1-l2-s5.html"
+          <a href="m1-l2-s5a.html"
              class="btn btn--nav btn--next"
              rel="next"
              aria-label="Go to next screen">
@@ -1720,7 +1713,7 @@
     document.getElementById('pt-phase').textContent        = '1';
     document.getElementById('pt-step').textContent         = '3';
     document.getElementById('pt-screen').textContent       = '4';
-    document.getElementById('pt-screen-total').textContent = '6';
+    document.getElementById('pt-screen-total').textContent = '7';
     document.querySelectorAll('.module-nav-link').forEach(link => link.removeAttribute('aria-current'));
     const activeLink = document.querySelector('.module-nav-link[href="m1-l1a-s1.html"]');
     if (activeLink) activeLink.setAttribute('aria-current', 'page');
@@ -1733,6 +1726,7 @@
     import { initCompletionSignal } from './js/completionSignal.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
+    import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
   </script>

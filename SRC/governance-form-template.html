@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- TEMPLATE: replace with form-specific description (≤155 chars) -->
-  <meta name="description" content="[DESCRIPTION — one sentence describing what governance record the learner completes on this screen]">
-  <!-- TEMPLATE: replace with "Governance Record: Title — Lesson X.X — ARCH Method Practitioner Credential — Proof Point Learning" -->
-  <title>[Governance Record: Title] — Lesson [X.X] — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <meta name="description" content="[DESCRIPTION -- one sentence describing what governance record the learner completes on this screen]">
+  <!-- TEMPLATE: replace with "Governance Record: Title -- Lesson X.X -- ARCH Method Practitioner Credential -- Proof Point Learning" -->
+  <title>[Governance Record: Title] -- Lesson [X.X] -- ARCH Method Practitioner Credential -- Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
 </head>
 <body>
 
   <!-- ============================================================
-       Skip Links — do not modify
+       Skip Links -- do not modify
        ============================================================ -->
   <nav aria-label="Skip links" class="skip-links">
     <a class="skip-link" href="#main-content">Skip to Main Content</a>
@@ -30,7 +30,7 @@
        class="sr-only"></div>
 
   <!-- ============================================================
-       Header — banner landmark — do not modify
+       Header -- banner landmark -- do not modify
        ============================================================ -->
   <header role="banner">
 
@@ -70,7 +70,7 @@
   </header>
 
   <!-- ============================================================
-       Primary Navigation — TEMPLATE: set aria-current="page" on
+       Primary Navigation -- TEMPLATE: set aria-current="page" on
        the link matching the current module.
        ============================================================ -->
   <nav aria-label="Course modules" id="course-nav">
@@ -94,7 +94,7 @@
   </nav>
 
   <!-- ============================================================
-       Main Content — main landmark
+       Main Content -- main landmark
        ============================================================ -->
   <main id="main-content" tabindex="-1">
 
@@ -105,7 +105,7 @@
       <!-- =========================================================
            GOVERNANCE RECORD FORM TEMPLATE
            Template type: multi-section structured form
-           Sections: 4 (configurable — add/remove fieldsets as needed)
+           Sections: 4 (configurable -- add/remove fieldsets as needed)
            Autosave: every 30 seconds + on field blur + on navigation
            Error handling: inline per-field + error summary on submit
            Progress: per-section status + overall count, announced to AT
@@ -130,7 +130,7 @@
           <span class="screen-type-label">Governance Record</span>
           <!-- TEMPLATE: update lesson label -->
           <p class="lesson-label" aria-label="Lesson [X.X]">Lesson [X.X]</p>
-          <!-- TEMPLATE: update title — this is the page's h1 -->
+          <!-- TEMPLATE: update title -- this is the page's h1 -->
           <h1 id="form-title" class="governance-form-article__title">[Governance Record Title]</h1>
           <p class="governance-form-article__intro">
             <!-- TEMPLATE: 1–2 sentences explaining what this record documents and why it matters -->
@@ -395,7 +395,7 @@
               Constraint Documentation
             </legend>
 
-            <!-- Delivery modality — radio group.
+            <!-- Delivery modality -- radio group.
                  aria-required on the fieldset communicates the group is required.
                  Error targets the first radio via href in error summary. -->
             <fieldset class="form-field form-field--radio-group"
@@ -590,7 +590,7 @@
                         rows="4"></textarea>
             </div>
 
-            <!-- Accuracy acknowledgment — single required checkbox.
+            <!-- Accuracy acknowledgment -- single required checkbox.
                  Must be checked before the record can be submitted.
                  aria-required="true" on the input communicates requirement to AT. -->
             <div class="form-field form-field--checkbox" id="field-group-accuracy-confirm">
@@ -654,7 +654,7 @@
             </p>
           </div>
 
-          <!-- Success state — hidden until successful submit -->
+          <!-- Success state -- hidden until successful submit -->
           <div id="submit-success"
                class="submit-success"
                role="status"
@@ -679,7 +679,7 @@
 
         </form><!-- /#governance-form -->
 
-        <!-- Screen navigation — both directions available.
+        <!-- Screen navigation -- both directions available.
              Navigation triggers a draft save before leaving. -->
         <nav class="screen-nav" aria-label="Screen navigation">
           <!-- TEMPLATE: update href values -->
@@ -714,7 +714,7 @@
   </main>
 
   <!-- ============================================================
-       Supplementary Resources — complementary landmark
+       Supplementary Resources -- complementary landmark
        ============================================================ -->
   <aside aria-label="Supplementary resources" id="supplementary-resources">
     <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
@@ -728,7 +728,7 @@
   </aside>
 
   <!-- ============================================================
-       Support Panels — do not modify — managed by panelManager.js
+       Support Panels -- do not modify -- managed by panelManager.js
        ============================================================ -->
 
   <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
@@ -795,7 +795,7 @@
   </aside>
 
   <!-- ============================================================
-       Footer — contentinfo landmark — do not modify
+       Footer -- contentinfo landmark -- do not modify
        ============================================================ -->
   <footer role="contentinfo">
     <p class="footer-copy">
@@ -808,7 +808,7 @@
   </footer>
 
   <!-- ============================================================
-       Base script — do not modify
+       Base script -- do not modify
        ============================================================ -->
   <script type="module">
     import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
@@ -844,7 +844,7 @@
   </script>
 
   <!-- ============================================================
-       Governance form script — do not modify
+       Governance form script -- do not modify
        ============================================================ -->
   <script type="module">
     import { getItem, setItem } from './js/storage.js';
@@ -852,10 +852,10 @@
     const AUTOSAVE_MS = 30000;
 
     /* TEMPLATE: update SECTIONS to match fieldsets in this form.
-       id         — matches fieldset id.
-       progressId — matches progress-section-N list item id.
-       name       — human-readable section name (used in announcements).
-       required   — array of field identifiers.
+       id         -- matches fieldset id.
+       progressId -- matches progress-section-N list item id.
+       name       -- human-readable section name (used in announcements).
+       required   -- array of field identifiers.
                     String = input/textarea/select id.
                     { name: 'X' } = radio group name (any checked = filled).
                     { id: 'X', type: 'checkbox' } = single required checkbox. */
@@ -1043,7 +1043,7 @@
         const savedAt = getItem('governance_' + SCREEN_ID + '_savedAt');
         saveStatus.textContent = savedAt ? 'Last saved at ' + savedAt : 'Draft restored';
         updateProgress(false);
-      } catch { /* corrupted storage — start fresh */ }
+      } catch { /* corrupted storage -- start fresh */ }
     }
 
     /* ---- Inline field validation on blur ---- */
@@ -1163,7 +1163,7 @@
         showErrorSummary(errors);
         return;
       }
-      /* Valid — save as final record */
+      /* Valid -- save as final record */
       saveDraft('submit');
       const ts = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       successTs.textContent = 'Submitted at ' + ts;
@@ -1215,7 +1215,7 @@
   </script>
 
   <!-- ============================================================
-       Screen-specific script — TEMPLATE: update all values below
+       Screen-specific script -- TEMPLATE: update all values below
        ============================================================ -->
   <script type="module">
     /* Progress tracker */

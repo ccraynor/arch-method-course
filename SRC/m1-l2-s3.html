@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Guided practice: name four buckets and assign all 16 MRHN scope items using workflow logic. Feedback compares your assignments to the expert bucket map and evaluates whether workflow sequence guided your decisions.">
-  <title>Guided Practice: Bucket Scope Items — Lesson 1.2 — ARCH Method™ Practitioner Credential — Proof Point Learning</title>
+  <title>Guided Practice: Bucket Scope Items -- Lesson 1.2 -- ARCH Method™ Practitioner Credential -- Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <style>
@@ -31,13 +31,6 @@
       margin: 0 0 0.25rem;
     }
 
-    .screen-type-label {
-      font-size: 0.6875rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: var(--color-text-secondary);
-    }
 
     .time-estimate {
       font-size: 0.75rem;
@@ -617,7 +610,7 @@
       <span class="pt-divider" aria-hidden="true">&bull;</span>
       <span class="pt-item">Step <span id="pt-step">2</span></span>
       <span class="pt-divider" aria-hidden="true">&bull;</span>
-      <span class="pt-item">Screen <span id="pt-screen">3</span> of <span id="pt-screen-total">6</span></span>
+      <span class="pt-item">Screen <span id="pt-screen">3</span> of <span id="pt-screen-total">7</span></span>
     </div>
     <nav aria-label="Support tools">
       <button type="button" class="support-toggle" data-panel="glossary"
@@ -1841,7 +1834,7 @@
     document.getElementById('pt-phase').textContent        = '1';
     document.getElementById('pt-step').textContent         = '2';
     document.getElementById('pt-screen').textContent       = '3';
-    document.getElementById('pt-screen-total').textContent = '6';
+    document.getElementById('pt-screen-total').textContent = '7';
 
     document.querySelectorAll('.module-nav-link').forEach(link => {
       link.removeAttribute('aria-current');
@@ -1859,6 +1852,7 @@
     import { initCompletionSignal } from './js/completionSignal.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
+    import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
   </script>

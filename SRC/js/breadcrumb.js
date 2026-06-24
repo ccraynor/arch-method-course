@@ -25,6 +25,21 @@ function buildCrumbs(filename) {
     ];
   }
 
+  /* Overrides for lettered screen variants (e.g. s5a, s5b) */
+  const POSITION_OVERRIDE = {
+    'm1-l2-s5a': '3.5',
+    'm1-l2-s5b': '3.6',
+  };
+  if (POSITION_OVERRIDE[filename]) {
+    const lessonKey  = 'l2';
+    const lessonName = LESSON_NAMES[lessonKey];
+    return [
+      { label: 'Module 1', href: 'm1-l1a-s1.html' },
+      { label: lessonName, href: 'm1-l2-s1.html' },
+      { label: POSITION_OVERRIDE[filename], current: true },
+    ];
+  }
+
   /* Module 1 lesson screens */
   const m1Match = filename.match(/^m1-(l\d+[ab]?)-s(\d+)$/);
   if (m1Match) {

@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- TEMPLATE: replace with decision-specific description (≤155 chars) -->
-  <meta name="description" content="[DESCRIPTION — one sentence describing what decision the learner must make on this screen]">
-  <!-- TEMPLATE: replace with "Decision Point: Title — Lesson X.X — ARCH Method Practitioner Credential — Proof Point Learning" -->
-  <title>[Decision Point: Title] — Lesson [X.X] — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <meta name="description" content="[DESCRIPTION -- one sentence describing what decision the learner must make on this screen]">
+  <!-- TEMPLATE: replace with "Decision Point: Title -- Lesson X.X -- ARCH Method Practitioner Credential -- Proof Point Learning" -->
+  <title>[Decision Point: Title] -- Lesson [X.X] -- ARCH Method Practitioner Credential -- Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
 </head>
 <body>
 
   <!-- ============================================================
-       Skip Links — do not modify
+       Skip Links -- do not modify
        ============================================================ -->
   <nav aria-label="Skip links" class="skip-links">
     <a class="skip-link" href="#main-content">Skip to Main Content</a>
@@ -30,7 +30,7 @@
        class="sr-only"></div>
 
   <!-- ============================================================
-       Header — banner landmark — do not modify
+       Header -- banner landmark -- do not modify
        ============================================================ -->
   <header role="banner">
 
@@ -70,7 +70,7 @@
   </header>
 
   <!-- ============================================================
-       Primary Navigation — TEMPLATE: set aria-current="page" on
+       Primary Navigation -- TEMPLATE: set aria-current="page" on
        the link matching the current module.
        ============================================================ -->
   <nav aria-label="Course modules" id="course-nav">
@@ -94,7 +94,7 @@
   </nav>
 
   <!-- ============================================================
-       Main Content — main landmark
+       Main Content -- main landmark
        ============================================================ -->
   <main id="main-content" tabindex="-1">
 
@@ -105,7 +105,7 @@
       <!-- =========================================================
            DECISION POINT WITH BRANCHING TEMPLATE
            Template type: interactive, branching feedback per option
-           Each option has its own feedback — not correct/incorrect.
+           Each option has its own feedback -- not correct/incorrect.
            Decision and rationale are logged to localStorage.
            Revision is offered before Continue on first submission.
            After one revision, Continue is the only forward path.
@@ -119,7 +119,7 @@
           <span class="screen-type-label">Decision Point</span>
           <!-- TEMPLATE: update lesson label -->
           <p class="lesson-label" aria-label="Lesson [X.X]">Lesson [X.X]</p>
-          <!-- TEMPLATE: update title — this is the page's h1 -->
+          <!-- TEMPLATE: update title -- this is the page's h1 -->
           <h1 id="decision-title" class="decision-point__title">[Decision Point Title]</h1>
         </header>
 
@@ -130,7 +130,7 @@
           <div class="scenario-context" role="note" aria-label="Scenario context">
             <span class="scenario-label">Scenario:</span>
             <!-- TEMPLATE: one-sentence MRHN situation framing this decision -->
-            Meridian Regional Health Network — [one-sentence situation framing what the learner must decide]
+            Meridian Regional Health Network -- [one-sentence situation framing what the learner must decide]
           </div>
 
           <!-- TEMPLATE: 2–4 paragraphs of scenario narrative.
@@ -138,8 +138,8 @@
                Reference MRHN stakeholders, constraints, or artifacts as needed.
                Do not signal a preferred answer in the narrative. -->
           <div class="scenario-body">
-            <p>[Scenario paragraph 1 — establish context and stakes.]</p>
-            <p>[Scenario paragraph 2 — introduce the specific decision trigger.]</p>
+            <p>[Scenario paragraph 1 -- establish context and stakes.]</p>
+            <p>[Scenario paragraph 2 -- introduce the specific decision trigger.]</p>
             <!-- TEMPLATE: optional supporting detail or evidence block -->
             <!-- <figure class="scenario-evidence" aria-label="[Description]">
               <blockquote>[Quoted excerpt or data point]</blockquote>
@@ -159,11 +159,11 @@
           <fieldset class="decision-fieldset" id="decision-fieldset">
             <!-- TEMPLATE: replace legend with the decision question -->
             <legend class="decision-fieldset__legend">
-              [Decision question — e.g., "Given this situation, which course architecture choice is most defensible?"]
+              [Decision question -- e.g., "Given this situation, which course architecture choice is most defensible?"]
             </legend>
 
             <!-- TEMPLATE: 3–4 decision options.
-                 All options must be plausible — avoid obvious distractors.
+                 All options must be plausible -- avoid obvious distractors.
                  Each option must have a corresponding entry in BRANCH_FEEDBACK
                  in the decision script below. Values must match those keys. -->
 
@@ -175,7 +175,7 @@
                      class="decision-input">
               <label for="opt-a" class="decision-label">
                 <span class="decision-option-marker" aria-hidden="true">A</span>
-                <span class="decision-option-text">[Option A — defensible but not optimal choice]</span>
+                <span class="decision-option-text">[Option A -- defensible but not optimal choice]</span>
               </label>
             </div>
 
@@ -187,7 +187,7 @@
                      class="decision-input">
               <label for="opt-b" class="decision-label">
                 <span class="decision-option-marker" aria-hidden="true">B</span>
-                <span class="decision-option-text">[Option B — strongest choice given the constraints]</span>
+                <span class="decision-option-text">[Option B -- strongest choice given the constraints]</span>
               </label>
             </div>
 
@@ -199,7 +199,7 @@
                      class="decision-input">
               <label for="opt-c" class="decision-label">
                 <span class="decision-option-marker" aria-hidden="true">C</span>
-                <span class="decision-option-text">[Option C — common but problematic choice]</span>
+                <span class="decision-option-text">[Option C -- common but problematic choice]</span>
               </label>
             </div>
 
@@ -211,7 +211,7 @@
                      class="decision-input">
               <label for="opt-d" class="decision-label">
                 <span class="decision-option-marker" aria-hidden="true">D</span>
-                <span class="decision-option-text">[Option D — reasonable but incomplete choice]</span>
+                <span class="decision-option-text">[Option D -- reasonable but incomplete choice]</span>
               </label>
             </div>
 
@@ -238,7 +238,7 @@
                       aria-describedby="rationale-hint rationale-error"
                       aria-required="true"
                       placeholder="I chose this option because..."></textarea>
-            <!-- Validation error — hidden until a submit attempt with empty rationale -->
+            <!-- Validation error -- hidden until a submit attempt with empty rationale -->
             <p id="rationale-error"
                class="field-error"
                role="alert"
@@ -296,7 +296,7 @@
               <p id="feedback-consequence-body"></p>
             </div>
 
-            <!-- Decision log confirmation — shown after logging -->
+            <!-- Decision log confirmation -- shown after logging -->
             <p class="feedback-log-confirm" id="feedback-log-confirm" aria-live="polite"></p>
 
           </div>
@@ -328,7 +328,7 @@
 
         </section>
 
-        <!-- Screen navigation (previous only — Continue in feedback is the forward path) -->
+        <!-- Screen navigation (previous only -- Continue in feedback is the forward path) -->
         <nav class="screen-nav" aria-label="Screen navigation">
           <!-- TEMPLATE: update href to previous screen filename -->
           <a href="[PREV_SCREEN].html"
@@ -351,7 +351,7 @@
   </main>
 
   <!-- ============================================================
-       Supplementary Resources — complementary landmark
+       Supplementary Resources -- complementary landmark
        Decision screens especially benefit from artifact + history
        references so learners can make informed choices.
        ============================================================ -->
@@ -367,7 +367,7 @@
   </aside>
 
   <!-- ============================================================
-       Support Panels — do not modify — managed by panelManager.js
+       Support Panels -- do not modify -- managed by panelManager.js
        ============================================================ -->
 
   <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
@@ -434,7 +434,7 @@
   </aside>
 
   <!-- ============================================================
-       Footer — contentinfo landmark — do not modify
+       Footer -- contentinfo landmark -- do not modify
        ============================================================ -->
   <footer role="contentinfo">
     <p class="footer-copy">
@@ -447,7 +447,7 @@
   </footer>
 
   <!-- ============================================================
-       Base script — do not modify
+       Base script -- do not modify
        ============================================================ -->
   <script type="module">
     import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
@@ -483,7 +483,7 @@
   </script>
 
   <!-- ============================================================
-       Decision point script — do not modify
+       Decision point script -- do not modify
        ============================================================ -->
   <script type="module">
     import { setItem } from './js/storage.js';
@@ -621,7 +621,7 @@
         btnContinue.hidden = false;
       }
 
-      /* Move focus to feedback heading — announces result to all AT */
+      /* Move focus to feedback heading -- announces result to all AT */
       feedbackHdg.focus();
 
       /* Brief status to live region */
@@ -685,7 +685,7 @@
   </script>
 
   <!-- ============================================================
-       Screen-specific script — TEMPLATE: update all values below
+       Screen-specific script -- TEMPLATE: update all values below
        ============================================================ -->
   <script type="module">
     /* Progress tracker */
@@ -710,10 +710,10 @@
     /* TEMPLATE: define branching feedback for each option value.
        Every option in the fieldset above must have an entry here.
        Tier values: 'strong' | 'adequate' | 'limited'
-       'strong'   — most defensible given constraints (success token colors)
-       'adequate' — reasonable but incomplete (warning token colors)
-       'limited'  — problematic or commonly misunderstood (warning token colors)
-       No option is "wrong" — every option receives substantive, scenario-specific feedback. */
+       'strong'   -- most defensible given constraints (success token colors)
+       'adequate' -- reasonable but incomplete (warning token colors)
+       'limited'  -- problematic or commonly misunderstood (warning token colors)
+       No option is "wrong" -- every option receives substantive, scenario-specific feedback. */
     window.__setBranchFeedback({
       'a': {
         tier:        'adequate',

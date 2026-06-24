@@ -503,6 +503,54 @@ main#main-content {
   line-height: var(--line-height-body);
 }
 
+/* ---- Your Progress group (Item 18) ---- */
+.sidebar-progress-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sidebar-progress-group__heading {
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.375rem;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-secondary);
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.aside-sublabel {
+  margin: 0 0 0.375rem;
+  font-size: var(--font-size-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-label);
+  color: var(--color-text-secondary);
+}
+
+/* ---- Decision count badge (Item 19) ---- */
+.decision-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  margin-left: 0.375rem;
+  padding: 0 0.3125rem;
+  background: var(--color-text-inverse);
+  color: var(--color-brand-navy);
+  border-radius: 100px;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.decision-badge[hidden] {
+  display: none;
+}
+
 /* ---- Commitment section in sidebar ---- */
 .aside-commitment {
   display: flex;
@@ -1276,6 +1324,48 @@ footer[role="contentinfo"] nav a:focus-visible {
 }
 
 /* ============================================================
+   PREVIEW MODE BANNER
+   ============================================================ */
+
+.preview-mode-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1.25rem;
+  background: var(--color-warning-bg);
+  border-bottom: 2px solid var(--color-warning-border);
+  font-size: 0.875rem;
+  color: var(--color-warning-text);
+}
+
+.preview-mode-banner__text {
+  flex: 1;
+}
+
+.preview-mode-banner__exit {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-warning-text);
+  background: transparent;
+  border: 1.5px solid var(--color-warning-border);
+  border-radius: 3px;
+  cursor: pointer;
+  min-height: 32px;
+  font-family: inherit;
+}
+
+.preview-mode-banner__exit:hover {
+  background: var(--color-warning-border);
+  color: var(--color-text-inverse);
+}
+
+.preview-mode-banner__exit:focus {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* ============================================================
    DARK MODE OVERRIDES
    ============================================================ */
 
@@ -1382,6 +1472,10 @@ footer[role="contentinfo"] nav a:focus-visible {
 
   .aside-heading {
     border-bottom-width: 3px;
+  }
+
+  .screen-type-label {
+    color: var(--color-text-primary);
   }
 }
 
@@ -1502,5 +1596,106 @@ footer[role="contentinfo"] nav a:focus-visible {
   .aside-empty,
   p, li, td, th {
     font-size: max(var(--font-size-body), 1rem);
+  }
+}
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+
+@media print {
+  /* Remove chrome */
+  .skip-links,
+  #course-nav,
+  #supplementary-resources,
+  .support-toggle,
+  .btn--nav,
+  .module-nav-link,
+  .panel-overlay,
+  #preview-mode-banner,
+  .btn--submit,
+  .btn--continue,
+  .btn--redo,
+  .btn--retry,
+  .btn--start,
+  .commitment-submit-area,
+  .commitment-skip,
+  .nav-controls,
+  .lesson-nav,
+  .gate-nav {
+    display: none !important;
+  }
+
+  /* Full-width single column */
+  body {
+    display: block;
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  #main-content {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Keep header for context */
+  #site-header {
+    background: #fff !important;
+    border-bottom: 1pt solid #000;
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+  }
+
+  #site-header .site-logo {
+    color: #000 !important;
+  }
+
+  /* Surface and background colors: white for ink saving */
+  .context-block,
+  .step-block,
+  .artifact-card,
+  .scenario-context,
+  .callout,
+  .worked-example,
+  .lesson-transition,
+  .gate-criteria,
+  .gate-purpose,
+  .summary-card,
+  .prompt-block {
+    background: #fff !important;
+    border-color: #000 !important;
+  }
+
+  /* All text: black */
+  * {
+    color: #000 !important;
+  }
+
+  /* Show link URLs */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #444 !important;
+    word-break: break-all;
+  }
+
+  /* Skip internal/anchor links */
+  a[href^="#"]::after,
+  a[href^="javascript"]::after {
+    content: "";
+  }
+
+  /* Page breaks */
+  h1, h2 {
+    page-break-after: avoid;
+  }
+
+  .step-block,
+  .artifact-card,
+  .gate-criteria__item {
+    page-break-inside: avoid;
   }
 }

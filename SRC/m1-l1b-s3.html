@@ -4,25 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Apply Design Document Synthesis to the Meridian brief: extract and categorize at least six constraints by type and identify which are binding.">
-  <title>Guided Practice: Applying Design Document Synthesis — Lesson 1.1b — ARCH Method™ Practitioner Credential — Proof Point Learning</title>
+  <title>Guided Practice: Applying Design Document Synthesis -- Lesson 1.1b -- ARCH Method™ Practitioner Credential -- Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <style>
     /* ================================================================
-       Screen m1-l1b-s3 — Guided Practice: Design Document Synthesis
+       Screen m1-l1b-s3 -- Guided Practice: Design Document Synthesis
        All color values use CSS tokens. No hard-coded hex values.
        ================================================================ */
 
     /* ---- Screen header ---- */
-    .screen-type-label {
-      display: inline-block;
-      margin: 0 0 0.25rem;
-      font-size: 0.6875rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: var(--color-text-secondary);
-    }
 
     .lesson-label {
       display: block;
@@ -414,8 +405,7 @@
       .feedback-region { border-color: var(--color-border-strong); }
       .feedback-region--correct   { border-color: var(--color-success-border); }
       .feedback-region--incomplete { border-color: var(--color-warning-border); }
-      .screen-type-label,
-      .lesson-label,
+            .lesson-label,
       .constraint-field__type { color: var(--color-text-primary); }
     }
   </style>
@@ -523,16 +513,15 @@
         <!-- =========================================================
              Practice context
              ========================================================= -->
-        <section class="practice-context" aria-labelledby="context-heading">
-          <h2 id="context-heading" class="sr-only">Activity Context</h2>
+        <section class="practice-context" aria-label="Activity Context">
 
           <div class="context-block context-block--purpose">
-            <h3 class="context-block__heading">Purpose</h3>
+            <h2 class="context-block__heading">Purpose</h2>
             <p>Seeing an expert extract constraints is not the same as extracting them yourself. This practice builds the systematic reading habit that makes constraint identification reliable rather than a matter of what happens to be noticed.</p>
           </div>
 
           <div class="context-block">
-            <h3 class="context-block__heading">Instructions</h3>
+            <h2 class="context-block__heading">Instructions</h2>
             <ol>
               <li>Return to Screen 2 to review the Meridian brief if needed.</li>
               <li>Complete all four constraint type fields and the binding identification field below.</li>
@@ -542,7 +531,7 @@
           </div>
 
           <div class="context-block">
-            <h3 class="context-block__heading">Success Criteria</h3>
+            <h2 class="context-block__heading">Success Criteria</h2>
             <ul>
               <li>At least one constraint extracted in each of the four type fields</li>
               <li>At least six constraints identified in total across all fields</li>
@@ -552,7 +541,7 @@
           </div>
 
           <div class="context-block">
-            <h3 class="context-block__heading">Expected Evidence</h3>
+            <h2 class="context-block__heading">Expected Evidence</h2>
             <p>A four-part constraint extraction with a binding versus negotiable ranking precise enough to use as the source material for the MRHN Bucket Map in Screen 5.</p>
           </div>
 
@@ -1265,6 +1254,7 @@
     import { initCompletionSignal } from './js/completionSignal.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
+    import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
   </script>

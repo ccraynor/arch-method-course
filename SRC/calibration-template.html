@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- TEMPLATE: replace with calibration-specific description (≤155 chars) -->
-  <meta name="description" content="[DESCRIPTION — one sentence describing what the learner compares at this calibration checkpoint]">
-  <!-- TEMPLATE: replace with "Compare to Expert: Title — Lesson X.X — ARCH Method Practitioner Credential — Proof Point Learning" -->
-  <title>[Compare to Expert: Title] — Lesson [X.X] — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <meta name="description" content="[DESCRIPTION -- one sentence describing what the learner compares at this calibration checkpoint]">
+  <!-- TEMPLATE: replace with "Compare to Expert: Title -- Lesson X.X -- ARCH Method Practitioner Credential -- Proof Point Learning" -->
+  <title>[Compare to Expert: Title] -- Lesson [X.X] -- ARCH Method Practitioner Credential -- Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
 </head>
 <body>
 
   <!-- ============================================================
-       Skip Links — do not modify
+       Skip Links -- do not modify
        ============================================================ -->
   <nav aria-label="Skip links" class="skip-links">
     <a class="skip-link" href="#main-content">Skip to Main Content</a>
@@ -30,7 +30,7 @@
        class="sr-only"></div>
 
   <!-- ============================================================
-       Header — banner landmark — do not modify
+       Header -- banner landmark -- do not modify
        ============================================================ -->
   <header role="banner">
 
@@ -70,7 +70,7 @@
   </header>
 
   <!-- ============================================================
-       Primary Navigation — TEMPLATE: set aria-current="page" on
+       Primary Navigation -- TEMPLATE: set aria-current="page" on
        the link matching the current module.
        ============================================================ -->
   <nav aria-label="Course modules" id="course-nav">
@@ -94,7 +94,7 @@
   </nav>
 
   <!-- ============================================================
-       Main Content — main landmark
+       Main Content -- main landmark
        ============================================================ -->
   <main id="main-content" tabindex="-1">
 
@@ -146,7 +146,7 @@
           <span class="screen-type-label">Compare to Expert</span>
           <!-- TEMPLATE: update lesson label -->
           <p class="lesson-label" aria-label="Lesson [X.X]">Lesson [X.X]</p>
-          <!-- TEMPLATE: update title — this is the page's h1 -->
+          <!-- TEMPLATE: update title -- this is the page's h1 -->
           <h1 id="calibration-title" class="calibration__title">[Calibration Activity Title]</h1>
 
           <div class="calibration__controls">
@@ -197,7 +197,7 @@
             <div class="learner-response__body" id="learner-response-body">
               <!-- Script populates one of: -->
 
-              <!-- A) Stored response found — script injects as a blockquote: -->
+              <!-- A) Stored response found -- script injects as a blockquote: -->
               <!-- <blockquote class="learner-response__quote">
                      [Learner's stored text]
                    </blockquote>
@@ -205,7 +205,7 @@
                      Saved from [source screen label]
                    </p> -->
 
-              <!-- B) No stored response — script shows empty state: -->
+              <!-- B) No stored response -- script shows empty state: -->
               <!-- <p class="learner-response__empty">
                      No saved response found for this activity.
                      <a href="[SOURCE_SCREEN].html">Return to [Lesson X.X]</a>
@@ -324,7 +324,7 @@
             </h2>
 
             <!-- Gate: visible until learner activates the reveal button.
-                 Communicates why content is hidden. Not a barrier — learner
+                 Communicates why content is hidden. Not a barrier -- learner
                  can scroll past and return. -->
             <div class="expert-gate" id="expert-gate" aria-label="Expert response is available after reviewing criteria">
               <svg class="expert-gate__icon"
@@ -356,8 +356,8 @@
 
               <div class="expert-response__body">
                 <!-- TEMPLATE: the actual expert response -->
-                <p>[Expert response paragraph 1 — models the thinking pattern the learner is developing.]</p>
-                <p>[Expert response paragraph 2 — applies ARCH Method concepts explicitly.]</p>
+                <p>[Expert response paragraph 1 -- models the thinking pattern the learner is developing.]</p>
+                <p>[Expert response paragraph 2 -- applies ARCH Method concepts explicitly.]</p>
                 <!-- TEMPLATE: optional annotation on why the expert responded this way -->
               </div>
 
@@ -382,7 +382,7 @@
           <!-- ==================================================
                PANEL 4: CALIBRATION REFLECTION
                DOM order: 4th. CSS grid-area: reflection (full-width, below both panels).
-               Visible at all times — learner can begin noting observations
+               Visible at all times -- learner can begin noting observations
                before revealing the expert, though this is uncommon in practice.
                ================================================== -->
           <section class="calibration-panel calibration-panel--reflection"
@@ -400,11 +400,11 @@
             <p class="reflection-intro" id="reflection-intro">
               <!-- TEMPLATE: 1–2 sentences directing the learner's reflection -->
               After comparing your response to the expert, note what you observed.
-              [Specific prompt — e.g., "Identify one thing you got right, one gap, and one adjustment you will make."]
+              [Specific prompt -- e.g., "Identify one thing you got right, one gap, and one adjustment you will make."]
             </p>
 
             <!-- TEMPLATE: 1–3 guiding questions.
-                 Keep brief — this is a post-comparison note, not a full reflection. -->
+                 Keep brief -- this is a post-comparison note, not a full reflection. -->
             <div class="reflection-prompts" aria-label="Reflection prompts">
               <ol class="reflection-prompt-list">
                 <li>[What did your response get right, compared to the expert?]</li>
@@ -489,7 +489,7 @@
   </main>
 
   <!-- ============================================================
-       Supplementary Resources — complementary landmark
+       Supplementary Resources -- complementary landmark
        ============================================================ -->
   <aside aria-label="Supplementary resources" id="supplementary-resources">
     <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
@@ -503,7 +503,7 @@
   </aside>
 
   <!-- ============================================================
-       Support Panels — do not modify — managed by panelManager.js
+       Support Panels -- do not modify -- managed by panelManager.js
        ============================================================ -->
 
   <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
@@ -570,7 +570,7 @@
   </aside>
 
   <!-- ============================================================
-       Footer — contentinfo landmark — do not modify
+       Footer -- contentinfo landmark -- do not modify
        ============================================================ -->
   <footer role="contentinfo">
     <p class="footer-copy">
@@ -583,7 +583,7 @@
   </footer>
 
   <!-- ============================================================
-       Base script — do not modify
+       Base script -- do not modify
        ============================================================ -->
   <script type="module">
     import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
@@ -619,7 +619,7 @@
   </script>
 
   <!-- ============================================================
-       Calibration script — do not modify
+       Calibration script -- do not modify
        ============================================================ -->
   <script type="module">
     import { getItem, setItem } from './js/storage.js';
@@ -788,7 +788,7 @@
   </script>
 
   <!-- ============================================================
-       Screen-specific script — TEMPLATE: update all values below
+       Screen-specific script -- TEMPLATE: update all values below
        ============================================================ -->
   <script type="module">
     /* Progress tracker */
@@ -805,13 +805,13 @@
     if (activeLink) activeLink.setAttribute('aria-current', 'page');
 
     /* TEMPLATE: configure the calibration screen.
-       screenId    — unique ID for this screen (used for notes localStorage key).
-       source.key  — localStorage key where the learner's response is stored.
-       source.parse — function that extracts displayable text from the stored value.
+       screenId    -- unique ID for this screen (used for notes localStorage key).
+       source.key  -- localStorage key where the learner's response is stored.
+       source.parse -- function that extracts displayable text from the stored value.
                       Return a plain string. Throw or return '' for empty states.
-       source.label — human-readable name of the source screen (shown in citation).
-       source.fallbackHref  — href to return to if no response found.
-       source.fallbackLabel — link text for the empty state.
+       source.label -- human-readable name of the source screen (shown in citation).
+       source.fallbackHref  -- href to return to if no response found.
+       source.fallbackLabel -- link text for the empty state.
 
        Examples:
 

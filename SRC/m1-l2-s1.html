@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Lesson 1.2 introduction: Defining Course Boundaries. Steps 2 and 3 -- Bucket Scope Items into Logical Categories and Evaluate Bucket Balance. Produces the MRHN Bucket Map.">
-  <title>Lesson 1.2: Defining Course Boundaries — ARCH Method™ Practitioner Credential — Proof Point Learning</title>
+  <title>Lesson 1.2: Defining Course Boundaries -- ARCH Method™ Practitioner Credential -- Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <style>
@@ -361,7 +361,7 @@
       <span class="pt-divider" aria-hidden="true">&bull;</span>
       <span class="pt-item">Step <span id="pt-step">2</span></span>
       <span class="pt-divider" aria-hidden="true">&bull;</span>
-      <span class="pt-item">Screen <span id="pt-screen">1</span> of <span id="pt-screen-total">6</span></span>
+      <span class="pt-item">Screen <span id="pt-screen">1</span> of <span id="pt-screen-total">7</span></span>
     </div>
 
     <nav aria-label="Support tools">
@@ -508,24 +508,23 @@
             </div>
             <div class="lesson-section__body">
               <p class="section-text">
-                Lesson 1.1b produced the MRHN constraint set and established the
-                documentation conventions that govern all downstream artifacts.
-                Lesson 1.2 takes the next step: converting the 16 declared scope
-                items (SI-01 through SI-16) into the structured, bounded categories
-                that will become the organizational skeleton of the course.
+                Lesson 1.1b produced the Meridian Regional Health Network (MRHN) constraint set.
+                It also locked the documentation conventions that govern all downstream artifacts.
+                Lesson 1.2 converts those 16 scope items (SI-01 through SI-16) into named, bounded categories.
+                Those categories become the organizational skeleton of the course.
               </p>
               <p class="section-text">
                 This is where the Bucket Map gets its name. A bucket is a named
                 logical category that groups related scope items. The Bucket Map
-                records which scope items belong to which bucket, why they belong
-                there, and whether the resulting groupings are balanced enough to
-                support a coherent, constraint-compliant architecture.
+                records which scope items belong to which bucket and why. It also
+                records whether the groupings are balanced enough to support the
+                overall architecture.
               </p>
               <p class="section-text">
-                Bucketing is not content organization in the familiar sense --
-                it is a structural decision that determines how the course will
-                hold together through decomposition, sequencing, and stress-testing
-                in Modules 2 and 3. Buckets built on weak rationale will produce
+                Bucketing is not content organization in the usual sense. It is a
+                structural decision. Your buckets determine how the course holds
+                together through decomposition, sequencing, and stress-testing in
+                Modules 2 and 3. Buckets built on weak rationale will produce
                 architecture that fails the balance check. Buckets built on
                 constraint logic will survive all the way to Structural Freeze.
               </p>
@@ -665,16 +664,16 @@
                   </code>
                   <p class="artifact-card__desc">
                     The Bucket Map is the first major architecture artifact of the
-                    ARCH Method™. It organizes the 16 declared scope items into
-                    named, bounded categories and records the balance evaluation
+                    ARCH Method™. It organizes all 16 scope items into named,
+                    bounded categories. It also records the balance evaluation
                     that confirms the groupings are constraint-compliant.
                   </p>
                   <ul class="artifact-contents">
                     <li>All 16 scope items (SI-01 through SI-16) assigned to named buckets</li>
-                    <li>Bucket rationale for each grouping decision</li>
+                    <li>Your reasoning for placing each scope item in its bucket</li>
                     <li>Balance evaluation notes for every bucket</li>
-                    <li>Governance decision records for any adjustment decisions</li>
-                    <li>Bucket sequence with prerequisite logic documented</li>
+                    <li>A record of any re-sequencing decisions you made and why</li>
+                    <li>A documented sequence showing how each bucket builds on the one before it</li>
                   </ul>
                 </div>
               </div>
@@ -883,7 +882,7 @@
     document.getElementById('pt-phase').textContent        = '1';
     document.getElementById('pt-step').textContent         = '2';
     document.getElementById('pt-screen').textContent       = '1';
-    document.getElementById('pt-screen-total').textContent = '6';
+    document.getElementById('pt-screen-total').textContent = '7';
 
     document.querySelectorAll('.module-nav-link').forEach(link => {
       link.removeAttribute('aria-current');
@@ -901,6 +900,7 @@
     import { initCompletionSignal } from './js/completionSignal.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
+    import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
   </script>

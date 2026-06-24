@@ -14,15 +14,6 @@
        ================================================================ */
 
     /* ---- Screen header ---- */
-    .screen-type-label {
-      display: inline-block;
-      margin: 0 0 0.25rem;
-      font-size: 0.6875rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: var(--color-text-secondary);
-    }
 
     .lesson-label {
       display: block;
@@ -369,8 +360,7 @@
       .feedback-region--incomplete {
         border-color: var(--color-warning-border);
       }
-      .screen-type-label,
-      .lesson-label {
+            .lesson-label {
         color: var(--color-text-primary);
       }
     }
@@ -479,17 +469,15 @@
         <!-- =========================================================
              Practice context -- visible before learner attempts
              ========================================================= -->
-        <section class="practice-context"
-                 aria-labelledby="context-heading">
-          <h2 id="context-heading" class="sr-only">Activity Context</h2>
+        <section class="practice-context" aria-label="Activity Context">
 
           <div class="context-block context-block--purpose">
-            <h3 class="context-block__heading">Purpose</h3>
+            <h2 class="context-block__heading">Purpose</h2>
             <p>Writing a scope boundary statement is the first output of Step 0. This practice builds your ability to extract binding constraints from a client brief and translate them into a written declaration precise enough to present to a client.</p>
           </div>
 
           <div class="context-block context-block--instructions">
-            <h3 class="context-block__heading">Instructions</h3>
+            <h2 class="context-block__heading">Instructions</h2>
             <ol>
               <li>Review the Meridian brief on Screen 2 if needed.</li>
               <li>Complete all three sections of the scope boundary statement below.</li>
@@ -498,7 +486,7 @@
           </div>
 
           <div class="context-block context-block--criteria">
-            <h3 class="context-block__heading">Success Criteria</h3>
+            <h2 class="context-block__heading">Success Criteria</h2>
             <ul>
               <li>In-scope statement names the specific learner roles and references IR-2024 by name</li>
               <li>Out-of-scope statement identifies at least two categories of excluded content or audiences</li>
@@ -507,8 +495,8 @@
           </div>
 
           <div class="context-block context-block--evidence">
-            <h3 class="context-block__heading">Expected Evidence</h3>
-            <p>A three-part scope boundary statement precise enough to present to Priya Okonkwo and to guide your first SME meeting without additional explanation.</p>
+            <h2 class="context-block__heading">Expected Evidence</h2>
+            <p>A three-part scope boundary statement precise enough to present to Priya Okonkwo. It should guide your first SME meeting without additional explanation.</p>
           </div>
 
         </section>
@@ -1197,6 +1185,7 @@
     import { initCompletionSignal } from './js/completionSignal.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
+    import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
   </script>

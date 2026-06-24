@@ -13,7 +13,6 @@
        Phase 2, Steps 7-8. All color values use CSS tokens only.
        ================================================================ */
 
-    .screen-type-label { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-secondary); }
     .lesson-label { display: block; margin: 0 0 0.25rem; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-link); }
 
     .reflection-checkpoint__title {
@@ -444,9 +443,9 @@
             <section class="prompt-block" aria-labelledby="prompt-heading">
               <h2 id="prompt-heading" class="prompt-block__heading">Reflection Prompt</h2>
               <p class="prompt-context">
-                Every practitioner enters decomposition with working assumptions
-                about how scope items behave -- how many components they generate,
-                whether components can always be sized independently, whether tracing
+                Every practitioner enters decomposition with working assumptions.
+                You hold assumptions about how many components a scope item generates,
+                whether components can be sized independently, and whether tracing
                 is a formality or a genuine quality check. This lesson was designed
                 to put those assumptions under observable pressure. Before you close
                 Module 1, name one and account for what happened to it.
@@ -454,19 +453,17 @@
               <ol class="prompt-questions">
                 <li class="prompt-question">
                   <strong>The assumption:</strong> Identify one assumption you held
-                  about decomposition -- component sizing, traceability, scope
-                  coverage, or audit rigor -- before working through the optimization
-                  or audit practice in this lesson. State it precisely enough that
-                  another practitioner would recognize it as a real position, not
-                  a vague intuition.
+                  about decomposition before working through this lesson. It can be
+                  about component sizing, traceability, scope coverage, or audit rigor.
+                  State it precisely enough that another practitioner would recognize
+                  it as a real position, not a vague intuition.
                 </li>
                 <li class="prompt-question">
                   <strong>What the work revealed:</strong> Did the optimization
-                  decisions (Steps 4 and 5) or the trace audit (Steps 2-4 of Screen 4)
-                  challenge or confirm that assumption? Name the specific moment --
-                  a verdict, a correction, a calibration note -- that made the
-                  assumption visible. Then state what, if anything, changes in your
-                  approach going forward.
+                  decisions or the trace audit challenge or confirm that assumption?
+                  Name the specific moment -- a verdict, a correction, a calibration
+                  note -- that made the assumption visible. Then state what, if
+                  anything, changes in your approach going forward.
                 </li>
               </ol>
             </section>
@@ -474,9 +471,9 @@
             <section class="prompt-guidance" aria-labelledby="guidance-heading">
               <h2 id="guidance-heading" class="prompt-guidance__heading">Writing Guidance</h2>
               <ul class="guidance-list">
-                <li>Name the assumption precisely -- not "I thought decomposition was hard" but "I assumed every scope item would map to exactly two components at matched taxonomy levels."</li>
-                <li>Connect your assumption to a specific practice item from Screens 2-4: which component, which verdict, which trace result made the assumption visible?</li>
-                <li>Confirmed assumptions are as informative as challenged ones. If the work confirmed what you expected, explain what evidence confirmed it and whether your confidence in the assumption increased.</li>
+                <li>Name the assumption precisely -- not "I thought decomposition was hard" but "I assumed every scope item maps to two components at matched taxonomy levels."</li>
+                <li>Connect your assumption to a specific item from Screens 2-4: which component, verdict, or trace result made the assumption visible?</li>
+                <li>Confirmed assumptions are as informative as challenged ones. If the work confirmed what you expected, explain what evidence confirmed it and what that does to your confidence.</li>
                 <li>State a concrete change: not "I will be more careful" but "I will run the Q1 directional test before assigning a count, not after."</li>
               </ul>
             </section>
@@ -550,7 +547,7 @@
 
           <div class="module-complete__header">
             <div class="module-complete__icon" aria-hidden="true">
-              <svg focusable="false" width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 22 22" fill="none">
                 <circle cx="11" cy="11" r="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/>
                 <path d="M6.5 11l3 3 6-6.5" stroke="rgba(255,255,255,0.95)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -602,7 +599,7 @@
             <span class="gate-card-label">Coming Up</span>
             <div class="gate-card">
               <div class="gate-card__icon" aria-hidden="true">
-                <svg focusable="false" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 18 18" fill="none">
                   <rect x="2" y="7" width="14" height="10" rx="2" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"/>
                   <path d="M5.5 7V5.5a3.5 3.5 0 017 0V7" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round"/>
                   <circle cx="9" cy="12" r="1.25" fill="rgba(255,255,255,0.9)"/>
@@ -869,6 +866,7 @@
     import { initCompletionSignal } from './js/completionSignal.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
+    import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
   </script>

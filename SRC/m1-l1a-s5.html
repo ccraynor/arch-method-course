@@ -14,15 +14,6 @@
        ================================================================ */
 
     /* ---- Screen header ---- */
-    .screen-type-label {
-      display: inline-block;
-      margin: 0 0 0.25rem;
-      font-size: 0.6875rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: var(--color-text-secondary);
-    }
 
     .lesson-label {
       display: block;
@@ -260,8 +251,7 @@
       .lesson-transition {
         border-left-color: var(--color-border-strong);
       }
-      .screen-type-label,
-      .lesson-label,
+            .lesson-label,
       .lesson-transition__label {
         color: var(--color-text-primary);
       }
@@ -382,21 +372,20 @@
               <p class="prompt-context">
                 You have read the Meridian brief, seen how an expert extracts
                 design constraints, and practiced writing a scope boundary
-                statement. Before moving into Lesson 1.1b -- where you produce
-                your first named artifact -- you need to identify which single
-                constraint from this brief should anchor every architecture
-                decision through the rest of the credential.
+                statement. Before you get there, identify one constraint from
+                this brief. That constraint should anchor every architecture
+                decision you make for the rest of this credential.
               </p>
               <ol class="prompt-questions">
                 <li class="prompt-question">
-                  Which single constraint from the Meridian project brief is the
-                  most important for you to hold in mind as the designer? Explain
-                  what you selected and what it controls -- not just what it is.
+                  Which single constraint from the Meridian brief matters most
+                  to you as the designer? Explain what you chose and what it
+                  controls -- not just what it is.
                 </li>
                 <li class="prompt-question">
-                  How should that constraint govern the architecture decisions
-                  you make in Modules 2, 3, and 4? Name at least two specific
-                  decision points where it will have visible impact.
+                  How will that constraint shape your architecture decisions in
+                  Modules 2, 3, and 4? Name at least two specific decision
+                  points where it will have visible impact.
                 </li>
               </ol>
             </section>
@@ -414,7 +403,7 @@
                 <li>
                   Focus on what the constraint controls. A constraint that limits
                   your validation time also limits how much scope revision you can
-                  afford, which limits how late you can detect errors.
+                  afford. It limits how late you can catch errors.
                 </li>
                 <li>
                   When you write about Modules 2 through 4, name concrete decision
@@ -862,6 +851,7 @@
     import { initCompletionSignal } from './js/completionSignal.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
+    import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
   </script>

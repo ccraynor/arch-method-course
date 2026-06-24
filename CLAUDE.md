@@ -24,6 +24,8 @@ developing a Cybersecurity Incident Response course for healthcare IT profession
 - Module 1: Bound the Course (Lessons 1.1a, 1.1b, 1.2, 1.3, 1.4a, 1.4b + Gate 1.TG.1)
 - Module 2: Engineer the Learning (Lessons 2.1, 2.2, 2.3, 2.4)
 - Module 3: Stress-Test the Design (Lessons 3.1, 3.2, 3.3, 3.4)
+  - Lesson 3.3 has 7 screens. Section Alignment Check (Step 16) spans both 
+    Lesson 3.3 and Lesson 3.4. Step 17 belongs to Module 4 Lesson 4.1 only.
 - Module 4: Structural Freeze (Lessons 4.1, 4.2, 4.3, 4.4, 4.5)
 
 ### File Naming Convention
@@ -74,17 +76,45 @@ developing a Cybersecurity Incident Response course for healthcare IT profession
 - Step 16 note: Section Alignment Check spans Lessons 3.3 and 3.4. 
   Step 17 belongs to Module 4 Lesson 4.1 only -- never Lesson 3.3.
 
+### Grade 8 Flesch-Kincaid Reading Level
+All learner-facing instructional prose must target Grade 8 FK level:
+active voice, second person, sentences 20 words or fewer.
+This applies to: lesson purpose paragraphs, What You Will Do lists, 
+artifact card descriptions, reflection prompts, guided practice 
+instructions, feedback text, empty state descriptions, callout boxes, 
+and transition notes.
+This does NOT apply to: expert think-aloud annotation text in worked 
+example step divs. Expert analysis sections stay at expert reading level.
+Do not rewrite expert analysis content for reading level.
+
 ### Do Not Do These Things
 - Do not use em dashes anywhere in course content
-- Do not use hard-coded color values — use CSS tokens only
+- Do not use hard-coded color values -- use CSS tokens only
 - Do not build screens before the seven templates are complete
-- Do not add external font or icon libraries — use system fonts and inline SVG
+- Do not add external font or icon libraries -- use system fonts and inline SVG
 - Do not reference Stage terminology in any learner-facing content
 - Do not reference IRMA Mapping anywhere -- use Outcome Mapping instead
 - Do not add or remove options from decision point screens -- each 
   screen has a fixed option count per the Stage 3 Decision Point 
   Catalog. Check the catalog before building any decision point screen.
 - Images: SVG diagrams do not need click-to-expand. 
-If screenshots or complex images are added in 
-Modules 2-4, use a lightbox component.
-```
+  If screenshots or complex images are added in Modules 2-4, 
+  use a lightbox component.
+- Do not add `aria-hidden="true"` to SVGs that have an `aria-label` 
+  attribute or `role="img"` -- those are meaningful and must keep their 
+  text alternative. Only add `aria-hidden="true"` to purely decorative SVGs.
+- Do not define `.screen-type-label` styles in per-screen `<style>` blocks. 
+  The canonical definition lives in `global.css`. Remove any per-screen 
+  duplicates found when editing existing screens.
+- Do not use sr-only H2 elements as invisible wrappers for H3 context 
+  block headings. Context block headings (Purpose, Instructions, Success 
+  Criteria, Expected Evidence) must be H2 directly. Remove sr-only H2 
+  wrappers and set `aria-label="Activity Context"` on the section instead.
+- Do not add the `#artifactDrawer` overlay panel to screens in Modules 2-4. 
+  Artifacts display in the sidebar only. The HTML button for artifactDrawer 
+  stays in templates for backward compatibility; panelInit.js hides it at 
+  runtime. Decision History is the only header-triggered overlay for that group.
+- Do not rewrite expert think-aloud annotation text in worked example steps 
+  to Grade 8 level. Expert analysis sections are intentionally written at 
+  practitioner reading level. Grade 8 rewrites apply only to instructional 
+  prose (see Grade 8 FK section above).

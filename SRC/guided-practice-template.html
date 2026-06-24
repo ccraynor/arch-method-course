@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- TEMPLATE: replace with practice-specific description (≤155 chars) -->
-  <meta name="description" content="[DESCRIPTION — one sentence describing what the learner practices on this screen]">
-  <!-- TEMPLATE: replace with "Guided Practice: Title — Lesson X.X — ARCH Method Practitioner Credential — Proof Point Learning" -->
-  <title>[Guided Practice: Title] — Lesson [X.X] — ARCH Method Practitioner Credential — Proof Point Learning</title>
+  <meta name="description" content="[DESCRIPTION -- one sentence describing what the learner practices on this screen]">
+  <!-- TEMPLATE: replace with "Guided Practice: Title -- Lesson X.X -- ARCH Method Practitioner Credential -- Proof Point Learning" -->
+  <title>[Guided Practice: Title] -- Lesson [X.X] -- ARCH Method Practitioner Credential -- Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
 </head>
 <body>
 
   <!-- ============================================================
-       Skip Links — do not modify
+       Skip Links -- do not modify
        ============================================================ -->
   <nav aria-label="Skip links" class="skip-links">
     <a class="skip-link" href="#main-content">Skip to Main Content</a>
@@ -30,7 +30,7 @@
        class="sr-only"></div>
 
   <!-- ============================================================
-       Header — banner landmark — do not modify
+       Header -- banner landmark -- do not modify
        ============================================================ -->
   <header role="banner">
 
@@ -70,7 +70,7 @@
   </header>
 
   <!-- ============================================================
-       Primary Navigation — TEMPLATE: set aria-current="page" on
+       Primary Navigation -- TEMPLATE: set aria-current="page" on
        the link matching the current module.
        ============================================================ -->
   <nav aria-label="Course modules" id="course-nav">
@@ -94,7 +94,7 @@
   </nav>
 
   <!-- ============================================================
-       Main Content — main landmark
+       Main Content -- main landmark
        ============================================================ -->
   <main id="main-content" tabindex="-1">
 
@@ -115,7 +115,7 @@
           <span class="screen-type-label">Guided Practice</span>
           <!-- TEMPLATE: update lesson label -->
           <p class="lesson-label" aria-label="Lesson [X.X]">Lesson [X.X]</p>
-          <!-- TEMPLATE: update title — this is the page's h1 -->
+          <!-- TEMPLATE: update title -- this is the page's h1 -->
           <h1 id="practice-title" class="guided-practice__title">[Practice Title]</h1>
         </header>
 
@@ -123,17 +123,16 @@
              All four subsections are visible before the learner attempts.
              This transparency is intentional: learners know what success
              looks like before they start. -->
-        <section class="practice-context" aria-labelledby="context-heading">
-          <h2 id="context-heading" class="sr-only">Activity Context</h2>
+        <section class="practice-context" aria-label="Activity Context">
 
           <div class="context-block context-block--purpose">
-            <h3 class="context-block__heading">Purpose</h3>
+            <h2 class="context-block__heading">Purpose</h2>
             <!-- TEMPLATE: one sentence on why this practice matters -->
             <p>[Why this practice activity exists and what skill it builds.]</p>
           </div>
 
           <div class="context-block context-block--instructions">
-            <h3 class="context-block__heading">Instructions</h3>
+            <h2 class="context-block__heading">Instructions</h2>
             <!-- TEMPLATE: numbered steps the learner should follow -->
             <ol class="instructions-list">
               <li>[Step 1 of the activity.]</li>
@@ -143,7 +142,7 @@
           </div>
 
           <div class="context-block context-block--criteria">
-            <h3 class="context-block__heading">Success Criteria</h3>
+            <h2 class="context-block__heading">Success Criteria</h2>
             <!-- TEMPLATE: observable, measurable criteria the learner can self-check -->
             <ul class="criteria-list">
               <li>[Observable criterion 1]</li>
@@ -152,7 +151,7 @@
           </div>
 
           <div class="context-block context-block--evidence">
-            <h3 class="context-block__heading">Expected Evidence</h3>
+            <h2 class="context-block__heading">Expected Evidence</h2>
             <!-- TEMPLATE: what artifact or output demonstrates mastery -->
             <p>[Describe the specific artifact or response that will demonstrate mastery of this skill.]</p>
           </div>
@@ -234,7 +233,7 @@
 
             <!-- TEMPLATE: replace with drag question/instruction -->
             <p id="drag-label" class="interaction__label">
-              [Instruction for drag activity — e.g., "Arrange the following items in the correct order."]
+              [Instruction for drag activity -- e.g., "Arrange the following items in the correct order."]
             </p>
 
             <!-- Keyboard instructions appear visually when any list item is focused.
@@ -250,7 +249,7 @@
             <ul class="drag-list"
                 id="drag-list"
                 role="listbox"
-                aria-label="[Items to reorder — TEMPLATE: replace]"
+                aria-label="[Items to reorder -- TEMPLATE: replace]"
                 aria-multiselectable="false">
 
               <!-- TEMPLATE: 4–6 drag items. Set data-id to a stable unique value.
@@ -424,7 +423,7 @@
 
             <!-- TEMPLATE: replace label with specific prompt -->
             <label for="practice-input" class="interaction__label">
-              [Input prompt — e.g., "Describe how you would apply Step 3 to the MRHN scenario."]
+              [Input prompt -- e.g., "Describe how you would apply Step 3 to the MRHN scenario."]
             </label>
 
             <!-- TEMPLATE: update hint to match expected response format -->
@@ -442,7 +441,7 @@
           </div>
           <!-- END TYPE C -->
 
-          <!-- Submit button — always present regardless of interaction type -->
+          <!-- Submit button -- always present regardless of interaction type -->
           <button type="submit"
                   id="btn-submit"
                   class="btn btn--primary btn--submit">
@@ -478,7 +477,7 @@
             <!-- Script populates explanation text -->
             <p id="feedback-explanation" class="feedback-explanation"></p>
 
-            <!-- Correct answer reveal — shown only on incorrect submission -->
+            <!-- Correct answer reveal -- shown only on incorrect submission -->
             <div id="feedback-correct-answer" class="feedback-correct-answer" hidden>
               <h3 class="feedback-correct-answer__heading">Correct Answer</h3>
               <!-- TEMPLATE: populate this in the screen-specific script below -->
@@ -509,7 +508,7 @@
 
         </section><!-- /#feedback-region -->
 
-        <!-- Screen navigation (previous only — next is surfaced via Continue button after submission) -->
+        <!-- Screen navigation (previous only -- next is surfaced via Continue button after submission) -->
         <nav class="screen-nav" aria-label="Screen navigation">
           <!-- TEMPLATE: update href to previous screen filename -->
           <a href="[PREV_SCREEN].html"
@@ -532,7 +531,7 @@
   </main>
 
   <!-- ============================================================
-       Supplementary Resources — complementary landmark
+       Supplementary Resources -- complementary landmark
        ============================================================ -->
   <aside aria-label="Supplementary resources" id="supplementary-resources">
     <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
@@ -546,7 +545,7 @@
   </aside>
 
   <!-- ============================================================
-       Support Panels — do not modify — managed by panelManager.js
+       Support Panels -- do not modify -- managed by panelManager.js
        ============================================================ -->
 
   <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
@@ -613,7 +612,7 @@
   </aside>
 
   <!-- ============================================================
-       Footer — contentinfo landmark — do not modify
+       Footer -- contentinfo landmark -- do not modify
        ============================================================ -->
   <footer role="contentinfo">
     <p class="footer-copy">
@@ -626,7 +625,7 @@
   </footer>
 
   <!-- ============================================================
-       Base script — do not modify
+       Base script -- do not modify
        ============================================================ -->
   <script type="module">
     import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
@@ -662,7 +661,7 @@
   </script>
 
   <!-- ============================================================
-       Practice interaction + feedback script — do not modify
+       Practice interaction + feedback script -- do not modify
        ============================================================ -->
   <script type="module">
     /* State */
@@ -681,7 +680,7 @@
     const btnContinue    = document.getElementById('btn-continue');
     const announcer      = document.getElementById('sr-announcer');
 
-    /* SVG icons for feedback — inline so no external dependency */
+    /* SVG icons for feedback -- inline so no external dependency */
     const SVG_SUCCESS = `<svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32" fill="none">
       <circle cx="16" cy="16" r="14" stroke="var(--color-success-border)" stroke-width="2"/>
       <path d="M9 16l5 5 9-9" stroke="var(--color-success-text)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -766,7 +765,7 @@
       feedbackExp.textContent = result.explanation;
 
       if (!result.correct) {
-        /* Populate correct answer reveal — TEMPLATE: set content in screen script */
+        /* Populate correct answer reveal -- TEMPLATE: set content in screen script */
         correctAnswer.removeAttribute('hidden');
       } else {
         correctAnswer.setAttribute('hidden', '');
@@ -776,7 +775,7 @@
       btnContinue.hidden  = false;
       feedbackRegion.removeAttribute('hidden');
 
-      /* Move focus to feedback heading — announces result to all AT */
+      /* Move focus to feedback heading -- announces result to all AT */
       feedbackHdg.focus();
 
       /* Also update live region with brief status */
@@ -909,7 +908,7 @@
   </script>
 
   <!-- ============================================================
-       Screen-specific script — TEMPLATE: update all values below
+       Screen-specific script -- TEMPLATE: update all values below
        ============================================================ -->
   <script type="module">
     /* Progress tracker */

@@ -205,6 +205,20 @@
       display: inline-flex;
     }
 
+    .commitment-skip {
+      margin: 0.625rem 0 0;
+      font-size: 0.875rem;
+    }
+
+    .commitment-skip__link {
+      color: var(--color-text-secondary);
+      text-underline-offset: 2px;
+    }
+
+    .commitment-skip__link:hover {
+      color: var(--color-text-primary);
+    }
+
     /* High contrast adjustments */
     @media (prefers-contrast: more) {
       .commitment-prompt {
@@ -354,8 +368,8 @@
         <p class="lesson-intro__lead">
           This is the final step before Module 1 begins. The prompt below asks you to
           identify a specific architecture challenge from your own practice. Your response
-          is saved privately in your browser and returned to you at the start of Module 4,
-          where you will review whether this credential addressed the challenge you named.
+          is saved privately in your browser. At the start of Module 4, you will review
+          it to see whether this credential addressed the challenge you named.
         </p>
 
         <!-- =========================================================
@@ -485,6 +499,12 @@
             </span>
 
           </div>
+
+          <p class="commitment-skip">
+            <a href="m1-l1a-s1.html" class="commitment-skip__link">
+              Skip for now and begin Module 1
+            </a>
+          </p>
 
         </form>
 
@@ -788,6 +808,7 @@
     import { initCompletionSignal } from './js/completionSignal.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
+    import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
   </script>

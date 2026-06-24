@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Guided practice: select one Bucket 2 and one Bucket 3 scope item, decompose each into DC components with correct DC identifiers and calibration constraint notes, then compare your work to the expert decomposition.">
-  <title>Guided Practice: Step 6 Decomposition — Lesson 1.4a — ARCH Method™ Practitioner Credential — Proof Point Learning</title>
+  <title>Guided Practice: Step 6 Decomposition -- Lesson 1.4a -- ARCH Method™ Practitioner Credential -- Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <style>
@@ -13,7 +13,6 @@
        Phase 2, Step 6. All color values use CSS tokens only.
        ================================================================ */
 
-    .screen-type-label { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-secondary); }
     .lesson-label { display: block; margin: 0 0 0.25rem; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-link); }
 
     .guided-practice__title {
@@ -494,16 +493,15 @@
           </h1>
         </header>
 
-        <section class="practice-context" aria-labelledby="context-heading">
-          <h2 id="context-heading" class="sr-only">Activity Context</h2>
+        <section class="practice-context" aria-label="Activity Context">
 
           <div class="context-block context-block--purpose">
-            <h3 class="context-block__heading">Purpose</h3>
+            <h2 class="context-block__heading">Purpose</h2>
             <p>Apply the Step 6 decomposition methodology from Screen 3 to scope items you have not seen decomposed yet. This practice transfers the skill from observation to independent execution.</p>
           </div>
 
           <div class="context-block context-block--instructions">
-            <h3 class="context-block__heading">Instructions</h3>
+            <h2 class="context-block__heading">Instructions</h2>
             <ol class="instructions-list">
               <li>Select one scope item from Bucket 2 and one from Bucket 3.</li>
               <li>For each item, write component descriptions, assign DC identifiers in the correct range, select taxonomy levels, and add calibration constraint notes for any flagged items.</li>
@@ -512,7 +510,7 @@
           </div>
 
           <div class="context-block context-block--criteria">
-            <h3 class="context-block__heading">Success Criteria</h3>
+            <h2 class="context-block__heading">Success Criteria</h2>
             <ul class="criteria-list">
               <li>DC identifiers fall within the correct range for the selected bucket</li>
               <li>Taxonomy level assignments reflect calibration -- Analysis items produce at least one Analysis component</li>
@@ -522,7 +520,7 @@
           </div>
 
           <div class="context-block context-block--evidence">
-            <h3 class="context-block__heading">Expected Evidence</h3>
+            <h2 class="context-block__heading">Expected Evidence</h2>
             <p>Two partial decompositions (one Bucket 2 item, one Bucket 3 item), each with DC identifiers, taxonomy level assignments, component descriptions, and calibration constraint notes where the item is flagged.</p>
           </div>
         </section>
@@ -1162,6 +1160,7 @@
     import { initCompletionSignal } from './js/completionSignal.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
+    import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
   </script>

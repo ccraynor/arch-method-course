@@ -13,7 +13,6 @@
        Phase 2, Steps 7-8. All color values use CSS tokens only.
        ================================================================ */
 
-    .screen-type-label { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-secondary); }
     .lesson-label { display: block; margin: 0 0 0.25rem; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-link); }
     .guided-practice__title { margin: 0 0 1.5rem; font-size: 1.5rem; font-weight: 800; color: var(--color-text-primary); line-height: 1.2; }
 
@@ -200,16 +199,15 @@
           </h1>
         </header>
 
-        <section class="practice-context" aria-labelledby="context-heading">
-          <h2 id="context-heading" class="sr-only">Activity Context</h2>
+        <section class="practice-context" aria-label="Activity Context">
 
           <div class="context-block">
-            <h3 class="context-block__heading">Purpose</h3>
+            <h2 class="context-block__heading">Purpose</h2>
             <p>Apply the two-question optimization test (Step 7) and a forward scope trace (Step 8) to a new set of MRHN components -- separate from those modeled in Screens 2 and 3. This practice transfers both skills from observed expert execution to independent application.</p>
           </div>
 
           <div class="context-block">
-            <h3 class="context-block__heading">Instructions</h3>
+            <h2 class="context-block__heading">Instructions</h2>
             <ol>
               <li><strong>Part 1:</strong> Apply the teachability and assessability questions to each component. Select Split, Merge, or Confirm. If you select Split or Merge, describe the revised component(s).</li>
               <li><strong>Part 2:</strong> Review each component's listed parent SI. Flag any misattribution and select the correct parent.</li>
@@ -218,7 +216,7 @@
           </div>
 
           <div class="context-block">
-            <h3 class="context-block__heading">Success Criteria</h3>
+            <h2 class="context-block__heading">Success Criteria</h2>
             <ul>
               <li>Each verdict (Split / Merge / Confirm) matches the expert for the right reason -- not by coincidence</li>
               <li>Revised descriptions preserve the original instructional obligation while correcting the granularity problem</li>
@@ -227,7 +225,7 @@
           </div>
 
           <div class="context-block">
-            <h3 class="context-block__heading">Expected Evidence</h3>
+            <h2 class="context-block__heading">Expected Evidence</h2>
             <p>Three optimization verdicts with revised descriptions where applicable; six scope trace judgments with one corrected parent attribution. Expert reasoning is shown for all nine items after submission regardless of your answers.</p>
           </div>
         </section>
@@ -1031,6 +1029,7 @@
     import { initCompletionSignal } from './js/completionSignal.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
+    import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
   </script>

@@ -1,6 +1,7 @@
 /* storage.js — namespaced localStorage with in-memory fallback */
 
 const NAMESPACE = 'archMethod_';
+const PREVIEW_KEY = 'archMethod_previewMode';
 const memoryFallback = {};
 let storageAvailable = true;
 
@@ -14,7 +15,23 @@ let storageAvailable = true;
   }
 }());
 
+/* Detect ?preview=true / ?preview=false and update sessionStorage flag. */
+(function detectPreview() {
+  try {
+    const p = new URLSearchParams(location.search).get('preview');
+    if (p === 'true')  sessionStorage.setItem(PREVIEW_KEY, 'true');
+    if (p === 'false') sessionStorage.removeItem(PREVIEW_KEY);
+  } catch { /* sessionStorage unavailable */ }
+}());
+
+function isPreviewMode() {
+  try { return sessionStorage.getItem(PREVIEW_KEY) === 'true'; }
+  catch { return false; }
+}
+
 function getItem(key) {
+  /* In preview mode, treat all submitted-state keys as absent so forms load fresh. */
+  if (isPreviewMode() && key.startsWith('submitted_')) return null;
   const k = NAMESPACE + key;
   if (storageAvailable) {
     return localStorage.getItem(k);
@@ -47,4 +64,4 @@ function clearItem(key) {
   }
 }
 
-export { getItem, setItem, clearItem };
+export { getItem, setItem, clearItem, isPreviewMode };

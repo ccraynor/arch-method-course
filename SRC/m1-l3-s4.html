@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Guided practice: apply Domain Authenticity and Taxonomy Calibration lenses to MRHN scope items and produce MRHN_CalibratedScopeMap_v1.">
-  <title>Guided Practice: Calibration Lenses — Lesson 1.3 — ARCH Method™ Practitioner Credential — Proof Point Learning</title>
+  <title>Guided Practice: Calibration Lenses -- Lesson 1.3 -- ARCH Method™ Practitioner Credential -- Proof Point Learning</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <style>
@@ -39,13 +39,6 @@
       flex-wrap: wrap;
     }
 
-    .screen-type-label {
-      font-size: 0.6875rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: var(--color-text-secondary);
-    }
 
     .time-estimate {
       font-size: 0.75rem;
@@ -1703,7 +1696,7 @@
           <td><span class="si-num">${item.id}</span></td>
           <td>${item.name}${practiced ? ' <span class="sr-only">(you calibrated this item)</span>' : ''}</td>
           <td><span class="tax-chip ${taxClass}">${item.level}</span></td>
-          <td class="cal-note-cell">${item.note || '&mdash;'}</td>
+          <td class="cal-note-cell">${item.note || '--'}</td>
           <td>${flagHtml}</td>
         `;
         tbody.appendChild(row);
@@ -1762,7 +1755,7 @@
 
       const domainSection = `
         <div>
-          <h3 class="gp-feedback__section-heading">Domain Authenticity</h3>
+          <h2 class="gp-feedback__section-heading">Domain Authenticity</h2>
           <p class="gp-feedback__text">${item.expertDomainReason}</p>
         </div>`;
 
@@ -1773,7 +1766,7 @@
           : `<em style="color:var(--color-text-secondary)">(You selected Pass -- no flag note entered)</em>`;
         flagCompare = `
           <div>
-            <h3 class="gp-feedback__section-heading">Flag Note Comparison</h3>
+            <h2 class="gp-feedback__section-heading">Flag Note Comparison</h2>
             <div class="gp-note-compare">
               <div class="gp-note-compare__col">
                 <span class="gp-note-compare__col-label">Your Flag Note</span>
@@ -1789,7 +1782,7 @@
 
       const taxSection = `
         <div>
-          <h3 class="gp-feedback__section-heading">Taxonomy Reasoning</h3>
+          <h2 class="gp-feedback__section-heading">Taxonomy Reasoning</h2>
           <p class="gp-feedback__text">${item.expertTaxonomyReason}</p>
         </div>`;
 
@@ -1845,6 +1838,7 @@
     import { initCompletionSignal } from './js/completionSignal.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
+    import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
   </script>

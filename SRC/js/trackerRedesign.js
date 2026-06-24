@@ -30,13 +30,14 @@ const SCREEN_MAP = {
   'm1-l1b-s4': ['Worked Example',      '2.4', '6'],
   'm1-l1b-s5': ['Guided Practice',     '2.5', '6'],
   'm1-l1b-s6': ['Reflection',          '2.6', '6'],
-  /* lesson 3 -- l2 */
-  'm1-l2-s1':  ['Lesson Introduction', '3.1', '6'],
-  'm1-l2-s2':  ['Worked Example',      '3.2', '6'],
-  'm1-l2-s3':  ['Guided Practice',     '3.3', '6'],
-  'm1-l2-s4':  ['Worked Example',      '3.4', '6'],
-  'm1-l2-s5':  ['Guided Practice',     '3.5', '6'],
-  'm1-l2-s6':  ['Reflection',          '3.6', '6'],
+  /* lesson 3 -- l2 (7 screens after split of s5 into s5a + s5b) */
+  'm1-l2-s1':  ['Lesson Introduction', '3.1', '7'],
+  'm1-l2-s2':  ['Worked Example',      '3.2', '7'],
+  'm1-l2-s3':  ['Guided Practice',     '3.3', '7'],
+  'm1-l2-s4':  ['Worked Example',      '3.4', '7'],
+  'm1-l2-s5a': ['Guided Practice',     '3.5', '7'],
+  'm1-l2-s5b': ['Expert Comparison',   '3.6', '7'],
+  'm1-l2-s6':  ['Reflection',          '3.7', '7'],
   /* lesson 4 -- l3 */
   'm1-l3-s1':  ['Lesson Introduction', '4.1', '5'],
   'm1-l3-s2':  ['Worked Example',      '4.2', '5'],
@@ -78,7 +79,7 @@ function getLessonLabel(key) {
   /* Intro screens: suppress lesson -- Row 1 shows only "Introduction" */
   if (key.startsWith('intro-')) return '';
   if (key === 'm1-gate-s1') return 'Module Gate';
-  const match = key.match(/^m\d+-(l\d+[ab]?)-s\d+$/);
+  const match = key.match(/^m\d+-(l\d+[ab]?)-s\d+[ab]?$/);
   return match ? (LESSON_LABEL_MAP[match[1]] || '') : '';
 }
 

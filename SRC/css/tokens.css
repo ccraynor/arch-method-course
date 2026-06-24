@@ -47,12 +47,14 @@
   --color-surface-raised:  #F9FAFB;
   --color-surface-overlay: #FFFFFF;
 
-  /* Text */
-  --color-text-primary:   var(--color-brand-navy);
-  --color-text-secondary: #4A6581;
-  --color-text-disabled:  #9BAFC2;
-  --color-text-inverse:   #FFFFFF;
-  --color-text-link:      var(--color-brand-teal);
+  /* Text
+     Ratios measured against --color-bg-page (#FFFFFF) unless noted.
+     WCAG 2.1 AA: normal text ≥ 4.5:1 | large text / UI ≥ 3:1             */
+  --color-text-primary:   var(--color-brand-navy); /* 11.6:1 */
+  --color-text-secondary: #4A6581;                 /* 6.1:1 on white, 5.6:1 on subtle */
+  --color-text-disabled:  #9BAFC2;                 /* 2.3:1 — intentional; disabled only */
+  --color-text-inverse:   #FFFFFF;                 /* 11.6:1 on brand-navy */
+  --color-text-link:      #1C6676;                 /* 6.5:1 */
 
   /* Border */
   --color-border-default: #CBD8E4;
@@ -61,19 +63,22 @@
   /* Focus */
   --color-focus-ring: var(--color-brand-teal);
 
-  /* Success */
+  /* Success
+     Text ratio measured against --color-success-bg                        */
   --color-success-bg:     #EAF7F0;
-  --color-success-text:   #1A6B40;
+  --color-success-text:   #1A6B40;                 /* 5.9:1 on success-bg */
   --color-success-border: #2D9E5F;
 
-  /* Warning */
+  /* Warning
+     Text ratio measured against --color-warning-bg                        */
   --color-warning-bg:     #FEF8EC;
-  --color-warning-text:   #7A4F00;
+  --color-warning-text:   #7A4F00;                 /* 6.7:1 on warning-bg */
   --color-warning-border: #D4920A;
 
-  /* Error */
+  /* Error
+     Text ratio measured against --color-error-bg                          */
   --color-error-bg:     #FEF0EF;
-  --color-error-text:   #B91C1C;
+  --color-error-text:   #B91C1C;                   /* 5.8:1 on error-bg */
   --color-error-border: #DC2626;
 }
 
@@ -91,12 +96,12 @@
     --color-surface-raised:  #243648;
     --color-surface-overlay: #1C2D3E;
 
-    /* Text */
-    --color-text-primary:   #E8EFF5;
-    --color-text-secondary: #A8BCCE;
-    --color-text-disabled:  #5A7089;
+    /* Text — ratios against --color-bg-page (#0F1E2D) */
+    --color-text-primary:   #E8EFF5;   /* 14.5:1 */
+    --color-text-secondary: #A8BCCE;   /* 8.6:1 */
+    --color-text-disabled:  #5A7089;   /* 3.3:1 — intentional; disabled only */
     --color-text-inverse:   #0F1E2D;
-    --color-text-link:      #4AAFC0;
+    --color-text-link:      #4AAFC0;   /* 6.6:1 */
 
     /* Border */
     --color-border-default: #2D4A61;
@@ -105,19 +110,19 @@
     /* Focus */
     --color-focus-ring: #4AAFC0;
 
-    /* Success */
+    /* Success — text ratio against --color-success-bg */
     --color-success-bg:     #0D2B1A;
-    --color-success-text:   #5EC994;
+    --color-success-text:   #5EC994;   /* 7.4:1 on dark success-bg */
     --color-success-border: #2D9E5F;
 
-    /* Warning */
+    /* Warning — text ratio against --color-warning-bg */
     --color-warning-bg:     #2B1F00;
-    --color-warning-text:   #F5C842;
+    --color-warning-text:   #F5C842;   /* 10.2:1 on dark warning-bg */
     --color-warning-border: #D4920A;
 
-    /* Error */
+    /* Error — text ratio against --color-error-bg */
     --color-error-bg:     #2B0F0F;
-    --color-error-text:   #F87171;
+    --color-error-text:   #F87171;     /* 6.4:1 on dark error-bg */
     --color-error-border: #DC2626;
   }
 }
@@ -129,11 +134,11 @@
    --------------------------------------------------------------------------- */
 @media (prefers-contrast: more) {
   :root {
-    /* Text */
-    --color-text-primary:   #000000;
-    --color-text-secondary: #1A2E3F;
-    --color-text-disabled:  #4A5E70;
-    --color-text-link:      #1A5A66;
+    /* Text — ratios against white (#FFFFFF) */
+    --color-text-primary:   #000000;   /* 21.0:1 */
+    --color-text-secondary: #1A2E3F;   /* 13.9:1 */
+    --color-text-disabled:  #4A5E70;   /* 6.7:1 — hardened for high-contrast */
+    --color-text-link:      #1A5A66;   /* 7.8:1 */
 
     /* Border */
     --color-border-default: var(--color-brand-navy);
@@ -143,15 +148,15 @@
     --color-focus-ring: #000000;
 
     /* Success */
-    --color-success-text:   #0D4726;
+    --color-success-text:   #0D4726;   /* >7:1 on success-bg */
     --color-success-border: #0D4726;
 
     /* Warning */
-    --color-warning-text:   #4A3000;
+    --color-warning-text:   #4A3000;   /* >7:1 on warning-bg */
     --color-warning-border: #4A3000;
 
     /* Error */
-    --color-error-text:   #7F1010;
+    --color-error-text:   #7F1010;     /* >7:1 on error-bg */
     --color-error-border: #7F1010;
   }
 }
@@ -161,11 +166,11 @@
    --------------------------------------------------------------------------- */
 @media (prefers-color-scheme: dark) and (prefers-contrast: more) {
   :root {
-    /* Text */
-    --color-text-primary:   #FFFFFF;
-    --color-text-secondary: #E0EBF4;
-    --color-text-disabled:  #8AACBF;
-    --color-text-link:      #7DD6E8;
+    /* Text — ratios against dark page bg (#0F1E2D) */
+    --color-text-primary:   #FFFFFF;   /* 16.9:1 */
+    --color-text-secondary: #E0EBF4;   /* 14.0:1 */
+    --color-text-disabled:  #8AACBF;   /* 7.0:1 — hardened for high-contrast */
+    --color-text-link:      #7DD6E8;   /* 10.2:1 */
 
     /* Border */
     --color-border-default: #5A8AAB;
@@ -175,15 +180,15 @@
     --color-focus-ring: #FFFFFF;
 
     /* Success */
-    --color-success-text:   #7EEAB0;
+    --color-success-text:   #7EEAB0;   /* >7:1 on dark success-bg */
     --color-success-border: #7EEAB0;
 
     /* Warning */
-    --color-warning-text:   #FFE066;
+    --color-warning-text:   #FFE066;   /* >7:1 on dark warning-bg */
     --color-warning-border: #FFE066;
 
     /* Error */
-    --color-error-text:   #FFA0A0;
+    --color-error-text:   #FFA0A0;     /* >7:1 on dark error-bg */
     --color-error-border: #FFA0A0;
   }
 }
