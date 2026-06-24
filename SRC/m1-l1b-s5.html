@@ -539,7 +539,7 @@
       <span class="pt-divider" aria-hidden="true">&bull;</span>
       <span class="pt-item">Step <span id="pt-step">1.5</span></span>
       <span class="pt-divider" aria-hidden="true">&bull;</span>
-      <span class="pt-item">Screen <span id="pt-screen">5</span> of <span id="pt-screen-total">7</span></span>
+      <span class="pt-item">Screen <span id="pt-screen">6</span> of <span id="pt-screen-total">8</span></span>
     </div>
 
     <nav aria-label="Support tools">
@@ -789,6 +789,17 @@
             </div>
           </div>
 
+          <!-- Confidence rating (item 20) -->
+          <fieldset class="confidence-rating" data-confidence data-screen-id="m1_l1b_s5">
+            <legend class="confidence-rating__legend">How confident are you in your answers?</legend>
+            <div class="confidence-rating__options">
+              <label class="confidence-rating__option"><input type="radio" name="confidence-m1l1bs5" value="Confident"> Confident</label>
+              <label class="confidence-rating__option"><input type="radio" name="confidence-m1l1bs5" value="Unsure"> Unsure</label>
+              <label class="confidence-rating__option"><input type="radio" name="confidence-m1l1bs5" value="Guessing"> Guessing</label>
+            </div>
+            <p class="confidence-rating__echo" role="status" aria-live="polite" hidden></p>
+          </fieldset>
+
           <!-- Submit controls -->
           <div class="form-controls">
             <button type="submit"
@@ -929,10 +940,10 @@
         <nav id="screen-nav-pre"
              class="screen-nav"
              aria-label="Screen navigation">
-          <a href="m1-l1b-s4.html"
+          <a href="m1-l1b-s4b.html"
              class="btn btn--nav btn--prev"
              rel="prev"
-             aria-label="Go to previous screen">
+             aria-label="Go to previous screen: faded example applying the Output Style Gate">
             <svg aria-hidden="true" focusable="false" width="16" height="16"
                  viewBox="0 0 16 16" fill="none">
               <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
@@ -1118,8 +1129,8 @@
     document.getElementById('pt-lesson').textContent       = '1.1b';
     document.getElementById('pt-phase').textContent        = '1';
     document.getElementById('pt-step').textContent         = '1.5';
-    document.getElementById('pt-screen').textContent       = '5';
-    document.getElementById('pt-screen-total').textContent = '7';
+    document.getElementById('pt-screen').textContent       = '6';
+    document.getElementById('pt-screen-total').textContent = '8';
 
     document.querySelectorAll('.module-nav-link').forEach(link => {
       link.removeAttribute('aria-current');
@@ -1348,11 +1359,13 @@
   <script type="module">
     import { redesignTracker } from './js/trackerRedesign.js';
     import { initCompletionSignal } from './js/completionSignal.js';
+    import { initConfidenceRatings } from './js/components/confidenceRating.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
     import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
+    initConfidenceRatings();
   </script>
 </body>
 </html>

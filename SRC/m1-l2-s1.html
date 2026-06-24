@@ -422,6 +422,12 @@
             Defining Course Boundaries
           </h1>
 
+          <!-- Scaffolding level indicator (item 21) -->
+          <div class="scaffold-level">
+            <span class="scaffold-badge">Guided Support</span>
+            <p class="scaffold-level__desc">Expert models key decisions</p>
+          </div>
+
           <!-- Step badge strip -->
           <div class="step-badge-strip"
                role="group"
@@ -497,6 +503,28 @@
 
         <!-- Lesson body -->
         <div class="lesson-body">
+
+          <!-- Retrieval warm-up (item 15) -->
+          <section class="retrieval-warmup" data-retrieval data-storage-key="retrieval_l3" aria-labelledby="rw-heading">
+            <h2 class="retrieval-warmup__heading" id="rw-heading">Before You Begin</h2>
+            <p class="retrieval-warmup__prompt">Name two of the five Output Style Gate conventions you established in Lesson 2.</p>
+            <label class="sr-only" for="rw-input">Your answer</label>
+            <textarea class="retrieval-warmup__input" id="rw-input" rows="3" placeholder="Type your answer. This is not graded."></textarea>
+            <div class="retrieval-warmup__actions">
+              <button type="button" class="btn btn--secondary retrieval-warmup__reveal">Show reference answer</button>
+              <span class="retrieval-warmup__saved" role="status" aria-live="polite" hidden>Saved</span>
+            </div>
+            <div class="retrieval-warmup__answer" hidden>
+              <p class="retrieval-warmup__answer-label">Reference answer</p>
+              <p class="retrieval-warmup__answer-text">Any two of: artifact naming convention, SI identifier assignment, DC identifier assignment, five-field governance documentation rule, version control protocol.</p>
+            </div>
+          </section>
+
+          <!-- Prior knowledge activation (item 22) -->
+          <aside class="connect-callout" aria-label="Connection to prior lesson">
+            <span class="connect-callout__label">Connect to What You Know</span>
+            <p>Lesson 2 gave you a complete constraint map and locked your documentation conventions. This lesson uses that constraint map to organize the full scope into workflow-based buckets.</p>
+          </aside>
 
           <!-- Purpose -->
           <section class="lesson-section"
@@ -898,11 +926,13 @@
   <script type="module">
     import { redesignTracker } from './js/trackerRedesign.js';
     import { initCompletionSignal } from './js/completionSignal.js';
+    import { initRetrievalPrompts } from './js/components/retrievalPrompt.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
     import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
+    initRetrievalPrompts();
   </script>
 </body>
 </html>

@@ -486,6 +486,13 @@
           <h1 id="lesson-intro-title" class="lesson-intro__title">
             Bucket Mapping and Domain Calibration
           </h1>
+
+          <!-- Scaffolding level indicator (item 21) -->
+          <div class="scaffold-level">
+            <span class="scaffold-badge">Guided Support</span>
+            <p class="scaffold-level__desc">Expert models key decisions</p>
+          </div>
+
           <div class="step-badge-group">
             <span class="step-badge">Step 3</span>
             <span class="step-badge">Step 4</span>
@@ -499,6 +506,28 @@
             adjustment before Module 2 begins.
           </p>
         </header>
+
+        <!-- Retrieval warm-up (item 15) -->
+        <section class="retrieval-warmup" data-retrieval data-storage-key="retrieval_l4" aria-labelledby="rw-heading">
+          <h2 class="retrieval-warmup__heading" id="rw-heading">Before You Begin</h2>
+          <p class="retrieval-warmup__prompt">What is the difference between a binding constraint and a negotiable constraint?</p>
+          <label class="sr-only" for="rw-input">Your answer</label>
+          <textarea class="retrieval-warmup__input" id="rw-input" rows="3" placeholder="Type your answer. This is not graded."></textarea>
+          <div class="retrieval-warmup__actions">
+            <button type="button" class="btn btn--secondary retrieval-warmup__reveal">Show reference answer</button>
+            <span class="retrieval-warmup__saved" role="status" aria-live="polite" hidden>Saved</span>
+          </div>
+          <div class="retrieval-warmup__answer" hidden>
+            <p class="retrieval-warmup__answer-label">Reference answer</p>
+            <p class="retrieval-warmup__answer-text">A binding constraint is a non-negotiable condition that must govern every design decision. A negotiable constraint is a preference or default that can be adjusted with stakeholder agreement.</p>
+          </div>
+        </section>
+
+        <!-- Prior knowledge activation (item 22) -->
+        <aside class="connect-callout" aria-label="Connection to prior lesson">
+          <span class="connect-callout__label">Connect to What You Know</span>
+          <p>Lesson 3 built and balanced your four-bucket MRHN architecture. This lesson tests whether each bucket reflects authentic healthcare IT incident response practice.</p>
+        </aside>
 
         <!-- Scenario context -->
         <div class="scenario-context" role="note" aria-label="Scenario context">
@@ -874,11 +903,13 @@
   <script type="module">
     import { redesignTracker } from './js/trackerRedesign.js';
     import { initCompletionSignal } from './js/completionSignal.js';
+    import { initRetrievalPrompts } from './js/components/retrievalPrompt.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
     import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
+    initRetrievalPrompts();
   </script>
 </body>
 </html>

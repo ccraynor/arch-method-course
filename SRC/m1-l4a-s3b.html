@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Faded example: complete the decomposition of one Bucket 2 MRHN scope item. Three component decisions are removed. Identify what is missing and why, then reveal the full expert decomposition.">
+  <title>Faded Example: Complete the Decomposition -- Lesson 1.4a -- ARCH Method™ Practitioner Credential -- Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    /* ================================================================
+       Screen m1-l4a-s3b -- Faded Example: Complete the Decomposition
+       Phase 2, Step 6. All color values use CSS tokens. No hard-coded hex.
+       ================================================================ */
+
+    .lesson-label { display: block; margin: 0 0 0.25rem; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-link); }
+    .screen-meta { display: flex; align-items: center; gap: 0.75rem; margin: 0 0 0.25rem; }
+    .time-estimate { font-size: 0.75rem; color: var(--color-text-secondary); background: var(--color-bg-subtle); border: 1px solid var(--color-border-default); border-radius: 3px; padding: 0.125rem 0.5rem; }
+    .screen-title { margin: 0 0 0.375rem; font-size: 1.5rem; font-weight: 800; color: var(--color-text-primary); line-height: 1.2; }
+    .step-badge { display: inline-block; margin: 0 0 0.875rem; padding: 0.25rem 0.625rem; background: var(--color-bg-page); border: 1.5px solid var(--color-text-link); border-radius: 3px; font-size: 0.75rem; font-weight: 600; color: var(--color-text-link); }
+
+    .faded-intro { margin: 0 0 1.5rem; padding: 0.75rem 1rem; background: var(--color-bg-subtle); border-left: 4px solid var(--color-brand-teal); border-radius: 0 4px 4px 0; font-size: 0.9375rem; line-height: 1.65; color: var(--color-text-primary); }
+    .faded-intro__label { display: block; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-brand-teal); margin-bottom: 0.25rem; }
+
+    /* Scope item scaffolding card */
+    .si-card { margin: 0 0 1.75rem; border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; }
+    .si-card__header { padding: 0.75rem 1rem; background: var(--color-brand-navy); color: var(--color-text-inverse); }
+    .si-card__id-row { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.25rem; }
+    .si-card__id { font-family: monospace; font-size: 1rem; font-weight: 800; }
+    .si-card__tag { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 0.0625rem 0.4375rem; border-radius: 3px; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.92); }
+    .si-card__name { font-size: 0.9375rem; line-height: 1.4; margin: 0; color: rgba(255,255,255,0.95); }
+    .si-card__body { padding: 0.875rem 1rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .si-given { padding: 0.5625rem 0.75rem; background: var(--color-bg-subtle); border-left: 3px solid var(--color-brand-teal); border-radius: 0 4px 4px 0; font-size: 0.8125rem; line-height: 1.6; color: var(--color-text-primary); }
+    .si-given__label { display: block; font-size: 0.5625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-brand-teal); margin-bottom: 0.1875rem; }
+
+    /* Faded component slots */
+    .slot { border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; margin: 0 0 1rem; }
+    .slot__header { display: flex; align-items: center; gap: 0.5rem; padding: 0.5625rem 0.875rem; background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border-default); }
+    .slot__id { font-family: monospace; font-size: 0.875rem; font-weight: 800; color: var(--color-text-primary); }
+    .slot__faded { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-brand-teal); }
+    .slot__body { padding: 0.75rem 0.875rem; }
+    .slot__prompt { margin: 0 0 0.5rem; font-size: 0.875rem; line-height: 1.6; color: var(--color-text-primary); }
+    .slot textarea { width: 100%; box-sizing: border-box; padding: 0.5rem 0.625rem; border: 1.5px solid var(--color-border-default); border-radius: 4px; background: var(--color-bg-page); color: var(--color-text-primary); font-size: 0.9375rem; font-family: inherit; line-height: 1.5; resize: vertical; }
+    .slot textarea:focus { outline: 2px solid var(--color-focus-ring); outline-offset: 1px; border-color: var(--color-text-link); }
+    .slot textarea[aria-invalid="true"] { border-color: var(--color-error-text); }
+
+    .form-error { font-size: 0.8125rem; color: var(--color-error-text); line-height: 1.4; margin: 0 0 0.75rem; }
+    .form-error:empty { display: none; }
+    .form-controls { display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0 0; }
+
+    /* Expert decomposition reveal */
+    .expert-reveal { margin: 2rem 0 0; border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; }
+    .expert-reveal__header { padding: 0.75rem 1rem; background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border-default); }
+    .expert-reveal__heading { margin: 0; font-size: 1.0625rem; font-weight: 700; color: var(--color-text-primary); }
+    .expert-reveal__body { padding: 1rem; }
+
+    .expert-comp { border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; margin: 0 0 0.875rem; }
+    .expert-comp__head { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.75rem; background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border-default); }
+    .expert-comp__id { font-family: monospace; font-size: 0.875rem; font-weight: 800; color: var(--color-text-primary); }
+    .expert-comp__level { font-size: 0.5625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 0.0625rem 0.375rem; border-radius: 3px; }
+    .expert-comp__level--analysis { background: var(--color-bg-page); color: var(--color-text-link); border: 1px solid var(--color-text-link); }
+    .expert-comp__level--application { background: var(--color-bg-page); color: var(--color-text-secondary); border: 1px solid var(--color-border-default); }
+    .expert-comp__desc { margin: 0; padding: 0.625rem 0.75rem; font-size: 0.875rem; line-height: 1.6; color: var(--color-text-primary); background: var(--color-bg-page); }
+    .expert-comp__note { margin: 0; padding: 0.5rem 0.75rem; font-size: 0.8125rem; line-height: 1.55; color: var(--color-warning-text); background: var(--color-warning-bg); font-style: italic; border-top: 1px solid var(--color-border-default); }
+
+    .expert-insight { margin: 1rem 0 0; padding: 0.75rem 0.875rem; background: var(--color-bg-subtle); border-left: 4px solid var(--color-brand-teal); border-radius: 0 4px 4px 0; }
+    .expert-insight__label { display: block; font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-brand-teal); margin-bottom: 0.25rem; }
+    .expert-insight p { margin: 0; font-size: 0.875rem; line-height: 1.6; color: var(--color-text-primary); }
+
+    .expert-controls { display: flex; align-items: center; gap: 1rem; padding: 1.25rem 0 0; flex-wrap: wrap; }
+
+    @media (prefers-contrast: more) {
+      .si-card, .slot, .expert-reveal, .expert-comp, .faded-intro { border-color: var(--color-border-strong); }
+      .slot__header, .expert-reveal__header, .expert-comp__head { border-bottom-color: var(--color-border-strong); }
+      .slot textarea { border-color: var(--color-border-strong); }
+      .step-badge { border-color: var(--color-border-strong); color: var(--color-text-primary); }
+      .lesson-label { color: var(--color-text-primary); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Skip Links -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <!-- Header -->
+  <header role="banner">
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method™ Practitioner Credential</span>
+    </div>
+    <div id="progress-tracker" role="group" aria-label="Course progress" tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.4a</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">2</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">6</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">4</span> of <span id="pt-screen-total">6</span></span>
+    </div>
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel" aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer" aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory" aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel" aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+  </header>
+
+  <!-- Primary Navigation -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item"><a href="intro-0.1.html" class="module-nav-link">Introduction</a></li>
+      <li class="module-nav-item"><a href="m1-l1a-s1.html" class="module-nav-link">Module 1: Bound the Course</a></li>
+      <li class="module-nav-item"><a href="module-2.html" aria-disabled="true" title="Module 2 not yet available" class="module-nav-link">Module 2: Engineer the Learning</a></li>
+      <li class="module-nav-item"><a href="module-3.html" aria-disabled="true" title="Module 3 not yet available" class="module-nav-link">Module 3: Stress-Test the Design</a></li>
+      <li class="module-nav-item"><a href="module-4.html" aria-disabled="true" title="Module 4 not yet available" class="module-nav-link">Module 4: Structural Freeze</a></li>
+    </ol>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content" tabindex="-1">
+    <section id="current-activity" tabindex="-1" aria-label="Current activity">
+      <article aria-labelledby="screen-title">
+
+        <header>
+          <div class="screen-meta">
+            <span class="screen-type-label">Faded Example</span>
+            <span class="time-estimate" aria-label="Estimated time: 12 to 15 minutes">12&ndash;15 min</span>
+          </div>
+          <p class="lesson-label" aria-label="Lesson 1.4a">Lesson 1.4a</p>
+          <h1 id="screen-title" class="screen-title">Faded Example: Complete the Decomposition</h1>
+          <span class="step-badge">Step 6</span>
+
+          <div class="faded-intro" role="note">
+            <span class="faded-intro__label">How this works</span>
+            On the previous screen, an expert decomposed every Bucket 1 scope item in full. Here, one Bucket 2 scope
+            item is decomposed for you, but three component decisions are removed. Use the scope item, its calibration
+            flag, and its arc constraint to identify what each missing component should be and why. Then reveal the
+            full expert decomposition and compare.
+          </div>
+        </header>
+
+        <!-- Scope item scaffolding (given) -->
+        <section class="si-card" aria-labelledby="si-card-heading">
+          <div class="si-card__header">
+            <div class="si-card__id-row">
+              <span class="si-card__id">SI-09</span>
+              <span class="si-card__tag">Bucket 2</span>
+              <span class="si-card__tag">Analysis</span>
+              <span class="si-card__tag">Calibration flag</span>
+            </div>
+            <p class="si-card__name" id="si-card-heading">Network Segmentation with Clinical System Interdependency</p>
+          </div>
+          <div class="si-card__body">
+            <div class="si-given">
+              <span class="si-given__label">Calibration annotation (MRHN-D-003)</span>
+              Network segmentation at MRHN requires evaluating EHR, imaging, and billing system interdependencies before applying procedures. The patient care continuity constraint elevates this item to Analysis level. The evaluative work on clinical dependencies is what makes it non-procedural.
+            </div>
+            <div class="si-given">
+              <span class="si-given__label">Bucket 2 arc constraint</span>
+              The phrase "without disrupting patient care at active MRHN facilities" must be reflected in any component that handles clinical interdependency evaluation.
+            </div>
+            <div class="si-given">
+              <span class="si-given__label">What you know</span>
+              This scope item decomposes into three components: DC-19, DC-20, and DC-21. Because the calibration flag is set, at least two of the three must be Analysis level. The third is the procedural step.
+            </div>
+          </div>
+        </section>
+
+        <form id="decomp-form" novalidate aria-label="Faded decomposition practice">
+
+          <div class="slot">
+            <div class="slot__header">
+              <span class="slot__id">DC-19</span>
+              <span class="slot__faded">Decision removed</span>
+            </div>
+            <div class="slot__body">
+              <p class="slot__prompt">What is the first component, and what taxonomy level should it be? Why does the calibration flag require this?</p>
+              <label class="sr-only" for="slot-dc19">Your answer for DC-19</label>
+              <textarea id="slot-dc19" rows="3" placeholder="DC-19 should be... at ... level because..."></textarea>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="slot__header">
+              <span class="slot__id">DC-20</span>
+              <span class="slot__faded">Decision removed</span>
+            </div>
+            <div class="slot__body">
+              <p class="slot__prompt">What is the procedural component, and what taxonomy level should it be? How does the arc constraint shape it?</p>
+              <label class="sr-only" for="slot-dc20">Your answer for DC-20</label>
+              <textarea id="slot-dc20" rows="3" placeholder="DC-20 should be... at ... level because..."></textarea>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="slot__header">
+              <span class="slot__id">DC-21</span>
+              <span class="slot__faded">Decision removed</span>
+            </div>
+            <div class="slot__body">
+              <p class="slot__prompt">What is the third component, and what taxonomy level should it be? Why is a second Analysis-level component needed?</p>
+              <label class="sr-only" for="slot-dc21">Your answer for DC-21</label>
+              <textarea id="slot-dc21" rows="3" placeholder="DC-21 should be... at ... level because..."></textarea>
+            </div>
+          </div>
+
+          <p id="form-error" class="form-error" role="alert" aria-live="polite"></p>
+
+          <div class="form-controls">
+            <button type="submit" id="reveal-btn" class="btn btn--primary">Reveal Expert Decomposition</button>
+          </div>
+
+        </form>
+
+        <!-- Expert decomposition (hidden until reveal) -->
+        <section id="expert-reveal" class="expert-reveal" aria-labelledby="expert-heading" tabindex="-1" hidden>
+          <div class="expert-reveal__header">
+            <h2 id="expert-heading" class="expert-reveal__heading">Expert Decomposition: SI-09 (DC-19 through DC-21)</h2>
+          </div>
+          <div class="expert-reveal__body">
+
+            <div class="expert-comp">
+              <div class="expert-comp__head">
+                <span class="expert-comp__id">DC-19</span>
+                <span class="expert-comp__level expert-comp__level--analysis">Analysis</span>
+              </div>
+              <p class="expert-comp__desc">Evaluate clinical system interdependencies (EHR, imaging, billing) before applying network segmentation to determine which systems cannot be segmented without disrupting active patient care at the affected MRHN facility.</p>
+              <p class="expert-comp__note">Assessment must present scenarios where segmentation would disrupt at least one clinical system. Learners must identify the conflict and evaluate the trade-off. A component whose assessment presents only clean segmentation scenarios does not meet the Analysis-level demand.</p>
+            </div>
+
+            <div class="expert-comp">
+              <div class="expert-comp__head">
+                <span class="expert-comp__id">DC-20</span>
+                <span class="expert-comp__level expert-comp__level--application">Application</span>
+              </div>
+              <p class="expert-comp__desc">Apply the MRHN network segmentation procedure to isolate affected network segments while preserving continuity on identified patient-care-critical systems, following the approved segmentation sequence.</p>
+            </div>
+
+            <div class="expert-comp">
+              <div class="expert-comp__head">
+                <span class="expert-comp__id">DC-21</span>
+                <span class="expert-comp__level expert-comp__level--analysis">Analysis</span>
+              </div>
+              <p class="expert-comp__desc">Document segmentation decisions including clinical systems evaluated, interdependencies identified, actions taken, and any segmentation deferred, naming the patient care factors that governed each deferral decision.</p>
+              <p class="expert-comp__note">Documentation must name the care-continuity factors that drove deferral decisions, not just record what was done. A component whose documentation standard could be met by "checked clinical systems" is not Analysis-level.</p>
+            </div>
+
+            <div class="expert-insight">
+              <span class="expert-insight__label">Key insight</span>
+              <p>The calibration flag requires two Analysis-level components (DC-19 and DC-21). If a decomposition has only one Analysis-level component, or treats segmentation as a purely procedural task, the MRHN-D-003 constraint is not honored. The arc phrase "without disrupting patient care" must appear explicitly in at least one component.</p>
+            </div>
+
+            <div class="expert-controls">
+              <a href="m1-l4a-s4.html" id="continue-link" class="btn btn--primary">Continue to Guided Practice</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Screen navigation (pre-reveal) -->
+        <nav id="screen-nav-pre" class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l4a-s3.html" class="btn btn--nav btn--prev" rel="prev" aria-label="Go to previous screen: Bucket 1 decomposition worked example">
+            <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="m1-l4a-s4.html" class="btn btn--nav btn--next" rel="next" aria-label="Go to next screen: Buckets 2 through 4 guided practice">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+    </section>
+  </main>
+
+  <!-- Supplementary Resources -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">This faded example completes one SI-09 decomposition from MRHN_DecompositionMap_v1 (Bucket 2, DC-19 through DC-21). The full expert decomposition appears below after you submit your three answers.</p>
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">MRHN-D-003 calibration annotations govern this Bucket 2 decomposition. SI-09 carries the patient-care-continuity flag that elevates it to Analysis level.</p>
+    </section>
+  </aside>
+
+  <!-- Support Panels -->
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header"><h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header"><h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header"><h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header"><h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header"><h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- Base script -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) { closeAll(); syncToggleStates(null); }
+        else { openPanel(panelName, btn); syncToggleStates(panelName); }
+      });
+    });
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => { closeAll(); syncToggleStates(null); });
+    });
+  </script>
+
+  <!-- Screen-specific script -->
+  <script type="module">
+    import { getItem, setItem } from './js/storage.js';
+
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.4a';
+    document.getElementById('pt-phase').textContent        = '2';
+    document.getElementById('pt-step').textContent         = '6';
+    document.getElementById('pt-screen').textContent       = '4';
+    document.getElementById('pt-screen-total').textContent = '6';
+
+    document.querySelectorAll('.module-nav-link').forEach(link => link.removeAttribute('aria-current'));
+    const activeLink = document.querySelector('.module-nav-link[href="m1-l1a-s1.html"]');
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+
+    // Autosave the three faded answers
+    const SLOTS = [
+      { id: 'slot-dc19', key: 'faded_decomp_m1l4a_dc19' },
+      { id: 'slot-dc20', key: 'faded_decomp_m1l4a_dc20' },
+      { id: 'slot-dc21', key: 'faded_decomp_m1l4a_dc21' }
+    ];
+    SLOTS.forEach(s => {
+      const el = document.getElementById(s.id);
+      const prior = getItem(s.key);
+      if (prior !== null) el.value = prior;
+      el.addEventListener('input', () => setItem(s.key, el.value));
+    });
+
+    function wordCount(str) {
+      return str.trim().split(/\s+/).filter(w => w.length > 0).length;
+    }
+    function announce(message) {
+      const el = document.getElementById('sr-announcer');
+      el.textContent = '';
+      requestAnimationFrame(() => requestAnimationFrame(() => { el.textContent = message; }));
+    }
+
+    document.getElementById('decomp-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const err = document.getElementById('form-error');
+      err.textContent = '';
+      SLOTS.forEach(s => document.getElementById(s.id).removeAttribute('aria-invalid'));
+
+      const missing = SLOTS.filter(s => wordCount(document.getElementById(s.id).value) < 4);
+      if (missing.length > 0) {
+        missing.forEach(s => document.getElementById(s.id).setAttribute('aria-invalid', 'true'));
+        err.textContent = 'Identify all three components before revealing the expert decomposition.';
+        document.getElementById(missing[0].id).focus();
+        announce('Identify all three components before revealing the expert decomposition.');
+        return;
+      }
+
+      const expert = document.getElementById('expert-reveal');
+      const preNav = document.getElementById('screen-nav-pre');
+      const form   = document.getElementById('decomp-form');
+
+      expert.removeAttribute('hidden');
+      preNav.setAttribute('hidden', '');
+      form.querySelectorAll('textarea, button[type="submit"]').forEach(el => el.setAttribute('disabled', ''));
+
+      announce('Expert decomposition is now visible below. Compare it to your three answers.');
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        document.getElementById('expert-heading').focus();
+      }));
+    });
+  </script>
+
+  <!-- Shared JS modules: tracker redesign, breadcrumb, completion signal, panel init -->
+  <script type="module">
+    import { redesignTracker } from './js/trackerRedesign.js';
+    import { initCompletionSignal } from './js/completionSignal.js';
+    import './js/breadcrumb.js';
+    import './js/panelInit.js';
+    import './js/previewMode.js';
+    redesignTracker();
+    initCompletionSignal();
+  </script>
+</body>
+</html>

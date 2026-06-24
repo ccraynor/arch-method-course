@@ -493,7 +493,7 @@
       <span class="pt-divider" aria-hidden="true">&bull;</span>
       <span class="pt-item">Step <span id="pt-step">1.5</span></span>
       <span class="pt-divider" aria-hidden="true">&bull;</span>
-      <span class="pt-item">Screen <span id="pt-screen">6</span> of <span id="pt-screen-total">7</span></span>
+      <span class="pt-item">Screen <span id="pt-screen">7</span> of <span id="pt-screen-total">8</span></span>
     </div>
 
     <nav aria-label="Support tools">
@@ -631,9 +631,10 @@
                             name="field-decision"
                             rows="3"
                             aria-required="true"
-                            aria-describedby="desc-decision error-governance"
+                            aria-describedby="desc-decision example-decision error-governance"
                             autocomplete="off"
-                            placeholder="The MRHN course will..."></textarea>
+                            placeholder="The MRHN course will...">MRHN scope items are anchored to the IR-2024 incident response standard as adopted. IR-2019 references are out of scope.</textarea>
+                  <span class="prefilled-label" id="example-decision">Example provided. Review and adjust if needed.</span>
                 </div>
 
                 <div class="gov-field-group">
@@ -648,9 +649,10 @@
                             name="field-constraint"
                             rows="2"
                             aria-required="true"
-                            aria-describedby="desc-constraint error-governance"
+                            aria-describedby="desc-constraint example-constraint error-governance"
                             autocomplete="off"
-                            placeholder="PC-1, RC-2... or SI-01..."></textarea>
+                            placeholder="PC-1, RC-2... or SI-01...">RC-2 (IR-2024 as adopted). Governs all 16 SI items.</textarea>
+                  <span class="prefilled-label" id="example-constraint">Example provided. Review and adjust if needed.</span>
                 </div>
 
                 <div class="gov-field-group">
@@ -712,6 +714,17 @@
               </div>
             </div>
           </div>
+
+          <!-- Confidence rating (item 20) -->
+          <fieldset class="confidence-rating" data-confidence data-screen-id="m1_l1b_s6">
+            <legend class="confidence-rating__legend">How confident are you in your answers?</legend>
+            <div class="confidence-rating__options">
+              <label class="confidence-rating__option"><input type="radio" name="confidence-m1l1bs6" value="Confident"> Confident</label>
+              <label class="confidence-rating__option"><input type="radio" name="confidence-m1l1bs6" value="Unsure"> Unsure</label>
+              <label class="confidence-rating__option"><input type="radio" name="confidence-m1l1bs6" value="Guessing"> Guessing</label>
+            </div>
+            <p class="confidence-rating__echo" role="status" aria-live="polite" hidden></p>
+          </fieldset>
 
           <!-- Submit controls -->
           <div class="form-controls">
@@ -1037,8 +1050,8 @@
     document.getElementById('pt-lesson').textContent       = '1.1b';
     document.getElementById('pt-phase').textContent        = '1';
     document.getElementById('pt-step').textContent         = '1.5';
-    document.getElementById('pt-screen').textContent       = '6';
-    document.getElementById('pt-screen-total').textContent = '7';
+    document.getElementById('pt-screen').textContent       = '7';
+    document.getElementById('pt-screen-total').textContent = '8';
 
     document.querySelectorAll('.module-nav-link').forEach(link => {
       link.removeAttribute('aria-current');
@@ -1276,11 +1289,13 @@
   <script type="module">
     import { redesignTracker } from './js/trackerRedesign.js';
     import { initCompletionSignal } from './js/completionSignal.js';
+    import { initConfidenceRatings } from './js/components/confidenceRating.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
     import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
+    initConfidenceRatings();
   </script>
 </body>
 </html>

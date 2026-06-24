@@ -974,6 +974,17 @@
         </div>
       </details>
 
+      <!-- Confidence rating (item 20) -->
+      <fieldset class="confidence-rating" data-confidence data-screen-id="m1_l3_s4" data-feedback-selector="#gp-items-list" data-feedback-match=".gp-feedback.is-visible">
+        <legend class="confidence-rating__legend">How confident are you in your calibration judgments?</legend>
+        <div class="confidence-rating__options">
+          <label class="confidence-rating__option"><input type="radio" name="confidence-m1l3s4" value="Confident"> Confident</label>
+          <label class="confidence-rating__option"><input type="radio" name="confidence-m1l3s4" value="Unsure"> Unsure</label>
+          <label class="confidence-rating__option"><input type="radio" name="confidence-m1l3s4" value="Guessing"> Guessing</label>
+        </div>
+        <p class="confidence-rating__echo" role="status" aria-live="polite" hidden></p>
+      </fieldset>
+
       <!-- Item cards -->
       <div class="gp-items-list" id="gp-items-list" role="list" aria-label="Practice items">
 
@@ -1852,11 +1863,13 @@
   <script type="module">
     import { redesignTracker } from './js/trackerRedesign.js';
     import { initCompletionSignal } from './js/completionSignal.js';
+    import { initConfidenceRatings } from './js/components/confidenceRating.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
     import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
+    initConfidenceRatings();
   </script>
 </body>
 </html>

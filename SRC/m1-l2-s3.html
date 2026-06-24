@@ -301,7 +301,8 @@
       line-height: 1.5;
     }
 
-    .si-row__assign { display: flex; align-items: center; }
+    .si-row__assign { display: flex; align-items: center; flex-wrap: wrap; gap: 0.25rem 0.5rem; }
+    .si-row__assign .anchor-label { flex-basis: 100%; }
 
     select.bucket-select {
       width: 100%;
@@ -698,8 +699,9 @@
               <strong>Part A:</strong> Name your four buckets before assigning any scope items.
               Use language that reflects when in the incident response workflow the items occur --
               not what topic they cover.<br>
-              <strong>Part B:</strong> Assign all 16 scope items (SI-01 through SI-16) to your
-              four buckets. Every item must be assigned. Items should appear in exactly one bucket.
+              <strong>Part B:</strong> Four scope items are pre-assigned as expert anchors, one per
+              bucket, to show you where each bucket sits in the workflow. Assign the remaining 12
+              scope items. Every item should appear in exactly one bucket.
               Apply workflow sequence logic, not topic similarity.
             </p>
           </div>
@@ -797,10 +799,11 @@
           <section class="si-assignment-section" aria-labelledby="part-b-heading">
             <div class="part-heading">
               <span class="part-num" aria-hidden="true">B</span>
-              <h2 id="part-b-heading" class="part-title">Assign All 16 Scope Items</h2>
+              <h2 id="part-b-heading" class="part-title">Assign the Scope Items</h2>
             </div>
             <p class="part-desc">
-              Use the dropdown on each row to assign the scope item to one of your four buckets.
+              Four items are pre-assigned as expert anchors, one per bucket. Use the dropdown on each
+              remaining row to assign the scope item to one of your four buckets.
               All 16 items must be assigned before you can submit.
             </p>
 
@@ -874,15 +877,16 @@
                 <span class="si-row__desc">Real-time SIEM event log documentation during active incident</span>
                 <div class="si-row__assign">
                   <label for="assign-4" class="sr-only">
-                    Assign SI-04: Real-time SIEM event log documentation to a bucket
+                    SI-04: Real-time SIEM event log documentation. Pre-assigned expert anchor for Bucket 3.
                   </label>
-                  <select id="assign-4" class="bucket-select" name="assign-4" data-si="4">
+                  <select id="assign-4" class="bucket-select" name="assign-4" data-si="4" data-anchor="b3" disabled>
                     <option value="">-- assign --</option>
                     <option value="b1" class="opt-b1">Bucket 1</option>
                     <option value="b2" class="opt-b2">Bucket 2</option>
-                    <option value="b3" class="opt-b3">Bucket 3</option>
+                    <option value="b3" class="opt-b3" selected>Bucket 3</option>
                     <option value="b4" class="opt-b4">Bucket 4</option>
                   </select>
+                  <span class="anchor-label">Expert anchor: this item belongs here</span>
                 </div>
               </div>
 
@@ -946,15 +950,16 @@
                 <span class="si-row__desc">Threat classification -- Tier 1 vs. Tier 2 identification from SIEM alerts</span>
                 <div class="si-row__assign">
                   <label for="assign-8" class="sr-only">
-                    Assign SI-08: Threat classification to a bucket
+                    SI-08: Threat classification. Pre-assigned expert anchor for Bucket 1.
                   </label>
-                  <select id="assign-8" class="bucket-select" name="assign-8" data-si="8">
+                  <select id="assign-8" class="bucket-select" name="assign-8" data-si="8" data-anchor="b1" disabled>
                     <option value="">-- assign --</option>
-                    <option value="b1" class="opt-b1">Bucket 1</option>
+                    <option value="b1" class="opt-b1" selected>Bucket 1</option>
                     <option value="b2" class="opt-b2">Bucket 2</option>
                     <option value="b3" class="opt-b3">Bucket 3</option>
                     <option value="b4" class="opt-b4">Bucket 4</option>
                   </select>
+                  <span class="anchor-label">Expert anchor: this item belongs here</span>
                 </div>
               </div>
 
@@ -1000,15 +1005,16 @@
                 <span class="si-row__desc">Network segmentation decisions -- isolating affected systems to limit lateral spread</span>
                 <div class="si-row__assign">
                   <label for="assign-11" class="sr-only">
-                    Assign SI-11: Network segmentation decisions to a bucket
+                    SI-11: Network segmentation decisions. Pre-assigned expert anchor for Bucket 2.
                   </label>
-                  <select id="assign-11" class="bucket-select" name="assign-11" data-si="11">
+                  <select id="assign-11" class="bucket-select" name="assign-11" data-si="11" data-anchor="b2" disabled>
                     <option value="">-- assign --</option>
                     <option value="b1" class="opt-b1">Bucket 1</option>
-                    <option value="b2" class="opt-b2">Bucket 2</option>
+                    <option value="b2" class="opt-b2" selected>Bucket 2</option>
                     <option value="b3" class="opt-b3">Bucket 3</option>
                     <option value="b4" class="opt-b4">Bucket 4</option>
                   </select>
+                  <span class="anchor-label">Expert anchor: this item belongs here</span>
                 </div>
               </div>
 
@@ -1036,15 +1042,16 @@
                 <span class="si-row__desc">Post-incident lessons learned -- documenting what happened and what to change</span>
                 <div class="si-row__assign">
                   <label for="assign-13" class="sr-only">
-                    Assign SI-13: Post-incident lessons learned to a bucket
+                    SI-13: Post-incident lessons learned. Pre-assigned expert anchor for Bucket 4.
                   </label>
-                  <select id="assign-13" class="bucket-select" name="assign-13" data-si="13">
+                  <select id="assign-13" class="bucket-select" name="assign-13" data-si="13" data-anchor="b4" disabled>
                     <option value="">-- assign --</option>
                     <option value="b1" class="opt-b1">Bucket 1</option>
                     <option value="b2" class="opt-b2">Bucket 2</option>
                     <option value="b3" class="opt-b3">Bucket 3</option>
-                    <option value="b4" class="opt-b4">Bucket 4</option>
+                    <option value="b4" class="opt-b4" selected>Bucket 4</option>
                   </select>
+                  <span class="anchor-label">Expert anchor: this item belongs here</span>
                 </div>
               </div>
 
@@ -1107,6 +1114,17 @@
             <p id="assign-error" class="assign-error" role="alert" aria-live="polite"></p>
 
           </section>
+
+          <!-- Confidence rating (item 20) -->
+          <fieldset class="confidence-rating" data-confidence data-screen-id="m1_l2_s3">
+            <legend class="confidence-rating__legend">How confident are you in your answers?</legend>
+            <div class="confidence-rating__options">
+              <label class="confidence-rating__option"><input type="radio" name="confidence-m1l2s3" value="Confident"> Confident</label>
+              <label class="confidence-rating__option"><input type="radio" name="confidence-m1l2s3" value="Unsure"> Unsure</label>
+              <label class="confidence-rating__option"><input type="radio" name="confidence-m1l2s3" value="Guessing"> Guessing</label>
+            </div>
+            <p class="confidence-rating__echo" role="status" aria-live="polite" hidden></p>
+          </fieldset>
 
           <!-- Submit -->
           <div class="form-controls">
@@ -1836,6 +1854,19 @@
     document.getElementById('pt-screen').textContent       = '3';
     document.getElementById('pt-screen-total').textContent = '7';
 
+    /* Keep expert anchor assignments locked, even after Try Again re-enables
+       the form (item 24). */
+    (function lockAnchors() {
+      const anchors = document.querySelectorAll('.bucket-select[data-anchor]');
+      const apply = () => anchors.forEach(sel => {
+        sel.value = sel.dataset.anchor;
+        sel.setAttribute('disabled', '');
+      });
+      apply();
+      const tryAgain = document.getElementById('try-again-btn');
+      if (tryAgain) tryAgain.addEventListener('click', () => requestAnimationFrame(apply));
+    })();
+
     document.querySelectorAll('.module-nav-link').forEach(link => {
       link.removeAttribute('aria-current');
     });
@@ -1850,11 +1881,13 @@
   <script type="module">
     import { redesignTracker } from './js/trackerRedesign.js';
     import { initCompletionSignal } from './js/completionSignal.js';
+    import { initConfidenceRatings } from './js/components/confidenceRating.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
     import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
+    initConfidenceRatings();
   </script>
 </body>
 </html>

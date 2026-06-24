@@ -262,6 +262,12 @@
             Meridian Project Intake Review
           </h1>
 
+          <!-- Scaffolding level indicator (item 21) -->
+          <div class="scaffold-level">
+            <span class="scaffold-badge">Full Support</span>
+            <p class="scaffold-level__desc">Expert models the complete process</p>
+          </div>
+
           <!-- Phase/Step badge strip — shows ARCH position without
                relying on the progress tracker alone. -->
           <div class="lesson-phase-strip" aria-label="ARCH Method™ position">
@@ -269,6 +275,12 @@
             <span class="lesson-phase-strip__badge">Step 0: Declare Locked Scope</span>
           </div>
         </header>
+
+        <!-- Commitment note surfacing (item 23) -->
+        <aside class="connect-callout" id="commitment-surface" aria-label="Your commitment">
+          <span class="connect-callout__label">Your Commitment</span>
+          <p id="commitment-surface-body"></p>
+        </aside>
 
         <!-- Purpose ─────────────────────────────────────────────
              Why this lesson exists. ≤75 words.
@@ -548,11 +560,26 @@
   <script type="module">
     import { redesignTracker } from './js/trackerRedesign.js';
     import { initCompletionSignal } from './js/completionSignal.js';
+    import { getItem } from './js/storage.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
     import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
+
+    /* Commitment note surfacing (item 23) */
+    (function surfaceCommitment() {
+      const body = document.getElementById('commitment-surface-body');
+      if (!body) return;
+      const raw = getItem('learnerCommitmentNote');
+      const note = (raw || '').trim();
+      if (note && note.toLowerCase() !== 'skipped') {
+        body.textContent = 'Your commitment: ' + note + ' How does this lesson connect to the challenge you identified?';
+      } else {
+        body.innerHTML = 'You have not yet written your commitment note. Consider writing it now. It will make this credential more meaningful. ' +
+          '<a class="connect-callout__link" href="intro-0.9.html">Write your commitment note</a>';
+      }
+    })();
   </script>
 </body>
 </html>

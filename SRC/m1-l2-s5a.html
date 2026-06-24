@@ -468,6 +468,17 @@
             </div>
           </div>
 
+          <!-- Confidence rating (item 20) -->
+          <fieldset class="confidence-rating" data-confidence data-screen-id="m1_l2_s5a" data-feedback-selector="#result-section">
+            <legend class="confidence-rating__legend">How confident are you in your answers?</legend>
+            <div class="confidence-rating__options">
+              <label class="confidence-rating__option"><input type="radio" name="confidence-m1l2s5a" value="Confident"> Confident</label>
+              <label class="confidence-rating__option"><input type="radio" name="confidence-m1l2s5a" value="Unsure"> Unsure</label>
+              <label class="confidence-rating__option"><input type="radio" name="confidence-m1l2s5a" value="Guessing"> Guessing</label>
+            </div>
+            <p class="confidence-rating__echo" role="status" aria-live="polite" hidden></p>
+          </fieldset>
+
           <!-- Form actions -->
           <div class="form-actions">
             <button type="submit" id="submit-btn" class="btn btn--primary">Check My Balance Analysis</button>
@@ -883,11 +894,13 @@
   <script type="module">
     import { redesignTracker } from './js/trackerRedesign.js';
     import { initCompletionSignal } from './js/completionSignal.js';
+    import { initConfidenceRatings } from './js/components/confidenceRating.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
     import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
+    initConfidenceRatings();
   </script>
 </body>
 </html>

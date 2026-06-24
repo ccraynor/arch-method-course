@@ -189,7 +189,7 @@
       <span class="pt-divider" aria-hidden="true">&bull;</span>
       <span class="pt-item">Step <span id="pt-step">6</span></span>
       <span class="pt-divider" aria-hidden="true">&bull;</span>
-      <span class="pt-item">Screen <span id="pt-screen">3</span> of <span id="pt-screen-total">5</span></span>
+      <span class="pt-item">Screen <span id="pt-screen">3</span> of <span id="pt-screen-total">6</span></span>
     </div>
     <nav aria-label="Support tools">
       <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
@@ -977,6 +977,22 @@
 
         </div><!-- /.worked-example__layout -->
 
+        <!-- Principle extraction (item 19) -->
+        <section class="retrieval-warmup" data-retrieval data-storage-key="principle_m1_l4a_s3" aria-labelledby="pe-heading">
+          <h2 class="retrieval-warmup__heading" id="pe-heading">Principle Extraction</h2>
+          <p class="retrieval-warmup__prompt">What is the governing rule for deciding how many components a scope item should produce?</p>
+          <label class="sr-only" for="pe-input">Your answer</label>
+          <textarea class="retrieval-warmup__input" id="pe-input" rows="3" placeholder="Type your answer. This is not graded."></textarea>
+          <div class="retrieval-warmup__actions">
+            <button type="button" class="btn btn--secondary retrieval-warmup__reveal">Show reference answer</button>
+            <span class="retrieval-warmup__saved" role="status" aria-live="polite" hidden>Saved</span>
+          </div>
+          <div class="retrieval-warmup__answer" hidden>
+            <p class="retrieval-warmup__answer-label">Reference answer</p>
+            <p class="retrieval-warmup__answer-text">A scope item should produce as many components as the performance requires, no more and no fewer. Each component must pass two tests: it can be taught as a discrete unit, and it can be assessed independently. Components that fail either test should be merged, split, or removed.</p>
+          </div>
+        </section>
+
         <!-- Screen navigation -->
         <nav class="screen-nav" aria-label="Screen navigation">
           <a href="m1-l4a-s2.html"
@@ -988,10 +1004,10 @@
             </svg>
             Previous
           </a>
-          <a href="m1-l4a-s4.html"
+          <a href="m1-l4a-s3b.html"
              class="btn btn--nav btn--next"
              rel="next"
-             aria-label="Go to next screen: Step 6 Part 2, Buckets 2 through 4 decomposition">
+             aria-label="Go to next screen: faded example completing the SI-09 decomposition">
             Next
             <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1105,7 +1121,7 @@
     document.getElementById('pt-module').textContent       = '1';
     document.getElementById('pt-lesson').textContent       = '1.4a';
     document.getElementById('pt-screen').textContent       = '3';
-    document.getElementById('pt-screen-total').textContent = '5';
+    document.getElementById('pt-screen-total').textContent = '6';
   </script>
 
 
@@ -1113,12 +1129,14 @@
   <script type="module">
     import { redesignTracker } from './js/trackerRedesign.js';
     import { initCompletionSignal } from './js/completionSignal.js';
+    import { initRetrievalPrompts } from './js/components/retrievalPrompt.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
     import './js/previewMode.js';
     import './js/components/workedExampleDisclosure.js';
     redesignTracker();
     initCompletionSignal();
+    initRetrievalPrompts();
   </script>
 </body>
 </html>

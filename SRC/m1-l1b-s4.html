@@ -513,7 +513,7 @@
       <span class="pt-divider" aria-hidden="true">&bull;</span>
       <span class="pt-item">Step <span id="pt-step">1.5</span></span>
       <span class="pt-divider" aria-hidden="true">&bull;</span>
-      <span class="pt-item">Screen <span id="pt-screen">4</span> of <span id="pt-screen-total">7</span></span>
+      <span class="pt-item">Screen <span id="pt-screen">4</span> of <span id="pt-screen-total">8</span></span>
     </div>
 
     <nav aria-label="Support tools">
@@ -631,6 +631,7 @@
                       Date format: YYYY-MM-DD. Version number is an integer starting
                       at 1. ArtifactName uses CamelCase with no spaces or hyphens.
                     </p>
+                    <p class="failure-callout"><span class="failure-callout__label">Without this convention:</span> A project running across two IDs produces BucketMap-Final, BucketMap-REVISED, and BucketMap-CarrieVersion. No one knows which is current at the SME review.</p>
                   </div>
                 </div>
 
@@ -717,6 +718,7 @@
                       identifier is retired -- the sequence does not collapse to
                       fill the gap.
                     </p>
+                    <p class="failure-callout"><span class="failure-callout__label">Without this convention:</span> A Module 3 audit finding that references the scope item about role-bounded authority cannot be traced back to the source constraint without reading every scope item description.</p>
                   </div>
                 </div>
 
@@ -811,6 +813,7 @@
                       the same retirement rule as SI identifiers -- removed
                       components are retired, not renumbered.
                     </p>
+                    <p class="failure-callout"><span class="failure-callout__label">Without this convention:</span> An optimization decision to split a component in Week 3 cannot be referenced in the Module 4 governance record without describing the component from scratch.</p>
                   </div>
                 </div>
 
@@ -876,6 +879,7 @@
                         <strong>Governance Checkpoint Linkage</strong> -- which checkpoint will verify or revisit this decision
                       </li>
                     </ol>
+                    <p class="failure-callout"><span class="failure-callout__label">Without this convention:</span> The SME signs off on a decomposition decision without knowing that the 4-hour access constraint makes one of the components unrealistic to develop.</p>
                   </div>
                 </div>
 
@@ -986,6 +990,7 @@
                     <li>Do not edit v1 in place -- v1 remains as the permanent record of the original design decision</li>
                     <li>Update the governance decision log to reference the new version and record the trigger for the revision</li>
                   </ol>
+                  <p class="failure-callout"><span class="failure-callout__label">Without this convention:</span> The content developer cannot tell whether the architecture document in their email is the pre-SME version or the post-review version.</p>
                 </div>
 
                 <p class="step-content">
@@ -1110,10 +1115,10 @@
             </svg>
             Previous
           </a>
-          <a href="m1-l1b-s5.html"
+          <a href="m1-l1b-s4b.html"
              class="btn btn--nav btn--next"
              rel="next"
-             aria-label="Go to next screen">
+             aria-label="Go to next screen: faded example applying the Output Style Gate">
             Next
             <svg aria-hidden="true" focusable="false" width="16" height="16"
                  viewBox="0 0 16 16" fill="none">
@@ -1318,7 +1323,7 @@
     document.getElementById('pt-phase').textContent        = '1';
     document.getElementById('pt-step').textContent         = '1.5';
     document.getElementById('pt-screen').textContent       = '4';
-    document.getElementById('pt-screen-total').textContent = '7';
+    document.getElementById('pt-screen-total').textContent = '8';
 
     document.querySelectorAll('.module-nav-link').forEach(link => {
       link.removeAttribute('aria-current');

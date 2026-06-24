@@ -586,6 +586,17 @@
 
           </div><!-- /.scope-fields -->
 
+          <!-- Confidence rating (item 20) -->
+          <fieldset class="confidence-rating" data-confidence data-screen-id="m1_l1a_s4">
+            <legend class="confidence-rating__legend">How confident are you in your answers?</legend>
+            <div class="confidence-rating__options">
+              <label class="confidence-rating__option"><input type="radio" name="confidence-m1l1as4" value="Confident"> Confident</label>
+              <label class="confidence-rating__option"><input type="radio" name="confidence-m1l1as4" value="Unsure"> Unsure</label>
+              <label class="confidence-rating__option"><input type="radio" name="confidence-m1l1as4" value="Guessing"> Guessing</label>
+            </div>
+            <p class="confidence-rating__echo" role="status" aria-live="polite" hidden></p>
+          </fieldset>
+
           <button type="submit"
                   id="btn-submit"
                   class="btn btn--primary btn--submit">
@@ -1183,11 +1194,13 @@
   <script type="module">
     import { redesignTracker } from './js/trackerRedesign.js';
     import { initCompletionSignal } from './js/completionSignal.js';
+    import { initConfidenceRatings } from './js/components/confidenceRating.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
     import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
+    initConfidenceRatings();
   </script>
 </body>
 </html>

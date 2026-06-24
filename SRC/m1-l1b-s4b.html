@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Faded example: apply the Output Style Gate governance documentation rule to a community college first-year experience scenario. Two fields are modeled; complete the remaining three, then reveal the expert version.">
+  <title>Faded Example: Apply the Output Style Gate -- Lesson 1.1b -- ARCH Method™ Practitioner Credential -- Proof Point Learning</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    /* ================================================================
+       Screen m1-l1b-s4b -- Faded Example: Apply the Output Style Gate
+       Step 1.5. All color values use CSS tokens. No hard-coded hex.
+       ================================================================ */
+
+    .lesson-label { display: block; margin: 0 0 0.25rem; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-link); }
+    .screen-meta { display: flex; align-items: center; gap: 0.75rem; margin: 0 0 0.25rem; }
+    .time-estimate { font-size: 0.75rem; color: var(--color-text-secondary); background: var(--color-bg-subtle); border: 1px solid var(--color-border-default); border-radius: 3px; padding: 0.125rem 0.5rem; }
+    .screen-title { margin: 0 0 0.375rem; font-size: 1.5rem; font-weight: 800; color: var(--color-text-primary); line-height: 1.2; }
+    .step-badge { display: inline-block; margin: 0 0 0.875rem; padding: 0.25rem 0.625rem; background: var(--color-bg-page); border: 1.5px solid var(--color-text-link); border-radius: 3px; font-size: 0.75rem; font-weight: 600; color: var(--color-text-link); }
+
+    /* Faded example intro */
+    .faded-intro { margin: 0 0 1.5rem; padding: 0.75rem 1rem; background: var(--color-bg-subtle); border-left: 4px solid var(--color-brand-teal); border-radius: 0 4px 4px 0; font-size: 0.9375rem; line-height: 1.65; color: var(--color-text-primary); }
+    .faded-intro__label { display: block; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-brand-teal); margin-bottom: 0.25rem; }
+
+    /* Scenario box */
+    .scenario-box { margin: 0 0 1.75rem; border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; }
+    .scenario-box__header { padding: 0.625rem 1rem; background: var(--color-brand-navy); color: var(--color-text-inverse); font-size: 0.9375rem; font-weight: 700; }
+    .scenario-box__body { padding: 0.875rem 1rem; }
+    .scenario-box__body p { margin: 0 0 0.75rem; font-size: 0.9375rem; line-height: 1.65; color: var(--color-text-primary); }
+    .scenario-constraints { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .scenario-constraints li { font-size: 0.875rem; line-height: 1.6; color: var(--color-text-primary); padding-left: 0.875rem; border-left: 3px solid var(--color-brand-teal); }
+    .scenario-constraints code { font-family: monospace; font-weight: 700; color: var(--color-text-link); }
+
+    /* Task section */
+    .task-section { margin: 0 0 2rem; border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; }
+    .task-section__header { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border-default); }
+    .task-section__title { margin: 0; font-size: 1rem; font-weight: 700; color: var(--color-text-primary); }
+    .task-section__body { padding: 1rem 1rem 1.125rem; }
+    .task-instruction { margin: 0 0 1rem; font-size: 0.9375rem; color: var(--color-text-primary); line-height: 1.7; }
+
+    /* Governance record form */
+    .gov-form { display: flex; flex-direction: column; gap: 1rem; }
+    .gov-field-group { display: flex; flex-direction: column; gap: 0.375rem; }
+    .gov-field-label { display: flex; align-items: baseline; gap: 0.5rem; }
+    .gov-field-num { display: inline-flex; align-items: center; justify-content: center; width: 1.25rem; height: 1.25rem; border-radius: 50%; background: var(--color-text-link); color: var(--color-text-inverse); font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; }
+    .gov-field-name { font-size: 0.875rem; font-weight: 700; color: var(--color-text-primary); }
+    .gov-field-desc { font-size: 0.8125rem; color: var(--color-text-secondary); font-weight: 400; }
+
+    textarea { width: 100%; box-sizing: border-box; padding: 0.5625rem 0.75rem; border: 1.5px solid var(--color-border-default); border-radius: 4px; background: var(--color-bg-page); color: var(--color-text-primary); font-size: 0.9375rem; font-family: inherit; line-height: 1.5; resize: vertical; transition: border-color 0.15s ease; }
+    textarea:focus { outline: 2px solid var(--color-focus-ring); outline-offset: 1px; border-color: var(--color-text-link); }
+    textarea[aria-invalid="true"] { border-color: var(--color-error-text); }
+    .field-error { font-size: 0.8125rem; color: var(--color-error-text); line-height: 1.4; }
+    .field-error:empty { display: none; }
+
+    .form-controls { display: flex; align-items: center; gap: 1rem; padding: 1rem 0 0; }
+
+    /* Feedback section */
+    .feedback-section { margin: 2rem 0 0; border: 1px solid var(--color-border-default); border-radius: 6px; overflow: hidden; }
+    .feedback-header { padding: 0.75rem 1rem; background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border-default); }
+    .feedback-heading { margin: 0; font-size: 1.0625rem; font-weight: 700; color: var(--color-text-primary); }
+    .feedback-body { padding: 1rem; }
+    .feedback-intro { margin: 0 0 1.25rem; font-size: 0.9375rem; line-height: 1.65; color: var(--color-text-primary); }
+
+    /* Expert governance record */
+    .gov-record { border: 1px solid var(--color-border-default); border-radius: 5px; overflow: hidden; }
+    .gov-record__header { padding: 0.5rem 1rem; background: var(--color-brand-navy); color: var(--color-text-inverse); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+    .gov-record__field { display: grid; grid-template-columns: 11rem 1fr; border-bottom: 1px solid var(--color-border-default); }
+    .gov-record__field:last-child { border-bottom: none; }
+    @media (max-width: 540px) { .gov-record__field { grid-template-columns: 1fr; } }
+    .gov-record__key { padding: 0.625rem 0.875rem; background: var(--color-bg-subtle); font-size: 0.8125rem; font-weight: 700; color: var(--color-text-secondary); line-height: 1.5; border-right: 1px solid var(--color-border-default); }
+    @media (max-width: 540px) { .gov-record__key { border-right: none; border-bottom: 1px solid var(--color-border-default); } }
+    .gov-record__val { padding: 0.625rem 0.875rem; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.6; background: var(--color-bg-page); }
+    .gov-record__val p { margin: 0; }
+    .gov-record__annotation { margin: 0.4375rem 0 0; font-size: 0.8125rem; line-height: 1.5; color: var(--color-brand-teal); }
+    .field-num-badge { display: inline-flex; align-items: center; justify-content: center; width: 1.25rem; height: 1.25rem; border-radius: 50%; background: var(--color-text-link); color: var(--color-text-inverse); font-size: 0.6875rem; font-weight: 700; margin-right: 0.375rem; vertical-align: middle; }
+
+    .feedback-controls { display: flex; align-items: center; gap: 1rem; padding: 1.25rem 0 0; flex-wrap: wrap; }
+
+    @media (prefers-contrast: more) {
+      .scenario-box, .task-section, .gov-record, .faded-intro { border-color: var(--color-border-strong); }
+      .task-section__header { border-bottom-color: var(--color-border-strong); }
+      textarea { border-color: var(--color-border-strong); }
+      .gov-record__field { border-bottom-color: var(--color-border-strong); }
+      .gov-record__key { border-right-color: var(--color-border-strong); }
+      .step-badge { border-color: var(--color-border-strong); color: var(--color-text-primary); }
+      .lesson-label { color: var(--color-text-primary); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Skip Links -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+    <a class="skip-link" href="#current-activity">Skip to Current Activity</a>
+    <a class="skip-link" href="#progress-tracker">Skip to Progress Tracker</a>
+    <a class="skip-link" href="#artifact-reference">Skip to Artifact Reference</a>
+    <a class="skip-link" href="#decision-history">Skip to Decision History</a>
+  </nav>
+
+  <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <!-- Header -->
+  <header role="banner">
+    <div class="header-brand">
+      <span class="brand-org">Proof Point Learning</span>
+      <span class="brand-course">ARCH Method™ Practitioner Credential</span>
+    </div>
+    <div id="progress-tracker" role="group" aria-label="Course progress" tabindex="-1">
+      <span class="pt-item">Module <span id="pt-module">1</span> of 4</span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Lesson <span id="pt-lesson">1.1b</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Phase <span id="pt-phase">1</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Step <span id="pt-step">1.5</span></span>
+      <span class="pt-divider" aria-hidden="true">&bull;</span>
+      <span class="pt-item">Screen <span id="pt-screen">5</span> of <span id="pt-screen-total">8</span></span>
+    </div>
+    <nav aria-label="Support tools">
+      <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
+      <button type="button" class="support-toggle" data-panel="supportPanel" aria-controls="supportPanel" aria-expanded="false">Support</button>
+      <button type="button" class="support-toggle" data-panel="artifactDrawer" aria-controls="artifactDrawer" aria-expanded="false">Artifacts</button>
+      <button type="button" class="support-toggle" data-panel="decisionHistory" aria-controls="decisionHistory" aria-expanded="false">Decision History</button>
+      <button type="button" class="support-toggle" data-panel="annotationPanel" aria-controls="annotationPanel" aria-expanded="false">Notes</button>
+    </nav>
+  </header>
+
+  <!-- Primary Navigation -->
+  <nav aria-label="Course modules" id="course-nav">
+    <ol class="module-nav-list">
+      <li class="module-nav-item"><a href="intro-0.1.html" class="module-nav-link">Introduction</a></li>
+      <li class="module-nav-item"><a href="m1-l1a-s1.html" class="module-nav-link">Module 1: Bound the Course</a></li>
+      <li class="module-nav-item"><a href="module-2.html" aria-disabled="true" title="Module 2 not yet available" class="module-nav-link">Module 2: Engineer the Learning</a></li>
+      <li class="module-nav-item"><a href="module-3.html" aria-disabled="true" title="Module 3 not yet available" class="module-nav-link">Module 3: Stress-Test the Design</a></li>
+      <li class="module-nav-item"><a href="module-4.html" aria-disabled="true" title="Module 4 not yet available" class="module-nav-link">Module 4: Structural Freeze</a></li>
+    </ol>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content" tabindex="-1">
+    <section id="current-activity" tabindex="-1" aria-label="Current activity">
+      <article aria-labelledby="screen-title">
+
+        <header>
+          <div class="screen-meta">
+            <span class="screen-type-label">Faded Example</span>
+            <span class="time-estimate" aria-label="Estimated time: 10 to 12 minutes">10&ndash;12 min</span>
+          </div>
+          <p class="lesson-label" aria-label="Lesson 1.1b">Lesson 1.1b</p>
+          <h1 id="screen-title" class="screen-title">Faded Example: Apply the Output Style Gate</h1>
+          <span class="step-badge">Step 1.5</span>
+
+          <div class="faded-intro" role="note">
+            <span class="faded-intro__label">How this works</span>
+            You just saw the Output Style Gate modeled in full. Here you apply the governance documentation rule
+            to a new scenario. The first two fields are filled in as a model. Complete the remaining three fields.
+            When you submit, the full expert version of all five fields appears, with a note on what makes each one strong.
+          </div>
+        </header>
+
+        <!-- Scenario -->
+        <section class="scenario-box" aria-labelledby="scenario-heading">
+          <h2 class="scenario-box__header" id="scenario-heading">Scenario: Riverside Community College</h2>
+          <div class="scenario-box__body">
+            <p>
+              Riverside Community College is developing a first-year experience course for underprepared students.
+              Most students work part-time or have caregiving duties, many access coursework on a phone with
+              unreliable internet, and most enter with significant gaps in college-level academic skills.
+              The design team applies the Output Style Gate before any content is built.
+            </p>
+            <ul class="scenario-constraints" aria-label="Binding constraints for this scenario">
+              <li><code>LC-1</code> (Logistical): students average under 5 hours of weekly study time.</li>
+              <li><code>LC-2</code> (Logistical): mobile-first access with intermittent connectivity; no laptop or home internet can be assumed.</li>
+              <li><code>PC-1</code> (Performance): no prior college-level academic skills can be assumed as a foundation.</li>
+            </ul>
+          </div>
+        </section>
+
+        <form id="gov-form" novalidate aria-label="Faded example governance decision record">
+
+          <div class="task-section" role="group" aria-labelledby="task-heading">
+            <div class="task-section__header">
+              <h2 id="task-heading" class="task-section__title">Complete the Governance Decision Record</h2>
+            </div>
+            <div class="task-section__body">
+              <p class="task-instruction">
+                Fields 1 and 2 are completed for you as a model. Write Fields 3, 4, and 5 for the same decision.
+                Connect your Rationale to the constraints, name a concrete risk, and link the decision to a checkpoint.
+              </p>
+              <div class="gov-form">
+
+                <div class="gov-field-group">
+                  <label class="gov-field-label" for="field-decision">
+                    <span class="gov-field-num" aria-hidden="true">1</span>
+                    <span class="gov-field-name">Decision Statement</span>
+                  </label>
+                  <span class="gov-field-desc" id="desc-decision">What was decided, written as a precise, present-tense declaration.</span>
+                  <textarea id="field-decision" name="field-decision" rows="3"
+                            aria-describedby="desc-decision example-decision"
+                            autocomplete="off">The first-year experience course delivers each competency in short modules that work on a phone and without continuous internet access, and it assumes no prior college-level academic preparation.</textarea>
+                  <span class="prefilled-label" id="example-decision">Example provided. Review and adjust if needed.</span>
+                </div>
+
+                <div class="gov-field-group">
+                  <label class="gov-field-label" for="field-constraint">
+                    <span class="gov-field-num" aria-hidden="true">2</span>
+                    <span class="gov-field-name">Constraint Reference</span>
+                  </label>
+                  <span class="gov-field-desc" id="desc-constraint">Which named binding constraint or identifier governs this decision.</span>
+                  <textarea id="field-constraint" name="field-constraint" rows="2"
+                            aria-describedby="desc-constraint example-constraint"
+                            autocomplete="off">LC-1 (under 5 hours weekly study time); LC-2 (mobile, intermittent connectivity); PC-1 (no assumable prerequisite knowledge).</textarea>
+                  <span class="prefilled-label" id="example-constraint">Example provided. Review and adjust if needed.</span>
+                </div>
+
+                <div class="gov-field-group">
+                  <label class="gov-field-label" for="field-rationale">
+                    <span class="gov-field-num" aria-hidden="true">3</span>
+                    <span class="gov-field-name">Rationale</span>
+                  </label>
+                  <span class="gov-field-desc" id="desc-rationale">Why this decision follows from the constraints, not a restatement of the decision.</span>
+                  <textarea id="field-rationale" name="field-rationale" rows="4"
+                            aria-required="true"
+                            aria-describedby="desc-rationale error-governance"
+                            autocomplete="off"
+                            placeholder="This decision follows from LC-1, LC-2, and PC-1 because..."></textarea>
+                </div>
+
+                <div class="gov-field-group">
+                  <label class="gov-field-label" for="field-risk">
+                    <span class="gov-field-num" aria-hidden="true">4</span>
+                    <span class="gov-field-name">Risk Note</span>
+                  </label>
+                  <span class="gov-field-desc" id="desc-risk">What could go wrong if this decision is incorrect or needs to change.</span>
+                  <textarea id="field-risk" name="field-risk" rows="3"
+                            aria-required="true"
+                            aria-describedby="desc-risk error-governance"
+                            autocomplete="off"
+                            placeholder="If this decision is wrong or the learner profile changes..."></textarea>
+                </div>
+
+                <div class="gov-field-group">
+                  <label class="gov-field-label" for="field-checkpoint">
+                    <span class="gov-field-num" aria-hidden="true">5</span>
+                    <span class="gov-field-name">Governance Checkpoint Linkage</span>
+                  </label>
+                  <span class="gov-field-desc" id="desc-checkpoint">Which checkpoint will verify or revisit this decision.</span>
+                  <textarea id="field-checkpoint" name="field-checkpoint" rows="2"
+                            aria-required="true"
+                            aria-describedby="desc-checkpoint error-governance"
+                            autocomplete="off"
+                            placeholder="The Module 1 structural gate will verify..."></textarea>
+                </div>
+
+                <p id="error-governance" class="field-error" role="alert" aria-live="polite"></p>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="form-controls">
+            <button type="submit" id="submit-btn" class="btn btn--primary">Submit and Reveal Expert Version</button>
+          </div>
+
+        </form>
+
+        <!-- Feedback Section (hidden until submission) -->
+        <section id="feedback-section" class="feedback-section" aria-labelledby="feedback-heading" tabindex="-1" hidden>
+          <div class="feedback-header">
+            <h2 id="feedback-heading" class="feedback-heading">Expert Version: All Five Fields</h2>
+          </div>
+          <div class="feedback-body">
+            <p class="feedback-intro">
+              Compare your Rationale, Risk Note, and Checkpoint Linkage to the expert version below.
+              Each field carries a short note on what makes it strong.
+            </p>
+
+            <div class="gov-record" role="region" aria-label="Expert governance decision record for the Riverside scenario">
+              <div class="gov-record__header">Riverside FYE: Delivery Structure Decision</div>
+
+              <div class="gov-record__field">
+                <div class="gov-record__key"><span class="field-num-badge" aria-hidden="true">1</span>Decision Statement</div>
+                <div class="gov-record__val">
+                  <p>The first-year experience course delivers each competency in short, self-contained modules that function on a mobile device without continuous internet access, and no module assumes prior college-level academic skills.</p>
+                  <p class="gov-record__annotation"><strong>Why it is strong:</strong> a precise present-tense declaration of the design choice, not a goal or an aspiration.</p>
+                </div>
+              </div>
+
+              <div class="gov-record__field">
+                <div class="gov-record__key"><span class="field-num-badge" aria-hidden="true">2</span>Constraint Reference</div>
+                <div class="gov-record__val">
+                  <p>LC-1 (students average under 5 hours weekly study time); LC-2 (mobile-first, intermittent connectivity, no assumed laptop or home internet); PC-1 (no assumable prerequisite college-level knowledge).</p>
+                  <p class="gov-record__annotation"><strong>Why it is strong:</strong> it cites specific named binding constraints, not a generic statement about student needs.</p>
+                </div>
+              </div>
+
+              <div class="gov-record__field">
+                <div class="gov-record__key"><span class="field-num-badge" aria-hidden="true">3</span>Rationale</div>
+                <div class="gov-record__val">
+                  <p>Each constraint independently forces this structure. LC-1 means content must be completable in short sessions, so long linear modules would go unfinished. LC-2 means delivery cannot depend on streaming or always-on access, so modules must work offline on a phone. PC-1 means no module may build on skills students were never taught, so each module must teach its own prerequisites. Violating any one constraint would make the course undeliverable for the intended learners.</p>
+                  <p class="gov-record__annotation"><strong>Why it is strong:</strong> it ties the decision to each constraint and explains why the decision is necessary, rather than restating the decision.</p>
+                </div>
+              </div>
+
+              <div class="gov-record__field">
+                <div class="gov-record__key"><span class="field-num-badge" aria-hidden="true">4</span>Risk Note</div>
+                <div class="gov-record__val">
+                  <p>If later enrollment data shows most students have reliable devices and stronger academic preparation, the short offline-first structure could underuse available capacity and slow stronger students. The decision should be revisited if the verified learner profile differs from these assumptions.</p>
+                  <p class="gov-record__annotation"><strong>Why it is strong:</strong> it names a concrete failure condition and the specific signal that would trigger a change.</p>
+                </div>
+              </div>
+
+              <div class="gov-record__field">
+                <div class="gov-record__key"><span class="field-num-badge" aria-hidden="true">5</span>Governance Checkpoint Linkage</div>
+                <div class="gov-record__val">
+                  <p>Verified at the Module 1 structural gate, where the learner profile and delivery constraints (LC-1, LC-2, PC-1) are confirmed before any content is developed.</p>
+                  <p class="gov-record__annotation"><strong>Why it is strong:</strong> it names the specific checkpoint that will verify or revisit the decision.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="feedback-controls">
+              <button type="button" id="revise-btn" class="btn btn--secondary">Revise My Answer</button>
+              <a href="m1-l1b-s5.html" id="continue-link" class="btn btn--primary">Continue to Task 1 and 2 Practice</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Screen navigation (pre-submission) -->
+        <nav id="screen-nav-pre" class="screen-nav" aria-label="Screen navigation">
+          <a href="m1-l1b-s4.html" class="btn btn--nav btn--prev" rel="prev" aria-label="Go to previous screen: Output Style Gate worked example">
+            <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Previous
+          </a>
+          <a href="m1-l1b-s5.html" class="btn btn--nav btn--next" rel="next" aria-label="Go to next screen: Tasks 1 and 2 guided practice">
+            Next
+            <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+      </article>
+    </section>
+  </main>
+
+  <!-- Supplementary Resources -->
+  <aside aria-label="Supplementary resources" id="supplementary-resources">
+    <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
+      <h2 class="aside-heading">Artifact Reference</h2>
+      <p class="aside-empty">This faded example uses a non-Meridian scenario to show that the Output Style Gate governance rule transfers to any project. No MRHN artifact is produced here.</p>
+    </section>
+    <section id="decision-history" tabindex="-1" aria-label="Decision history">
+      <h2 class="aside-heading">Decision History</h2>
+      <p class="aside-empty">The expert governance record for the Riverside scenario appears below after you submit your three fields.</p>
+    </section>
+  </aside>
+
+  <!-- Support Panels -->
+  <aside id="artifactDrawer" aria-label="Artifact drawer" hidden>
+    <div class="panel-header"><h2 class="panel-title">Artifact Drawer</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close artifact drawer">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="decisionHistory" aria-label="Decision history panel" hidden>
+    <div class="panel-header"><h2 class="panel-title">Decision History</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close decision history panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="glossary" aria-label="Glossary" hidden>
+    <div class="panel-header"><h2 class="panel-title">Glossary</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close glossary">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="supportPanel" aria-label="Support" hidden>
+    <div class="panel-header"><h2 class="panel-title">Support</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close support panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body"></div>
+  </aside>
+  <aside id="annotationPanel" aria-label="Annotation" hidden>
+    <div class="panel-header"><h2 class="panel-title">Notes</h2>
+      <button type="button" class="panel-close" data-panel-focus aria-label="Close annotation panel">
+        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="panel-body">
+      <label for="annotation-input" class="sr-only">Your notes</label>
+      <textarea id="annotation-input" rows="12" placeholder="Type your notes here..."></textarea>
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
+    <nav aria-label="Footer links">
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- Base script -->
+  <script type="module">
+    import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    function syncToggleStates(activeName) {
+      document.querySelectorAll('.support-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', btn.dataset.panel === activeName ? 'true' : 'false');
+      });
+    }
+    document.querySelectorAll('.support-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panelName = btn.dataset.panel;
+        if (getActivePanel() === panelName) { closeAll(); syncToggleStates(null); }
+        else { openPanel(panelName, btn); syncToggleStates(panelName); }
+      });
+    });
+    document.querySelectorAll('.panel-close').forEach(btn => {
+      btn.addEventListener('click', () => { closeAll(); syncToggleStates(null); });
+    });
+  </script>
+
+  <!-- Screen-specific script -->
+  <script type="module">
+    document.getElementById('pt-module').textContent       = '1';
+    document.getElementById('pt-lesson').textContent       = '1.1b';
+    document.getElementById('pt-phase').textContent        = '1';
+    document.getElementById('pt-step').textContent         = '1.5';
+    document.getElementById('pt-screen').textContent       = '5';
+    document.getElementById('pt-screen-total').textContent = '8';
+
+    document.querySelectorAll('.module-nav-link').forEach(link => link.removeAttribute('aria-current'));
+    const activeLink = document.querySelector('.module-nav-link[href="m1-l1a-s1.html"]');
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+
+    function wordCount(str) {
+      return str.trim().split(/\s+/).filter(w => w.length > 0).length;
+    }
+    function announce(message) {
+      const el = document.getElementById('sr-announcer');
+      el.textContent = '';
+      requestAnimationFrame(() => requestAnimationFrame(() => { el.textContent = message; }));
+    }
+
+    const LEARNER_FIELDS = [
+      { id: 'field-rationale', name: 'Rationale', min: 10 },
+      { id: 'field-risk',      name: 'Risk Note', min: 8 },
+      { id: 'field-checkpoint', name: 'Checkpoint Linkage', min: 4 }
+    ];
+
+    document.getElementById('gov-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const err = document.getElementById('error-governance');
+      err.textContent = '';
+      LEARNER_FIELDS.forEach(f => document.getElementById(f.id).removeAttribute('aria-invalid'));
+
+      const missing = LEARNER_FIELDS.filter(f =>
+        wordCount(document.getElementById(f.id).value) < f.min
+      );
+
+      if (missing.length > 0) {
+        missing.forEach(f => document.getElementById(f.id).setAttribute('aria-invalid', 'true'));
+        err.textContent = 'Add more detail before revealing the expert version: ' +
+          missing.map(f => f.name).join('; ') + '.';
+        document.getElementById(missing[0].id).focus();
+        announce('Submission incomplete. Complete all three fields before revealing the expert version.');
+        return;
+      }
+
+      const feedbackSection = document.getElementById('feedback-section');
+      const form            = document.getElementById('gov-form');
+      const preNav          = document.getElementById('screen-nav-pre');
+
+      feedbackSection.removeAttribute('hidden');
+      preNav.setAttribute('hidden', '');
+      form.querySelectorAll('textarea, button[type="submit"]').forEach(el => el.setAttribute('disabled', ''));
+
+      announce('Expert version is now visible below. Compare it to your three fields.');
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        document.getElementById('feedback-heading').focus();
+      }));
+    });
+
+    document.getElementById('revise-btn').addEventListener('click', () => {
+      const form            = document.getElementById('gov-form');
+      const feedbackSection = document.getElementById('feedback-section');
+      const preNav          = document.getElementById('screen-nav-pre');
+      feedbackSection.setAttribute('hidden', '');
+      form.querySelectorAll('textarea, button[type="submit"]').forEach(el => el.removeAttribute('disabled'));
+      preNav.removeAttribute('hidden');
+      requestAnimationFrame(() => document.getElementById('field-rationale').focus());
+      announce('Form re-enabled. Revise your answer and resubmit.');
+    });
+  </script>
+
+  <!-- Shared JS modules: tracker redesign, breadcrumb, completion signal, panel init -->
+  <script type="module">
+    import { redesignTracker } from './js/trackerRedesign.js';
+    import { initCompletionSignal } from './js/completionSignal.js';
+    import './js/breadcrumb.js';
+    import './js/panelInit.js';
+    import './js/previewMode.js';
+    redesignTracker();
+    initCompletionSignal();
+  </script>
+</body>
+</html>

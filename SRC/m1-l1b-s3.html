@@ -451,7 +451,7 @@
       <span class="pt-divider" aria-hidden="true">&bull;</span>
       <span class="pt-item">Step <span id="pt-step">1</span></span>
       <span class="pt-divider" aria-hidden="true">&bull;</span>
-      <span class="pt-item">Screen <span id="pt-screen">3</span> of <span id="pt-screen-total">7</span></span>
+      <span class="pt-item">Screen <span id="pt-screen">3</span> of <span id="pt-screen-total">8</span></span>
     </div>
 
     <nav aria-label="Support tools">
@@ -687,6 +687,17 @@
             </div>
 
           </div><!-- /.constraint-fields -->
+
+          <!-- Confidence rating (item 20) -->
+          <fieldset class="confidence-rating" data-confidence data-screen-id="m1_l1b_s3">
+            <legend class="confidence-rating__legend">How confident are you in your answers?</legend>
+            <div class="confidence-rating__options">
+              <label class="confidence-rating__option"><input type="radio" name="confidence-m1l1bs3" value="Confident"> Confident</label>
+              <label class="confidence-rating__option"><input type="radio" name="confidence-m1l1bs3" value="Unsure"> Unsure</label>
+              <label class="confidence-rating__option"><input type="radio" name="confidence-m1l1bs3" value="Guessing"> Guessing</label>
+            </div>
+            <p class="confidence-rating__echo" role="status" aria-live="polite" hidden></p>
+          </fieldset>
 
           <button type="submit"
                   id="btn-submit"
@@ -945,7 +956,7 @@
     document.getElementById('pt-phase').textContent        = '1';
     document.getElementById('pt-step').textContent         = '1';
     document.getElementById('pt-screen').textContent       = '3';
-    document.getElementById('pt-screen-total').textContent = '7';
+    document.getElementById('pt-screen-total').textContent = '8';
 
     document.querySelectorAll('.module-nav-link').forEach(link => {
       link.removeAttribute('aria-current');
@@ -1252,11 +1263,13 @@
   <script type="module">
     import { redesignTracker } from './js/trackerRedesign.js';
     import { initCompletionSignal } from './js/completionSignal.js';
+    import { initConfidenceRatings } from './js/components/confidenceRating.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
     import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
+    initConfidenceRatings();
   </script>
 </body>
 </html>

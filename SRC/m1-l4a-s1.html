@@ -540,7 +540,7 @@
       <span class="pt-divider" aria-hidden="true">&bull;</span>
       <span class="pt-item">Steps <span id="pt-step">5&ndash;6</span></span>
       <span class="pt-divider" aria-hidden="true">&bull;</span>
-      <span class="pt-item">Screen <span id="pt-screen">1</span> of <span id="pt-screen-total">5</span></span>
+      <span class="pt-item">Screen <span id="pt-screen">1</span> of <span id="pt-screen-total">6</span></span>
     </div>
     <nav aria-label="Support tools">
       <button type="button" class="support-toggle" data-panel="glossary" aria-controls="glossary" aria-expanded="false">Glossary</button>
@@ -572,6 +572,12 @@
       <p class="lesson-label" aria-label="Lesson 1.4a of Module 1">Lesson 1.4a</p>
       <h1 class="lesson-intro__title">Performance Arc and Decomposition</h1>
 
+      <!-- Scaffolding level indicator (item 21) -->
+      <div class="scaffold-level">
+        <span class="scaffold-badge">Monitored Practice</span>
+        <p class="scaffold-level__desc">You lead, expert confirms</p>
+      </div>
+
       <div class="step-badge-group" aria-label="Steps covered in this lesson">
         <span class="step-badge">Phase 1 -- Step 5: Validate Macro Performance Arc</span>
         <span class="step-badge">Phase 2 -- Step 6: Decompose Scope Items</span>
@@ -585,6 +591,28 @@
         Together, Steps 5 and 6 produce the structural blueprint that
         Module 2 will engineer into instruction.
       </p>
+
+      <!-- Retrieval warm-up (item 15) -->
+      <section class="retrieval-warmup" data-retrieval data-storage-key="retrieval_l5" aria-labelledby="rw-heading">
+        <h2 class="retrieval-warmup__heading" id="rw-heading">Before You Begin</h2>
+        <p class="retrieval-warmup__prompt">What is the difference between Domain Authenticity calibration and Taxonomy Calibration?</p>
+        <label class="sr-only" for="rw-input">Your answer</label>
+        <textarea class="retrieval-warmup__input" id="rw-input" rows="3" placeholder="Type your answer. This is not graded."></textarea>
+        <div class="retrieval-warmup__actions">
+          <button type="button" class="btn btn--secondary retrieval-warmup__reveal">Show reference answer</button>
+          <span class="retrieval-warmup__saved" role="status" aria-live="polite" hidden>Saved</span>
+        </div>
+        <div class="retrieval-warmup__answer" hidden>
+          <p class="retrieval-warmup__answer-label">Reference answer</p>
+          <p class="retrieval-warmup__answer-text">Domain Authenticity calibration checks whether each scope item reflects real knowledge demands from the performance context. Taxonomy Calibration assigns the correct Bloom's level to each scope item based on what the performance actually requires.</p>
+        </div>
+      </section>
+
+      <!-- Prior knowledge activation (item 22) -->
+      <aside class="connect-callout" aria-label="Connection to prior lesson">
+        <span class="connect-callout__label">Connect to What You Know</span>
+        <p>Lesson 4 gave you a calibrated scope map with domain annotations and taxonomy assignments. This lesson uses that map to validate the performance arc and decompose each scope item into teachable components.</p>
+      </aside>
 
       <!-- Continuation banner -->
       <div class="continuation-banner" role="note" aria-label="Artifacts on record from Lesson 1.3">
@@ -946,7 +974,7 @@
     document.getElementById('pt-module').textContent       = '1';
     document.getElementById('pt-lesson').textContent       = '1.4a';
     document.getElementById('pt-screen').textContent       = '1';
-    document.getElementById('pt-screen-total').textContent = '5';
+    document.getElementById('pt-screen-total').textContent = '6';
   </script>
 
 
@@ -954,11 +982,13 @@
   <script type="module">
     import { redesignTracker } from './js/trackerRedesign.js';
     import { initCompletionSignal } from './js/completionSignal.js';
+    import { initRetrievalPrompts } from './js/components/retrievalPrompt.js';
     import './js/breadcrumb.js';
     import './js/panelInit.js';
     import './js/previewMode.js';
     redesignTracker();
     initCompletionSignal();
+    initRetrievalPrompts();
   </script>
 </body>
 </html>

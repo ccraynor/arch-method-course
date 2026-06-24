@@ -18,11 +18,12 @@ Meridian Regional Health Network — a multi-site healthcare organization
 developing a Cybersecurity Incident Response course for healthcare IT professionals.
 
 ### Architecture
-- 113 screens total across 4 modules plus introduction
+- 115 screens total across 4 modules plus introduction
 - 21 lessons
 - 9 introduction screens (0.1 through 0.9)
 - Module 1: Bound the Course (Lessons 1.1a, 1.1b, 1.2, 1.3, 1.4a, 1.4b + Gate 1.TG.1)
-  - Lesson 1.1b has 7 screens (split from 6: s5 = Tasks 1+2, s6 = Task 3, s7 = reflection)
+  - Lesson 1.1b has 8 screens: s5 = Tasks 1+2, s6 = Task 3, s7 = reflection; s4b = faded example (Output Style Gate) inserted between s4 and s5
+  - Lesson 1.4a has 6 screens: s3b = faded example (complete the SI-09 decomposition) inserted between s3 and s4
   - Lesson 1.4b has 7 screens (split from 6: s4 = Step 7 optimization, s5 = Step 8 trace audit, s6 = calibration, s7 = reflection)
 - Module 2: Engineer the Learning (Lessons 2.1, 2.2, 2.3, 2.4)
 - Module 3: Stress-Test the Design (Lessons 3.1, 3.2, 3.3, 3.4)
