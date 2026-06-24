@@ -1324,6 +1324,73 @@ footer[role="contentinfo"] nav a:focus-visible {
   .overview-list__item { border-color: var(--color-border-strong); }
 }
 
+/* ============================================================
+   Prompt D -- pacing, chunking, and completion components
+   ============================================================ */
+
+/* Tracker time estimate (item 1) */
+.pt-row--time { margin-top: 0.125rem; }
+.pt-est { font-size: var(--font-size-label); color: var(--color-text-secondary); }
+.hub-est { display: inline-block; margin-left: 0.5rem; font-size: var(--font-size-label); color: var(--color-text-secondary); }
+
+/* Submit banner (item 6) */
+.submit-banner { background: var(--color-brand-teal); color: var(--color-text-inverse); font-weight: 700; text-align: center; padding: 0.75rem 1rem; font-size: var(--font-size-body); }
+.submit-banner:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: -2px; }
+
+/* Lesson Complete block (item 2) */
+.lesson-done { margin: 2rem 0 0; }
+.lesson-done__banner { padding: 0.75rem 1rem; background: var(--color-success-bg); border: 1px solid var(--color-success-border); border-radius: 6px; color: var(--color-success-text); font-size: var(--font-size-heading); font-weight: 800; }
+.lesson-done__summary { margin: 0.75rem 0 0; font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--color-text-primary); }
+.lesson-done__stop { margin: 0.75rem 0 0; font-style: italic; color: var(--color-text-link); }
+.lesson-done__divider { border: none; border-top: 1px solid var(--color-border-default); margin: 1.25rem 0; }
+
+/* Natural stopping point label (item 8) */
+.stop-point { display: block; margin: 0.5rem 0 0; font-size: var(--font-size-label); color: var(--color-text-secondary); }
+
+/* Chunk boundaries (items 9, 10) */
+.chunk-boundary { margin: 2rem 0; }
+.chunk-boundary__divider { border: none; border-top: 3px solid var(--color-brand-navy); margin: 0 0 0.5rem; }
+.chunk-boundary__label { font-size: var(--font-size-label); font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-brand-navy); }
+.chunk-boundary__summary { margin: 0.375rem 0 0; font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--color-text-secondary); }
+.lens-section { margin: 1.5rem 0 0; padding: 1rem 1.25rem; border: 1px solid var(--color-border-default); border-left: 4px solid var(--color-brand-teal); border-radius: 0 6px 6px 0; }
+.lens-section__heading { margin: 0 0 0.5rem; font-size: var(--font-size-heading); font-weight: 800; color: var(--color-text-primary); }
+
+/* New in This Lesson vocabulary callout (item 12) */
+.new-in-lesson { margin: 0.75rem 0 1.25rem; padding: 0.625rem 0.875rem; background: var(--color-bg-subtle); border-left: 4px solid var(--color-brand-teal); border-radius: 0 4px 4px 0; font-size: var(--font-size-label); color: var(--color-text-primary); line-height: 1.6; }
+.new-in-lesson__label { font-weight: 700; color: var(--color-brand-teal); }
+
+/* Glossary panel term list (item 11) */
+.gls-list-group { margin: 0.875rem 0 0; }
+.gls-list-group__heading { margin: 0 0 0.375rem; font-size: var(--font-size-label); font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-secondary); }
+.gls-list { margin: 0; }
+.gls-list__term { font-size: 0.8125rem; font-weight: 700; color: var(--color-text-primary); margin-top: 0.5rem; }
+.gls-list__def { margin: 0.125rem 0 0 0; font-size: 0.8125rem; line-height: 1.5; color: var(--color-text-secondary); }
+
+/* Artifact progression (item 7) */
+.artifact-prog { margin: 0.75rem 0 0; border-top: 1px solid var(--color-border-default); padding-top: 0.625rem; }
+.artifact-prog__summary { font-size: var(--font-size-label); font-weight: 700; color: var(--color-text-secondary); cursor: pointer; }
+.artifact-prog__list { list-style: none; margin: 0.5rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.375rem; }
+.artifact-prog__item { display: grid; grid-template-columns: 1fr auto; gap: 0.125rem 0.5rem; padding: 0.375rem 0.5rem; border: 1px solid var(--color-border-default); border-radius: 4px; font-size: 0.75rem; }
+.artifact-prog__item.is-current { border-color: var(--color-brand-teal); border-left-width: 3px; }
+.artifact-prog__name { font-family: monospace; font-weight: 700; color: var(--color-text-primary); }
+.artifact-prog__meta { color: var(--color-text-secondary); }
+.artifact-prog__status { grid-column: 1 / -1; font-weight: 700; }
+.artifact-prog__item.is-complete .artifact-prog__status { color: var(--color-success-text); }
+.artifact-prog__item.is-inprogress .artifact-prog__status { color: var(--color-warning-text); }
+.artifact-prog__item.is-upcoming .artifact-prog__status { color: var(--color-text-secondary); }
+
+/* Session length note (item 13) */
+.session-note { margin: 1rem 0 0; padding: 0.625rem 0.875rem; background: var(--color-bg-subtle); border-left: 4px solid var(--color-brand-teal); border-radius: 0 4px 4px 0; font-size: var(--font-size-label); color: var(--color-text-primary); line-height: 1.6; }
+
+/* Resume prompt (item 14) */
+.resume-banner { margin: 1.25rem 0; padding: 1rem 1.25rem; background: var(--color-bg-subtle); border: 1px solid var(--color-brand-teal); border-radius: 8px; }
+.resume-banner__text { margin: 0 0 0.75rem; font-size: var(--font-size-body); color: var(--color-text-primary); line-height: var(--line-height-body); }
+.resume-banner__actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+@media (prefers-contrast: more) {
+  .lesson-done__banner, .artifact-prog__item, .lens-section, .resume-banner { border-color: var(--color-border-strong); }
+}
+
 /* Brief panel content (Section 4, item 27) */
 .brief-intro {
   margin: 0 0 0.875rem;

@@ -64,6 +64,17 @@ Every module must open with a module overview screen (m[N]-overview.html) before
 #### Spaced Repetition Map (required before Module 2 build)
 Each Module 2-4 lesson introduction screen must include one explicit callback to a Module 1 concept at increasing Bloom's level. Draft callbacks are in Docs/ARCH_Build_Governance.md. Verify callbacks against actual Module 2-4 lesson content before building.
 
+### Chunking and Pacing (Prompt D)
+- Chunking rules: maximum three cognitive activities per screen; maximum four scroll depths at a 1080px viewport.
+- Time estimates required on every screen, driven by SCREEN_TIME_MAP in trackerRedesign.js (hub and module-overview screens render Est. 3-5 min in their own header).
+- Lesson completion signals required on all reflection screens: a Lesson Complete block (success banner, two-sentence production summary, permission-to-stop statement, divider) before the transition note.
+- Permission to stop statement required before every lesson transition note.
+- Prior knowledge activation required on all lesson introduction screens from Lesson 2 onward (already in the lesson template -- confirmed present).
+- New in This Lesson vocabulary callout required on all lesson introduction screens (already in the lesson template -- confirmed present; Lesson 6 introduces no new glossary terms, so it carries no callout).
+- Module progress map required on all hub screens (already built in Prompt C Section 5 -- confirmed present), driven by archMethod_lesson_[N]_complete.
+- Reflection screen Continue writes archMethod_lesson_[N]_complete (lessons 1 through 6), which drives the hub progress map and the artifact progression display.
+- localStorage namespace additions: archMethod_lastVisited and archMethod_lastVisitDate (resume prompt), archMethod_visited_[screenId] and archMethod_continued_[screenId] (hub unit status), archMethod_lesson_[N]_complete (lesson completion).
+
 ### File Naming Convention
 - m[module]-l[lesson]-s[screen].html
 - Examples: m1-l1a-s1.html, m1-l1b-s3.html, m2-l2-s1.html
@@ -126,7 +137,7 @@ Do not rewrite expert analysis content for reading level.
 Audience: Senior instructional designer primary; accessible to an 
 experienced instructional designer with appropriate scaffolding.
 
-Glossary: 18 terms in js/scaffolds/hoverGlossary.js. Every term must be 
+Glossary: 20 terms in js/scaffolds/hoverGlossary.js. Every term must be 
 marked with the hover glossary trigger class (span.gls[data-gls-term]) 
 on first use per module.
 

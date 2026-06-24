@@ -382,8 +382,8 @@ JavaScript components (SRC/js/components/):
   localStorage, echoes with feedback. Supports per-
   item feedback via data-feedback-match.
 - hoverGlossary.js (located at SRC/js/scaffolds/hoverGlossary.js,
-  not js/components/): hover term definitions. 18 terms
-  as of Module 1 completion.
+  not js/components/): hover term definitions. 20 terms
+  (scope and decomposition added in Prompt D).
 - briefPanel.js: injects five collapsible Meridian
   brief sections into #briefPanel .panel-body.
   Idempotent via data-briefLoaded guard.
@@ -724,7 +724,7 @@ Module 4 artifacts: [add from Stage 2 docs before
 
 ## Glossary Expansion Process
 
-Current glossary: 18 terms as of Module 1 completion.
+Current glossary: 20 terms (scope and decomposition added in Prompt D).
 
 Before building each new module:
 1. Identify new domain terms introduced in that
@@ -741,13 +741,15 @@ Before building each new module:
 6. Add new terms to this document under the module
    where they were introduced.
 
-Module 1 terms (18 total):
+Module 1 terms (20 total):
 constraint, scope, governance, traceability,
 architecture, calibration, decomposition, tradeoff,
+competency, dependency,
 Bloom's taxonomy, cognitive load, prerequisite
 dependency, transfer, CBE, formative assessment,
 summative assessment, scope creep, SME, learning
 objective
+(scope and decomposition added in Prompt D)
 
 Module 2 new terms: [identify before build]
 Module 3 new terms: [identify before build]

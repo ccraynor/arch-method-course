@@ -7,6 +7,18 @@
 
 import { setItem } from './storage.js';
 
+/* Reflection screen -> lesson number (Prompt D item 3). Clicking Continue
+   from a reflection screen marks that lesson complete, which drives the hub
+   module progress map and the artifact progression display. */
+const REFLECTION_LESSON = {
+  'm1-l1a-s5': '1',
+  'm1-l1b-s7': '2',
+  'm1-l2-s6':  '3',
+  'm1-l3-s5':  '4',
+  'm1-l4a-s5': '5',
+  'm1-l4b-s7': '6',
+};
+
 function currentScreenId() {
   const file = location.pathname.split('/').pop() || '';
   return file.replace(/\.html$/, '');
@@ -32,6 +44,11 @@ export function initCompletionSignal() {
       /* Record that the learner advanced from this screen (drives Complete) */
       if (screenId) {
         try { setItem('continued_' + screenId, 'true'); } catch { /* storage unavailable */ }
+        /* Reflection screen Continue marks the lesson complete (item 3) */
+        if (REFLECTION_LESSON[screenId]) {
+          try { setItem('lesson_' + REFLECTION_LESSON[screenId] + '_complete', 'true'); }
+          catch { /* storage unavailable */ }
+        }
       }
 
       /* Visual signal on button */

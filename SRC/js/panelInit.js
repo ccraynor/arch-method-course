@@ -7,7 +7,8 @@
    Also initializes the hover glossary course-wide (Section 6, item 32). */
 
 import { initBriefPanel } from './components/briefPanel.js';
-import { initAll as initGlossary } from './scaffolds/hoverGlossary.js';
+import { initAll as initGlossary, TERMS } from './scaffolds/hoverGlossary.js';
+import { getItem, setItem } from './storage.js';
 
 const PANEL_DESCRIPTIONS = {
   glossary: 'Eighteen key ARCH Method terms are available here. Hover over any highlighted term in the course to see its definition, or browse all terms below.',
@@ -149,9 +150,116 @@ function countDecisions() {
   }
 }
 
+/* Item 11: list glossary terms in the Glossary panel, Module 1 terms first,
+   then foundation and general terms. */
+function initGlossaryList() {
+  const panel = document.getElementById('glossary');
+  if (!panel) return;
+  const body = panel.querySelector('.panel-body');
+  if (!body || body.dataset.glsListLoaded === 'true') return;
+
+  const MODULE1 = ['constraint', 'scope', 'governance', 'traceability',
+                   'architecture', 'calibration', 'decomposition', 'tradeoff'];
+  const FOUNDATION = ['bloomsTaxonomy', 'cognitiveLoad', 'prerequisiteDependency',
+                      'transfer', 'cbe', 'formativeAssessment', 'summativeAssessment',
+                      'scopeCreep', 'sme', 'learningObjective', 'competency', 'dependency'];
+
+  function group(title, keys) {
+    const section = document.createElement('div');
+    section.className = 'gls-list-group';
+    const h = document.createElement('p');
+    h.className = 'gls-list-group__heading';
+    h.textContent = title;
+    section.appendChild(h);
+    const dl = document.createElement('dl');
+    dl.className = 'gls-list';
+    keys.forEach(k => {
+      const t = TERMS[k];
+      if (!t) return;
+      const dt = document.createElement('dt');
+      dt.className = 'gls-list__term';
+      dt.textContent = t.label;
+      const dd = document.createElement('dd');
+      dd.className = 'gls-list__def';
+      dd.textContent = t.definition;
+      dl.append(dt, dd);
+    });
+    section.appendChild(dl);
+    return section;
+  }
+
+  body.appendChild(group('Module 1 terms', MODULE1));
+  body.appendChild(group('Foundation and general terms', FOUNDATION));
+  body.dataset.glsListLoaded = 'true';
+}
+
+/* Item 7: artifact progression in the Your Progress sidebar group. */
+function initArtifactProgression() {
+  const group = document.querySelector('.sidebar-progress-group');
+  if (!group || group.dataset.artifactProgLoaded === 'true') return;
+
+  const ARTIFACTS = [
+    { name: 'MRHN_BucketMap_v1',          lesson: '3' },
+    { name: 'MRHN_CalibratedScopeMap_v1', lesson: '4' },
+    { name: 'MRHN_PerformanceArc_v1',     lesson: '5' },
+    { name: 'MRHN_DecompositionMap_v1',   lesson: '5' },
+    { name: 'MRHN_DecompositionMap_v2',   lesson: '6' },
+  ];
+  const isComplete = n => getItem('lesson_' + n + '_complete') === 'true';
+
+  const details = document.createElement('details');
+  details.className = 'artifact-prog';
+  const summary = document.createElement('summary');
+  summary.className = 'artifact-prog__summary';
+  summary.textContent = 'Artifact Progression';
+  details.appendChild(summary);
+
+  const list = document.createElement('ol');
+  list.className = 'artifact-prog__list';
+
+  let currentMarked = false;
+  ARTIFACTS.forEach(a => {
+    const complete = isComplete(a.lesson);
+    const priorDone = a.lesson === '3' ? isComplete('2') : isComplete(String(Number(a.lesson) - 1));
+    let status = 'Upcoming', cls = 'is-upcoming';
+    if (complete) { status = 'Complete'; cls = 'is-complete'; }
+    else if (priorDone) { status = 'In Progress'; cls = 'is-inprogress'; }
+
+    const li = document.createElement('li');
+    li.className = 'artifact-prog__item ' + cls;
+    if (!complete && !currentMarked) { li.classList.add('is-current'); currentMarked = true; }
+
+    li.innerHTML =
+      '<span class="artifact-prog__name">' + a.name + '</span>' +
+      '<span class="artifact-prog__meta">Lesson ' + a.lesson + '</span>' +
+      '<span class="artifact-prog__status">' + status + '</span>';
+    list.appendChild(li);
+  });
+
+  details.appendChild(list);
+  group.appendChild(details);
+  group.dataset.artifactProgLoaded = 'true';
+}
+
+/* Item 14: record the last visited content screen for the resume prompt.
+   Skipped on hub and module-overview navigation screens. */
+function recordLastVisited() {
+  const file = location.pathname.split('/').pop() || '';
+  const screenId = file.replace(/\.html$/, '');
+  if (!screenId) return;
+  if (screenId.startsWith('m1-hub-') || screenId === 'm1-overview') return;
+  try {
+    setItem('lastVisited', screenId);
+    setItem('lastVisitDate', new Date().toISOString());
+  } catch { /* storage unavailable */ }
+}
+
 initPanelDescriptions();
 initCommitmentSidebar();
 initYourProgressGroup();
 initDecisionHistoryButton();
 initBriefPanel();
 initGlossary();
+initGlossaryList();
+initArtifactProgression();
+recordLastVisited();

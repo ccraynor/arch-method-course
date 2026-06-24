@@ -90,7 +90,8 @@
 
 const ANNOUNCER_ID = 'sr-announcer';
 
-/* ---- Eighteen defined terms (8 original + 10 added in Prompt C Section 6) ---- */
+/* ---- Twenty defined terms (8 original + 10 added in Prompt C Section 6
+   + scope and decomposition added in Prompt D) ---- */
 const TERMS = {
   architecture: {
     label:      'Architecture',
@@ -123,6 +124,14 @@ const TERMS = {
   tradeoff: {
     label:      'Tradeoff',
     definition: 'A design choice in which gaining one benefit requires accepting a corresponding limitation or cost.',
+  },
+  scope: {
+    label:      'Scope',
+    definition: 'The defined boundary of a course: what it covers and what it deliberately excludes. Scope is established before any content or assessment is designed.',
+  },
+  decomposition: {
+    label:      'Decomposition',
+    definition: 'The process of breaking a scope item into its smallest teachable and assessable components. Decomposition produces the DC components that become the course units.',
   },
   bloomsTaxonomy: {
     label:      "Bloom's taxonomy",

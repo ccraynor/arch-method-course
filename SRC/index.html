@@ -90,6 +90,14 @@
 
   <main id="main-content" tabindex="-1">
 
+    <section id="resume-banner" class="resume-banner landing-wrap" aria-label="Resume your progress" hidden>
+      <p class="resume-banner__text">Welcome back. You last visited <strong id="resume-label"></strong>. Resume where you left off.</p>
+      <div class="resume-banner__actions">
+        <a id="resume-link" href="intro-0.1.html" class="btn btn--primary">Resume</a>
+        <a href="intro-0.1.html" class="btn btn--outline-teal">Start over</a>
+      </div>
+    </section>
+
     <section class="landing-hero" aria-label="Credential overview">
       <div class="landing-wrap">
         <h1 class="landing-hero__title">ARCH Method&#x2122; Practitioner Credential</h1>
@@ -98,6 +106,7 @@
           A well-designed course architecture makes the intended learning visible before development begins.
           Constraint-governed design does not limit creativity. It makes every creative decision defensible.
         </p>
+        <p class="session-note">Recommended session length: 45 to 60 minutes per sitting. Each lesson is designed to be completable in one or two sessions.</p>
       </div>
     </section>
 
@@ -200,6 +209,31 @@
       <p class="landing-footer__text">&copy; 2026 Proof Point Learning. All rights reserved. Built with the ARCH Method&#x2122;</p>
     </div>
   </footer>
+
+  <!-- Resume prompt for returning learners (Prompt D item 14) -->
+  <script>
+    (function () {
+      var last = null;
+      try { last = localStorage.getItem('archMethod_lastVisited'); } catch (e) { return; }
+      if (!last) return;
+      var banner = document.getElementById('resume-banner');
+      if (!banner) return;
+      var LESSON = { l1a: 'Lesson 1', l1b: 'Lesson 2', l2: 'Lesson 3', l3: 'Lesson 4', l4a: 'Lesson 5', l4b: 'Lesson 6' };
+      function label(id) {
+        var m = id.match(/^m1-(l1a|l1b|l2|l3|l4a|l4b)-s(\w+)$/);
+        if (m) return LESSON[m[1]] + ', screen ' + m[2];
+        if (id === 'm1-gate-s1') return 'the Module 1 Gate';
+        var i = id.match(/^intro-(0\.\d)$/);
+        if (i) return 'Introduction ' + i[1];
+        return id;
+      }
+      var labelEl = document.getElementById('resume-label');
+      var linkEl = document.getElementById('resume-link');
+      if (labelEl) labelEl.textContent = label(last);
+      if (linkEl) linkEl.setAttribute('href', last + '.html');
+      banner.hidden = false;
+    })();
+  </script>
 
 </body>
 </html>
