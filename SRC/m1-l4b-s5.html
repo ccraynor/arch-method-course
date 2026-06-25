@@ -661,29 +661,29 @@
     const TRACE_EXPERT = [
       {
         dc: 'DC-19', listed: 'SI-09', isWrong: false,
-        reasoning: 'Correctly attributed. DC-19 evaluates clinical system interdependencies (EHR, imaging, billing) specifically to inform network segmentation decisions -- the defining cognitive task of SI-09 (Network Segmentation with Clinical System Interdependency). The description names the clinical systems identified in the Bucket 2 calibration constraint and references patient care continuity, confirming SI-09 as the correct parent.'
+        reasoning: 'Correctly attributed. DC-19 evaluates clinical system interdependencies (EHR, imaging, billing) specifically to inform network segmentation decisions: the defining cognitive task of SI-09 (Network Segmentation with Clinical System Interdependency). The description names the clinical systems identified in the Bucket 2 calibration constraint and references patient care continuity, confirming SI-09 as the correct parent.'
       },
       {
         dc: 'DC-30', listed: 'SI-12', isWrong: false,
-        reasoning: 'Correctly attributed. DC-30 identifies which leadership levels require notification using the PC-5 communication chain -- a prerequisite step within the SI-12 (Leadership Notification) scope item. The PC-5 reference is the distinguishing marker: PC-5 governs the leadership notification chain, not the IR team activation chain (SI-08) or regulatory notification chain (SI-11).'
+        reasoning: 'Correctly attributed. DC-30 identifies which leadership levels require notification using the PC-5 communication chain: a prerequisite step within the SI-12 (Leadership Notification) scope item. The PC-5 reference is the distinguishing marker: PC-5 governs the leadership notification chain, not the IR team activation chain (SI-08) or regulatory notification chain (SI-11).'
       },
       {
         dc: 'DC-34', listed: 'SI-10', isWrong: false,
-        reasoning: 'Correctly attributed. DC-34 documents the "reasonably should have known" clock trigger determination with reasoning referencing 45 CFR 164.404 -- the legal standard at the center of SI-10 (HIPAA Breach Notification Clock Management). The combination of the clock trigger subject matter and the explicit regulatory citation confirms SI-10 as the correct parent without ambiguity.'
+        reasoning: 'Correctly attributed. DC-34 documents the "reasonably should have known" clock trigger determination with reasoning referencing 45 CFR 164.404: the legal standard at the center of SI-10 (HIPAA Breach Notification Clock Management). The combination of the clock trigger subject matter and the explicit regulatory citation confirms SI-10 as the correct parent without ambiguity.'
       },
       {
         dc: 'DC-38', listed: 'SI-15', isWrong: true, correctParent: 'si14',
-        correctParentName: 'SI-14 -- Protocol Deviation Documentation',
-        reasoning: 'Misattributed. DC-38 documents protocol deviations using RC-2 justification language, naming departures from IR-2024 protocol. This is the defining obligation of SI-14 (Protocol Deviation Documentation) -- not SI-15 (Recovery Verification). SI-15 concerns evaluating restored systems against RC-3 technical thresholds; its subject matter is systems restoration clearance, not protocol compliance documentation. The likely cause: DC-38 and the SI-15 components (DC-43, DC-44, DC-46) were entered in adjacent sessions during decomposition, and both involve documentation language, making the parent field susceptible to carry-over error. The RC-2 format requirement and the IR-2024 reference make SI-14 the unambiguous correct parent.',
+        correctParentName: 'SI-14: Protocol Deviation Documentation',
+        reasoning: 'Misattributed. DC-38 documents protocol deviations using RC-2 justification language, naming departures from IR-2024 protocol. This is the defining obligation of SI-14 (Protocol Deviation Documentation), not SI-15 (Recovery Verification). SI-15 concerns evaluating restored systems against RC-3 technical thresholds; its subject matter is systems restoration clearance, not protocol compliance documentation. The likely cause: DC-38 and the SI-15 components (DC-43, DC-44, DC-46) were entered in adjacent sessions during decomposition, and both involve documentation language, making the parent field susceptible to carry-over error. The RC-2 format requirement and the IR-2024 reference make SI-14 the unambiguous correct parent.',
         correctionNote: 'Parent corrected: DC-38 reassigned from SI-15 to SI-14 (Protocol Deviation Documentation). SI-14 has three children (DC-37, DC-38, DC-39) representing the complete protocol deviation workflow: identify deviations (DC-37), document with RC-2 justification language (DC-38), verify documentation before close-out (DC-39).'
       },
       {
         dc: 'DC-43', listed: 'SI-15', isWrong: false,
-        reasoning: 'Correctly attributed. DC-43 evaluates restored MRHN systems against RC-3 technical thresholds to determine restoration clearance for clinical use -- the core evaluative behavior of SI-15 (Recovery Verification). The RC-3 reference and the clinical-use clearance purpose are both markers specific to SI-15. Note: DC-38 (the misattributed component) uses similar documentation language but concerns IR-2024 protocol deviations, not RC-3 restoration criteria -- the subject matter distinction is the key to distinguishing the two SI-15 impostors.'
+        reasoning: 'Correctly attributed. DC-43 evaluates restored MRHN systems against RC-3 technical thresholds to determine restoration clearance for clinical use: the core evaluative behavior of SI-15 (Recovery Verification). The RC-3 reference and the clinical-use clearance purpose are both markers specific to SI-15. Note: DC-38 (the misattributed component) uses similar documentation language but concerns IR-2024 protocol deviations, not RC-3 restoration criteria, the subject matter distinction is the key to distinguishing the two SI-15 impostors.'
       },
       {
         dc: 'DC-48', listed: 'SI-16', isWrong: false,
-        reasoning: 'Correctly attributed. DC-48 produces the formal after-action report in RC-4 format, distinguishing operational observations from governance-required findings subject to legal review. This is a core output obligation of SI-16 (After-Action Review). The RC-4 format reference and the operational/governance distinction confirm SI-16 as the correct parent. DC-48 should be read alongside DC-47a (which facilitates the review) -- together they represent the full SI-16 scope.'
+        reasoning: 'Correctly attributed. DC-48 produces the formal after-action report in RC-4 format, distinguishing operational observations from governance-required findings subject to legal review. This is a core output obligation of SI-16 (After-Action Review). The RC-4 format reference and the operational/governance distinction confirm SI-16 as the correct parent. DC-48 should be read alongside DC-47a (which facilitates the review): together they represent the full SI-16 scope.'
       }
     ];
 
@@ -770,7 +770,7 @@
           const selCorrect = sel === item.correctParent;
           const selChip = selCorrect
             ? `<span class="match-chip match-chip--match" style="margin-left:0">Correct parent selected</span>`
-            : `<span class="match-chip match-chip--mismatch" style="margin-left:0">Incorrect parent -- correct answer: ${item.correctParentName}</span>`;
+            : `<span class="match-chip match-chip--mismatch" style="margin-left:0">Incorrect parent. Correct answer: ${item.correctParentName}</span>`;
           correctionHtml = `<div class="trace-fb-correction">
             <span class="trace-fb-correction__label">Correction</span>
             ${item.correctionNote} ${selChip}
