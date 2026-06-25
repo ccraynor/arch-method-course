@@ -468,6 +468,9 @@ Learning activity keys:
 - archMethod_lensRefOpen
 - archMethod_constraintRefOpen
 - archMethod_showExpert_[screenId]
+- archMethod_transfer_l[N]_q1 through _q4 (four-question
+  transfer framework fields on each reflection screen,
+  Prompt E Part 1 Sections 3-5 follow-up)
 
 Submission keys:
 - archMethod_[screenId]_submission

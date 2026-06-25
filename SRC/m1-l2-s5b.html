@@ -721,6 +721,35 @@
             </p>
           </div>
 
+          <!-- Before / After / Why balance evaluation contrast (Prompt E item 17) -->
+          <div class="exemplar-contrast" role="group" aria-label="Weak versus strong balance evaluation">
+            <p class="exemplar-contrast__heading">Compare a weak evaluation to a strong one</p>
+
+            <div class="exemplar-contrast__case">
+              <span class="exemplar-contrast__label">Before</span>
+              <ul class="exemplar-contrast__record">
+                <li><strong>Verdict:</strong> Bucket 4 (Post-Incident Close-Out) is balanced.</li>
+                <li><strong>Evaluation:</strong> Bucket 4 holds four scope items, about the same as the other buckets, so it is balanced.</li>
+              </ul>
+              <p class="exemplar-contrast__note">This verdict rests on item count alone and ignores the other three balance criteria.</p>
+            </div>
+
+            <div class="exemplar-contrast__case">
+              <span class="exemplar-contrast__label">After</span>
+              <ul class="exemplar-contrast__record">
+                <li><strong>Verdict:</strong> Bucket 4 (Post-Incident Close-Out) is balanced and stays as its own bucket.</li>
+                <li><strong>Constraint compliance:</strong> All items fall within LC-1 (the four-hour SME access cap) and trace to in-scope SI identifiers.</li>
+                <li><strong>Item volume:</strong> Four items, consistent with the other buckets. No bucket carries a disproportionate load.</li>
+                <li><strong>Instructional coherence:</strong> Every item addresses a distinct post-incident task (notification, documentation, retrospective), so the bucket teaches one coherent phase.</li>
+                <li><strong>Sequence position:</strong> The bucket sits last in the workflow, after containment and active response, which matches the real incident timeline.</li>
+              </ul>
+              <p class="exemplar-contrast__note">Because the bucket passes all four criteria, it earns its place. Merging it to raise a count would erase the post-incident boundary.</p>
+            </div>
+
+            <p class="exemplar-contrast__why-label">Why it is stronger</p>
+            <p class="exemplar-contrast__why">The strong version tests the bucket against all four balance criteria instead of item count alone, so the verdict reflects whether the bucket actually holds together rather than just how many items it contains.</p>
+          </div>
+
           <!-- Navigation -->
           <nav class="screen-nav" aria-label="Screen navigation">
             <a href="m1-l2-s5a.html"

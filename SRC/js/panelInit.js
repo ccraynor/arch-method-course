@@ -329,6 +329,20 @@ function initIntakeProfile() {
   el.hidden = false;
 }
 
+/* Prompt E Part 1 transfer framework: prediction callback on reflection screens.
+   The element carries data-prediction-lesson="N". Reads archMethod_prediction_lN.
+   If a prediction is stored, fills the callback text and reveals it; otherwise the
+   element stays hidden so the callback is omitted silently. */
+function initPredictionCallback() {
+  document.querySelectorAll('.prediction-callback[data-prediction-lesson]').forEach(el => {
+    const n = el.getAttribute('data-prediction-lesson');
+    const stored = getItem('prediction_l' + n);
+    if (stored == null || String(stored).trim() === '') return;
+    el.textContent = 'At the start of this lesson you predicted: ' + stored + ' Was that accurate?';
+    el.hidden = false;
+  });
+}
+
 initPanelDescriptions();
 initCommitmentSidebar();
 initYourProgressGroup();
@@ -342,4 +356,5 @@ initSceneAutosave();
 initArticulationMirror();
 initDiagnostic();
 initIntakeProfile();
+initPredictionCallback();
 recordLastVisited();

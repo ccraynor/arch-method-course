@@ -2672,3 +2672,61 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   line-height: 1.6;
   color: var(--color-brand-navy);
 }
+
+/* Four-question transfer framework + prediction callback (reflection screens) */
+.prediction-callback {
+  margin: 1.5rem 0 0;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid var(--color-brand-teal);
+  background: var(--color-bg-subtle);
+  border-radius: 0 4px 4px 0;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+.prediction-callback[hidden] { display: none; }
+.transfer-framework {
+  margin: 1rem 0 0;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border-default);
+  border-radius: 6px;
+  background: var(--color-bg-subtle);
+}
+.transfer-framework__heading {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+.transfer-framework__intro {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+.transfer-framework__question { margin: 0 0 1rem; }
+.transfer-framework__question:last-of-type { margin-bottom: 0; }
+.transfer-framework__label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+.transfer-framework__input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  color: var(--color-text-primary);
+  background: var(--color-bg-page);
+  border: 1px solid var(--color-border-default);
+  border-radius: 4px;
+}
+.transfer-framework__input:focus {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-color: var(--color-text-link);
+}
