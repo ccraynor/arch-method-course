@@ -95,8 +95,8 @@ LESSON INTRODUCTION SCREEN:
   complexity: [specific demand]. See Spaced Repetition
   Callbacks section for assignments per lesson.
 - Priya Okonkwo email where narrative requires it:
-  teal-bordered message card. Sender: Priya Okonkwo
-  -- Chief Learning Officer, Meridian Regional Health
+  teal-bordered message card. Sender: Priya Okonkwo,
+  Chief Learning Officer, Meridian Regional Health
   Network. Collapsible after first read. localStorage
   open/closed state per email.
 
@@ -787,8 +787,9 @@ ESTABLISHED FACTS (do not contradict):
 
 PRIYA EMAIL PATTERN (all modules):
 - Teal-bordered message card
-- Sender label: Priya Okonkwo -- Chief Learning
+- Sender label: Priya Okonkwo, Chief Learning
   Officer, Meridian Regional Health Network
+  (comma form; no double hyphen in visible text)
 - Collapsible after first read
 - localStorage open/closed state per email
 - One paragraph. Professional tone.
@@ -933,6 +934,10 @@ TECHNICAL:
 - Do not hard-code colors -- use tokens.css only
 - Do not use em dashes anywhere in learner-facing
   content
+- Do not use double hyphens (the -- sequence) in
+  learner-facing visible text. Use a colon, comma, or
+  period. Double hyphens remain allowed only in title
+  tags, HTML comments, script blocks, and CSS.
 - Do not add user-scalable=no to viewport meta
 - Do not create a new localStorage key without
   adding it to the namespace list in this document

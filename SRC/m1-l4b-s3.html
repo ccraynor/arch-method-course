@@ -247,7 +247,7 @@
           <h1 id="example-title" class="worked-example__title">
             Scope Trace Audit: Confirming Every Component Traces to a Parent Scope Item
           </h1>
-          <span class="step-badge">Phase 2 -- Step 8</span>
+          <span class="step-badge">Phase 2, Step 8</span>
           <div class="scenario-context" role="note" aria-label="Scenario context">
             <span class="scenario-label">Scenario:</span>
             Watch an expert work at Meridian Regional Health Network. The input is the
@@ -271,11 +271,11 @@
             <div class="example-step" id="step-1">
               <div class="step-marker" aria-label="Step 1"><span aria-hidden="true">01</span></div>
               <div class="step-body">
-                <h2 class="step-heading">The Three-Pass Audit -- What Each Pass Catches and Why One Pass Is Not Enough</h2>
+                <h2 class="step-heading">The Three-Pass Audit: What Each Pass Catches and Why One Pass Is Not Enough</h2>
                 <p class="step-content">
                   The Scope Trace Audit answers one question: does the decomposition map
                   stay within the scope boundary? A component that cannot be traced to a
-                  parent SI item in the scope registry is content outside the boundary --
+                  parent SI item in the scope registry is content outside the boundary:
                   something that was added during decomposition without authorization from
                   Step 3 scoping decisions. Equally, a scope item with no DC children means
                   a piece of authorized scope was silently dropped during decomposition.
@@ -297,9 +297,9 @@
                     <div class="audit-pass-card__val">
                       <strong>SI registry to DC components.</strong> Start from each of the 16 SI items.
                       Count how many DC components list that SI item as their parent. Every SI item must
-                      have at least one DC child -- a count of zero means a scope item was dropped during
+                      have at least one DC child: a count of zero means a scope item was dropped during
                       decomposition. Note unusually high counts for verification in Pass 2. Pass 1 does
-                      not verify that component descriptions match their listed parents -- that is Pass 2's job.
+                      not verify that component descriptions match their listed parents: that is Pass 2's job.
                     </div>
                   </div>
                   <div class="audit-pass-card">
@@ -310,8 +310,8 @@
                     <div class="audit-pass-card__val">
                       <strong>DC components to SI registry.</strong> For each of the 48 DC components, verify
                       that (a) a parent SI item is listed, (b) that SI item exists in the scope registry, and
-                      (c) the component description is consistent with what that SI item covers. A misattribution
-                      -- a component whose description does not match its listed parent -- is a labeling error
+                      (c) the component description is consistent with what that SI item covers. A misattribution,
+                      a component whose description does not match its listed parent, is a labeling error
                       that Pass 1 cannot catch. Pass 2 is the only pass that reads both the component description
                       and the parent SI item name together.
                     </div>
@@ -327,7 +327,7 @@
                       once as a parent in the corrected backward trace, and that every DC component in
                       the corrected map appears as a child in the forward trace. A correction in Pass 2
                       that moves a component to a different parent SI can leave the original parent
-                      unrepresented -- Pass 3 is what catches that knock-on effect.
+                      unrepresented: Pass 3 is what catches that knock-on effect.
                     </div>
                   </div>
                 </div>
@@ -338,14 +338,14 @@
             <div class="example-step" id="step-2">
               <div class="step-marker" aria-label="Step 2"><span aria-hidden="true">02</span></div>
               <div class="step-body">
-                <h2 class="step-heading">Pass 1 -- Forward Trace: All 16 SI Items Have at Least One DC Child</h2>
+                <h2 class="step-heading">Pass 1, Forward Trace: All 16 SI Items Have at Least One DC Child</h2>
                 <p class="step-content">
                   I run the forward trace by reading down the SI registry and counting how
                   many DC components list each SI item as their parent. The pass criterion
                   is simple: every SI item must return a count of at least one. I note the
                   count for each SI item and flag any that look unusually high or low for
                   follow-up in Pass 2. The forward trace does not verify description
-                  alignment -- that happens in Pass 2.
+                  alignment: that happens in Pass 2.
                 </p>
 
                 <div class="trace-table-wrap" role="region" aria-label="Forward trace results for all 16 scope items">
@@ -454,7 +454,7 @@
                       <tr>
                         <td><span class="si-id">SI-07</span></td>
                         <td><span class="bucket-chip">4</span></td>
-                        <td>OCR breach notification -- eight required data elements (45 CFR 164.408)</td>
+                        <td>OCR breach notification: eight required data elements (45 CFR 164.408)</td>
                         <td><span class="count-badge">3</span></td>
                         <td><span class="val-chip val-chip--pass">Pass</span></td>
                       </tr>
@@ -479,11 +479,11 @@
                 <p class="step-content">
                   Pass 1 result: all 16 SI items return a count of at least one. No scope
                   item was dropped during decomposition. However, SI-15 shows four DC components
-                  tracing to it -- notably higher than any other Bucket 4 item and higher than
+                  tracing to it, notably higher than any other Bucket 4 item and higher than
                   the scope decomposition rationale from Step 6 would suggest for a single
                   scope item at this level. I flag SI-15 for description verification in Pass 2.
                   SI-13 at two components is on the lower end for a scope item at Evaluation
-                  level, but two components is not a minimum-count failure -- I will verify
+                  level, but two components is not a minimum-count failure. I will verify
                   in Pass 2 that both descriptions genuinely belong to SI-13.
                 </p>
               </div>
@@ -493,11 +493,11 @@
             <div class="example-step" id="step-3">
               <div class="step-marker" aria-label="Step 3"><span aria-hidden="true">03</span></div>
               <div class="step-body">
-                <h2 class="step-heading">Pass 2 -- Backward Trace: DC-45 Misattribution Found</h2>
+                <h2 class="step-heading">Pass 2, Backward Trace: DC-45 Misattribution Found</h2>
                 <p class="step-content">
                   Pass 2 reads every component description and checks it against its listed
                   parent SI item. For the 45 components not flagged in Pass 1, the check
-                  is confirmatory and moves quickly -- the description matches the parent.
+                  is confirmatory and moves quickly: the description matches the parent.
                   I run the full verification but spend additional time on the SI-15
                   components because of the count flag. When I reach DC-45, the mismatch
                   is immediate.
@@ -526,12 +526,12 @@
                       <div class="mismatch-cell mismatch-cell--listed">
                         <span class="mismatch-cell__label">Parent Listed (incorrect)</span>
                         <span class="mismatch-cell__si">SI-15</span>
-                        <p class="mismatch-cell__desc">Recovery verification against MRHN system restoration criteria -- a procedural check that facilities have returned to operational status before the incident is declared closed.</p>
+                        <p class="mismatch-cell__desc">Recovery verification against MRHN system restoration criteria, a procedural check that facilities have returned to operational status before the incident is declared closed.</p>
                       </div>
                       <div class="mismatch-cell mismatch-cell--actual">
                         <span class="mismatch-cell__label">Correct Parent (identified)</span>
                         <span class="mismatch-cell__si">SI-13</span>
-                        <p class="mismatch-cell__desc">Post-incident lessons learned documentation -- distinguishing operational notes from the formal governed record subject to legal review. Evaluation level. This description matches DC-45 exactly.</p>
+                        <p class="mismatch-cell__desc">Post-incident lessons learned documentation, distinguishing operational notes from the formal governed record subject to legal review. Evaluation level. This description matches DC-45 exactly.</p>
                       </div>
                     </div>
 
@@ -544,11 +544,11 @@
 
                 <p class="step-content">
                   The mismatch is unambiguous: DC-45 describes a lessons learned documentation
-                  task explicitly naming the operational/governed record distinction -- which is
+                  task explicitly naming the operational/governed record distinction, which is
                   the defining characteristic of SI-13, not SI-15. SI-15 covers recovery
                   verification: checking whether systems have met restoration criteria before
                   declaring the incident closed. There is no overlap between the two scope items,
-                  so the misattribution cannot be resolved by adjusting the component description --
+                  so the misattribution cannot be resolved by adjusting the component description:
                   the parent label must be corrected. Before making the correction, I need to verify
                   that SI-15 will still be represented in the map after DC-45 is moved.
                 </p>
@@ -575,19 +575,19 @@
                     <p>
                       <strong>DC-43</strong> (parent: SI-15): "Apply MRHN system restoration
                       criteria to evaluate whether affected systems meet functional and security
-                      requirements before declaring them ready for reintegration." -- Recovery
+                      requirements before declaring them ready for reintegration." Recovery
                       verification. Correctly attributed to SI-15.
                     </p>
                     <p>
                       <strong>DC-44</strong> (parent: SI-15): "Document the restoration
                       verification outcome for each affected system, recording which criteria
                       were tested, the test result, and the approving authority under PC-3."
-                      -- Recovery documentation. Correctly attributed to SI-15.
+                      Recovery documentation. Correctly attributed to SI-15.
                     </p>
                     <p>
                       <strong>DC-46</strong> (parent: SI-15): "Evaluate whether all MRHN
                       facility systems have met restoration criteria before authorizing the
-                      transition from incident response mode to normal operations." --
+                      transition from incident response mode to normal operations."
                       Multi-facility restoration authorization. Correctly attributed to SI-15.
                     </p>
                     <p>
@@ -638,7 +638,7 @@
             <div class="example-step" id="step-5">
               <div class="step-marker" aria-label="Step 5"><span aria-hidden="true">05</span></div>
               <div class="step-body">
-                <h2 class="step-heading">Pass 3 -- Orphan Check: All Three Checks Pass</h2>
+                <h2 class="step-heading">Pass 3, Orphan Check: All Three Checks Pass</h2>
                 <p class="step-content">
                   With the DC-45 correction applied, I run the cross-reference orphan check.
                   The check runs against the corrected map, not the original. Three conditions
@@ -724,7 +724,7 @@
                       <path d="M5 5.5h6M5 8h6M5 10.5h4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
                     </svg>
                     <span class="artifact-id">MRHN_DecompositionMap_v2</span>
-                    <span class="artifact-version">Steps 7 and 8 output -- Module 2 structural input</span>
+                    <span class="artifact-version">Steps 7 and 8 output: Module 2 structural input</span>
                   </div>
 
                   <div class="artifact-section">
@@ -751,7 +751,7 @@
                 <div class="gov-record" role="region" aria-label="Governance record MRHN-D-008">
                   <div class="gov-record__header">
                     <span class="gov-record__id">MRHN-D-008</span>
-                    <span class="gov-record__title">Scope Trace Audit Record -- Phase 2 Step 8</span>
+                    <span class="gov-record__title">Scope Trace Audit Record: Phase 2 Step 8</span>
                   </div>
                   <div class="gov-record__row">
                     <div class="gov-record__key">Decision</div>
@@ -798,7 +798,7 @@
                       final session of Step 6 decomposition: the parent field carried the
                       SI-15 value from the previous entry (DC-44) without being updated when
                       DC-45 was drafted under SI-13. The backward trace is the only systematic
-                      process that reads component descriptions against their listed parents --
+                      process that reads component descriptions against their listed parents:
                       the error was undetectable in the forward trace because SI-15 had the
                       correct count before the DC-45 correction. This confirms the necessity
                       of running Pass 2 even when Pass 1 produces no failures.
@@ -830,7 +830,7 @@
                         DC component from v2 as the structural unit. DC-45 brief must reflect
                         SI-13 (lessons learned, Evaluation level), not SI-15.</li>
                         <li><strong>Module 3 Outcome Mapping:</strong> the trace record
-                        established here is what makes Outcome Mapping tractable in Module 3 --
+                        established here is what makes Outcome Mapping tractable in Module 3:
                         assessments can be traced backward through DC components to SI items
                         to scope decisions because this audit confirmed the trace is clean.</li>
                       </ul>
@@ -863,7 +863,7 @@
                   traces catch different failure modes. A forward trace that finds every
                   SI item has at least one child cannot tell me whether any of those
                   children have descriptions that match the parent. A backward trace
-                  alone cannot tell me whether a scope item was dropped entirely --
+                  alone cannot tell me whether a scope item was dropped entirely:
                   if it was, there are no components to trace backward from. Both
                   passes are necessary; neither is sufficient.
                 </p>
@@ -872,8 +872,8 @@
               <div class="annotation-item" data-step="2" aria-label="Annotation for step 2">
                 <span class="annotation-marker" aria-hidden="true">02</span>
                 <p class="annotation-text">
-                  I flag SI-15 for a count check not because four is too many -- some
-                  scope items legitimately have more children -- but because the Bucket 4
+                  I flag SI-15 for a count check not because four is too many, some
+                  scope items legitimately have more children, but because the Bucket 4
                   decomposition from Step 6 produced three SI items with roughly equal
                   component counts. A count of four when the siblings have three is worth
                   verifying. This is pattern recognition, not a rule: it tells me where
@@ -886,10 +886,10 @@
                 <p class="annotation-text">
                   The DC-45 mismatch becomes obvious the moment I read the description
                   next to the parent label. "Lessons learned, distinguishing operational
-                  notes from the formal governed record" is the defining language of SI-13 --
+                  notes from the formal governed record" is the defining language of SI-13:
                   it came from the Bucket 4 sub-arc revision in Step 5. SI-15 is recovery
                   verification. There is no interpretation that makes these the same scope
-                  item. This is not an edge case requiring judgment -- it is a labeling
+                  item. This is not an edge case requiring judgment. It is a labeling
                   error that the description makes immediately visible.
                 </p>
               </div>
@@ -899,7 +899,7 @@
                 <p class="annotation-text">
                   The step of checking SI-15's remaining children before correcting DC-45
                   is not optional. If SI-15 only had one child (DC-45), moving DC-45
-                  to SI-13 would leave SI-15 with zero children -- an unrepresented scope
+                  to SI-13 would leave SI-15 with zero children, an unrepresented scope
                   item, which is a more serious finding than a misattribution. I always
                   verify the donor SI item before making the correction. In this case SI-15
                   has three other solid children, so the correction is safe.
@@ -912,7 +912,7 @@
                   Pass 3 is not redundant with Passes 1 and 2. It runs against the
                   corrected map, not the original. Any correction made in Pass 2 changes
                   the trace structure, and Pass 3 is what verifies that the correction
-                  did not introduce a new problem. In this case it did not -- but there
+                  did not introduce a new problem. In this case it did not, but there
                   are decompositions where a correction cascade is possible: moving a
                   component to a different parent can reveal that the receiving parent
                   is now over-populated, prompting a second round of Pass 2 work.
@@ -924,11 +924,11 @@
                 <p class="annotation-text">
                   MRHN_DecompositionMap_v2 is the last artifact produced before the
                   module-level gate. Its integrity matters more than any other artifact
-                  produced in Phase 2 -- it is the structural input to everything that
+                  produced in Phase 2: it is the structural input to everything that
                   follows. If v2 has an orphan component or an unrepresented scope item,
                   that error propagates through Module 2 instruction design, Module 3
                   stress-testing, and eventually into the assessment architecture.
-                  A clean audit here is not bureaucratic -- it is the condition that
+                  A clean audit here is not bureaucratic: it is the condition that
                   makes Module 2 tractable.
                 </p>
               </div>

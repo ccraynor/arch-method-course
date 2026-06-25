@@ -2378,3 +2378,19 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   line-height: 1.7;
   color: var(--color-text-primary);
 }
+
+/* Gate banner is navy: the breadcrumb and return-hub link injected before
+   its H1 must use the inverse (light) text color to pass contrast.
+   Scoped to .gate-banner so light-background screens are unaffected.
+   Covers Module 2-4 gate screens automatically. */
+.gate-banner .breadcrumb__item,
+.gate-banner .breadcrumb__item a,
+.gate-banner .breadcrumb__item [aria-current="page"] {
+  color: var(--color-text-inverse);
+}
+.gate-banner .breadcrumb__item + .breadcrumb__item::before {
+  color: var(--color-text-inverse);
+}
+.gate-banner .return-hub a {
+  color: var(--color-text-inverse);
+}

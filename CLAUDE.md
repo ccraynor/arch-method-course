@@ -143,6 +143,9 @@ on first use per module.
 
 ### Do Not Do These Things
 - Do not use em dashes anywhere in course content
+- Do not use double hyphens (the `--` sequence) in learner-facing visible 
+  text. Use a colon, comma, or period instead. Double hyphens remain 
+  allowed only in title tags, HTML comments, script blocks, and CSS.
 - Do not use hard-coded color values -- use CSS tokens only
 - Do not build screens before the seven templates are complete
 - Do not add external font or icon libraries -- use system fonts and inline SVG

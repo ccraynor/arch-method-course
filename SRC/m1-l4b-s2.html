@@ -242,7 +242,7 @@
           <h1 id="example-title" class="worked-example__title">
             Unit Optimization: Testing Whether Each DC Component Is the Right Size
           </h1>
-          <span class="step-badge">Phase 2 -- Step 7</span>
+          <span class="step-badge">Phase 2, Step 7</span>
           <div class="scenario-context" role="note" aria-label="Scenario context">
             <span class="scenario-label">Scenario:</span>
             Watch an expert work at Meridian Regional Health Network. The input is
@@ -265,21 +265,21 @@
             <div class="example-step" id="step-1">
               <div class="step-marker" aria-label="Step 1"><span aria-hidden="true">01</span></div>
               <div class="step-body">
-                <h2 class="step-heading">The Optimization Criteria -- Two Questions Every Component Must Answer</h2>
+                <h2 class="step-heading">The Optimization Criteria: Two Questions Every Component Must Answer</h2>
                 <p class="step-content">
                   Unit optimization is not a judgment about whether a component is
                   important. It is a structural check: is this component the right
                   unit for independent instruction and assessment? A component that
-                  covers too much cannot be assessed cleanly -- the assessment item
+                  covers too much cannot be assessed cleanly: the assessment item
                   would be measuring two or three distinct things at once. A component
-                  that covers too little has no instructional value on its own -- it
+                  that covers too little has no instructional value on its own: it
                   is a sub-behavior that only makes sense embedded inside a larger skill.
                 </p>
                 <p class="step-content">
                   Every DC component in MRHN_DecompositionMap_v1 must pass both questions
                   before the map advances to Step 8. A fail on either question triggers
                   a split (if too large) or a merge (if too small). The test does not
-                  require consulting the calibration annotations -- but any optimization
+                  require consulting the calibration annotations, but any optimization
                   decision that affects a component with a calibration constraint must
                   preserve that constraint in the resulting component or components.
                 </p>
@@ -311,7 +311,7 @@
                       question ("can the learner do X and Y"), the component is too large and
                       must be split. Conversely, if the only plausible item would be testing a
                       lookup behavior ("can the learner find the document that lists X"), the
-                      component is too small -- that behavior is embedded in whatever skill uses
+                      component is too small: that behavior is embedded in whatever skill uses
                       the document, not a learnable competency in its own right.
                     </div>
                   </div>
@@ -321,7 +321,7 @@
                   I will work through three representative cases from MRHN_DecompositionMap_v1:
                   one component that fails by being too large, one that fails by being too
                   small, and one that passes both questions and should not be changed.
-                  The same logic applies to the remaining 45 components not shown here --
+                  The same logic applies to the remaining 45 components not shown here.
                   Step 7 requires running both questions against every component in the map.
                 </p>
               </div>
@@ -331,12 +331,12 @@
             <div class="example-step" id="step-2">
               <div class="step-marker" aria-label="Step 2"><span aria-hidden="true">02</span></div>
               <div class="step-body">
-                <h2 class="step-heading">Case 1: DC-18 Must Be Split -- Two Distinct Assessment Demands</h2>
+                <h2 class="step-heading">Case 1: DC-18 Must Be Split, Two Distinct Assessment Demands</h2>
                 <p class="step-content">
                   DC-18 comes from Bucket 2, parent scope item SI-09 (Evaluate MRHN clinical
                   system interdependencies for network segmentation risk). SI-09 carries a
                   domain authenticity annotation from Step 4: network segmentation at MRHN
-                  must account for EHR, imaging, and billing system relationships -- the
+                  must account for EHR, imaging, and billing system relationships: the
                   Analysis-level demand comes from having to evaluate those relationships
                   before applying any segmentation procedure, not just from knowing the
                   procedure itself. I need to check whether DC-18 as written preserves
@@ -364,17 +364,17 @@
                     <div class="opt-test-grid" role="group" aria-label="Optimization test results for DC-18">
                       <div class="opt-test-cell">
                         <p class="opt-test-cell__q">Q1: Can this be taught as one instructional unit?</p>
-                        <p class="opt-test-cell__result"><strong>Fail.</strong> The component spans two different activity types: a clinical system analysis activity (evaluate interdependency relationships) and a documentation activity (document decision rationale). A designer building instruction for DC-18 would have to choose between a scenario-based analysis task and a structured documentation exercise -- because the component requires both.</p>
+                        <p class="opt-test-cell__result"><strong>Fail.</strong> The component spans two different activity types: a clinical system analysis activity (evaluate interdependency relationships) and a documentation activity (document decision rationale). A designer building instruction for DC-18 would have to choose between a scenario-based analysis task and a structured documentation exercise: because the component requires both.</p>
                       </div>
                       <div class="opt-test-cell">
                         <p class="opt-test-cell__q">Q2: Can this be assessed by one well-formed item?</p>
-                        <p class="opt-test-cell__result"><strong>Fail.</strong> A single assessment item would have to ask "can the learner both evaluate interdependency risks AND produce a documented rationale?" -- a compound question measuring two competency claims. A learner could correctly analyze the interdependencies and then produce a non-compliant rationale document, or vice versa. These are separately assessable.</p>
+                        <p class="opt-test-cell__result"><strong>Fail.</strong> A single assessment item would have to ask "can the learner both evaluate interdependency risks AND produce a documented rationale?": a compound question measuring two competency claims. A learner could correctly analyze the interdependencies and then produce a non-compliant rationale document, or vice versa. These are separately assessable.</p>
                       </div>
                     </div>
 
                     <div class="validation-row" aria-label="DC-18 optimization result">
-                      <span class="val-chip val-chip--split">Q1: Fails -- two activity types</span>
-                      <span class="val-chip val-chip--split">Q2: Fails -- compound assessment</span>
+                      <span class="val-chip val-chip--split">Q1: Fails: two activity types</span>
+                      <span class="val-chip val-chip--split">Q2: Fails: compound assessment</span>
                     </div>
                   </div>
                 </div>
@@ -385,7 +385,7 @@
                   rationale record). These are different cognitive operations: the first is
                   Analysis-level evaluation of a complex system relationship; the second is
                   Application-level structured documentation. Combining them means the calibration
-                  annotation from Step 4 -- which governs the Analysis-level evaluation -- is
+                  annotation from Step 4, which governs the Analysis-level evaluation, is
                   diluted by a lower-level documentation task. The split is required both for
                   instructional coherence and to preserve the SI-09 calibration constraint
                   in its correct component.
@@ -428,8 +428,8 @@
                 <p class="step-content">
                   After the split: DC-18a carries the Analysis-level calibration constraint
                   from SI-09 (the clinical system interdependency evaluation is the
-                  authenticity-critical skill). DC-18b is Application level -- producing
-                  a compliant documentation record -- and references PC-3 authority
+                  authenticity-critical skill). DC-18b is Application level, producing
+                  a compliant documentation record, and references PC-3 authority
                   explicitly. The split adds one component to the map (48 becomes 49
                   at this point); the merge in Case 2 restores the count to 48.
                 </p>
@@ -440,11 +440,11 @@
             <div class="example-step" id="step-3">
               <div class="step-marker" aria-label="Step 3"><span aria-hidden="true">03</span></div>
               <div class="step-body">
-                <h2 class="step-heading">Case 2: DC-07 Must Be Merged -- Not Independently Assessable</h2>
+                <h2 class="step-heading">Case 2: DC-07 Must Be Merged, Not Independently Assessable</h2>
                 <p class="step-content">
                   DC-07 comes from Bucket 1, parent scope item SI-01 (Incident classification
                   using the MRHN severity rubric). SI-01 sits at Application level in the
-                  calibrated scope map -- the skill is applying the rubric to classify a
+                  calibrated scope map: the skill is applying the rubric to classify a
                   potential incident, not describing what the rubric contains. I look at
                   DC-07 and DC-08 together because they were decomposed from the same scope
                   item and the test applies to whether each component is independently
@@ -483,24 +483,24 @@
                       </div>
                       <div class="opt-test-cell">
                         <p class="opt-test-cell__q">Q2 applied to DC-07: Can this be assessed by one well-formed item?</p>
-                        <p class="opt-test-cell__result"><strong>Fail.</strong> The only plausible item would test lookup behavior: "open IR-2024 and locate the rubric." That is not a learnable competency -- it is an embedded prerequisite behavior within DC-08. A learner who cannot locate the rubric cannot perform DC-08, so the inability will surface there. Assessing DC-07 independently adds nothing to the architecture.</p>
+                        <p class="opt-test-cell__result"><strong>Fail.</strong> The only plausible item would test lookup behavior: "open IR-2024 and locate the rubric." That is not a learnable competency: it is an embedded prerequisite behavior within DC-08. A learner who cannot locate the rubric cannot perform DC-08, so the inability will surface there. Assessing DC-07 independently adds nothing to the architecture.</p>
                       </div>
                     </div>
 
                     <div class="validation-row" aria-label="DC-07 optimization result">
-                      <span class="val-chip val-chip--merge">Q2: Fails -- lookup behavior only, not independently assessable</span>
+                      <span class="val-chip val-chip--merge">Q2: Fails: lookup behavior only, not independently assessable</span>
                     </div>
                   </div>
                 </div>
 
                 <p class="step-content">
-                  The problem with DC-07 is not that locating the rubric is unimportant --
+                  The problem with DC-07 is not that locating the rubric is unimportant:
                   it is that locating a document is not a competency that belongs in the
                   map as a standalone unit. At Application level, the SI-01 skill is using
                   the rubric to classify incidents, not finding the rubric. "Locate and
                   identify" is the prerequisite behavior embedded within "apply." If DC-07
                   traveled to Module 2 as a standalone component, a designer would be asked
-                  to build an activity for it -- and there is no meaningful activity to build
+                  to build an activity for it, and there is no meaningful activity to build
                   beyond a lookup exercise that tests nothing relevant to incident classification
                   competence. DC-07 must be merged into DC-08, which already captures the
                   application-level skill that the scoping of SI-01 requires.
@@ -509,7 +509,7 @@
                 <!-- Resolution: DC-07 merged into DC-08 -->
                 <div class="resolution-block" role="region" aria-label="DC-07 merge resolution">
                   <div class="resolution-block__header">
-                    <span class="resolution-block__label">Resolution: DC-07 Retired -- Merged into DC-08</span>
+                    <span class="resolution-block__label">Resolution: DC-07 Retired, Merged into DC-08</span>
                   </div>
                   <div class="resolution-block__body">
 
@@ -548,7 +548,7 @@
 
                 <p class="step-content">
                   After the merge: the revised DC-07 incorporates "using the rubric's
-                  four classification criteria" as embedded context -- the locating
+                  four classification criteria" as embedded context: the locating
                   behavior is implied by application of the criteria. The "distinguishing
                   security incidents from non-incident system events" language connects
                   this component to the SI-01 calibration: the rubric is the tool, but
@@ -563,14 +563,14 @@
             <div class="example-step" id="step-4">
               <div class="step-marker" aria-label="Step 4"><span aria-hidden="true">04</span></div>
               <div class="step-body">
-                <h2 class="step-heading">Case 3: DC-35 Is Correctly Granular -- Do Not Change It</h2>
+                <h2 class="step-heading">Case 3: DC-35 Is Correctly Granular, Do Not Change It</h2>
                 <p class="step-content">
                   DC-35 comes from Bucket 3, parent scope item SI-10 (HIPAA 72-hour breach
                   notification clock management). SI-10 is one of the highest-stakes components
                   in the entire map: it carries the domain authenticity annotation from Step 4
                   identifying the "reasonably should have known" discovery trigger under 45 CFR
                   164.404, and the Bucket 3 sub-arc was revised in Step 5 specifically because
-                  of this component. I approach DC-35 with heightened attention -- a component
+                  of this component. I approach DC-35 with heightened attention: a component
                   that looks narrow may still be covering the essential analytical skill that
                   makes the HIPAA compliance training meaningful.
                 </p>
@@ -596,17 +596,17 @@
                     <div class="opt-test-grid" role="group" aria-label="Optimization test results for DC-35">
                       <div class="opt-test-cell">
                         <p class="opt-test-cell__q">Q1: Can this be taught as one instructional unit?</p>
-                        <p class="opt-test-cell__result"><strong>Pass.</strong> The component asks learners to do one thing: evaluate incident facts against the legal standard for the discovery trigger. "Identify the clock start point" is the direct consequence of that evaluation -- it is not a separate cognitive operation but the output of the same analytical judgment. This is one instructional unit.</p>
+                        <p class="opt-test-cell__result"><strong>Pass.</strong> The component asks learners to do one thing: evaluate incident facts against the legal standard for the discovery trigger. "Identify the clock start point" is the direct consequence of that evaluation: it is not a separate cognitive operation but the output of the same analytical judgment. This is one instructional unit.</p>
                       </div>
                       <div class="opt-test-cell">
                         <p class="opt-test-cell__q">Q2: Can this be assessed by one well-formed item?</p>
-                        <p class="opt-test-cell__result"><strong>Pass.</strong> A single scenario-based item can present incident facts and ask: "At what point should MRHN have determined they reasonably knew of the potential breach, and when does the 72-hour clock begin?" This is one competency claim -- the trigger evaluation -- with one expected reasoning output.</p>
+                        <p class="opt-test-cell__result"><strong>Pass.</strong> A single scenario-based item can present incident facts and ask: "At what point should MRHN have determined they reasonably knew of the potential breach, and when does the 72-hour clock begin?" This is one competency claim, the trigger evaluation, with one expected reasoning output.</p>
                       </div>
                     </div>
 
                     <div class="validation-row" aria-label="DC-35 confirmation result">
-                      <span class="val-chip val-chip--pass">Q1: Pass -- single analytical unit</span>
-                      <span class="val-chip val-chip--pass">Q2: Pass -- one well-formed item possible</span>
+                      <span class="val-chip val-chip--pass">Q1: Pass: single analytical unit</span>
+                      <span class="val-chip val-chip--pass">Q2: Pass: one well-formed item possible</span>
                     </div>
                   </div>
                 </div>
@@ -615,11 +615,11 @@
                   The optimization instinct here might be to split DC-35: "evaluate trigger
                   conditions" and "identify clock start point" could look like two components.
                   That split would be wrong. Identifying the clock start point is not a
-                  separable skill -- it is the outcome of the trigger evaluation, not an
+                  separable skill: it is the outcome of the trigger evaluation, not an
                   independent competency. A learner who correctly evaluates the trigger has
                   by definition identified the start point. Splitting here would create a
                   DC component ("identify the point at which the clock begins") that could
-                  only be assessed by restating DC-35's scenario item -- making it a redundant
+                  only be assessed by restating DC-35's scenario item: making it a redundant
                   component, not an independent one.
                 </p>
 
@@ -627,13 +627,13 @@
                   <span class="pass-confirmation__label">Why the impulse to split DC-35 is wrong</span>
                   <p class="pass-confirmation__text">
                     The calibration annotation on SI-10 names the "reasonably should have known"
-                    trigger as the authenticity-critical skill -- the one that generic HIPAA training
+                    trigger as the authenticity-critical skill: the one that generic HIPAA training
                     gets wrong. <strong>That critical skill is exactly what DC-35 covers, and only
                     what it covers.</strong> Any split would either dilute the trigger evaluation into
                     a lower-stakes component or create a downstream component with no independent
                     instructional value. DC-35 is correctly granular because it was decomposed
                     from an authenticity-annotated item by a practitioner who read the annotation.
-                    The optimization check confirms that -- it does not override it.
+                    The optimization check confirms that. It does not override it.
                   </p>
                 </div>
               </div>
@@ -667,7 +667,7 @@
                       <tr>
                         <td><span class="dc-ref">DC-07</span> (v1)</td>
                         <td>SI-01 &bull; Bucket 1</td>
-                        <td><span class="val-chip val-chip--merge">Merged</span> DC-07 retired -- lookup behavior embedded into application component</td>
+                        <td><span class="val-chip val-chip--merge">Merged</span> DC-07 retired: lookup behavior embedded into application component</td>
                         <td><span class="dc-ref">DC-07</span> revised (formerly DC-08); DC-08 designation retired</td>
                       </tr>
                       <tr>
@@ -690,7 +690,7 @@
                   The practical significance of these two changes: the DC-18 split
                   ensures the Analysis-level calibration constraint on SI-09 is
                   isolated in DC-18a, where a Module 2 designer will build the
-                  clinical interdependency analysis activity -- not buried inside a
+                  clinical interdependency analysis activity, not buried inside a
                   component that also asks for documentation. The DC-07 merge removes
                   a component that would have generated a low-value lookup activity
                   in Module 2, replacing it with a single application-level component
@@ -716,7 +716,7 @@
                 <div class="gov-record" role="region" aria-label="Governance record MRHN-D-007">
                   <div class="gov-record__header">
                     <span class="gov-record__id">MRHN-D-007</span>
-                    <span class="gov-record__title">Unit Optimization Record -- Phase 2 Step 7</span>
+                    <span class="gov-record__title">Unit Optimization Record, Phase 2 Step 7</span>
                   </div>
                   <div class="gov-record__row">
                     <div class="gov-record__key">Decision</div>
@@ -747,13 +747,13 @@
                     <div class="gov-record__val">
                       DC-18 required a split because bundling an Analysis-level evaluation with
                       an Application-level documentation task in a single component dilutes the
-                      calibration annotation on SI-09 -- the analytical demand (evaluate
+                      calibration annotation on SI-09: the analytical demand (evaluate
                       interdependencies to identify segmentation risk) would be partially
                       obscured by the documentation demand in a Module 2 design brief. The
                       split surfaces the Analysis-level component cleanly. DC-07 required a
                       merge because "locate a document and identify its criteria" is an embedded
                       prerequisite behavior, not a learnable competency. An assessment item
-                      for DC-07 would only test whether a learner can open a document -- not
+                      for DC-07 would only test whether a learner can open a document, not
                       whether they can use it. The DC-08 (now DC-07) application component
                       renders DC-07 (v1) redundant.
                     </div>
@@ -842,7 +842,7 @@
                   need to apply the rubric"). The test question cuts through it: can you
                   write one non-trivial item for this? If the only item is "find the rubric
                   in IR-2024," the component does not belong in the map. The rubric-finding
-                  behavior will be established in the activity for DC-07 (revised) -- it
+                  behavior will be established in the activity for DC-07 (revised): it
                   does not need its own component.
                 </p>
               </div>
@@ -854,7 +854,7 @@
                   pressure to split. The "reasonably should have known" trigger seems like
                   it could be separated from "identify when the clock starts." The reason
                   I do not split is that identifying when the clock starts is not an
-                  independent cognitive operation -- it is the immediate output of the
+                  independent cognitive operation: it is the immediate output of the
                   trigger evaluation. There is no assessable gap between "you have evaluated
                   the trigger" and "you know when the clock starts." Splitting here produces
                   a redundant item, not an independent competency.
@@ -864,7 +864,7 @@
               <div class="annotation-item" data-step="5" aria-label="Annotation for step 5">
                 <span class="annotation-marker" aria-hidden="true">05</span>
                 <p class="annotation-text">
-                  The two changes are not arbitrary revisions to the decomposition --
+                  The two changes are not arbitrary revisions to the decomposition:
                   they are corrections to structural problems that would have cost Module
                   2 designers time and produced weaker instruction. If DC-18 had reached
                   Module 2 unchanged, a designer building that component would have to
@@ -878,8 +878,8 @@
                 <span class="annotation-marker" aria-hidden="true">06</span>
                 <p class="annotation-text">
                   MRHN-D-007 is a short record because the optimization changes were
-                  limited. In a messier decomposition -- one that produced a first draft
-                  with five or six over-bundled components -- this record would be much
+                  limited. In a messier decomposition, one that produced a first draft
+                  with five or six over-bundled components, this record would be much
                   longer. The length of the optimization record is a rough indicator of
                   decomposition quality from Step 6. A short MRHN-D-007 means the
                   Step 6 decomposition was disciplined. A long one means the

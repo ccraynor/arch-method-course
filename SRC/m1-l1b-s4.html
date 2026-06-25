@@ -605,9 +605,9 @@
 
                 <p class="step-content">
                   The first thing I establish before producing any document is
-                  the naming convention. Every MRHN artifact -- from the Bucket
+                  the naming convention. Every MRHN artifact, from the Bucket
                   Map produced in this lesson through the Structural Freeze
-                  Declaration Package in Module 4 -- must follow the same pattern
+                  Declaration Package in Module 4, must follow the same pattern
                   from the first version forward.
                 </p>
 
@@ -636,7 +636,7 @@
                 </div>
 
                 <p class="step-content">
-                  I establish this now -- before the first artifact is produced --
+                  I establish this now, before the first artifact is produced,
                   because retroactive renaming creates confusion about which version
                   is current. Once a client or governance reviewer has seen a
                   file named <code>MRHN_BucketMap_v1_2026-01-15</code>, that
@@ -715,7 +715,7 @@
                     <p class="convention-desc">
                       Sequential. Assigned in the order scope items appear in the
                       Bucket Map. Never reused. If a scope item is removed, its
-                      identifier is retired -- the sequence does not collapse to
+                      identifier is retired: the sequence does not collapse to
                       fill the gap.
                     </p>
                     <p class="failure-callout"><span class="failure-callout__label">Without this convention:</span> A Module 3 audit finding that references the scope item about role-bounded authority cannot be traced back to the source constraint without reading every scope item description.</p>
@@ -727,7 +727,7 @@
                   documentation. Instead of writing "the requirement that learners
                   execute Tier 1 and Tier 2 IR-2024 protocol decisions
                   independently within their role authority" in every decision
-                  record, I write SI-04 -- or whichever number that item receives
+                  record, I write SI-04, or whichever number that item receives
                   in the Bucket Map. The reference is unambiguous, traceable,
                   and auditable.
                 </p>
@@ -746,17 +746,17 @@
                   <tbody>
                     <tr>
                       <td><code class="identifier-code">SI-01</code></td>
-                      <td>IR-2024 Tier 1 protocol execution -- independent, no escalation</td>
+                      <td>IR-2024 Tier 1 protocol execution: independent, no escalation</td>
                       <td>PC-1, PC-2, RC-2</td>
                     </tr>
                     <tr>
                       <td><code class="identifier-code">SI-02</code></td>
-                      <td>IR-2024 Tier 2 protocol execution -- within role authority</td>
+                      <td>IR-2024 Tier 2 protocol execution: within role authority</td>
                       <td>PC-2, PC-3</td>
                     </tr>
                     <tr>
                       <td><code class="identifier-code">SI-03</code></td>
-                      <td>System isolation decisions -- role-bounded, no supervisor required</td>
+                      <td>System isolation decisions: role-bounded, no supervisor required</td>
                       <td>PC-3</td>
                     </tr>
                     <tr>
@@ -810,7 +810,7 @@
                     <p class="convention-desc">
                       Sequential. Assigned during decomposition in Module 2,
                       grouped by parent SI identifier. DC identifiers follow
-                      the same retirement rule as SI identifiers -- removed
+                      the same retirement rule as SI identifiers: removed
                       components are retired, not renumbered.
                     </p>
                     <p class="failure-callout"><span class="failure-callout__label">Without this convention:</span> An optimization decision to split a component in Week 3 cannot be referenced in the Module 4 governance record without describing the component from scratch.</p>
@@ -818,7 +818,7 @@
                 </div>
 
                 <p class="step-content">
-                  I establish DC-XX now -- before decomposition -- so that
+                  I establish DC-XX now, before decomposition, so that
                   Module 2 work begins with a known identifier system in place.
                   The relationship between SI and DC identifiers is explicit:
                   DC-01 through DC-06 might belong to SI-01; DC-07 through
@@ -830,7 +830,7 @@
                   When the Outcome Mapping check surfaces a gap, the finding
                   is recorded against a specific DC identifier. Without
                   component-level identifiers, stress-test findings are
-                  imprecise -- "there is a gap in the isolation content" is
+                  imprecise: "there is a gap in the isolation content" is
                   not actionable. "DC-07 does not address role-bounded
                   authority for Tier 2 decisions" is.
                 </p>
@@ -851,7 +851,7 @@
                   Every design decision recorded in the MRHN decision log must
                   contain five fields. Not four. Not "most of them." All five,
                   for every decision, without exception. A decision record with
-                  missing fields is not a governance document -- it is a note.
+                  missing fields is not a governance document: it is a note.
                 </p>
 
                 <div class="convention-card"
@@ -864,19 +864,19 @@
                   <div class="convention-card__body">
                     <ol style="margin:0; padding-left:1.25rem; display:flex; flex-direction:column; gap:0.375rem;">
                       <li style="font-size:0.875rem; color:var(--color-text-primary); line-height:1.55;">
-                        <strong>Decision Statement</strong> -- what was decided, written as a precise present-tense declaration
+                        <strong>Decision Statement</strong>: what was decided, written as a precise present-tense declaration
                       </li>
                       <li style="font-size:0.875rem; color:var(--color-text-primary); line-height:1.55;">
-                        <strong>Constraint Reference</strong> -- which SI-XX identifier or named binding constraint governs this decision
+                        <strong>Constraint Reference</strong>: which SI-XX identifier or named binding constraint governs this decision
                       </li>
                       <li style="font-size:0.875rem; color:var(--color-text-primary); line-height:1.55;">
-                        <strong>Rationale</strong> -- why this decision follows from the constraint; not a restatement of the decision
+                        <strong>Rationale</strong>: why this decision follows from the constraint; not a restatement of the decision
                       </li>
                       <li style="font-size:0.875rem; color:var(--color-text-primary); line-height:1.55;">
-                        <strong>Risk Note</strong> -- what could go wrong if this decision is incorrect or needs to change
+                        <strong>Risk Note</strong>: what could go wrong if this decision is incorrect or needs to change
                       </li>
                       <li style="font-size:0.875rem; color:var(--color-text-primary); line-height:1.55;">
-                        <strong>Governance Checkpoint Linkage</strong> -- which checkpoint will verify or revisit this decision
+                        <strong>Governance Checkpoint Linkage</strong>: which checkpoint will verify or revisit this decision
                       </li>
                     </ol>
                     <p class="failure-callout"><span class="failure-callout__label">Without this convention:</span> The SME signs off on a decomposition decision without knowing that the 4-hour access constraint makes one of the components unrealistic to develop.</p>
@@ -885,14 +885,14 @@
 
                 <p class="step-content">
                   Here is the first completed governance record for the Meridian
-                  project -- the decision about IR-2024 version alignment:
+                  project: the decision about IR-2024 version alignment:
                 </p>
 
                 <div class="governance-entry"
                      role="region"
                      aria-label="Sample completed governance decision record">
                   <div class="governance-entry__header">
-                    Decision Record -- MRHN-D-001
+                    Decision Record: MRHN-D-001
                   </div>
                   <div class="governance-field">
                     <div class="governance-field__key">
@@ -984,10 +984,10 @@
                      aria-label="Version control rule for MRHN artifacts">
                   <p class="version-rule__heading">Version Control Protocol</p>
                   <ol class="version-rule__steps">
-                    <li>A revision is triggered by a documented governance finding -- a stress-test gap, a checkpoint failure, a client-requested change, or a scope adjustment</li>
+                    <li>A revision is triggered by a documented governance finding: a stress-test gap, a checkpoint failure, a client-requested change, or a scope adjustment</li>
                     <li>Before revising, record what is changing, which constraint reference or checkpoint triggered the review, the risk of not changing, and the risk of changing</li>
                     <li>Create a new file with the next version number and a new date: <code>MRHN_BucketMap_v2_2026-02-03</code></li>
-                    <li>Do not edit v1 in place -- v1 remains as the permanent record of the original design decision</li>
+                    <li>Do not edit v1 in place: v1 remains as the permanent record of the original design decision</li>
                     <li>Update the governance decision log to reference the new version and record the trigger for the revision</li>
                   </ol>
                   <p class="failure-callout"><span class="failure-callout__label">Without this convention:</span> The content developer cannot tell whether the architecture document in their email is the pre-SME version or the post-review version.</p>
@@ -997,13 +997,13 @@
                   The version control rule exists because architecture documents
                   get edited. An overwritten file has no audit trail. When a
                   governance reviewer asks "what did the architecture say before
-                  this change, and why was it changed?" -- the answer must be
+                  this change, and why was it changed?", the answer must be
                   findable without reconstructing history from memory.
                 </p>
                 <p class="step-content">
-                  These five conventions -- naming, SI identifiers, DC
+                  These five conventions, naming, SI identifiers, DC
                   identifiers, the governance documentation rule, and version
-                  control -- are the Output Style Gate. Once established,
+                  control, are the Output Style Gate. Once established,
                   they govern every artifact produced between now and
                   Structural Freeze. The Bucket Map built in Screen 5 is the
                   first artifact to follow them.
@@ -1063,8 +1063,8 @@
                   Establishing DC-XX now assigns no DC identifiers. It
                   reserves the naming system so that when Module 2 produces
                   components, there is no question about how to label them.
-                  The alternative -- deciding on an identifier format during
-                  decomposition -- introduces inconsistency at the worst
+                  The alternative, deciding on an identifier format during
+                  decomposition, introduces inconsistency at the worst
                   possible moment: when the volume of decisions is highest.
                 </p>
               </div>
@@ -1090,7 +1090,7 @@
                   exists because the instinct under deadline pressure is to
                   edit the existing file. Once you overwrite v1, the original
                   decision is gone. The five-step version control protocol
-                  is not slower than editing in place -- the governance record
+                  is not slower than editing in place: the governance record
                   write takes four minutes. The audit conversation when someone
                   asks why the architecture changed takes four hours.
                 </p>

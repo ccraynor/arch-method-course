@@ -726,7 +726,7 @@
                   Before grouping a single item, I read all 16 as a set. The
                   first pass is observational: I am not making decisions yet.
                   I am building a picture of the full scope so that when I do
-                  group items, I am grouping within the whole -- not organizing
+                  group items, I am grouping within the whole, not organizing
                   partial information into categories that will need to be
                   restructured when the rest of the set appears.
                 </p>
@@ -739,7 +739,7 @@
                      role="region"
                      aria-label="All 16 MRHN scope items">
                   <div class="si-survey__header">
-                    MRHN Scope Items -- SI-01 through SI-16 (declared in Step 1.5)
+                    MRHN Scope Items: SI-01 through SI-16 (declared in Step 1.5)
                   </div>
                   <table class="si-survey-table"
                          aria-label="Complete list of 16 MRHN scope items">
@@ -752,15 +752,15 @@
                     <tbody>
                       <tr>
                         <td><code class="si-code">SI-01</code></td>
-                        <td>IR-2024 Tier 1 protocol execution -- independent, no escalation required</td>
+                        <td>IR-2024 Tier 1 protocol execution: independent, no escalation required</td>
                       </tr>
                       <tr>
                         <td><code class="si-code">SI-02</code></td>
-                        <td>IR-2024 Tier 2 protocol execution -- within role authority</td>
+                        <td>IR-2024 Tier 2 protocol execution: within role authority</td>
                       </tr>
                       <tr>
                         <td><code class="si-code">SI-03</code></td>
-                        <td>System isolation decisions -- role-bounded, no supervisor required</td>
+                        <td>System isolation decisions: role-bounded, no supervisor required</td>
                       </tr>
                       <tr>
                         <td><code class="si-code">SI-04</code></td>
@@ -772,7 +772,7 @@
                       </tr>
                       <tr>
                         <td><code class="si-code">SI-06</code></td>
-                        <td>Escalation protocol -- recognizing when a decision requires supervisor involvement</td>
+                        <td>Escalation protocol: recognizing when a decision requires supervisor involvement</td>
                       </tr>
                       <tr>
                         <td><code class="si-code">SI-07</code></td>
@@ -780,31 +780,31 @@
                       </tr>
                       <tr>
                         <td><code class="si-code">SI-08</code></td>
-                        <td>Threat classification -- Tier 1 vs. Tier 2 identification from SIEM alerts</td>
+                        <td>Threat classification: Tier 1 vs. Tier 2 identification from SIEM alerts</td>
                       </tr>
                       <tr>
                         <td><code class="si-code">SI-09</code></td>
-                        <td>Evidence preservation -- maintaining chain of custody during active incident response</td>
+                        <td>Evidence preservation: maintaining chain of custody during active incident response</td>
                       </tr>
                       <tr>
                         <td><code class="si-code">SI-10</code></td>
-                        <td>HIPAA breach notification timeline -- managing the 72-hour OCR reporting window</td>
+                        <td>HIPAA breach notification timeline: managing the 72-hour OCR reporting window</td>
                       </tr>
                       <tr>
                         <td><code class="si-code">SI-11</code></td>
-                        <td>Network segmentation decisions -- isolating affected systems to limit lateral spread</td>
+                        <td>Network segmentation decisions: isolating affected systems to limit lateral spread</td>
                       </tr>
                       <tr>
                         <td><code class="si-code">SI-12</code></td>
-                        <td>Recovery verification -- confirming system integrity before restoring to production</td>
+                        <td>Recovery verification: confirming system integrity before restoring to production</td>
                       </tr>
                       <tr>
                         <td><code class="si-code">SI-13</code></td>
-                        <td>Post-incident lessons learned -- documenting what happened and what to change</td>
+                        <td>Post-incident lessons learned: documenting what happened and what to change</td>
                       </tr>
                       <tr>
                         <td><code class="si-code">SI-14</code></td>
-                        <td>IR-2024 protocol deviation documentation -- recording when steps cannot be followed as written</td>
+                        <td>IR-2024 protocol deviation documentation: recording when steps cannot be followed as written</td>
                       </tr>
                       <tr>
                         <td><code class="si-code">SI-15</code></td>
@@ -812,7 +812,7 @@
                       </tr>
                       <tr>
                         <td><code class="si-code">SI-16</code></td>
-                        <td>Incident severity reclassification -- upgrading from Tier 1 to Tier 2 mid-response</td>
+                        <td>Incident severity reclassification: upgrading from Tier 1 to Tier 2 mid-response</td>
                       </tr>
                     </tbody>
                   </table>
@@ -821,7 +821,7 @@
                 <p class="step-content">
                   After reading the full set, two things are clear: (1) these
                   items span the entire incident response lifecycle, and (2) many
-                  of them only make sense in relation to each other -- SI-16
+                  of them only make sense in relation to each other: SI-16
                   (reclassification) leads to SI-06 (escalation), which changes
                   the protocol from SI-01 to SI-02. That sequencing is the
                   organizing logic I will use for bucketing.
@@ -840,7 +840,7 @@
                 </h2>
                 <p class="step-content">
                   The first instinct when bucketing content is to group by
-                  topic -- "all the documentation items," "all the protocol
+                  topic: "all the documentation items," "all the protocol
                   items," "all the communication items." That instinct produces
                   structurally weak architecture. Here is the contrast:
                 </p>
@@ -857,7 +857,7 @@
                         <path d="M3.5 3.5l4 4M7.5 3.5l-4 4" stroke="currentColor" stroke-width="1.5"
                               stroke-linecap="round"/>
                       </svg>
-                      Topic-Based Grouping -- Avoid
+                      Topic-Based Grouping: Avoid
                     </div>
                     <div class="contrast-block__body">
                       <span class="contrast-block__label">What this produces:</span>
@@ -880,7 +880,7 @@
                         <path d="M3 5.5l1.75 1.75 3.25-3.25" stroke="currentColor" stroke-width="1.5"
                               stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
-                      Workflow-Based Grouping -- Preferred
+                      Workflow-Based Grouping: Preferred
                     </div>
                     <div class="contrast-block__body">
                       <span class="contrast-block__label">What this produces:</span>
@@ -903,7 +903,7 @@
                   containment and SI-07 happens after the incident is closed.
                   A course organized by topic would require learners to learn
                   both documentation behaviors together and then apply them at
-                  different points in the workflow -- exactly the integration
+                  different points in the workflow: exactly the integration
                   gap that stress-testing will later flag.
                 </p>
                 <p class="step-content">
@@ -962,35 +962,35 @@
                       <div class="si-entry" role="listitem">
                         <div class="si-entry__id" aria-label="SI-08">SI-08</div>
                         <div class="si-entry__body">
-                          <span class="si-entry__desc">Threat classification -- Tier 1 vs. Tier 2 from SIEM alerts</span>
+                          <span class="si-entry__desc">Threat classification: Tier 1 vs. Tier 2 from SIEM alerts</span>
                           <span class="si-entry__reason">Entry point of triage; every subsequent decision depends on this call</span>
                         </div>
                       </div>
                       <div class="si-entry" role="listitem">
                         <div class="si-entry__id" aria-label="SI-01">SI-01</div>
                         <div class="si-entry__body">
-                          <span class="si-entry__desc">IR-2024 Tier 1 protocol execution -- independent, no escalation</span>
+                          <span class="si-entry__desc">IR-2024 Tier 1 protocol execution: independent, no escalation</span>
                           <span class="si-entry__reason">Activated immediately after Tier 1 classification; role-authorized solo execution</span>
                         </div>
                       </div>
                       <div class="si-entry" role="listitem">
                         <div class="si-entry__id" aria-label="SI-16">SI-16</div>
                         <div class="si-entry__body">
-                          <span class="si-entry__desc">Incident severity reclassification -- upgrading Tier 1 to Tier 2 mid-response</span>
+                          <span class="si-entry__desc">Incident severity reclassification: upgrading Tier 1 to Tier 2 mid-response</span>
                           <span class="si-entry__reason">Occurs during triage when initial classification was wrong or conditions changed</span>
                         </div>
                       </div>
                       <div class="si-entry" role="listitem">
                         <div class="si-entry__id" aria-label="SI-06">SI-06</div>
                         <div class="si-entry__body">
-                          <span class="si-entry__desc">Escalation protocol -- recognizing when a decision requires supervisor involvement</span>
+                          <span class="si-entry__desc">Escalation protocol: recognizing when a decision requires supervisor involvement</span>
                           <span class="si-entry__reason">Triggered by reclassification (SI-16) or initial Tier 2 determination; precedes Tier 2 execution</span>
                         </div>
                       </div>
                       <div class="si-entry" role="listitem">
                         <div class="si-entry__id" aria-label="SI-02">SI-02</div>
                         <div class="si-entry__body">
-                          <span class="si-entry__desc">IR-2024 Tier 2 protocol execution -- within role authority</span>
+                          <span class="si-entry__desc">IR-2024 Tier 2 protocol execution: within role authority</span>
                           <span class="si-entry__reason">Activated after escalation check confirms Tier 2 and role authorization; still role-bounded (PC-3)</span>
                         </div>
                       </div>
@@ -1035,7 +1035,7 @@
                       All four items share a critical constraint: PC-3
                       (role-bounded authority). Each action must be executable
                       within the responder's role without supervisor sign-off.
-                      The grouping is not just workflow position -- it is
+                      The grouping is not just workflow position: it is
                       constraint coherence. Every item in this bucket is
                       governed by the same binding rule.
                     </div>
@@ -1045,21 +1045,21 @@
                       <div class="si-entry" role="listitem">
                         <div class="si-entry__id" aria-label="SI-03">SI-03</div>
                         <div class="si-entry__body">
-                          <span class="si-entry__desc">System isolation decisions -- role-bounded, no supervisor required</span>
+                          <span class="si-entry__desc">System isolation decisions: role-bounded, no supervisor required</span>
                           <span class="si-entry__reason">First containment action; must be executable without delay to limit spread</span>
                         </div>
                       </div>
                       <div class="si-entry" role="listitem">
                         <div class="si-entry__id" aria-label="SI-11">SI-11</div>
                         <div class="si-entry__body">
-                          <span class="si-entry__desc">Network segmentation decisions -- isolating affected systems to limit lateral spread</span>
+                          <span class="si-entry__desc">Network segmentation decisions: isolating affected systems to limit lateral spread</span>
                           <span class="si-entry__reason">Follows or runs concurrent with system isolation; broader scope than SI-03</span>
                         </div>
                       </div>
                       <div class="si-entry" role="listitem">
                         <div class="si-entry__id" aria-label="SI-09">SI-09</div>
                         <div class="si-entry__body">
-                          <span class="si-entry__desc">Evidence preservation -- maintaining chain of custody during active incident response</span>
+                          <span class="si-entry__desc">Evidence preservation: maintaining chain of custody during active incident response</span>
                           <span class="si-entry__reason">Must begin during containment to be legally defensible; cannot be retroactive</span>
                         </div>
                       </div>
@@ -1086,8 +1086,8 @@
                   Bucket 3: Active Response Execution
                 </h2>
                 <p class="step-content">
-                  While containment is ongoing -- and after active spread is
-                  stopped but before the incident is formally closed -- a
+                  While containment is ongoing, and after active spread is
+                  stopped but before the incident is formally closed, a
                   responder carries concurrent obligations: real-time
                   documentation, communication upward to clinical leadership,
                   managing the regulatory notification clock, and recording
@@ -1144,14 +1144,14 @@
                       <div class="si-entry" role="listitem">
                         <div class="si-entry__id" aria-label="SI-10">SI-10</div>
                         <div class="si-entry__body">
-                          <span class="si-entry__desc">HIPAA breach notification timeline -- managing the 72-hour OCR reporting window</span>
+                          <span class="si-entry__desc">HIPAA breach notification timeline: managing the 72-hour OCR reporting window</span>
                           <span class="si-entry__reason">Clock starts at discovery; placed here because tracking begins during active response, not after closure</span>
                         </div>
                       </div>
                       <div class="si-entry" role="listitem">
                         <div class="si-entry__id" aria-label="SI-14">SI-14</div>
                         <div class="si-entry__body">
-                          <span class="si-entry__desc">IR-2024 protocol deviation documentation -- recording when steps cannot be followed as written</span>
+                          <span class="si-entry__desc">IR-2024 protocol deviation documentation: recording when steps cannot be followed as written</span>
                           <span class="si-entry__reason">Must be recorded as deviations occur, not reconstructed after; binds to RC-2 compliance</span>
                         </div>
                       </div>
@@ -1198,7 +1198,7 @@
                       gate: you cannot restore systems to production without
                       confirming integrity. SI-07 (OCR documentation) and SI-13
                       (lessons learned) both depend on having a complete incident
-                      record to draw from -- which cannot exist until the incident
+                      record to draw from, which cannot exist until the incident
                       is closed and all active response documentation is
                       consolidated.
                     </div>
@@ -1208,7 +1208,7 @@
                       <div class="si-entry" role="listitem">
                         <div class="si-entry__id" aria-label="SI-12">SI-12</div>
                         <div class="si-entry__body">
-                          <span class="si-entry__desc">Recovery verification -- confirming system integrity before restoring to production</span>
+                          <span class="si-entry__desc">Recovery verification: confirming system integrity before restoring to production</span>
                           <span class="si-entry__reason">Technical gate action; must be completed before any system restoration; opens the close-out phase</span>
                         </div>
                       </div>
@@ -1222,7 +1222,7 @@
                       <div class="si-entry" role="listitem">
                         <div class="si-entry__id" aria-label="SI-13">SI-13</div>
                         <div class="si-entry__body">
-                          <span class="si-entry__desc">Post-incident lessons learned -- documenting what happened and what to change</span>
+                          <span class="si-entry__desc">Post-incident lessons learned: documenting what happened and what to change</span>
                           <span class="si-entry__reason">Organizational learning output; depends on full incident record and completed close-out documentation</span>
                         </div>
                       </div>
@@ -1245,7 +1245,7 @@
                       </svg>
                       <span class="bucket-flag__text">
                         <strong>Step 3 balance flag:</strong> Bucket 4 contains
-                        3 items -- the smallest bucket in the set. This does
+                        3 items: the smallest bucket in the set. This does
                         not require merging with Bucket 3. The items share
                         a distinct prerequisite (containment confirmation) that
                         separates them clearly from active execution. However,
@@ -1259,14 +1259,14 @@
 
                 <!-- Four-bucket summary -->
                 <p class="step-content" style="margin-top:1rem;">
-                  The complete MRHN Bucket Map -- four buckets, 16 scope items
+                  The complete MRHN Bucket Map: four buckets, 16 scope items
                   assigned, workflow sequence established:
                 </p>
                 <div class="bucket-map-summary"
                      role="region"
                      aria-label="Complete MRHN Bucket Map summary">
                   <div class="bucket-map-summary__header">
-                    MRHN Bucket Map -- Step 2 Complete
+                    MRHN Bucket Map: Step 2 Complete
                   </div>
                   <div class="bucket-summary-row">
                     <span class="bucket-summary__num">Bucket 1</span>
@@ -1332,7 +1332,7 @@
                 <p class="annotation-text">
                   Topic-based grouping feels natural because it matches how
                   subject-matter experts think about their field. But learners
-                  are not being trained to think about the field -- they are
+                  are not being trained to think about the field: they are
                   being trained to perform in the field. Those two things
                   require different organizational logic.
                 </p>
@@ -1342,7 +1342,7 @@
                    aria-label="Annotation for step 3">
                 <span class="annotation-marker" aria-hidden="true">03</span>
                 <p class="annotation-text">
-                  Bucket 1 has 5 items -- the largest bucket. I am not
+                  Bucket 1 has 5 items: the largest bucket. I am not
                   splitting it to achieve numerical balance. The 5 items
                   form an unbroken decision chain (classify, activate,
                   reclassify, escalate, re-activate). Splitting that chain
@@ -1356,7 +1356,7 @@
                 <span class="annotation-marker" aria-hidden="true">04</span>
                 <p class="annotation-text">
                   The signal that these four belong together is not just
-                  workflow position -- it is that they are all governed by
+                  workflow position: it is that they are all governed by
                   PC-3 (role-bounded authority). When scope items share
                   a governing constraint, that constraint usually defines
                   the learning challenge for the bucket. Here: can you
