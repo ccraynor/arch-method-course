@@ -119,7 +119,7 @@ function initBreadcrumb() {
     p.className = 'return-hub';
     const a = document.createElement('a');
     a.href = hub.href;
-    a.textContent = hub.label;
+    a.innerHTML = '<span aria-hidden="true">← </span>Return to Lesson Hub';
     p.appendChild(a);
     h1.parentNode.insertBefore(p, h1);
   }

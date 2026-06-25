@@ -1301,7 +1301,7 @@ footer[role="contentinfo"] nav a:focus-visible {
 .hub-glance__value { display: block; font-size: 1.25rem; font-weight: 800; color: var(--color-text-primary); }
 
 /* Return to hub link (on unit screens) */
-.return-hub { margin: 0.5rem 0 0; font-size: var(--font-size-label); }
+.return-hub { margin: 0.5rem 0 0; font-size: 0.9375rem; }
 .return-hub a { color: var(--color-text-link); text-underline-offset: 2px; }
 
 @media (prefers-contrast: more) {
