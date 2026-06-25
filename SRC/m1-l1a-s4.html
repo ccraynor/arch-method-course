@@ -580,6 +580,14 @@
 
           </div><!-- /.scope-fields -->
 
+          <!-- Articulation requirement (Prompt E item 9) -->
+          <div class="articulation">
+            <label class="articulation__label" for="articulation-m1l1as4">My reasoning for this decision is</label>
+            <textarea class="articulation__input" id="articulation-m1l1as4" rows="2"
+                      data-autosave-key="reasoning_m1_l1a_s4"
+                      placeholder="Complete the sentence above."></textarea>
+          </div>
+
           <!-- Confidence rating (item 20) -->
           <fieldset class="confidence-rating" data-confidence data-screen-id="m1_l1a_s4">
             <legend class="confidence-rating__legend">How confident are you in your answers?</legend>
@@ -643,6 +651,13 @@
             <div id="feedback-reference-body">
               <!-- Populated by script -->
             </div>
+          </div>
+
+          <!-- Articulation echo + Your Development (Prompt E items 9, 8) -->
+          <p class="articulation__echo" data-mirror-of="articulation-m1l1as4"></p>
+          <div class="your-development">
+            <span class="your-development__label">Your Development</span>
+            <p class="your-development__text">What your response reveals: you are learning to treat scope boundaries as binding agreements, not loose descriptions. What to carry forward: name what falls outside the course as clearly as what falls inside it, because both protect your design.</p>
           </div>
 
           <!-- Actions -->

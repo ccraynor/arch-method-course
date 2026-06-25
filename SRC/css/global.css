@@ -2611,3 +2611,55 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   color: var(--color-text-primary);
 }
 .intake-profile[hidden] { display: none; }
+
+/* Item 17: Before / After / Why governance record contrast (m1-l1b-s6) */
+.exemplar-contrast {
+  margin: 1.5rem 0 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--color-border-default);
+  border-radius: 6px;
+  background: var(--color-bg-subtle);
+}
+.exemplar-contrast__heading {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+.exemplar-contrast__case { margin: 0 0 1.25rem; }
+.exemplar-contrast__label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-size: var(--font-size-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-brand-teal);
+}
+.exemplar-contrast__record {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+.exemplar-contrast__record li { margin: 0 0 0.375rem; }
+.exemplar-contrast__note {
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+}
+.exemplar-contrast__why-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-brand-navy);
+}
+.exemplar-contrast__why {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}

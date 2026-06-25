@@ -716,6 +716,13 @@
             </div>
           </div>
 
+          <div class="articulation">
+            <label class="articulation__label" for="articulation-m1l1bs6">My reasoning for this decision is</label>
+            <textarea class="articulation__input" id="articulation-m1l1bs6" rows="2"
+                      data-autosave-key="reasoning_m1_l1b_s6"
+                      placeholder="Complete the sentence above."></textarea>
+          </div>
+
           <!-- Confidence rating (item 20) -->
           <fieldset class="confidence-rating" data-confidence data-screen-id="m1_l1b_s6">
             <legend class="confidence-rating__legend">How confident are you in your answers?</legend>
@@ -838,6 +845,44 @@
               </div>
 
             </div><!-- /.expert-snapshot -->
+
+            <p class="articulation__echo" data-mirror-of="articulation-m1l1bs6"></p>
+            <div class="your-development">
+              <span class="your-development__label">Your Development</span>
+              <p class="your-development__text">What your response reveals: your reasoning shows whether you can tie a decision to a specific constraint and name its risk before a reviewer does. What to carry forward: a decision record with no risk note is a note, not governance.</p>
+            </div>
+
+            <!-- Before / After / Why governance record contrast (Prompt E item 17) -->
+            <div class="exemplar-contrast" role="group" aria-label="Weak versus strong governance record">
+              <p class="exemplar-contrast__heading">Compare a weak record to a strong one</p>
+
+              <div class="exemplar-contrast__case">
+                <span class="exemplar-contrast__label">Before</span>
+                <ul class="exemplar-contrast__record">
+                  <li><strong>Decision Statement:</strong> The course will use the IR-2024 protocol.</li>
+                  <li><strong>Constraint Reference:</strong> The client wants the current incident response protocol.</li>
+                  <li><strong>Rationale:</strong> IR-2024 is the protocol Meridian uses, so the course should match it.</li>
+                  <li><strong>Risk Note:</strong> If something changes later, the course might need to be updated.</li>
+                  <li><strong>Checkpoint Linkage:</strong> This will be reviewed before the course is finished.</li>
+                </ul>
+                <p class="exemplar-contrast__note">This record names no constraint code, restates the decision as its rationale, and gives a risk note with no concrete failure condition.</p>
+              </div>
+
+              <div class="exemplar-contrast__case">
+                <span class="exemplar-contrast__label">After</span>
+                <ul class="exemplar-contrast__record">
+                  <li><strong>Decision Statement:</strong> The MRHN course aligns to IR-2024 as adopted in January 2024. Protocol revisions after project start are out of scope without a documented scope change request and governance review.</li>
+                  <li><strong>Constraint Reference:</strong> RC-2 (IR-2024 as adopted); PC-1 (IR-2024 protocol alignment); LC-1 (4 hours total SME access).</li>
+                  <li><strong>Rationale:</strong> The OCR remediation timeline and the SME access cap mean scope cannot flex after the first SME meeting. Fixing IR-2024 as of its adoption date prevents drift the project cannot absorb. The brief names IR-2024 by adoption date, which makes it the governing reference.</li>
+                  <li><strong>Risk Note:</strong> If Meridian revises IR-2024 mid-project and the change is absorbed silently, learners will train on a protocol version that does not match the audited standard. That creates a compliance gap during the OCR review. The risk is accepted; any post-launch update requires a documented v2 revision.</li>
+                  <li><strong>Checkpoint Linkage:</strong> Gate 1.TG.1 verifies that every performance item traces to IR-2024 as adopted. Module 3 Outcome Mapping confirms no performance item references a protocol version the course content does not cover.</li>
+                </ul>
+                <p class="exemplar-contrast__note">This record cites the binding constraints by code and names a concrete failure condition a reviewer can check.</p>
+              </div>
+
+              <p class="exemplar-contrast__why-label">Why it is stronger</p>
+              <p class="exemplar-contrast__why">The strong version cites the exact binding constraints by code and names a concrete failure condition, learners trained on an unaudited protocol version during the OCR review, so a reviewer can both verify the decision and see precisely what the risk note protects against.</p>
+            </div>
 
             <!-- Navigation inside feedback -->
             <div class="feedback-controls">

@@ -267,6 +267,8 @@
                ================================================== -->
           <div class="worked-example__content">
 
+            <p class="curiosity-gap">Every scope item has at least one component, so the forward trace passes on the first read. How can a map that clears that check still hide a component filed under the wrong parent?</p>
+
             <!-- Step 01 -->
             <div class="example-step" id="step-1">
               <div class="step-marker" aria-label="Step 1"><span aria-hidden="true">01</span></div>
@@ -552,6 +554,7 @@
                   the parent label must be corrected. Before making the correction, I need to verify
                   that SI-15 will still be represented in the map after DC-45 is moved.
                 </p>
+                <div class="discovery-moment">Notice the catch: the forward trace counted every component, yet only reading each description against its label exposed the wrong parent.</div>
               </div>
             </div>
 
@@ -937,6 +940,18 @@
           </aside>
 
         </div><!-- /.worked-example__layout -->
+
+        <details class="transfer-context" data-persist-key="transferContext_l6_open">
+          <summary class="transfer-context__summary">In a Different Context</summary>
+          <div class="transfer-context__body">
+            <p>Picture a doctoral research methods course instead of incident response. You break it into components like framing a question, choosing a design, and defending validity. The same trace audit applies: every component must map to a parent outcome, and every outcome must produce at least one component. A unit on citation style that traces to no research outcome is an orphan, and it sits outside your scope.</p>
+          </div>
+        </details>
+
+        <div class="in-your-context">
+          <span class="in-your-context__label">In Your Context</span>
+          In your own course maps, when did a component survive review only because no one traced it back to a parent outcome?
+        </div>
 
         <!-- Screen navigation -->
         <nav class="screen-nav" aria-label="Screen navigation">

@@ -346,6 +346,13 @@
             Please select a verdict for every component before checking your work.
           </p>
 
+          <div class="articulation">
+            <label class="articulation__label" for="articulation-m1l4bs4">My reasoning for this decision is</label>
+            <textarea class="articulation__input" id="articulation-m1l4bs4" rows="2"
+                      data-autosave-key="reasoning_m1_l4b_s4"
+                      placeholder="Complete the sentence above."></textarea>
+          </div>
+
           <!-- Confidence rating (item 20) -->
           <fieldset class="confidence-rating" data-confidence data-screen-id="m1_l4b_s4">
             <legend class="confidence-rating__legend">How confident are you in your answers?</legend>
@@ -372,6 +379,11 @@
             Expert reasoning is shown for all three components below, regardless of whether your answer matched. Focus on the reasoning behind each verdict: the logic is what transfers to new decomposition maps.
           </p>
           <div id="feedback-body"></div>
+          <p class="articulation__echo" data-mirror-of="articulation-m1l4bs4"></p>
+          <div class="your-development">
+            <span class="your-development__label">Your Development</span>
+            <p class="your-development__text">What your response reveals: your reasoning shows whether you judged each component by teachability and assessability, not by how important it felt. What to carry forward: a component earns its place only when one unit can teach it and one item can assess it.</p>
+          </div>
           <div class="feedback-actions">
             <a id="btn-continue" href="m1-l4b-s5.html" class="btn btn--primary">
               Continue to Scope Trace Audit

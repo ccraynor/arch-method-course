@@ -374,6 +374,27 @@
           it to see whether this credential addressed the challenge you named.
         </p>
 
+        <!-- Diagnostic prior knowledge check (Prompt E item 7) -->
+        <section class="diagnostic-check" aria-label="Quick prior knowledge check">
+          <h2 class="diagnostic-check__heading">Before You Begin: Two Quick Questions</h2>
+          <div class="diagnostic-q">
+            <p class="diagnostic-q__prompt" id="diag-q1-prompt">How much course design experience do you bring to this credential?</p>
+            <div class="diagnostic-q__options" role="radiogroup" aria-labelledby="diag-q1-prompt">
+              <label class="diagnostic-q__option"><input type="radio" name="diag-q1" value="formal" data-diag-key="diag_q1"> I have formal training in instructional design.</label>
+              <label class="diagnostic-q__option"><input type="radio" name="diag-q1" value="informal" data-diag-key="diag_q1"> I design courses, but I learned mostly on the job.</label>
+              <label class="diagnostic-q__option"><input type="radio" name="diag-q1" value="none" data-diag-key="diag_q1"> Course architecture is new to me.</label>
+            </div>
+          </div>
+          <div class="diagnostic-q">
+            <p class="diagnostic-q__prompt" id="diag-q2-prompt">How often do you work from a written project brief or constraints document?</p>
+            <div class="diagnostic-q__options" role="radiogroup" aria-labelledby="diag-q2-prompt">
+              <label class="diagnostic-q__option"><input type="radio" name="diag-q2" value="often" data-diag-key="diag_q2"> Often. It is part of how I start a project.</label>
+              <label class="diagnostic-q__option"><input type="radio" name="diag-q2" value="sometimes" data-diag-key="diag_q2"> Sometimes, depending on the project.</label>
+              <label class="diagnostic-q__option"><input type="radio" name="diag-q2" value="rarely" data-diag-key="diag_q2"> Rarely. I usually start from the content.</label>
+            </div>
+          </div>
+        </section>
+
         <!-- =========================================================
              Reflection Prompt Card
              Navy left-border signals this is the task itself, not
