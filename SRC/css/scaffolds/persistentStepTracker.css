@@ -24,37 +24,12 @@
 
 /* ============================================================
    LOCATION BAR
-   #progress-tracker flex row of text items with bullet dividers.
-   Lives in <header> -- inherits header font size/color context.
+   The canonical #progress-tracker layout and .pt-item / .pt-divider
+   text styles live in global.css. They were removed from this file to
+   avoid a load-order conflict (this stylesheet loads after global.css
+   and was overriding the redesigned column layout). This file now owns
+   only the step-dot visual language below.
    ============================================================ */
-
-#progress-tracker {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.25rem 0;
-  /* tabindex="-1" is set in base.html (skip-link target) -- not repeated here */
-}
-
-/* Individual text items (Module X of 4, Lesson X, Phase X, Step X, Screen X of Y) */
-.pt-item {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.8125rem;
-  color: var(--color-text-secondary);
-  white-space: nowrap;
-}
-
-/* Bullet separators between items -- purely visual, aria-hidden in base.html */
-.pt-divider {
-  display: inline-block;
-  padding: 0 0.375rem;
-  color: var(--color-border-default);
-  font-size: 0.75rem;
-  /* Slightly larger than font-size so the bullet aligns optically */
-  line-height: 1;
-  user-select: none;
-}
 
 /* ============================================================
    STEP INDICATOR NAV
@@ -212,15 +187,8 @@
     background-color: var(--color-border-strong);
     height: 3px;
   }
-
-  .pt-item {
-    color: var(--color-text-primary);
-    font-weight: 600;
-  }
-
-  .pt-divider {
-    color: var(--color-text-secondary);
-  }
+  /* High-contrast .pt-item / .pt-divider text overrides live in global.css
+     (the canonical tracker styles); not duplicated here. */
 }
 
 /* ============================================================
