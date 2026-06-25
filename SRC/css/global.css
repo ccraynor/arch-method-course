@@ -250,7 +250,7 @@ header[role="banner"] #progress-tracker .pt-item {
   display: inline-flex;
   align-items: center;
   /* Tracker location/activity rows sit between label (0.75) and body (1rem). */
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   color: var(--color-text-inverse);
   opacity: 0.92;
@@ -265,7 +265,7 @@ header[role="banner"] #progress-tracker .pt-item {
 }
 
 .pt-item--position {
-  opacity: 0.72;
+  opacity: 0.85;
 }
 
 /* Bullet separators */
@@ -274,9 +274,9 @@ header[role="banner"] #progress-tracker .pt-divider {
   display: inline-block;
   padding: 0 0.4375rem;
   color: var(--color-text-inverse);
-  opacity: 0.4;
+  opacity: 0.6;
   /* Match the location/activity row text size (.pt-item). */
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   line-height: 1;
   user-select: none;
   flex-shrink: 0;
@@ -425,7 +425,7 @@ header nav[aria-label="Support tools"] {
 .breadcrumb__item {
   display: flex;
   align-items: center;
-  font-size: var(--font-size-label);
+  font-size: 0.8125rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-label);
@@ -867,7 +867,7 @@ footer[role="contentinfo"] nav a:focus-visible {
 .lesson-label {
   display: block;
   margin-bottom: 0.375rem;
-  font-size: var(--font-size-label);
+  font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-label);
@@ -899,7 +899,7 @@ footer[role="contentinfo"] nav a:focus-visible {
 
 .lesson-intro__section-heading {
   margin-bottom: 0.5rem;
-  font-size: var(--font-size-label);
+  font-size: 0.9375rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-label);
@@ -1398,7 +1398,16 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 .artifact-prog__item.is-upcoming .artifact-prog__status { color: var(--color-text-secondary); }
 
 /* Session length note (item 13) */
-.session-note { margin: 1rem 0 0; padding: 0.75rem 0.875rem; background: var(--color-bg-subtle); border-left: 4px solid var(--color-brand-teal); border-radius: 0 4px 4px 0; font-size: var(--font-size-body); color: var(--color-text-primary); line-height: 1.6; }
+.session-note { margin: 1rem 0 1.5rem; padding: 0.75rem 0.875rem; background: var(--color-bg-subtle); border-left: 4px solid var(--color-brand-teal); border-radius: 0 4px 4px 0; font-size: var(--font-size-body); color: var(--color-text-primary); line-height: 1.6; }
+
+/* Field hint text (promoted from per-screen styles -- canonical here). */
+.writing-field__hint,
+.scope-field__hint {
+  margin: 0;
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
 
 /* Resume prompt (item 14) */
 .resume-banner { margin: 1.25rem 0; padding: 1rem 1.25rem; background: var(--color-bg-subtle); border: 1px solid var(--color-brand-teal); border-radius: 8px; }
