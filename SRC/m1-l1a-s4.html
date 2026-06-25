@@ -1096,7 +1096,7 @@
           'Your declaration addresses the key constraints from the Meridian brief. ' +
           'Compare your response to the expert reference below.';
       } else {
-        feedbackHdg.textContent = 'Scope statement needs more specificity.';
+        feedbackHdg.textContent = 'Your scope statement needs more specificity.';
         const gaps = [];
         if (!hasPopulation) gaps.push('name the IT roles from the brief in your in-scope statement');
         if (!hasProtocol)   gaps.push('reference IR-2024 by name in your in-scope statement');
@@ -1129,7 +1129,7 @@
       requestAnimationFrame(() => {
         announcer.textContent = allOk
           ? 'Comprehensive scope statement. Continue to the next screen.'
-          : 'Scope statement needs more specificity. Review the feedback and the expert reference.';
+          : 'Your scope statement needs more specificity. Review the feedback and the expert reference below.';
       });
     }
 

@@ -1160,7 +1160,7 @@
         if (!logOk)   gaps.push('name the SME hour cap and SCORM format in your logistical field');
         if (!stakeOk) gaps.push('identify the architecture sign-off requirement or the compliance-checkbox rejection in your stakeholder field');
         if (!bindOk)  gaps.push('name at least two specific binding constraints with reasons in the binding field');
-        feedbackHdg.textContent = 'Constraint extraction needs more specificity.';
+        feedbackHdg.textContent = 'Your constraint extraction needs more specificity.';
         feedbackExp.textContent = 'To strengthen it: ' + gaps.join('; ') + '.';
       }
 
@@ -1182,7 +1182,7 @@
       requestAnimationFrame(() => {
         announcer.textContent = allOk
           ? 'Comprehensive constraint extraction. Continue to the next screen.'
-          : 'Extraction needs more specificity. Review the feedback and the expert constraint map.';
+          : 'Your constraint extraction needs more specificity. Review the feedback and the expert constraint map below.';
       });
     }
 
