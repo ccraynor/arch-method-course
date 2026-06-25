@@ -1046,11 +1046,15 @@ pacing alert. COMMITTED 56fcb40.
 Prompt E Part 1: Voice rewrite, narrative activation,
 Priya emails, learner-centeredness, engagement,
 motivation, transfer contexts, portfolio alignment.
-IN PROGRESS.
+COMMITTED e999732.
 - Section 1 voice rewrite: COMMITTED 7b6076b (and JS follow-up)
 - Section 2 narrative activation: COMMITTED a77b63e
 - Sections 3-5 infrastructure: COMMITTED 9e30c23
-- Sections 3-5 screen integration: IN PROGRESS
+- Sections 3-5 screen integration: COMMITTED e999732
+  (curiosity gaps, discovery moments, transfer contexts,
+  In Your Context, articulation, developmental feedback,
+  purpose statements, diagnostic check, social proof,
+  Before/After/Why governance record exemplar)
 
 Prompt E Part 2: Architecture, navigation, UX,
 executive functioning, learning science, portfolio

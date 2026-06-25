@@ -2663,3 +2663,12 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   line-height: 1.6;
   color: var(--color-text-primary);
 }
+
+/* ARCH Method mindset callout (lesson introduction screens) */
+.mindset-callout {
+  margin: 0.5rem 0 1.25rem;
+  font-size: 0.9375rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--color-brand-navy);
+}
