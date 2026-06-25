@@ -254,10 +254,10 @@ function recordLastVisited() {
   } catch { /* storage unavailable */ }
 }
 
-/* Prompt E Part 1 Section 2: Priya Okonkwo email cards persist their
-   open/closed state. data-persist-key is namespaced by storage.js. */
-function initPriyaEmails() {
-  document.querySelectorAll('details.priya-email[data-persist-key]').forEach(d => {
+/* Prompt E Part 1 Section 2/3: collapsible cards (Priya email, transfer
+   context) persist open/closed state. data-persist-key namespaced by storage.js. */
+function initCollapsiblePersistence() {
+  document.querySelectorAll('details[data-persist-key]').forEach(d => {
     const key = d.getAttribute('data-persist-key');
     const saved = getItem(key);
     if (saved === 'closed') d.open = false;
@@ -270,7 +270,7 @@ function initPriyaEmails() {
    (for example the scenario evolution note). data-autosave-key is namespaced
    by storage.js; data-autosave-status points to a status element id. */
 function initSceneAutosave() {
-  document.querySelectorAll('textarea[data-autosave-key]').forEach(t => {
+  document.querySelectorAll('textarea[data-autosave-key], input[data-autosave-key]').forEach(t => {
     const key = t.getAttribute('data-autosave-key');
     const saved = getItem(key);
     if (saved != null) t.value = saved;
@@ -282,6 +282,53 @@ function initSceneAutosave() {
   });
 }
 
+/* Prompt E Part 1 Section 4: mirror the articulation reasoning into a
+   read-only echo shown with the expert comparison feedback. The echo element
+   carries data-mirror-of pointing to the articulation input id. */
+function initArticulationMirror() {
+  document.querySelectorAll('[data-mirror-of]').forEach(echo => {
+    const src = document.getElementById(echo.getAttribute('data-mirror-of'));
+    if (!src) return;
+    const sync = () => {
+      const v = (src.value || '').trim();
+      echo.textContent = v ? 'Your stated reasoning: ' + v : '';
+    };
+    sync();
+    src.addEventListener('input', sync);
+  });
+}
+
+/* Prompt E Part 1 Section 3: diagnostic prior-knowledge radios persist their
+   selection. Each radio carries data-diag-key (namespaced by storage.js). */
+function initDiagnostic() {
+  const groups = {};
+  document.querySelectorAll('input[type="radio"][data-diag-key]').forEach(r => {
+    const key = r.getAttribute('data-diag-key');
+    (groups[key] = groups[key] || []).push(r);
+    r.addEventListener('change', () => { if (r.checked) setItem(key, r.value); });
+  });
+  Object.keys(groups).forEach(key => {
+    const saved = getItem(key);
+    if (saved == null) return;
+    groups[key].forEach(r => { if (r.value === saved) r.checked = true; });
+  });
+}
+
+/* Prompt E Part 1 Section 3: personalized intake profile note on m1-l1a-s1.
+   Reads archMethod_diag_q1 and shows the matching profile copy. The element
+   carries data-profile-prior and data-profile-new copy. */
+function initIntakeProfile() {
+  const el = document.querySelector('.intake-profile[data-profile-prior]');
+  if (!el) return;
+  const q1 = getItem('diag_q1');
+  if (q1 == null) return;
+  const prior = (q1 === 'formal' || q1 === 'informal');
+  el.textContent = prior
+    ? el.getAttribute('data-profile-prior')
+    : el.getAttribute('data-profile-new');
+  el.hidden = false;
+}
+
 initPanelDescriptions();
 initCommitmentSidebar();
 initYourProgressGroup();
@@ -290,6 +337,9 @@ initBriefPanel();
 initGlossary();
 initGlossaryList();
 initArtifactProgression();
-initPriyaEmails();
+initCollapsiblePersistence();
 initSceneAutosave();
+initArticulationMirror();
+initDiagnostic();
+initIntakeProfile();
 recordLastVisited();

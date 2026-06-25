@@ -493,6 +493,8 @@ Narrative keys (Prompt E Part 1 Section 2):
   email card open/closed state)
 - archMethod_sme_update_note (learner note on the SME
   availability scenario evolution event)
+- archMethod_transferContext_[lesson]_open (In a Different
+  Context collapsible open/closed state per worked example)
 
 Note: Prompt D adds archMethod_lastVisitDate.
 Note: Prompt E adds archMethod_pacingMode,

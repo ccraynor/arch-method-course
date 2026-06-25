@@ -2394,3 +2394,220 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 .gate-banner .return-hub a {
   color: var(--color-text-inverse);
 }
+
+/* ============================================================
+   ENGAGEMENT + APPRENTICESHIP COMPONENTS (Prompt E Part 1 S3-5)
+   Reusable across modules. Token-based colors only.
+   ============================================================ */
+
+/* Item 10: curiosity gap opener (before the first expert step) */
+.curiosity-gap {
+  margin: 0 0 1.5rem;
+  font-size: 1.0625rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--color-text-primary);
+}
+
+/* Item 11: discovery moment framing */
+.discovery-moment {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid var(--color-brand-teal);
+  background: var(--color-bg-subtle);
+  border-radius: 0 4px 4px 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+
+/* Item 6: In Your Context (teal italic transfer prompt) */
+.in-your-context {
+  margin: 1.5rem 0 0;
+  padding: 0.875rem 1rem;
+  border-left: 4px solid var(--color-brand-teal);
+  background: var(--color-bg-subtle);
+  border-radius: 0 4px 4px 0;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--color-text-primary);
+}
+.in-your-context__label {
+  display: block;
+  font-style: normal;
+  font-weight: 700;
+  font-size: var(--font-size-label);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-brand-teal);
+  margin-bottom: 0.25rem;
+}
+
+/* Item 15: In a Different Context (collapsible transfer context) */
+.transfer-context {
+  margin: 1.5rem 0 0;
+  border: 1px solid var(--color-border-default);
+  border-left: 4px solid var(--color-brand-teal);
+  border-radius: 0 6px 6px 0;
+  background: var(--color-bg-subtle);
+}
+.transfer-context__summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  font-size: var(--font-size-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-brand-teal);
+}
+.transfer-context__summary::-webkit-details-marker { display: none; }
+.transfer-context__summary::after {
+  content: "Show";
+  margin-left: auto;
+  font-size: var(--font-size-label);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--color-text-link);
+}
+.transfer-context[open] .transfer-context__summary::after { content: "Hide"; }
+.transfer-context__body {
+  margin: 0;
+  padding: 0 1rem 1rem;
+  font-size: 1rem;
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+
+/* Item 13: social proof / normalization */
+.social-proof {
+  margin: 1.5rem 0 0;
+  padding: 0.875rem 1rem;
+  border-left: 4px solid var(--color-brand-navy);
+  background: var(--color-bg-subtle);
+  border-radius: 0 4px 4px 0;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--color-text-primary);
+}
+
+/* Item 14: forward-looking purpose statement (small teal text) */
+.purpose-forward {
+  display: block;
+  margin: 0.75rem 0 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--color-brand-teal);
+}
+
+/* Item 8: Your Development developmental feedback */
+.your-development {
+  margin: 1.25rem 0 0;
+  padding: 0.875rem 1rem;
+  border-left: 4px solid var(--color-brand-teal);
+  background: var(--color-bg-subtle);
+  border-radius: 0 4px 4px 0;
+}
+.your-development__label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-size: var(--font-size-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-brand-teal);
+}
+.your-development__text {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--color-text-primary);
+}
+
+/* Item 9: articulation requirement field */
+.articulation { margin: 1.25rem 0; }
+.articulation__label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+.articulation__input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  color: var(--color-text-primary);
+  background: var(--color-bg-page);
+  border: 1px solid var(--color-border-default);
+  border-radius: 4px;
+}
+.articulation__input:focus {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-color: var(--color-text-link);
+}
+.articulation__echo {
+  margin: 0.375rem 0 0;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+.articulation__echo:empty { display: none; }
+
+/* Item 7: diagnostic prior knowledge check */
+.diagnostic-check {
+  margin: 1.5rem 0 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--color-border-default);
+  border-left: 4px solid var(--color-brand-teal);
+  border-radius: 0 6px 6px 0;
+  background: var(--color-bg-subtle);
+}
+.diagnostic-check__heading {
+  margin: 0 0 0.75rem;
+  font-size: var(--font-size-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-brand-teal);
+}
+.diagnostic-q { margin: 0 0 1rem; }
+.diagnostic-q:last-child { margin-bottom: 0; }
+.diagnostic-q__prompt {
+  margin: 0 0 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+.diagnostic-q__options { display: flex; flex-direction: column; gap: 0.375rem; }
+.diagnostic-q__option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+/* Item 7: personalized intake profile note (m1-l1a-s1) */
+.intake-profile {
+  margin: 0.75rem 0 1.25rem;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid var(--color-brand-teal);
+  background: var(--color-bg-subtle);
+  border-radius: 0 4px 4px 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+.intake-profile[hidden] { display: none; }
