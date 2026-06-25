@@ -8,6 +8,35 @@ Prompts B-E in progress.
 
 ---
 
+## Pre-Module 2 Build Tasks
+
+Complete these before starting the Module 2 build session.
+
+1. Reading Enrichment Build -- add two reading enrichment cards
+   per module to the appropriate lesson screens. Sources already
+   locked in Stage 3 Section 11 Addendum document:
+   - Module 1: Stefaniak task analysis (EdTech Books) +
+     Drysdale 2019 (ERIC/OLC)
+   - Module 2: Weinstein et al. 2018 (PMC CC-BY) + MIT Open
+     Learning spaced/interleaved practice
+   - Module 3: Jahnke et al. 2021 (OLC CC-BY) + Smith and
+     Luo 2024 (TechTrends CC-BY)
+   - Module 4: Lachheb and Boling 2021 (EdTech Books) +
+     Totino and Kessler 2024 (JAID)
+
+   Format: no hyperlinks. Each card shows author, year, title,
+   and publication with a plain-text search instruction: To find
+   this article search [Author Last Name] [Year] [key title words]
+   in Google Scholar or your institution's library database. It is
+   openly accessible.
+
+   Cards are optional enrichment, collapsible, labeled Skip
+   (optional) in Focused Practice mode. Place at the end of the
+   relevant lesson reflection screen or as a new optional screen.
+   Build after Prompt E Part 2 and Prompt F commit.
+
+---
+
 ## Priority 1 -- Build After First Ten Learners Complete Module 1
 
 These items require real learner data to implement well.
