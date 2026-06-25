@@ -1388,11 +1388,11 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 .artifact-prog { margin: 0.75rem 0 0; border-top: 1px solid var(--color-border-default); padding-top: 0.625rem; }
 .artifact-prog__summary { font-size: 0.875rem; font-weight: 700; color: var(--color-text-secondary); cursor: pointer; }
 .artifact-prog__list { list-style: none; margin: 0.5rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.375rem; }
-.artifact-prog__item { display: grid; grid-template-columns: 1fr auto; gap: 0.125rem 0.5rem; padding: 0.375rem 0.5rem; border: 1px solid var(--color-border-default); border-radius: 4px; font-size: 0.875rem; }
+.artifact-prog__item { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.25rem 0.5rem; padding: 0.375rem 0.5rem; border: 1px solid var(--color-border-default); border-radius: 4px; font-size: 0.875rem; }
 .artifact-prog__item.is-current { border-color: var(--color-brand-teal); border-left-width: 3px; }
-.artifact-prog__name { font-family: monospace; font-weight: 700; color: var(--color-text-primary); }
+.artifact-prog__name { flex: 0 0 100%; font-family: monospace; font-weight: 700; color: var(--color-text-primary); overflow-wrap: anywhere; }
 .artifact-prog__meta { color: var(--color-text-secondary); }
-.artifact-prog__status { grid-column: 1 / -1; font-weight: 700; }
+.artifact-prog__status { font-weight: 700; }
 .artifact-prog__item.is-complete .artifact-prog__status { color: var(--color-success-text); }
 .artifact-prog__item.is-inprogress .artifact-prog__status { color: var(--color-warning-text); }
 .artifact-prog__item.is-upcoming .artifact-prog__status { color: var(--color-text-secondary); }
