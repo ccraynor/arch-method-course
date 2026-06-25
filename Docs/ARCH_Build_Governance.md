@@ -484,6 +484,16 @@ Progress tracking keys (Prompt C Section 5):
   learner clicks Next; drives the Complete status on
   lesson hub screens)
 
+Narrative keys (Prompt E Part 1 Section 2):
+- archMethod_priyaEmail_l3_open (Lesson 3 Priya email
+  card open/closed state)
+- archMethod_priyaEmail_l5_open (Lesson 5 Priya email
+  card open/closed state)
+- archMethod_priyaEmail_gate_open (Module Gate Priya
+  email card open/closed state)
+- archMethod_sme_update_note (learner note on the SME
+  availability scenario evolution event)
+
 Note: Prompt D adds archMethod_lastVisitDate.
 Note: Prompt E adds archMethod_pacingMode,
 archMethod_diag_q1/q2, archMethod_reasoning_[screenId],

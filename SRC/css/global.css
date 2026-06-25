@@ -2259,3 +2259,122 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
     page-break-inside: avoid;
   }
 }
+
+/* ============================================================
+   NARRATIVE COMPONENTS (Prompt E Part 1 Section 2)
+   Priya Okonkwo email card, Project Update card, narrative
+   resolution. Reusable across modules. Token-based colors only.
+   ============================================================ */
+
+/* Priya Okonkwo email -- collapsible message card */
+.priya-email {
+  margin: 1.25rem 0;
+  border: 1px solid var(--color-border-default);
+  border-left: 4px solid var(--color-brand-teal);
+  border-radius: 0 6px 6px 0;
+  background: var(--color-bg-subtle);
+}
+.priya-email__summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.125rem 0.5rem;
+  padding: 0.75rem 1rem;
+}
+.priya-email__summary::-webkit-details-marker { display: none; }
+.priya-email__summary::after {
+  content: "Show";
+  margin-left: auto;
+  font-size: var(--font-size-label);
+  font-weight: 600;
+  color: var(--color-text-link);
+}
+.priya-email[open] .priya-email__summary::after { content: "Hide"; }
+.priya-email__from { font-weight: 700; color: var(--color-text-primary); }
+.priya-email__role { font-size: 0.875rem; color: var(--color-text-secondary); }
+.priya-email__body {
+  margin: 0;
+  padding: 0 1rem 1rem;
+  font-size: 1rem;
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+
+/* Project Update -- scenario evolution card with autosave note */
+.project-update {
+  margin: 1.25rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--color-border-default);
+  border-left: 4px solid var(--color-brand-teal);
+  border-radius: 0 6px 6px 0;
+  background: var(--color-bg-subtle);
+}
+.project-update__label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-size: var(--font-size-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-brand-teal);
+}
+.project-update__text {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.project-update__prompt {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+.project-update__field {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 5rem;
+  padding: 0.625rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  background: var(--color-bg-page);
+  border: 1px solid var(--color-border-default);
+  border-radius: 4px;
+  resize: vertical;
+}
+.project-update__field:focus {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-color: var(--color-text-link);
+}
+.project-update__saved {
+  display: inline-block;
+  margin-top: 0.375rem;
+  font-size: var(--font-size-label);
+  color: var(--color-text-secondary);
+}
+
+/* Narrative resolution -- closing story beat (here is what happened next) */
+.narrative-resolution {
+  margin: 2rem 0 0;
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid var(--color-brand-teal);
+  border-radius: 0 6px 6px 0;
+  background: var(--color-bg-subtle);
+}
+.narrative-resolution__heading {
+  margin: 0 0 0.5rem;
+  font-size: var(--font-size-heading);
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+.narrative-resolution__body {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-text-primary);
+}

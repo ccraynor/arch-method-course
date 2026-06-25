@@ -254,6 +254,34 @@ function recordLastVisited() {
   } catch { /* storage unavailable */ }
 }
 
+/* Prompt E Part 1 Section 2: Priya Okonkwo email cards persist their
+   open/closed state. data-persist-key is namespaced by storage.js. */
+function initPriyaEmails() {
+  document.querySelectorAll('details.priya-email[data-persist-key]').forEach(d => {
+    const key = d.getAttribute('data-persist-key');
+    const saved = getItem(key);
+    if (saved === 'closed') d.open = false;
+    else if (saved === 'open') d.open = true;
+    d.addEventListener('toggle', () => setItem(key, d.open ? 'open' : 'closed'));
+  });
+}
+
+/* Prompt E Part 1 Section 2: generic autosave for narrative scene textareas
+   (for example the scenario evolution note). data-autosave-key is namespaced
+   by storage.js; data-autosave-status points to a status element id. */
+function initSceneAutosave() {
+  document.querySelectorAll('textarea[data-autosave-key]').forEach(t => {
+    const key = t.getAttribute('data-autosave-key');
+    const saved = getItem(key);
+    if (saved != null) t.value = saved;
+    const status = document.getElementById(t.getAttribute('data-autosave-status') || '');
+    t.addEventListener('input', () => {
+      setItem(key, t.value);
+      if (status) { status.hidden = false; status.textContent = 'Saved'; }
+    });
+  });
+}
+
 initPanelDescriptions();
 initCommitmentSidebar();
 initYourProgressGroup();
@@ -262,4 +290,6 @@ initBriefPanel();
 initGlossary();
 initGlossaryList();
 initArtifactProgression();
+initPriyaEmails();
+initSceneAutosave();
 recordLastVisited();

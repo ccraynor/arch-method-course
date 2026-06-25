@@ -133,6 +133,19 @@
         color: var(--color-text-primary);
       }
     }
+
+    /* Narrative scene opening (Prompt E Part 1 item 2) -- a story beat,
+       not instructional prose. Teal left border, slightly larger text. */
+    .narrative-scene {
+      margin: 0 0 1.5rem;
+      padding: 1rem 1.25rem;
+      border-left: 4px solid var(--color-brand-teal);
+      background: var(--color-bg-subtle);
+      border-radius: 0 6px 6px 0;
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--color-text-primary);
+    }
   </style>
 </head>
 <body>
@@ -279,6 +292,14 @@
           documented protocol for detecting, containing, and reporting cybersecurity incidents. Meridian's
           Chief Information Security Officer commissioned a formal training program to close that gap
           before the next incident cycle.
+        </p>
+
+        <!-- =====================================================
+             Narrative scene opening (Prompt E Part 1 item 2)
+             A story beat that frames the brief that follows.
+             ===================================================== -->
+        <p class="narrative-scene">
+          It is March 2024. Meridian Regional Health Network has just received an OCR audit finding following a ransomware incident that exposed patient data across three sites. The Chief Learning Officer has called an emergency meeting. The decision: build a cybersecurity incident response course for 120 healthcare IT professionals in 90 days. You are the instructional designer on this project. This is your brief.
         </p>
 
         <!-- =====================================================

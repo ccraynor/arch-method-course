@@ -599,6 +599,34 @@
         into instruction.
       </p>
 
+      <!-- Priya Okonkwo email (Prompt E Part 1 Section 2) -->
+      <details class="priya-email" data-persist-key="priyaEmail_l5_open" open>
+        <summary class="priya-email__summary">
+          <span class="priya-email__from">Priya Okonkwo</span>
+          <span class="priya-email__role">-- Chief Learning Officer, Meridian Regional Health Network</span>
+        </summary>
+        <p class="priya-email__body">
+          I want to flag where we stand on the calendar. We are now past the halfway point of the 90-day window, and the build ahead is the most detailed yet. Decomposition is where the architecture gets real, so I do not want to rush it. At the same time, I need a candid read from you. Given the SME time we have available, is the full decomposition scope still achievable in the days that remain? If it is not, I would rather adjust now than discover a gap during the SME review. Let me know what you are seeing.
+        </p>
+      </details>
+
+      <!-- Scenario evolution event (Prompt E Part 1 Section 2) -->
+      <div class="project-update" role="note" aria-label="Project update">
+        <span class="project-update__label">Project Update</span>
+        <p class="project-update__text">
+          A scheduling conflict has reduced SME availability from 4 hours to 2.5 hours. Plan your component complexity accordingly.
+        </p>
+        <p class="project-update__prompt">How does this tighter SME window change your decomposition plan?</p>
+        <label class="sr-only" for="sme-update-note">Your note</label>
+        <textarea id="sme-update-note"
+                  class="project-update__field"
+                  rows="3"
+                  data-autosave-key="sme_update_note"
+                  data-autosave-status="sme-update-saved"
+                  placeholder="Note what you would adjust. This is saved automatically."></textarea>
+        <span id="sme-update-saved" class="project-update__saved" role="status" aria-live="polite" hidden>Saved</span>
+      </div>
+
       <!-- Retrieval warm-up (item 15) -->
       <section class="retrieval-warmup" data-retrieval data-storage-key="retrieval_l5" aria-labelledby="rw-heading">
         <h2 class="retrieval-warmup__heading" id="rw-heading">Before You Begin</h2>
