@@ -120,6 +120,12 @@ export function redesignTracker() {
   const est          = activityType ? (SCREEN_TIME_MAP[activityType] || '') : '';
   const estAria      = est.replace('-', ' to ');
 
+  /* Intro screens render a persistent 9-dot step strip (#pt-steps-nav) via
+     persistentStepTracker.js, which runs before this. redesignTracker owns the
+     tracker, so capture that node before the innerHTML rebuild and re-append it
+     afterward. This keeps Est. N min on every screen and the dots on intro. */
+  const stepsNav = document.getElementById('pt-steps-nav');
+
   /* Preserve hidden IDs for backward-compat (other JS reads these) */
   const hiddenIds = ['pt-module', 'pt-lesson', 'pt-phase', 'pt-step',
                      'pt-screen', 'pt-screen-total',
@@ -150,4 +156,7 @@ export function redesignTracker() {
       `<span id="${id}" class="sr-only" aria-hidden="true">${preserved[id] || ''}</span>`
     ).join('\n    ')}
   `;
+
+  /* Re-append the intro step-dot strip removed by the innerHTML rebuild above. */
+  if (stepsNav) tracker.appendChild(stepsNav);
 }

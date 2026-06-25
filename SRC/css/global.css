@@ -249,7 +249,8 @@ header[role="banner"] {
 header[role="banner"] #progress-tracker .pt-item {
   display: inline-flex;
   align-items: center;
-  font-size: var(--font-size-label);
+  /* Tracker location/activity rows sit between label (0.75) and body (1rem). */
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--color-text-inverse);
   opacity: 0.92;
@@ -274,7 +275,8 @@ header[role="banner"] #progress-tracker .pt-divider {
   padding: 0 0.4375rem;
   color: var(--color-text-inverse);
   opacity: 0.4;
-  font-size: var(--font-size-label);
+  /* Match the location/activity row text size (.pt-item). */
+  font-size: 0.875rem;
   line-height: 1;
   user-select: none;
   flex-shrink: 0;
