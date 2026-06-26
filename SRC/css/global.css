@@ -1375,9 +1375,10 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 .chunk-boundary__summary { margin: 0.375rem 0 0; font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--color-text-secondary); }
 .lens-section { margin: 0.5rem 0 0; padding: 1rem 1.25rem; border: 1px solid var(--color-border-default); border-left: 4px solid var(--color-brand-teal); border-radius: 0 6px 6px 0; }
 .lens-section__heading { margin: 0 0 0.5rem; font-size: var(--font-size-heading); font-weight: 800; color: var(--color-text-primary); }
+.lens-section__desc { margin: 0; font-size: 0.9375rem; line-height: 1.6; color: var(--color-text-secondary); }
 
 /* New in This Lesson vocabulary callout (item 12) */
-.new-in-lesson { margin: 0.75rem 0 1.25rem; padding: 0.625rem 0.875rem; background: var(--color-bg-subtle); border-left: 4px solid var(--color-brand-teal); border-radius: 0 4px 4px 0; font-size: var(--font-size-label); color: var(--color-text-primary); line-height: 1.6; }
+.new-in-lesson { margin: 0.75rem 0 1.25rem; padding: 0.625rem 0.875rem; background: var(--color-bg-subtle); border-left: 4px solid var(--color-brand-teal); border-radius: 0 4px 4px 0; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.6; }
 .new-in-lesson__label { font-weight: 700; color: var(--color-brand-teal); }
 
 /* Glossary panel term list (item 11) */
@@ -2958,7 +2959,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 .success-criteria[open] .success-criteria__summary::after { content: "Hide"; }
 .success-criteria__list {
   margin: 0;
-  padding: 0 1.25rem 1rem 2.1rem;
+  padding: 0.5rem 1.25rem 1rem 2.1rem;
   list-style: disc;
   font-size: 0.9375rem;
   line-height: 1.6;
@@ -3066,6 +3067,14 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   letter-spacing: 0.07em;
   color: var(--color-brand-teal);
 }
+.learning-objective-callout {
+  margin: 0 0 1.25rem;
+  padding: 0.875rem 1rem;
+  background: var(--color-bg-subtle);
+  border-left: 4px solid var(--color-brand-teal);
+  border-radius: 0 6px 6px 0;
+}
+.learning-objective-callout .purpose-forward { margin: 0; }
 
 /* Item 20: Show Expert Reasoning toggle (monitored practice worked examples) */
 .show-expert {
