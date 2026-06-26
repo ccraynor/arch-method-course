@@ -78,6 +78,12 @@
 </head>
 <body>
 
+  <!-- Preview Mode activation (Item 10): persist ?preview=true so it carries
+       through the whole credential without the parameter on every URL. -->
+  <script>
+    try { if (new URLSearchParams(location.search).get('preview') === 'true') sessionStorage.setItem('archMethod_previewMode', 'true'); } catch (e) {}
+  </script>
+
   <nav aria-label="Skip links" class="skip-links">
     <a class="skip-link" href="#main-content">Skip to Main Content</a>
   </nav>
