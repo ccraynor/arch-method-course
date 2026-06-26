@@ -8,7 +8,7 @@
    SCREEN_MAP is kept current with the built screens (Prompt C added s4b,
    s3b, the s5a/s5b split, and the reflection renumbering). */
 
-const SCREEN_MAP = {
+export const SCREEN_MAP = {
   /* intro */
   'intro-0.1': ['Course Introduction', '0.1', '9'],
   'intro-0.2': ['Course Introduction', '0.2', '9'],

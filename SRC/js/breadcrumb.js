@@ -1,6 +1,10 @@
 /* breadcrumb.js
    Generates breadcrumb nav above the first H1 in #current-activity.
-   Derives crumb values from the page URL -- no per-screen config needed. */
+   Position numbers come from SCREEN_MAP in trackerRedesign.js (single source
+   of truth shared with the header tracker), so breadcrumb and tracker never
+   diverge, including inserted faded examples and split screens. */
+
+import { SCREEN_MAP } from './trackerRedesign.js';
 
 const LESSON_NAMES = {
   'l1a': 'Lesson 1', 'l1b': 'Lesson 2', 'l2': 'Lesson 3',
@@ -25,33 +29,15 @@ function buildCrumbs(filename) {
     ];
   }
 
-  /* Overrides for lettered screen variants (e.g. s5a, s5b) */
-  const POSITION_OVERRIDE = {
-    'm1-l2-s5a': '3.5',
-    'm1-l2-s5b': '3.6',
-  };
-  if (POSITION_OVERRIDE[filename]) {
-    const lessonKey  = 'l2';
-    const lessonName = LESSON_NAMES[lessonKey];
-    return [
-      { label: 'Module 1', href: 'm1-overview.html' },
-      { label: lessonName, href: 'm1-l2-s1.html' },
-      { label: POSITION_OVERRIDE[filename], current: true },
-    ];
-  }
-
-  /* Module 1 lesson screens */
-  const m1Match = filename.match(/^m1-(l\d+[ab]?)-s(\d+)$/);
+  /* Module 1 lesson screens (including lettered variants s4b, s3b, s5a, s5b).
+     Position is read from SCREEN_MAP so it always matches the header tracker. */
+  const m1Match = filename.match(/^m1-(l\d+[ab]?)-s(\d+[ab]?)$/);
   if (m1Match) {
-    const [, lessonKey, screenNum] = m1Match;
+    const lessonKey  = m1Match[1];
     const lessonName = LESSON_NAMES[lessonKey] || lessonKey.toUpperCase();
     const lessonHref = `m1-${lessonKey}-s1.html`;
-    /* Position in new numbering */
-    const lessonNums = {
-      l1a: 1, l1b: 2, l2: 3, l3: 4, l4a: 5, l4b: 6
-    };
-    const lessonNum = lessonNums[lessonKey] || 0;
-    const position  = `${lessonNum}.${screenNum}`;
+    const entry      = SCREEN_MAP[filename];
+    const position   = entry ? entry[1] : '';
     return [
       { label: 'Module 1', href: 'm1-overview.html' },
       { label: lessonName, href: lessonHref },

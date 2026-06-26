@@ -50,13 +50,11 @@ function initWorkedExampleDisclosure() {
   /* Insert controls bar immediately before the two-column layout */
   layout.parentNode.insertBefore(controlsBar, layout);
 
-  /* ---- Apply initial hidden state ---- */
+  /* ---- Apply initial hidden state ----
+     Steps disclose one at a time. Annotations are owned by annotationsToggle.js
+     (Show/Hide Annotations), so disclosure no longer hides annotation items. */
   steps.forEach((step, i) => {
     if (i > 0) step.classList.add('step-hidden');
-  });
-  annotations.forEach(ann => {
-    const n = parseInt(ann.dataset.step, 10);
-    if (n > 1) ann.classList.add('step-hidden');
   });
 
   /* ---- Inject "Show Next Step" buttons into each step except the last ---- */
@@ -93,12 +91,6 @@ function initWorkedExampleDisclosure() {
     steps.forEach((step, i) => {
       if (i < n) step.classList.remove('step-hidden');
       else step.classList.add('step-hidden');
-    });
-
-    annotations.forEach(ann => {
-      const stepN = parseInt(ann.dataset.step, 10);
-      if (stepN <= n) ann.classList.remove('step-hidden');
-      else ann.classList.add('step-hidden');
     });
 
     /* Update which "Show Next Step" button is active */
