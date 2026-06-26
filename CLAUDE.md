@@ -49,14 +49,33 @@ Module 1 is built. Modules 2-4 are planned. The course also has a
 - Landing page: 1 (index.html)
 - Total learner-facing screens built: 56 (9 introduction + 39 lesson and gate + 7 hub + 1 module overview), plus the landing page
 
-#### Lesson Template (required sequence for every lesson in every module)
+#### Lesson Template (required sequence, final version after Prompts C-E)
 Screen count varies per lesson. Element sequence does not vary.
-1. Introduction screen: prediction prompt, retrieval warm-up (Lessons 2 onward), scaffolding badge, prior knowledge activation, commitment note callout, purpose statement, ARCH Method mindset callout, and New in This Lesson vocabulary callout.
-2. Worked example: progressive disclosure and curiosity gap opener.
-3. Faded example: Lesson 2 and Lesson 5 in Module 1 only. Identify equivalent lessons in Modules 2-4 via ZPD analysis before building.
-4. Guided practice: success criteria callout, articulation requirement, confidence rating, cognitive mode transition banner, developmental feedback, and error type label.
-5. Calibration or decision point.
-6. Reflection screen: prediction callback, four-question transfer framework, lesson complete block, and permission to stop statement.
+
+1. Lesson introduction screen, in order: prediction prompt (stored
+   archMethod_prediction_l[N]); retrieval warm-up "Before You Begin"
+   (Lessons 2 onward); scaffolding level badge; prior knowledge activation
+   callout (Lessons 2 onward); commitment note callout; purpose statement;
+   forward-looking purpose statement; ARCH Method mindset callout; New in
+   This Lesson vocabulary callout; spaced repetition callback (Modules 2-4);
+   Priya Okonkwo email where the narrative requires it.
+2. Worked example: curiosity gap opener, progressive disclosure, discovery
+   moment framing at counterintuitive steps, In a Different Context callout,
+   In Your Context callout, gradual-release Show Expert Reasoning toggle in
+   Monitored Practice tier.
+3. Faded example: highest ZPD-risk lessons only (Module 1: Lesson 2 and
+   Lesson 5). Identify equivalents in Modules 2-4 via ZPD analysis.
+4. Guided practice: Success Criteria callout, articulation requirement,
+   confidence rating, cognitive mode transition banner (on arrival from the
+   worked example), developmental feedback, error type label on limited-tier
+   feedback, Bloom's bridge activity on highest-risk screens. Submission
+   gates removed: the Next control is always available; expert feedback stays
+   hidden until submission.
+5. Calibration or decision point: three-tier feedback, expert comparison
+   after commit, self-check prompt.
+6. Reflection screen: prediction callback, four-question transfer framework,
+   Lesson Complete block, permission-to-stop statement; Continue links to the
+   next lesson hub.
 
 #### Module Overview Screen (required first screen)
 Every module must open with a module overview screen (m[N]-overview.html) before Lesson 1 begins. Required content: ARCH Method phase name, lessons in this module with lesson names and estimated times, artifacts produced with one-sentence descriptions, estimated total module time, connection backward to prior module output, and connection forward to next module input. Build this screen first when starting each new module build.
@@ -100,6 +119,102 @@ Four patterns surfaced during Module 1 (Prompt E Part 2 item 22). Monitor each i
 - Reflection screen Continue writes archMethod_lesson_[N]_complete (lessons 1 through 6), which drives the hub progress map and the artifact progression display.
 - localStorage namespace additions: archMethod_lastVisited and archMethod_lastVisitDate (resume prompt), archMethod_visited_[screenId] and archMethod_continued_[screenId] (hub unit status), archMethod_lesson_[N]_complete (lesson completion).
 
+### State Persistence (localStorage and sessionStorage)
+All keys use the archMethod_ prefix, applied automatically by storage.js.
+Collapsible persistence and autosave attributes carry the UNPREFIXED key
+(e.g. data-persist-key="calTable2Open" is stored as archMethod_calTable2Open).
+Never add a key without listing it here and in Docs/ARCH_Build_Governance.md.
+
+localStorage keys:
+- archMethod_learnerCommitmentNote
+- archMethod_lesson_[N]_complete
+- archMethod_lastVisited, archMethod_lastVisitDate
+- archMethod_visited_[screenId], archMethod_continued_[screenId]
+- archMethod_pacingMode (DeepDive or FocusedPractice)
+- archMethod_diag_q1, archMethod_diag_q2
+- archMethod_retrieval_l[N]
+- archMethod_prediction_l[N]
+- archMethod_reasoning_[screenId]
+- archMethod_confidence_[screenId]
+- archMethod_flag_[screenId]
+- archMethod_showExpert_[screenId]
+- archMethod_bloom_[screenId]
+- archMethod_selfreview_[dimension] (clarity, consistency, usability, support)
+- archMethod_transfer_l[N]_q1 through _q4
+- archMethod_[screenId]_submission, m1_l4b_s4_submission
+- archMethod_briefPanelOpen, archMethod_contextPanelOpen
+- archMethod_convRefOpen, archMethod_lensRefOpen, archMethod_constraintRefOpen
+- archMethod_priyaEmail_l3_open, archMethod_priyaEmail_l5_open,
+  archMethod_priyaEmail_gate_open
+- archMethod_sme_update_note
+- archMethod_transferContext_[lesson]_open
+- archMethod_calTable2Open, archMethod_calTable3Open
+
+sessionStorage keys (session-scoped, not localStorage):
+- archMethod_previewMode (Preview Mode flag)
+- archMethod_exitedWorkedExample_[lessonId] (drives cognitive mode banner)
+- archMethod_cogBannerShown_[screenId] (suppresses banner on return visits)
+- archMethod_sessionStart, archMethod_pacingAlertShown (90-minute pacing alert)
+
+### Pacing Mode System
+Two modes stored in archMethod_pacingMode, chosen on the landing page,
+changeable anytime: Deep Dive (default, 22-26 hours, all screens including
+optional enrichment) and Focused Practice (14-18 hours; introduction, one
+worked example per lesson, all guided practice and calibration; skips optional
+enrichment). In Focused Practice, optional enrichment screens show a
+"Skip (optional)" label and are excluded from the progress-tracker unit count.
+Identify and document optional enrichment screens during the ZPD analysis
+before each module build.
+
+### Self-Regulation Flag System
+A three-option flag control is injected on every screen by flagControl.js:
+Mastered, Needs Review, Confused. Selection is stored in
+archMethod_flag_[screenId] and is private. Hub unit cards display the saved
+flag status (teal/amber/red dot) alongside completion status, read from the
+same key.
+
+### Navigation Architecture (after gate removal)
+- Every screen has Previous and Next controls except intro-0.1.html, which has
+  no Previous.
+- Hub screens carry Previous plus a "Begin Lesson N" Next (gate hub: "Begin
+  Gate Review" to m1-gate-s1.html).
+- Module overview "Begin Lesson 1" links to m1-hub-l1.html (the lesson hub),
+  not the first lesson screen.
+- Lesson reflection Continue buttons link to the NEXT lesson hub (m1-hub-l2
+  through m1-hub-l6, then m1-hub-gate), not the next lesson's first screen.
+- Breadcrumb crumbs are navigable; the Return to Lesson Hub link is injected
+  on every lesson and gate unit screen by breadcrumb.js.
+
+### Submission Gates Removed (Soft Navigation)
+All guided-practice submission gates are removed: the forward control is always
+visible and functional regardless of submission state (persistent Next in the
+screen-nav). Expert feedback regions stay hidden until the learner submits. The
+m1-l2-s5b "complete the evaluation first" content gate is removed; the expert
+comparison always renders. The four gate confirmation checkboxes on
+m1-gate-s1.html remain as a deliberate review checkpoint, not a navigation lock.
+
+### Preview Mode
+Activated via the ?preview=true URL parameter on ANY screen, including the
+landing page (index.html sets archMethod_previewMode in sessionStorage). The
+flag persists through the full credential without the parameter on later URLs.
+An amber Preview Mode banner displays on all course screens; submitted-state
+keys read as absent so forms load fresh. Exit via the banner button.
+
+### Gradual Release Operationalization (status)
+Monitored Practice tier wraps worked-example content in a Show Expert Reasoning
+toggle, collapsed by default, stored in archMethod_showExpert_[screenId].
+Operationalized in Module 1 on m1-l4a-s3 and m1-l4b-s3. Full operationalization
+across Modules 2-4 is assigned per lesson via the ZPD analysis before each
+module build (Full Support / Guided Support / Monitored Practice tiers).
+
+### Reading Enrichment (pre-Module 2 build task)
+Reading enrichment cards are a pre-Module 2 build task: two cards per module,
+no hyperlinks, plain-text search instructions only (e.g. search terms and
+source titles the learner can look up). Optional in all modules and excluded
+from Focused Practice. Sources are documented in
+Docs/ARCH_PostLaunch_Roadmap.md. Draft card content before the module build;
+do not invent sources at build time.
+
 ### File Naming Convention
 - m[module]-l[lesson]-s[screen].html
 - Examples: m1-l1a-s1.html, m1-l1b-s3.html, m2-l2-s1.html
@@ -121,7 +236,7 @@ Four patterns surfaced during Module 1 (Prompt E Part 2 item 22). Monitor each i
 1. PERSISTENCE: learnerCommitmentNote — use localStorage
 2. STATE: activeSupportPanel — centralized state manager, 
    allowed values: null, artifactDrawer, decisionHistory, 
-   glossary, supportPanel, annotationPanel
+   glossary, supportPanel, annotationPanel, briefPanel, contextPanel
 3. CSS TOKENS: eight token categories — Background, Surface, Text, 
    Border, Focus, Success, Warning, Error — must support 
    prefers-color-scheme: dark and prefers-contrast: more
