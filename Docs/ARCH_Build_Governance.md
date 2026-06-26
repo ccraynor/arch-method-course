@@ -1077,7 +1077,18 @@ COMMITTED e999732.
 
 Prompt E Part 2: Architecture, navigation, UX,
 executive functioning, learning science, portfolio
-additions. NOT YET RUN.
+additions. COMMITTED 8a42417.
+- Phase 1 shared infrastructure: context panel,
+  self-regulation flag system, cognitive mode banner,
+  90-minute pacing alert (items 7, 9, 10, 13).
+- Phase 2 per-screen content: How to Use This Course,
+  success criteria, table/list toggle, context data,
+  error taxonomy labels, prediction prompts, Bloom
+  bridges, pacing choice, architecture self-review,
+  gradual release toggles, cultural relevance
+  (items 4, 6, 8, 9, 14, 15, 16, 18, 19, 20, 21).
+- Phase 3 documentation: spaced repetition map and
+  recurring patterns section in CLAUDE.md (items 17, 22).
 
 Prompt F: CLAUDE.md final governance update.
 NOT YET RUN.
