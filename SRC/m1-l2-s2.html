@@ -254,16 +254,16 @@
     .contrast-list {
       margin: 0;
       padding-left: 1.125rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
+      list-style: disc;
     }
 
     .contrast-list li {
       font-size: 0.8125rem;
       color: var(--color-text-primary);
       line-height: 1.5;
+      margin-bottom: 0.25rem;
     }
+    .contrast-list li:last-child { margin-bottom: 0; }
 
     .contrast-list li.contrast-item--faded {
       color: var(--color-text-secondary);

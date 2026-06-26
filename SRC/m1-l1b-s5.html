@@ -363,15 +363,15 @@
     .gap-list {
       margin: 0.75rem 0 0;
       padding-left: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.3125rem;
+      list-style: disc;
     }
 
     .gap-list li {
       font-size: 0.9rem;
       line-height: 1.55;
+      margin-bottom: 0.3125rem;
     }
+    .gap-list li:last-child { margin-bottom: 0; }
 
     /* ---- Expert snapshot ---- */
     .expert-snapshot {
@@ -419,16 +419,16 @@
     .snapshot-convention__rules {
       margin: 0.5rem 0 0;
       padding-left: 1.125rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
+      list-style: disc;
     }
 
     .snapshot-convention__rules li {
       font-size: 0.8125rem;
       color: var(--color-text-secondary);
       line-height: 1.5;
+      margin-bottom: 0.2rem;
     }
+    .snapshot-convention__rules li:last-child { margin-bottom: 0; }
 
     /* SI table */
     .si-table {

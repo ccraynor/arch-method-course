@@ -3039,6 +3039,23 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 .cal-list__item { margin: 0 0 1rem; line-height: 1.6; }
 .cal-list[hidden], .cal-table-wrap[hidden] { display: none; }
 
+/* Think-aloud annotation list: the per-screen .think-aloud__list rule sets
+   display:flex, which overrides the hidden attribute's display:none. This
+   higher-specificity rule lets the Show/Hide Annotations toggle hide it. */
+.think-aloud__list[hidden] { display: none; }
+
+/* Hub unit card: consistent row height so wrapped labels do not misalign rows (item 4) */
+.unit-card { min-height: 4rem; }
+
+/* Caption above collapsed calibration tables (item 3) */
+.table-disclosure__caption { margin: 0 0 0.5rem; font-size: 0.8125rem; color: var(--color-text-secondary); }
+
+/* Content lists whose markers were suppressed by the global ul,ol reset (item 6) */
+.tax-levels { list-style: disc; }
+.reference-list { list-style: disc; }
+.findings-ref-list { list-style: disc; }
+.gov-record__val ul { list-style: disc; padding-left: 1.25rem; }
+
 /* Item 20: Show Expert Reasoning toggle (monitored practice worked examples) */
 .show-expert {
   margin: 1.5rem 0;

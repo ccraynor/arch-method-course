@@ -218,16 +218,16 @@
     .step-task-list {
       margin: 0;
       padding-left: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
+      list-style: disc;
     }
 
     .step-task-list li {
       font-size: 0.875rem;
       color: var(--color-text-primary);
       line-height: 1.55;
+      margin-bottom: 0.3rem;
     }
+    .step-task-list li:last-child { margin-bottom: 0; }
 
     /* ---- Artifact production card ---- */
     .artifact-card {
