@@ -1469,6 +1469,13 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 .brief-section__body ul,
 .brief-section__body ol { margin: 0 0 0.625rem; padding-left: 1.25rem; list-style: disc; }
 .brief-section__body li { margin-bottom: 0.3125rem; }
+
+/* Context-block lists (Purpose / Instructions / Expected Evidence cards).
+   Restore numbered steps and bullets that the global ul,ol reset removes.
+   Higher specificity than the reset; per-screen rules set padding only, so
+   this applies across all guided practice context-block cards. */
+.context-block ol { list-style: decimal; }
+.context-block ul { list-style: disc; }
 .brief-subhead {
   font-size: 0.6875rem;
   font-weight: 700;
