@@ -1095,7 +1095,14 @@ additions. COMMITTED 8a42417.
   recurring patterns section in CLAUDE.md (items 17, 22).
 
 Prompt F: CLAUDE.md final governance update.
-NOT YET RUN.
+COMMITTED 17c4e22. Final screen count, full
+localStorage and sessionStorage namespace, lesson
+template final version, pacing mode system,
+self-regulation flag system, navigation architecture,
+submission gate removal, Preview Mode, gradual release
+operationalization status, reading enrichment note,
+spaced repetition map and recurring patterns confirmed,
+contextPanel added to allowed panels.
 
 ---
 
