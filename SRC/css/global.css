@@ -1257,7 +1257,7 @@ footer[role="contentinfo"] nav a:focus-visible {
 
 /* Unit cards */
 .hub-units { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.625rem; }
-.unit-card { display: flex; align-items: flex-start; gap: 0.875rem; padding: 0.875rem 1rem; border: 1px solid var(--color-border-default); border-radius: 6px; background: var(--color-bg-page); }
+.unit-card { display: flex; align-items: center; gap: 0.875rem; padding: 0.875rem 1rem; border: 1px solid var(--color-border-default); border-radius: 6px; background: var(--color-bg-page); }
 .unit-card__num { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--color-brand-navy); color: var(--color-text-inverse); font-size: var(--font-size-label); font-weight: 800; }
 .unit-card__main { flex: 1; min-width: 0; }
 .unit-card__title { margin: 0 0 0.1875rem; font-size: var(--font-size-body); font-weight: 700; }
@@ -1369,11 +1369,11 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 .stop-point { display: block; margin: 0.5rem 0 0; font-size: var(--font-size-label); color: var(--color-text-secondary); }
 
 /* Chunk boundaries (items 9, 10) */
-.chunk-boundary { margin: 2rem 0; }
+.chunk-boundary { margin: 2rem 0 1rem; }
 .chunk-boundary__divider { border: none; border-top: 3px solid var(--color-brand-navy); margin: 0 0 0.5rem; }
 .chunk-boundary__label { font-size: var(--font-size-label); font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-brand-navy); }
 .chunk-boundary__summary { margin: 0.375rem 0 0; font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--color-text-secondary); }
-.lens-section { margin: 1.5rem 0 0; padding: 1rem 1.25rem; border: 1px solid var(--color-border-default); border-left: 4px solid var(--color-brand-teal); border-radius: 0 6px 6px 0; }
+.lens-section { margin: 0.5rem 0 0; padding: 1rem 1.25rem; border: 1px solid var(--color-border-default); border-left: 4px solid var(--color-brand-teal); border-radius: 0 6px 6px 0; }
 .lens-section__heading { margin: 0 0 0.5rem; font-size: var(--font-size-heading); font-weight: 800; color: var(--color-text-primary); }
 
 /* New in This Lesson vocabulary callout (item 12) */
@@ -1467,7 +1467,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 .brief-section__body p { margin: 0 0 0.625rem; }
 .brief-section__body p:last-child { margin-bottom: 0; }
 .brief-section__body ul,
-.brief-section__body ol { margin: 0 0 0.625rem; padding-left: 1.25rem; list-style: disc; }
+.brief-section__body ol { margin: 0 0 0.625rem; padding-left: 1.5rem; list-style: disc; }
 .brief-section__body li { margin-bottom: 0.3125rem; }
 
 /* Context-block lists (Purpose / Instructions / Expected Evidence cards).
@@ -1565,7 +1565,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 
 .error-summary__list {
   margin: 0;
-  padding-left: 1.25rem;
+  padding-left: 1.5rem;
   list-style: disc;
 }
 
@@ -2648,7 +2648,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 }
 .exemplar-contrast__record {
   margin: 0;
-  padding-left: 1.1rem;
+  padding-left: 1.5rem;
   list-style: disc;
   font-size: 0.9375rem;
   line-height: 1.6;
@@ -2835,7 +2835,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 }
 .context-card__list {
   margin: 0;
-  padding-left: 1.1rem;
+  padding-left: 1.5rem;
   list-style: disc;
   font-size: 0.875rem;
   line-height: 1.55;
@@ -3035,7 +3035,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
-.cal-list { margin: 0; padding-left: 1.25rem; }
+.cal-list { margin: 0; padding-left: 1.5rem; list-style: disc; }
 .cal-list__item { margin: 0 0 1rem; line-height: 1.6; }
 .cal-list[hidden], .cal-table-wrap[hidden] { display: none; }
 
@@ -3054,7 +3054,18 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 .tax-levels { list-style: disc; }
 .reference-list { list-style: disc; }
 .findings-ref-list { list-style: disc; }
-.gov-record__val ul { list-style: disc; padding-left: 1.25rem; }
+.gov-record__val ul { list-style: disc; padding-left: 1.5rem; }
+
+/* Learning objective label above the purpose-forward statement (item 4) */
+.learning-objective-label {
+  display: block;
+  margin: 0 0 0.25rem;
+  font-size: var(--font-size-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-brand-teal);
+}
 
 /* Item 20: Show Expert Reasoning toggle (monitored practice worked examples) */
 .show-expert {
