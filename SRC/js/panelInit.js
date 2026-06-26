@@ -13,6 +13,7 @@ import { initFlagControl, initHubFlags } from './flagControl.js';
 import { initContextPanel } from './contextPanel.js';
 import { initCognitiveModeBanner } from './cognitiveModeBanner.js';
 import { initPacingAlert } from './pacingAlert.js';
+import { initOptionalEnrichment } from './components/optionalEnrichment.js';
 
 const PANEL_DESCRIPTIONS = {
   glossary: 'Eighteen key ARCH Method terms are available here. Hover over any highlighted term in the course to see its definition, or browse all terms below.',
@@ -366,4 +367,5 @@ initFlagControl();
 initHubFlags();
 initCognitiveModeBanner();
 initPacingAlert();
+initOptionalEnrichment();
 recordLastVisited();

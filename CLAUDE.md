@@ -149,6 +149,7 @@ localStorage keys:
 - archMethod_sme_update_note
 - archMethod_transferContext_[lesson]_open
 - archMethod_calTable2Open, archMethod_calTable3Open
+- archMethod_optReading_l1_open, archMethod_optReading_l3_open
 
 sessionStorage keys (session-scoped, not localStorage):
 - archMethod_previewMode (Preview Mode flag)

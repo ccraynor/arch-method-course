@@ -3139,6 +3139,33 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   margin: 0 1rem 1rem;
 }
 
+/* Reading enrichment cards (optional reading, collapsible) */
+.optional-reading__title { font-weight: 700; }
+.optional-reading__skip {
+  font-size: var(--font-size-label);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--color-text-secondary);
+}
+.optional-reading__skip[hidden] { display: none; }
+.optional-reading__body {
+  padding: 0 1rem 1rem;
+}
+.optional-reading__citation {
+  margin: 0 0 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+.optional-reading__search {
+  margin: 0;
+  font-size: 0.875rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
 /* Item 15: prediction prompt (lesson introduction screens) */
 .prediction-prompt {
   margin: 1.5rem 0;

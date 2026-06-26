@@ -518,6 +518,10 @@ Narrative keys (Prompt E Part 1 Section 2):
   table progressive-disclosure open/closed state, item 13)
 - archMethod_calTable3Open (m1-l3-s3 calibration annotation
   layer progressive-disclosure open/closed state, item 13)
+- archMethod_optReading_l1_open (Lesson 1 reflection optional
+  reading card open/closed state)
+- archMethod_optReading_l3_open (Lesson 3 reflection optional
+  reading card open/closed state)
 
 Note: Prompt D adds archMethod_lastVisitDate.
 Note: Prompt E adds archMethod_pacingMode,
