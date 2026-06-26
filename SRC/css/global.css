@@ -3106,6 +3106,39 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 }
 .pacing-choice__radio { margin-right: 0.5rem; }
 
+/* Item 13: table progressive-disclosure wrapper (m1-l3-s3 calibration tables) */
+.table-disclosure {
+  margin: 1.5rem 0;
+  border: 1px solid var(--color-border-default);
+  border-left: 4px solid var(--color-brand-teal);
+  border-radius: 0 6px 6px 0;
+  background: var(--color-bg-subtle);
+}
+.table-disclosure__summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-brand-navy);
+}
+.table-disclosure__summary::-webkit-details-marker { display: none; }
+.table-disclosure__summary::after {
+  content: "Show";
+  margin-left: auto;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-link);
+}
+.table-disclosure[open] .table-disclosure__summary::after { content: "Hide"; }
+.table-disclosure .cal-table-wrap,
+.table-disclosure .cal-output-table-wrap {
+  margin: 0 1rem 1rem;
+}
+
 /* Item 15: prediction prompt (lesson introduction screens) */
 .prediction-prompt {
   margin: 1.5rem 0;

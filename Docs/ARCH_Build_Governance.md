@@ -514,6 +514,10 @@ Narrative keys (Prompt E Part 1 Section 2):
   availability scenario evolution event)
 - archMethod_transferContext_[lesson]_open (In a Different
   Context collapsible open/closed state per worked example)
+- archMethod_calTable2Open (m1-l3-s3 taxonomy calibration
+  table progressive-disclosure open/closed state, item 13)
+- archMethod_calTable3Open (m1-l3-s3 calibration annotation
+  layer progressive-disclosure open/closed state, item 13)
 
 Note: Prompt D adds archMethod_lastVisitDate.
 Note: Prompt E adds archMethod_pacingMode,
