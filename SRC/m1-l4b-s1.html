@@ -604,6 +604,12 @@
       <!-- ARCH Method mindset callout -->
       <p class="mindset-callout">Architecture is not done when it is complete. It is done when it is defensible.</p>
 
+      <!-- Prediction prompt (Prompt E Part 2 item 15) -->
+      <section class="prediction-prompt" aria-label="Prediction prompt">
+        <label class="prediction-prompt__label" for="prediction-l6">Before this lesson begins: what do you expect to find most difficult about optimization and auditing?</label>
+        <textarea class="prediction-prompt__input" id="prediction-l6" rows="2" data-autosave-key="prediction_l6" placeholder="Type your prediction. This is not graded."></textarea>
+      </section>
+
       <!-- Retrieval warm-up (item 15) -->
       <section class="retrieval-warmup" data-retrieval data-storage-key="retrieval_l6" aria-labelledby="rw-heading">
         <h2 class="retrieval-warmup__heading" id="rw-heading">Before You Begin</h2>
@@ -969,6 +975,24 @@
   <footer role="contentinfo">
     <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
   </footer>
+
+  <!-- Context Panel data (Prompt E Part 2 item 9) -->
+  <script>
+  window.ARCH_CONTEXT_DATA = {
+    title: 'Optimization and Audit Reference',
+    sections: [
+      { heading: 'Two Optimization Questions (Step 7)', items: [
+        'Question 1, Teachability: Can this be taught as one instructional unit?',
+        'Question 2, Assessability: Can this be assessed by one well-formed item?'
+      ] },
+      { heading: 'Three Audit Passes (Step 8)', items: [
+        'Pass 1, Forward Trace: Start from each SI item and count its DC children. Every SI item must have at least one child, or a scope item was dropped.',
+        'Pass 2, Backward Trace: For each DC component, confirm it lists one valid parent SI item and that the description matches that parent.',
+        'Pass 3, Orphan Check: After corrections, confirm every SI item appears as a parent and every DC component appears as a child, with zero orphans.'
+      ] }
+    ]
+  };
+  </script>
 
   <script type="module">
     import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';

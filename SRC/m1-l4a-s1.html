@@ -632,6 +632,12 @@
         <span id="sme-update-saved" class="project-update__saved" role="status" aria-live="polite" hidden>Saved</span>
       </div>
 
+      <!-- Prediction prompt (Prompt E Part 2 item 15) -->
+      <section class="prediction-prompt" aria-label="Prediction prompt">
+        <label class="prediction-prompt__label" for="prediction-l5">Before this lesson begins: what do you expect to find most difficult about decomposition?</label>
+        <textarea class="prediction-prompt__input" id="prediction-l5" rows="2" data-autosave-key="prediction_l5" placeholder="Type your prediction. This is not graded."></textarea>
+      </section>
+
       <!-- Retrieval warm-up (item 15) -->
       <section class="retrieval-warmup" data-retrieval data-storage-key="retrieval_l5" aria-labelledby="rw-heading">
         <h2 class="retrieval-warmup__heading" id="rw-heading">Before You Begin</h2>
@@ -995,6 +1001,23 @@
   <footer role="contentinfo">
     <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
   </footer>
+
+  <!-- Context Panel data (Prompt E Part 2 item 9) -->
+  <script>
+  window.ARCH_CONTEXT_DATA = {
+    title: 'Decomposition Reference',
+    sections: [
+      { heading: 'Performance Arc (MRHN_PerformanceArc_v1)', html: '<p>Given a confirmed or suspected cybersecurity incident at any MRHN facility, independently execute the appropriate Tier 1 or Tier 2 response protocol, including threat recognition and triage, containment and control, active response execution, and post-incident close-out, in compliance with HIPAA breach notification requirements, IR-2024 protocol constraints, and MRHN multi-site operational boundaries, producing complete documentation at each phase.</p>' },
+      { heading: 'Flagged Calibration Annotations', items: [
+        'SI-09 (Network Segmentation): Analysis level. Evaluate EHR, imaging, and billing system links before you segment, without disrupting active patient care.',
+        'SI-10 (HIPAA 72-Hour Clock): Analysis level. The clock starts at "reasonably should have known" under 45 CFR 164.404, not at forensic confirmation.',
+        'SI-14 (Protocol Deviation Documentation): Document each IR-2024 deviation using RC-2 justification language.',
+        'SI-07 (OCR Breach Notification): File the OCR notification with all eight required data elements under 45 CFR 164.408.',
+        'SI-13 (Lessons Learned): Evaluation level. Separate operational notes from the formal governed record that goes to legal review.'
+      ] }
+    ]
+  };
+  </script>
 
   <script type="module">
     import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';

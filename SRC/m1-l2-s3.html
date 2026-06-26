@@ -1134,6 +1134,17 @@
             <p class="confidence-rating__echo" role="status" aria-live="polite" hidden></p>
           </fieldset>
 
+          <!-- Success criteria (item 6) -->
+          <details class="success-criteria">
+            <summary class="success-criteria__summary">Success Criteria</summary>
+            <ul class="success-criteria__list">
+              <li>Every one of the 16 scope items sits in exactly one bucket.</li>
+              <li>Each scope item is grouped by the workflow phase where it is performed, not by topic similarity.</li>
+              <li>The triage decision chain (SI-08, SI-01, SI-16, SI-06, SI-02) stays together in one bucket.</li>
+              <li>Each bucket name describes a moment in the workflow, not a subject area.</li>
+            </ul>
+          </details>
+
           <!-- Submit -->
           <div class="form-controls">
             <button type="submit" id="submit-btn" class="btn btn--primary">
@@ -1259,6 +1270,13 @@
           </div>
         </section>
 
+        <!-- Bloom's bridge activity (Prompt E Part 2 item 16) -->
+        <section class="bloom-bridge" aria-label="Analysis question">
+          <span class="bloom-bridge__label">Going Deeper</span>
+          <p class="bloom-bridge__question" id="bloom-q-m1l2s3">Why does workflow-based bucket organization produce a more defensible architecture than topic-based organization?</p>
+          <textarea class="bloom-bridge__input" rows="3" aria-labelledby="bloom-q-m1l2s3" data-autosave-key="bloom_m1_l2_s3" placeholder="Type your answer. This is not graded."></textarea>
+        </section>
+
         <!-- Screen navigation (pre-submission) -->
         <nav id="screen-nav-pre" class="screen-nav" aria-label="Screen navigation">
           <a href="m1-l2-s2.html"
@@ -1380,6 +1398,21 @@
   <!-- ============================================================
        Base script
        ============================================================ -->
+  <!-- Context Panel data (item 9): a shared module injects the panel -->
+  <script>
+  window.ARCH_CONTEXT_DATA = {
+    title: 'Bucket Map Reference',
+    sections: [
+      { heading: 'Four Buckets and Their Scope Items', items: [
+        'Bucket 1: Threat Recognition and Triage. SI-08, SI-01, SI-16, SI-06, SI-02',
+        'Bucket 2: Containment and Control. SI-03, SI-11, SI-09, SI-15',
+        'Bucket 3: Active Response Execution. SI-04, SI-05, SI-10, SI-14',
+        'Bucket 4: Post-Incident Close-Out. SI-12, SI-07, SI-13'
+      ]}
+    ]
+  };
+  </script>
+
   <script type="module">
     import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
 
@@ -1633,7 +1666,7 @@
         verdict     = 'weak';
         bannerClass = 'result-banner result-banner--weak';
         bannerLabel = 'Topic-based grouping detected.';
-        bannerDetail = `You placed ${score} of 16 scope items in the workflow-correct bucket. Review the structural checks below to understand how workflow sequence differs from topic similarity.`;
+        bannerDetail = `You placed ${score} of 16 scope items in the workflow-correct bucket. Review the structural checks below to understand how workflow sequence differs from topic similarity. This response reflects scope conflation: you grouped scope items by topic familiarity rather than by authentic performance sequence.`;
       }
 
       const bannerIcon = verdict === 'strong'

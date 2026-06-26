@@ -670,6 +670,15 @@
             <p class="confidence-rating__echo" role="status" aria-live="polite" hidden></p>
           </fieldset>
 
+          <details class="success-criteria">
+            <summary class="success-criteria__summary">Success Criteria</summary>
+            <ul class="success-criteria__list">
+              <li>Each DC identifier falls within the correct range for the bucket you selected.</li>
+              <li>Each Analysis-level item has at least one Analysis component.</li>
+              <li>For a flagged item, your constraint note names the specific MRHN-D-003 requirement and what the component must require.</li>
+            </ul>
+          </details>
+
           <div class="workspace-form-footer">
             <button type="submit" id="btn-submit" class="btn btn--primary btn--submit">
               Check My Work
@@ -711,6 +720,13 @@
               Continue
             </a>
           </div>
+        </section>
+
+        <!-- Bloom's bridge activity (Prompt E Part 2 item 16) -->
+        <section class="bloom-bridge" aria-label="Analysis question">
+          <span class="bloom-bridge__label">Going Deeper</span>
+          <p class="bloom-bridge__question" id="bloom-q-m1l4as4">Why does this decision produce a stronger architecture than the most common alternative?</p>
+          <textarea class="bloom-bridge__input" rows="3" aria-labelledby="bloom-q-m1l4as4" data-autosave-key="bloom_m1_l4a_s4" placeholder="Type your answer. This is not graded."></textarea>
         </section>
 
         <!-- Screen navigation -->
@@ -800,6 +816,24 @@
   <footer role="contentinfo">
     <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
   </footer>
+
+  <!-- Base script -->
+  <!-- Context Panel data (Prompt E Part 2 item 9) -->
+  <script>
+  window.ARCH_CONTEXT_DATA = {
+    title: 'Decomposition Reference',
+    sections: [
+      { heading: 'Performance Arc (MRHN_PerformanceArc_v1)', html: '<p>Given a confirmed or suspected cybersecurity incident at any MRHN facility, independently execute the appropriate Tier 1 or Tier 2 response protocol, including threat recognition and triage, containment and control, active response execution, and post-incident close-out, in compliance with HIPAA breach notification requirements, IR-2024 protocol constraints, and MRHN multi-site operational boundaries, producing complete documentation at each phase.</p>' },
+      { heading: 'Flagged Calibration Annotations', items: [
+        'SI-09 (Network Segmentation): Analysis level. Evaluate EHR, imaging, and billing system links before you segment, without disrupting active patient care.',
+        'SI-10 (HIPAA 72-Hour Clock): Analysis level. The clock starts at "reasonably should have known" under 45 CFR 164.404, not at forensic confirmation.',
+        'SI-14 (Protocol Deviation Documentation): Document each IR-2024 deviation using RC-2 justification language.',
+        'SI-07 (OCR Breach Notification): File the OCR notification with all eight required data elements under 45 CFR 164.408.',
+        'SI-13 (Lessons Learned): Evaluation level. Separate operational notes from the formal governed record that goes to legal review.'
+      ] }
+    ]
+  };
+  </script>
 
   <!-- Base script -->
   <script type="module">
@@ -1158,6 +1192,7 @@
             <li><strong>Taxonomy level assignments:</strong> for Analysis-level items, do you have at least one Analysis component? For Application-level items, are all your components at Application?</li>
             <li><strong>Calibration constraint notes:</strong> for flagged items, does your note name the specific MRHN-D-003 standard -- not just "there is a calibration flag" -- and does it state what the component must require or exclude?</li>
           </ol>
+          <p class="error-type-label">If a component does not map back to one parent SI item, fix it before you continue. This response reflects a traceability gap: producing DC components that cannot be traced to a parent SI item.</p>
         </div>`;
 
       /* Show feedback */

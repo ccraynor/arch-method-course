@@ -510,6 +510,12 @@
         <!-- Lesson body -->
         <div class="lesson-body">
 
+          <!-- Prediction prompt (Prompt E Part 2 item 15) -->
+          <section class="prediction-prompt" aria-label="Prediction prompt">
+            <label class="prediction-prompt__label" for="prediction-l3">Before this lesson begins: what do you expect to find most difficult about organizing scope into buckets?</label>
+            <textarea class="prediction-prompt__input" id="prediction-l3" rows="2" data-autosave-key="prediction_l3" placeholder="Type your prediction. This is not graded."></textarea>
+          </section>
+
           <!-- Retrieval warm-up (item 15) -->
           <section class="retrieval-warmup" data-retrieval data-storage-key="retrieval_l3" aria-labelledby="rw-heading">
             <h2 class="retrieval-warmup__heading" id="rw-heading">Before You Begin</h2>
@@ -896,6 +902,21 @@
   <!-- ============================================================
        Base script
        ============================================================ -->
+  <!-- Context Panel data (item 9): a shared module injects the panel -->
+  <script>
+  window.ARCH_CONTEXT_DATA = {
+    title: 'Bucket Map Reference',
+    sections: [
+      { heading: 'Four Buckets and Their Scope Items', items: [
+        'Bucket 1: Threat Recognition and Triage. SI-08, SI-01, SI-16, SI-06, SI-02',
+        'Bucket 2: Containment and Control. SI-03, SI-11, SI-09, SI-15',
+        'Bucket 3: Active Response Execution. SI-04, SI-05, SI-10, SI-14',
+        'Bucket 4: Post-Incident Close-Out. SI-12, SI-07, SI-13'
+      ]}
+    ]
+  };
+  </script>
+
   <script type="module">
     import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
 

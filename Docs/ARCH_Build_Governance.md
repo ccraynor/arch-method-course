@@ -471,6 +471,22 @@ Learning activity keys:
 - archMethod_transfer_l[N]_q1 through _q4 (four-question
   transfer framework fields on each reflection screen,
   Prompt E Part 1 Sections 3-5 follow-up)
+- archMethod_bloom_[screenId] (Bloom's bridge Analysis
+  question autosave, Prompt E Part 2 item 16)
+- archMethod_selfreview_[dimension] (architecture self-review
+  fields on the gate: clarity, consistency, usability,
+  support, Prompt E Part 2 item 19)
+
+sessionStorage keys (Prompt E Part 2, session-scoped, not localStorage):
+- archMethod_exitedWorkedExample_[lessonId] (set on worked
+  example screens; triggers the cognitive mode banner on the
+  lesson's guided practice screens, item 10)
+- archMethod_cogBannerShown_[screenId] (suppresses the
+  cognitive mode banner on return visits within a session, item 10)
+- archMethod_sessionStart (session start timestamp for the
+  90-minute pacing alert, item 13)
+- archMethod_pacingAlertShown (ensures the pacing alert
+  appears once per session, item 13)
 
 Submission keys:
 - archMethod_[screenId]_submission

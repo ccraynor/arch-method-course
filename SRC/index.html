@@ -202,6 +202,34 @@
       </div>
     </section>
 
+    <!-- Learning mode / pacing choice (Prompt E Part 2 item 18) -->
+    <section class="landing-section" aria-labelledby="pacing-heading">
+      <div class="landing-wrap">
+        <h2 id="pacing-heading" class="landing-section__heading">Choose Your Learning Mode</h2>
+        <p class="landing-prose">Pick the path that fits your time. You can change this at any point.</p>
+        <fieldset class="pacing-choice" id="pacing-choice">
+          <legend class="sr-only">Learning mode</legend>
+          <label class="pacing-choice__option" for="pacing-deep">
+            <span class="pacing-choice__head">
+              <input class="pacing-choice__radio" type="radio" name="pacing-mode" id="pacing-deep" value="DeepDive">
+              <span class="pacing-choice__name">Deep Dive</span>
+              <span class="pacing-choice__time">22 to 26 hours</span>
+            </span>
+            <span class="pacing-choice__desc">Complete every screen, including all optional enrichment. The fullest path through the credential.</span>
+          </label>
+          <label class="pacing-choice__option" for="pacing-focused">
+            <span class="pacing-choice__head">
+              <input class="pacing-choice__radio" type="radio" name="pacing-mode" id="pacing-focused" value="FocusedPractice">
+              <span class="pacing-choice__name">Focused Practice</span>
+              <span class="pacing-choice__time">14 to 18 hours</span>
+            </span>
+            <span class="pacing-choice__desc">Complete the introduction, one worked example per lesson, and all practice and calibration. Skip optional enrichment.</span>
+          </label>
+        </fieldset>
+        <p class="pacing-choice__status" id="pacing-status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
   </main>
 
   <footer role="contentinfo" class="landing-footer">
@@ -232,6 +260,39 @@
       if (labelEl) labelEl.textContent = label(last);
       if (linkEl) linkEl.setAttribute('href', last + '.html');
       banner.hidden = false;
+    })();
+  </script>
+
+  <!-- Pacing mode persistence (Prompt E Part 2 item 18) -->
+  <script>
+    (function () {
+      var KEY = 'archMethod_pacingMode';
+      var fieldset = document.getElementById('pacing-choice');
+      var status = document.getElementById('pacing-status');
+      if (!fieldset) return;
+      var radios = fieldset.querySelectorAll('input[name="pacing-mode"]');
+      var labels = { DeepDive: 'Deep Dive', FocusedPractice: 'Focused Practice' };
+      var saved = null;
+      try { saved = localStorage.getItem(KEY); } catch (e) {}
+      if (!saved) saved = 'DeepDive';
+
+      function paint(value) {
+        radios.forEach(function (r) {
+          r.checked = r.value === value;
+          r.closest('.pacing-choice__option')
+            .classList.toggle('pacing-choice__option--selected', r.value === value);
+        });
+        if (status) status.textContent = 'Your learning mode is set to ' + (labels[value] || value) + '.';
+      }
+      paint(saved);
+
+      radios.forEach(function (r) {
+        r.addEventListener('change', function () {
+          if (!r.checked) return;
+          try { localStorage.setItem(KEY, r.value); } catch (e) {}
+          paint(r.value);
+        });
+      });
     })();
   </script>
 

@@ -9,6 +9,10 @@
 import { initBriefPanel } from './components/briefPanel.js';
 import { initAll as initGlossary, TERMS } from './scaffolds/hoverGlossary.js';
 import { getItem, setItem } from './storage.js';
+import { initFlagControl, initHubFlags } from './flagControl.js';
+import { initContextPanel } from './contextPanel.js';
+import { initCognitiveModeBanner } from './cognitiveModeBanner.js';
+import { initPacingAlert } from './pacingAlert.js';
 
 const PANEL_DESCRIPTIONS = {
   glossary: 'Eighteen key ARCH Method terms are available here. Hover over any highlighted term in the course to see its definition, or browse all terms below.',
@@ -357,4 +361,9 @@ initArticulationMirror();
 initDiagnostic();
 initIntakeProfile();
 initPredictionCallback();
+initContextPanel();
+initFlagControl();
+initHubFlags();
+initCognitiveModeBanner();
+initPacingAlert();
 recordLastVisited();

@@ -1280,6 +1280,24 @@
   </footer>
 
   <!-- ============================================================
+       Context Panel data (Item 9) -- read by shared contextPanel.js
+       ============================================================ -->
+  <script>
+  window.ARCH_CONTEXT_DATA = {
+    title: 'Output Style Gate Reference',
+    sections: [
+      { heading: 'Five Conventions', items: [
+        'Artifact Naming: MRHN_[ArtifactName]_v[Version]_[Date]. Four segments. CamelCase name, no spaces. Integer version starting at 1. Date format YYYY-MM-DD.',
+        'SI Identifiers: SI-01 through SI-16. Assigned in Bucket Map order. Never reused; retired identifiers leave a gap.',
+        'DC Identifiers: DC-01 through DC-48. Assigned during Module 2 decomposition, grouped by SI parent. Same retirement rule.',
+        'Governance Record: every decision requires all five fields: Decision Statement, Constraint Reference, Rationale, Risk Note, Governance Checkpoint Linkage.',
+        'Version Control: revisions happen only after documented governance review. Create a new file with an incremented version. Never edit a previous version in place.'
+      ]}
+    ]
+  };
+  </script>
+
+  <!-- ============================================================
        Base script
        ============================================================ -->
   <script type="module">

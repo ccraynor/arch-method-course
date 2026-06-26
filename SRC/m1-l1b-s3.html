@@ -707,6 +707,15 @@
             <p class="confidence-rating__echo" role="status" aria-live="polite" hidden></p>
           </fieldset>
 
+          <details class="success-criteria">
+            <summary class="success-criteria__summary">Success Criteria</summary>
+            <ul class="success-criteria__list">
+              <li>You separate binding constraints from preferences, and you can name what makes each one binding.</li>
+              <li>Each constraint you list traces to specific language in the Meridian source documents.</li>
+              <li>Your ranking reflects which constraints control the most downstream design decisions, not which are easiest to fix.</li>
+            </ul>
+          </details>
+
           <button type="submit"
                   id="btn-submit"
                   class="btn btn--primary">
@@ -781,6 +790,13 @@
             </a>
           </div>
 
+        </section>
+
+        <!-- Bloom's bridge activity (Prompt E Part 2 item 16) -->
+        <section class="bloom-bridge" aria-label="Analysis question">
+          <span class="bloom-bridge__label">Going Deeper</span>
+          <p class="bloom-bridge__question" id="bloom-q-m1l1bs3">Why does documenting constraints before design begins produce a stronger architecture than identifying them during development?</p>
+          <textarea class="bloom-bridge__input" rows="3" aria-labelledby="bloom-q-m1l1bs3" data-autosave-key="bloom_m1_l1b_s3" placeholder="Type your answer. This is not graded."></textarea>
         </section>
 
         <!-- Screen navigation (Previous only before submission) -->
@@ -932,6 +948,24 @@
       &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
     </p>
   </footer>
+
+  <!-- ============================================================
+       Context Panel data (Item 9) -- read by shared contextPanel.js
+       ============================================================ -->
+  <script>
+  window.ARCH_CONTEXT_DATA = {
+    title: 'Output Style Gate Reference',
+    sections: [
+      { heading: 'Five Conventions', items: [
+        'Artifact Naming: MRHN_[ArtifactName]_v[Version]_[Date]. Four segments. CamelCase name, no spaces. Integer version starting at 1. Date format YYYY-MM-DD.',
+        'SI Identifiers: SI-01 through SI-16. Assigned in Bucket Map order. Never reused; retired identifiers leave a gap.',
+        'DC Identifiers: DC-01 through DC-48. Assigned during Module 2 decomposition, grouped by SI parent. Same retirement rule.',
+        'Governance Record: every decision requires all five fields: Decision Statement, Constraint Reference, Rationale, Risk Note, Governance Checkpoint Linkage.',
+        'Version Control: revisions happen only after documented governance review. Create a new file with an incremented version. Never edit a previous version in place.'
+      ]}
+    ]
+  };
+  </script>
 
   <!-- ============================================================
        Base script
@@ -1177,7 +1211,7 @@
         if (!stakeOk) gaps.push('identify the architecture sign-off requirement or the compliance-checkbox rejection in your stakeholder field');
         if (!bindOk)  gaps.push('name at least two specific binding constraints with reasons in the binding field');
         feedbackHdg.textContent = 'Your constraint extraction needs more specificity.';
-        feedbackExp.textContent = 'To strengthen it: ' + gaps.join('; ') + '.';
+        feedbackExp.textContent = 'To strengthen it: ' + gaps.join('; ') + '. This response reflects constraint underweighting: you have not yet identified the binding constraints, or you have classified binding constraints as negotiable.';
       }
 
       evalChecks.innerHTML = '';

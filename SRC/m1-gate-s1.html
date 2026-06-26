@@ -859,6 +859,28 @@
         <!-- Social proof / normalization (Prompt E item 13) -->
         <div class="social-proof">You have just completed the most documentation-intensive phase of any course design project you will ever work on. The governance records you produced here are more rigorous than most institutions require. That rigor is the point.</div>
 
+        <!-- Architecture Self-Review checklist (Prompt E Part 2 item 19) -->
+        <section class="transfer-framework" aria-labelledby="self-review-heading">
+          <h2 id="self-review-heading" class="transfer-framework__heading">Architecture Self-Review</h2>
+          <p class="transfer-framework__intro">Review your Module 1 architecture against four quality dimensions. Your answers save automatically and are not graded.</p>
+          <div class="transfer-framework__question">
+            <label class="transfer-framework__label" for="sr-clarity">Is the sequence of activities clear to a learner encountering it for the first time? (Clarity)</label>
+            <textarea class="transfer-framework__input" id="sr-clarity" rows="2" data-autosave-key="selfreview_clarity" placeholder="Type your answer."></textarea>
+          </div>
+          <div class="transfer-framework__question">
+            <label class="transfer-framework__label" for="sr-consistency">Does each lesson follow a consistent and predictable structure? (Consistency)</label>
+            <textarea class="transfer-framework__input" id="sr-consistency" rows="2" data-autosave-key="selfreview_consistency" placeholder="Type your answer."></textarea>
+          </div>
+          <div class="transfer-framework__question">
+            <label class="transfer-framework__label" for="sr-usability">Can a learner locate required tasks and support without guesswork? (Usability)</label>
+            <textarea class="transfer-framework__input" id="sr-usability" rows="2" data-autosave-key="selfreview_usability" placeholder="Type your answer."></textarea>
+          </div>
+          <div class="transfer-framework__question">
+            <label class="transfer-framework__label" for="sr-support">Is support visibly available at the points where learners are most likely to need it? (Support Visibility)</label>
+            <textarea class="transfer-framework__input" id="sr-support" rows="2" data-autosave-key="selfreview_support" placeholder="Type your answer."></textarea>
+          </div>
+        </section>
+
         <!-- ================================================================
              Completion Confirmations
              ================================================================ -->
@@ -1127,6 +1149,21 @@
   <footer role="contentinfo">
     <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
   </footer>
+
+  <!-- Context Panel data (Prompt E Part 2 item 9, governance record screen) -->
+  <script>
+    window.ARCH_CONTEXT_DATA = {
+      title: 'Governing Constraints Reference',
+      sections: [
+        { heading: 'Binding Constraints for This Review', items: [
+          'RC-2: IR-2024 as adopted governs all 16 scope items.',
+          'PC-1: IR-2024 protocol alignment is required throughout.',
+          'LC-1: SME access is limited, reduced to 2.5 hours during Lesson 5.',
+          'OCR remediation: the 18-month audit window limits how much can change after handoff.'
+        ]}
+      ]
+    };
+  </script>
 
   <!-- Base script -->
   <script type="module">

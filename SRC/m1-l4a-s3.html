@@ -236,6 +236,11 @@
           </div>
         </header>
 
+        <!-- Show Expert Reasoning toggle (Prompt E Part 2 item 20, Monitored Practice) -->
+        <details class="show-expert" data-persist-key="showExpert_m1-l4a-s3">
+          <summary class="show-expert__summary">Show Expert Reasoning</summary>
+          <div class="show-expert__body">
+
         <div class="worked-example__layout">
 
           <!-- ====================================================
@@ -1004,6 +1009,9 @@
 
         </div><!-- /.worked-example__layout -->
 
+          </div><!-- /.show-expert__body -->
+        </details>
+
         <details class="transfer-context" data-persist-key="transferContext_l5_open">
           <summary class="transfer-context__summary">In a Different Context</summary>
           <div class="transfer-context__body">
@@ -1128,6 +1136,23 @@
   <footer role="contentinfo">
     <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
   </footer>
+
+  <!-- Context Panel data (Prompt E Part 2 item 9) -->
+  <script>
+  window.ARCH_CONTEXT_DATA = {
+    title: 'Decomposition Reference',
+    sections: [
+      { heading: 'Performance Arc (MRHN_PerformanceArc_v1)', html: '<p>Given a confirmed or suspected cybersecurity incident at any MRHN facility, independently execute the appropriate Tier 1 or Tier 2 response protocol, including threat recognition and triage, containment and control, active response execution, and post-incident close-out, in compliance with HIPAA breach notification requirements, IR-2024 protocol constraints, and MRHN multi-site operational boundaries, producing complete documentation at each phase.</p>' },
+      { heading: 'Flagged Calibration Annotations', items: [
+        'SI-09 (Network Segmentation): Analysis level. Evaluate EHR, imaging, and billing system links before you segment, without disrupting active patient care.',
+        'SI-10 (HIPAA 72-Hour Clock): Analysis level. The clock starts at "reasonably should have known" under 45 CFR 164.404, not at forensic confirmation.',
+        'SI-14 (Protocol Deviation Documentation): Document each IR-2024 deviation using RC-2 justification language.',
+        'SI-07 (OCR Breach Notification): File the OCR notification with all eight required data elements under 45 CFR 164.408.',
+        'SI-13 (Lessons Learned): Evaluation level. Separate operational notes from the formal governed record that goes to legal review.'
+      ] }
+    ]
+  };
+  </script>
 
   <script type="module">
     import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';

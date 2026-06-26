@@ -7,6 +7,7 @@ const ALLOWED_PANELS = [
   'supportPanel',
   'annotationPanel',
   'briefPanel',
+  'contextPanel',
 ];
 
 let activeSupportPanel = null;
@@ -83,6 +84,7 @@ function _label(name) {
     supportPanel:    'Support',
     annotationPanel: 'Annotation',
     briefPanel:      'Meridian brief',
+    contextPanel:    'On-screen reference',
   }[name] ?? name;
 }
 

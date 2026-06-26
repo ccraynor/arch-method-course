@@ -859,6 +859,21 @@
     <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
   </footer>
 
+  <!-- Context Panel data (item 9): a shared module injects the panel -->
+  <script>
+  window.ARCH_CONTEXT_DATA = {
+    title: 'Bucket Map Reference',
+    sections: [
+      { heading: 'Four Buckets and Their Scope Items', items: [
+        'Bucket 1: Threat Recognition and Triage. SI-08, SI-01, SI-16, SI-06, SI-02',
+        'Bucket 2: Containment and Control. SI-03, SI-11, SI-09, SI-15',
+        'Bucket 3: Active Response Execution. SI-04, SI-05, SI-10, SI-14',
+        'Bucket 4: Post-Incident Close-Out. SI-12, SI-07, SI-13'
+      ]}
+    ]
+  };
+  </script>
+
   <script type="module">
     import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
     document.getElementById('footer-year').textContent = new Date().getFullYear();

@@ -487,6 +487,16 @@
             <p class="confidence-rating__echo" role="status" aria-live="polite" hidden></p>
           </fieldset>
 
+          <!-- Success criteria (item 6) -->
+          <details class="success-criteria">
+            <summary class="success-criteria__summary">Success Criteria</summary>
+            <ul class="success-criteria__list">
+              <li>You record a Passes or Flag verdict on all four criteria for every bucket.</li>
+              <li>You judge each bucket by its constraint fit and prerequisite logic, not by how many items it holds.</li>
+              <li>For Bucket 4, you finish the thin-bucket test and explain which question decided your re-bucketing call.</li>
+            </ul>
+          </details>
+
           <!-- Form actions -->
           <div class="form-actions">
             <button type="submit" id="submit-btn" class="btn btn--primary">Check My Balance Analysis</button>
@@ -695,6 +705,21 @@
     <p class="footer-copy">&copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.</p>
   </footer>
 
+  <!-- Context Panel data (item 9): a shared module injects the panel -->
+  <script>
+  window.ARCH_CONTEXT_DATA = {
+    title: 'Bucket Map Reference',
+    sections: [
+      { heading: 'Four Buckets and Their Scope Items', items: [
+        'Bucket 1: Threat Recognition and Triage. SI-08, SI-01, SI-16, SI-06, SI-02',
+        'Bucket 2: Containment and Control. SI-03, SI-11, SI-09, SI-15',
+        'Bucket 3: Active Response Execution. SI-04, SI-05, SI-10, SI-14',
+        'Bucket 4: Post-Incident Close-Out. SI-12, SI-07, SI-13'
+      ]}
+    ]
+  };
+  </script>
+
   <script type="module">
     import { openPanel, closeAll, getActivePanel } from './js/panelManager.js';
     document.getElementById('footer-year').textContent = new Date().getFullYear();
@@ -842,7 +867,7 @@
       } else {
         bannerClass = 'feedback-banner--light';
         bannerLabel = 'Review the Criteria Carefully';
-        bannerMsg = `You matched ${exactMatches} of ${totalCriteria} criteria. The expert analysis on the next screen shows the reasoning behind each verdict. Pay close attention to constraint density and the thin-bucket evaluation.`;
+        bannerMsg = `You matched ${exactMatches} of ${totalCriteria} criteria. The expert analysis on the next screen shows the reasoning behind each verdict. Pay close attention to constraint density and the thin-bucket evaluation. This response reflects scope conflation: you judged buckets by topic familiarity rather than by authentic performance sequence.`;
       }
 
       const banner = document.getElementById('result-banner');

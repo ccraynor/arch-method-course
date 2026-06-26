@@ -599,6 +599,16 @@
             <p class="confidence-rating__echo" role="status" aria-live="polite" hidden></p>
           </fieldset>
 
+          <!-- Success Criteria (Prompt E Part 2 item 6) -->
+          <details class="success-criteria">
+            <summary class="success-criteria__summary">Success Criteria</summary>
+            <ul class="success-criteria__list">
+              <li>Your in-scope statement names the specific IT roles and references IR-2024 by name, not in general terms.</li>
+              <li>You identify at least two categories of content that fall outside scope.</li>
+              <li>Your rationale ties each boundary to a specific constraint from the brief, such as the SME time limit or the OCR timeline.</li>
+            </ul>
+          </details>
+
           <button type="submit"
                   id="btn-submit"
                   class="btn btn--primary btn--submit">
@@ -632,6 +642,7 @@
                  class="feedback-explanation">
                 <!-- Populated by script -->
               </p>
+              <p id="error-type-label" class="error-type-label" hidden></p>
             </div>
           </div>
 
@@ -1105,11 +1116,13 @@
       feedbackRegion.classList.add(allOk ? 'feedback-region--correct' : 'feedback-region--incomplete');
 
       /* Heading and explanation */
+      const errorTypeEl = document.getElementById('error-type-label');
       if (allOk) {
         feedbackHdg.textContent = 'Comprehensive scope boundary statement.';
         feedbackExp.textContent =
           'Your declaration addresses the key constraints from the Meridian brief. ' +
           'Compare your response to the expert reference below.';
+        if (errorTypeEl) { errorTypeEl.hidden = true; errorTypeEl.textContent = ''; }
       } else {
         feedbackHdg.textContent = 'Your scope statement needs more specificity.';
         const gaps = [];
@@ -1119,6 +1132,11 @@
         if (!hasRationale)  gaps.push('ground your rationale in a specific constraint from the brief');
         feedbackExp.textContent =
           'To strengthen it: ' + gaps.join('; ') + '.';
+        if (errorTypeEl) {
+          errorTypeEl.textContent =
+            'This response reflects a constraint underweighting error: the scope statement is not yet anchored to the binding constraints (the IT roles, IR-2024, and the brief limits) that should govern where the boundary falls.';
+          errorTypeEl.hidden = false;
+        }
       }
 
       /* Four-check evaluation summary */

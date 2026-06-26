@@ -317,6 +317,12 @@
           completed before you leave this lesson.
         </p>
 
+        <!-- Prediction prompt (Prompt E Part 2 item 15) -->
+        <section class="prediction-prompt" aria-label="Prediction prompt">
+          <label class="prediction-prompt__label" for="prediction-l2">Before this lesson begins: what do you expect to find most difficult about the Output Style Gate?</label>
+          <textarea class="prediction-prompt__input" id="prediction-l2" rows="2" data-autosave-key="prediction_l2" placeholder="Type your prediction. This is not graded."></textarea>
+        </section>
+
         <!-- Retrieval warm-up (item 15) -->
         <section class="retrieval-warmup" data-retrieval data-storage-key="retrieval_l2" aria-labelledby="rw-heading">
           <h2 class="retrieval-warmup__heading" id="rw-heading">Before You Begin</h2>
@@ -553,6 +559,24 @@
       &copy; <span id="footer-year"></span> Proof Point Learning. All rights reserved.
     </p>
   </footer>
+
+  <!-- ============================================================
+       Context Panel data (Item 9) -- read by shared contextPanel.js
+       ============================================================ -->
+  <script>
+  window.ARCH_CONTEXT_DATA = {
+    title: 'Output Style Gate Reference',
+    sections: [
+      { heading: 'Five Conventions', items: [
+        'Artifact Naming: MRHN_[ArtifactName]_v[Version]_[Date]. Four segments. CamelCase name, no spaces. Integer version starting at 1. Date format YYYY-MM-DD.',
+        'SI Identifiers: SI-01 through SI-16. Assigned in Bucket Map order. Never reused; retired identifiers leave a gap.',
+        'DC Identifiers: DC-01 through DC-48. Assigned during Module 2 decomposition, grouped by SI parent. Same retirement rule.',
+        'Governance Record: every decision requires all five fields: Decision Statement, Constraint Reference, Rationale, Risk Note, Governance Checkpoint Linkage.',
+        'Version Control: revisions happen only after documented governance review. Create a new file with an incremented version. Never edit a previous version in place.'
+      ]}
+    ]
+  };
+  </script>
 
   <!-- ============================================================
        Base script

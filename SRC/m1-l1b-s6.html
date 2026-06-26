@@ -734,6 +734,15 @@
             <p class="confidence-rating__echo" role="status" aria-live="polite" hidden></p>
           </fieldset>
 
+          <details class="success-criteria">
+            <summary class="success-criteria__summary">Success Criteria</summary>
+            <ul class="success-criteria__list">
+              <li>All five fields are present, and the Constraint Reference names at least one specific code such as RC-2 or SI-01.</li>
+              <li>Your Rationale explains why the decision follows from the constraint, rather than restating the decision.</li>
+              <li>Your Risk Note names a concrete failure condition and the signal that would prompt a change.</li>
+            </ul>
+          </details>
+
           <!-- Submit controls -->
           <div class="form-controls">
             <button type="submit"
@@ -1058,6 +1067,24 @@
   </footer>
 
   <!-- ============================================================
+       Context Panel data (Item 9) -- read by shared contextPanel.js
+       ============================================================ -->
+  <script>
+  window.ARCH_CONTEXT_DATA = {
+    title: 'Output Style Gate Reference',
+    sections: [
+      { heading: 'Five Conventions', items: [
+        'Artifact Naming: MRHN_[ArtifactName]_v[Version]_[Date]. Four segments. CamelCase name, no spaces. Integer version starting at 1. Date format YYYY-MM-DD.',
+        'SI Identifiers: SI-01 through SI-16. Assigned in Bucket Map order. Never reused; retired identifiers leave a gap.',
+        'DC Identifiers: DC-01 through DC-48. Assigned during Module 2 decomposition, grouped by SI parent. Same retirement rule.',
+        'Governance Record: every decision requires all five fields: Decision Statement, Constraint Reference, Rationale, Risk Note, Governance Checkpoint Linkage.',
+        'Version Control: revisions happen only after documented governance review. Create a new file with an incremented version. Never edit a previous version in place.'
+      ]}
+    ]
+  };
+  </script>
+
+  <!-- ============================================================
        Base script
        ============================================================ -->
   <script type="module">
@@ -1246,6 +1273,7 @@
           <div>
             <span class="result-banner__label">Governance record needs revision.</span>
             Review the expert record below, then use Revise to complete all five fields with substantive content.
+            <p class="error-type-label">This response reflects governance underwriting: your risk note does not yet name a concrete failure condition a reviewer could check.</p>
           </div>`;
 
         tryAgainBtn.removeAttribute('hidden');

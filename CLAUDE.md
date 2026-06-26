@@ -64,6 +64,31 @@ Every module must open with a module overview screen (m[N]-overview.html) before
 #### Spaced Repetition Map (required before Module 2 build)
 Each Module 2-4 lesson introduction screen must include one explicit callback to a Module 1 concept at increasing Bloom's level. Draft callbacks are in Docs/ARCH_Build_Governance.md. Verify callbacks against actual Module 2-4 lesson content before building.
 
+Module 1 concept reappearance schedule (Prompt E Part 2 item 17). Each row names the Module 1 concept, the lesson that introduces it, and where it must reappear at a higher Bloom's level. Verify each callback against actual lesson content before building.
+
+| Module 1 concept | Introduced in | Reappears at higher Bloom's level |
+| --- | --- | --- |
+| Constraint identification | Lesson 2 (1.1b) | 2.1 Analysis, 3.2 Evaluation |
+| Bucket/scope organization | Lesson 3 (1.2) | 2.2 Analysis, 3.3 Evaluation |
+| Calibration (domain + taxonomy) | Lesson 4 (1.3) | 2.3 Evaluation |
+| Decomposition | Lesson 5 (1.4a) | 2.4 Evaluation, 4.2 Creation |
+| Governance records | Lesson 2 and Lesson 6 | 3.1 Evaluation, 4.3 Evaluation |
+| Traceability / scope trace audit | Lesson 6 (1.4b) | 3.4 Evaluation |
+| Full Phase 1 workflow | Module 1 whole | 4.1 Evaluation/Creation |
+| Transfer to new context | Module 1 worked examples | 4.4 Creation, 4.5 is the transfer activity itself |
+
+Pattern for each callback: In Module 1 you [established/identified/produced X]. This lesson asks you to apply that same concept at a higher level of complexity: [specific demand].
+
+#### Recurring Patterns (monitor across all modules)
+Four patterns surfaced during Module 1 (Prompt E Part 2 item 22). Monitor each in Modules 2-4 and reapply the response if the pattern recurs.
+
+| Pattern | Evidence (where it showed) | Cumulative effect | Response | Verification criterion |
+| --- | --- | --- | --- | --- |
+| 1. Cognitive mode transitions | Learners shift from observation to production with no structural signal, seen across all guided practice screens | Learners arrive at production tasks still in passive reading mode | Cognitive mode transition banner on all guided practice screens (cognitiveModeBanner.js) | Flag if Guessing confidence exceeds 30 percent on any lesson |
+| 2. Passive worked examples | All expert reasoning visible at once on early worked example screens | Learners skim rather than engage step by step | Progressive disclosure on all worked example screens | Confidence ratings higher in lessons with progressive disclosure |
+| 3. Confidence gap before submission | No mechanism to flag uncertainty before submitting, all guided practice screens | Uncertainty stays invisible until after a weak attempt | Confidence rating and articulation requirement on all guided practice screens | Flag if Guessing exceeds 30 percent |
+| 4. Commitment note disconnection | Commitment note collected in intro 0.9 but never referenced again | Learners do not see the course connect to their stated goal | Commitment note callout on every lesson introduction screen | Compare completion rates for learners with substantive commitment notes versus those who skipped |
+
 ### Chunking and Pacing (Prompt D)
 - Chunking rules: maximum three cognitive activities per screen; maximum four scroll depths at a 1080px viewport.
 - Time estimates required on every screen, driven by SCREEN_TIME_MAP in trackerRedesign.js (hub and module-overview screens render Est. 3-5 min in their own header).
