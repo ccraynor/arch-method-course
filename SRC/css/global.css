@@ -1304,7 +1304,7 @@ footer[role="contentinfo"] nav a:focus-visible {
 .hub-glance__value { display: block; font-size: 1.25rem; font-weight: 800; color: var(--color-text-primary); }
 
 /* Return to hub link (on unit screens) */
-.return-hub { margin: 0.5rem 0 0; font-size: 0.9375rem; }
+.return-hub { margin: 0.5rem 0 1.25rem; font-size: 0.9375rem; }
 .return-hub a { color: var(--color-text-link); text-underline-offset: 2px; }
 
 @media (prefers-contrast: more) {
@@ -1467,7 +1467,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 .brief-section__body p { margin: 0 0 0.625rem; }
 .brief-section__body p:last-child { margin-bottom: 0; }
 .brief-section__body ul,
-.brief-section__body ol { margin: 0 0 0.625rem; padding-left: 1.25rem; }
+.brief-section__body ol { margin: 0 0 0.625rem; padding-left: 1.25rem; list-style: disc; }
 .brief-section__body li { margin-bottom: 0.3125rem; }
 .brief-subhead {
   font-size: 0.6875rem;
@@ -2642,6 +2642,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 .exemplar-contrast__record {
   margin: 0;
   padding-left: 1.1rem;
+  list-style: disc;
   font-size: 0.9375rem;
   line-height: 1.6;
   color: var(--color-text-primary);
@@ -2828,6 +2829,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 .context-card__list {
   margin: 0;
   padding-left: 1.1rem;
+  list-style: disc;
   font-size: 0.875rem;
   line-height: 1.55;
   color: var(--color-text-primary);
@@ -2950,6 +2952,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 .success-criteria__list {
   margin: 0;
   padding: 0 1.25rem 1rem 2.1rem;
+  list-style: disc;
   font-size: 0.9375rem;
   line-height: 1.6;
   color: var(--color-text-primary);
