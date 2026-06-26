@@ -239,16 +239,16 @@
     .guidance-list {
       margin: 0;
       padding: 0 0 0 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.375rem;
+      list-style: disc;
     }
 
     .guidance-list li {
       font-size: 0.875rem;
       color: var(--color-text-primary);
       line-height: 1.6;
+      margin-bottom: 0.375rem;
     }
+    .guidance-list li:last-child { margin-bottom: 0; }
 
     /* ---- Lesson transition note ---- */
     .lesson-transition {

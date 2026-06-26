@@ -71,16 +71,16 @@
     .prompt-questions {
       margin: 0;
       padding: 0.75rem 0.875rem 0.875rem 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.625rem;
+      list-style: disc;
       background: var(--color-bg-page);
     }
     .prompt-question {
       font-size: 0.875rem;
       color: var(--color-text-primary);
       line-height: 1.6;
+      margin-bottom: 0.625rem;
     }
+    .prompt-question:last-child { margin-bottom: 0; }
     .prompt-question strong { font-weight: 700; }
 
     /* ---- Writing guidance ---- */
@@ -103,14 +103,14 @@
     .guidance-list {
       margin: 0;
       padding: 0.625rem 0.875rem 0.75rem 1.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
+      list-style: disc;
       font-size: 0.8125rem;
       color: var(--color-text-primary);
       line-height: 1.55;
       background: var(--color-bg-page);
     }
+    .guidance-list li { margin-bottom: 0.4rem; }
+    .guidance-list li:last-child { margin-bottom: 0; }
 
     /* ---- Prompt context note ---- */
     .prompt-context-note {

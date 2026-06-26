@@ -917,9 +917,12 @@ footer[role="contentinfo"] nav a:focus-visible {
 .lesson-intro__outcomes {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.25rem 2.5rem;
+  gap: 1.25rem 2rem;
   margin-bottom: var(--space-section);
-  max-width: 760px;
+  max-width: 900px;
+}
+@media (max-width: 720px) {
+  .lesson-intro__outcomes { grid-template-columns: 1fr; }
 }
 
 .lesson-intro__list {
@@ -995,11 +998,11 @@ footer[role="contentinfo"] nav a:focus-visible {
   font-weight: 600;
   color: var(--color-text-inverse);
   cursor: pointer;
-  transition: background 0.15s;
+  transition: opacity 0.15s;
 }
 
 .step-reveal-btn:hover {
-  background: #264d7a;
+  opacity: 0.92;
 }
 
 .step-reveal-btn:focus-visible {
@@ -1148,8 +1151,8 @@ footer[role="contentinfo"] nav a:focus-visible {
 }
 .scaffold-level__desc {
   margin: 0.375rem 0 0;
-  font-size: var(--font-size-label);
-  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  color: var(--color-text-primary);
 }
 
 /* Prior knowledge activation and commitment surfacing callouts (items 22, 23) */
@@ -2424,9 +2427,9 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 
 /* Item 6: In Your Context (teal italic transfer prompt) */
 .in-your-context {
-  margin: 1.5rem 0 0;
+  margin: 2.5rem 0 0;
   padding: 0.875rem 1rem;
-  border-left: 4px solid var(--color-brand-teal);
+  border-left: 4px solid var(--color-brand-navy);
   background: var(--color-bg-subtle);
   border-radius: 0 4px 4px 0;
   font-style: italic;
