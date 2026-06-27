@@ -3037,7 +3037,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   font-size: var(--font-size-label);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.1em;
   color: var(--color-brand-navy);
 }
 .learning-objective-callout {
