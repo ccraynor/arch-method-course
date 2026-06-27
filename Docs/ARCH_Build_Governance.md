@@ -522,6 +522,14 @@ Narrative keys (Prompt E Part 1 Section 2):
   reading card open/closed state)
 - archMethod_optReading_l3_open (Lesson 3 reflection optional
   reading card open/closed state)
+- archMethod_[screenId]_criteriaOpen (collapsible Success
+  Criteria context block, guided practice screens m1-l1a-s4,
+  m1-l1b-s3, m1-l4a-s4, m1-l4b-s4, m1-l4b-s5; busyness pass item 3)
+- archMethod_[screenId]_evidenceOpen (collapsible Expected
+  Evidence context block, same five guided practice screens)
+- archMethod_gatePhase1RecordsOpen, archMethod_gatePhase2RecordsOpen
+  (Phase 1 and Phase 2 governance record groups on m1-gate-s1;
+  busyness pass item 4)
 
 Note: Prompt D adds archMethod_lastVisitDate.
 Note: Prompt E adds archMethod_pacingMode,

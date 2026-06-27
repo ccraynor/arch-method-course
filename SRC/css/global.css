@@ -2851,41 +2851,14 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 
 /* Item 10: cognitive mode transition banner */
 .cog-banner {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin: 0 0 1.5rem;
-  padding: 0.875rem 1rem;
-  border: 1px solid var(--color-brand-teal);
-  border-left: 4px solid var(--color-brand-teal);
-  border-radius: 0 6px 6px 0;
-  background: var(--color-bg-subtle);
+  margin: 0 0 1.25rem;
 }
 .cog-banner__text {
   margin: 0;
-  flex: 1 1 auto;
   font-size: 0.9375rem;
-  font-weight: 600;
+  font-style: italic;
   line-height: 1.55;
-  color: var(--color-text-primary);
-}
-.cog-banner__dismiss {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  padding: 0;
   color: var(--color-text-secondary);
-  background: transparent;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.cog-banner__dismiss:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
 }
 
 /* Item 13: 90-minute pacing alert (amber, subtle) */
@@ -3181,6 +3154,32 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   color: var(--color-text-link);
 }
 .table-disclosure[open] .table-disclosure__summary::after { content: "Hide"; }
+
+/* Collapsible Success Criteria / Expected Evidence context blocks (busyness pass item 3).
+   These reuse .table-disclosure but keep the H2 context-block heading inside
+   the summary so heading semantics are preserved. */
+.context-block-disclosure > .table-disclosure__summary > .context-block__heading {
+  margin: 0;
+}
+.context-block-disclosure__body {
+  padding: 0 1rem 1rem;
+}
+.context-block-disclosure__body p,
+.context-block-disclosure__body li {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-text-primary);
+  line-height: 1.6;
+}
+.context-block-disclosure__body ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style: disc;
+}
+.context-block-disclosure__body li + li {
+  margin-top: 0.3125rem;
+}
+
 .table-disclosure .cal-table-wrap,
 .table-disclosure .cal-output-table-wrap {
   margin: 0 1rem 1rem;

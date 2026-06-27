@@ -56,19 +56,8 @@ function initCognitiveModeBanner() {
 
   const text = document.createElement('p');
   text.className = 'cog-banner__text';
-  text.textContent = 'You have just observed how an expert approached this problem. Now it is your turn.';
+  text.textContent = 'You have just observed how an expert approached this. Now it is your turn.';
   banner.appendChild(text);
-
-  const dismiss = document.createElement('button');
-  dismiss.type = 'button';
-  dismiss.className = 'cog-banner__dismiss';
-  dismiss.setAttribute('aria-label', 'Dismiss this message');
-  dismiss.innerHTML = '<svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M13.5 4.5l-9 9M4.5 4.5l9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
-  dismiss.addEventListener('click', () => {
-    ssSet(shownKey, 'true');
-    banner.remove();
-  });
-  banner.appendChild(dismiss);
 
   host.insertBefore(banner, host.firstChild);
   ssSet(shownKey, 'true');
