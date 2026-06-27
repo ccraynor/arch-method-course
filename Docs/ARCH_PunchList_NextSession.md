@@ -229,6 +229,15 @@ content rendered as indented lines with no bullet markers.
     result clearly H1 > content-section H2 > body, and content-section H2 >
     eyebrow labels. Propose current → proposed value for review before applying.
     CSS/token-only; no markup.
+- **D6. Eyebrow vs progress-tracker lesson-number mismatch (learner-facing).**
+  On built Module 1 screens, the content eyebrow shows the plain ordinal
+  ("Lesson 5") while the header progress tracker shows the ARCH ID ("1.4a") on
+  the same screen — two different lesson numbers visible at once. Clearest on
+  m1-l4a (Lesson 5 / 1.4a); also m1-l1a (Lesson 1 / 1.1a) and m1-l1b (Lesson 2 /
+  1.1b). Decide ONE learner-facing scheme and align the eyebrow and tracker to
+  it (the numbering crosswalk in CLAUDE.md / governance maps both). Separate from
+  task 9's doc reconciliation; this is a built-screen markup pass. Polish, not a
+  Module 2 build-blocker.
 
 ---
 
