@@ -1,9 +1,10 @@
 ARCH COURSE SCENARIO ARCHITECTURE SPECIFICATION
-Version: 1.1
+Version: 1.2
 Status: Production Build Specification
 Applies To: Modules 1–4
 Priority: HIGH
 Lock Status: Recommended for Production
+Changelog: v1.2 (2026-06-27) — Relabeled the Module 1 spotlight lessons from "Lesson 1.1–1.6" to "Lesson 1–6" to remove the token collision with the ARCH lesson IDs (1.1a, 1.1b, 1.2, 1.3, 1.4a, 1.4b). Module 1 content only; Modules 2–4 numbering unchanged. See the lesson-numbering crosswalk in ARCH_Build_Governance.md and CLAUDE.md.
 
 ===========================================================
 DESIGN INTENT
@@ -67,27 +68,27 @@ Build an appropriate instructional architecture.
 
 Spotlight Scenarios
 
-Lesson 1.1
+Lesson 1
 K–12 State Education Agency
 Reading Instruction Professional Development
 
-Lesson 1.2
+Lesson 2
 Community College
 First-Year Experience (FYE)
 
-Lesson 1.3
+Lesson 3
 Corporate
 Cybersecurity Awareness
 
-Lesson 1.4
+Lesson 4
 Hospital
 Patient Communication Skills for Nursing Staff
 
-Lesson 1.5
+Lesson 5
 Nonprofit
 Adult Financial Literacy
 
-Lesson 1.6
+Lesson 6
 Doctoral Program
 Research Methods Course
 
