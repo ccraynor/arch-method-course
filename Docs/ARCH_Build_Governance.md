@@ -996,6 +996,35 @@ Module overview: m[N]-overview.html
 Gate: m[N]-gate-s1.html
 All files in SRC/ directory.
 
+Module 2 lesson-ID / file convention (task 9, decided
+2026-06-27): Module 2 has four unsplit lessons. Use file
+prefixes m2-l1, m2-l2, m2-l3, m2-l4 mapped to lessons 2.1,
+2.2, 2.3, 2.4 (the Nth lesson is 2.N). Split rule: if any
+future lesson is ever split into two screen-sets, use the
+a/b suffix as Module 1 did (e.g. m2-l3a / m2-l3b for 2.3a /
+2.3b). Modules 2-4 have no dual-numbering collision: the
+scenario spec and the ARCH IDs coincide (2.1-2.4, 3.1-3.4,
+4.1-4.5), because no lessons are split.
+
+Module 1 lesson-numbering crosswalk (task 9, 2026-06-27).
+Module 1 is labeled by three surfaces; this table is the
+single source of truth. The bare token "1.x" is reserved
+for the ARCH ID column only.
+
+| Ordinal (scenario spec v1.2 + screen eyebrow) | ARCH ID (progress tracker, Stage 3, CLAUDE.md) | File prefix | Module 1 sector |
+| --- | --- | --- | --- |
+| Lesson 1 | 1.1a | m1-l1a | K-12 State Education Agency |
+| Lesson 2 | 1.1b | m1-l1b | Community College |
+| Lesson 3 | 1.2  | m1-l2  | Corporate |
+| Lesson 4 | 1.3  | m1-l3  | Hospital |
+| Lesson 5 | 1.4a | m1-l4a | Nonprofit |
+| Lesson 6 | 1.4b | m1-l4b | Doctoral |
+
+The ARCH ID a/b suffixes record where Lessons 1.1 and 1.4
+were each split into two screen-sets. The scenario spec
+(v1.2) and the on-screen eyebrow use the plain ordinal
+(Lesson 1-6) so they no longer collide with ARCH IDs.
+
 ---
 
 ## Screen Count Reference

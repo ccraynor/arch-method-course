@@ -248,6 +248,26 @@ do not invent sources at build time.
 - Examples: m1-l1a-s1.html, m1-l1b-s3.html, m2-l2-s1.html
 - Transition gate: m1-gate-s1.html
 - Introduction screens: intro-0.[screen].html (already built)
+- Module 2 (task 9, decided 2026-06-27): four unsplit lessons use
+  m2-l1, m2-l2, m2-l3, m2-l4 mapped to 2.1, 2.2, 2.3, 2.4 (the Nth
+  lesson is 2.N). If a future lesson is split, use the a/b suffix as
+  Module 1 did (m2-l3a / m2-l3b for 2.3a / 2.3b).
+
+#### Module 1 Lesson-Numbering Crosswalk
+Module 1 is labeled by three surfaces. This table is the single source
+of truth; the bare token "1.x" is reserved for the ARCH ID column only.
+The scenario spec v1.2 and the on-screen eyebrow use the plain ordinal
+(Lesson 1-6) so they no longer collide with the ARCH IDs. Modules 2-4
+have no collision (scenario spec and ARCH IDs coincide: 2.1-2.4 etc.).
+
+| Ordinal (scenario spec v1.2 + eyebrow) | ARCH ID (progress tracker, Stage 3) | File prefix | Sector |
+| --- | --- | --- | --- |
+| Lesson 1 | 1.1a | m1-l1a | K-12 State Education Agency |
+| Lesson 2 | 1.1b | m1-l1b | Community College |
+| Lesson 3 | 1.2  | m1-l2  | Corporate |
+| Lesson 4 | 1.3  | m1-l3  | Hospital |
+| Lesson 5 | 1.4a | m1-l4a | Nonprofit |
+| Lesson 6 | 1.4b | m1-l4b | Doctoral |
 
 ### Build Order (FOLLOW THIS EXACTLY)
 1. Global state architecture
