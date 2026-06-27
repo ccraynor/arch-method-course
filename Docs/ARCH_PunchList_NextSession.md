@@ -9,25 +9,61 @@ today are at the bottom, so this is the single source of truth for tomorrow.
 
 ## Read this first
 
-**Update 2026-06-27:** F1 (dead module links) is FIXED in code and templates
-(commit 27c4db8), and Section A's decision-record + merge-card wraps are FIXED
-(commit 5ffdbf1). What remains collapses into three audits plus a handful of
-one-offs:
+**Update 2026-06-27:** Several items shipped today — F1 (dead module links,
+commit 27c4db8), Section A's decision-record + merge-card wraps (commit 5ffdbf1),
+and item B (Success Criteria + Expected Evidence uncollapse, commits 12a1eaa +
+654c34b). What remains is a few audits plus a handful of one-offs.
 
-1. **Narrow first column / title wrap (Section A)** — almost certainly one root
-   cause in the shared card/table CSS. Fix the pattern once, then spot-check.
-   The highest-leverage cosmetic item; Carrie flagged it as "rampant."
-2. **Uncollapse short callouts (Section B)** — convert Success Criteria and
-   Expected Evidence from accordions to always-open, course-wide. This reverses a
-   Prompt-F decision, so it carries a governance update.
-3. **Bullet audit redo (Section C)** — find list content rendered without bullet
-   markers.
+**Pre-Module-2 GATES — do these BEFORE building Module 2.** Module 1 is the
+pattern source for Modules 2-4, so any gap in a reusable Module 1 pattern
+propagates 3x. Two gates remain:
+- **G. Accessibility pattern-conformance check** (full section directly below) —
+  BLOCKS the Module 2 build.
+- **F3. Eyebrow-label color standard** — land before new screens inherit the
+  wrong color.
+(Item B was the third gate and is now done.)
 
-Then four targeted one-offs (D), three structure items (E), and three audit flags
-(F).
+Remaining audits / one-offs: **C** (bullet audit), **D** (one-offs), **E**
+(structure), **F2/F4** (counts, disabled-link standard), and **A5** (decision-record
+CSS consolidation).
 
-**Suggested order (remaining):** B → C → D one-offs → E → F2/F3/F4. Section A's
-only open item is the decision-record CSS consolidation (A5).
+**Suggested order (remaining):** G → F3 → C → D one-offs → E → F2/F4 → A5.
+
+---
+
+## G. Accessibility pattern-conformance check  (BLOCKS Module 2 build)
+
+Source: Docs/Accessibility & Inclusion Plan.docx (Master Accessibility Spec
+v5.0). Why now: Module 1 is the pattern source for Modules 2-4. The spec's
+Section 0 flags requirements that "cannot be deferred or retrofitted after
+component development begins." Any conformance gap in a Module 1 reusable pattern
+would propagate 3x, so this runs BEFORE Module 2 is built, not after.
+
+This is the STATIC, read-only, Claude-Code-doable check — NOT the formal AT audit.
+
+- **G1. Static conformance scan + gap list.** Scan Module 1's reusable components
+  against spec Sections 1-14:
+  - landmark roles/regions and the 5 skip links;
+  - heading order (no skipped levels);
+  - the ARIA-per-component-type standard (Section 3);
+  - focus order + Escape-closes + focus-return-to-trigger (Section 7);
+  - announcement wiring + the required announcement strings (Section 8);
+  - progress-tracker states (Section 5);
+  - save/persistence behaviors (Section 6: autosave 30s, timestamp, Save button,
+    failure-recovery actions);
+  - the six component contracts (Sections 9-14).
+  Produce a GAP LIST tagged conformant / gap / missing-feature, distinguishing
+  polish gaps from missing spec-required behaviors.
+- **G2. Record the verified patterns** as an "Accessibility Build Standard"
+  section in CLAUDE.md so Modules 2-4 are built against it (same discipline as the
+  disabled-module-link standard). Record each pattern against its spec section.
+
+**NOT in scope for G (recorded so it is not confused as done):** the formal
+Accessibility Launch Gate — manual testing on NVDA / JAWS / VoiceOver / TalkBack /
+keyboard-only / 200% zoom / 400% reflow. The spec defines this as a mandatory
+PRE-DEPLOYMENT milestone requiring real assistive tech and a human; it cannot be
+validated by Claude Code and is NOT part of item G. It stays a separate
+end-state launch gate.
 
 ---
 
