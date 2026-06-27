@@ -96,18 +96,17 @@ lives in the governance doc; this roadmap just tracks the to-do.
    consistent (same kind of fix as the existing Module 3 "Correction
    Notes"). 2-minute reconciliation, not a redesign.
 
-9. Module 2 lesson-ID / file-naming convention. The scenario spec and
-   Stage 3 both number lessons 2.1-2.4 (consistent). Module 1's build
-   uses split prefixes (m1-l1a/l1b/l2/l3/l4a/l4b) for its 6 lessons,
-   which does not extend to Module 2's 4 unsplit lessons. Decide and
-   record the Module 2 prefix convention (e.g. m2-l1..m2-l4 mapped to
-   2.1-2.4) before building. Module 1 mapping for reference: 1.1->l1a,
-   1.2->l1b, 1.3->l2, 1.4->l3, 1.5->l4a, 1.6->l4b.
-   Also reconcile the Module 1 numbering itself: the scenario spec uses
-   1.1-1.6 while CLAUDE.md uses 1.1a/1.1b/1.2/1.3/1.4a/1.4b for the same
-   six lessons. Decide whether Module 2 stays unsplit (m2-l1..m2-l4,
-   matching Stage 3's four-lesson structure) and whether the two Module 1
-   schemes should converge to prevent drift.
+9. Module 2 lesson-ID / file-naming convention -- RESOLVED
+   2026-06-27. Decision: Module 2's four unsplit lessons use
+   m2-l1..m2-l4 mapped to 2.1-2.4 (with an a/b split rule for any
+   future split). The Module 1 dual-numbering was reconciled via a
+   crosswalk rather than forced convergence: the scenario spec
+   (now v1.2) and the on-screen eyebrow use the plain ordinal
+   Lesson 1-6, and the bare token "1.x" is reserved for the ARCH ID.
+   The Module 2 convention and the Module 1 lesson-numbering crosswalk
+   are recorded in ARCH_Build_Governance.md and CLAUDE.md. Still open
+   (tracked separately, not part of task 9): the learner-facing
+   eyebrow-vs-progress-tracker mismatch, punch-list item D6.
 
 ---
 
