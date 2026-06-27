@@ -207,6 +207,28 @@ content rendered as indented lines with no bullet markers.
   bullet-to-comma substitution it attempts is effectively inert (generalizes E3).
   When reached: drop the aria-label and handle the bullet→comma with a
   visually-hidden separator. Bundle with E2/E3.
+- **D5. H2 content-heading size bump (course-wide, scoped).** Polish/systemic,
+  sibling to the H1-to-callout padding item; NOT a Module 2 build-blocker.
+  - Diagnosis (refined): H1 titles are fine. The H2s that read too small are the
+    CONTENT SECTION headings. `<h2>` spans ~20 visual treatments in two groups —
+    only one group should change.
+  - GROW (true content-section headings, currently too small): `step-heading`,
+    `hub-section-heading`, `lesson-intro__section-heading`, `lesson-section__heading`,
+    `feedback-heading`, `gp-feedback__section-heading`, `task-section__title`,
+    `landing-section__heading`, `lesson-plan-heading`, and the topical `__heading`
+    section titles (transfer-framework, retrieval-warmup, calibration-panel,
+    think-aloud, prompt-guidance, prompt-block, hub-glance).
+  - DO NOT CHANGE (H2 by semantics, but small eyebrow LABELS by design):
+    `context-block__heading` (the PURPOSE / Instructions / Expected Evidence
+    labels) and `success-criteria__summary`. Raising these would flatten hierarchy.
+  - DO NOT CHANGE (different context): `panel-title` and `aside-heading` (support
+    panels / sidebars) unless reviewed separately.
+  - Fix approach: if the content-section headings share a token
+    (`--font-size-heading`), bump the token and confirm only the GROW group
+    consumes it; if some use hardcoded sizes, align them to the token. Keep the
+    result clearly H1 > content-section H2 > body, and content-section H2 >
+    eyebrow labels. Propose current → proposed value for review before applying.
+    CSS/token-only; no markup.
 
 ---
 
