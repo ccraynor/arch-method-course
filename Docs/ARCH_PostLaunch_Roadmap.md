@@ -35,6 +35,68 @@ Complete these before starting the Module 2 build session.
    relevant lesson reflection screen or as a new optional screen.
    Build after Prompt E Part 2 and Prompt F commit.
 
+### Module 2 build target (confirmed from Stage 1-3 UbD docs)
+
+Module 2: Engineer the Learning -- 4 lessons (2.1 Sequencing Logic
+Fundamentals, 2.2 Competency Progression and Spiral Reinforcement,
+2.3 Unit Architecture Engineering, 2.4 Learning Science Integration),
+24 screens, Phases 3-4. Deliverable: Sequenced Unit Architecture
+Package (Performance Task 2, builds on Task 1 Bucket Map). Artifact
+name MRHN_UnitArchitecture_v1. The SME Approval Gate (1 screen) is
+Module 2's entry gate; a Sequencing Governance Record follows L2.4.
+
+Each task below populates a Module 2 placeholder in
+ARCH_Build_Governance.md from the Stage docs. The populated content
+lives in the governance doc; this roadmap just tracks the to-do.
+
+2. ZPD tier assignments for 2.1-2.4 -- run the ZPD Tier Assignment
+   Process (governance) and record assignments plus any faded
+   examples. Source: Stage 3 lesson complexity (2.3 Unit Architecture
+   is the high-load lesson, about 12 min; 2.1-2.2 lighter). Fill the
+   "Module 2 tier assignments: [complete before build]" placeholder.
+
+3. Institutional contexts -- assign 4 contexts for 2.1-2.4, none
+   repeating Module 1's six (K-12 SEA, community college FYE, corporate
+   cybersecurity, hospital nursing, nonprofit financial literacy,
+   doctoral research methods). This is a design-layer decision for
+   Carrie to make, not auto-drafted. Fill the Module 2 contexts
+   placeholder.
+
+4. Artifacts -- populate "Module 2 artifacts: [add from Stage 2 docs]"
+   from Stage 2 Performance Task 2 (Sequenced Unit Architecture
+   Package): organize and sequence the architecture using ARCH
+   sequencing logic plus learning science; document sequencing
+   constraints and rationale; builds on the approved Task 1 Bucket Map.
+   Detailed sub-components are specified in Stage 3 (Unit Architecture
+   Map across six units including Unit 6 Integrated Simulation,
+   Sequencing Logic Explanation, Learning Science Application Notes,
+   Sequencing Decision Log, Spiral Reinforcement Map, Sequencing
+   Governance Record). Use artifact name MRHN_UnitArchitecture_v1.
+
+5. Glossary terms -- identify Module 2's new terms, verify against
+   actual lesson content, then add to hoverGlossary.js and the
+   governance terms list. Stage 3 candidates: sequencing, progression,
+   spiral reinforcement, spacing, interleaving. Do not repeat Module
+   1's 20: cognitive load and prerequisite dependency (and dependency)
+   are already defined there, so exclude them as new terms.
+
+6. Verify the drafted Module 2 callbacks (2.1-2.4 already in
+   governance) against actual Module 1 lesson content before building.
+
+7. Inherited build standards. Building Module 2 includes the SME
+   Approval Gate screen (Phase 2 Gate, 1 screen) as the entry point.
+   Already governed and inherited: F1 disabled-link spans and item B
+   always-visible Success Criteria / Expected Evidence. Pending pre-
+   Module-2 gates that must land first, then Module 2 inherits them
+   too: item G accessibility build standard and F3 navy eyebrow-label
+   standard (see ARCH_PunchList_NextSession.md).
+
+8. Reconcile a minor Stage 3 internal inconsistency before building:
+   lessons 2.3 and 2.4 are mapped to Step 11 in one table and Steps
+   12/13 in another. Confirm the correct step numbers and make Stage 3
+   consistent (same kind of fix as the existing Module 3 "Correction
+   Notes"). 2-minute reconciliation, not a redesign.
+
 ---
 
 ## Priority 1 -- Build After First Ten Learners Complete Module 1
