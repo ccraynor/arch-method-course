@@ -1378,8 +1378,8 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
 .lens-section__desc { margin: 0; font-size: 0.9375rem; line-height: 1.6; color: var(--color-text-secondary); }
 
 /* New in This Lesson vocabulary callout (item 12) */
-.new-in-lesson { margin: 0.75rem 0 1.25rem; padding: 0.625rem 0.875rem; background: var(--color-bg-subtle); border-left: 4px solid var(--color-brand-teal); border-radius: 0 4px 4px 0; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.6; }
-.new-in-lesson__label { font-weight: 700; color: var(--color-brand-teal); }
+.new-in-lesson { margin: 0.75rem 0 1.25rem; padding: 0.875rem 1.125rem; background: var(--color-bg-subtle); border-left: 4px solid var(--color-brand-teal); border-radius: 0 4px 4px 0; font-size: 1rem; color: var(--color-text-primary); line-height: 1.6; }
+.new-in-lesson__label { display: block; margin-bottom: 0.25rem; font-size: 1rem; font-weight: 700; color: var(--color-brand-navy); }
 
 /* Glossary panel term list (item 11) */
 .gls-list-group { margin: 0.875rem 0 0; }
@@ -2514,7 +2514,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   font-weight: 600;
   font-style: italic;
   line-height: 1.6;
-  color: var(--color-brand-teal);
+  color: var(--color-brand-navy);
 }
 
 /* Item 8: Your Development developmental feedback */
@@ -3065,7 +3065,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: var(--color-brand-teal);
+  color: var(--color-brand-navy);
 }
 .learning-objective-callout {
   margin: 0 0 1.25rem;
