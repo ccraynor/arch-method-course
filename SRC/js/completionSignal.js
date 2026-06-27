@@ -6,6 +6,7 @@
    archMethod_continued_<screenId> when Next is clicked. */
 
 import { setItem } from './storage.js';
+import { announce } from './srAnnounce.js';
 
 /* Reflection screen -> lesson number (Prompt D item 3). Clicking Continue
    from a reflection screen marks that lesson complete, which drives the hub
@@ -63,13 +64,7 @@ export function initCompletionSignal() {
       }
 
       /* Announce to screen readers */
-      const announcer = document.getElementById('sr-announcer');
-      if (announcer) {
-        announcer.textContent = '';
-        requestAnimationFrame(() => {
-          announcer.textContent = 'Screen complete. Moving to next screen.';
-        });
-      }
+      announce('Screen complete. Moving to next screen.');
 
       /* Navigate after 300ms */
       setTimeout(() => {

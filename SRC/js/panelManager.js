@@ -1,5 +1,7 @@
 /* panelManager.js — centralized activeSupportPanel state manager */
 
+import { announce } from './srAnnounce.js';
+
 const ALLOWED_PANELS = [
   'artifactDrawer',
   'glossary',
@@ -26,7 +28,7 @@ function openPanel(name, triggerElement = null) {
   _lastTrigger = triggerElement;
   activeSupportPanel = name;
   _activate(name);
-  _announce(_openMessage(name));
+  announce(_openMessage(name));
 }
 
 function closeAll() {
@@ -34,7 +36,7 @@ function closeAll() {
   const closing = activeSupportPanel;
   _deactivate(activeSupportPanel);
   activeSupportPanel = null;
-  _announce(_closeMessage(closing));
+  announce(_closeMessage(closing));
 
   if (_lastTrigger) {
     _lastTrigger.focus();
@@ -62,18 +64,6 @@ function _deactivate(name) {
   if (!el) return;
   el.classList.remove('is-open');
   el.setAttribute('hidden', '');
-}
-
-function _announce(message) {
-  /* Live region must exist in global HTML as:
-     <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
-     Announcement fires within one rAF tick (~16ms), well within the 500ms spec requirement. */
-  const region = document.getElementById('sr-announcer');
-  if (!region) return;
-  region.textContent = '';
-  requestAnimationFrame(() => {
-    region.textContent = message;
-  });
 }
 
 /* Spec Section 8 announcement strings. The two overlay-style panels carry
