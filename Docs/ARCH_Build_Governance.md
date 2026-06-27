@@ -691,13 +691,16 @@ Module 1 contexts used (do not repeat):
   learners
 - Lesson 6: Doctoral research methods course
 
-Module 2 suggested contexts (confirm before building):
-- K-12 curriculum coordinator
-- Corporate onboarding for new hires
-- Higher education graduate seminar
-- Healthcare clinical simulation design
-- Government agency training
-- Military or public safety training
+Module 2 contexts: LOCKED. Module 2 spotlight scenarios
+are specified in Docs/ARCH_Scenario_Architecture.md.
+2.1 State Education Agency, 2.2 Community College,
+2.3 Corporate, 2.4 Hospital.
+
+Note: Module 2 is an intentional exception to the no-repeat
+rule above. Per Docs/ARCH_Scenario_Architecture.md, Module 2
+deliberately reuses Module 1 sectors to reduce extraneous
+cognitive load while increasing reasoning demand. The
+no-repeat principle continues to apply to Modules 3 and 4.
 
 Module 3 contexts: [assign before building]
 Module 4 contexts: [assign before building]
