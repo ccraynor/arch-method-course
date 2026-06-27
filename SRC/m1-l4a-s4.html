@@ -511,12 +511,10 @@
             </ol>
           </div>
 
-          <details class="context-block-disclosure table-disclosure" data-persist-key="l4a_s4_evidenceOpen">
-            <summary class="table-disclosure__summary"><h2 class="context-block__heading">Expected Evidence</h2></summary>
-            <div class="context-block-disclosure__body">
-              <p>Two partial decompositions (one Bucket 2 item, one Bucket 3 item), each with DC identifiers, taxonomy level assignments, component descriptions, and calibration constraint notes where the item is flagged.</p>
-            </div>
-          </details>
+          <div class="context-block context-block--evidence">
+            <h2 class="context-block__heading">Expected Evidence</h2>
+            <p>Two partial decompositions (one Bucket 2 item, one Bucket 3 item), each with DC identifiers, taxonomy level assignments, component descriptions, and calibration constraint notes where the item is flagged.</p>
+          </div>
         </section>
 
         <!-- ====================================================
@@ -663,14 +661,14 @@
             <p class="confidence-rating__echo" role="status" aria-live="polite" hidden></p>
           </fieldset>
 
-          <details class="success-criteria">
-            <summary class="success-criteria__summary">Success Criteria</summary>
+          <div class="success-criteria">
+            <h2 class="success-criteria__summary">Success Criteria</h2>
             <ul class="success-criteria__list">
               <li>Each DC identifier falls within the correct range for the bucket you selected.</li>
               <li>Each Analysis-level item has at least one Analysis component.</li>
               <li>For a flagged item, your constraint note names the specific MRHN-D-003 requirement and what the component must require.</li>
             </ul>
-          </details>
+          </div>
 
           <div class="workspace-form-footer">
             <button type="submit" id="btn-submit" class="btn btn--primary btn--submit">

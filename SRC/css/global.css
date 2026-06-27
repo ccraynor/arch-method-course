@@ -2908,28 +2908,14 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   background: var(--color-bg-subtle);
 }
 .success-criteria__summary {
-  list-style: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
+  margin: 0;
   padding: 0.75rem 1rem;
   font-size: var(--font-size-label);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-brand-teal);
+  color: var(--color-brand-navy);
 }
-.success-criteria__summary::-webkit-details-marker { display: none; }
-.success-criteria__summary::after {
-  content: "Show";
-  margin-left: auto;
-  font-size: var(--font-size-label);
-  font-weight: 600;
-  text-transform: none;
-  letter-spacing: normal;
-  color: var(--color-text-link);
-}
-.success-criteria[open] .success-criteria__summary::after { content: "Hide"; }
 .success-criteria__list {
   margin: 0;
   padding: 0.5rem 1.25rem 1rem 2.1rem;

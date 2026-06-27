@@ -182,12 +182,10 @@
             </ol>
           </div>
 
-          <details class="context-block-disclosure table-disclosure" data-persist-key="l4b_s4_evidenceOpen">
-            <summary class="table-disclosure__summary"><h2 class="context-block__heading">Expected Evidence</h2></summary>
-            <div class="context-block-disclosure__body">
-              <p>Three optimization verdicts with revised descriptions where applicable. Expert reasoning is shown for all three components after you submit.</p>
-            </div>
-          </details>
+          <div class="context-block context-block--evidence">
+            <h2 class="context-block__heading">Expected Evidence</h2>
+            <p>Three optimization verdicts with revised descriptions where applicable. Expert reasoning is shown for all three components after you submit.</p>
+          </div>
         </section>
 
         <form id="practice-form" novalidate aria-label="Optimization practice">
@@ -359,14 +357,14 @@
             <p class="confidence-rating__echo" role="status" aria-live="polite" hidden></p>
           </fieldset>
 
-          <details class="success-criteria">
-            <summary class="success-criteria__summary">Success Criteria</summary>
+          <div class="success-criteria">
+            <h2 class="success-criteria__summary">Success Criteria</h2>
             <ul class="success-criteria__list">
               <li>Each verdict follows from the two-question test, not from how important the component feels.</li>
               <li>For any split or merge, your revised description keeps the original instructional obligation and fixes the granularity problem.</li>
               <li>Every component you keep or create still traces to one parent SI item.</li>
             </ul>
-          </details>
+          </div>
 
           <div class="form-footer">
             <button type="submit" class="btn btn--primary">Check My Work</button>
