@@ -522,11 +522,9 @@ Narrative keys (Prompt E Part 1 Section 2):
   reading card open/closed state)
 - archMethod_optReading_l3_open (Lesson 3 reflection optional
   reading card open/closed state)
-- archMethod_[screenId]_criteriaOpen (collapsible Success
-  Criteria context block, guided practice screens m1-l1a-s4,
-  m1-l1b-s3, m1-l4a-s4, m1-l4b-s4, m1-l4b-s5; busyness pass item 3)
 - archMethod_[screenId]_evidenceOpen (collapsible Expected
-  Evidence context block, same five guided practice screens)
+  Evidence context block, guided practice screens m1-l1a-s4,
+  m1-l1b-s3, m1-l4a-s4, m1-l4b-s4, m1-l4b-s5; busyness pass item 3)
 - archMethod_gatePhase1RecordsOpen, archMethod_gatePhase2RecordsOpen
   (Phase 1 and Phase 2 governance record groups on m1-gate-s1;
   busyness pass item 4)
@@ -1123,12 +1121,15 @@ contextPanel added to allowed panels.
 Work intentionally left incomplete after the post-Prompt F
 sessions. Review before each module build.
 
-- Duplicate Success Criteria cleanup: 5 guided practice
-  screens (m1-l1a-s4, m1-l1b-s3, m1-l4a-s4, m1-l4b-s4,
-  m1-l4b-s5) have two Success Criteria elements -- the new
-  context-block-disclosure and the pre-existing
-  .success-criteria details near the submit button. Remove
-  the duplicate in a future cleanup pass.
+- Duplicate Success Criteria cleanup: RESOLVED 2026-06-26.
+  The 5 guided practice screens (m1-l1a-s4, m1-l1b-s3,
+  m1-l4a-s4, m1-l4b-s4, m1-l4b-s5) had two Success Criteria
+  elements. The duplicate context-block-disclosure Success
+  Criteria block in the Activity Context section was removed
+  from each screen; the pre-existing .success-criteria details
+  near the submit button was retained. The sibling Expected
+  Evidence context block (archMethod_[screenId]_evidenceOpen)
+  was retained.
 - Busyness reduction items 2, 5, 6 deferred: header
   consolidation into two rows; tabbed In a Different Context
   and In Your Context card; Expert Think-Aloud collapsible

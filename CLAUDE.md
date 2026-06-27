@@ -150,9 +150,9 @@ localStorage keys:
 - archMethod_transferContext_[lesson]_open
 - archMethod_calTable2Open, archMethod_calTable3Open
 - archMethod_optReading_l1_open, archMethod_optReading_l3_open
-- archMethod_[screenId]_criteriaOpen, archMethod_[screenId]_evidenceOpen
-  (collapsible Success Criteria and Expected Evidence context blocks on
-  guided practice screens m1-l1a-s4, m1-l1b-s3, m1-l4a-s4, m1-l4b-s4, m1-l4b-s5)
+- archMethod_[screenId]_evidenceOpen
+  (collapsible Expected Evidence context block on guided practice screens
+  m1-l1a-s4, m1-l1b-s3, m1-l4a-s4, m1-l4b-s4, m1-l4b-s5)
 - archMethod_gatePhase1RecordsOpen, archMethod_gatePhase2RecordsOpen
   (Phase 1 and Phase 2 governance record groups on m1-gate-s1)
 
