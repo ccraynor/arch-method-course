@@ -55,12 +55,11 @@ lives in the governance doc; this roadmap just tracks the to-do.
    is the high-load lesson, about 12 min; 2.1-2.2 lighter). Fill the
    "Module 2 tier assignments: [complete before build]" placeholder.
 
-3. Institutional contexts -- assign 4 contexts for 2.1-2.4, none
-   repeating Module 1's six (K-12 SEA, community college FYE, corporate
-   cybersecurity, hospital nursing, nonprofit financial literacy,
-   doctoral research methods). This is a design-layer decision for
-   Carrie to make, not auto-drafted. Fill the Module 2 contexts
-   placeholder.
+3. Institutional contexts -- RESOLVED. Module 2 spotlight scenarios
+   are LOCKED in Docs/ARCH_Scenario_Architecture.md (2.1 State
+   Education Agency, 2.2 Community College, 2.3 Corporate, 2.4
+   Hospital; sectors reused from Module 1 to reduce extraneous load
+   while increasing reasoning demand).
 
 4. Artifacts -- populate "Module 2 artifacts: [add from Stage 2 docs]"
    from Stage 2 Performance Task 2 (Sequenced Unit Architecture
@@ -96,6 +95,14 @@ lives in the governance doc; this roadmap just tracks the to-do.
    12/13 in another. Confirm the correct step numbers and make Stage 3
    consistent (same kind of fix as the existing Module 3 "Correction
    Notes"). 2-minute reconciliation, not a redesign.
+
+9. Module 2 lesson-ID / file-naming convention. The scenario spec and
+   Stage 3 both number lessons 2.1-2.4 (consistent). Module 1's build
+   uses split prefixes (m1-l1a/l1b/l2/l3/l4a/l4b) for its 6 lessons,
+   which does not extend to Module 2's 4 unsplit lessons. Decide and
+   record the Module 2 prefix convention (e.g. m2-l1..m2-l4 mapped to
+   2.1-2.4) before building. Module 1 mapping for reference: 1.1->l1a,
+   1.2->l1b, 1.3->l2, 1.4->l3, 1.5->l4a, 1.6->l4b.
 
 ---
 
