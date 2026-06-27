@@ -593,7 +593,26 @@ Before building each module run a ZPD analysis:
 6. Document tier assignments in this file before
    the build session begins.
 
-Module 2 tier assignments: [complete before build]
+Module 2 tier assignments (approved 2026-06-27; source:
+Stage 3 lesson detail + scaffold load drivers):
+- 2.1 Sequencing Logic Fundamentals: FULL SUPPORT.
+  Module opener introducing a genuinely new framework
+  (prerequisite-dependency sequencing).
+- 2.2 Competency Progression and Spiral Reinforcement:
+  GUIDED SUPPORT. Applies the known sequencing framework
+  in a new context (progression and spiral reinforcement).
+- 2.3 Unit Architecture Engineering: MONITORED PRACTICE
+  + FADED EXAMPLE. Independent synthesis, and the module's
+  highest-ZPD lesson: it carries both high-load drivers
+  (Screen 2.3.2 worked example at 12 min, complex artifact
+  modeling; Screen 2.3.3 guided practice, first independent
+  unit-architecture attempt). The faded example bridges the
+  observation-to-production gap, as in Module 1 Lessons 2
+  and 5.
+- 2.4 Learning Science Integration: MONITORED PRACTICE.
+  Independent optimization and justification of the
+  architecture already built in 2.3 (reuses that artifact);
+  no faded example.
 Module 3 tier assignments: [complete before build]
 Module 4 tier assignments: [complete before build]
 
@@ -642,11 +661,23 @@ Pattern: In Module 1 you [established/identified/
 produced X]. This lesson asks you to apply that same
 concept at a higher level of complexity: [demand].
 
-Module 2 callbacks (draft -- verify before building):
+Module 2 callbacks (M1 source concepts verified present in
+built Module 1 content 2026-06-27):
 - 2.1: constraint identification at Analysis level
+  (CONFIRMED; source m1-l1b-s1/s2/s3).
 - 2.2: bucket mapping at Analysis level
+  (CONFIRMED; source m1-l2-s1/s2/s3).
 - 2.3: calibration at Evaluation level
+  (source m1-l3 CONFIRMED present, but FLAG: revisit at
+  build -- possible swap, the 2.3 topic is unit architecture,
+  closer to decomposition/bucket-to-unit than calibration).
 - 2.4: decomposition at Evaluation level
+  (source m1-l4a CONFIRMED present, but FLAG: revisit at
+  build -- possible swap, the 2.4 topic is learning science,
+  closer to calibration/cognitive load than decomposition).
+- The M2 side (each concept reappearing at the higher
+  Bloom's level) can only be verified once Module 2 is built.
+  Do not lock 2.3 and 2.4 callbacks until M2 content exists.
 
 Module 3 callbacks (draft -- verify before building):
 - 3.1: governance records at Evaluation level
@@ -772,8 +803,35 @@ Module 1 artifacts and celebration texts:
   traceable course architecture ready for development
   handoff. This is what the ARCH Method produces.
 
-Module 2 artifacts: [add from Stage 2 docs before
-  build]
+Module 2 artifacts (from Stage 3 Task 2 spec, line 841;
+cross-checked vs Stage 2 Performance Task 2):
+- MRHN_UnitArchitecture_v1 (Stage 3 full name
+  MRHN_UnitArchitecture_v1_2026-01-22): the Sequenced Unit
+  Architecture Package. Performance Task 2. Covers Steps
+  9-11. Builds on the approved Task 1 Bucket Map.
+  Sub-components:
+  - Unit Architecture Map: six units (Units 1-5 plus Unit 6
+    Integrated Simulation), with Governance Risk Notes and a
+    Unit 6 Simulation Coverage Matrix.
+  - Sequencing Logic Explanation.
+  - Learning Science Application Notes (interleaving,
+    spacing, feedback timing explicitly named and placed).
+  - Sequencing Decision Log (with a Governance Outcome field).
+  - Spiral Reinforcement Map (three reinforcement
+    opportunities).
+  - Learning Science Decision Notes.
+  - Sequencing Governance Record (with a Governance Outcome
+    field; placed M2 after L2.4; key fields: sequence
+    decision, dependency, learning-science rationale, risk,
+    traceability).
+  - [celebration text: deferred until PathPoint exemplars]
+    (Stage 2 performance anchors are deferred, so exemplar
+    and celebration text are not invented here.)
+- Module 2 screen count is 25 per Stage 3 (2.1=5, 2.2=6,
+  2.3=6, 2.4=8), NOT the 24 stated in the roadmap Module 2
+  build target (ARCH_PostLaunch_Roadmap.md line 43). Flag
+  the roadmap for correction. The scenario-architecture spec
+  states no Module 2 screen count, so it needs no change.
 Module 3 artifacts: [add from Stage 2 docs before
   build]
 Module 4 artifacts: [add from Stage 2 docs before
@@ -810,7 +868,14 @@ summative assessment, scope creep, SME, learning
 objective
 (scope and decomposition added in Prompt D)
 
-Module 2 new terms: [identify before build]
+Module 2 new terms (provisional, confirm at build against
+actual lesson content): sequencing, spiral reinforcement,
+spacing, interleaving. All four are net-new (not in Module
+1's 20). Dropped as already defined in Module 1: cognitive
+load, prerequisite dependency, dependency.
+Deferred to prose, not glossary terms (recorded so they are
+not lost): chunking, retrieval practice, feedback timing,
+progression.
 Module 3 new terms: [identify before build]
 Module 4 new terms: [identify before build]
 
