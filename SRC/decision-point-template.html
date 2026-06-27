@@ -465,6 +465,7 @@
        ============================================================ -->
   <script type="module">
     import { setItem } from './js/storage.js';
+    import { announce } from './js/srAnnounce.js';
 
     /* ---- Screen identity ----
        SCREEN_ID is injected by the screen-specific script below.
@@ -518,7 +519,6 @@
     const logConfirm      = document.getElementById('feedback-log-confirm');
     const btnRevise       = document.getElementById('btn-revise');
     const btnContinue     = document.getElementById('btn-continue');
-    const announcer       = document.getElementById('sr-announcer');
 
     /* State */
     let submissionCount = 0;
@@ -602,12 +602,11 @@
       /* Move focus to feedback heading -- announces result to all AT */
       feedbackHdg.focus();
 
-      /* Brief status to live region */
-      announcer.textContent = '';
-      requestAnimationFrame(() => {
-        announcer.textContent = branch.heading + ' Feedback available. ' +
-          (submissionCount === 1 ? 'You may revise your decision or continue.' : 'Select Continue to proceed.');
-      });
+      /* Brief status to live region (verbatim spec Section 8 strings). The
+         feedback heading + content are announced by the focus move above. */
+      announce(isRevision
+        ? 'Decision updated.'
+        : 'Decision recorded. Feedback available below.');
     }
 
     /* ---- Lock form after submission ---- */
@@ -632,6 +631,12 @@
       if (firstOption) firstOption.focus();
     }
 
+    /* NOTE (spec Section 8): "Submission complete." is the announcement for a
+       genuine SUBMISSION action (e.g. Module 2's performance-task submit). It is
+       deliberately NOT fired on the decision submit below -- a decision submit is
+       a decision event, announced as "Decision recorded. Feedback available
+       below." Wire announce('Submission complete.') in the module that adds a
+       real submission action. */
     /* ---- Form submit ---- */
     form.addEventListener('submit', e => {
       e.preventDefault();
