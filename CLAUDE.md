@@ -190,6 +190,28 @@ same key.
   through m1-hub-l6, then m1-hub-gate), not the next lesson's first screen.
 - Breadcrumb crumbs are navigable; the Return to Lesson Hub link is injected
   on every lesson and gate unit screen by breadcrumb.js.
+- All guided practice screens have a persistent Next button always visible in
+  the screen-nav regardless of submission state.
+- Gate screen has a disabled Module 2 Coming Soon forward pointer.
+
+### Visual Standards and Busyness Reduction
+Decisions made after Prompt F. Apply these patterns to Modules 2-4.
+
+- Learning Objective callout: wrapped in a .learning-objective-callout div with
+  a teal left border, placed first after H1 on all lesson intro screens. Label
+  and text in navy (var(--color-brand-navy)), not teal.
+- Key terms callout: label in navy; term links (.gls) stay teal with dotted
+  underlines.
+- Cognitive mode banner: simplified to a single italic secondary text line, no
+  box, no border, no dismiss button.
+- Success Criteria and Expected Evidence: collapsible by default on guided
+  practice screens using the context-block-disclosure pattern (reuses
+  table-disclosure). Purpose and Instructions stay always open.
+- Gate governance records: split into Phase 1 Records (MRHN-D-001 through
+  MRHN-D-004) and Phase 2 Records (MRHN-D-005 through MRHN-D-008), both
+  collapsed by default.
+- Bucket diagram boxes: use min-height: 3.5rem with flex centering
+  (.sequence-node__box on m1-l2-s4) for equal sizing.
 
 ### Submission Gates Removed (Soft Navigation)
 All guided-practice submission gates are removed: the forward control is always

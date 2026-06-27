@@ -1118,6 +1118,24 @@ contextPanel added to allowed panels.
 
 ---
 
+## Deferred Items
+
+Work intentionally left incomplete after the post-Prompt F
+sessions. Review before each module build.
+
+- Duplicate Success Criteria cleanup: 5 guided practice
+  screens (m1-l1a-s4, m1-l1b-s3, m1-l4a-s4, m1-l4b-s4,
+  m1-l4b-s5) have two Success Criteria elements -- the new
+  context-block-disclosure and the pre-existing
+  .success-criteria details near the submit button. Remove
+  the duplicate in a future cleanup pass.
+- Busyness reduction items 2, 5, 6 deferred: header
+  consolidation into two rows; tabbed In a Different Context
+  and In Your Context card; Expert Think-Aloud collapsible
+  drawer (planned key archMethod_thinkAloudOpen_[screenId]).
+
+---
+
 ## Module Pre-Build Checklists
 
 MODULE 2 PRE-BUILD CHECKLIST:
