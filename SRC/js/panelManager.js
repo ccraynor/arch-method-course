@@ -27,14 +27,15 @@ function openPanel(name, triggerElement = null) {
   _lastTrigger = triggerElement;
   activeSupportPanel = name;
   _activate(name);
-  _announce(`${_label(name)} panel opened`);
+  _announce(_openMessage(name));
 }
 
 function closeAll() {
   if (activeSupportPanel === null) return;
+  const closing = activeSupportPanel;
   _deactivate(activeSupportPanel);
   activeSupportPanel = null;
-  _announce('Panel closed');
+  _announce(_closeMessage(closing));
 
   if (_lastTrigger) {
     _lastTrigger.focus();
@@ -76,16 +77,20 @@ function _announce(message) {
   });
 }
 
-function _label(name) {
-  return {
-    artifactDrawer:  'Artifact drawer',
-    decisionHistory: 'Decision history',
-    glossary:        'Glossary',
-    supportPanel:    'Support',
-    annotationPanel: 'Annotation',
-    briefPanel:      'Meridian brief',
-    contextPanel:    'On-screen reference',
-  }[name] ?? name;
+/* Spec Section 8 announcement strings. The two overlay-style panels carry
+   bespoke open/close wording; every other reference panel uses the generic
+   Expanded./Collapsed. pair. */
+const PANEL_ANNOUNCE = {
+  artifactDrawer:  { open: 'Artifact reference drawer opened.', close: 'Returned to course content.' },
+  decisionHistory: { open: 'Decision history opened.',          close: 'Decision history closed.' },
+};
+
+function _openMessage(name) {
+  return PANEL_ANNOUNCE[name]?.open ?? 'Expanded.';
+}
+
+function _closeMessage(name) {
+  return PANEL_ANNOUNCE[name]?.close ?? 'Collapsed.';
 }
 
 /* Escape closes any open panel — attached once at module load */
