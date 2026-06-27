@@ -150,9 +150,6 @@ localStorage keys:
 - archMethod_transferContext_[lesson]_open
 - archMethod_calTable2Open, archMethod_calTable3Open
 - archMethod_optReading_l1_open, archMethod_optReading_l3_open
-- archMethod_[screenId]_evidenceOpen
-  (collapsible Expected Evidence context block on guided practice screens
-  m1-l1a-s4, m1-l1b-s3, m1-l4a-s4, m1-l4b-s4, m1-l4b-s5)
 - archMethod_gatePhase1RecordsOpen, archMethod_gatePhase2RecordsOpen
   (Phase 1 and Phase 2 governance record groups on m1-gate-s1)
 
@@ -204,9 +201,12 @@ Decisions made after Prompt F. Apply these patterns to Modules 2-4.
   underlines.
 - Cognitive mode banner: simplified to a single italic secondary text line, no
   box, no border, no dismiss button.
-- Success Criteria and Expected Evidence: collapsible by default on guided
-  practice screens using the context-block-disclosure pattern (reuses
-  table-disclosure). Purpose and Instructions stay always open.
+- Success Criteria and Expected Evidence: always visible on guided practice
+  screens, like Purpose and Instructions. Success Criteria is a static
+  .success-criteria card with an H2 .success-criteria__summary heading (navy);
+  Expected Evidence is a static .context-block context-block--evidence block.
+  Neither is collapsible. (Item B uncollapsed these; the prior collapsible
+  pattern is retired.)
 - Gate governance records: split into Phase 1 Records (MRHN-D-001 through
   MRHN-D-004) and Phase 2 Records (MRHN-D-005 through MRHN-D-008), both
   collapsed by default.

@@ -148,11 +148,12 @@ FADED EXAMPLE SCREEN (highest ZPD-risk lessons only):
 - File naming: m[N]-l[lesson]-s[screen]b.html.
 
 GUIDED PRACTICE SCREEN:
-- Success criteria callout: collapsed by default,
+- Success criteria callout: always visible (static),
   above Submit button. 2-3 observable indicators of
   strong reasoning quality for this specific task.
-  Expandable before submitting. Label: Success
-  Criteria.
+  Static .success-criteria card with an H2 heading
+  (navy). Label: Success Criteria. (Item B uncollapsed
+  this; not a disclosure.)
 - Articulation requirement: one sentence completion
   field before Submit button. Prompt: My reasoning
   for this decision is [blank]. Stored in localStorage
@@ -535,9 +536,6 @@ Narrative keys (Prompt E Part 1 Section 2):
   reading card open/closed state)
 - archMethod_optReading_l3_open (Lesson 3 reflection optional
   reading card open/closed state)
-- archMethod_[screenId]_evidenceOpen (collapsible Expected
-  Evidence context block, guided practice screens m1-l1a-s4,
-  m1-l1b-s3, m1-l4a-s4, m1-l4b-s4, m1-l4b-s5; busyness pass item 3)
 - archMethod_gatePhase1RecordsOpen, archMethod_gatePhase2RecordsOpen
   (Phase 1 and Phase 2 governance record groups on m1-gate-s1;
   busyness pass item 4)
@@ -1143,6 +1141,10 @@ sessions. Review before each module build.
   near the submit button was retained. The sibling Expected
   Evidence context block (archMethod_[screenId]_evidenceOpen)
   was retained.
+  Superseded 2026-06-27 by item B: the retained Success Criteria
+  and Expected Evidence blocks are now always-visible static blocks
+  (no longer disclosures); archMethod_[screenId]_evidenceOpen is
+  retired from the namespace.
 - Busyness reduction items 2, 5, 6 deferred: header
   consolidation into two rows; tabbed In a Different Context
   and In Your Context card; Expert Think-Aloud collapsible
