@@ -181,7 +181,10 @@
           </div><!-- /.reflection-prompts -->
 
           <!-- ---- Right column: writing area ---- -->
-          <div class="reflection-writing">
+          <div class="reflection-writing"
+               data-autosave-group
+               data-autosave-tier="1"
+               data-autosave-status="save-status">
 
             <!-- Writing field 1 -- corresponds to prompt question 1.
                  TEMPLATE: remove this block if using single-field reflection. -->
@@ -245,7 +248,8 @@
 
               <button type="button"
                       id="btn-save-manual"
-                      class="btn btn--secondary btn--save">
+                      class="btn btn--secondary btn--save"
+                      data-autosave-save>
                 <svg aria-hidden="true"
                      focusable="false"
                      width="16"
@@ -429,127 +433,23 @@
        Reflection save script -- do not modify
        ============================================================ -->
   <script type="module">
-    import { getItem, setItem } from './js/storage.js';
+    /* Autosave is owned by the shared module (AX4 Stage 1). This screen is a
+       Tier-1 autosave group: the .reflection-writing container carries
+       data-autosave-group / data-autosave-tier="1" / data-autosave-status, the
+       manual Save button carries data-autosave-save, and the storage key is set
+       per screen below (reflection_<SCREEN_ID>). The module handles restore,
+       the 30s interval + on-blur silent saves, manual Save, the "Saved at <time>"
+       status, and the "Work saved." / "Previous work restored." announcements
+       via srAnnounce. */
+    import { initAutosave } from './js/autosave.js';
 
-    const AUTOSAVE_INTERVAL_MS = 30000;
-
-    /* SCREEN_ID injected by screen-specific script via window.__setReflectionScreenId() */
-    let SCREEN_ID        = null;
-    let lastSavedContent = null;
-    let autoSaveTimer    = null;
-
-    const saveStatus  = document.getElementById('save-status');
-    const btnSave     = document.getElementById('btn-save-manual');
-    const announcer   = document.getElementById('sr-announcer');
-    const textareas   = Array.from(document.querySelectorAll('.reflection-textarea'));
-
-    /* ---- Collect all field values as a serializable object ---- */
-    function collectContent() {
-      const fields = {};
-      textareas.forEach(el => { fields[el.id] = el.value; });
-      return fields;
-    }
-
-    /* ---- Update the visible save status label ----
-       announce: true  -- update aria-live="polite" (manual save, restore, error)
-       announce: false -- update text only, silence live region (autosave ticks) */
-    function setStatus(message, announce) {
-      if (announce) {
-        /* Temporarily ensure polite live region is active */
-        saveStatus.setAttribute('aria-live', 'polite');
-        /* Clear first so identical repeated messages still fire */
-        saveStatus.textContent = '';
-        requestAnimationFrame(() => { saveStatus.textContent = message; });
-      } else {
-        /* Silence the live region for this update */
-        saveStatus.setAttribute('aria-live', 'off');
-        saveStatus.textContent = message;
-      }
-    }
-
-    /* ---- Core save function ----
-       source: 'auto' | 'blur' | 'manual' | 'exit'
-       Auto and blur saves are silent (no AT announcement) if content unchanged.
-       Manual and exit saves always write and always announce. */
-    function save(source) {
-      if (!SCREEN_ID) return;
-
-      const content    = collectContent();
-      const serialized = JSON.stringify(content);
-      const changed    = serialized !== lastSavedContent;
-
-      /* Skip silent autosave if nothing changed */
-      if ((source === 'auto' || source === 'blur') && !changed) return;
-
-      try {
-        setItem('reflection_' + SCREEN_ID, serialized);
-        const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        setItem('reflection_' + SCREEN_ID + '_savedAt', timestamp);
-        lastSavedContent = serialized;
-
-        const message  = 'Saved at ' + timestamp;
-        const announce = source === 'manual' || source === 'exit';
-        setStatus(message, announce);
-
-        /* For manual save: also push to sr-announcer for maximum AT compatibility */
-        if (source === 'manual') {
-          announcer.textContent = '';
-          requestAnimationFrame(() => { announcer.textContent = message; });
-        }
-      } catch {
-        /* Storage write failed (quota, security) */
-        setStatus('Save failed. Your browser may be blocking storage.', true);
-      }
-    }
-
-    /* ---- Restore saved content on page load ---- */
-    function restore() {
-      if (!SCREEN_ID) return;
-      const stored = getItem('reflection_' + SCREEN_ID);
-      if (!stored) return;
-
-      try {
-        const content = JSON.parse(stored);
-        textareas.forEach(el => {
-          if (Object.prototype.hasOwnProperty.call(content, el.id)) {
-            el.value = content[el.id];
-          }
-        });
-        lastSavedContent = stored;
-
-        const savedAt = getItem('reflection_' + SCREEN_ID + '_savedAt');
-        setStatus(savedAt ? 'Last saved at ' + savedAt : 'Draft restored', true);
-      } catch {
-        /* Corrupted storage -- start fresh, do not block learner */
-      }
-    }
-
-    /* ---- Start autosave timer ---- */
-    function startAutosave() {
-      autoSaveTimer = setInterval(() => save('auto'), AUTOSAVE_INTERVAL_MS);
-    }
-
-    /* ---- Blur: save on field exit ---- */
-    textareas.forEach(el => {
-      el.addEventListener('blur', () => save('blur'));
-    });
-
-    /* ---- Manual save ---- */
-    btnSave.addEventListener('click', () => save('manual'));
-
-    /* ---- Navigation: save before leaving ----
-       Fires on both Previous and Next link clicks.
-       Does not block navigation. */
-    document.querySelectorAll('.btn--nav').forEach(link => {
-      link.addEventListener('click', () => save('exit'));
-    });
-
-    /* ---- Expose SCREEN_ID setter ----
-       Called by screen-specific script below. Triggers restore after ID is set. */
+    /* SCREEN_ID injected by the screen-specific script via
+       window.__setReflectionScreenId(). Sets the group's storage key, then wires
+       autosave. */
     window.__setReflectionScreenId = function (id) {
-      SCREEN_ID = id;
-      restore();
-      startAutosave();
+      const group = document.querySelector('[data-autosave-group]');
+      if (group) group.setAttribute('data-autosave-key', 'reflection_' + id);
+      initAutosave();
     };
   </script>
 
