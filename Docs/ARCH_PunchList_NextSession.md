@@ -210,6 +210,15 @@ pass.
     form's progress-milestone, field-validation, and submit/error-summary flow
     can drive saves instead of the module owning blur/interval timing. Only
     after both land is migration safe.
+  - **AX4 cleanup (post-Module-2): remove the dead storage.js import left by
+    the calibration migration.** In BOTH SRC/m1-l4b-s6.html and
+    SRC/calibration-template.html the *base* `<script type="module">` block
+    still carries `import { getItem, setItem } from './js/storage.js';` but uses
+    neither -- the only getItem() call lives in the separate calibration block
+    (which has its own `import { getItem }`), and there are zero setItem() calls
+    anywhere in either file after Batch 2. So the entire base-block import line
+    is dead, not just setItem; remove the whole line in both files. Pre-existing
+    (the base-block import predates Batch 2); harmless, deferred, tracked.
 
 ---
 
