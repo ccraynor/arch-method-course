@@ -496,7 +496,11 @@
                DOM order: 4th. Visual: full-width at bottom.
                ================================================== -->
           <section class="calibration-panel calibration-panel--reflection"
-                   aria-labelledby="reflection-heading">
+                   aria-labelledby="reflection-heading"
+                   data-autosave-group
+                   data-autosave-tier="1"
+                   data-autosave-status="notes-save-status"
+                   data-autosave-format="text">
 
             <h2 id="reflection-heading" class="calibration-panel__heading">
               <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -531,7 +535,7 @@
                         placeholder="My least confident decision was... The uncertainty came from... What would have helped was..."></textarea>
 
               <div class="save-controls" role="group" aria-label="Save controls">
-                <button type="button" id="btn-save-notes" class="btn btn--secondary btn--save">
+                <button type="button" id="btn-save-notes" class="btn btn--secondary btn--save" data-autosave-save>
                   <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M13 13H3a1 1 0 01-1-1V4l3-3h7l2 2v9a1 1 0 01-1 1z"
                           stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
@@ -678,8 +682,9 @@
 
   <!-- Calibration script -->
   <script type="module">
-    import { getItem, setItem } from './js/storage.js';
+    import { getItem } from './js/storage.js';
     import { announce } from './js/srAnnounce.js';
+    import { initAutosave } from './js/autosave.js';
 
     let SCREEN_ID = null;
     let CONFIG    = null;
@@ -692,10 +697,6 @@
     const expertContent   = document.getElementById('expert-content');
     const expertHeading   = document.getElementById('expert-heading');
     const learnerBody     = document.getElementById('learner-response-body');
-    const notesArea       = document.getElementById('calibration-notes');
-    const btnSaveNotes    = document.getElementById('btn-save-notes');
-    const notesSaveStatus = document.getElementById('notes-save-status');
-    const announcer       = document.getElementById('sr-announcer');
 
     /* ---- Linear mode toggle ---- */
     btnLinear.addEventListener('click', () => {
@@ -716,44 +717,10 @@
       setTimeout(() => { expertHeading.focus(); }, 100);
     });
 
-    /* ---- Notes: save on blur ---- */
-    notesArea.addEventListener('blur', () => saveNotes('blur'));
-    btnSaveNotes.addEventListener('click', () => saveNotes('manual'));
-    document.querySelectorAll('.btn--nav').forEach(link => {
-      link.addEventListener('click', () => saveNotes('exit'));
-    });
-
-    function saveNotes(source) {
-      if (!SCREEN_ID) return;
-      try {
-        const value     = notesArea.value;
-        const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        setItem('calibration_' + SCREEN_ID + '_notes',   value);
-        setItem('calibration_' + SCREEN_ID + '_savedAt', timestamp);
-        const message  = 'Saved at ' + timestamp;
-        const announce = source === 'manual';
-        notesSaveStatus.setAttribute('aria-live', announce ? 'polite' : 'off');
-        notesSaveStatus.textContent = '';
-        requestAnimationFrame(() => { notesSaveStatus.textContent = message; });
-        if (announce) {
-          announcer.textContent = '';
-          requestAnimationFrame(() => { announcer.textContent = message; });
-        }
-      } catch {
-        notesSaveStatus.setAttribute('aria-live', 'polite');
-        notesSaveStatus.textContent = 'Save failed. Storage may be unavailable.';
-      }
-    }
-
-    function restoreNotes() {
-      if (!SCREEN_ID) return;
-      const stored  = getItem('calibration_' + SCREEN_ID + '_notes');
-      const savedAt = getItem('calibration_' + SCREEN_ID + '_savedAt');
-      if (stored !== null) {
-        notesArea.value = stored;
-        notesSaveStatus.textContent = savedAt ? 'Last saved at ' + savedAt : 'Draft restored';
-      }
-    }
+    /* Calibration notes autosave is owned by the shared module (AX4 Stage 2),
+       Tier-1 text mode (single raw-string field, key calibration_<id>_notes,
+       byte-compatible with the legacy key). Wired in __setCalibrationConfig
+       once SCREEN_ID is known. */
 
     function escapeHtml(str) {
       return str
@@ -809,7 +776,9 @@
       SCREEN_ID = config.screenId;
       CONFIG    = config;
       loadLearnerResponse();
-      restoreNotes();
+      const group = document.querySelector('[data-autosave-group]');
+      if (group) group.setAttribute('data-autosave-key', 'calibration_' + SCREEN_ID + '_notes');
+      initAutosave();
     };
   </script>
 

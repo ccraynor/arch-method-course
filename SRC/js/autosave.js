@@ -74,9 +74,18 @@ function initGroup(group) {
     .filter(el => !el.hasAttribute('data-autosave-key'));
   const saveBtn = group.querySelector('[data-autosave-save]');
 
+  /* Storage format: 'json' (default) serializes all members to a blob; 'text'
+     stores a single field's raw string, byte-compatible with legacy single-field
+     keys (e.g. calibration_<id>_notes). */
+  const format = group.getAttribute('data-autosave-format') === 'text' ? 'text' : 'json';
+  if (format === 'text' && fields.length !== 1) {
+    console.warn('autosave: data-autosave-format="text" expects exactly one field; found ' + fields.length + '.', group);
+  }
+
   let lastSerialized = null;
 
   function collect() {
+    if (format === 'text') return fields[0] ? fields[0].value : '';
     const data = {};
     fields.forEach(el => { data[el.id || el.name] = el.value; });
     return JSON.stringify(data);
@@ -117,6 +126,14 @@ function initGroup(group) {
   function restore() {
     const stored = getItem(key);
     if (stored == null) { setStatus('Not yet saved'); return; }
+    if (format === 'text') {
+      if (fields[0]) fields[0].value = stored;
+      lastSerialized = stored;
+      const ts = getItem(key + '_savedAt');
+      setStatus(ts ? 'Saved at ' + ts : 'Draft restored');
+      announce('Previous work restored.');
+      return;
+    }
     try {
       const data = JSON.parse(stored);
       fields.forEach(el => {
