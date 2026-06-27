@@ -349,3 +349,10 @@ on first use per module.
 - Do not write developer documentation language in learner-facing content.
 - Do not assume prior knowledge of Bloom's taxonomy, CBE, cognitive load, 
   or prerequisite dependency -- define on first use per module.
+- Do not render a disabled or not-yet-available module-nav link as a live 
+  `<a href="module-N.html">`. aria-disabled does not stop anchor navigation 
+  and produces a 404. Use a non-navigable `<span class="module-nav-link 
+  is-disabled" aria-disabled="true" title="Module N not yet available">` 
+  carrying the link text, on the course nav, hub, and module-overview screens 
+  (commit 27c4db8). See the disabled module-navigation link standard in 
+  Docs/ARCH_Build_Governance.md.

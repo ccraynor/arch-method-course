@@ -252,6 +252,19 @@ Required content:
 Link from the module nav bar and from the prior
 module gate screen clearance button.
 
+DISABLED MODULE-NAVIGATION LINK STANDARD:
+Disabled or not-yet-available module-navigation links
+must be rendered as non-navigable elements --
+<span class="module-nav-link is-disabled"
+aria-disabled="true" title="Module N not yet available">
+carrying the link text -- never a live
+<a href="module-N.html">. aria-disabled alone does not
+prevent anchor navigation and produces a 404. Applies to
+the course nav on every screen, the hub, and the
+module-overview screens. The 7 *-template.html files
+already enforce this; preserve it when building Modules
+2-4. Established by the Module 1 fix (commit 27c4db8).
+
 ---
 
 ## Hub Screens (Required per Module)
