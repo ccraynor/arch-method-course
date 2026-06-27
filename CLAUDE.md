@@ -278,6 +278,53 @@ do not invent sources at build time.
 - Zoom support at 200%
 - Reduced motion honored
 
+### Accessibility Build Standard
+Derived from the G1 static conformance scan of Module 1 against the Master
+Accessibility Spec v5.0 (Docs/Accessibility & Inclusion Plan.docx). Build every
+Module 2-4 screen to inherit the conformant patterns below, and follow the
+resolved decisions. The formal Accessibility Launch Gate (manual AT testing) is a
+separate pre-deployment milestone, not covered here.
+
+Conformant patterns (build every Module 2+ screen this way):
+- Five semantic landmarks on every screen: header (role="banner"), nav, main,
+  aside (complementary), footer (role="contentinfo").
+- All five skip links as the first focusable elements: Skip to Main Content,
+  Skip to Current Activity, Skip to Progress Tracker, Skip to Artifact Reference,
+  Skip to Decision History.
+- Exactly one H1 per screen. Heading levels must not skip (H1 to H2 to H3, never
+  H2 to H4).
+- All support panels route through panelManager.js (activeSupportPanel,
+  single-open enforced). Never manage panel visibility independently.
+- Expandable triggers carry aria-expanded and aria-controls.
+- #sr-announcer (role="status" aria-live="polite" aria-atomic="true") is present;
+  announce state changes through it.
+- Screen UI colors come from tokens only. Hex literals are allowed solely inside
+  @media print.
+
+Resolved decisions (standards):
+- Support panels are NON-MODAL reference panels by design. They are not
+  role="dialog" aria-modal. Required behaviors instead: Escape closes the panel,
+  focus returns to the originating trigger, single-panel-open is enforced, the
+  trigger-to-panel relationship is programmatic, and the panel has an accessible
+  name plus an open/close announcement. Rationale: these are reference tools
+  consulted alongside content, so trapping focus is pedagogically wrong. This
+  supersedes the spec's dialog/modal requirement (Section 3 dialog row and
+  Section 10); spec amendment pending.
+- Save and recovery is TIERED by input type (a reinterpretation of spec Section
+  6). PROVISIONAL: pending spec-owner confirmation; do not treat the tiering as
+  final until confirmed.
+  - Tier 1, substantial authored text (artifacts, reflections, long-text):
+    full contract. Autosave every 30s, autosave on field exit, manual Save
+    button, save timestamp, failure-recovery actions (Retry Save, Download Draft,
+    Copy Response, Return to Editing), and the spec save announcements.
+  - Tier 2, structured input (decision points, guided-practice fields, short
+    responses): autosave on field exit, persistence, and a save indicator. No
+    Download/Copy recovery suite.
+  - Tier 3, trivial or ephemeral input (confidence radios, single toggles):
+    silent persistence on change plus a live-region confirmation. No Save button
+    or recovery suite.
+  - Autosave is to be promoted into a SHARED module, not per-screen inline JS.
+
 ### Naming Conventions
 - ARCH Steps: use Phase and Step terminology only (never Stage)
 - Artifact naming: MRHN_[ArtifactName]_v[Version]_[Date]
