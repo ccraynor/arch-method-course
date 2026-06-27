@@ -9,9 +9,10 @@ today are at the bottom, so this is the single source of truth for tomorrow.
 
 ## Read this first
 
-The single most urgent item is **F1 (dead module links → 404 on 63 screens)** —
-do that first; it is a live bug, not cosmetic. After that, most of the rest are
-not separate jobs. They collapse into three audits plus a handful of one-offs:
+**Update 2026-06-27:** F1 (dead module links) is FIXED in code and templates
+(commit 27c4db8), and Section A's decision-record + merge-card wraps are FIXED
+(commit 5ffdbf1). What remains collapses into three audits plus a handful of
+one-offs:
 
 1. **Narrow first column / title wrap (Section A)** — almost certainly one root
    cause in the shared card/table CSS. Fix the pattern once, then spot-check.
@@ -25,8 +26,8 @@ not separate jobs. They collapse into three audits plus a handful of one-offs:
 Then four targeted one-offs (D), three structure items (E), and three audit flags
 (F).
 
-**Suggested order:** F1 → A → B → C → D one-offs → E → F2/F3. Lead with F1
-(live 404), then A (most screens, shared fix).
+**Suggested order (remaining):** B → C → D one-offs → E → F2/F3/F4. Section A's
+only open item is the decision-record CSS consolidation (A5).
 
 ---
 
@@ -43,17 +44,29 @@ card styles — the Q&A table (Image 1), the Decision Record table (Image 4), an
 the merge card (Image 9) each have different header markup. So this is likely a
 few components to fix, not one shared rule. Scope accordingly.
 
-- **A1. Decision Record tables** — left column too narrow; "Decision Statement,"
-  "Constraint Reference," "Rationale" wrap. Widen so titles are one line.
-  Course-wide (every MRHN-D-### record). *(Images 4/6)*
-- **A2. DC-07 / DC-08 merge cards** — title wraps as "DC-07 and DC-" / "08."
-  Widen the title cell so it stays on one line. Carrie flags this as rampant
-  across tables course-wide — audit all tables for the same wrap. *(Image 9)*
-- **A3. Teachability / Assessability question table** — left column ("Can this be
-  taught as one instructional unit?") stretched thin. *(Image 1)*
-- **A4. General two-column audit** — every two-column card/table: widen the left
-  column so row headers fit one line where reasonable. A1–A3 are instances of
-  this; fixing the shared pattern should resolve most of them at once.
+- **A1. Decision Record tables** — RESOLVED 2026-06-27 (commit 5ffdbf1). Widened
+  the wrapping `.gov-record__row` variants (9.5rem ×4, 10rem ×1) to 11rem across
+  m1-l4a-s2, m1-l4a-s3, m1-l4b-s2, m1-l4b-s3, m1-l3-s4 so "Constraint Reference"
+  sits on one line; "Calibration Constraints Applied" still wraps by design.
+  *(Images 4/6)*
+- **A2. DC-07 / DC-08 merge card** — RESOLVED 2026-06-27 (commit 5ffdbf1).
+  `.component-card__header` flex-wrap + `.component-id` white-space:nowrap
+  (m1-l4b-s2); the "Merge Required" chip now drops to its own line instead of
+  breaking the title. It was a flex header, not a narrow column. *(Image 9)*
+- **A3. Teachability / Assessability question card** — REVIEWED, intentionally
+  LEFT. The real component is `.criteria-card` (m1-l4b-s2), with siblings
+  `.test-card` (m1-l4a-s2) and `.audit-pass-card` (m1-l4b-s3) — NOT
+  `diagnostic-check` (that is intro-0.9 only). The left column holds a full
+  question, not a short label, so widening it would steal width from the answer
+  column. Wrapping here is by design. Recorded so it is not re-opened. *(Image 1)*
+- **A4. General two-column audit** — the known instances (A1–A3) are now resolved
+  or triaged; spot-check any other two-column card for the same wrap as it comes up.
+- **A5. Decision-record style CONSOLIDATION (follow-up, its own pass).** The
+  decision-record component is duplicated across ~9 per-screen `<style>` blocks
+  under three class names (`.gov-record__row`, `.gov-field`, `.gov-record__field`).
+  A1 widened the wrapping variants but left the duplication in place. Follow-up:
+  promote the shared styles into global.css under one class so width and behavior
+  are set once.
 
 ---
 
@@ -69,15 +82,21 @@ disclosure/accordion to always-open.
   **10 screens** carry a `.success-criteria` collapsible — m1-l1a-s4, m1-l1b-s3,
   m1-l1b-s5, m1-l1b-s6, m1-l2-s3, m1-l2-s5a, m1-l3-s4, m1-l4a-s4, m1-l4b-s4,
   m1-l4b-s5. This is why the course-wide audit matters.
-- **Governance + cleanup notes:**
-  - This reverses the Prompt-F decision "Success Criteria and Expected Evidence:
-    collapsible by default." Update CLAUDE.md Visual Standards accordingly.
-  - The `_criteriaOpen` / `_evidenceOpen` and `.success-criteria` open/closed
-    persistence keys go vestigial once these are always-open. Remove them from
-    the localStorage namespace in CLAUDE.md and the governance doc (same sync
-    discipline as the task-1 cleanup).
-  - This revisits the exact elements task 1 touched on the 5 GP screens — expect
-    overlap there; the other 5 Success Criteria screens are new ground.
+- **Governance + cleanup — B owns all four, do not fix any of them separately:**
+  1. **Code:** make Success Criteria AND Expected Evidence always-visible on the
+     affected GP screens (remove the disclosure wrapper; keep the always-open
+     Purpose/Instructions pattern).
+  2. **CLAUDE.md line 207** is stale ("Success Criteria and Expected Evidence:
+     collapsible by default") — rewrite to the final always-visible state.
+  3. **Governance build-spec line ~151** ("Success criteria callout: collapsed by
+     default") — rewrite to always-visible so the build spec matches the code, not
+     just the CSS.
+  4. **localStorage namespace:** retire `archMethod_[screenId]_evidenceOpen` from
+     BOTH CLAUDE.md and the governance doc (~line 525). (`_criteriaOpen` is already
+     gone — removed with the duplicate Success Criteria in commit ea37c96.)
+  - Overlap note: B revisits the 5 GP screens task 1 touched; the other 5 Success
+    Criteria screens (m1-l1b-s5, m1-l1b-s6, m1-l2-s3, m1-l2-s5a, m1-l3-s4) are new
+    ground.
 
 ---
 
@@ -107,13 +126,20 @@ content rendered as indented lines with no bullet markers.
   diagram, which looks like a different component/screen than the one patched —
   identify the actual screen and apply equal-height alignment so the right-column
   buckets line up with their neighbors. *(Image 7)*
-- **D3. SI-09 bucket analysis labels too small** — the teal section labels
+- **D3. SI-09 bucket analysis labels too small** — the section eyebrow labels
   ("CALIBRATION ANNOTATION," "BUCKET 2 ARC CONSTRAINT," "WHAT YOU KNOW") are
   undersized. Increase the font a little. *(Image 8)*
-  - **Color decision (from audit, see F3):** these same labels (`.ws-box-label`)
-    are still teal, while today's pass moved the callout-label family to navy.
-    Decide in this same pass whether they should go navy for consistency or stay
-    teal as a distinct annotation tier.
+  - **Color decision (from audit, see F3):** the teal SI-09 eyebrows are
+    `.expert-insight__label` (m1-l4a-s3b, m1-l4a-s4), NOT `ws-box-label` (which is
+    gray, and amber inside the calibration box). Today's pass moved the
+    callout-label family to navy; fold this color decision into F3's label-color
+    standard rather than deciding it here.
+- **D4. `<p aria-label>` pattern (tidiness, not a live failure).** The
+  `<p class="lesson-label" aria-label="…">` on ~40 files carries an aria-label
+  that screen readers do not reliably announce on a non-interactive `<p>`, so the
+  bullet-to-comma substitution it attempts is effectively inert (generalizes E3).
+  When reached: drop the aria-label and handle the bullet→comma with a
+  visually-hidden separator. Bundle with E2/E3.
 
 ---
 
@@ -188,32 +214,57 @@ lists Lesson 5 as 6 screens (see F2).
 
 ## F. Audit findings (not raised in review — verified against the code)
 
-- **F1. Dead "Coming Soon" module links → live 404 (do first).** The course nav
-  links to `module-2.html` / `module-3.html` / `module-4.html`, which do not
-  exist, via `<a href="module-2.html" aria-disabled="true" ...>`. `aria-disabled`
-  is advisory only and does NOT stop an anchor from navigating, so clicking
-  "Module 2/3/4" lands the learner on a 404. Footprint: **63 screens** (every
-  learner-facing screen with the nav, including the 9 intro screens). Fix the one
-  repeated pattern: render not-yet-available items as non-navigable (a `<span
-  class="module-nav-link is-disabled" aria-disabled="true">` with no `href`, or
-  strip `href` and add `tabindex="-1"`) so they announce as disabled and cannot
-  be clicked. Highest priority on this list — accessibility + a hard broken link
-  on every screen.
-- **F2. Stale screen counts (data accuracy).** Two lessons undercount, in two
-  places each:
-  - Lesson 5 (`m1-l4a-s1`): chip "5 screens" (line ~571) and heading "Lesson 5:
-    5 Screens" (line ~866) — actual is **6** (predates the `s3b` faded example).
-  - Lesson 6 (`m1-l4b-s1`): chip "6 screens" (line ~575) and heading "Lesson 6:
-    6 Screens" (line ~832) — actual is **7** (predates the s4/s5 split).
-  - Connects to E2: removing the chips moots the chip half, but the lesson-plan
-    *headings* still need correcting (or removing). If you keep counts anywhere,
-    fix all four. Governance is the source of truth (6 and 7).
-- **F3. Teal labels left behind by today's navy unification (a decision, not a
-  defect).** After today's pass, the callout-label family is navy, but two
-  uppercase labels in the same idiom are still teal: the module-overview phase
-  label (`.overview-phase`) and the SI-09 annotation eyebrows (`.ws-box-label`,
-  the Image 8 labels). May be an intentional annotation tier; decide whether to
-  unify to navy or keep teal. Handle alongside D3 (same labels).
+- **F1. Dead "Coming Soon" module links → live 404.** RESOLVED 2026-06-27
+  (commit 27c4db8). Converted the disabled Module 2/3/4 `<a href="module-N.html">`
+  to non-navigable `<span class="module-nav-link is-disabled" aria-disabled="true">`
+  across all 63 files and the 7 templates, so they cannot be clicked and announce
+  as disabled. The build-standard that prevents reintroduction is captured in F4
+  and recorded in governance + CLAUDE.md (Task 3).
+- **F2. Stale screen counts (data accuracy).** Three lessons undercount, each in
+  two visible places, all from the same cause (a screen split the chip/heading
+  never caught up to). The header `pt-screen-total` is correct everywhere; the
+  chips and lesson-plan headings are the stale surfaces.
+  - Lesson 3 (`m1-l2-s1`): meta-chip aria-label "6 screens in this lesson"
+    (~line 471) and visible chip "6 screens" (~line 480) — actual is **7** (header
+    "of 7"; 8 files minus the `m1-l2-s5.html` redirect stub). NEW vs the original
+    F2, which only named 5 and 6.
+  - Lesson 5 (`m1-l4a-s1`): chip "5 screens" (~line 571) and heading "Lesson 5:
+    5 Screens" (~line 866) — actual is **6** (predates the `s3b` faded example).
+  - Lesson 6 (`m1-l4b-s1`): chip "6 screens" (~line 575) and heading "Lesson 6:
+    6 Screens" (~line 832) — actual is **7** (predates the s4/s5 split).
+  - Decide holistically with E2/E3: removing the chips moots the chip counts, but
+    the L5/L6 lesson-plan HEADINGS still need correcting regardless. Lesson 4
+    (`m1-l3-s1`) heading "Lesson 4: 5 Screens" is already correct. Governance is
+    the source of truth (7 / 6 / 7).
+- **F3. Eyebrow-label color standard (ESTABLISH a new rule — does not reverse
+  one).** Per current CLAUDE.md there is NO governed rule for non-interactive
+  eyebrow/label color yet; the navy callout-label decisions so far were per-class.
+  F3 establishes the standard: **non-interactive eyebrow labels are navy, with
+  named accent exceptions.** Governance deliverable (do this in the same pass):
+  add that rule to BOTH CLAUDE.md Visual Standards and the governance doc, AND
+  update the governance BUILD-SPEC wording that still describes teal callout labels
+  (e.g. `in-your-context__label` and any "teal … callout" label language) so the
+  spec matches the standard, not just the CSS. Resolution plan to capture:
+  - **Navy now:** `overview-phase`, `expert-insight__label`.
+  - **Give `failure-callout__label` an explicit navy color** (it currently sets
+    none and inherits).
+  - **Accent-tier group** (`bloom-bridge__label`, `your-development__label`,
+    `in-your-context__label`, `transfer-context__summary`, `project-update__label`,
+    `exemplar-contrast__label`, `context-card__heading`, `diagnostic-check__heading`,
+    `retrieval-warmup__answer-label`, `brief-subhead`): navy across the group,
+    exempting any deliberately kept as a teal accent. Look-at-it-rendered, not
+    tonight.
+  - **Defer `success-criteria__summary`:** item B changes that element anyway.
+  - **Leave the gray/secondary tier as-is.**
+  - Handle the D3 SI-09 sizing alongside, since it touches the same eyebrows.
+
+- **F4. Disabled module-nav-link build standard.** Disabled / not-yet-available
+  module-nav links must be non-navigable: `<span class="module-nav-link
+  is-disabled" aria-disabled="true">` carrying the link text, never a live
+  `<a href="module-N.html">` (aria-disabled does not stop anchor navigation → 404,
+  the F1 bug). This closes the parity gap that would otherwise let Module 2-4
+  hub/overview/nav re-introduce F1. Status: being recorded in the governance doc
+  and CLAUDE.md this session (see Task 3). Mark resolved once that commit lands.
 
 ### Verified clean (audit negative space)
 
