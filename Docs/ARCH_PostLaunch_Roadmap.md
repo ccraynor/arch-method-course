@@ -40,7 +40,7 @@ Complete these before starting the Module 2 build session.
 Module 2: Engineer the Learning -- 4 lessons (2.1 Sequencing Logic
 Fundamentals, 2.2 Competency Progression and Spiral Reinforcement,
 2.3 Unit Architecture Engineering, 2.4 Learning Science Integration),
-24 screens, Phases 3-4. Deliverable: Sequenced Unit Architecture
+25 screens, Phases 3-4. Deliverable: Sequenced Unit Architecture
 Package (Performance Task 2, builds on Task 1 Bucket Map). Artifact
 name MRHN_UnitArchitecture_v1. The SME Approval Gate (1 screen) is
 Module 2's entry gate; a Sequencing Governance Record follows L2.4.
