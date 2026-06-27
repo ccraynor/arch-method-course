@@ -123,6 +123,28 @@ pass.
   and the always-visible guided-practice blocks (Section 15) are now in the spec,
   and the Section 6 save tiering is ratified by the spec owner. The CLAUDE.md
   Accessibility Build Standard no longer marks the tiering provisional.
+- **AX6 (announcement-wiring family): RESOLVED 2026-06-27.** Consolidated all
+  live screen-reader announcements onto one shared path and filled the spec
+  Section 8 gaps the reconciliation pass found. Commits:
+  - 3147ca7 Phase 1: shared SRC/js/srAnnounce.js; migrated panelManager.js and
+    completionSignal.js onto the single announce() path.
+  - 42691b9 group 1 (compare-expert): standardized m1-l4a-s4 to verbatim "Expert
+    comparison available."; submit-confirmation strings on m1-l2-s3 / m1-l2-s5a
+    left unchanged (ratified -- submit events, more informative); routed through
+    srAnnounce.
+  - 17e6aa3 group 2 (decision-template): verbatim "Decision recorded. Feedback
+    available below." (submit) / "Decision updated." (revise) via srAnnounce.
+  - bffcac9 group 3 (checklists): verbatim spelled-out completion count on
+    m1-gate-s1 toggles; intro-0.7 and m1-l3-s2 excluded (no interactive
+    checklist).
+  - Two Section-8 strings intentionally NOT in AX6, carried forward:
+    "Work saved." belongs to AX4 (Tier-1 shared autosave, Section 6) and must
+    route through srAnnounce.js when wired; "Submission complete." is deferred to
+    Module 2 (documented comment in decision-point-template.html; no genuine M1
+    submission action exists to fire it).
+  - Principle banked: Module 2's decision points, checklists, and compare screens
+    inherit the single srAnnounce path rather than re-cloning bespoke announce
+    helpers.
 
 ---
 
