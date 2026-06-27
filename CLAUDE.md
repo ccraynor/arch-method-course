@@ -309,10 +309,9 @@ Resolved decisions (standards):
   name plus an open/close announcement. Rationale: these are reference tools
   consulted alongside content, so trapping focus is pedagogically wrong. This
   supersedes the spec's dialog/modal requirement (Section 3 dialog row and
-  Section 10); spec amendment pending.
+  Section 10), amended in spec v5.1 (commit 606aa03).
 - Save and recovery is TIERED by input type (a reinterpretation of spec Section
-  6). PROVISIONAL: pending spec-owner confirmation; do not treat the tiering as
-  final until confirmed.
+  6). Ratified by spec owner 2026-06-27 (spec v5.1).
   - Tier 1, substantial authored text (artifacts, reflections, long-text):
     full contract. Autosave every 30s, autosave on field exit, manual Save
     button, save timestamp, failure-recovery actions (Retry Save, Download Draft,

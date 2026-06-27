@@ -90,11 +90,11 @@ REQUIRES-AT-GATE items for the pre-deployment launch gate, not punch-list fixes.
   the full contract (autosave 30s + on field-exit + manual Save + timestamp +
   failure-recovery actions + save announcements) on Tier-1 authored-text screens.
   Sized by the tiered save decision in the CLAUDE.md Accessibility Build Standard.
-- **AX5 (decision/amend, BLOCKED): amend the accessibility spec (.docx).** Two
-  resolved decisions need to land in the spec: the non-modal panel contract
-  (Section 10 plus the Section 3 dialog row) and the Section 6 tiering. The
-  Section 6 amendment is gated on spec-owner confirmation (the tiering is
-  provisional). Owner: Carrie, by hand in the Word doc.
+- **AX5 (decision/amend): RESOLVED.** The accessibility spec was amended to
+  v5.1 (commit 606aa03): the non-modal reference-panel contract (Sections 3, 10)
+  and the always-visible guided-practice blocks (Section 15) are now in the spec,
+  and the Section 6 save tiering is ratified by the spec owner. The CLAUDE.md
+  Accessibility Build Standard no longer marks the tiering provisional.
 
 ---
 
