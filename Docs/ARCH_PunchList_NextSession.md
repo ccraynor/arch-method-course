@@ -145,6 +145,28 @@ pass.
   - Principle banked: Module 2's decision points, checklists, and compare screens
     inherit the single srAnnounce path rather than re-cloning bespoke announce
     helpers.
+- **AX4 (shared autosave + Tier-1 save contract): IN PROGRESS.** Option 1
+  (full consolidation), staged. Scope decision 2026-06-27: Stages 1-2 now
+  (Module-2-gating consolidation); Stages 3-5 deferred to a **post-Module-2
+  cluster**. Stage 1 builds the shared SRC/js/autosave.js module; Stage 2
+  migrates the Tier-1 screens onto it. Deferred stages:
+  - **AX4 Stage 3 (post-Module-2):** consolidate the 5 status-UI variants
+    (`.save-status-text`, `.autosave-dot`, `.autosave-bar`, `.notes-save-status`,
+    `.form-save-status`) into the one canonical `.save-status`; extend global.css
+    for saving/saved/error states (mind the responsive rule at ~line 2141).
+  - **AX4 Stage 4 (post-Module-2), two sequenced steps:**
+    - **Step 4a (prerequisite):** add a failure signal to storage.js. Today
+      setItem swallows quota failures into an in-memory fallback and never throws
+      or signals failure, so the Stage-1 onSaveError hook cannot fire. Step 4a
+      makes setItem report failure (e.g. return a boolean, or export a
+      fallback-state query). This MUST land before 4b -- sequencing, not optional.
+    - **Step 4b:** build the failure-recovery UI (Retry Save / Download Draft /
+      Copy Response / Return to Editing) on caught save failure + "Save failed."
+      announce, driven by the Step-4a signal through the Stage-1 hook. Real v5.2
+      Tier-1 conformance. Low fire-rate (memory fallback), safe to defer, tracked.
+  - **AX4 Stage 5 (post-Module-2):** retire initSceneAutosave from panelInit.js
+    once all data-autosave-key screens run through autosave.js; migrate the ~23
+    light screens' attributes.
 
 ---
 
