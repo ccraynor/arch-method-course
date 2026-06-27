@@ -75,9 +75,25 @@ fixes the scan surfaced are routed below. (Contrast, real SR output, keyboard
 traversal, zoom/reflow, and touch targets are NOT here — they stay
 REQUIRES-AT-GATE items for the pre-deployment launch gate, not punch-list fixes.)
 
-- **AX1 (fix, clear): heading-level skip H2 → H4.** Feedback regions skip the H3
-  level (e.g. m1-l1a-s4, m1-l1b-s3). Insert the missing H3 in the pattern; apply
-  course-wide wherever the feedback pattern repeats. Spec Section 2.
+Caveat on G1 (static scan): the G1 scan reads source files and CANNOT see
+JS-injected heading structure (innerHTML assignments, template literals). A
+heading that appears at one source position may render somewhere else entirely.
+Any G1 finding that touches dynamically-injected DOM must be verified against the
+RENDERED structure before acting (AX1 below is a case in point). True
+rendered-structure verification belongs to the AT launch gate, not to a static
+pass.
+
+- **AX1 (heading-level skip H2 → H4): RESOLVED 2026-06-27 — verified false
+  positive.** The flagged h4s on m1-l1a-s4 and m1-l1b-s3 (`reference-section__heading`
+  / `ref-type-heading`) live inside a `REFERENCE_HTML` template literal in a
+  `<script>` block, so a flat source scan places them after the support-panel h2s
+  (apparent h2 → h4). At runtime they are injected via
+  `refBody.innerHTML = REFERENCE_HTML` into `#feedback-reference-body`, which sits
+  directly under an H3 (`feedback-reference__heading`). The rendered outline is
+  therefore H3 → H4 — valid, no skip. No code change: releveling h4 → h3 would
+  flatten the reference subsections to the same level as the "Expert reference" H3
+  that contains them, breaking the nesting. These are the only two screens with
+  any `<h4>`.
 - **AX2 (fix, clear): add aria-current="step".** No current step carries
   aria-current="step" anywhere today. Add it to the current step in the header
   progress tracker and the hub module-map. Spec Sections 3 / 5 / 9.
