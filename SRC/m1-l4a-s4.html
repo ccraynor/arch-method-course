@@ -844,6 +844,8 @@
 
   <!-- Practice interaction script -->
   <script type="module">
+    import { announce } from './js/srAnnounce.js';
+
     /* ============================================================
        Expert decomposition data -- Buckets 2 and 3
        ============================================================ */
@@ -953,7 +955,6 @@
     const feedbackExp     = document.getElementById('feedback-explanation');
     const correctBody     = document.getElementById('feedback-correct-answer-body');
     const btnContinue     = document.getElementById('btn-continue');
-    const announcer       = document.getElementById('sr-announcer');
 
     /* ============================================================
        Build workspace HTML for one SI item
@@ -1190,10 +1191,7 @@
       feedbackRegion.removeAttribute('hidden');
       feedbackHdg.focus();
 
-      announcer.textContent = '';
-      requestAnimationFrame(() => {
-        announcer.textContent = 'Expert decomposition comparison is now visible. Review your work against the expert and continue when ready.';
-      });
+      announce('Expert comparison available.');
     });
 
     /* Progress tracker */

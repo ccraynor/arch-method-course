@@ -1443,6 +1443,7 @@
        Evaluation and dynamic label script
        ============================================================ -->
   <script type="module">
+    import { announce } from './js/srAnnounce.js';
 
     // ---- SI item descriptions for chip rendering ----
     const SI_DESCRIPTIONS = {
@@ -1505,15 +1506,6 @@
     BUCKET_KEYS.forEach(key => {
       document.getElementById(`${key}name`).addEventListener('input', refreshSelectOptions);
     });
-
-    // ---- Screen reader announcement helper ----
-    function announce(message) {
-      const el = document.getElementById('sr-announcer');
-      el.textContent = '';
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => { el.textContent = message; });
-      });
-    }
 
     // ---- Permutation engine (24 permutations of 4 items) ----
     function permutations(arr) {

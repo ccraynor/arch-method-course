@@ -679,6 +679,7 @@
   <!-- Calibration script -->
   <script type="module">
     import { getItem, setItem } from './js/storage.js';
+    import { announce } from './js/srAnnounce.js';
 
     let SCREEN_ID = null;
     let CONFIG    = null;
@@ -711,11 +712,8 @@
       btnReveal.setAttribute('aria-expanded', 'true');
       btnReveal.setAttribute('disabled', '');
       btnReveal.textContent = 'Expert Response Shown';
-      announcer.textContent = '';
-      requestAnimationFrame(() => {
-        announcer.textContent = 'Expert comparison available.';
-        setTimeout(() => { expertHeading.focus(); }, 100);
-      });
+      announce('Expert comparison available.');
+      setTimeout(() => { expertHeading.focus(); }, 100);
     });
 
     /* ---- Notes: save on blur ---- */

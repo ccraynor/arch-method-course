@@ -601,6 +601,7 @@
        ============================================================ -->
   <script type="module">
     import { getItem, setItem } from './js/storage.js';
+    import { announce } from './js/srAnnounce.js';
 
     let SCREEN_ID = null;
     let CONFIG    = null;
@@ -644,12 +645,9 @@
          then move focus to expert heading.
          Two-signal approach: live region fires "Expert comparison available,"
          then focus move announces the heading text. */
-      announcer.textContent = '';
-      requestAnimationFrame(() => {
-        announcer.textContent = 'Expert comparison available.';
-        /* Focus after live region has a chance to fire */
-        setTimeout(() => { expertHeading.focus(); }, 100);
-      });
+      announce('Expert comparison available.');
+      /* Focus after live region has a chance to fire */
+      setTimeout(() => { expertHeading.focus(); }, 100);
     });
 
     /* ---- Calibration notes: save on blur ---- */

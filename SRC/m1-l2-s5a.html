@@ -745,6 +745,7 @@
 
   <script type="module">
     import { getItem, setItem } from './js/storage.js';
+    import { announce } from './js/srAnnounce.js';
 
     const SCREEN_ID   = 'm1-l2-s5a';
     const STORAGE_KEY = 'submitted_' + SCREEN_ID;
@@ -756,11 +757,6 @@
     const errorDetail = document.getElementById('error-summary-detail');
     const resetBtn    = document.getElementById('reset-btn');
 
-    function announce(msg) {
-      const el = document.getElementById('sr-announcer');
-      el.textContent = '';
-      requestAnimationFrame(() => { requestAnimationFrame(() => { el.textContent = msg; }); });
-    }
 
     const EXPERT = {
       'b1-c1': 'pass', 'b1-c2': 'pass', 'b1-c3': 'pass', 'b1-c4': 'pass',
