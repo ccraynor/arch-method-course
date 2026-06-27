@@ -77,7 +77,7 @@ LESSON INTRODUCTION SCREEN:
   now. Link to intro-0.9.html.
 - Purpose statement: one sentence explaining what
   this lesson makes possible professionally. Format:
-  After this lesson you will [specific professional
+  By the end of this lesson you will [specific professional
   capability].
 - ARCH Method mindset callout: one sentence naming
   the design thinking principle being practiced in
