@@ -1199,6 +1199,7 @@
   <!-- Gate confirmation script -->
   <script type="module">
     import { getItem, setItem } from './js/storage.js';
+    import { announce } from './js/srAnnounce.js';
 
     const STORAGE_KEY = 'gate_m1_tg1';
     const TOTAL       = 4;
@@ -1209,7 +1210,6 @@
     const clearedMsg   = document.getElementById('gate-cleared-msg');
     const clearedTs    = document.getElementById('gate-cleared-timestamp');
     const clearBtn     = document.getElementById('btn-clear-gate');
-    const announcer    = document.getElementById('sr-announcer');
     const items        = {
       'confirm-1': document.getElementById('confirm-item-1'),
       'confirm-2': document.getElementById('confirm-item-2'),
@@ -1221,7 +1221,20 @@
       return checkboxes.filter(cb => cb.checked).length;
     }
 
-    function updateUI(announce) {
+    /* Spelled-out checklist count for SR announcements (spec Section 8,
+       verbatim format: "Three of five checklist items complete."). */
+    const NUM_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five',
+                       'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
+    function checklistCountMessage(count) {
+      if (count > 10 || TOTAL > 10) {
+        console.warn('gate: checklist count exceeds number-to-words lookup (' +
+          count + ' of ' + TOTAL + ').');
+      }
+      return NUM_WORDS[count] + ' of ' + NUM_WORDS[TOTAL].toLowerCase() +
+        ' checklist items complete.';
+    }
+
+    function updateUI(doAnnounce) {
       const count = getCheckedCount();
       const pct   = Math.round((count / TOTAL) * 100);
 
@@ -1241,16 +1254,16 @@
       if (count === TOTAL) {
         clearBtn.removeAttribute('aria-disabled');
         clearedMsg.removeAttribute('hidden');
-        if (announce) {
+        if (doAnnounce) {
           clearedMsg.focus();
-          announcer.textContent = '';
-          requestAnimationFrame(() => {
-            announcer.textContent = 'Gate 1.TG.1 cleared. All four confirmations complete. Proceed to Module 2.';
-          });
+          announce('Gate 1.TG.1 cleared. All four confirmations complete. Proceed to Module 2.');
         }
       } else {
         clearBtn.setAttribute('aria-disabled', 'true');
         clearedMsg.setAttribute('hidden', '');
+        if (doAnnounce) {
+          announce(checklistCountMessage(count));
+        }
       }
     }
 
@@ -1286,14 +1299,11 @@
     /* Intercept clearance link -- always prevent default since Module 2 is not yet built */
     clearBtn.addEventListener('click', e => {
       e.preventDefault();
-      announcer.textContent = '';
-      requestAnimationFrame(() => {
-        if (clearBtn.getAttribute('aria-disabled') === 'true') {
-          announcer.textContent = 'Complete all four confirmation checks to clear the gate.';
-        } else {
-          announcer.textContent = 'Gate cleared. Module 2 is not yet available. It will be released in a future update.';
-        }
-      });
+      if (clearBtn.getAttribute('aria-disabled') === 'true') {
+        announce('Complete all four confirmation checks to clear the gate.');
+      } else {
+        announce('Gate cleared. Module 2 is not yet available. It will be released in a future update.');
+      }
     });
 
     /* Checkbox change handler */
