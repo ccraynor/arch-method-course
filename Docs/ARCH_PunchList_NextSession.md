@@ -67,6 +67,37 @@ end-state launch gate.
 
 ---
 
+## Accessibility (from G1 scan)
+
+G1 has been run. The conformant patterns and resolved decisions are now recorded
+as the Accessibility Build Standard in CLAUDE.md (commit efbf165). The concrete
+fixes the scan surfaced are routed below. (Contrast, real SR output, keyboard
+traversal, zoom/reflow, and touch targets are NOT here — they stay
+REQUIRES-AT-GATE items for the pre-deployment launch gate, not punch-list fixes.)
+
+- **AX1 (fix, clear): heading-level skip H2 → H4.** Feedback regions skip the H3
+  level (e.g. m1-l1a-s4, m1-l1b-s3). Insert the missing H3 in the pattern; apply
+  course-wide wherever the feedback pattern repeats. Spec Section 2.
+- **AX2 (fix, clear): add aria-current="step".** No current step carries
+  aria-current="step" anywhere today. Add it to the current step in the header
+  progress tracker and the hub module-map. Spec Sections 3 / 5 / 9.
+- **AX3 (fix, clear): align announcement strings to spec Section 8.** panelManager
+  announces generic wording ("… panel opened" / "Panel closed"); align to the
+  exact spec strings ("Artifact reference drawer opened." / "Returned to course
+  content." / "Expanded." / "Collapsed." / "Work saved." etc.).
+- **AX4 (build, Tier 1): shared autosave module + full Section 6 contract.**
+  Promote autosave out of per-screen inline JS into a shared module, and implement
+  the full contract (autosave 30s + on field-exit + manual Save + timestamp +
+  failure-recovery actions + save announcements) on Tier-1 authored-text screens.
+  Sized by the tiered save decision in the CLAUDE.md Accessibility Build Standard.
+- **AX5 (decision/amend, BLOCKED): amend the accessibility spec (.docx).** Two
+  resolved decisions need to land in the spec: the non-modal panel contract
+  (Section 10 plus the Section 3 dialog row) and the Section 6 tiering. The
+  Section 6 amendment is gated on spec-owner confirmation (the tiering is
+  provisional). Owner: Carrie, by hand in the Word doc.
+
+---
+
 ## A. Narrow first column / awkward title wrap  (systemic — "rampant")
 
 Likely one root cause: two-column cards/tables with a first column too narrow,
