@@ -152,6 +152,14 @@ localStorage keys:
 - archMethod_optReading_l1_open, archMethod_optReading_l3_open
 - archMethod_gatePhase1RecordsOpen, archMethod_gatePhase2RecordsOpen
   (Phase 1 and Phase 2 governance record groups on m1-gate-s1)
+- archMethod_calibration_[screenId]_notes (calibration reflection
+  notes content; unchanged across the AX4 migration)
+- archMethod_calibration_[screenId]_notes_savedAt (timestamp companion
+  the shared autosave module writes; new <key>_savedAt form)
+- archMethod_calibration_[screenId]_savedAt (legacy inline timestamp
+  key; SUPERSEDED by _notes_savedAt for AX4-migrated calibration screens.
+  Content key is unchanged, so drafts restore intact; learners see a
+  one-time cosmetic timestamp reset)
 
 sessionStorage keys (session-scoped, not localStorage):
 - archMethod_previewMode (Preview Mode flag)
@@ -343,6 +351,22 @@ Resolved decisions (standards):
     silent persistence on change plus a live-region confirmation. No Save button
     or recovery suite.
   - Autosave is to be promoted into a SHARED module, not per-screen inline JS.
+  - Shared module (SRC/js/autosave.js, AX4): Tier-1 groups are declared with
+    data-autosave-group + data-autosave-tier="1" + data-autosave-status +
+    data-autosave-key (key may be assigned at runtime before initAutosave()),
+    plus an optional <button data-autosave-save>. Two storage formats:
+    data-autosave-format="json" (default) serializes all group fields to a blob
+    keyed by id|name; data-autosave-format="text" stores a single field's raw
+    string, byte-compatible with legacy single-field keys (e.g.
+    calibration_<id>_notes). A field carrying its own data-autosave-key is
+    excluded from the group blob and stays on the light path. Behavior deltas
+    when migrating inline save code onto the module: (1) save announcements
+    route through srAnnounce.js -- manual Save announces "Work saved.", restore
+    announces "Previous work restored."; (2) 30s-interval and on-blur saves are
+    SILENT (visible "Saved at <time>" status only, no SR announce); (3) the
+    timestamp companion key is <key>_savedAt (so a screen migrated off a legacy
+    <id>_savedAt key shows a one-time cosmetic timestamp reset -- the content
+    key is unchanged).
 
 ### Naming Conventions
 - ARCH Steps: use Phase and Step terminology only (never Stage)

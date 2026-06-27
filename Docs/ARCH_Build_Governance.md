@@ -540,6 +540,21 @@ Narrative keys (Prompt E Part 1 Section 2):
   (Phase 1 and Phase 2 governance record groups on m1-gate-s1;
   busyness pass item 4)
 
+Autosave keys (AX4 shared module, SRC/js/autosave.js):
+- archMethod_reflection_[screenId] (Tier-1 JSON blob of a reflection
+  screen's .reflection-writing group; transfer-framework fields keep
+  their own archMethod_transfer_l[N]_qX keys on the light path)
+- archMethod_calibration_[screenId]_notes (Tier-1 text mode: the
+  calibration reflection notes raw string; byte-compatible with the
+  legacy inline key)
+- archMethod_<key>_savedAt (timestamp companion the module writes for
+  every Tier-1 key, e.g. archMethod_calibration_[screenId]_notes_savedAt).
+  AX4 Stage 2 Batch 2 note: migrating calibration notes off the legacy
+  inline code moved the timestamp key from calibration_[id]_savedAt to
+  calibration_[id]_notes_savedAt. The notes content key is unchanged, so
+  drafts restore intact; a returning learner sees a one-time cosmetic
+  timestamp reset only.
+
 Note: Prompt D adds archMethod_lastVisitDate.
 Note: Prompt E adds archMethod_pacingMode,
 archMethod_diag_q1/q2, archMethod_reasoning_[screenId],
@@ -1246,6 +1261,21 @@ sessions. Review before each module build.
   consolidation into two rows; tabbed In a Different Context
   and In Your Context card; Expert Think-Aloud collapsible
   drawer (planned key archMethod_thinkAloudOpen_[screenId]).
+- AX4 governance-form disposition: DECIDED 2026-06-27. The
+  governance form (governanceForm.js / governance-form-template
+  inline) is left in place and is NOT migrated onto the shared
+  autosave module. It already satisfies the Tier-1 behavioral
+  contract within its own component, so AX4 Stage 2 is complete
+  without it. Reasons it was excluded from the shared module:
+  (a) autosave.js collect() excludes radio and checkbox inputs,
+  so migrating would drop the delivery-modality and accuracy-
+  confirm fields and break byte-compat on governance_<id>; and
+  (b) the form's save is interwoven with progress milestones,
+  field validation, and the submit/error-summary flow. Any real
+  consolidation is a separate post-Module-2 refactor (teach
+  autosave.js radio/checkbox-aware collection plus a callable
+  save primitive) tracked as AX4 Stage 6 in the punch list, not
+  unfinished Stage-2 work.
 
 ---
 

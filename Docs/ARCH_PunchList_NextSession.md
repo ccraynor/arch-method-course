@@ -147,9 +147,43 @@ pass.
     helpers.
 - **AX4 (shared autosave + Tier-1 save contract): IN PROGRESS.** Option 1
   (full consolidation), staged. Scope decision 2026-06-27: Stages 1-2 now
-  (Module-2-gating consolidation); Stages 3-5 deferred to a **post-Module-2
+  (Module-2-gating consolidation, now DONE); Stages 3-6 deferred to a **post-Module-2
   cluster**. Stage 1 builds the shared SRC/js/autosave.js module; Stage 2
-  migrates the Tier-1 screens onto it. Deferred stages:
+  migrates the Tier-1 screens onto it.
+  - **Stage 1: DONE.** Built SRC/js/autosave.js (group blob mode + light
+    per-field path + dormant onSaveError Stage-4 hook), announcing via
+    srAnnounce.js; pilot-wired reflection-template.html. Storage byte-compatible
+    with the legacy inline format (same key + JSON shape + _savedAt).
+  - **Stage 2 (Tier-1 screen migration): DONE.** All Tier-1 authored-text
+    screens migrated (the four .reflection-writing screens and both
+    .calibration-panel--reflection screens; verified as the complete
+    inventory). The governance form is dispositioned in place, not migrated
+    (see below), so no Tier-1 screen remains.
+    - **Batch 1 (blob reflections): DONE** (commit 69d5ce6). Migrated
+      m1-l1a-s5, m1-l4a-s5, m1-l4b-s7 .reflection-writing groups onto the
+      module (JSON blob, key reflection_<id>); transfer-framework fields left
+      on the light path via the exclude-`data-autosave-key` filter (disposition
+      (i): they are Tier 2).
+    - **Batch 2 (calibration pair): DONE** (commit c49598a). Added
+      data-autosave-format="text" to autosave.js (single raw-string field,
+      no JSON wrap); migrated calibration-template.html and m1-l4b-s6.html
+      notes onto it (key calibration_<id>_notes, byte-compatible). Three
+      behavior deltas vs the removed inline code: manual Save routes "Work
+      saved." through srAnnounce; blur/30s saves are silent (status only);
+      timestamp key moved to <key>_savedAt (cosmetic one-time reset, content
+      key unchanged). Recorded in CLAUDE.md (Accessibility Build Standard) and
+      the governance namespace.
+    - **governance-form-template: NOT a Stage-2 migration; left in place by
+      decision.** governanceForm.js (governance-form-template inline) already
+      satisfies the Tier-1 behavioral contract in its own component, so Stage 2
+      is COMPLETE without it. It is intentionally NOT migrated onto the shared
+      module because: (a) the module's collect() excludes radio/checkbox, so
+      migrating would drop the delivery-modality and accuracy-confirm inputs and
+      break byte-compat on governance_<id>; and (b) its save is interwoven with
+      progress milestones, field validation, and the submit/error-summary flow.
+      Any real consolidation is a separate post-Module-2 refactor (see the new
+      Stage-6 item), not unfinished Stage-2 work.
+  Deferred stages:
   - **AX4 Stage 3 (post-Module-2):** consolidate the 5 status-UI variants
     (`.save-status-text`, `.autosave-dot`, `.autosave-bar`, `.notes-save-status`,
     `.form-save-status`) into the one canonical `.save-status`; extend global.css
@@ -167,6 +201,15 @@ pass.
   - **AX4 Stage 5 (post-Module-2):** retire initSceneAutosave from panelInit.js
     once all data-autosave-key screens run through autosave.js; migrate the ~23
     light screens' attributes.
+  - **AX4 Stage 6 (post-Module-2): consolidate governanceForm.js onto the
+    shared module.** Optional refactor, not conformance work -- the governance
+    form already meets the Tier-1 contract in its own component. Prerequisites
+    the shared module lacks today: (a) teach autosave.js radio/checkbox-aware
+    collection so delivery-modality and accuracy-confirm survive (and preserve
+    byte-compat on governance_<id>); (b) expose a callable save primitive so the
+    form's progress-milestone, field-validation, and submit/error-summary flow
+    can drive saves instead of the module owning blur/interval timing. Only
+    after both land is migration safe.
 
 ---
 
