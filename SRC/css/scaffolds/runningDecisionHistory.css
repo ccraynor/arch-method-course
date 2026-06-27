@@ -1,3 +1,8 @@
+/* DEFERRED 2026-06-27: Decision History control removed from the build
+   (premature empty shell). This implementation is dormant and NOT wired into
+   any screen. Re-introduce by re-wiring in the module that commits to Decision
+   History. See v5.2 spec deferral note. */
+
 /* =============================================================================
    runningDecisionHistory.css
    Scaffold Component 8 of 10 -- Running Decision History Panel

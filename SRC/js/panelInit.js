@@ -44,8 +44,8 @@ function initPanelDescriptions() {
 }
 
 function initCommitmentSidebar() {
-  const decisionSection = document.getElementById('decision-history');
-  if (!decisionSection) return;
+  const sidebar = document.getElementById('supplementary-resources');
+  if (!sidebar) return;
 
   const commitmentNote = localStorage.getItem('archMethod_learnerCommitmentNote') || '';
 
@@ -78,22 +78,18 @@ function initCommitmentSidebar() {
 
   /* Insert after artifact-reference section */
   const artifactSection = document.getElementById('artifact-reference');
-  const sidebar = document.getElementById('supplementary-resources');
-  if (sidebar) {
-    if (artifactSection?.nextSibling) {
-      sidebar.insertBefore(section, artifactSection.nextSibling);
-    } else {
-      sidebar.appendChild(section);
-    }
+  if (artifactSection?.nextSibling) {
+    sidebar.insertBefore(section, artifactSection.nextSibling);
+  } else {
+    sidebar.appendChild(section);
   }
 }
 
-/* Item 18: Group artifact-reference and decision-history under "Your Progress" */
+/* Item 18: Group artifact-reference under "Your Progress" */
 function initYourProgressGroup() {
   const sidebar = document.getElementById('supplementary-resources');
   const artifactSection = document.getElementById('artifact-reference');
-  const decisionSection = document.getElementById('decision-history');
-  if (!sidebar || !artifactSection || !decisionSection) return;
+  if (!sidebar || !artifactSection) return;
 
   const group = document.createElement('div');
   group.className = 'sidebar-progress-group';
@@ -105,11 +101,10 @@ function initYourProgressGroup() {
 
   sidebar.insertBefore(group, artifactSection);
   group.appendChild(artifactSection);
-  group.appendChild(decisionSection);
 
-  /* Remove the H2 headings inside each section since the group heading
-     provides the context -- downgrade them to visually styled divs */
-  [artifactSection, decisionSection].forEach(sec => {
+  /* Remove the H2 heading inside the section since the group heading
+     provides the context -- downgrade it to a visually styled div */
+  [artifactSection].forEach(sec => {
     const h2 = sec.querySelector('h2.aside-heading');
     if (h2) {
       const label = document.createElement('p');
@@ -120,39 +115,12 @@ function initYourProgressGroup() {
   });
 }
 
-/* Item 19: Hide the Artifacts overlay toggle (artifacts are sidebar-only);
-   add a decision count badge to the Decision History button. */
-function initDecisionHistoryButton() {
-  /* Remove Artifacts overlay button from header -- artifact content lives in sidebar */
+/* Item 19: Hide the Artifacts overlay toggle (artifacts are sidebar-only). */
+function hideArtifactsOverlayButton() {
   const artifactsBtn = document.querySelector('[data-panel="artifactDrawer"]');
   if (artifactsBtn) {
     artifactsBtn.hidden = true;
     artifactsBtn.setAttribute('aria-hidden', 'true');
-  }
-
-  /* Add count badge to Decision History button */
-  const dhBtn = document.querySelector('[data-panel="decisionHistory"]');
-  if (!dhBtn) return;
-
-  const count = countDecisions();
-  const badge = document.createElement('span');
-  badge.className = 'decision-badge';
-  badge.setAttribute('aria-label', count > 0 ? `${count} decisions logged` : '');
-  badge.textContent = count > 0 ? String(count) : '';
-  badge.hidden = count === 0;
-  dhBtn.appendChild(badge);
-}
-
-function countDecisions() {
-  try {
-    let n = 0;
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key && key.startsWith('archMethod_decision_')) n++;
-    }
-    return n;
-  } catch {
-    return 0;
   }
 }
 
@@ -352,7 +320,7 @@ function initPredictionCallback() {
 initPanelDescriptions();
 initCommitmentSidebar();
 initYourProgressGroup();
-initDecisionHistoryButton();
+hideArtifactsOverlayButton();
 initBriefPanel();
 initGlossary();
 initGlossaryList();

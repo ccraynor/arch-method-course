@@ -2,7 +2,6 @@
 
 const ALLOWED_PANELS = [
   'artifactDrawer',
-  'decisionHistory',
   'glossary',
   'supportPanel',
   'annotationPanel',
@@ -82,7 +81,6 @@ function _announce(message) {
    Expanded./Collapsed. pair. */
 const PANEL_ANNOUNCE = {
   artifactDrawer:  { open: 'Artifact reference drawer opened.', close: 'Returned to course content.' },
-  decisionHistory: { open: 'Decision history opened.',          close: 'Decision history closed.' },
 };
 
 function _openMessage(name) {
