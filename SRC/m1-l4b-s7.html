@@ -473,7 +473,10 @@
           </div><!-- /.reflection-prompts -->
 
           <!-- ---- Right column: writing area ---- -->
-          <div class="reflection-writing">
+          <div class="reflection-writing"
+               data-autosave-group
+               data-autosave-tier="1"
+               data-autosave-status="save-status">
 
             <div class="writing-field" id="writing-field-1">
               <label for="reflection-field-1" class="writing-field__label">
@@ -510,7 +513,7 @@
             </div>
 
             <div class="save-controls" role="group" aria-label="Save controls">
-              <button type="button" id="btn-save-manual" class="btn btn--secondary btn--save">
+              <button type="button" id="btn-save-manual" class="btn btn--secondary btn--save" data-autosave-save>
                 <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M13 13H3a1 1 0 01-1-1V4l3-3h7l2 2v9a1 1 0 01-1 1z"
                         stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
@@ -692,91 +695,20 @@
 
   <!-- Reflection save script -->
   <script type="module">
-    import { getItem, setItem } from './js/storage.js';
-
-    const AUTOSAVE_INTERVAL_MS = 30000;
-
-    let SCREEN_ID        = null;
-    let lastSavedContent = null;
-
-    const saveStatus = document.getElementById('save-status');
-    const btnSave    = document.getElementById('btn-save-manual');
-    const announcer  = document.getElementById('sr-announcer');
-    const textareas  = Array.from(document.querySelectorAll('.reflection-textarea'));
-
-    function collectContent() {
-      const fields = {};
-      textareas.forEach(el => { fields[el.id] = el.value; });
-      return fields;
-    }
-
-    function setStatus(message, announce) {
-      if (announce) {
-        saveStatus.setAttribute('aria-live', 'polite');
-        saveStatus.textContent = '';
-        requestAnimationFrame(() => { saveStatus.textContent = message; });
-      } else {
-        saveStatus.setAttribute('aria-live', 'off');
-        saveStatus.textContent = message;
-      }
-    }
-
-    function save(source) {
-      if (!SCREEN_ID) return;
-      const content    = collectContent();
-      const serialized = JSON.stringify(content);
-      const changed    = serialized !== lastSavedContent;
-      if ((source === 'auto' || source === 'blur') && !changed) return;
-      try {
-        setItem('reflection_' + SCREEN_ID, serialized);
-        const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        setItem('reflection_' + SCREEN_ID + '_savedAt', timestamp);
-        lastSavedContent = serialized;
-        const message  = 'Saved at ' + timestamp;
-        const announce = source === 'manual' || source === 'exit';
-        setStatus(message, announce);
-        if (source === 'manual') {
-          announcer.textContent = '';
-          requestAnimationFrame(() => { announcer.textContent = message; });
-        }
-      } catch {
-        setStatus('Save failed. Your browser may be blocking storage.', true);
-      }
-    }
-
-    function restore() {
-      if (!SCREEN_ID) return;
-      const stored = getItem('reflection_' + SCREEN_ID);
-      if (!stored) return;
-      try {
-        const content = JSON.parse(stored);
-        textareas.forEach(el => {
-          if (Object.prototype.hasOwnProperty.call(content, el.id)) {
-            el.value = content[el.id];
-          }
-        });
-        lastSavedContent = stored;
-        const savedAt = getItem('reflection_' + SCREEN_ID + '_savedAt');
-        setStatus(savedAt ? 'Last saved at ' + savedAt : 'Draft restored', true);
-      } catch {
-        /* Corrupted storage -- start fresh */
-      }
-    }
-
-    function startAutosave() {
-      setInterval(() => save('auto'), AUTOSAVE_INTERVAL_MS);
-    }
-
-    textareas.forEach(el => { el.addEventListener('blur', () => save('blur')); });
-    btnSave.addEventListener('click', () => save('manual'));
-    document.querySelectorAll('.btn--nav').forEach(link => {
-      link.addEventListener('click', () => save('exit'));
-    });
+    /* Autosave owned by the shared module (AX4 Stage 2). The .reflection-writing
+       container is a Tier-1 autosave group; the module collects its
+       .reflection-textarea writing fields (the nested transfer-framework fields
+       keep their own data-autosave-key and stay on the light path), and handles
+       restore + 30s interval + on-blur silent saves + manual Save + the
+       "Saved at <time>" status + "Work saved." / "Previous work restored."
+       announcements via srAnnounce. Storage is byte-compatible with the legacy
+       reflection_<SCREEN_ID> blob. */
+    import { initAutosave } from './js/autosave.js';
 
     window.__setReflectionScreenId = function (id) {
-      SCREEN_ID = id;
-      restore();
-      startAutosave();
+      const group = document.querySelector('[data-autosave-group]');
+      if (group) group.setAttribute('data-autosave-key', 'reflection_' + id);
+      initAutosave();
     };
   </script>
 

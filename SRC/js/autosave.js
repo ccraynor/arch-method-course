@@ -63,7 +63,15 @@ function initGroup(group) {
   group.dataset.autosaveWired = 'true';
 
   const statusEl = document.getElementById(group.getAttribute('data-autosave-status') || '');
-  const fields = Array.from(group.querySelectorAll('textarea, input')).filter(isEditableField);
+  /* Group members are the editable fields WITHOUT their own data-autosave-key.
+     A field that carries data-autosave-key is owned by the light path (its own
+     key), even when nested inside a Tier-1 group (e.g. a reflection screen's
+     transfer-framework fields nested in .reflection-writing) — excluding it keeps
+     the blob byte-compatible with the legacy reflection_<id> shape and prevents
+     double-wiring. */
+  const fields = Array.from(group.querySelectorAll('textarea, input'))
+    .filter(isEditableField)
+    .filter(el => !el.hasAttribute('data-autosave-key'));
   const saveBtn = group.querySelector('[data-autosave-save]');
 
   let lastSerialized = null;
