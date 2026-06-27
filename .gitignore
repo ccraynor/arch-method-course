@@ -2,3 +2,6 @@
 **/.DS_Store
 
 .claude/
+
+# Microsoft Office lock/temp files
+~$*
