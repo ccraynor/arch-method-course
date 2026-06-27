@@ -103,6 +103,11 @@ lives in the governance doc; this roadmap just tracks the to-do.
    record the Module 2 prefix convention (e.g. m2-l1..m2-l4 mapped to
    2.1-2.4) before building. Module 1 mapping for reference: 1.1->l1a,
    1.2->l1b, 1.3->l2, 1.4->l3, 1.5->l4a, 1.6->l4b.
+   Also reconcile the Module 1 numbering itself: the scenario spec uses
+   1.1-1.6 while CLAUDE.md uses 1.1a/1.1b/1.2/1.3/1.4a/1.4b for the same
+   six lessons. Decide whether Module 2 stays unsplit (m2-l1..m2-l4,
+   matching Stage 3's four-lesson structure) and whether the two Module 1
+   schemes should converge to prevent drift.
 
 ---
 
