@@ -97,10 +97,15 @@ pass.
 - **AX2 (fix, clear): add aria-current="step".** No current step carries
   aria-current="step" anywhere today. Add it to the current step in the header
   progress tracker and the hub module-map. Spec Sections 3 / 5 / 9.
-- **AX3 (fix, clear): align announcement strings to spec Section 8.** panelManager
-  announces generic wording ("… panel opened" / "Panel closed"); align to the
-  exact spec strings ("Artifact reference drawer opened." / "Returned to course
-  content." / "Expanded." / "Collapsed." / "Work saved." etc.).
+- **AX3 (announcement strings): RESOLVED 2026-06-27 (commit efcb08e).**
+  panelManager.js now maps each panel to its spec Section 8 string: artifact
+  drawer open/close → "Artifact reference drawer opened." / "Returned to course
+  content."; decision history → "Decision history opened." / "Decision history
+  closed."; all other panels → generic "Expanded." / "Collapsed." The old generic
+  wording ("… panel opened" / "Panel closed") is gone. Note: other Section 8
+  events outside panelManager (e.g. "Work saved." — see AX4 Tier-1 save work,
+  "Decision recorded.", "Submission complete.") are separate wiring, not part of
+  AX3.
 - **AX4 (build, Tier 1): shared autosave module + full Section 6 contract.**
   Promote autosave out of per-screen inline JS into a shared module, and implement
   the full contract (autosave 30s + on field-exit + manual Save + timestamp +
