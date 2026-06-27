@@ -94,9 +94,16 @@ pass.
   flatten the reference subsections to the same level as the "Expert reference" H3
   that contains them, breaking the nesting. These are the only two screens with
   any `<h4>`.
-- **AX2 (fix, clear): add aria-current="step".** No current step carries
-  aria-current="step" anywhere today. Add it to the current step in the header
-  progress tracker and the hub module-map. Spec Sections 3 / 5 / 9.
+- **AX2 (re-scoped 2026-06-27): aria-current on the HUB MODULE-MAP only.**
+  Re-scoped to align with the v5.2 breadcrumb ratification (commit 5fb6932).
+  - The header progress tracker is a breadcrumb readout (`role="group"
+    aria-label="Course progress"`); `aria-current="step"` does NOT apply to it
+    per v5.2 (Sections 3 / 5 / 9). Do NOT add it there.
+  - The hub module-map IS a stepper-like timeline — it currently marks the
+    current node with `data-current` + sr-only text. Add the appropriate
+    `aria-current` to make the current step programmatic.
+  - Now a small build fix scoped to the hub map, not the course-wide tracker.
+    See v5.2 / commit 5fb6932 for the breadcrumb rationale.
 - **AX3 (announcement strings): RESOLVED 2026-06-27 (commit efcb08e).**
   panelManager.js now maps each panel to its spec Section 8 string: artifact
   drawer open/close → "Artifact reference drawer opened." / "Returned to course
