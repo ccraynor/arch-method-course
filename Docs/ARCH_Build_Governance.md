@@ -122,8 +122,10 @@ WORKED EXAMPLE SCREEN:
   noting in your reflection.
 - Parallel practice connection prompt: on highest
   ZPD-risk worked example screens. In Your Context
-  teal italic callout with one question connecting
-  the expert decision to the learner's own practice.
+  italic callout (navy label and navy left border per
+  the F3 eyebrow-label color standard) with one question
+  connecting the expert decision to the learner's own
+  practice.
   Minimum three screens per module.
 - Gradual release in Monitored Practice tier: wrap
   worked example content in Show Expert Reasoning
@@ -265,6 +267,27 @@ the course nav on every screen, the hub, and the
 module-overview screens. The 7 *-template.html files
 already enforce this; preserve it when building Modules
 2-4. Established by the Module 1 fix (commit 27c4db8).
+
+EYEBROW-LABEL COLOR STANDARD (F3):
+Non-interactive eyebrow/label text is navy
+(var(--color-brand-navy) #1B3A5C). Named exceptions:
+1. Interactive control labels (e.g.
+   transfer-context__summary, a <details> summary) stay
+   teal (var(--color-brand-teal)) to signal
+   interactivity.
+2. Warning-context labels inside warning/failure
+   callouts (e.g. failure-callout__label) stay amber
+   (var(--color-warning-text) #7A4F00) to remain part of
+   the warning treatment.
+Everything else in the uppercase-eyebrow family is navy
+(overview-phase, expert-insight__label, bloom-bridge__label,
+your-development__label, in-your-context__label,
+project-update__label, exemplar-contrast__label,
+context-card__heading, diagnostic-check__heading,
+retrieval-warmup__answer-label, brief-subhead). The
+gray/secondary tier (var(--color-text-secondary)) is
+unchanged. Applied across Module 1 in the F3 pass; build
+Module 2-4 eyebrow labels navy by default.
 
 ---
 

@@ -207,6 +207,15 @@ Decisions made after Prompt F. Apply these patterns to Modules 2-4.
   and text in navy (var(--color-brand-navy)), not teal.
 - Key terms callout: label in navy; term links (.gls) stay teal with dotted
   underlines.
+- Eyebrow-label color standard (F3): non-interactive eyebrow/label text is navy
+  (var(--color-brand-navy) #1B3A5C). Named exceptions: (1) interactive control
+  labels (e.g. transfer-context__summary, a <details> summary) stay teal
+  (var(--color-brand-teal)) to signal interactivity; (2) warning-context labels
+  inside warning/failure callouts (e.g. failure-callout__label) stay amber
+  (var(--color-warning-text) #7A4F00) to remain part of the warning treatment.
+  Everything else in the uppercase-eyebrow family is navy. The gray/secondary
+  tier (var(--color-text-secondary)) is unchanged. Applied across Module 1 in
+  the F3 pass; build Module 2-4 eyebrow labels navy by default.
 - Cognitive mode banner: simplified to a single italic secondary text line, no
   box, no border, no dismiss button.
 - Success Criteria and Expected Evidence: always visible on guided practice
