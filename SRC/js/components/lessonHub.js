@@ -82,6 +82,12 @@ export function initLessonHub() {
     if (isCurrent) { node.classList.add('is-current'); state = 'current'; }
     else if (complete) { node.classList.add('is-complete'); state = 'complete'; }
 
+    /* AX2: mark the current node programmatically for AT (stepper-like timeline).
+       The else/remove branch guards against a stale aria-current if data-current
+       ever moves between renders. */
+    if (isCurrent) { node.setAttribute('aria-current', 'step'); }
+    else { node.removeAttribute('aria-current'); }
+
     if (srEl) {
       const label = node.dataset.mapName || (key === 'gate' ? 'Gate' : 'Lesson ' + key);
       srEl.textContent = label + ': ' + state;
