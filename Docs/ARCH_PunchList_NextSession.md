@@ -330,24 +330,36 @@ content rendered as indented lines with no bullet markers.
 
 ## D. Targeted one-offs
 
-- **D1. Confidence-rating legend overflow** — "HOW CONFIDENT ARE YOU IN YOUR
-  ANSWERS?" bleeds over the top border of its box. Global fix to the fieldset
-  legend / box (legend sitting on the border instead of inside the padding).
-  *(Image 5)*
-- **D2. Bucket diagram alignment (re-fix)** — Bucket 2 and Bucket 4 not aligned.
-  The earlier min-height fix (`.sequence-node__box`, m1-l2-s4) did not resolve
-  this graphic. This is the "Instructional Sequence and Prerequisite Logic"
-  diagram, which looks like a different component/screen than the one patched —
-  identify the actual screen and apply equal-height alignment so the right-column
-  buckets line up with their neighbors. *(Image 7)*
-- **D3. SI-09 bucket analysis labels too small** — the section eyebrow labels
-  ("CALIBRATION ANNOTATION," "BUCKET 2 ARC CONSTRAINT," "WHAT YOU KNOW") are
-  undersized. Increase the font a little. *(Image 8)*
-  - **Color decision (from audit, see F3):** the teal SI-09 eyebrows are
-    `.expert-insight__label` (m1-l4a-s3b, m1-l4a-s4), NOT `ws-box-label` (which is
-    gray, and amber inside the calibration box). Today's pass moved the
-    callout-label family to navy; fold this color decision into F3's label-color
-    standard rather than deciding it here.
+- **D1. Confidence-rating legend overflow. DONE** (commit 2c1f941). The legend
+  ("HOW CONFIDENT ARE YOU IN YOUR ANSWERS?", Image 5) was a `<legend>` straddling
+  the top border of the `.confidence-rating` fieldset. Fixed globally on the
+  shared component (10 screens, one rule in global.css — no per-screen edits) by
+  floating the legend into normal flow inside the padding:
+  `.confidence-rating__legend { float: left; width: 100%; margin-bottom: 0.5rem; }`
+  PLUS `.confidence-rating__options { clear: both; }`.
+  - **Lesson (preserve for any future floated-legend fix here):** the single-rule
+    float pattern (`float: left; width: 100%`) alone is INSUFFICIENT when the
+    content after the legend is a flex container. `.confidence-rating__options` is
+    `display: flex`; beside a 100%-width float it collapses to zero size and the
+    radios VANISH. The `clear: both` on the flex sibling is REQUIRED to drop it
+    below the float. (`.form-section__legend` gets away with float-only because its
+    following content is not a flex BFC.) Render-verified before commit.
+- **D2. Bucket diagram equal-height. DONE** (commit c1be184). The m1-l2-s4
+  "Instructional Sequence and Prerequisite Logic" diagram (`.sequence-flow`) had
+  Bucket 2 and Bucket 4 boxes shorter than their neighbors (Image 7). Fixed with
+  `.sequence-nodes { align-items: stretch }` (was `flex-start`) + `.sequence-node__box
+  { height: 100% }` so all four boxes equalize to the tallest, plus
+  `.sequence-arrow { align-self: center }` so the connector arrows sit at box
+  midline after the stretch (without it the stretched arrows pinned to the top).
+  CSS-only, render-verified.
+  - **Correction to the original premise:** D2 is the SAME component/screen as the
+    earlier min-height patch (m1-l2-s4 `.sequence-node__box`), NOT a different one.
+    The earlier `min-height: 3.5rem` set a floor but never equalized heights, which
+    is exactly why it did not resolve the misalignment.
+- **D3. SI-09 bucket analysis labels too small. DONE — folded into F3** (commit
+  7cdac3e). The SI-09 eyebrows are `.expert-insight__label` (m1-l4a-s3b,
+  m1-l4a-s4); the F3 pass sized them to `var(--font-size-label)` and recolored them
+  navy in the same edit. No separate D3 work remains. *(Image 8)*
 - **D4. `<p aria-label>` pattern (tidiness, not a live failure).** The
   `<p class="lesson-label" aria-label="…">` on ~40 files carries an aria-label
   that screen readers do not reliably announce on a non-interactive `<p>`, so the
