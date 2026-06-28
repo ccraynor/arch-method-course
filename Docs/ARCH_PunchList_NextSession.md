@@ -360,12 +360,18 @@ content rendered as indented lines with no bullet markers.
   7cdac3e). The SI-09 eyebrows are `.expert-insight__label` (m1-l4a-s3b,
   m1-l4a-s4); the F3 pass sized them to `var(--font-size-label)` and recolored them
   navy in the same edit. No separate D3 work remains. *(Image 8)*
-- **D4. `<p aria-label>` pattern (tidiness, not a live failure).** The
-  `<p class="lesson-label" aria-label="…">` on ~40 files carries an aria-label
-  that screen readers do not reliably announce on a non-interactive `<p>`, so the
-  bullet-to-comma substitution it attempts is effectively inert (generalizes E3).
-  When reached: drop the aria-label and handle the bullet→comma with a
-  visually-hidden separator. Bundle with E2/E3.
+- **D4. `<p aria-label>` pattern. DONE** (commit 3dd6625). Full audit of all 54
+  `.lesson-label` instances found only ONE real inert-substitution case that
+  survived the E2/E3 chip removal: m1-l3-s5, whose `aria-label` read "Lesson 4 --
+  final screen" while the visible text read "Lesson 4: Final Screen" (a
+  punctuation/case substitution on a non-interactive `<p>`, inert for AT). Fixed by
+  aligning the aria-label to the visible text exactly. The other 53 are NOT bugs:
+  24 built-screen + 7 template labels have `aria-label` identical to the visible
+  text (harmless redundancy); 11 carry no `aria-label`; and 9 were the intro
+  position labels removed by E3 (the bullet-to-comma cases, mooted). LEFT AS-IS by
+  decision: the 2 "of Module 1" augmentation labels (m1-l4a-s1, m1-l4b-s1) — they
+  add context rather than substitute punctuation, harmless (possibly inert on a
+  non-interactive element), and not the bullet-to-comma bug.
 - **D5. H2 content-heading size bump (course-wide, scoped).** Polish/systemic,
   sibling to the H1-to-callout padding item; NOT a Module 2 build-blocker.
   - Diagnosis (refined): H1 titles are fine. The H2s that read too small are the
@@ -428,18 +434,18 @@ content rendered as indented lines with no bullet markers.
   Section B: accordions are the right tool for managing one long page;
   always-open is right for short critical callouts. Different jobs, not a
   contradiction.) *(/m1-l2-s5b.html)*
-- **E2. Lesson-intro chip removal** — remove the "LESSON INTRODUCTION · N screens"
-  chip; it duplicates the header progress tracker. Prompt below.
-- **E3. Intro-screen position label (decide alongside E2).** The introduction
-  screens carry a content-header label reading "Introduction · Screen X of 9,"
-  which duplicates the header progress tracker's "Screen X of 9" on the same
-  screen — the same redundancy as E2, one screen type over. Confirmed on at least
-  6 of the 9 intro screens (intro-0.1 through intro-0.9; the other 3 may use a
-  variant — confirm with a grep). Decide together with E2: remove for
-  consistency, or keep as deliberate in-content wayfinding. Minor accessibility
-  note: that label sets `aria-label` on a `<p>`, which screen readers do not
-  reliably announce, so the bullet-to-comma substitution it attempts may be
-  inert — moot if the label is removed. *(Surfaced in the intro-0.5 review.)*
+- **E2. Lesson-intro chip removal. DONE** (commit ed94878). Removed the redundant
+  "Lesson Introduction / N screens" chip across the lesson-intro screens: deleted
+  the `.lesson-intro__meta` wrapper (chip spans) on m1-l4a-s1, m1-l4b-s1, m1-l3-s1,
+  and on m1-l2-s1 deleted the "6 screens" `.meta-chip` while keeping the time chip
+  and the row. The header progress tracker already shows screen type + position.
+  m1-l1a-s1 / m1-l1b-s1 carried no chip (unchanged). The ready-to-run prompt below
+  is retained as a record.
+- **E3. Intro-screen position label. DONE** (commit ed94878). Removed the
+  "Introduction · Screen X of 9" position-label `<p>` from all 9 intro screens
+  (intro-0.1 through 0.9; 0.7-0.9 used a multi-line variant). Same header-tracker
+  redundancy as E2. This also mooted 9 of the inert-`aria-label` D4 cases (the
+  bullet-to-comma `<p aria-label>` substitution lived on exactly these labels).
 
 ### Ready-to-run: chip removal prompt (E2)
 
@@ -516,6 +522,14 @@ lists Lesson 5 as 6 screens (see F2).
     the L5/L6 lesson-plan HEADINGS still need correcting regardless. Lesson 4
     (`m1-l3-s1`) heading "Lesson 4: 5 Screens" is already correct. Governance is
     the source of truth (7 / 6 / 7).
+  - **Update (commit ed94878):** E2 deleted the count CHIPS (incl. the m1-l2-s1
+    "6 screens" meta-chip and the m1-l4a-s1 "5 screens" / m1-l4b-s1 "6 screens"
+    screen-type-label spans), so all the stale CHIP counts — including the
+    m1-l4a-s1 "5 screens" value that conflicted with governance's Lesson-5 count —
+    are now GONE. F2 REMAINS OPEN for the running-text lesson-plan HEADINGS only:
+    verify/correct "Lesson 5: 5 Screens" (m1-l4a-s1) → 6 and "Lesson 6: 6 Screens"
+    (m1-l4b-s1) → 7; also re-check Lesson 3 (m1-l2-s1) running-text count if any.
+    Removal touched chips only, not running-text counts.
 - **F3. Eyebrow-label color standard (ESTABLISH a new rule — does not reverse
   one).** Per current CLAUDE.md there is NO governed rule for non-interactive
   eyebrow/label color yet; the navy callout-label decisions so far were per-class.
