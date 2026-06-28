@@ -1053,7 +1053,7 @@ footer[role="contentinfo"] nav a:focus-visible {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: var(--color-brand-teal);
+  color: var(--color-brand-navy);
 }
 .retrieval-warmup__answer-text {
   margin: 0;
@@ -1292,7 +1292,7 @@ footer[role="contentinfo"] nav a:focus-visible {
 /* ============================================================
    Module overview screen (Section 5, item 31)
    ============================================================ */
-.overview-phase { font-size: var(--font-size-label); font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-brand-teal); margin: 0 0 1.25rem; }
+.overview-phase { font-size: var(--font-size-label); font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-brand-navy); margin: 0 0 1.25rem; }
 .overview-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
 .overview-list__item { display: flex; justify-content: space-between; align-items: baseline; gap: 0.75rem; padding: 0.625rem 0.875rem; border: 1px solid var(--color-border-default); border-radius: 5px; }
 .overview-list__name { font-weight: 700; color: var(--color-text-primary); font-size: var(--font-size-body); }
@@ -1459,7 +1459,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: var(--color-brand-teal);
+  color: var(--color-brand-navy);
   margin: 0.5rem 0 0.375rem !important;
 }
 @media (prefers-contrast: more) {
@@ -2304,7 +2304,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: var(--color-brand-teal);
+  color: var(--color-brand-navy);
 }
 .project-update__text {
   margin: 0 0 0.75rem;
@@ -2426,7 +2426,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   font-size: var(--font-size-label);
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: var(--color-brand-teal);
+  color: var(--color-brand-navy);
   margin-bottom: 0.25rem;
 }
 
@@ -2507,7 +2507,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: var(--color-brand-teal);
+  color: var(--color-brand-navy);
 }
 .your-development__text {
   margin: 0;
@@ -2564,7 +2564,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: var(--color-brand-teal);
+  color: var(--color-brand-navy);
 }
 .diagnostic-q { margin: 0 0 1rem; }
 .diagnostic-q:last-child { margin-bottom: 0; }
@@ -2620,7 +2620,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: var(--color-brand-teal);
+  color: var(--color-brand-navy);
 }
 .exemplar-contrast__record {
   margin: 0;
@@ -2807,7 +2807,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-brand-teal);
+  color: var(--color-brand-navy);
 }
 .context-card__list {
   margin: 0;
@@ -2917,7 +2917,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-brand-teal);
+  color: var(--color-brand-navy);
 }
 .bloom-bridge__question {
   margin: 0 0 0.625rem;
