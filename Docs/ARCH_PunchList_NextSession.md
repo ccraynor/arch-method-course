@@ -304,12 +304,27 @@ disclosure/accordion to always-open.
 The earlier bullet audit missed cases. Re-audit all cards and boxes for list
 content rendered as indented lines with no bullet markers.
 
-- **C1.** "Required Performance" list ("By the end of training, IT staff must be
-  able to: …") renders as indented lines, no bullets. *(Image 2)* Find all
-  similar pseudo-lists (list items without `list-style`, or div-based lists) and
-  restore bullets. Leave intentional single-paragraph annotations alone — those
-  are prose, not lists (e.g. the Calibration Annotation / Bucket 2 Arc Constraint
-  boxes in Image 8 are correctly bullet-free).
+- **C1. DONE** (commit 95c2b2f). Seven learner-facing content lists were
+  rendering markerless under the global `ul, ol { list-style: none }` reset
+  (global.css:55-59), starting with the "Required Performance" list ("By the end
+  of training, IT staff must be able to: …", Image 2). Markers restored via
+  per-screen `list-style`: m1-l1a-s2 `.document-section__numbered-list`
+  (decimal), m1-l1b-s4 `.version-rule__steps` (decimal) and the inline convention-
+  card `<ol>` (decimal added to the existing `style=""`), m1-l2-s1
+  `.artifact-contents` (disc), m1-l3-s5 `.recap-step-card__body ul` (disc, added
+  to the existing rule rather than duplicating it; covers both lists), m1-l4a-s4
+  `.compare-guide ol` (decimal), and intro-0.2's bare `<ul>` (fixed by reusing the
+  existing `lesson-intro__list` class rather than adding a new rule). No div/p
+  pseudo-lists existed; no markup-to-list conversion was needed.
+  - Audit key finding (carry forward): "padding but no `list-style`" is NOT proof
+    of a markerless bug under the global reset. Several list families are already
+    covered by global rules that re-add markers — `.context-block ol/ul`
+    (global.css:1455-1456), `.gov-record__val ul` (2992), and
+    `.brief-section__body ul/ol` (1447-1448) — so lists under those render
+    correctly even when a per-screen rule sets padding only. Those were verified
+    against the rendered cascade and correctly left alone (the static scan flagged
+    them as false positives). Intentional single-paragraph annotations (Calibration
+    Annotation, Bucket 2 Arc Constraint, Image 8 boxes) stay prose, bullet-free.
 
 ---
 
@@ -380,6 +395,18 @@ content rendered as indented lines with no bullet markers.
     (Visual Standards) and the governance doc, and the stale build-spec teal
     label wording (In Your Context callout) was corrected (commit 419a361). No
     action; logged for traceability.
+- **D8. Template list-style trio (deferred from C1; scaffolding hygiene, NOT
+  learner-facing).** Built screens already render correctly; only the templates
+  lack list-style, so a future screen built from them would inherit a markerless
+  list unless the builder re-adds it (as Module 1 builders did inline).
+  - reflection-template `.prompt-questions` (ol) and `.guidance-list` (ul): no
+    list-style in the template; built reflection screens add `list-style: disc`
+    inline. Add the rules to the template (or promote to global.css).
+  - calibration-template `.criteria-list` (ol): no list-style in the template.
+    MUST NOT get a blanket `disc`/`decimal`: built calibration screens style it
+    with `list-style: none` + CSS counters, and a plain list-style would collide
+    with the counters. Match the built-screen counter pattern instead.
+  - Resolve when templatizing for the Module 2 build.
 
 ---
 
