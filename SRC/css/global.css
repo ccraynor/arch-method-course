@@ -1071,6 +1071,9 @@ footer[role="contentinfo"] nav a:focus-visible {
   background: var(--color-bg-subtle);
 }
 .confidence-rating__legend {
+  float: left;
+  width: 100%;
+  margin-bottom: 0.5rem;
   padding: 0;
   font-size: var(--font-size-label);
   font-weight: 700;
@@ -1083,6 +1086,7 @@ footer[role="contentinfo"] nav a:focus-visible {
   flex-wrap: wrap;
   gap: 0.5rem 1.5rem;
   margin-top: 0.625rem;
+  clear: both;
 }
 .confidence-rating__option {
   display: flex;
