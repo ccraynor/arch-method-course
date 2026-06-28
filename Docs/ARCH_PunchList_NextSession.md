@@ -20,21 +20,18 @@ commit 27c4db8), Section A's decision-record + merge-card wraps (commit 5ffdbf1)
 and item B (Success Criteria + Expected Evidence uncollapse, commits 12a1eaa +
 654c34b). What remains is a few audits plus a handful of one-offs.
 
-**Pre-Module-2 GATES — do these BEFORE building Module 2.** Module 1 is the
-pattern source for Modules 2-4, so any gap in a reusable Module 1 pattern
-propagates 3x. Two gates remain:
-- **F3. Eyebrow-label color standard** — land before new screens inherit the
-  wrong color.
-- **AX2. aria-current on the hub module-map** — the last residue of the G
-  accessibility gate; the rest of G (G1 scan + G2 build standard) is done
-  (commit efbf165).
-(Item B and the G1/G2 scan were the earlier gates and are now done.)
+**Pre-Module-2 GATES — ALL CLEAR.** No Module 2 blocker gates remain. The four
+gates are done: item B (uncollapse), the G1/G2 accessibility scan + build
+standard (commit efbf165), F3 eyebrow-label color standard (commits 7cdac3e +
+419a361), and AX2 hub-map aria-current (commit 323271b, which closed the last
+residue of G). Module 1 is the pattern source for Modules 2-4, so these had to
+land before any Module 2 screen build; they now have.
 
-Remaining audits / one-offs: **C** (bullet audit), **D** (one-offs), **E**
-(structure), **F2** (stale counts), and **A5** (decision-record CSS
-consolidation). (F4 is done; see Section F.)
+Remaining audits / one-offs (non-blocking polish): **C** (bullet audit), **D**
+(one-offs), **E** (structure), **F2** (stale counts), and **A5** (decision-record
+CSS consolidation). (F4 is done; see Section F.)
 
-**Suggested order (remaining):** F3 → AX2 → C → D one-offs → E → F2 → A5.
+**Suggested order (remaining):** C → D one-offs → E → F2 → A5.
 
 ---
 
@@ -101,8 +98,16 @@ pass.
   flatten the reference subsections to the same level as the "Expert reference" H3
   that contains them, breaking the nesting. These are the only two screens with
   any `<h4>`.
-- **AX2 (re-scoped 2026-06-27): aria-current on the HUB MODULE-MAP only.**
-  Re-scoped to align with the v5.2 breadcrumb ratification (commit 5fb6932).
+- **AX2: aria-current on the HUB MODULE-MAP only. DONE** (commit 323271b).
+  lessonHub.js now sets `aria-current="step"` programmatically on the current
+  node inside the existing `.module-map__node[data-map-lesson]` loop (where
+  `isCurrent` is already computed), with an else-branch that removes it from
+  non-current nodes so a moved `data-current` can never leave a stale value.
+  Exactly one node per hub page carries it; the header progress tracker and the
+  nav links (which own `aria-current="page"`) are untouched. This closes the last
+  residue of the G accessibility gate, so **G is now fully complete.**
+  Re-scoped 2026-06-27 to align with the v5.2 breadcrumb ratification (commit
+  5fb6932); the original scoping notes are retained below.
   - The header progress tracker is a breadcrumb readout (`role="group"
     aria-label="Course progress"`); `aria-current="step"` does NOT apply to it
     per v5.2 (Sections 3 / 5 / 9). Do NOT add it there.
@@ -365,6 +370,16 @@ content rendered as indented lines with no bullet markers.
   it (the numbering crosswalk in CLAUDE.md / governance maps both). Separate from
   task 9's doc reconciliation; this is a built-screen markup pass. Polish, not a
   Module 2 build-blocker.
+- **D7. F3 carryovers (polish, surfaced during the F3 pass; non-blockers).**
+  - `brief-subhead` uses a literal `font-size: 0.6875rem`, not the
+    `--font-size-label` token; align to the token when convenient.
+  - Governance build-spec (~line 174) still describes the cognitive-mode banner
+    as "teal"; the banner is now plain italic (no box/border). Reconcile in a
+    later governance-doc pass.
+  - Status: the F3 eyebrow-label color standard is now governed in both CLAUDE.md
+    (Visual Standards) and the governance doc, and the stale build-spec teal
+    label wording (In Your Context callout) was corrected (commit 419a361). No
+    action; logged for traceability.
 
 ---
 
