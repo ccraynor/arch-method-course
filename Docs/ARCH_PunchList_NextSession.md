@@ -1,9 +1,15 @@
 # ARCH Method — Punch List for Next Session
 
 Captured 2026-06-26 from screenshot review plus a code audit. Twelve raised
-items, organized into a few systemic fixes plus targeted one-offs, with three
-additional flags surfaced by the audit (Section F). Threads carried over from
-today are at the bottom, so this is the single source of truth for tomorrow.
+items, organized into a few systemic fixes plus targeted one-offs, with four
+additional flags surfaced by the audit (Section F: F1-F4). Threads carried over
+from today are at the bottom, so this is the single source of truth for tomorrow.
+
+**Scope marker (current stop line):** finish ALL Module 1 visual/structural
+polish, then Task 3 (Module 2 pre-build checklist), then Task 4 (reading
+enrichment cards, Modules 2-4), then HALT before building any Module 2 screen.
+Task 3 and Task 4 are both IN SCOPE before the stop; the post-Module-2 cluster
+(AX4 Stages 3-6 and the dead-import cleanup) is OUT of scope.
 
 ---
 
@@ -17,17 +23,18 @@ and item B (Success Criteria + Expected Evidence uncollapse, commits 12a1eaa +
 **Pre-Module-2 GATES — do these BEFORE building Module 2.** Module 1 is the
 pattern source for Modules 2-4, so any gap in a reusable Module 1 pattern
 propagates 3x. Two gates remain:
-- **G. Accessibility pattern-conformance check** (full section directly below) —
-  BLOCKS the Module 2 build.
 - **F3. Eyebrow-label color standard** — land before new screens inherit the
   wrong color.
-(Item B was the third gate and is now done.)
+- **AX2. aria-current on the hub module-map** — the last residue of the G
+  accessibility gate; the rest of G (G1 scan + G2 build standard) is done
+  (commit efbf165).
+(Item B and the G1/G2 scan were the earlier gates and are now done.)
 
 Remaining audits / one-offs: **C** (bullet audit), **D** (one-offs), **E**
-(structure), **F2/F4** (counts, disabled-link standard), and **A5** (decision-record
-CSS consolidation).
+(structure), **F2** (stale counts), and **A5** (decision-record CSS
+consolidation). (F4 is done; see Section F.)
 
-**Suggested order (remaining):** G → F3 → C → D one-offs → E → F2/F4 → A5.
+**Suggested order (remaining):** F3 → AX2 → C → D one-offs → E → F2 → A5.
 
 ---
 
@@ -113,11 +120,6 @@ pass.
   events outside panelManager (e.g. "Work saved." — see AX4 Tier-1 save work,
   "Decision recorded.", "Submission complete.") are separate wiring, not part of
   AX3.
-- **AX4 (build, Tier 1): shared autosave module + full Section 6 contract.**
-  Promote autosave out of per-screen inline JS into a shared module, and implement
-  the full contract (autosave 30s + on field-exit + manual Save + timestamp +
-  failure-recovery actions + save announcements) on Tier-1 authored-text screens.
-  Sized by the tiered save decision in the CLAUDE.md Accessibility Build Standard.
 - **AX5 (decision/amend): RESOLVED.** The accessibility spec was amended to
   v5.1 (commit 606aa03): the non-modal reference-panel contract (Sections 3, 10)
   and the always-visible guided-practice blocks (Section 15) are now in the spec,
@@ -145,12 +147,13 @@ pass.
   - Principle banked: Module 2's decision points, checklists, and compare screens
     inherit the single srAnnounce path rather than re-cloning bespoke announce
     helpers.
-- **AX4 (shared autosave + Tier-1 save contract): IN PROGRESS.** Option 1
-  (full consolidation), staged. Scope decision 2026-06-27: Stages 1-2 now
-  (Module-2-gating consolidation, now DONE); Stages 3-6 deferred to a **post-Module-2
-  cluster**. Stage 1 builds the shared SRC/js/autosave.js module; Stage 2
-  migrates the Tier-1 screens onto it.
-  - **Stage 1: DONE.** Built SRC/js/autosave.js (group blob mode + light
+- **AX4 (shared autosave + Tier-1 save contract): Stages 1-2 DONE; Stages 3-6
+  deferred to the post-Module-2 cluster.** Option 1 (full consolidation),
+  staged. Scope decision 2026-06-27: Stages 1-2 (Module-2-gating consolidation)
+  are complete; Stages 3-6 are deferred to a **post-Module-2 cluster**. Stage 1
+  built the shared SRC/js/autosave.js module; Stage 2 migrated the Tier-1 screens
+  onto it.
+  - **Stage 1: DONE** (commit 6cf6ae1). Built SRC/js/autosave.js (group blob mode + light
     per-field path + dormant onSaveError Stage-4 hook), announcing via
     srAnnounce.js; pilot-wired reflection-template.html. Storage byte-compatible
     with the legacy inline format (same key + JSON shape + _savedAt).
@@ -396,8 +399,9 @@ The chip is a row of .screen-type-label spans reading the screen type, a bullet,
 and the screen count, e.g. on SRC/m1-l4a-s1.html and SRC/m1-l4b-s1.html:
   <span class="screen-type-label">Lesson Introduction</span>
   <span class="screen-type-label" aria-hidden="true">&bull;</span>
-  <span class="screen-type-label">6 screens</span>
-Remove the full three-span row on both of those screens.
+  <span class="screen-type-label">N screens</span>
+The count span differs per file (verified live): m1-l4a-s1 reads "5 screens",
+m1-l4b-s1 reads "6 screens". Remove the full three-span row on both screens.
 
 The same logical chip appears with VARIANT markup elsewhere — find and remove the
 equivalent on:
@@ -480,13 +484,15 @@ lists Lesson 5 as 6 screens (see F2).
   - **Leave the gray/secondary tier as-is.**
   - Handle the D3 SI-09 sizing alongside, since it touches the same eyebrows.
 
-- **F4. Disabled module-nav-link build standard.** Disabled / not-yet-available
-  module-nav links must be non-navigable: `<span class="module-nav-link
-  is-disabled" aria-disabled="true">` carrying the link text, never a live
-  `<a href="module-N.html">` (aria-disabled does not stop anchor navigation → 404,
-  the F1 bug). This closes the parity gap that would otherwise let Module 2-4
-  hub/overview/nav re-introduce F1. Status: being recorded in the governance doc
-  and CLAUDE.md this session (see Task 3). Mark resolved once that commit lands.
+- **F4. Disabled module-nav-link build standard. DONE.** Disabled /
+  not-yet-available module-nav links must be non-navigable: `<span
+  class="module-nav-link is-disabled" aria-disabled="true">` carrying the link
+  text, never a live `<a href="module-N.html">` (aria-disabled does not stop
+  anchor navigation → 404, the F1 bug). This closes the parity gap that would
+  otherwise let Module 2-4 hub/overview/nav re-introduce F1. Verified present in
+  both registries: CLAUDE.md "Do Not Do These Things" (the module-nav-link
+  is-disabled rule, commit 27c4db8) and the governance doc's "DISABLED
+  MODULE-NAVIGATION LINK STANDARD" section.
 
 ### Verified clean (audit negative space)
 
@@ -513,8 +519,10 @@ So the audit's "all clear" is trustworthy too:
   tighten the stacked layout, do not tab (tabbing would hide the active "In Your
   Context" reflection prompt).
 - **Task 3 — Module 2 pre-build checklist** (18 items in the governance doc).
-- **Task 4 — reading enrichment cards** for Modules 2–4 (two per module; sources
-  in ARCH_PostLaunch_Roadmap.md).
+- **Task 4 — reading enrichment cards** for Modules 2–4 (two per module). Single
+  source of truth: Docs/ARCH_Method_Reading_Map_Tracker.xlsx (commit 08e3c0e;
+  two sheets, all 8 sources Modules 1-4 marked Ready, all open-access, APA 7 with
+  DOIs/URLs). This supersedes the bare source list in ARCH_PostLaunch_Roadmap.md.
 
 ---
 
