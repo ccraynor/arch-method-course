@@ -10,6 +10,7 @@ polish, then Task 3 (Module 2 pre-build checklist), then Task 4 (reading
 enrichment cards, Modules 2-4), then HALT before building any Module 2 screen.
 Task 3 and Task 4 are both IN SCOPE before the stop; the post-Module-2 cluster
 (AX4 Stages 3-6 and the dead-import cleanup) is OUT of scope.
+D-item status: D5 and D6 are IN SCOPE (part of the Module 1 visual/structural polish to finish before halt); D7 (F3 carryovers) and D8 (template list-style trio) are deferred/logged-only.
 
 ---
 
