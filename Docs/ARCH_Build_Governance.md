@@ -1095,10 +1095,12 @@ were each split into two screen-sets. There is NO content-area
 lesson-label eyebrow on screens (removed in commit 82a4b58,
 superseding D6); the per-screen breadcrumb ("Module N > Lesson
 N > N.n") is the single content-area lesson number and uses the
-plain ordinal. The header tracker separately shows lesson
-position and STILL displays the ARCH ID ("1.x"); switching it
-to the ordinal scheme is an OPEN Phase-2 item. The scenario
-spec (v1.2) uses the plain ordinal (Lesson 1-6).
+plain ordinal. The header tracker shows the ORDINAL scheme
+("Lesson X" + position "X.Y of N") via trackerRedesign.js,
+matching the breadcrumb (resolved per D10). The ARCH ID "1.x"
+is retained only as a sr-only/aria-hidden backward-compat span
+-- no longer an open Phase-2 item. The scenario spec (v1.2)
+uses the plain ordinal (Lesson 1-6).
 
 ---
 

@@ -278,10 +278,12 @@ of truth; the bare token "1.x" is reserved for the ARCH ID column only.
 There is NO content-area lesson-label eyebrow on screens (removed in commit
 82a4b58, superseding D6). The per-screen breadcrumb ("Module N > Lesson N > N.n",
 e.g. "Module 1 > Lesson 5 > 5.2") is the single content-area lesson number and
-uses the plain ordinal. The header progress tracker separately shows lesson
-position and STILL displays the ARCH ID ("1.x"); switching the tracker to the
-ordinal scheme ("5.x") to match the breadcrumb is an OPEN Phase-2 item (not yet
-done). The scenario spec v1.2 uses the plain ordinal (Lesson 1-6). Modules 2-4
+uses the plain ordinal. The header progress tracker shows the ORDINAL scheme
+("Lesson X" + position "X.Y of N", e.g. "Lesson 5 / 5.2 of 6") via
+trackerRedesign.js, matching the breadcrumb (resolved per D10). The ARCH ID
+"1.x" is retained only as a sr-only/aria-hidden backward-compat span (read by
+nothing active) -- this is no longer an open Phase-2 item. The scenario spec v1.2
+uses the plain ordinal (Lesson 1-6). Modules 2-4
 have no collision (scenario spec and ARCH IDs coincide: 2.1-2.4 etc.).
 
 | Ordinal (scenario spec v1.2 + breadcrumb) | ARCH ID (progress tracker, Stage 3) | File prefix | Sector |
