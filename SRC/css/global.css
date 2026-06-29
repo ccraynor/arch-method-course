@@ -841,18 +841,6 @@ footer[role="contentinfo"] nav a:focus-visible {
   margin-bottom: var(--space-section);
 }
 
-.lesson-label {
-  display: block;
-  margin-bottom: 0.375rem;
-  font-size: 0.875rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-label);
-  color: var(--color-text-link);
-}
-/* D6: the ARCH ID portion of the combined eyebrow label renders lowercase to
-   match the header tracker (the parent .lesson-label is uppercase). */
-.lesson-label__id { text-transform: none; }
 
 .lesson-intro__title {
   margin: 0;
