@@ -56,6 +56,22 @@ bugs. Recorded here so the round survives to next session.
   `align-items: flex-start`; BUG9 m1-l4b-s2 `.resolved-component__id` nowrap.
 - **BUG8** (commit 81d613b): m1-l4b-s2 `.criteria-card` "Question N" labels -- key
   column 6rem->7rem + `.criteria-card__key-label` nowrap.
+- **Screen -> Page rename -- DONE** (commits e02b29d + f9fd976 + 5f882d0, ~45
+  files). Renamed all learner-facing "screen" -> "page" across visible prose,
+  learner-facing JS strings, and AT-announced aria-labels (using "on Page N", not
+  "in Page N"). Scope decisions: INCLUDED visible prose, the "Lesson N: X Screens"
+  -> "X Pages" headings, scope-plan labels, artifact-flow labels, lesson-plan-num
+  aria, gate record-log aria (provenance coordinates renamed for consistency), nav
+  aria ("Page navigation", "Go to next/previous page"), and learner-facing JS
+  (banners, announcers, feedback, compareExpert labels). EXCLUDED (deliberately
+  left as "screen"): the runtime-replaced "Screen N of M" progress-tracker markup
+  (invisible FOUC fallback -- trackerRedesign.js renders "N.n of M" with no unit
+  word), "screen reader" family, all code identifiers (screen-type-label,
+  pt-screen, SCREEN_MAP, screenId, .screen-nav, filenames), comments, <meta>
+  descriptions, and template-instruction placeholders. The visible/AT-announced
+  consistency supports the logged WCAG AA validation item. Note: group-2 caught a
+  residual-scan lesson -- run the scan for prose variants ("this/the/each screen",
+  not just "Screen N") BEFORE committing.
 
 **CLOSED -- no change:**
 - **BUG2** (m1-l2-s2 bucket-summary count alignment): REVIEWED, REVERTED. Five
@@ -69,9 +85,6 @@ bugs. Recorded here so the round survives to next session.
 **OPEN -- high-visibility, to do next** (chose "high-visibility only, then reassess"):
 - **Accordions:** un-collapse "In a Different Context", Optional Reading, and Emails
   (read-through content shouldn't default-hidden). Discovery-first.
-- **"Screen" -> "Page" prose rename:** real instances exist (e.g. "Write your
-  commitment note in Screen 0.9"). Bucket discovery first -- prose/aria only, NOT
-  "screen reader" or code identifiers.
 - **BUG5 + flagged small headings:** m1-l3-s3 cal-table bucket titles (0.6875rem)
   and the "What you will do / produce" headers read too small. Fold into a scoped
   D5 subset (do the worst instances, not the full course-wide D5 sweep).
