@@ -44,6 +44,44 @@ walkthrough. Logged/optional carryovers: **D12** (dead ARCH-ID plumbing) and the
 
 ---
 
+## Walkthrough round (2026-06-28)
+
+A manual reviewer walkthrough of Module 1 surfaced a batch of alignment/formatting
+bugs. Recorded here so the round survives to next session.
+
+**DONE (committed + pushed):**
+- **Alignment Batch 1** (commit 0591325): BUG1 m1-l2-s2 `.si-entry__id` nowrap;
+  BUG3 m1-l3-s2 `.bs-bucket-label` left-align; BUG4 m1-l3-s3 `.lens-card__outputs`
+  bullets; BUG6 m1-l4a-s1 + BUG7b m1-l4b-s1 `.lesson-plan-item__body`
+  `align-items: flex-start`; BUG9 m1-l4b-s2 `.resolved-component__id` nowrap.
+- **BUG8** (commit 81d613b): m1-l4b-s2 `.criteria-card` "Question N" labels -- key
+  column 6rem->7rem + `.criteria-card__key-label` nowrap.
+
+**CLOSED -- no change:**
+- **BUG2** (m1-l2-s2 bucket-summary count alignment): REVIEWED, REVERTED. Five
+  layout attempts (fixed name column, `auto`, `subgrid`/`max-content`) all clipped
+  the count at narrow width and 150% zoom -- the 3-across row genuinely can't fit a
+  narrow card. Original right-aligned layout kept (never clips). Not worth further
+  effort.
+- **BUG7a** (m1-l4b-s1 continuation box): likely resolved by the BUG7b plan-item
+  fix -- needs a quick visual confirm next session (LOW priority).
+
+**OPEN -- high-visibility, to do next** (chose "high-visibility only, then reassess"):
+- **Accordions:** un-collapse "In a Different Context", Optional Reading, and Emails
+  (read-through content shouldn't default-hidden). Discovery-first.
+- **"Screen" -> "Page" prose rename:** real instances exist (e.g. "Write your
+  commitment note in Screen 0.9"). Bucket discovery first -- prose/aria only, NOT
+  "screen reader" or code identifiers.
+- **BUG5 + flagged small headings:** m1-l3-s3 cal-table bucket titles (0.6875rem)
+  and the "What you will do / produce" headers read too small. Fold into a scoped
+  D5 subset (do the worst instances, not the full course-wide D5 sweep).
+
+**DEFERRED -- optional, lower-visibility** (deprioritized):
+- Layout decisions: remove "Your Progress" until there is progress; trim "Module 1
+  at a glance"; more padding between header and learning objective.
+
+---
+
 ## G. Accessibility pattern-conformance check  (BLOCKS Module 2 build)
 
 Source: Docs/Accessibility & Inclusion Plan.docx (Master Accessibility Spec
