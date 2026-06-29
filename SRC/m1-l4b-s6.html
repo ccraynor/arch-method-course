@@ -810,25 +810,25 @@
         parse: stored => {
           const d = JSON.parse(stored);
           const lines = [
-            'Part 1 -- Unit Optimization',
+            'Part 1: Unit Optimization',
             'DC-47 (SI-16, Bucket 4): ' + (vLabel[d.opt.a.verdict] || 'not answered'),
             'DC-40 (SI-15, Bucket 4): ' + (vLabel[d.opt.b.verdict] || 'not answered'),
             'DC-32 (SI-12, Bucket 3): ' + (vLabel[d.opt.c.verdict] || 'not answered'),
             ' ',
-            'Part 2 -- Scope Trace Audit',
+            'Part 2: Scope Trace Audit',
             'DC-19 (listed SI-09): '  + (tLabel[d.trace[0].verdict] || 'not answered'),
             'DC-30 (listed SI-12): '  + (tLabel[d.trace[1].verdict] || 'not answered'),
             'DC-34 (listed SI-10): '  + (tLabel[d.trace[2].verdict] || 'not answered'),
             'DC-38 (listed SI-15): '  + (tLabel[d.trace[3].verdict] || 'not answered')
               + (d.trace[3].verdict === 'wrong' && d.trace[3].correction
-                  ? ' -- corrected to ' + (siNames[d.trace[3].correction] || d.trace[3].correction)
+                  ? ', corrected to ' + (siNames[d.trace[3].correction] || d.trace[3].correction)
                   : ''),
             'DC-43 (listed SI-15): '  + (tLabel[d.trace[4].verdict] || 'not answered'),
             'DC-48 (listed SI-16): '  + (tLabel[d.trace[5].verdict] || 'not answered')
           ];
           return lines.join('\n');
         },
-        label:        'Pages 4 and 5 -- Guided Practice (Steps 7 and 8)',
+        label:        'Pages 4 and 5: Guided Practice (Steps 7 and 8)',
         fallbackHref: 'm1-l4b-s4.html',
         fallbackLabel: 'Lesson 6 Page 4 (Step 7 Optimization)'
       }
