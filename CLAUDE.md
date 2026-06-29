@@ -352,9 +352,15 @@ Conformant patterns (build every Module 2+ screen this way):
   - Honor [hidden]: a control hidden via the hidden attribute must not have its
     display overridden by a class rule (e.g. .support-toggle[hidden]{display:none}).
     Never leave a focusable control with, or inside, aria-hidden="true".
-  - Decorative numeric/icon markers that need an AT name use role="img" +
-    aria-label (e.g. .step-marker); never put aria-label on a bare <div>/generic
-    (prohibited-ARIA). Keep the visual glyph in an aria-hidden child.
+  - aria-label on a bare <div>/generic is prohibited-ARIA. Decision rule by what
+    the element IS: (1) decorative-only block (just a hidden marker, no readable
+    prose) -> role="img" + aria-label, glyph in an aria-hidden child (e.g.
+    .step-marker); (2) container of readable prose (the label would make a SR
+    announce only the name and swallow the text) -> REMOVE the redundant label,
+    let the prose read (e.g. .annotation-item, .expert-gate); (3) container of
+    related controls / form fields -> role="group" (or role="region" for a
+    landmark section) with the label as its accessible name (e.g.
+    .drag-item-controls, .reflection-prompts).
   - Teal TEXT on the bg-subtle nav/panel background uses var(--color-text-link)
     (6.08:1), NOT var(--color-brand-teal) (4.41:1 on bg-subtle, fails 1.4.3):
     active module-nav tab text + gate-review-note / prefilled labels. Brand-teal

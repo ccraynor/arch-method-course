@@ -611,6 +611,18 @@ content rendered as indented lines with no bullet markers.
     findings fixed (the 5 above + the active-tab follow-up, 8fd3556), and the 4
     PATTERN fixes are written into the CLAUDE.md + governance WCAG build standard
     so Modules 2-4 inherit them.
+  - **Template-conformance sweep: DONE (commits 672d11f + governance follow-up).**
+    Pre-Module-2 verification of the 7 templates + global.css found one residual
+    bare-`<div>` `aria-label` pattern (`aria-prohibited-attr`): `.annotation-item`
+    (worked-example) had `aria-label="Annotation for step N"` on a generic div.
+    Swept the fix across the template + **11 built screens** (m1-l1a-s3, m1-l1b-s2,
+    m1-l1b-s4, m1-l2-s2, m1-l2-s4, m1-l3-s2, m1-l3-s3, m1-l4a-s2, m1-l4a-s3,
+    m1-l4b-s2, m1-l4b-s3 -- 65 instances): removed the redundant label so the
+    expert `<p>` prose reads (NOT `role="img"`, which would swallow it). Also fixed
+    3 container labels: `.expert-gate` (label removed), `.drag-item-controls` and
+    `.reflection-prompts` (`role="group"` + label kept). The generalized bare-div
+    decision rule (img / remove / group) is now in the CLAUDE.md + governance build
+    standard, so Modules 2-4 inherit it. All 7 templates now clean.
   - **DEFERRED (not done): manual AT spot-check.** A manual keyboard-only pass +
     screen-reader spot-check (the non-automatable layer -- real focus order, SR
     announcements, reflow/zoom) was NOT performed. **Honest scope of the validated

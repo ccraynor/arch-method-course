@@ -302,10 +302,17 @@ build Modules 2-4 this way):
    attribute must not have display overridden by a class
    rule (.support-toggle[hidden]{display:none}). Never
    leave a focusable control with/inside aria-hidden.
-3. Decorative numeric/icon markers needing an AT name use
-   role="img" + aria-label (.step-marker); never aria-label
-   on a bare <div>/generic. Keep the glyph in an
-   aria-hidden child.
+3. aria-label on a bare <div>/generic is prohibited.
+   Decision rule by what the element IS:
+   (1) decorative-only block (hidden marker, no readable
+   prose) -> role="img" + aria-label, glyph in an
+   aria-hidden child (.step-marker);
+   (2) container of readable prose -> REMOVE the
+   redundant label, let the prose read (.annotation-item,
+   .expert-gate);
+   (3) container of controls / form fields -> role="group"
+   (or role="region" for a landmark) with the label as its
+   name (.drag-item-controls, .reflection-prompts).
 4. Teal TEXT on the bg-subtle nav/panel background uses
    --color-text-link (6.08:1), NOT --color-brand-teal
    (4.41:1 on bg-subtle, fails 1.4.3): active module-nav
