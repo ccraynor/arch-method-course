@@ -273,11 +273,16 @@ do not invent sources at build time.
 #### Module 1 Lesson-Numbering Crosswalk
 Module 1 is labeled by three surfaces. This table is the single source
 of truth; the bare token "1.x" is reserved for the ARCH ID column only.
-The scenario spec v1.2 and the on-screen eyebrow use the plain ordinal
-(Lesson 1-6) so they no longer collide with the ARCH IDs. Modules 2-4
+There is NO content-area lesson-label eyebrow on screens (removed in commit
+82a4b58, superseding D6). The per-screen breadcrumb ("Module N > Lesson N > N.n",
+e.g. "Module 1 > Lesson 5 > 5.2") is the single content-area lesson number and
+uses the plain ordinal. The header progress tracker separately shows lesson
+position and STILL displays the ARCH ID ("1.x"); switching the tracker to the
+ordinal scheme ("5.x") to match the breadcrumb is an OPEN Phase-2 item (not yet
+done). The scenario spec v1.2 uses the plain ordinal (Lesson 1-6). Modules 2-4
 have no collision (scenario spec and ARCH IDs coincide: 2.1-2.4 etc.).
 
-| Ordinal (scenario spec v1.2 + eyebrow) | ARCH ID (progress tracker, Stage 3) | File prefix | Sector |
+| Ordinal (scenario spec v1.2 + breadcrumb) | ARCH ID (progress tracker, Stage 3) | File prefix | Sector |
 | --- | --- | --- | --- |
 | Lesson 1 | 1.1a | m1-l1a | K-12 State Education Agency |
 | Lesson 2 | 1.1b | m1-l1b | Community College |

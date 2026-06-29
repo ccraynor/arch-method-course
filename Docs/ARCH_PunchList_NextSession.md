@@ -395,15 +395,16 @@ content rendered as indented lines with no bullet markers.
     result clearly H1 > content-section H2 > body, and content-section H2 >
     eyebrow labels. Propose current → proposed value for review before applying.
     CSS/token-only; no markup.
-- **D6. Eyebrow vs progress-tracker lesson-number mismatch (learner-facing).**
-  On built Module 1 screens, the content eyebrow shows the plain ordinal
-  ("Lesson 5") while the header progress tracker shows the ARCH ID ("1.4a") on
-  the same screen — two different lesson numbers visible at once. Clearest on
-  m1-l4a (Lesson 5 / 1.4a); also m1-l1a (Lesson 1 / 1.1a) and m1-l1b (Lesson 2 /
-  1.1b). Decide ONE learner-facing scheme and align the eyebrow and tracker to
-  it (the numbering crosswalk in CLAUDE.md / governance maps both). Separate from
-  task 9's doc reconciliation; this is a built-screen markup pass. Polish, not a
-  Module 2 build-blocker.
+- **D6. Eyebrow vs tracker lesson-number mismatch: SUPERSEDED by eyebrow removal
+  (82a4b58).** Arc, recorded honestly: D6 first COMBINED the content eyebrow with
+  the ARCH ID ("Lesson 5 • 1.4a", commit 9d0d2a4) to stop the two numbers reading
+  as unrelated. A screenshot review then found THREE conflicting numbers on one
+  screen -- eyebrow "Lesson 5", header tracker "1.4a", breadcrumb "5.1". The
+  decision was reversed: the `.lesson-label` eyebrow was REMOVED entirely from all
+  38 screens + 7 templates (commit 82a4b58), leaving the per-screen breadcrumb as
+  the single content-area lesson number. D6's combined-label work is therefore
+  superseded by that removal. See D9 (eyebrow removal) and D10 (OPEN Phase-2
+  tracker change) below.
 - **D7. F3 carryovers (polish, surfaced during the F3 pass; non-blockers).**
   - `brief-subhead` uses a literal `font-size: 0.6875rem`, not the
     `--font-size-label` token; align to the token when convenient.
@@ -426,6 +427,31 @@ content rendered as indented lines with no bullet markers.
     with `list-style: none` + CSS counters, and a plain list-style would collide
     with the counters. Match the built-screen counter pattern instead.
   - Resolve when templatizing for the Module 2 build.
+- **D9. Lesson-label eyebrow removed entirely. DONE** (commit 82a4b58; supersedes
+  D6). Removed the `.lesson-label` content-area eyebrow from all 38 Module 1 lesson
+  screens + 7 *-template.html files, plus the dead CSS: each screen's per-screen
+  `.lesson-label` rule and the global `.lesson-label` + `.lesson-label__id` rules
+  (incl. 4 surgical grouped-selector edits that preserved the high-contrast siblings
+  `.lesson-intro__section-heading` / `.step-heading__type` / `.constraint-field__type`
+  / `.lesson-transition__label`). Also removed the 7 template "update lesson label"
+  comments so Module 2 screens built from templates do not reintroduce the eyebrow.
+  Left the `<title>` "Lesson [X.X]" metadata placeholders intact (legitimate
+  page-title field, not the eyebrow). The per-screen breadcrumb is now the single
+  content-area lesson number.
+- **D10. Phase-2 numbering + terminology -- OPEN (active next numbering task).**
+  Two changes to finish aligning the numbering: (a) change the header progress
+  tracker's lesson identifier from the ARCH ID ("1.4a") to the ordinal scheme
+  ("5.x") so it matches the breadcrumb; (b) rename the learner-facing "Screen N of
+  M" counter to "Page N of M". Scope (b) via a discovery pass FIRST: counting/nav
+  surfaces ONLY -- do NOT touch "screen reader", code identifiers, or internal
+  SCREEN_MAP keys.
+- **D11. Redundancy & numbering-consistency audit (Module 1) -- LOGGED, not
+  started.** Surfaced by the D6 episode: one screen showed three conflicting lesson
+  numbers (eyebrow / tracker / breadcrumb) that no per-item discovery caught. Sweep
+  every learner-facing surface that shows a lesson number, screen position, or count
+  and verify they agree and use one scheme. Report conflicts, do NOT auto-fix.
+  Sibling to the structural-drift audit; run both in the final reviewer-readiness
+  sweep.
 
 ---
 
@@ -507,7 +533,7 @@ lists Lesson 5 as 6 screens (see F2).
   across all 63 files and the 7 templates, so they cannot be clicked and announce
   as disabled. The build-standard that prevents reintroduction is captured in F4
   and recorded in governance + CLAUDE.md (Task 3).
-- **F2. Stale screen counts (data accuracy).** Three lessons undercount, each in
+- **F2. Stale screen counts (data accuracy). DONE** (commits 89b30cd + fa390fb). Three lessons undercount, each in
   two visible places, all from the same cause (a screen split the chip/heading
   never caught up to). The header `pt-screen-total` is correct everywhere; the
   chips and lesson-plan headings are the stale surfaces.
@@ -531,6 +557,15 @@ lists Lesson 5 as 6 screens (see F2).
     verify/correct "Lesson 5: 5 Screens" (m1-l4a-s1) → 6 and "Lesson 6: 6 Screens"
     (m1-l4b-s1) → 7; also re-check Lesson 3 (m1-l2-s1) running-text count if any.
     Removal touched chips only, not running-text counts.
+  - **Resolved (commits 89b30cd + fa390fb):** bigger than a count tweak. The
+    lesson-plan LISTS were stale too -- L5 omitted the s3b faded example, L6 the
+    s4/s5 split screen -- reconciled so heading = list = header total on both
+    (89b30cd). And m1-l2-s6 had BOTH position and total wrong ("Screen 6 of 6" ->
+    "Screen 7 of 7", fa390fb). Lesson 3 had no running-text heading to fix. Two L6
+    follow-ups remain OPEN (from the s4/s5 split): the Compare-to-Expert plan item
+    is typed "Calibration" (the screen labels it "Compare to Expert"), and that
+    item's title "Expert review of Screen 4 guided practice decisions" is now stale
+    (the split made it Screens 4 and 5).
 - **F3. Eyebrow-label color standard (ESTABLISH a new rule — does not reverse
   one).** Per current CLAUDE.md there is NO governed rule for non-interactive
   eyebrow/label color yet; the navy callout-label decisions so far were per-class.

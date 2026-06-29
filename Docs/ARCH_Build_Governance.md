@@ -1049,7 +1049,7 @@ Module 1 is labeled by three surfaces; this table is the
 single source of truth. The bare token "1.x" is reserved
 for the ARCH ID column only.
 
-| Ordinal (scenario spec v1.2 + screen eyebrow) | ARCH ID (progress tracker, Stage 3, CLAUDE.md) | File prefix | Module 1 sector |
+| Ordinal (scenario spec v1.2 + breadcrumb) | ARCH ID (progress tracker, Stage 3, CLAUDE.md) | File prefix | Module 1 sector |
 | --- | --- | --- | --- |
 | Lesson 1 | 1.1a | m1-l1a | K-12 State Education Agency |
 | Lesson 2 | 1.1b | m1-l1b | Community College |
@@ -1059,9 +1059,14 @@ for the ARCH ID column only.
 | Lesson 6 | 1.4b | m1-l4b | Doctoral |
 
 The ARCH ID a/b suffixes record where Lessons 1.1 and 1.4
-were each split into two screen-sets. The scenario spec
-(v1.2) and the on-screen eyebrow use the plain ordinal
-(Lesson 1-6) so they no longer collide with ARCH IDs.
+were each split into two screen-sets. There is NO content-area
+lesson-label eyebrow on screens (removed in commit 82a4b58,
+superseding D6); the per-screen breadcrumb ("Module N > Lesson
+N > N.n") is the single content-area lesson number and uses the
+plain ordinal. The header tracker separately shows lesson
+position and STILL displays the ARCH ID ("1.x"); switching it
+to the ordinal scheme is an OPEN Phase-2 item. The scenario
+spec (v1.2) uses the plain ordinal (Lesson 1-6).
 
 ---
 
