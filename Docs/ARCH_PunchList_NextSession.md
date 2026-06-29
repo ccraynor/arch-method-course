@@ -21,6 +21,12 @@ commit 27c4db8), Section A's decision-record + merge-card wraps (commit 5ffdbf1)
 and item B (Success Criteria + Expected Evidence uncollapse, commits 12a1eaa +
 654c34b). What remains is a few audits plus a handful of one-offs.
 
+**Punch-list hygiene.** When marking an item DONE: (1) confirm the commit hash
+exists in `git log` before writing it; (2) rewrite the item body to resolved
+(past) tense so it no longer reads as open; (3) update any gate-status or
+"remaining"/"suggested order" summary line affected. When an item is reversed,
+mark it SUPERSEDED with the superseding commit, not DONE.
+
 **Pre-Module-2 GATES — ALL CLEAR.** No Module 2 blocker gates remain. The four
 gates are done: item B (uncollapse), the G1/G2 accessibility scan + build
 standard (commit efbf165), F3 eyebrow-label color standard (commits 7cdac3e +
@@ -28,11 +34,12 @@ standard (commit efbf165), F3 eyebrow-label color standard (commits 7cdac3e +
 residue of G). Module 1 is the pattern source for Modules 2-4, so these had to
 land before any Module 2 screen build; they now have.
 
-Remaining audits / one-offs (non-blocking polish): **C** (bullet audit), **D**
-(one-offs), **E** (structure), **F2** (stale counts), and **A5** (decision-record
-CSS consolidation). (F4 is done; see Section F.)
+Remaining audits / one-offs (non-blocking polish): **D5** (H2 content-heading
+size), **E1** (split m1-l2-s5b), and **A5** (decision-record CSS consolidation);
+plus logged/optional **D11** (numbering audit) and **D12** (dead ARCH-ID
+plumbing), and the **F2 L6 follow-ups**. (B, C, F2, F3, F4, G, AX2 are done.)
 
-**Suggested order (remaining):** C → D one-offs → E → F2 → A5.
+**Suggested order (remaining):** D5 → E1 → A5.
 
 ---
 
@@ -45,6 +52,11 @@ component development begins." Any conformance gap in a Module 1 reusable patter
 would propagate 3x, so this runs BEFORE Module 2 is built, not after.
 
 This is the STATIC, read-only, Claude-Code-doable check — NOT the formal AT audit.
+
+**G1 + G2: DONE** (commit efbf165). The static scan ran and the conformant
+patterns are recorded as the Accessibility Build Standard in CLAUDE.md; the AX1-AX6
+findings it surfaced were routed below and are resolved. The formal AT launch gate
+(next section, manual NVDA/JAWS/VoiceOver/keyboard/zoom) remains out of scope.
 
 - **G1. Static conformance scan + gap list.** Scan Module 1's reusable components
   against spec Sections 1-14:
@@ -270,10 +282,12 @@ few components to fix, not one shared rule. Scope accordingly.
 
 ---
 
-## B. Uncollapse short critical callouts  (course-wide + governance)
+## B. Uncollapse short critical callouts  (course-wide + governance) — DONE (commits 12a1eaa + 654c34b)
 
-These are short and important; collapsing them adds friction. Convert from
-disclosure/accordion to always-open.
+**DONE (commits 12a1eaa + 654c34b):** Success Criteria and Expected Evidence are
+now always-visible static blocks on the affected GP screens; the CLAUDE.md and
+governance build-spec wording was synced and `archMethod_[screenId]_evidenceOpen`
+retired. The B1/B2 detail below is kept as the as-built record.
 
 - **B1. Expected Evidence** — currently an accordion ("EXPECTED EVIDENCE … Show").
   Make always-open. Footprint: 5 guided-practice screens (m1-l1a-s4, m1-l1b-s3,
@@ -395,6 +409,28 @@ content rendered as indented lines with no bullet markers.
     result clearly H1 > content-section H2 > body, and content-section H2 >
     eyebrow labels. Propose current → proposed value for review before applying.
     CSS/token-only; no markup.
+  - **Discovery (2026-06-28; D5 still OPEN, now SCOPED).** It is NOT a one-token
+    bump -- outcome (b) contaminated + (c) scattered: the 16 GROW classes use 13
+    hardcoded values (0.75-1.375rem) + 3 token users, and `--font-size-heading` is
+    contaminated (consumed by `panel-title` [DON'T-CHANGE] + 6 unrelated elements
+    -- lesson-done__banner, lens-section__heading, error-summary__heading,
+    form-section__legend, submit-success__heading, narrative-resolution__heading --
+    and only 1 GROW class, hub-section-heading).
+  - **The GROW list as written is internally inconsistent.** Several "GROW"
+    classes are label/eyebrow-sized and would FLATTEN the hierarchy the DON'T-CHANGE
+    rule protects if grown: `retrieval-warmup__heading`, `hub-glance__heading`,
+    `gp-feedback__section-heading` (0.75rem); `lesson-intro__section-heading`,
+    `lesson-section__heading` (eyebrow-styled). Others are already at/above target:
+    `landing-section__heading` 1.375, `hub-section-heading` 1.25, `feedback-heading`
+    1.25, `step-heading` 1.0625.
+  - **Proposed approach when done:** a NEW `--font-size-section-heading` (~1.125rem;
+    keeps H1 1.75 > content-H2 1.125 > body 1.0 > eyebrow 0.875), assigned ONLY to
+    the true content-section headings (the ~0.875rem ones genuinely styled as
+    headings: `calibration-panel__heading`, `think-aloud__heading`,
+    `prompt-guidance__heading`, `prompt-block__heading`), leaving
+    `--font-size-heading` for panel-title/banners. Exclude the label-size/eyebrow
+    classes and the already-large ones. Also fix the `feedback-heading` 1.0625/1.25
+    inconsistency to one value. GROW membership finalized at apply time.
 - **D6. Eyebrow vs tracker lesson-number mismatch: SUPERSEDED by eyebrow removal
   (82a4b58).** Arc, recorded honestly: D6 first COMBINED the content eyebrow with
   the ARCH ID ("Lesson 5 • 1.4a", commit 9d0d2a4) to stop the two numbers reading
@@ -403,8 +439,8 @@ content rendered as indented lines with no bullet markers.
   decision was reversed: the `.lesson-label` eyebrow was REMOVED entirely from all
   38 screens + 7 templates (commit 82a4b58), leaving the per-screen breadcrumb as
   the single content-area lesson number. D6's combined-label work is therefore
-  superseded by that removal. See D9 (eyebrow removal) and D10 (OPEN Phase-2
-  tracker change) below.
+  superseded by that removal. See D9 (eyebrow removal) and D10 (resolved --
+  tracker already ordinal) below.
 - **D7. F3 carryovers (polish, surfaced during the F3 pass; non-blockers).**
   - `brief-subhead` uses a literal `font-size: 0.6875rem`, not the
     `--font-size-label` token; align to the token when convenient.
@@ -548,7 +584,7 @@ lists Lesson 5 as 6 screens (see F2).
   across all 63 files and the 7 templates, so they cannot be clicked and announce
   as disabled. The build-standard that prevents reintroduction is captured in F4
   and recorded in governance + CLAUDE.md (Task 3).
-- **F2. Stale screen counts (data accuracy). DONE** (commits 89b30cd + fa390fb). Three lessons undercount, each in
+- **F2. Stale screen counts (data accuracy). DONE** (commits 89b30cd + fa390fb). Three lessons had undercounted screen totals, each in
   two visible places, all from the same cause (a screen split the chip/heading
   never caught up to). The header `pt-screen-total` is correct everywhere; the
   chips and lesson-plan headings are the stale surfaces.
@@ -568,10 +604,9 @@ lists Lesson 5 as 6 screens (see F2).
     "6 screens" meta-chip and the m1-l4a-s1 "5 screens" / m1-l4b-s1 "6 screens"
     screen-type-label spans), so all the stale CHIP counts — including the
     m1-l4a-s1 "5 screens" value that conflicted with governance's Lesson-5 count —
-    are now GONE. F2 REMAINS OPEN for the running-text lesson-plan HEADINGS only:
-    verify/correct "Lesson 5: 5 Screens" (m1-l4a-s1) → 6 and "Lesson 6: 6 Screens"
-    (m1-l4b-s1) → 7; also re-check Lesson 3 (m1-l2-s1) running-text count if any.
-    Removal touched chips only, not running-text counts.
+    were GONE. The running-text lesson-plan HEADINGS still needed correcting at
+    that point; that was done next in 89b30cd (see Resolved below). Removal touched
+    chips only, not running-text counts.
   - **Resolved (commits 89b30cd + fa390fb):** bigger than a count tweak. The
     lesson-plan LISTS were stale too -- L5 omitted the s3b faded example, L6 the
     s4/s5 split screen -- reconciled so heading = list = header total on both
@@ -581,11 +616,12 @@ lists Lesson 5 as 6 screens (see F2).
     is typed "Calibration" (the screen labels it "Compare to Expert"), and that
     item's title "Expert review of Screen 4 guided practice decisions" is now stale
     (the split made it Screens 4 and 5).
-- **F3. Eyebrow-label color standard (ESTABLISH a new rule — does not reverse
-  one).** Per current CLAUDE.md there is NO governed rule for non-interactive
-  eyebrow/label color yet; the navy callout-label decisions so far were per-class.
-  F3 establishes the standard: **non-interactive eyebrow labels are navy, with
-  named accent exceptions.** Governance deliverable (do this in the same pass):
+- **F3. Eyebrow-label color standard. DONE** (commits 7cdac3e + 419a361). The
+  standard was established and applied: **non-interactive eyebrow labels are navy,
+  with named accent exceptions.** It is now governed in CLAUDE.md Visual Standards
+  and the governance doc, the per-class recolor landed (7cdac3e), and the stale
+  build-spec teal wording (In Your Context callout) was corrected (419a361). The
+  original plan detail is kept below as the as-built record. Governance deliverable (do this in the same pass):
   add that rule to BOTH CLAUDE.md Visual Standards and the governance doc, AND
   update the governance BUILD-SPEC wording that still describes teal callout labels
   (e.g. `in-your-context__label` and any "teal … callout" label language) so the
