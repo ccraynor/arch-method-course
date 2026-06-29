@@ -34,12 +34,13 @@ standard (commit efbf165), F3 eyebrow-label color standard (commits 7cdac3e +
 residue of G). Module 1 is the pattern source for Modules 2-4, so these had to
 land before any Module 2 screen build; they now have.
 
-Remaining audits / one-offs (non-blocking polish): **D5** (H2 content-heading
-size), **E1** (split m1-l2-s5b), and **A5** (decision-record CSS consolidation);
-plus logged/optional **D11** (numbering audit) and **D12** (dead ARCH-ID
-plumbing), and the **F2 L6 follow-ups**. (B, C, F2, F3, F4, G, AX2 are done.)
+Remaining visible work: **D5** (H2 content-heading size -- scoped, optional given
+cost) and **A5** (decision-record CSS consolidation -- invisible refactor); plus
+the logged audits (**D11** numbering, the structural-drift audit) and the reviewer
+walkthrough. Logged/optional carryovers: **D12** (dead ARCH-ID plumbing) and the
+**F2 L6 follow-ups**. (B, C, E1, E2, E3, F2, F3, F4, G, AX2 are done/closed.)
 
-**Suggested order (remaining):** D5 → E1 → A5.
+**Suggested order (remaining):** D5 → A5.
 
 ---
 
@@ -508,10 +509,22 @@ content rendered as indented lines with no bullet markers.
 
 ## E. Page length / structure
 
-- **E1. m1-l2-s5b too long** — break into accordions. (Note the contrast with
-  Section B: accordions are the right tool for managing one long page;
-  always-open is right for short critical callouts. Different jobs, not a
-  contradiction.) *(/m1-l2-s5b.html)*
+- **E1. m1-l2-s5b too long: REVIEWED — NO CHANGE NEEDED** (no commit; design
+  decision, not a fix). Discovery found the prescribed "break into accordions" was
+  WRONG for this screen. The long block is the "Expert Analysis: All 16 Decisions"
+  content -- a READ-THROUGH expert comparison the learner is explicitly told to
+  review for where their judgment differed (4 `.fb-bucket-card` units x 5 criterion
+  rows, with JS-filled per-criterion agreement chips). Collapsing it by default
+  would HIDE the exact comparison the screen exists to deliver and bury the
+  difference-chips. The page is long because the comparison is thorough, which is
+  appropriate for an expert-analysis screen. Options weighed: one big accordion and
+  per-criterion collapsibles both defeat the screen's purpose; 4 per-bucket
+  `<details>` defaulting open were possible but add interaction the per-criterion
+  content doesn't cleanly support; prose-tightening is the only real length lever
+  and is high-effort, low-visibility content authoring. Decision: leave the screen
+  as-is. For the record: if a future content pass wants to trim length, the lever
+  is tightening the `.fb-criterion-analysis` paragraphs (NOT accordions) -- logged
+  as optional, not required. *(/m1-l2-s5b.html)*
 - **E2. Lesson-intro chip removal. DONE** (commit ed94878). Removed the redundant
   "Lesson Introduction / N screens" chip across the lesson-intro screens: deleted
   the `.lesson-intro__meta` wrapper (chip spans) on m1-l4a-s1, m1-l4b-s1, m1-l3-s1,
