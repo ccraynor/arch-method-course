@@ -387,7 +387,7 @@ header nav[aria-label="Support tools"] {
 }
 
 .module-nav-link[aria-current="page"] {
-  color: var(--color-brand-teal);
+  color: var(--color-text-link);
   border-bottom-color: var(--color-brand-teal);
   font-weight: 700;
 }
@@ -1187,7 +1187,7 @@ footer[role="contentinfo"] nav a:focus-visible {
 }
 .gate-review-note__label {
   font-weight: 700;
-  color: var(--color-brand-teal);
+  color: var(--color-text-link);
 }
 
 /* Partially completed practice labels (item 24) */
@@ -1196,7 +1196,7 @@ footer[role="contentinfo"] nav a:focus-visible {
   margin: 0.25rem 0 0;
   font-size: var(--font-size-label);
   font-weight: 700;
-  color: var(--color-brand-teal);
+  color: var(--color-text-link);
 }
 .prefilled-label::before {
   content: "\2713\00a0";
