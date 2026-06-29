@@ -90,14 +90,20 @@ bugs. Recorded here so the round survives to next session.
   the count at narrow width and 150% zoom -- the 3-across row genuinely can't fit a
   narrow card. Original right-aligned layout kept (never clips). Not worth further
   effort.
-- **BUG7a** (m1-l4b-s1 continuation box): likely resolved by the BUG7b plan-item
-  fix -- needs a quick visual confirm next session (LOW priority).
+- **BUG7a** (m1-l4b-s1 continuation box): CLOSED -- no change needed. NOT superseded
+  by BUG7b: different component (`.continuation-banner` / `.continuation-items` vs
+  `.lesson-plan-item__body`), no shared CSS. The continuation box was already
+  correctly aligned in its own right (`display: flex` + `align-items: flex-start`,
+  `flex-shrink:0` on the icon and the `::before` bullets, `flex:1; min-width:0` body,
+  clean `role="note"` + `<ul>/<li>` markup). The "messy" walkthrough symptom actually
+  belonged to the adjacent lesson-plan table that BUG7b fixed -- i.e. BUG7a was a
+  mis-attribution of BUG7b's symptom to the neighbouring box.
 
 **OPEN -- high-visibility, to do next** (chose "high-visibility only, then reassess"):
 - (none) -- all high-visibility walkthrough items are done: Alignment Batch 1,
-  BUG8, Screen->Page rename, Accordions default-open, and BUG5. Remaining Module-1
-  work is non-blocking polish (A5) plus the logged audits (D11, D13) and the
-  BUG7a visual confirm.
+  BUG8, Screen->Page rename, Accordions default-open, BUG5, and BUG7a (closed --
+  no change needed). Remaining Module-1 work is non-blocking polish (A5, optional/
+  deferred) plus the logged audits (D11, D13).
 
 **DEFERRED -- optional, lower-visibility** (deprioritized):
 - Layout decisions: remove "Your Progress" until there is progress; trim "Module 1
