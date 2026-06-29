@@ -325,6 +325,8 @@ header nav[aria-label="Support tools"] {
   transition: background 0.12s, border-color 0.12s;
 }
 
+.support-toggle[hidden] { display: none; }
+
 .support-toggle:hover {
   background: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.35);
@@ -391,7 +393,7 @@ header nav[aria-label="Support tools"] {
 }
 
 .module-nav-link[aria-disabled="true"] {
-  color: var(--color-text-disabled);
+  color: var(--color-text-muted);
   cursor: not-allowed;
   pointer-events: none;
 }
@@ -2443,7 +2445,7 @@ header[role="banner"] #progress-tracker .pt-step--upcoming .pt-step__icon {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: var(--color-brand-teal);
+  color: var(--color-text-link);
 }
 .transfer-context__summary::-webkit-details-marker { display: none; }
 .transfer-context__summary::after {

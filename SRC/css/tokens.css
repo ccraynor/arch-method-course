@@ -53,6 +53,7 @@
   --color-text-primary:   var(--color-brand-navy); /* 11.6:1 */
   --color-text-secondary: #4A6581;                 /* 6.1:1 on white, 5.6:1 on subtle */
   --color-text-disabled:  #9BAFC2;                 /* 2.3:1 — intentional; disabled only */
+  --color-text-muted:     #5A6E85;                 /* 5.25:1 — readable-muted: disabled/upcoming nav */
   --color-text-inverse:   #FFFFFF;                 /* 11.6:1 on brand-navy */
   --color-text-link:      #1C6676;                 /* 6.5:1 */
 
@@ -100,6 +101,7 @@
     --color-text-primary:   #E8EFF5;   /* 14.5:1 */
     --color-text-secondary: #A8BCCE;   /* 8.6:1 */
     --color-text-disabled:  #5A7089;   /* 3.3:1 — intentional; disabled only */
+    --color-text-muted:     #8A9DB0;   /* 6.05:1 on dark */
     --color-text-inverse:   #0F1E2D;
     --color-text-link:      #4AAFC0;   /* 6.6:1 */
 
@@ -138,6 +140,7 @@
     --color-text-primary:   #000000;   /* 21.0:1 */
     --color-text-secondary: #1A2E3F;   /* 13.9:1 */
     --color-text-disabled:  #4A5E70;   /* 6.7:1 — hardened for high-contrast */
+    --color-text-muted:     #40546A;   /* 7.8:1 — hardened for high-contrast */
     --color-text-link:      #1A5A66;   /* 7.8:1 */
 
     /* Border */
@@ -170,6 +173,7 @@
     --color-text-primary:   #FFFFFF;   /* 16.9:1 */
     --color-text-secondary: #E0EBF4;   /* 14.0:1 */
     --color-text-disabled:  #8AACBF;   /* 7.0:1 — hardened for high-contrast */
+    --color-text-muted:     #9DB0C4;   /* 7.6:1 — hardened, dark + high-contrast */
     --color-text-link:      #7DD6E8;   /* 10.2:1 */
 
     /* Border */
