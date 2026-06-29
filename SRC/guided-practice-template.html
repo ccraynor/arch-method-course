@@ -504,12 +504,12 @@
         </section><!-- /#feedback-region -->
 
         <!-- Screen navigation (previous only -- next is surfaced via Continue button after submission) -->
-        <nav class="screen-nav" aria-label="Screen navigation">
+        <nav class="screen-nav" aria-label="Page navigation">
           <!-- TEMPLATE: update href to previous screen filename -->
           <a href="[PREV_SCREEN].html"
              class="btn btn--nav btn--prev"
              rel="prev"
-             aria-label="Go to previous screen">
+             aria-label="Go to previous page">
             <svg aria-hidden="true" focusable="false" width="16" height="16"
                  viewBox="0 0 16 16" fill="none">
               <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2"
@@ -758,7 +758,7 @@
       announcer.textContent = '';
       requestAnimationFrame(() => {
         announcer.textContent = result.correct
-          ? 'Correct. Continue to the next screen.'
+          ? 'Correct. Continue to the next page.'
           : 'Not quite. Review the feedback and try again or continue.';
       });
     }
