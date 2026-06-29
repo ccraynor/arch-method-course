@@ -565,7 +565,8 @@ content rendered as indented lines with no bullet markers.
   `components/progressTracker.js` writer (imported by no lesson screen). All
   sr-only/aria-hidden, harmless, and not reviewer-facing. Optional hygiene only;
   defer to a post-polish cleanup pass.
-- **D13. WCAG 2.1 AA validation pass -- for the portfolio claim. IN PROGRESS.**
+- **D13. WCAG 2.1 AA validation pass -- for the portfolio claim. AUTOMATED PASS
+  COMPLETE (Lighthouse 100); manual AT spot-check deferred.**
   The AX1-AX6 work + G1/G2 build standard hardened accessibility
   substantially but did NOT produce a formal WCAG conformance audit. To credibly
   claim "WCAG 2.1 AA, validated with automated + manual testing" to employers, run a
@@ -606,8 +607,17 @@ content rendered as indented lines with no bullet markers.
     sibling teal-on-subtle labels (`.gate-review-note__label`, `.prefilled-label`);
     the active-tab underline stays brand-teal (non-text indicator, 1.4.11 3:1).
     [PATTERN].
-  - **Still owed:** a manual keyboard-only pass + screen-reader spot-check (the
-    non-automatable layer), and a re-scan to confirm the 5 issues clear.
+  - **Automated pass: COMPLETE.** Re-scan confirms **Lighthouse 100**; all 6
+    findings fixed (the 5 above + the active-tab follow-up, 8fd3556), and the 4
+    PATTERN fixes are written into the CLAUDE.md + governance WCAG build standard
+    so Modules 2-4 inherit them.
+  - **DEFERRED (not done): manual AT spot-check.** A manual keyboard-only pass +
+    screen-reader spot-check (the non-automatable layer -- real focus order, SR
+    announcements, reflow/zoom) was NOT performed. **Honest scope of the validated
+    claim:** "WCAG 2.1 AA, automated validation, Lighthouse 100." Do NOT claim
+    "manually tested with assistive technology." The manual AT layer is a future
+    optional enhancement (and remains distinct from the formal pre-deployment
+    Accessibility Launch Gate, which needs real AT + a human).
   - **NEW SCOPE -- propagate to Modules 2-4.** This pass is NOT Module-1-only.
     Classify each finding **[PATTERN]** (from a shared template / global CSS /
     reused structure) vs **[INSTANCE]** (one-off). PATTERN fixes must be written
