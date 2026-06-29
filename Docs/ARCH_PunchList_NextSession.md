@@ -515,6 +515,10 @@ content rendered as indented lines with no bullet markers.
     `--font-size-heading` for panel-title/banners. Exclude the label-size/eyebrow
     classes and the already-large ones. Also fix the `feedback-heading` 1.0625/1.25
     inconsistency to one value. GROW membership finalized at apply time.
+  - **NOT the double-hyphen item (2026-06-29 confirmation).** D5 is the H2 *font-size*
+    bump only; it is unrelated to the no-double-hyphen content rule. The double-hyphen
+    work (m1-l4b-s6 JS strings, commit b03e624; template placeholders, D16) is separate
+    and did NOT close, fold in, or supersede D5. D5 remains its own OPEN item.
 - **D6. Eyebrow vs tracker lesson-number mismatch: SUPERSEDED by eyebrow removal
   (82a4b58).** Arc, recorded honestly: D6 first COMBINED the content eyebrow with
   the ARCH ID ("Lesson 5 • 1.4a", commit 9d0d2a4) to stop the two numbers reading
@@ -709,6 +713,25 @@ content rendered as indented lines with no bullet markers.
   NOT a wrong-publication error (contrast D14); metadata-precision only. When
   reconciling, verify J. E. / year (2021) / Chapter 7 against the EdTech Books source
   before writing. Low priority.
+- **D16. Template placeholder double-hyphens -- OPEN (pre-Module-2 template hygiene,
+  low priority, NOT a blocker).** The 5 build templates carry ~24 `--` in bracketed
+  `[placeholder]` prose (e.g. `[Option A -- defensible but not optimal]`). These are
+  NOT learner-facing (placeholders, replaced at build time) and the `<script>`/literal
+  no-double-hyphen exemption does not reach them -- but if a Module 2 builder copies the
+  bracket prose literally, the `--` propagates into Module 2 learner-facing content.
+  FIX: replace `--` in template placeholder prose with colon/comma/en-dash as fits each
+  phrase, so Module 2 inherits clean text (same rule applied to m1-l4b-s6 in commit
+  b03e624). The 5 templates + their counts (24 total), verified 2026-06-29:
+  - `decision-point-template.html` (8): Meridian situation line; scenario paragraphs 1-2;
+    decision question; Option A/B/C/D text.
+  - `reflection-template.html` (10): questions 1-3; tips 1-3; short labels for Q1/Q2/Q3;
+    writing hint.
+  - `calibration-template.html` (3): expert response paragraphs 1-2; specific prompt.
+  - `guided-practice-template.html` (2): drag-activity instruction; input prompt.
+  - `worked-example-template.html` (1): Meridian situation line.
+  Do at any point before the Module 2 build; cheapest done together as one docs/template
+  commit. (Surfaced 2026-06-29 during the m1-l4b-s6 double-hyphen verification, which
+  found built screens otherwise clean.)
 
 ---
 
