@@ -40,7 +40,7 @@ the logged audits (**D11** numbering, the structural-drift audit) and the review
 walkthrough. Logged/optional carryovers: **D12** (dead ARCH-ID plumbing) and the
 **F2 L6 follow-ups**. (B, C, E1, E2, E3, F2, F3, F4, G, AX2 are done/closed.)
 
-**Suggested order (remaining):** D5 → A5.
+**Suggested order (remaining):** D5 (last active polish item). A5 is OPTIONAL/DEFERRED (see Section A); D11/D12/D13-manual are logged; then Task 4 + Module 2 build.
 
 ---
 
@@ -335,12 +335,28 @@ few components to fix, not one shared rule. Scope accordingly.
   column. Wrapping here is by design. Recorded so it is not re-opened. *(Image 1)*
 - **A4. General two-column audit** — the known instances (A1–A3) are now resolved
   or triaged; spot-check any other two-column card for the same wrap as it comes up.
-- **A5. Decision-record style CONSOLIDATION (follow-up, its own pass).** The
-  decision-record component is duplicated across ~9 per-screen `<style>` blocks
-  under three class names (`.gov-record__row`, `.gov-field`, `.gov-record__field`).
-  A1 widened the wrapping variants but left the duplication in place. Follow-up:
-  promote the shared styles into global.css under one class so width and behavior
-  are set once.
+- **A5. Decision-record style CONSOLIDATION -- OPTIONAL / DEFERRED (not a Module 2
+  blocker; cards render fine as-is).** Discovery (2026-06-29) found this is bigger
+  and riskier than "promote shared styles to global.css":
+  - **NOT simple duplication -- it's two parallel implementations, built twice:**
+    `.gov-record__row` (CSS grid `11rem 1fr`) on 5 screens (m1-l3-s4, m1-l4a-s2,
+    m1-l4a-s3, m1-l4b-s2, m1-l4b-s3) vs `.gov-field` / `.gov-record__field` (a
+    different structure) on 4 screens (m1-l1b-s4b, m1-l1b-s6, m1-l2-s4, m1-l3-s2).
+  - **Breakpoint divergence in the `__row` group:** mobile collapse fires at 480px
+    (l4a-s2/s3, l4b-s2/s3), 500px (l3-s4), 540px (l1b-s6), and 900px (l2-s4,
+    l3-s2) -- four different collapse points, all `11rem 1fr -> 1fr`.
+  - **LIVE on 9 learner-facing screens** (distinct from the dormant Decision
+    History component) -- consolidation carries visible-regression risk and needs
+    per-screen render-verify.
+  - **Full consolidation =** reconcile the two schemes + pick one breakpoint +
+    markup rewrites on the 4 `.gov-field` screens + move canonical rules into
+    global.css + render-check 9 screens. A multi-step discovery -> decide -> apply
+    -> verify task (BUG2-scale), with ZERO learner-facing improvement.
+  - **Cheaper partial option if ever wanted:** standardize the `.gov-record__row`
+    breakpoint only (one value), without unifying the two schemes or moving to
+    global.css -- a smaller, lower-risk consistency win.
+  - **Status: OPTIONAL / DEFERRED.** (Supersedes the earlier "promote shared
+    styles to global.css under one class" framing, which underestimated the scope.)
 
 ---
 
