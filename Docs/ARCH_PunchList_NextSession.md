@@ -438,13 +438,21 @@ content rendered as indented lines with no bullet markers.
   Left the `<title>` "Lesson [X.X]" metadata placeholders intact (legitimate
   page-title field, not the eyebrow). The per-screen breadcrumb is now the single
   content-area lesson number.
-- **D10. Phase-2 numbering + terminology -- OPEN (active next numbering task).**
-  Two changes to finish aligning the numbering: (a) change the header progress
-  tracker's lesson identifier from the ARCH ID ("1.4a") to the ordinal scheme
-  ("5.x") so it matches the breadcrumb; (b) rename the learner-facing "Screen N of
-  M" counter to "Page N of M". Scope (b) via a discovery pass FIRST: counting/nav
-  surfaces ONLY -- do NOT touch "screen reader", code identifiers, or internal
-  SCREEN_MAP keys.
+- **D10. Phase-2 numbering + terminology -- DONE/RESOLVED** (no commit needed;
+  already satisfied by trackerRedesign.js). Discovery found both display goals were
+  already met:
+  - Part 1 (tracker "1.4a" -> ordinal): already true. The active visible tracker is
+    rebuilt by `trackerRedesign.js`, which shows `LESSON_LABEL_MAP` ordinal
+    ("Lesson 5") + position "N.n of M" ("5.2 of 6"). The old `#pt-lesson` "1.4a"
+    span is re-appended `sr-only aria-hidden` -- invisible to sighted users AND to
+    AT -- and is read by nothing active (only the dormant
+    `components/progressTracker.js`). Verified live (screenshot): tracker
+    "Module 1 · Lesson 5 / Worked Example · 5.2 of 6", breadcrumb "Module 1 >
+    Lesson 5 > 5.2" -- all ordinal, no "1.4a" anywhere, fully consistent.
+  - Part 2 ("Screen" -> "Page"): MOOT. The visible counter ("5.2 of 6") carries no
+    "Screen" unit word, so there is nothing to rename. Counter kept as-is by
+    decision. (The "screen reader" term and all code identifiers were out of scope
+    regardless.)
 - **D11. Redundancy & numbering-consistency audit (Module 1) -- LOGGED, not
   started.** Surfaced by the D6 episode: one screen showed three conflicting lesson
   numbers (eyebrow / tracker / breadcrumb) that no per-item discovery caught. Sweep
@@ -452,6 +460,13 @@ content rendered as indented lines with no bullet markers.
   and verify they agree and use one scheme. Report conflicts, do NOT auto-fix.
   Sibling to the structural-drift audit; run both in the final reviewer-readiness
   sweep.
+- **D12. Dead ARCH-ID plumbing -- OPTIONAL cleanup, not started.** Surfaced by the
+  D10 discovery: the ARCH ID ("1.4a") is no longer displayed anywhere (D10), but its
+  plumbing lingers -- the hidden `#pt-lesson` "1.4a" static spans, the 46 per-screen
+  inline `getElementById('pt-lesson').textContent = '1.x'` setters, and the dormant
+  `components/progressTracker.js` writer (imported by no lesson screen). All
+  sr-only/aria-hidden, harmless, and not reviewer-facing. Optional hygiene only;
+  defer to a post-polish cleanup pass.
 
 ---
 
