@@ -573,13 +573,23 @@ content rendered as indented lines with no bullet markers.
     "Screen" unit word, so there is nothing to rename. Counter kept as-is by
     decision. (The "screen reader" term and all code identifiers were out of scope
     regardless.)
-- **D11. Redundancy & numbering-consistency audit (Module 1) -- LOGGED, not
-  started.** Surfaced by the D6 episode: one screen showed three conflicting lesson
-  numbers (eyebrow / tracker / breadcrumb) that no per-item discovery caught. Sweep
-  every learner-facing surface that shows a lesson number, screen position, or count
-  and verify they agree and use one scheme. Report conflicts, do NOT auto-fix.
-  Sibling to the structural-drift audit; run both in the final reviewer-readiness
-  sweep.
+- **D11. Redundancy & numbering-consistency audit (Module 1) -- DONE / ABSORBED**
+  by the D6/D9/D10 conventions work. Surfaced by the D6 episode (three conflicting
+  lesson numbers on one screen). The audit ran (2026-06-29) and is clean:
+  - 0 `.lesson-label` eyebrows anywhere (content-area lesson number = breadcrumb only).
+  - Breadcrumb and header tracker cannot diverge -- both sourced from the same
+    SCREEN_MAP positions (spot-checked L5: 5.1->5.6 increments cleanly).
+  - Every lesson-plan-heading count matches its SCREEN_MAP total (L3 5/5, L5 6/6,
+    L6 7/7; L1a/L1b/L2 carry no heading).
+  - No "N Screens" headings remain (all "N Pages" post Screen->Page rename).
+  - ARCH IDs ("Lesson 1.4a") appear only in `<title>` / `<meta>` / HTML+CSS comments
+    (non-content-area, legitimately keep them).
+  - ONE residual found and FIXED: m1-l4b-s6 `fallbackLabel` rendered "Return to
+    Lesson 1.4b Page 4" (a content-area ARCH ID in empty-state link text) -> changed
+    to "Lesson 6" for convention-2 consistency. The sibling `label:` carried no ARCH
+    ID (already clean). No other visible label/fallbackLabel carries an ARCH ID.
+  (The structural-drift audit remains a separate sibling item for the final
+  reviewer-readiness sweep.)
 - **D12. ARCH-ID plumbing -- VERIFIED NOT-DEAD / NO CLEANUP (closed).** Discovery
   (2026-06-29) checked whether the suspected deadwood is actually dead; it is not:
   - `components/progressTracker.js` is LIVE -- imported and called (ptInit/ptUpdate)
