@@ -79,14 +79,15 @@ LESSON_LABEL_MAP + SCREEN_MAP.
 
 **Rationale:** Matches the breadcrumb's ordinal scheme; no ARCH ID is visible to clash
 with it. At runtime trackerRedesign.js re-appends the old `#pt-lesson` "1.4a" span as
-`class="sr-only" aria-hidden="true"` backward-compat plumbing (confirmed both
-attributes; read by nothing active — the `components/progressTracker.js` writer is
-imported by no screen), so it is invisible to both sighted users and AT.
+`class="sr-only" aria-hidden="true"` backward-compat plumbing — invisible to both
+sighted users and AT, but on a LIVE code path: trackerRedesign.js reads `#pt-lesson`
+to preserve it (lesson screens), and `components/progressTracker.js` writes it on the
+intro screens (which import it via persistentStepTracker.js). Not dead — see D12.
 
 **What was found (D10):** the "switch the tracker from ARCH ID to ordinal" task turned
 out to be **already satisfied** by trackerRedesign.js — no code change was needed; the
-ARCH ID had not been visible since the redesign. (Removing the dead `#pt-lesson`
-plumbing is logged as optional cleanup D12, not required.)
+ARCH ID had not been visible since the redesign. (The `#pt-lesson` plumbing is
+live backward-compat, not dead -- D12 verified there is no safe cleanup.)
 
 ## 6. File naming + ARCH-designations-in-filenames-only
 **Rule:** `m[module]-l[lesson]-s[screen].html` (e.g. m2-l1-s1.html; transition gate

@@ -37,7 +37,7 @@ land before any Module 2 screen build; they now have.
 Remaining visible work: **D5** (H2 content-heading size -- scoped, optional given
 cost) and **A5** (decision-record CSS consolidation -- invisible refactor); plus
 the logged audits (**D11** numbering, the structural-drift audit) and the reviewer
-walkthrough. Logged/optional carryovers: **D12** (dead ARCH-ID plumbing) and the
+walkthrough. Logged/optional carryovers: **D12** (ARCH-ID plumbing -- verified not-dead, no cleanup) and the
 **F2 L6 follow-ups**. (B, C, E1, E2, E3, F2, F3, F4, G, AX2 are done/closed.)
 
 **Suggested order (remaining):** D5 (last active polish item). A5 is OPTIONAL/DEFERRED (see Section A); D11/D12/D13-manual are logged; then Task 4 + Module 2 build.
@@ -565,8 +565,8 @@ content rendered as indented lines with no bullet markers.
     rebuilt by `trackerRedesign.js`, which shows `LESSON_LABEL_MAP` ordinal
     ("Lesson 5") + position "N.n of M" ("5.2 of 6"). The old `#pt-lesson` "1.4a"
     span is re-appended `sr-only aria-hidden` -- invisible to sighted users AND to
-    AT -- and is read by nothing active (only the dormant
-    `components/progressTracker.js`). Verified live (screenshot): tracker
+    AT -- but it is on a LIVE code path (trackerRedesign.js:137 reads it to preserve;
+    progressTracker.js:294 writes it on intro screens). Verified live (screenshot): tracker
     "Module 1 · Lesson 5 / Worked Example · 5.2 of 6", breadcrumb "Module 1 >
     Lesson 5 > 5.2" -- all ordinal, no "1.4a" anywhere, fully consistent.
   - Part 2 ("Screen" -> "Page"): MOOT. The visible counter ("5.2 of 6") carries no
@@ -580,13 +580,23 @@ content rendered as indented lines with no bullet markers.
   and verify they agree and use one scheme. Report conflicts, do NOT auto-fix.
   Sibling to the structural-drift audit; run both in the final reviewer-readiness
   sweep.
-- **D12. Dead ARCH-ID plumbing -- OPTIONAL cleanup, not started.** Surfaced by the
-  D10 discovery: the ARCH ID ("1.4a") is no longer displayed anywhere (D10), but its
-  plumbing lingers -- the hidden `#pt-lesson` "1.4a" static spans, the 46 per-screen
-  inline `getElementById('pt-lesson').textContent = '1.x'` setters, and the dormant
-  `components/progressTracker.js` writer (imported by no lesson screen). All
-  sr-only/aria-hidden, harmless, and not reviewer-facing. Optional hygiene only;
-  defer to a post-polish cleanup pass.
+- **D12. ARCH-ID plumbing -- VERIFIED NOT-DEAD / NO CLEANUP (closed).** Discovery
+  (2026-06-29) checked whether the suspected deadwood is actually dead; it is not:
+  - `components/progressTracker.js` is LIVE -- imported and called (ptInit/ptUpdate)
+    by `scaffolds/persistentStepTracker.js`, which all 9 intro screens import. (The
+    earlier "imported by no screen" claim confused "no LESSON screen imports it
+    directly" with unused; lesson screens use trackerRedesign.js, intro screens use
+    progressTracker.js via persistentStepTracker.)
+  - `#pt-lesson` and the other `pt-*` hiddenIds are on a LIVE read/write path:
+    trackerRedesign.js:137 READS `#pt-lesson.textContent` (preserve) and re-renders
+    it; progressTracker.js:294 WRITES it on intro screens. Rendered sr-only/
+    aria-hidden (invisible) but NOT dead.
+  - `LESSON_LABEL_MAP` / `SCREEN_MAP` are the ACTIVE ordinal source (heavily live).
+  - No safe deletions exist. The invisible `#pt-lesson` is by-design backward-compat,
+    not deadwood. IF anyone ever wants the invisible span gone, that is a deliberate
+    ~55-file refactor (remove the hiddenIds preserve mechanism + intro writes + static
+    spans + inline setters across ~46 lesson screens + 9 intro screens), NOT a cleanup
+    -- logged here as the scope, not an action.
 - **D13. WCAG 2.1 AA validation pass -- for the portfolio claim. AUTOMATED PASS
   COMPLETE (Lighthouse 100); manual AT spot-check deferred.**
   The AX1-AX6 work + G1/G2 build standard hardened accessibility
