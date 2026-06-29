@@ -600,7 +600,12 @@ content rendered as indented lines with no bullet markers.
     (1.4.3); (5) gate `.confirmation-list` `role="group"` removed -> list semantics
     restored (1.3.1). Findings 1-4 are [PATTERN] (global CSS / tokens / template,
     propagated to the build standard in CLAUDE.md + governance so Modules 2-4
-    inherit them); finding 5 is a gate-only [INSTANCE].
+    inherit them); finding 5 is a gate-only [INSTANCE]. **Follow-up (commit
+    8fd3556):** the ACTIVE module-nav tab text was also failing (brand-teal 4.41:1
+    on the bg-subtle nav bar) -- moved to `--color-text-link` (6.08:1), plus the 2
+    sibling teal-on-subtle labels (`.gate-review-note__label`, `.prefilled-label`);
+    the active-tab underline stays brand-teal (non-text indicator, 1.4.11 3:1).
+    [PATTERN].
   - **Still owed:** a manual keyboard-only pass + screen-reader spot-check (the
     non-automatable layer), and a re-scan to confirm the 5 issues clear.
   - **NEW SCOPE -- propagate to Modules 2-4.** This pass is NOT Module-1-only.

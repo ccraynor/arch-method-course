@@ -306,6 +306,13 @@ build Modules 2-4 this way):
    role="img" + aria-label (.step-marker); never aria-label
    on a bare <div>/generic. Keep the glyph in an
    aria-hidden child.
+4. Teal TEXT on the bg-subtle nav/panel background uses
+   --color-text-link (6.08:1), NOT --color-brand-teal
+   (4.41:1 on bg-subtle, fails 1.4.3): active module-nav
+   tab text + gate-review-note / prefilled labels.
+   Brand-teal is retained for non-text indicators (the
+   active-tab underline, borders, dots, accents) which
+   need only 3:1 (1.4.11).
 
 ---
 

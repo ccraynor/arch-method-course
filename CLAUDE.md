@@ -355,6 +355,11 @@ Conformant patterns (build every Module 2+ screen this way):
   - Decorative numeric/icon markers that need an AT name use role="img" +
     aria-label (e.g. .step-marker); never put aria-label on a bare <div>/generic
     (prohibited-ARIA). Keep the visual glyph in an aria-hidden child.
+  - Teal TEXT on the bg-subtle nav/panel background uses var(--color-text-link)
+    (6.08:1), NOT var(--color-brand-teal) (4.41:1 on bg-subtle, fails 1.4.3):
+    active module-nav tab text + gate-review-note / prefilled labels. Brand-teal
+    is retained for non-text indicators (the active-tab underline, borders, dots,
+    accents) which need only 3:1 (1.4.11).
 
 Resolved decisions (standards):
 - Support panels are NON-MODAL reference panels by design. They are not
