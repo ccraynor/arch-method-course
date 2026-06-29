@@ -161,7 +161,7 @@
           <h1 id="practice-title" class="practice__title">Evaluate Bucket Balance</h1>
           <span class="step-badge">Step 3</span>
           <p class="task-description">
-            You saw the expert apply the four-criterion balance test in Screen 4.
+            You saw the expert apply the four-criterion balance test on Page 4.
             Now apply it yourself. For each of the four MRHN buckets, evaluate all four
             criteria: constraint compliance, item volume, instructional coherence, and
             sequence position. For Bucket 4, complete the thin-bucket evaluation and
@@ -175,7 +175,7 @@
             </svg>
             <span>
               <strong>Reference map note:</strong> This practice uses the expert MRHN bucket map
-              from Screen 2. If your Screen 3 assignments differed, consider how your balance
+              from Page 2. If your Page 3 assignments differed, consider how your balance
               analysis would compare. The four criteria apply to any well-formed bucket map you build.
             </span>
           </div>
@@ -443,7 +443,7 @@
                 <p class="thin-panel__desc">
                   Bucket 4 has only 3 items, the smallest bucket in the set. Complete the
                   thin-bucket evaluation before you record a final verdict, whether or not you
-                  flagged item volume above. Consider the four questions from Screen 4: instructional
+                  flagged item volume above. Consider the four questions from Page 4: instructional
                   substance, distinct prerequisite, constraint fit, and merge test. Then record your
                   re-bucketing judgment below.
                 </p>
@@ -577,15 +577,15 @@
           </div>
 
           <p class="result-next-note">
-            The full expert criterion analysis and thin-bucket evaluation are on the next screen.
+            The full expert criterion analysis and thin-bucket evaluation are on the next page.
             Review how your judgment compares to the expert's reasoning for each decision.
           </p>
 
-          <nav class="screen-nav screen-nav--post-feedback" aria-label="Screen navigation">
+          <nav class="screen-nav screen-nav--post-feedback" aria-label="Page navigation">
             <a href="m1-l2-s4.html"
                class="btn btn--nav btn--prev"
                rel="prev"
-               aria-label="Go back to Screen 4">
+               aria-label="Go back to Page 4">
               <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -605,11 +605,11 @@
         </section>
 
         <!-- Pre-submit navigation -->
-        <nav id="screen-nav-pre" class="screen-nav" aria-label="Screen navigation">
+        <nav id="screen-nav-pre" class="screen-nav" aria-label="Page navigation">
           <a href="m1-l2-s4.html"
              class="btn btn--nav btn--prev"
              rel="prev"
-             aria-label="Go to previous screen">
+             aria-label="Go to previous page">
             <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -618,7 +618,7 @@
           <a href="m1-l2-s5b.html"
              class="btn btn--nav btn--next"
              rel="next"
-             aria-label="Go to next screen">
+             aria-label="Go to next page">
             Next
             <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -634,8 +634,8 @@
     <section id="artifact-reference" tabindex="-1" aria-label="Artifact reference">
       <h2 class="aside-heading">Artifact Reference</h2>
       <p class="aside-empty">
-        This screen evaluates MRHN_BucketMap_v1. Decision record MRHN-D-002
-        (balance check) was established in Screen 4.
+        This page evaluates MRHN_BucketMap_v1. Decision record MRHN-D-002
+        (balance check) was established on Page 4.
       </p>
     </section>
   </aside>
@@ -840,19 +840,19 @@
       if (effectiveMatches >= 15 && rebucketCorrect) {
         bannerClass = 'feedback-banner--strong';
         bannerLabel = 'Expert Alignment';
-        bannerMsg = `You matched ${exactMatches} of ${totalCriteria} criteria with the expert's verdict and reached the correct re-bucketing conclusion. Review the expert analysis on the next screen to see the reasoning behind each decision.`;
+        bannerMsg = `You matched ${exactMatches} of ${totalCriteria} criteria with the expert's verdict and reached the correct re-bucketing conclusion. Review the expert analysis on the next page to see the reasoning behind each decision.`;
       } else if (effectiveMatches >= 12 && rebucketCorrect) {
         bannerClass = 'feedback-banner--partial';
         bannerLabel = 'Close Alignment';
-        bannerMsg = `You matched ${exactMatches} of ${totalCriteria} criteria and reached the correct re-bucketing conclusion. The next screen shows the expert reasoning for the criteria that differed.`;
+        bannerMsg = `You matched ${exactMatches} of ${totalCriteria} criteria and reached the correct re-bucketing conclusion. The next page shows the expert reasoning for the criteria that differed.`;
       } else if (!rebucketCorrect) {
         bannerClass = 'feedback-banner--partial';
         bannerLabel = 'Review the Re-Bucketing Decision';
-        bannerMsg = `Your criterion verdicts show good evaluation instincts (${effectiveMatches} of ${totalCriteria} aligned with expert), but the re-bucketing judgment for Bucket 4 needs revision. The expert analysis on the next screen explains why.`;
+        bannerMsg = `Your criterion verdicts show good evaluation instincts (${effectiveMatches} of ${totalCriteria} aligned with expert), but the re-bucketing judgment for Bucket 4 needs revision. The expert analysis on the next page explains why.`;
       } else {
         bannerClass = 'feedback-banner--light';
         bannerLabel = 'Review the Criteria Carefully';
-        bannerMsg = `You matched ${exactMatches} of ${totalCriteria} criteria. The expert analysis on the next screen shows the reasoning behind each verdict. Pay close attention to constraint density and the thin-bucket evaluation. This response reflects scope conflation: you judged buckets by topic familiarity rather than by authentic performance sequence.`;
+        bannerMsg = `You matched ${exactMatches} of ${totalCriteria} criteria. The expert analysis on the next page shows the reasoning behind each verdict. Pay close attention to constraint density and the thin-bucket evaluation. This response reflects scope conflation: you judged buckets by topic familiarity rather than by authentic performance sequence.`;
       }
 
       const banner = document.getElementById('result-banner');
