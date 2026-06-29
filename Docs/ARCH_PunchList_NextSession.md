@@ -72,6 +72,17 @@ bugs. Recorded here so the round survives to next session.
   consistency supports the logged WCAG AA validation item. Note: group-2 caught a
   residual-scan lesson -- run the scan for prose variants ("this/the/each screen",
   not just "Screen N") BEFORE committing.
+- **Accordions: default-open read-through disclosures -- DONE** (commit c6a2414).
+  Added `open` to 8 `<details>` (6 "In a Different Context" + 2 Optional Reading);
+  emails were already open; persistence (panelInit `data-persist-key`) left intact
+  so a learner who collapses one keeps that on return.
+- **BUG5: cal-table bucket-title size -- DONE** (commit 1c4d657). Bumped the
+  calibration-table bucket-title rows 0.6875 -> 0.8125rem on m1-l3-s3
+  (`.cal-table` + `.cal-output-table .bucket-row td`) and m1-l3-s4
+  (`.full-cal-table .bucket-row td`). The "What You Will Do / What You Will
+  Produce" headers were LEFT AS-IS: they are `.lesson-intro__section-heading`, a
+  deliberate eyebrow on D5's DON'T-GROW list and a shared course-wide class;
+  restyling them is a separate D5-scale design decision, not a scoped bump.
 
 **CLOSED -- no change:**
 - **BUG2** (m1-l2-s2 bucket-summary count alignment): REVIEWED, REVERTED. Five
@@ -83,11 +94,10 @@ bugs. Recorded here so the round survives to next session.
   fix -- needs a quick visual confirm next session (LOW priority).
 
 **OPEN -- high-visibility, to do next** (chose "high-visibility only, then reassess"):
-- **Accordions:** un-collapse "In a Different Context", Optional Reading, and Emails
-  (read-through content shouldn't default-hidden). Discovery-first.
-- **BUG5 + flagged small headings:** m1-l3-s3 cal-table bucket titles (0.6875rem)
-  and the "What you will do / produce" headers read too small. Fold into a scoped
-  D5 subset (do the worst instances, not the full course-wide D5 sweep).
+- (none) -- all high-visibility walkthrough items are done: Alignment Batch 1,
+  BUG8, Screen->Page rename, Accordions default-open, and BUG5. Remaining Module-1
+  work is non-blocking polish (A5) plus the logged audits (D11, D13) and the
+  BUG7a visual confirm.
 
 **DEFERRED -- optional, lower-visibility** (deprioritized):
 - Layout decisions: remove "Your Progress" until there is progress; trim "Module 1
