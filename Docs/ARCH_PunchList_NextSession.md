@@ -698,6 +698,17 @@ content rendered as indented lines with no bullet markers.
   - FIXED (commit 0c62226): replaced the m1-l2-s6 __citation + __search with the
     J.T. journal version (en-dash 56-71, plain-text DOI, `<em>` on "Online Learning,
     23" only) -- now matches the tracker. Single-screen [INSTANCE], done.
+- **D15. Stefaniak tracker reconcile -- OPEN (low priority, tracker-side hygiene; no
+  screen change).** The m1-l1a-s5 Lens-1 Stefaniak card is CORRECT: "Stefaniak, J. E.
+  (2021). Using task analysis to inform instructional design (Chapter 7). In
+  J. K. McDonald & R. E. West (Eds.), Design for learning: Principles, processes, and
+  praxis. EdTech Books." The TRACKER entry (Reading_Map_Tracker.xlsx, References row 3
+  + Credential row 2) is LESS complete: "Stefaniak, J. (n.d.). ..." -- no middle
+  initial, no year, no chapter number. DIRECTION: update the TRACKER to match the card
+  (opposite of D14 -- here the screen is right and the tracker is stale). Same work,
+  NOT a wrong-publication error (contrast D14); metadata-precision only. When
+  reconciling, verify J. E. / year (2021) / Chapter 7 against the EdTech Books source
+  before writing. Low priority.
 
 ---
 
