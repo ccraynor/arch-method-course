@@ -542,6 +542,23 @@ content rendered as indented lines with no bullet markers.
   `components/progressTracker.js` writer (imported by no lesson screen). All
   sr-only/aria-hidden, harmless, and not reviewer-facing. Optional hygiene only;
   defer to a post-polish cleanup pass.
+- **D13. WCAG 2.1 AA validation pass (Module 1) -- for the portfolio claim. LOGGED,
+  not started.** The AX1-AX6 work + G1/G2 build standard hardened accessibility
+  substantially but did NOT produce a formal WCAG conformance audit. To credibly
+  claim "WCAG 2.1 AA, validated with automated + manual testing" to employers, run a
+  validation pass:
+  1. Automated scan (axe-core / Lighthouse / WAVE) across all Module 1 screens --
+     catches contrast, missing labels, heading order, ARIA misuse. Fix what it flags.
+  2. Manual checks automation can't catch: keyboard-only navigation through a
+     representative flow (intro -> lesson -> activity -> gate), and a screen-reader
+     spot-check of the key interactions (autosave announcements, panel reveals,
+     accordions, the tracker/breadcrumb).
+  Run AFTER the current visible-polish round is complete (validate finished screens,
+  not in-progress ones -- eyebrow removal, accordion + heading changes all touch a11y
+  markup). The automated scan is largely a user-run-in-own-browser task (Lighthouse
+  in DevTools / axe extension) with Claude Code fixing flagged issues. Slot it just
+  before the final reviewer walkthrough. Scope = validation for a defensible AA
+  claim, NOT a full per-criterion VPAT.
 
 ---
 
