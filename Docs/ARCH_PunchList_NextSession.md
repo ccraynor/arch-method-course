@@ -680,8 +680,8 @@ content rendered as indented lines with no bullet markers.
     fix -- accessibility becomes a build standard, not an end-of-project retrofit.
     INSTANCE fixes are Module-1-only. Goal: validate Module 1 AND finalize the
     credential-wide accessibility build standard in one pass.
-- **D14. M1 Lens-2 reading card cites the WRONG Drysdale publication -- OPEN
-  (next-session fix; correct citation verified this session).** The live m1-l2-s6
+- **D14. M1 Lens-2 reading card cited the WRONG Drysdale publication -- DONE**
+  (commit 0c62226). The live m1-l2-s6
   optional-reading card currently reads "Drysdale, J. S. (2019). Instructional
   design models (Chapter 22). In R. E. West (Ed.), Foundations of learning and
   instructional design technology. EdTech Books." -- a book chapter that does NOT
@@ -695,8 +695,9 @@ content rendered as indented lines with no bullet markers.
     "(3)" roman; en-dash page range 56-71; plain-text DOI (matches the M2-4 card
     format decided in Task 4). Also update the card's search-instruction line to the
     correct work (the current one references "Foundations of Learning EdTech Books").
-  - FIX: replace the m1-l2-s6 __citation (and __search) to match; the tracker
-    already holds the correct version. Single-screen [INSTANCE]. Next-session task.
+  - FIXED (commit 0c62226): replaced the m1-l2-s6 __citation + __search with the
+    J.T. journal version (en-dash 56-71, plain-text DOI, `<em>` on "Online Learning,
+    23" only) -- now matches the tracker. Single-screen [INSTANCE], done.
 
 ---
 
