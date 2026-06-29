@@ -565,8 +565,8 @@ content rendered as indented lines with no bullet markers.
   `components/progressTracker.js` writer (imported by no lesson screen). All
   sr-only/aria-hidden, harmless, and not reviewer-facing. Optional hygiene only;
   defer to a post-polish cleanup pass.
-- **D13. WCAG 2.1 AA validation pass (Module 1) -- for the portfolio claim. LOGGED,
-  not started.** The AX1-AX6 work + G1/G2 build standard hardened accessibility
+- **D13. WCAG 2.1 AA validation pass -- for the portfolio claim. IN PROGRESS.**
+  The AX1-AX6 work + G1/G2 build standard hardened accessibility
   substantially but did NOT produce a formal WCAG conformance audit. To credibly
   claim "WCAG 2.1 AA, validated with automated + manual testing" to employers, run a
   validation pass:
@@ -582,6 +582,27 @@ content rendered as indented lines with no bullet markers.
   in DevTools / axe extension) with Claude Code fixing flagged issues. Slot it just
   before the final reviewer walkthrough. Scope = validation for a defensible AA
   claim, NOT a full per-criterion VPAT.
+  - **Static pre-scan: DONE (this session).** The code-checkable layer is clean:
+    no `<img>` (all inline SVG), 0 unlabeled form controls (all use `label for=` /
+    wrapping label / fieldset-legend / aria), no broken ARIA references, `<html
+    lang>` on all screens, no non-native interactive elements, contrast tokens
+    documented and passing (secondary 5.6:1, link 6.5:1, status 5.8-6.7:1; disabled
+    #9BAFC2 exempt). Two low-severity items to confirm at RENDER: (a) the
+    JS-populated empty `<h2 id="feedback-heading">` on guided-practice screens --
+    confirm it is non-empty once feedback shows and not exposed empty in the a11y
+    tree while hidden; (b) `opacity: 0.7/0.75` on the m1-l2-s4 sequence-diagram text
+    -- confirm the faded white-on-navy labels still clear 4.5:1.
+  - **Still owed:** the user's browser axe/Lighthouse run (rendered contrast,
+    focus-visible, real SR output, reflow/zoom) + a manual keyboard + screen-reader
+    spot-check.
+  - **NEW SCOPE -- propagate to Modules 2-4.** This pass is NOT Module-1-only.
+    Classify each finding **[PATTERN]** (from a shared template / global CSS /
+    reused structure) vs **[INSTANCE]** (one-off). PATTERN fixes must be written
+    into the 7 *-template.html files AND the Master Accessibility Spec / governance
+    (the G1/G2 mechanism) so Modules 2-4 are BUILT to the standard and inherit the
+    fix -- accessibility becomes a build standard, not an end-of-project retrofit.
+    INSTANCE fixes are Module-1-only. Goal: validate Module 1 AND finalize the
+    credential-wide accessibility build standard in one pass.
 
 ---
 
