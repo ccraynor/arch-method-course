@@ -209,8 +209,10 @@ Decisions made after Prompt F. Apply these patterns to Modules 2-4.
   underlines.
 - Eyebrow-label color standard (F3): non-interactive eyebrow/label text is navy
   (var(--color-brand-navy) #1B3A5C). Named exceptions: (1) interactive control
-  labels (e.g. transfer-context__summary, a <details> summary) stay teal
-  (var(--color-brand-teal)) to signal interactivity; (2) warning-context labels
+  labels (e.g. transfer-context__summary, a <details> summary) stay teal to
+  signal interactivity -- using var(--color-text-link) #1C6676 (AMENDED from
+  var(--color-brand-teal): brand-teal was 4.41:1 on bg-subtle and failed 1.4.3;
+  link-teal is 6.08:1, still teal-family, still interactive); (2) warning-context labels
   inside warning/failure callouts (e.g. failure-callout__label) stay amber
   (var(--color-warning-text) #7A4F00) to remain part of the warning treatment.
   Everything else in the uppercase-eyebrow family is navy. The gray/secondary
@@ -342,6 +344,17 @@ Conformant patterns (build every Module 2+ screen this way):
   announce state changes through it.
 - Screen UI colors come from tokens only. Hex literals are allowed solely inside
   @media print.
+- WCAG AA pass standards (D13, automated-scan findings, build Module 2-4 this way):
+  - Disabled / not-yet-available module-nav links use var(--color-text-muted)
+    (>=4.5:1), NOT var(--color-text-disabled). text-disabled (2.3:1) is reserved
+    for genuinely-disabled form controls, which carry the 1.4.3 contrast exemption;
+    aria-disabled nav spans do not (axe flags them), so they must be readable.
+  - Honor [hidden]: a control hidden via the hidden attribute must not have its
+    display overridden by a class rule (e.g. .support-toggle[hidden]{display:none}).
+    Never leave a focusable control with, or inside, aria-hidden="true".
+  - Decorative numeric/icon markers that need an AT name use role="img" +
+    aria-label (e.g. .step-marker); never put aria-label on a bare <div>/generic
+    (prohibited-ARIA). Keep the visual glyph in an aria-hidden child.
 
 Resolved decisions (standards):
 - Support panels are NON-MODAL reference panels by design. They are not

@@ -592,9 +592,17 @@ content rendered as indented lines with no bullet markers.
     confirm it is non-empty once feedback shows and not exposed empty in the a11y
     tree while hidden; (b) `opacity: 0.7/0.75` on the m1-l2-s4 sequence-diagram text
     -- confirm the faded white-on-navy labels still clear 4.5:1.
-  - **Still owed:** the user's browser axe/Lighthouse run (rendered contrast,
-    focus-visible, real SR output, reflow/zoom) + a manual keyboard + screen-reader
-    spot-check.
+  - **Automated scan: DONE (commit 980c333).** The user's Lighthouse run surfaced
+    5 issues; all fixed: (1) nav-disabled contrast -> new `--color-text-muted`
+    (1.4.3); (2) `.support-toggle[hidden]{display:none}` -> no focusable aria-hidden
+    (4.1.2); (3) `.step-marker` `role="img"` -> prohibited-ARIA cleared (4.1.2);
+    (4) `transfer-context__summary` -> `--color-text-link` for 4.5:1 on bg-subtle
+    (1.4.3); (5) gate `.confirmation-list` `role="group"` removed -> list semantics
+    restored (1.3.1). Findings 1-4 are [PATTERN] (global CSS / tokens / template,
+    propagated to the build standard in CLAUDE.md + governance so Modules 2-4
+    inherit them); finding 5 is a gate-only [INSTANCE].
+  - **Still owed:** a manual keyboard-only pass + screen-reader spot-check (the
+    non-automatable layer), and a re-scan to confirm the 5 issues clear.
   - **NEW SCOPE -- propagate to Modules 2-4.** This pass is NOT Module-1-only.
     Classify each finding **[PATTERN]** (from a shared template / global CSS /
     reused structure) vs **[INSTANCE]** (one-off). PATTERN fixes must be written

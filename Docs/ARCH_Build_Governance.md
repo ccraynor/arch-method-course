@@ -273,8 +273,10 @@ Non-interactive eyebrow/label text is navy
 (var(--color-brand-navy) #1B3A5C). Named exceptions:
 1. Interactive control labels (e.g.
    transfer-context__summary, a <details> summary) stay
-   teal (var(--color-brand-teal)) to signal
-   interactivity.
+   teal to signal interactivity -- using
+   var(--color-text-link) #1C6676 (AMENDED from
+   var(--color-brand-teal), which was 4.41:1 on bg-subtle
+   and failed WCAG 1.4.3; link-teal is 6.08:1).
 2. Warning-context labels inside warning/failure
    callouts (e.g. failure-callout__label) stay amber
    (var(--color-warning-text) #7A4F00) to remain part of
@@ -288,6 +290,22 @@ retrieval-warmup__answer-label, brief-subhead). The
 gray/secondary tier (var(--color-text-secondary)) is
 unchanged. Applied across Module 1 in the F3 pass; build
 Module 2-4 eyebrow labels navy by default.
+
+WCAG AA PASS STANDARDS (D13 automated-scan findings;
+build Modules 2-4 this way):
+1. Disabled / not-yet-available module-nav links use
+   --color-text-muted (>=4.5:1), NOT --color-text-disabled
+   (2.3:1, reserved for genuinely-disabled form controls
+   that carry the 1.4.3 exemption; aria-disabled nav spans
+   do not -- axe flags them).
+2. Honor [hidden]: a control hidden via the hidden
+   attribute must not have display overridden by a class
+   rule (.support-toggle[hidden]{display:none}). Never
+   leave a focusable control with/inside aria-hidden.
+3. Decorative numeric/icon markers needing an AT name use
+   role="img" + aria-label (.step-marker); never aria-label
+   on a bare <div>/generic. Keep the glyph in an
+   aria-hidden child.
 
 ---
 
