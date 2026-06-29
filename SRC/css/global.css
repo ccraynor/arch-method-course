@@ -850,6 +850,9 @@ footer[role="contentinfo"] nav a:focus-visible {
   letter-spacing: var(--letter-spacing-label);
   color: var(--color-text-link);
 }
+/* D6: the ARCH ID portion of the combined eyebrow label renders lowercase to
+   match the header tracker (the parent .lesson-label is uppercase). */
+.lesson-label__id { text-transform: none; }
 
 .lesson-intro__title {
   margin: 0;
