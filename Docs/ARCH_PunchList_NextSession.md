@@ -702,17 +702,20 @@ content rendered as indented lines with no bullet markers.
   - FIXED (commit 0c62226): replaced the m1-l2-s6 __citation + __search with the
     J.T. journal version (en-dash 56-71, plain-text DOI, `<em>` on "Online Learning,
     23" only) -- now matches the tracker. Single-screen [INSTANCE], done.
-- **D15. Stefaniak tracker reconcile -- OPEN (low priority, tracker-side hygiene; no
-  screen change).** The m1-l1a-s5 Lens-1 Stefaniak card is CORRECT: "Stefaniak, J. E.
-  (2021). Using task analysis to inform instructional design (Chapter 7). In
-  J. K. McDonald & R. E. West (Eds.), Design for learning: Principles, processes, and
-  praxis. EdTech Books." The TRACKER entry (Reading_Map_Tracker.xlsx, References row 3
-  + Credential row 2) is LESS complete: "Stefaniak, J. (n.d.). ..." -- no middle
-  initial, no year, no chapter number. DIRECTION: update the TRACKER to match the card
-  (opposite of D14 -- here the screen is right and the tracker is stale). Same work,
-  NOT a wrong-publication error (contrast D14); metadata-precision only. When
-  reconciling, verify J. E. / year (2021) / Chapter 7 against the EdTech Books source
-  before writing. Low priority.
+- **D15. Stefaniak citation reconcile -- DONE** (card commit 2514e5a; tracker in this
+  docs commit). Became a 2-SURFACE fix, not tracker-only: the year decision flipped the
+  card too. The card had read "Stefaniak, J. E. (2021). ... (Chapter 7). ... praxis.
+  EdTech Books." and the TRACKER (Reading_Map_Tracker.xlsx, References row 3 + Credential
+  row 2) had the less-complete "Stefaniak, J. (n.d.). ..." (no middle initial, no year,
+  no chapter; Credential cell also title-cased the title and omitted the editors). Both
+  surfaces now carry the SAME citation, verified identical by normalized string equality:
+  "Stefaniak, J. E. (2025). Using task analysis to inform instructional design. In
+  J. K. McDonald & R. E. West (Eds.), *Design for learning: Principles, processes, and
+  praxis* (2025 updated ed.). EdTech Books." Decisions: year is 2025 (current updated
+  edition); kept "(2025 updated ed.)"; DROPPED "(Chapter 7)" and did NOT re-add it (the
+  updated edition may renumber -- do not re-add unless verified against the source).
+  Search line on the card updated 2021 -> 2025. Unlike D14 (wrong publication), this was
+  a same-work edition/metadata reconcile.
 - **D16. Template placeholder double-hyphens -- DONE** (commit 4cbb2ab). The 5 build
   templates had `--` in bracketed `[placeholder]` prose (e.g. `[Option A -- defensible
   but not optimal]`). Not learner-facing themselves (placeholders, replaced at build
