@@ -713,25 +713,29 @@ content rendered as indented lines with no bullet markers.
   NOT a wrong-publication error (contrast D14); metadata-precision only. When
   reconciling, verify J. E. / year (2021) / Chapter 7 against the EdTech Books source
   before writing. Low priority.
-- **D16. Template placeholder double-hyphens -- OPEN (pre-Module-2 template hygiene,
-  low priority, NOT a blocker).** The 5 build templates carry ~24 `--` in bracketed
-  `[placeholder]` prose (e.g. `[Option A -- defensible but not optimal]`). These are
-  NOT learner-facing (placeholders, replaced at build time) and the `<script>`/literal
-  no-double-hyphen exemption does not reach them -- but if a Module 2 builder copies the
-  bracket prose literally, the `--` propagates into Module 2 learner-facing content.
-  FIX: replace `--` in template placeholder prose with colon/comma/en-dash as fits each
-  phrase, so Module 2 inherits clean text (same rule applied to m1-l4b-s6 in commit
-  b03e624). The 5 templates + their counts (24 total), verified 2026-06-29:
+- **D16. Template placeholder double-hyphens -- DONE** (commit 4cbb2ab). The 5 build
+  templates had `--` in bracketed `[placeholder]` prose (e.g. `[Option A -- defensible
+  but not optimal]`). Not learner-facing themselves (placeholders, replaced at build
+  time), but if a Module 2 builder copied the bracket prose literally the `--` would
+  propagate into Module 2 learner-facing content. Replaced each `--` with the punctuation
+  that fits the phrase (all 25 were `Label -- description` separations, so colon fit every
+  one; none was a mid-sentence clause needing comma/en-dash), so Module 2 inherits clean
+  text (same rule applied to m1-l4b-s6 in commit b03e624). Fixed 25 total: 24 visible
+  placeholder prose + 1 AT-announced `aria-label`:
   - `decision-point-template.html` (8): Meridian situation line; scenario paragraphs 1-2;
     decision question; Option A/B/C/D text.
   - `reflection-template.html` (10): questions 1-3; tips 1-3; short labels for Q1/Q2/Q3;
     writing hint.
   - `calibration-template.html` (3): expert response paragraphs 1-2; specific prompt.
-  - `guided-practice-template.html` (2): drag-activity instruction; input prompt.
+  - `guided-practice-template.html` (3): drag-activity instruction; input prompt; plus the
+    `aria-label="[Items to reorder -- TEMPLATE: replace]"` listbox placeholder, fixed to
+    `[Items to reorder: TEMPLATE replace]` (AT-announced, so the most learner-facing of the
+    placeholder instances).
   - `worked-example-template.html` (1): Meridian situation line.
-  Do at any point before the Module 2 build; cheapest done together as one docs/template
-  commit. (Surfaced 2026-06-29 during the m1-l4b-s6 double-hyphen verification, which
-  found built screens otherwise clean.)
+  DELIBERATELY LEFT: the 5 `<meta name="description">` lines that carry `--` -- page
+  metadata, not learner-facing body text, treated like the title-tag exemption. Post-fix
+  scan: 0 visible-text `--` across all 7 templates. (Surfaced 2026-06-29 during the
+  m1-l4b-s6 double-hyphen verification, which found built screens otherwise clean.)
 
 ---
 
