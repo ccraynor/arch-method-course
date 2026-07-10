@@ -1087,14 +1087,17 @@ ready to action, H.2 items are explicitly Carrie's call, not commitments.
 - **H15. Tier-toggle × annotation-panel interplay (m2-l3-s2).** Fable
   recommends "toggle governs content visibility; panel renders whenever
   content is open" — a recommendation, not yet a settled spec.
-- **H16. Glossary: 3 untagged first-uses.** Verified (direct read of
-  hoverGlossary.js + grep). `competency` (m1-l1a-s2:469, "general IT
-  competency" — arguably the learner-population sense, not the CBE design
-  sense; first *design*-sense use is m1-l1a-s3), `dependency` bare
-  (m1-l3-s2:98, appears untagged across 4 files), `formativeAssessment`
-  (m1-gate-s1:1038, as "formative checkpoint architecture" — a loose phrase
-  match worth confirming it's even the same concept). Decide whether to tag
-  each, and whether the m1-l1a-s2 hit is exempt as non-design usage.
+- **H16. Glossary: 3 untagged first-uses.** RESOLVED (governance ruling
+  2026-07-09; see ARCH_Build_Governance.md "Glossary coverage ruling").
+  `competency` now tagged at m1-l1b-s4b (first *design*-sense use); the
+  earlier m1-l1a-s2/s3 "general IT competency" hits are the
+  learner-population sense inside worked-example step content and are
+  deliberately left untagged. `dependency` now tagged at m1-l3-s2 (first
+  bare design-sense use; distinct from the already-tagged
+  `prerequisiteDependency`, and from the clinical "interdependency" domain
+  word). `formativeAssessment` DEFERRED to Modules 2-4: only the adjective
+  "formative" appears in Module 1 (once, on the gate), not the term
+  verbatim; tag at first verbatim use during the M2-4 build.
 - **H17. Glossary: 3 unused terms.** `cbe`, `summativeAssessment`,
   `scopeCreep` are defined in hoverGlossary.js's TERMS object but never
   appear in Module 1 visible prose at all. Decide: seed a first use in
@@ -1192,8 +1195,10 @@ for the classification ruling on whether it's exempt by nature.
   zero external `<link>`/`@import`/`@font-face`/CDN/icon-font references;
   only `system-ui`, `inherit`, and `monospace` font-family values.
 - **Glossary term count and tagging arithmetic.** Verified by direct read of
-  hoverGlossary.js: exactly 20 terms in TERMS. 14 tagged + 3 untagged
-  violations (H16) + 3 unused (H17) = 20, confirmed.
+  hoverGlossary.js: exactly 20 terms in TERMS. After the 2026-07-09 sweep
+  follow-up (H16): 16 tagged + 4 deferred to Modules 2-4 (CBE, formative
+  assessment, summative assessment, scope creep — none appear verbatim in
+  Module 1 prose) = 20, confirmed.
 
 ### H.6 Verification flags — treat as hypotheses, not settled facts
 
