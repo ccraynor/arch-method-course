@@ -737,17 +737,22 @@ built Module 1 content 2026-06-27):
   (CONFIRMED; source m1-l1b-s1/s2/s3).
 - 2.2: bucket mapping at Analysis level
   (CONFIRMED; source m1-l2-s1/s2/s3).
-- 2.3: calibration at Evaluation level
-  (source m1-l3 CONFIRMED present, but FLAG: revisit at
-  build -- possible swap, the 2.3 topic is unit architecture,
-  closer to decomposition/bucket-to-unit than calibration).
-- 2.4: decomposition at Evaluation level
-  (source m1-l4a CONFIRMED present, but FLAG: revisit at
-  build -- possible swap, the 2.4 topic is learning science,
-  closer to calibration/cognitive load than decomposition).
+- 2.3: decomposition / bucket-to-unit traceability at
+  Evaluation level (source m1-l4a CONFIRMED present).
+  SWAP RULED 2026-07-09: the 2.3 topic is unit
+  architecture, which extends decomposition, not
+  calibration. Supersedes the prior FLAG.
+- 2.4: calibration / cognitive-load management at
+  Evaluation level (source m1-l3 CONFIRMED present).
+  SWAP RULED 2026-07-09: the 2.4 topic is learning
+  science, which extends calibration and cognitive-load
+  judgment. Supersedes the prior FLAG.
 - The M2 side (each concept reappearing at the higher
   Bloom's level) can only be verified once Module 2 is built.
-  Do not lock 2.3 and 2.4 callbacks until M2 content exists.
+  Verify final callback wording against actual M2 content
+  at build. The same swap is applied to the Module 1
+  concept reappearance schedule in CLAUDE.md (same-day
+  change; the two tables must never diverge).
 
 Module 3 callbacks (draft -- verify before building):
 - 3.1: governance records at Evaluation level
@@ -897,11 +902,17 @@ cross-checked vs Stage 2 Performance Task 2):
   - [celebration text: deferred until PathPoint exemplars]
     (Stage 2 performance anchors are deferred, so exemplar
     and celebration text are not invented here.)
-- Module 2 screen count is 25 per Stage 3 (2.1=5, 2.2=6,
-  2.3=6, 2.4=8), NOT the 24 stated in the roadmap Module 2
-  build target (ARCH_PostLaunch_Roadmap.md line 43). Flag
-  the roadmap for correction. The scenario-architecture spec
-  states no Module 2 screen count, so it needs no change.
+- Module 2 screen count RULED 2026-07-09: 25 lesson screens
+  (2.1=5, 2.2=6, 2.3=6 incl. faded s2b, 2.4=8), per the
+  Stage 3 lesson table. The Stage 3 screen-inventory table's
+  24 is the outlier and is superseded; the roadmap already
+  states 25. Correct the Stage 3 docx inventory table by
+  hand when next edited.
+- Module 2 step mapping RULED 2026-07-09: the canonical
+  Phase/Step dictionary governs. Lessons 2.3 and 2.4 are
+  Phase 4, Step 11. The Stage 3 Decision Point Catalog's
+  Step 12/Step 13 labels for L2.3/L2.4 are stale (same
+  class of fix as the existing Module 3 Correction Notes).
 Module 3 artifacts: [add from Stage 2 docs before
   build]
 Module 4 artifacts: [add from Stage 2 docs before

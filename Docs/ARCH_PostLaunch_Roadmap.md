@@ -13,12 +13,14 @@ Prompts B-E in progress.
 Complete these before starting the Module 2 build session.
 
 1. Reading Enrichment Build -- add two reading enrichment cards
-   per module to the appropriate lesson screens. Single source of
-   truth: Docs/ARCH_Method_Reading_Map_Tracker.xlsx (commit 08e3c0e;
-   two sheets, all 8 sources Modules 1-4 marked Ready, all
-   open-access, APA 7 with DOIs/URLs). This supersedes the former
-   "Stage 3 Section 11 Addendum" reference. The list below is a
-   convenience summary; the xlsx governs if they ever diverge:
+   per module to the appropriate lesson screens. Citation
+   authority RULED 2026-07-09: the BUILT COURSE CITATIONS are
+   authoritative; the tracker Docs/ARCH_Method_Reading_Map_Tracker.xlsx
+   is a convenience index and must be corrected to match the
+   course if they ever diverge (authority order: built course >
+   tracker > companion guide). This reverses the prior "xlsx
+   governs" rule and supersedes the former "Stage 3 Section 11
+   Addendum" reference. The list below is a convenience summary:
    - Module 1: Stefaniak task analysis (EdTech Books) +
      Drysdale 2019 (ERIC/OLC)
    - Module 2: Weinstein et al. 2018 (PMC CC-BY) + MIT Open

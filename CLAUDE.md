@@ -89,8 +89,8 @@ Module 1 concept reappearance schedule (Prompt E Part 2 item 17). Each row names
 | --- | --- | --- |
 | Constraint identification | Lesson 2 (1.1b) | 2.1 Analysis, 3.2 Evaluation |
 | Bucket/scope organization | Lesson 3 (1.2) | 2.2 Analysis, 3.3 Evaluation |
-| Calibration (domain + taxonomy) | Lesson 4 (1.3) | 2.3 Evaluation |
-| Decomposition | Lesson 5 (1.4a) | 2.4 Evaluation, 4.2 Creation |
+| Calibration (domain + taxonomy) | Lesson 4 (1.3) | 2.4 Evaluation (swap ruled 2026-07-09; was 2.3) |
+| Decomposition | Lesson 5 (1.4a) | 2.3 Evaluation (swap ruled 2026-07-09; was 2.4), 4.2 Creation |
 | Governance records | Lesson 2 and Lesson 6 | 3.1 Evaluation, 4.3 Evaluation |
 | Traceability / scope trace audit | Lesson 6 (1.4b) | 3.4 Evaluation |
 | Full Phase 1 workflow | Module 1 whole | 4.1 Evaluation/Creation |
@@ -260,7 +260,9 @@ no hyperlinks, plain-text search instructions only (e.g. search terms and
 source titles the learner can look up). Optional in all modules and excluded
 from Focused Practice. Sources are documented in
 Docs/ARCH_PostLaunch_Roadmap.md. Draft card content before the module build;
-do not invent sources at build time.
+do not invent sources at build time. Citation authority (ruled 2026-07-09):
+built course citations > tracker xlsx > companion guide; correct the tracker
+to match the course if they diverge, never the reverse.
 
 ### File Naming Convention
 - m[module]-l[lesson]-s[screen].html

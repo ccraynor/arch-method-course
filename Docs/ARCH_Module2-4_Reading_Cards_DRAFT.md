@@ -2,8 +2,10 @@
 
 Six ready-to-place reading-enrichment card snippets (2 per module × M2/M3/M4). **Markup
 matches the live, corrected Module 1 cards** (m1-l1a-s5, m1-l2-s6); **citation content is
-transcribed from the authoritative tracker** Docs/ARCH_Method_Reading_Map_Tracker.xlsx
-(commit 08e3c0e). Nothing invented.
+transcribed from the tracker** Docs/ARCH_Method_Reading_Map_Tracker.xlsx (commit 08e3c0e).
+Nothing invented. Citation authority (ruled 2026-07-09): built course citations >
+tracker > companion guide — before placing each card, verify its citation against the
+built course convention and the DOI once; if the tracker diverges, correct the tracker.
 
 **PLACEMENT happens during each module's build** — these are drafts to drop in, not
 screen changes. Module 1's two cards are already built and live.
