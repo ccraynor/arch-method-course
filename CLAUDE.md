@@ -150,6 +150,10 @@ localStorage keys:
 - archMethod_transferContext_[lesson]_open
 - archMethod_calTable2Open, archMethod_calTable3Open
 - archMethod_optReading_l1_open, archMethod_optReading_l3_open
+- archMethod_aiPractice_m2l1_open (Module 2 Lesson 2.1 reflection:
+  optional AI-practice disclosure open/closed state; pilot ruled IN
+  2026-07-09; optional-enrichment pattern, excluded from Focused
+  Practice and the tracker unit count)
 - archMethod_gatePhase1RecordsOpen, archMethod_gatePhase2RecordsOpen
   (Phase 1 and Phase 2 governance record groups on m1-gate-s1)
 - archMethod_calibration_[screenId]_notes (calibration reflection
@@ -452,9 +456,15 @@ on first use per module.
 - Do not add external font or icon libraries -- use system fonts and inline SVG
 - Do not reference Stage terminology in any learner-facing content
 - Do not reference IRMA Mapping anywhere -- use Outcome Mapping instead
-- Do not add or remove options from decision point screens -- each 
-  screen has a fixed option count per the Stage 3 Decision Point 
-  Catalog. Check the catalog before building any decision point screen.
+- Decision points (ruled 2026-07-09, supersedes the fixed-option-count
+  rule): decision interactions continue the Module 1 pattern -- embedded
+  in guided practice with per-option branching feedback; there is no
+  discrete Decision Point screen type. Each interaction must implement
+  the Stage 3 Decision Point Catalog's decision question and scoring
+  dimension exactly; interaction format follows the Module 1
+  guided-practice pattern. (The catalog specifies no numeric option
+  counts; Stage 3 Template 4 is retired unless a future module revives
+  it.) Do not invent decisions not in the catalog.
 - Images: SVG diagrams do not need click-to-expand. 
   If screenshots or complex images are added in Modules 2-4, 
   use a lightbox component.

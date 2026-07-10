@@ -591,6 +591,9 @@ Narrative keys (Prompt E Part 1 Section 2):
   reading card open/closed state)
 - archMethod_optReading_l3_open (Lesson 3 reflection optional
   reading card open/closed state)
+- archMethod_aiPractice_m2l1_open (Module 2 Lesson 2.1 reflection:
+  optional AI-practice disclosure open/closed state; pilot ruled
+  IN 2026-07-09; registered before build per the key rule)
 - archMethod_gatePhase1RecordsOpen, archMethod_gatePhase2RecordsOpen
   (Phase 1 and Phase 2 governance record groups on m1-gate-s1;
   busyness pass item 4)
@@ -948,6 +951,21 @@ dependency, transfer, CBE, formative assessment,
 summative assessment, scope creep, SME, learning
 objective
 (scope and decomposition added in Prompt D)
+
+Glossary coverage ruling (2026-07-09, from the Module 1
+systematic sweep): 16 of the 20 terms now carry a first-use
+span.gls tag in Module 1. Tags added in the sweep follow-up:
+competency (m1-l1b-s4b, first design-sense use; the earlier
+m1-l1a-s2 "general IT competency" is the learner-population
+sense and is deliberately untagged) and dependency
+(m1-l3-s2, first bare use; distinct from the already-tagged
+prerequisiteDependency). Four terms never appear verbatim in
+Module 1 prose and their first tagged use is DEFERRED to
+Modules 2-4: CBE, formative assessment (only the adjective
+"formative" appears once on the gate), summative assessment,
+scope creep. Tag each at first verbatim use during the
+Module 2-4 builds; all four keys already exist in
+hoverGlossary.js TERMS.
 
 Module 2 new terms (provisional, confirm at build against
 actual lesson content): sequencing, spiral reinforcement,
@@ -1350,6 +1368,46 @@ sessions. Review before each module build.
   autosave.js radio/checkbox-aware collection plus a callable
   save primitive) tracked as AX4 Stage 6 in the punch list, not
   unfinished Stage-2 work.
+
+---
+
+## Session Rulings (2026-07-09)
+
+Owner rulings from the design-analysis session (source:
+Docs/ARCH_Credential_Comprehensive_Report.md). Do not reopen.
+
+1. DECISION POINTS (B5): Module 2-4 decision points continue
+   the Module 1 pattern -- decision interactions embedded in
+   guided practice with per-option branching feedback; no
+   discrete Decision Point screen type. Each interaction must
+   implement the Stage 3 Decision Point Catalog's decision
+   question and scoring dimension exactly. The catalog contains
+   no numeric option counts; the old "fixed option count per the
+   catalog" rule in CLAUDE.md is restated accordingly. Stage 3
+   Template 4 (Decision Point With Branching) is retired unless
+   a future module revives it.
+2. AI-PRACTICE PILOT: ruled IN. One optional "ARCH in AI
+   Practice" disclosure on the Lesson 2.1 reflection screen
+   (m2-l1-s5): the genericized Step 9 sequencing prompt, a short
+   AI-output excerpt, and the expert's Human-Last audit note.
+   Built to the optional-reading card pattern: details element,
+   data-optional-enrichment, Skip (optional) label, excluded
+   from Focused Practice and the tracker unit count, no
+   hyperlinks. Key archMethod_aiPractice_m2l1_open (registered).
+   Content is owner-drafted (do-not-invent rule applies).
+   Extension to further lessons/modules is a post-pilot decision
+   informed by the senior-ID walkthrough. Assessed tasks remain
+   100 percent tool-agnostic.
+3. FK REMEDIATION: approved for the nine-screen flagged cluster
+   (m1-l4b-s4, m1-l1b-s4b, m1-overview, m1-l1a-s1, m1-l1b-s1,
+   m1-l3-s1, m1-l4a-s4, m1-l4a-s5, m1-l4b-s6), to be executed
+   in Claude Code via Docs/ARCH_Fix_Session_Prompts.md Prompt 9:
+   sentence-splitting of instructional prose only; expert
+   think-aloud, expert analysis, artifact text, and reference
+   answers are untouchable; re-score after.
+4. GLOSSARY: see the Glossary coverage ruling in the Glossary
+   Expansion Process section (two tags added; four terms
+   deferred to first verbatim use in Modules 2-4).
 
 ---
 
