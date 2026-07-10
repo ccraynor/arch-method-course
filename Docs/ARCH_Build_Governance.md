@@ -961,7 +961,8 @@ ESTABLISHED FACTS (do not contradict):
 - Incident: Ransomware, March 2024, three sites,
   patient data exposed
 - Regulatory: OCR audit finding, HIPAA Security Rule
-  45 CFR 164.308 and 164.404, IR-2024 protocol
+  45 CFR 164.308 and Breach Notification Rule 45 CFR
+  164.404, IR-2024 protocol
 - Compliance window: 18-month OCR audit timeline
 - Course deadline: 90 days from incident
 - Learner population: 120 healthcare IT professionals

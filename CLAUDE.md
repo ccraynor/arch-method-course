@@ -334,9 +334,10 @@ separate pre-deployment milestone, not covered here.
 Conformant patterns (build every Module 2+ screen this way):
 - Five semantic landmarks on every screen: header (role="banner"), nav, main,
   aside (complementary), footer (role="contentinfo").
-- All five skip links as the first focusable elements: Skip to Main Content,
-  Skip to Current Activity, Skip to Progress Tracker, Skip to Artifact Reference,
-  Skip to Decision History.
+- All four skip links as the first focusable elements: Skip to Main Content,
+  Skip to Current Activity, Skip to Progress Tracker, and Skip to Artifact
+  Reference. (Skip to Decision History was dropped when Decision History was
+  deferred per Accessibility Plan v5.2; built screens carry four skip links.)
 - Exactly one H1 per screen. Heading levels must not skip (H1 to H2 to H3, never
   H2 to H4).
 - All support panels route through panelManager.js (activeSupportPanel,

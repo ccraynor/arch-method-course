@@ -35,8 +35,9 @@ template) — this is a build-time gate, not new policy.
   `aria-label`/`aria-labelledby`; radios in `<fieldset>/<legend>`).
 - [ ] Five semantic landmarks: header (role="banner"), nav, main, aside (complementary),
   footer (role="contentinfo").
-- [ ] All five skip links first in focus order: Main Content, Current Activity, Progress
-  Tracker, Artifact Reference, Decision History.
+- [ ] All four skip links first in focus order: Main Content, Current Activity, Progress
+  Tracker, and Artifact Reference. (Decision History deferred per Accessibility Plan v5.2;
+  do not add a fifth skip link.)
 - [ ] Exactly one H1; heading levels never skip. Context-block headings are H2 directly
   (no sr-only H2 wrappers; section gets `aria-label="Activity Context"`).
 - [ ] Support panels route through panelManager.js (single-open); expandable triggers
