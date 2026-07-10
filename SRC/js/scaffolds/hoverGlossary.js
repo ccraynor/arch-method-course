@@ -5,9 +5,12 @@
 
    SPEC REFERENCE
    Section 18 -- Course-wide. Applied to any .gls[data-gls-term] span
-   in lesson content. Eight defined terms:
+   in lesson content. Twenty defined terms:
    Architecture | Calibration | Competency | Constraint |
-   Dependency | Governance | Traceability | Tradeoff
+   Dependency | Governance | Traceability | Tradeoff | Scope |
+   Decomposition | Bloom's taxonomy | Cognitive load |
+   Prerequisite dependency | Transfer | CBE | Formative assessment |
+   Summative assessment | Scope creep | SME | Learning objective
 
    USAGE
    ─────────────────────────────────────────────────────────────────────────────
