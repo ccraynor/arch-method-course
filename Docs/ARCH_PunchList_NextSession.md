@@ -960,77 +960,55 @@ glossary coverage, font/icon libraries, decision-point option counts).
 Every item below was cross-checked against the live repo, CLAUDE.md,
 governance, or a primary source before being logged here — nothing from
 Fable's report was carried over on its word alone. Verification method is
-noted per item. Nothing in this section has been fixed yet; H.1 items are
-ready to action, H.2 items are explicitly Carrie's call, not commitments.
+noted per item. Status (updated 2026-07-10): the H.1 confirmed-fix items are
+DONE — H1 (812e325), H2/H3 (efe19cd), H4 (f8eec0d), H5 (25a8bef), H6
+(031e1c8), and H16 (c4b223e); each carries its commit hash and a past-tense
+body. H.2 items remain explicitly Carrie's call, not commitments.
 
 ### H.1 Confirmed fixes — verified independently, ready to action
 
-- **H1. m1-l2-s5b canon defect.** OPEN, verified (grep). The "Expert Analysis:
-  All 16 Decisions" prose contradicts itself and Meridian canon: line 315-318
-  glosses LC-1 as "four-hour seat time ceiling" while line 715 (same file)
-  correctly calls it "the four-hour SME access cap"; LC-3/LC-4 glossed as
-  "blended delivery"/"synchronous debrief" contradicts the SCORM
-  self-paced/no-synchronous canon; SI referent drift ("reporting triggers
-  (SI-01)," "SI-09 (evidence handling)" vs. evidence actually being SI-11,
-  "scope classification (SI-16)"). One-screen fix: correct the glosses and
-  the two delivery sentences; do not rewrite the analysis itself. This is the
-  expert model learners calibrate Task 1 judgment against, and M2's 2.1
-  callback points back at it, so fix before the M2 build session.
-- **H2. Skip-link doc/code mismatch.** OPEN, verified three ways: Accessibility
-  Plan v5.2's own changelog says Decision History was deferred and "the
-  required skip-link set is 5 to 4"; CLAUDE.md (Accessibility Build Standard)
-  and Docs/ARCH_Module2_Build_Checklist.md line 38 both still say five,
-  including "Skip to Decision History"; grepped a built screen
-  (m1-l2-s1.html) and confirmed it actually has four. Fix: amend CLAUDE.md
-  and the checklist to state four skip links, dropping Decision History from
-  both lists. Build-breaking if unfixed — a Module 2 build model following
-  the checklist verbatim would add a dead skip link to ~25 screens.
-- **H3. HIPAA citation label.** OPEN, verified against eCFR directly. Governance
-  line 964 lists "HIPAA Security Rule 45 CFR 164.308 and 164.404" as one
-  regulation. 164.308 is correctly Security Rule (administrative safeguards).
-  164.404 is Subpart D, Breach Notification Rule (notification to
-  individuals) — confirmed via eCFR and Cornell LII, not the Security Rule.
-  Fix: relabel to "HIPAA Security Rule 45 CFR 164.308 and Breach Notification
-  Rule 45 CFR 164.404" everywhere the narrative fact appears (governance
-  established-facts list; any built or planned screens using the citation).
-  The pairing itself is narratively correct (164.404 fits the
-  ransomware/patient-data-exposure premise) — only the label is wrong.
-- **H4. HIPAA "72-hour" factual error — bigger than H3.** OPEN, verified via
-  grep + eCFR/GDPR/NYDFS/CIRCIA search. "72-hour" or "72 hour" appears 30
-  times across 9 built files (m1-l2-s2, m1-l2-s3, m1-l3-s2, m1-l3-s3,
-  m1-l3-s4, m1-l4a-s2, m1-l4a-s4, m1-l4b-s2, m1-l4b-s3), explicitly attributed
-  to HIPAA/OCR: "HIPAA breach notification timeline: managing the 72-hour OCR
-  reporting window," "The 72-hour OCR notification clock starts at the point
-  of discovery." HIPAA's actual Breach Notification Rule (45 CFR 164.404)
-  requires notice "without unreasonable delay, no later than 60 days after
-  discovery" — there is no 72-hour HIPAA clock. 72 hours is GDPR Article 33
-  (to the supervisory authority), NYDFS Part 500 (to the Superintendent), or
-  CIRCIA's 2026 critical-infrastructure reporting to CISA — none of which is
-  MRHN's story. SI-10's placement rationale and a worked-example "discovery
-  moment" beat are built on this number across multiple screens, so this is
-  a content fix, not just a label fix. Recommended repair (preserves the
-  pedagogy, needs no external regulation to defend): attribute the 72-hour
-  clock to MRHN's own internal IR-2024 protocol, framed as stricter than
-  HIPAA's 60-day outer limit. Do not substitute CIRCIA as the "real" source —
-  its healthcare reporting mandate would not have applied to a March 2024
-  incident.
-- **H5. hoverGlossary.js stale header comment.** OPEN, verified (direct read).
-  The file's own header comment says "Eight defined terms" and lists only the
-  original 8; the actual TERMS object has 20 entries (confirmed by count).
-  Cosmetic doc-drift from before Prompts C/D added the other 12 terms.
-  One-line fix to the comment block.
-- **H6. Citation-authority statement.** OPEN, verified (grep). Confirmed by
-  owner ruling in the Fable session: built-course citations are authoritative
-  going forward; the tracker and any "Enrichment Companion" carry the errors
-  when they diverge. ARCH_PostLaunch_Roadmap.md line 21 currently reads "the
-  xlsx governs if they ever diverge" — the reversed statement. Fix: flip that
-  sentence (and the equivalent in ARCH_Module2-4_Reading_Cards_DRAFT.md if
-  present) to state the built course governs, and record the new authority
-  order (built course > tracker > any companion doc) in governance. Note:
-  ARCH_Method_Reading_Map_Tracker.xlsx itself already has the corrected
-  Drysdale (D14) and Stefaniak (D15) citations and the correct Weinstein/MIT
-  Open Learning citations (see H.5 below) — this item is the authority
-  *statement* only, not a re-fix of the tracker's content.
+- **H1. m1-l2-s5b canon defect. DONE** (commit 812e325). The "Expert
+  Analysis: All 16 Decisions" prose was corrected to Meridian canon: the LC-1
+  "four-hour seat time ceiling" gloss was reconciled to "the four-hour SME
+  access cap"; the LC-3/LC-4 "blended delivery"/"synchronous debrief" glosses
+  were removed to honor the SCORM self-paced/no-synchronous canon; and the SI
+  referent drift (SI-01/SI-09/SI-16, incl. the SI-09 vs SI-11 evidence-handling
+  referent) was fixed. The analysis itself was left intact. Verified live:
+  grep for "seat time|blended|synchronous debrief" in SRC/m1-*.html returns 0.
+- **H2. Skip-link doc/code mismatch. DONE** (commit efe19cd). CLAUDE.md's
+  Accessibility Build Standard and Docs/ARCH_Module2_Build_Checklist.md were
+  amended to state four skip links, dropping "Skip to Decision History" to
+  match Accessibility Plan v5.2 and the as-built screens (already four).
+  Verified live: the only remaining "Skip to Decision History" strings are
+  historical/requirement notes in docs; 0 appear as a live skip link in SRC.
+- **H3. HIPAA citation label. DONE** (commit efe19cd). 45 CFR 164.404 was
+  relabeled from "Security Rule" to "Breach Notification Rule" everywhere the
+  narrative fact appears (governance established-facts list and the built
+  screens). 164.308 remains correctly labeled Security Rule; the pairing was
+  always narratively correct, only the label was wrong. Verified live: grep
+  for "Security Rule 45 CFR 164.404" returns 0.
+- **H4. HIPAA "72-hour" factual error — bigger than H3. DONE** (commit
+  f8eec0d). The 72-hour breach clock was reattributed from HIPAA/OCR to
+  MRHN's own internal IR-2024 protocol across the built screens, framed as
+  stricter than HIPAA's 60-day outer limit (45 CFR 164.404), with 164.404
+  cited only as the "reasonably should have known" discovery standard. This
+  preserved the pedagogy (SI-10 placement rationale and the worked-example
+  discovery-moment beat) without leaning on GDPR/NYDFS/CIRCIA, none of which
+  fit MRHN's March 2024 story. Verified live: grep for "HIPAA 72|72-hour OCR|
+  72-hour HIPAA" in SRC returns 0; the ~45 remaining "72-hour" strings are all
+  the correct MRHN IR-2024 internal-deadline framing.
+- **H5. hoverGlossary.js stale header comment. DONE** (commit 25a8bef). The
+  header comment was updated from "Eight defined terms" and the 8-term list to
+  "Twenty defined terms" with the full list, matching the 20-entry TERMS
+  object. Comment-only change, no behavior impact.
+- **H6. Citation-authority statement. DONE** (commit 031e1c8). The reversed
+  sentence was flipped: ARCH_PostLaunch_Roadmap.md now states the built-course
+  citations are authoritative and the tracker is corrected to match the course,
+  with the authority order (built course > tracker > companion) recorded in
+  governance. The tracker's own Drysdale (D14), Stefaniak (D15), and
+  Weinstein/MIT Open Learning citations were already correct; this item was the
+  authority *statement* only. Verified live: roadmap now reads "BUILT COURSE
+  CITATIONS are authoritative ... authority order: built course >".
 
 ### H.2 Decision-needed — Carrie's call, not logged as commitments
 
