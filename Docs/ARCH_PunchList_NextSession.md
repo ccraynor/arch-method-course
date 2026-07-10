@@ -42,6 +42,16 @@ walkthrough. Logged/optional carryovers: **D12** (ARCH-ID plumbing -- verified n
 
 **Suggested order (remaining):** D5 (last active polish item). A5 is OPTIONAL/DEFERRED (see Section A); D11/D12/D13-manual are logged; then Task 4 + Module 2 build.
 
+**Update 2026-07-09:** A Fable design-analysis pass (Q1-Q3 + Module 2 spec)
+plus two independent verification sweeps are now logged as **Section H**, at
+the end of this file. Nothing in H has been fixed yet. H.1 (six items) is
+verified and ready to action before the Module 2 build — treat it as
+equivalent in priority to B1-B4 above. H.2 (fourteen items) is Carrie's-call
+decisions, not commitments. H.4 surfaces real Grade-8 FK drift on an
+8-screen cluster, independently confirmed. H.5 closes out citation and
+font/icon checks with no action needed. H.6 is hypotheses to verify before
+citing them anywhere public, not settled facts.
+
 ---
 
 ## Walkthrough round (2026-06-28)
@@ -937,3 +947,292 @@ different components. If you fix the shared two-column card/table CSS first,
 several screenshot items (A1–A4, and the DC-07/08 case) should resolve together
 rather than one at a time. E2 and E3 are the same redundancy-with-header
 decision and should be made together.
+
+---
+
+## H. Fable Design-Analysis Follow-Up (2026-07-09)
+
+Source: a Fable design-analysis session covering (1) the AI-workflow paper/
+practiced/taught gap, (2) an M1 cognitive-load diagnosis, (3) a four-module
+backward-design arc, (4) a build-ready Module 2 spec, plus two follow-up
+sweeps (a systematic text-rule pass and a four-check pass: FK reading level,
+glossary coverage, font/icon libraries, decision-point option counts).
+Every item below was cross-checked against the live repo, CLAUDE.md,
+governance, or a primary source before being logged here — nothing from
+Fable's report was carried over on its word alone. Verification method is
+noted per item. Nothing in this section has been fixed yet; H.1 items are
+ready to action, H.2 items are explicitly Carrie's call, not commitments.
+
+### H.1 Confirmed fixes — verified independently, ready to action
+
+- **H1. m1-l2-s5b canon defect.** OPEN, verified (grep). The "Expert Analysis:
+  All 16 Decisions" prose contradicts itself and Meridian canon: line 315-318
+  glosses LC-1 as "four-hour seat time ceiling" while line 715 (same file)
+  correctly calls it "the four-hour SME access cap"; LC-3/LC-4 glossed as
+  "blended delivery"/"synchronous debrief" contradicts the SCORM
+  self-paced/no-synchronous canon; SI referent drift ("reporting triggers
+  (SI-01)," "SI-09 (evidence handling)" vs. evidence actually being SI-11,
+  "scope classification (SI-16)"). One-screen fix: correct the glosses and
+  the two delivery sentences; do not rewrite the analysis itself. This is the
+  expert model learners calibrate Task 1 judgment against, and M2's 2.1
+  callback points back at it, so fix before the M2 build session.
+- **H2. Skip-link doc/code mismatch.** OPEN, verified three ways: Accessibility
+  Plan v5.2's own changelog says Decision History was deferred and "the
+  required skip-link set is 5 to 4"; CLAUDE.md (Accessibility Build Standard)
+  and Docs/ARCH_Module2_Build_Checklist.md line 38 both still say five,
+  including "Skip to Decision History"; grepped a built screen
+  (m1-l2-s1.html) and confirmed it actually has four. Fix: amend CLAUDE.md
+  and the checklist to state four skip links, dropping Decision History from
+  both lists. Build-breaking if unfixed — a Module 2 build model following
+  the checklist verbatim would add a dead skip link to ~25 screens.
+- **H3. HIPAA citation label.** OPEN, verified against eCFR directly. Governance
+  line 964 lists "HIPAA Security Rule 45 CFR 164.308 and 164.404" as one
+  regulation. 164.308 is correctly Security Rule (administrative safeguards).
+  164.404 is Subpart D, Breach Notification Rule (notification to
+  individuals) — confirmed via eCFR and Cornell LII, not the Security Rule.
+  Fix: relabel to "HIPAA Security Rule 45 CFR 164.308 and Breach Notification
+  Rule 45 CFR 164.404" everywhere the narrative fact appears (governance
+  established-facts list; any built or planned screens using the citation).
+  The pairing itself is narratively correct (164.404 fits the
+  ransomware/patient-data-exposure premise) — only the label is wrong.
+- **H4. HIPAA "72-hour" factual error — bigger than H3.** OPEN, verified via
+  grep + eCFR/GDPR/NYDFS/CIRCIA search. "72-hour" or "72 hour" appears 30
+  times across 9 built files (m1-l2-s2, m1-l2-s3, m1-l3-s2, m1-l3-s3,
+  m1-l3-s4, m1-l4a-s2, m1-l4a-s4, m1-l4b-s2, m1-l4b-s3), explicitly attributed
+  to HIPAA/OCR: "HIPAA breach notification timeline: managing the 72-hour OCR
+  reporting window," "The 72-hour OCR notification clock starts at the point
+  of discovery." HIPAA's actual Breach Notification Rule (45 CFR 164.404)
+  requires notice "without unreasonable delay, no later than 60 days after
+  discovery" — there is no 72-hour HIPAA clock. 72 hours is GDPR Article 33
+  (to the supervisory authority), NYDFS Part 500 (to the Superintendent), or
+  CIRCIA's 2026 critical-infrastructure reporting to CISA — none of which is
+  MRHN's story. SI-10's placement rationale and a worked-example "discovery
+  moment" beat are built on this number across multiple screens, so this is
+  a content fix, not just a label fix. Recommended repair (preserves the
+  pedagogy, needs no external regulation to defend): attribute the 72-hour
+  clock to MRHN's own internal IR-2024 protocol, framed as stricter than
+  HIPAA's 60-day outer limit. Do not substitute CIRCIA as the "real" source —
+  its healthcare reporting mandate would not have applied to a March 2024
+  incident.
+- **H5. hoverGlossary.js stale header comment.** OPEN, verified (direct read).
+  The file's own header comment says "Eight defined terms" and lists only the
+  original 8; the actual TERMS object has 20 entries (confirmed by count).
+  Cosmetic doc-drift from before Prompts C/D added the other 12 terms.
+  One-line fix to the comment block.
+- **H6. Citation-authority statement.** OPEN, verified (grep). Confirmed by
+  owner ruling in the Fable session: built-course citations are authoritative
+  going forward; the tracker and any "Enrichment Companion" carry the errors
+  when they diverge. ARCH_PostLaunch_Roadmap.md line 21 currently reads "the
+  xlsx governs if they ever diverge" — the reversed statement. Fix: flip that
+  sentence (and the equivalent in ARCH_Module2-4_Reading_Cards_DRAFT.md if
+  present) to state the built course governs, and record the new authority
+  order (built course > tracker > any companion doc) in governance. Note:
+  ARCH_Method_Reading_Map_Tracker.xlsx itself already has the corrected
+  Drysdale (D14) and Stefaniak (D15) citations and the correct Weinstein/MIT
+  Open Learning citations (see H.5 below) — this item is the authority
+  *statement* only, not a re-fix of the tracker's content.
+
+### H.2 Decision-needed — Carrie's call, not logged as commitments
+
+- **H7. Pilot AI-practice disclosure (Lesson 2.1 reflection screen).**
+  Fable's own report flags this as recommended but explicitly not yet
+  decided. Adopt / skip / defer until after the senior-ID walkthrough.
+- **H8. M1 celebration-text flattery.** Verified real and live (governance
+  line 858 / built into the artifact system): "This is the kind of
+  architecture package most IDs never produce." Fable's fix only targets M2's
+  *future* celebration text; it doesn't touch this existing M1 line despite
+  citing it as the problem example. Decide: revise the live M1 text now, or
+  leave it and only apply the register caution going forward.
+- **H9. Stage 3 2.3/2.4 callback swap.** Not a new idea — governance already
+  flags this itself (lines 740-747: "possible swap... revisit at build") and
+  already states "do not lock 2.3 and 2.4 callbacks until M2 content exists."
+  Fable's Decision 3 proposes locking the swap *direction* pre-build (2.3 ←
+  decomposition/bucket-to-unit at Evaluation; 2.4 ← calibration/cognitive-load
+  at Evaluation) while still verifying final wording at build. Decide whether
+  locking the direction now is acceptable under the standing rule, or whether
+  it stays genuinely open until Module 2 content exists.
+- **H10. Decision-point architecture for Module 2.** NEW, verified two ways:
+  (a) grepped all built m1-*.html for the `decision-point` class that
+  SRC/decision-point-template.html defines — zero matches; (b) direct
+  screen-type-label audit across all 48 files found Worked Example (11),
+  Guided Practice (10), Faded Example (2), Reflection variants (6), Expert/
+  Compare-to-Expert (2), Intake Document (1) — zero screens labeled "Decision
+  Point." The template exists (and was touched by D16's double-hyphen fix)
+  but was never used to build an M1 screen; guided-practice interactions
+  absorbed that role instead (m1-l2-s3's 8 native selects, m1-l3-s4's radio
+  groups, etc.). Module 2's spec calls for genuine decision-point screens
+  (2.1.4, 2.2.4, "complex branching, build/test first") with no M1 pattern to
+  copy. Decide: build M2's decision points as the never-yet-built Template 4
+  ("Decision Point With Branching"), or continue M1's absorb-into-
+  guided-practice pattern.
+- **H11. Decision Point Catalog spec gap.** NEW, verified (direct read of
+  Stage 3 UBD docx, §7). The entire "Decision Point Catalog" section is one
+  paragraph: "16 decision points across all lessons... Branching feedback is
+  required for all decision points... see HTML Component Specification 4."
+  No per-screen option count exists anywhere in the document. CLAUDE.md's
+  rule ("fixed option count per the Stage 3 Decision Point Catalog. Check the
+  catalog before building") points to a specification that doesn't exist.
+  Decide: add option counts to the catalog before Module 2, or restate the
+  CLAUDE.md rule as "match the M1 as-built interaction pattern." Tied to H10.
+- **H12. localStorage key scheme for Module 2.** Continue the l7-l10
+  numbering convention, or move to module-scoped keys (e.g.
+  archMethod_aiPractice_m2l1_open, as drafted)? Affects every new M2 key.
+- **H13. Reading-card split placement (2.2 / 2.4).** Same-screen (the draft's
+  current default) or split across two screens, as Fable's placement
+  suggestion proposes? Flagged by Fable itself as [CONFIRM].
+- **H14. Senior-ID walkthrough.** Schedule now (parallel track before Module
+  3, per Fable's Decision 4), and decide whether to use Fable's authored
+  probe questions verbatim ("Which recurring elements did you start
+  skipping?" etc.) or write your own.
+- **H15. Tier-toggle × annotation-panel interplay (m2-l3-s2).** Fable
+  recommends "toggle governs content visibility; panel renders whenever
+  content is open" — a recommendation, not yet a settled spec.
+- **H16. Glossary: 3 untagged first-uses.** Verified (direct read of
+  hoverGlossary.js + grep). `competency` (m1-l1a-s2:469, "general IT
+  competency" — arguably the learner-population sense, not the CBE design
+  sense; first *design*-sense use is m1-l1a-s3), `dependency` bare
+  (m1-l3-s2:98, appears untagged across 4 files), `formativeAssessment`
+  (m1-gate-s1:1038, as "formative checkpoint architecture" — a loose phrase
+  match worth confirming it's even the same concept). Decide whether to tag
+  each, and whether the m1-l1a-s2 hit is exempt as non-design usage.
+- **H17. Glossary: 3 unused terms.** `cbe`, `summativeAssessment`,
+  `scopeCreep` are defined in hoverGlossary.js's TERMS object but never
+  appear in Module 1 visible prose at all. Decide: seed a first use in
+  Module 1, or document them as Module 2-4 vocabulary (in which case note
+  that in the governance glossary section so it isn't re-flagged as a gap).
+- **H18. m1-l1a-s2 Meridian-brief FK classification.** The Meridian brief
+  itself scores FK 14.3 (see H.4). Is this exempt as an authentic
+  artifact-register document (like expert think-aloud text), or does it need
+  to meet the Grade-8 instructional-prose standard? A classification ruling,
+  not yet covered by CLAUDE.md's existing exemption language.
+- **H19. Behind-the-Build case study + de-branded prompt library — scope
+  and timing.** Fable's report calls these "adopted," but they're
+  substantial new authoring work (a public case-study page, a full
+  scrub-and-rebrand pass on the prompt library) competing with Module 2 build
+  time — which cuts against Fable's own top-line "protect completion above
+  everything" principle. Confirm these are in scope now, alongside Module 2,
+  or deferred until Modules 2-4 ship.
+- **H20. "Enrichment Companion" — locate before acting.** Fable's report
+  repeatedly references correcting "the Enrichment Companion" alongside the
+  tracker. No file by that name exists in Docs/ as currently listed. Confirm
+  what this refers to (a section of the roadmap? a doc not yet created?)
+  before treating "correct the Companion" as an actionable item.
+
+### H.3 Module 2 build-prep (open, deferred to the actual build session unless noted)
+
+- **H21. Complete the 18-item Module 2 Pre-Build Checklist** already logged
+  in governance.
+- **H22. Verify/build SME gate 1.TG.1 status.** CLAUDE.md counts it inside
+  Module 1's 39 screens; the roadmap assigns building it to the Module 2
+  session (task 7). Settle which is true before the build (`ls
+  SRC/m1-gate*.html SRC/*TG*`).
+- **H23. The 8 §3.6 "do-not-invent" content-drafting items** (Carrie's
+  authoring, not a build task): PT2 preview excerpt, MRHN_UnitArchitecture_v1
+  celebration text, 2 Priya emails, Context Panel content per lesson tier,
+  retrieval warm-ups + prediction prompts, final callback wording ×4, gate
+  governance-record review criteria, and the pilot-disclosure content if H7
+  is adopted.
+- **H24. Register all new M2 localStorage keys** (prediction/retrieval/
+  transfer/optReading, plus aiPractice + priyaEmail if H7 is adopted) in
+  CLAUDE.md and governance before use. Depends on H12.
+- **H25. Stage 1 audience paragraph revision.** Owner-ruled (senior IDs) in
+  the Fable session; needs an actual edit to Stage 1 UBD (1).docx, which is
+  outside the Docs/*.md set — flag for manual edit, not a Claude Code task.
+- **H26. Roadmap Foundation/three-track item (line 279) reframe.** Verified
+  the item exists as described. Add a note that it's a future separate
+  course for junior/mid-level IDs, not a tension in this credential, per the
+  audience ruling.
+- **H27. CLAUDE.md Do-Not list wording amendment (Decision 2a).** CLAUDE.md's
+  existing language ("do not assume prior knowledge... define on first use
+  per module") doesn't yet state the stronger rule Fable's Decision 2a
+  proposes: framework/theory definitions live only in the hover glossary and
+  optional enrichment, never as definitional sentences in instructional
+  prose. M1 already complies in practice (verified: the one near-hit found in
+  the FK/prose scan was ARCH-native content, not framework re-teaching) — this
+  is a wording amendment to protect M2's learning-science content, not a
+  behavior change.
+
+### H.4 Grade-8 FK reading-level drift — verified, actionable cluster
+
+Verified two ways: Fable ran DOM-aware extraction (excluding expert-exempt
+containers) across all 40 scoreable M1 screens; I independently recalculated
+FK on 3 of the flagged paragraphs with an offline heuristic method and landed
+in the same range (19.3, 17.7, 21.3 against Fable's claimed 19.3-22.0 for that
+cluster). 21 of 40 screens exceed FK 9.0 on instructional prose; 65 individual
+paragraphs exceed FK 10. Actionable cluster, worst first:
+
+| Screen | Aggregate FK | Worst paragraphs |
+| --- | --- | --- |
+| m1-l4b-s4 (guided practice) | 13.1 | Q1-Teachability/Q2-Assessability task setups, FK 19.3-22.0 |
+| m1-overview | 12.8 | module-overview prose |
+| m1-l1b-s4b (faded example) | 11.6 | scenario-context paragraphs, FK 15.8-20.5 (learner-facing setup, NOT expert-exempt) |
+| m1-l1a-s1, m1-l1b-s1, m1-l3-s1 (lesson intros) | 11.6 each | purpose/step-preview paragraphs |
+| m1-l4a-s4, m1-l4a-s5, m1-l4b-s6 | 10.5-10.6 | instruction/prompt paragraphs, FK 16-19 |
+
+Diagnostic pattern: the worst screens are disproportionately content added
+*after* the Prompt B reading-level rewrite (s4b faded examples from Prompt
+C3, the l4b-s4/l4a-s4 practice tasks, the overview from C5) — Prompt B's
+pass appears not to have been re-run on later additions. When actioned:
+paragraph-level sentence-splitting on the flagged cluster only (the
+≤20-word rule is the cheapest lever), never touching expert-exempt blocks,
+then re-score. m1-l1a-s2's FK 14.3 is the Meridian brief itself — see H18
+for the classification ruling on whether it's exempt by nature.
+
+### H.5 Verified clean or already resolved this session — no action needed
+
+- **Weinstein, Madan & Sumeracki (2018) and MIT Open Learning reading-card
+  citations.** Verified against primary sources (search + direct page fetch)
+  and against both ARCH_Method_Reading_Map_Tracker.xlsx and
+  ARCH_Module2-4_Reading_Cards_DRAFT.md: both already carry the correct APA 7
+  form (title-case journal name, "Article 2" locator, correct DOI; MIT page
+  confirmed live with all three named course examples — Genetics 7.03,
+  Physics 8.591, Materials Science 3.039). No edit needed.
+- **External font/icon libraries (course-wide).** Verified clean across all
+  48 HTML files AND global.css (the file Fable's own sweep couldn't reach):
+  zero external `<link>`/`@import`/`@font-face`/CDN/icon-font references;
+  only `system-ui`, `inherit`, and `monospace` font-family values.
+- **Glossary term count and tagging arithmetic.** Verified by direct read of
+  hoverGlossary.js: exactly 20 terms in TERMS. 14 tagged + 3 untagged
+  violations (H16) + 3 unused (H17) = 20, confirmed.
+
+### H.6 Verification flags — treat as hypotheses, not settled facts
+
+From the companion ARCH_Verification_Checklist.md (now uploaded and read in
+full):
+
+- **Tier 2 (framework/theory claims to verify before repeating in designer
+  notes, marketing, or interviews):** the expertise-reversal-effect
+  extension ("a novel method's worked examples are safe even for domain
+  experts" is Fable's synthesis, not a settled finding — verify against
+  Kalyuga before attributing); the "architecture finding, not study-skills
+  finding" framing of spacing/interleaving (an extension, not literature);
+  "cognitive apprenticeship applied to the tool layer" (Fable's inference);
+  "ZPD analysis as a design heuristic, not a measurement procedure" (fine,
+  but a picky reviewer might probe it); the metacognitive-habituation-risk
+  claim (uncited, walkthrough is the actual test); the Grade-8-for-experts
+  rationale (defensible as a design position, not as a literature claim).
+- **Tier 3 (Fable's own hypotheses, explicitly not verifiable from your
+  materials):** "the 2026 market is saturated with prompt-tips... nobody
+  else teaches constraint-governed, auditable AI-assisted architecture"
+  (category-of-one — needs a real competitive scan, e.g. IDOL, ATD,
+  university micro-credentials, before any marketing use); "employers choose
+  credentials partly on AI relevance in 2026" (plausible, unverified);
+  "optional is weakly protective for high-conscientiousness learners"
+  (testable later with real telemetry, not now); the specific time/cost
+  estimates in the report (+20-30 min, ~2-3 hrs, "90% of differentiation
+  value at 10% of cost") — rhetoric, not measurement; do not use these
+  numbers in planning documents.
+- **Tier 1 reading-card claims not yet independently verified (M3/M4 only —
+  M1 and M2 citations are cleared, see H.5):** Jahnke, Riedel, Singh & Moore
+  (2021) — confirm the "195 problems in two online courses," "14
+  sociotechnical-pedagogical heuristics," and "Scopus 87th percentile"
+  characterizations before they ship in a designer note (percentiles drift
+  yearly; date it or drop it); Smith & Luo (2024) — confirm the "interviewed
+  six practicing IDs and design managers" claim; Lachheb & Boling (2021) —
+  confirm the core/instrumental/framing judgment-types characterization
+  matches the chapter's actual typology; Totino & Kessler (2024) — confirm
+  "LEED" is the tool's actual name and its MIT Open Learning attribution.
+- **Stage 2 quoted language** ("without external guidance," mastery
+  threshold criteria, "selected-response formats intentionally excluded") —
+  Fable paraphrased faithfully by its own account, but re-read Stage 2 §2 and
+  §7 before quoting any of it in a public-facing artifact.
