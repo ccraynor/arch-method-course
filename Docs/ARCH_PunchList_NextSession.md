@@ -1012,9 +1012,16 @@ body. H.2 items remain explicitly Carrie's call, not commitments.
 
 ### H.2 Decision-needed — Carrie's call, not logged as commitments
 
-- **H7. Pilot AI-practice disclosure (Lesson 2.1 reflection screen).**
-  Fable's own report flags this as recommended but explicitly not yet
-  decided. Adopt / skip / defer until after the senior-ID walkthrough.
+- **H7. Pilot AI-practice disclosure (Lesson 2.1 reflection screen). RULED IN**
+  (2026-07-09; governance "Session Rulings" item 2, ratified in commit e72ac20).
+  The pilot was adopted: one optional "ARCH in AI Practice" disclosure on the
+  Lesson 2.1 reflection screen (m2-l1-s5), built to the optional-reading card
+  pattern (details element, data-optional-enrichment, Skip (optional) label,
+  excluded from Focused Practice and the tracker unit count, no hyperlinks). The
+  key archMethod_aiPractice_m2l1_open is registered in CLAUDE.md and governance;
+  content is owner-drafted (do-not-invent rule applies). No open decision
+  remains here: the disclosure is built with m2-l1-s5 during the Module 2 build,
+  and assessed tasks stay 100 percent tool-agnostic.
 - **H8. M1 celebration-text flattery.** Verified real and live (governance
   line 858 / built into the artifact system): "This is the kind of
   architecture package most IDs never produce." Fable's fix only targets M2's
@@ -1043,15 +1050,17 @@ body. H.2 items remain explicitly Carrie's call, not commitments.
   copy. Decide: build M2's decision points as the never-yet-built Template 4
   ("Decision Point With Branching"), or continue M1's absorb-into-
   guided-practice pattern.
-- **H11. Decision Point Catalog spec gap.** NEW, verified (direct read of
-  Stage 3 UBD docx, §7). The entire "Decision Point Catalog" section is one
-  paragraph: "16 decision points across all lessons... Branching feedback is
-  required for all decision points... see HTML Component Specification 4."
-  No per-screen option count exists anywhere in the document. CLAUDE.md's
-  rule ("fixed option count per the Stage 3 Decision Point Catalog. Check the
-  catalog before building") points to a specification that doesn't exist.
-  Decide: add option counts to the catalog before Module 2, or restate the
-  CLAUDE.md rule as "match the M1 as-built interaction pattern." Tied to H10.
+- **H11. Decision Point Catalog spec gap. RULED** (B5, 2026-07-09; governance
+  "Session Rulings" item 1, ratified in commit e72ac20). Resolved by restating
+  the CLAUDE.md rule rather than inventing catalog option counts that the Stage
+  3 UBD docx never specified: Module 2-4 decision points continue the Module 1
+  guided-practice pattern (embedded, with per-option branching feedback), there
+  is no discrete Decision Point screen type, and Stage 3 Template 4 is retired.
+  Each interaction must implement the catalog's decision question and scoring
+  dimension exactly; because the catalog specifies no numeric option counts, the
+  old "fixed option count per the catalog" rule was superseded in CLAUDE.md.
+  This ruling also governs the tied H10 build-pattern question (M1 pattern, not
+  Template 4) — H10's entry is left as-is pending the owner's review.
 - **H12. localStorage key scheme for Module 2.** Continue the l7-l10
   numbering convention, or move to module-scoped keys (e.g.
   archMethod_aiPractice_m2l1_open, as drafted)? Affects every new M2 key.
