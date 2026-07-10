@@ -1337,7 +1337,7 @@
       // Bucket 3
       { id:'SI-04', name:'Real-Time Incident Documentation',               bucket:3, level:'Ap', flag:false, note:'' },
       { id:'SI-05', name:'Leadership and Communication Notification',      bucket:3, level:'Ap', flag:false, note:'' },
-      { id:'SI-10', name:'HIPAA 72-Hour Breach Notification Clock',        bucket:3, level:'An', flag:true,  note:'Clock triggers at "reasonably should have known" (45 CFR 164.404), not forensic confirmation; discovery-timing evaluation scenarios required' },
+      { id:'SI-10', name:'Breach Notification Clock (72-Hour Internal Deadline)',        bucket:3, level:'An', flag:true,  note:'Clock triggers at "reasonably should have known" (45 CFR 164.404), not forensic confirmation; discovery-timing evaluation scenarios required' },
       { id:'SI-14', name:'IR-2024 Protocol Deviation Documentation',       bucket:3, level:'An', flag:true,  note:'RC-2 requires specific justification language, not notation only; deviation vs. adaptation distinction must be taught and assessed' },
       // Bucket 4
       { id:'SI-12', name:'Recovery Verification Procedures',               bucket:4, level:'Ap', flag:false, note:'' },
@@ -1373,12 +1373,12 @@
       },
       {
         id: 'SI-10',
-        name: 'HIPAA 72-Hour Breach Notification Clock Management',
+        name: 'Breach Notification Clock Management (72-Hour Internal Deadline)',
         bucketLabel: 'Bucket 3 -- Active Response Execution',
-        description: 'Identify the point at which the 72-hour HIPAA breach notification clock is triggered and manage documentation and notification actions within the required window.',
+        description: 'Identify the point at which MRHN\'s 72-hour internal breach notification clock is triggered and manage documentation and notification actions within the required window.',
         expertDomain: 'flag',
         expertTaxonomy: 'An',
-        expertDomainReason: 'Domain authenticity flag required. Generic courses present the 72-hour clock as starting when a breach is confirmed -- after forensic analysis. HIPAA 45 CFR 164.404 defines the trigger differently: the clock starts when the covered entity "knew or reasonably should have known" that a breach occurred. This is not the same as confirmed forensic verification. A covered entity that waits for forensic confirmation before starting the clock may already be out of compliance.',
+        expertDomainReason: 'Domain authenticity flag required. Generic courses present the 72-hour clock as starting when a breach is confirmed -- after forensic analysis. MRHN\'s IR-2024 protocol sets a 72-hour internal deadline that starts at "discovery," aligned with HIPAA 45 CFR 164.404: the clock starts when the covered entity "knew or reasonably should have known" that a breach occurred. This is not the same as confirmed forensic verification, and MRHN\'s internal deadline is stricter than HIPAA\'s 60-day outer limit. A team that waits for forensic confirmation before starting the clock may already have breached its internal protocol.',
         expertFlagNote: 'Clock triggers at "reasonably should have known" (45 CFR 164.404), not forensic confirmation. Decomposition must include discovery-timing evaluation scenarios with ambiguous real-time facts. Assessment must require learners to justify when they started the clock, not just demonstrate that they started one.',
         expertTaxonomyReason: 'Analysis level after the domain annotation. Learners must evaluate when "reasonably should have known" applies in ambiguous situations -- this is legal reasoning under uncertainty, not timer management. The MRHN learner population has general HIPAA compliance awareness but has not applied this definitional standard under real incident pressure. If you assigned Application, consider: Application requires applying a known procedure to a recognizable situation. But determining when "reasonable knowledge" exists is not a procedure -- it is a judgment call about a legal standard applied to ambiguous facts.'
       },

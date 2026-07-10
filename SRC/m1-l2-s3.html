@@ -972,10 +972,10 @@
               <!-- SI-10 -->
               <div class="si-row" role="listitem">
                 <span class="si-row__code" aria-hidden="true">SI-10</span>
-                <span class="si-row__desc">HIPAA breach notification timeline: managing the 72-hour OCR reporting window</span>
+                <span class="si-row__desc">Breach notification timeline: managing MRHN's 72-hour internal deadline, stricter than HIPAA's 60-day limit</span>
                 <div class="si-row__assign">
                   <label for="assign-10" class="sr-only">
-                    Assign SI-10: HIPAA breach notification timeline to a bucket
+                    Assign SI-10: breach notification timeline to a bucket
                   </label>
                   <select id="assign-10" class="bucket-select" name="assign-10" data-si="10">
                     <option value="">Select a bucket</option>
@@ -1698,9 +1698,9 @@
       document.getElementById('check-si10').innerHTML =
         `${si10WithPost ? iconWarn : iconPass}
          <span class="check-text">
-           <strong>SI-10 placement (HIPAA 72-hour notification clock):</strong>
+           <strong>SI-10 placement (72-hour internal notification clock):</strong>
            ${si10WithPost
-             ? 'SI-10 is in the same bucket as your post-incident items. The 72-hour OCR clock starts at the point of discovery -- not at incident closure. Clock management is an obligation during active response, not a post-closure task. This is the most commonly debated placement in the set.'
+             ? 'SI-10 is in the same bucket as your post-incident items. MRHN\'s 72-hour internal clock starts at the point of discovery, not at incident closure. Clock management is an obligation during active response, not a post-closure task. This is the most commonly debated placement in the set.'
              : 'SI-10 is placed with active response items rather than post-incident. Correct -- the 72-hour clock starts at discovery and must be managed during active response.'}
          </span>`;
 

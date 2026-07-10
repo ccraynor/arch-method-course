@@ -903,7 +903,7 @@
                       </tr>
                       <tr class="item-row">
                         <td><span class="si-num">SI-10</span></td>
-                        <td>HIPAA 72-Hour Breach Notification Clock</td>
+                        <td>Breach Notification Clock (72-Hour Internal Deadline)</td>
                         <td><span class="verdict-chip verdict-chip--flag">Flag</span>
                           <span class="cal-note">HIPAA "discovery" definition is routinely misapplied</span>
                         </td>
@@ -1026,20 +1026,21 @@
                 <div class="calib-card" role="region" aria-label="Domain authenticity deep dive: SI-10">
                   <div class="calib-card__header">
                     <span class="calib-card__si">SI-10</span>
-                    <span class="calib-card__name">HIPAA 72-Hour Breach Notification Clock Management</span>
+                    <span class="calib-card__name">Breach Notification Clock Management (72-Hour Internal Deadline)</span>
                     <span class="calib-card__bucket">Bucket 3</span>
                   </div>
                   <div class="calib-finding">
                     <div class="calib-finding__key">Authenticity Finding</div>
                     <div class="calib-finding__val">
-                      <strong>Definitional precision failure.</strong> The 72-hour clock is
-                      not a countdown from the moment a breach is confirmed: it runs from
+                      <strong>Definitional precision failure.</strong> MRHN's 72-hour internal
+                      clock is not a countdown from the moment a breach is confirmed: it runs from
                       "discovery," which HIPAA defines (45 CFR 164.404) as when the covered
                       entity knew or reasonably should have known that a breach occurred.
-                      A covered entity that waits for forensic confirmation before starting
-                      the clock is already potentially out of compliance. Generic instruction
-                      that teaches "start the clock when you know it's a breach" will produce
-                      learners who systematically misapply this rule under real conditions.
+                      MRHN's protocol is stricter than HIPAA's 60-day outer limit, so a team that
+                      waits for forensic confirmation before starting the clock has already lost
+                      part of its internal window. Generic instruction that teaches "start the
+                      clock when you know it's a breach" will produce learners who systematically
+                      misapply this rule under real conditions.
                     </div>
                   </div>
                   <div class="calib-finding">
@@ -1308,7 +1309,7 @@
                       </tr>
                       <tr class="item-row">
                         <td><span class="si-num">SI-10</span></td>
-                        <td>HIPAA 72-Hour Breach Notification Clock</td>
+                        <td>Breach Notification Clock (72-Hour Internal Deadline)</td>
                         <td><span class="tax-chip tax-chip--An">An</span></td>
                         <td class="cal-note-cell">After domain authenticity annotation: learners must evaluate when the "reasonably should have known" standard applies. This is analytical reasoning about a legal definition under ambiguous facts, not just timer management.</td>
                       </tr>
@@ -1598,7 +1599,7 @@
                       </tr>
                       <tr class="item-row">
                         <td><span class="si-num">SI-10</span></td>
-                        <td>HIPAA 72-Hour Breach Notification Clock</td>
+                        <td>Breach Notification Clock (72-Hour Internal Deadline)</td>
                         <td><span class="tax-chip tax-chip--An">An</span></td>
                         <td class="cal-note-cell"><em>Domain + Taxonomy:</em> Clock triggers at "reasonably should have known" (45 CFR 164.404), not forensic confirmation; "discovery" evaluation scenarios required; annotation elevates level from Ap to An</td>
                         <td class="adj-flag">

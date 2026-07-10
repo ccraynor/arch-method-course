@@ -427,8 +427,8 @@
                 <h2 class="step-heading">Deep Dive: Validate the Bucket 3 Sub-Arc: Authenticity Test Fails</h2>
                 <p class="step-content">
                   Bucket 3 is where the most consequential domain authenticity annotation
-                  lives: SI-10 (HIPAA 72-Hour Clock). The initial Bucket 3 sub-arc
-                  fails the authenticity test because it describes the HIPAA clock in
+                  lives: SI-10 (72-Hour Internal Breach Clock). The initial Bucket 3 sub-arc
+                  fails the authenticity test because it describes the breach notification clock in
                   generic terms that carry exactly the error the Step 4 annotation was
                   written to prevent.
                 </p>
@@ -442,19 +442,20 @@
                     <span class="arc-draft-label">Sub-Arc (initial draft: FAILS authenticity test)</span>
                     <p class="arc-text arc-text--draft">
                       "Execute the active response sequence including real-time incident
-                      documentation, leadership notification, and HIPAA breach notification
+                      documentation, leadership notification, and breach notification
                       clock management within the 72-hour window."
                     </p>
 
                     <div class="revision-reason" role="note" aria-label="Authenticity failure reason">
-                      <strong>Why this fails:</strong> "HIPAA breach notification clock management
+                      <strong>Why this fails:</strong> "breach notification clock management
                       within the 72-hour window" implies the clock starts when the breach is confirmed.
                       MRHN-D-003 annotation for SI-10 is explicit: the clock triggers at "reasonably
                       should have known" (45 CFR 164.404), not at forensic confirmation. An arc
                       statement that uses "within the 72-hour window" without specifying the trigger
                       point will produce DC components that teach the wrong start condition.
                       If this arc travels into Step 6 unchanged, decomposition will produce
-                      instruction that creates systematic HIPAA non-compliance at MRHN.
+                      instruction that starts the clock too late, putting MRHN out of step with both
+                      its IR-2024 protocol and HIPAA's discovery standard.
                     </div>
 
                     <p style="font-size:0.875rem;color:var(--color-text-primary);line-height:1.65;margin:0 0 0.5rem">
@@ -462,7 +463,7 @@
                       workflow. The coherence failure is not the issue.
                     </p>
                     <p style="font-size:0.875rem;color:var(--color-text-primary);line-height:1.65;margin:0 0 0.5rem">
-                      <strong>Authenticity check: Fail.</strong> Generic treatment of the HIPAA clock
+                      <strong>Authenticity check: Fail.</strong> Generic treatment of the breach notification clock
                       trigger. MRHN-D-003 SI-10 annotation must be incorporated. Additionally,
                       "IR-2024 protocol deviation documentation" is missing from the arc entirely:
                       SI-14 (RC-2 justification language requirement) is a Bucket 3 item and
@@ -477,7 +478,7 @@
                     <p class="arc-text arc-text--revised">
                       "Execute the active response sequence: real-time incident documentation,
                       leadership notification per the PC-5 communication chain, management of
-                      the HIPAA 72-hour breach notification clock (evaluating the 'reasonably
+                      the 72-hour internal breach notification clock (evaluating the 'reasonably
                       should have known' discovery trigger under 45 CFR 164.404), and protocol
                       deviation documentation using RC-2 justification language when departure
                       from IR-2024 protocol is required, producing complete records at each step."
@@ -492,7 +493,7 @@
                   </div>
                 </div>
 
-                <div class="discovery-moment">Notice this: the phrase "within the 72-hour window" sounds correct, yet it would teach the wrong HIPAA clock trigger.</div>
+                <div class="discovery-moment">Notice this: the phrase "within the 72-hour window" sounds correct, yet it would teach the wrong clock trigger.</div>
 
                 <p class="step-content">
                   This revision is the most important Step 5 decision in the MRHN arc.
@@ -698,7 +699,7 @@
                         <p style="font-size:0.875rem;color:var(--color-text-primary);line-height:1.6;margin:0;padding-left:1.625rem;font-style:italic">
                           Execute the active response sequence: real-time incident documentation,
                           leadership notification per the PC-5 communication chain, management of
-                          the HIPAA 72-hour breach notification clock (evaluating the 'reasonably
+                          the 72-hour internal breach notification clock (evaluating the 'reasonably
                           should have known' discovery trigger under 45 CFR 164.404), and protocol
                           deviation documentation using RC-2 justification language when departure
                           from IR-2024 protocol is required, producing complete records at each step.
@@ -755,8 +756,8 @@
                   <div class="gov-record__row">
                     <div class="gov-record__key">Rationale</div>
                     <div class="gov-record__val">
-                      Bucket 3 revision was required because the initial arc described the HIPAA
-                      clock in generic terms ("within the 72-hour window") that would produce
+                      Bucket 3 revision was required because the initial arc described the breach
+                      notification clock in generic terms ("within the 72-hour window") that would produce
                       DC components teaching the wrong clock trigger. The MRHN-D-003 annotation
                       for SI-10 identified this risk at calibration; the arc revision makes the
                       correct trigger (45 CFR 164.404 "reasonably should have known") permanent
@@ -977,7 +978,7 @@
       { heading: 'Performance Arc (MRHN_PerformanceArc_v1)', html: '<p>Given a confirmed or suspected cybersecurity incident at any MRHN facility, independently execute the appropriate Tier 1 or Tier 2 response protocol, including threat recognition and triage, containment and control, active response execution, and post-incident close-out, in compliance with HIPAA breach notification requirements, IR-2024 protocol constraints, and MRHN multi-site operational boundaries, producing complete documentation at each phase.</p>' },
       { heading: 'Flagged Calibration Annotations', items: [
         'SI-09 (Network Segmentation): Analysis level. Evaluate EHR, imaging, and billing system links before you segment, without disrupting active patient care.',
-        'SI-10 (HIPAA 72-Hour Clock): Analysis level. The clock starts at "reasonably should have known" under 45 CFR 164.404, not at forensic confirmation.',
+        'SI-10 (72-Hour Internal Breach Clock): Analysis level. MRHN\'s IR-2024 protocol sets a 72-hour internal deadline, stricter than HIPAA\'s 60-day outer limit under 45 CFR 164.404. The clock starts at "reasonably should have known" (the 164.404 discovery standard), not at forensic confirmation.',
         'SI-14 (Protocol Deviation Documentation): Document each IR-2024 deviation using RC-2 justification language.',
         'SI-07 (OCR Breach Notification): File the OCR notification with all eight required data elements under 45 CFR 164.408.',
         'SI-13 (Lessons Learned): Evaluation level. Separate operational notes from the formal governed record that goes to legal review.'
