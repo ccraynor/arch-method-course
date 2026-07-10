@@ -312,13 +312,13 @@
                 <span id="chip-b1-c1"></span>
               </div>
               <p class="fb-criterion-analysis">
-                All five items in Bucket 1 fall comfortably within LC-1 (four-hour seat
-                time ceiling) and LC-3/LC-4 (blended delivery). SI-08, SI-01, and SI-06
-                require decision-making practice, but the blend of asynchronous scenario
-                work and synchronous debrief keeps each item within budget. PC-3 (no
-                clinical workflow disruption) applies here because Bucket 1 items require
-                learners to pull from operational memory, not interrupt active patient
-                care. The expert finds no constraint violation.
+                All five items in Bucket 1 fall comfortably within LC-1 (the four-hour SME
+                access cap) and LC-3 (SCORM 1.2, self-paced, no synchronous option). SI-08,
+                SI-01, and SI-06 require decision-making practice, but self-paced scenario
+                work with automated feedback keeps each item within budget. PC-3
+                (role-bounded authority) applies here because Bucket 1 items require
+                learners to recognize when a triage decision sits within their role and
+                when it must escalate. The expert finds no constraint violation.
               </p>
             </div>
 
@@ -331,9 +331,9 @@
               <p class="fb-criterion-analysis">
                 Five items is at the upper end of the recommended range for a single
                 module, but each item in Bucket 1 addresses a distinct sub-task in the
-                recognition-and-triage workflow: threat identification (SI-08), reporting
-                triggers (SI-01), scope classification (SI-16), role clarity (SI-06),
-                and initial documentation (SI-02). Because the items build on one another
+                recognition-and-triage workflow: threat classification (SI-08), Tier 1
+                protocol execution (SI-01), severity reclassification (SI-16), escalation
+                recognition (SI-06), and Tier 2 protocol execution (SI-02). Because the items build on one another
                 in a clear procedural sequence, five items creates density without
                 creating overload. The expert passes item volume with a note that
                 sequencing must be tightly managed in execution.
@@ -350,8 +350,8 @@
                 All five items share a common learning challenge: a healthcare IT
                 professional must recognize that an incident has occurred and initiate
                 the correct response before the window for early containment closes.
-                Whether the item addresses classification (SI-16) or role clarity
-                (SI-06), every item in Bucket 1 asks the learner to act accurately
+                Whether the item addresses severity reclassification (SI-16) or escalation
+                recognition (SI-06), every item in Bucket 1 asks the learner to act accurately
                 under time pressure with incomplete information. This unified challenge
                 makes Bucket 1 a coherent instructional unit.
               </p>
@@ -389,9 +389,9 @@
               <p class="fb-criterion-analysis">
                 Bucket 2 items involve system isolation, access restriction, and chain
                 of custody for evidence. These require simulation or scenario practice,
-                which is accommodated within LC-1 and PC-3. SI-09 (evidence handling)
+                which is accommodated within LC-1 and PC-3. SI-11 (evidence handling)
                 could pose a clinical disruption risk if delivered in a live environment,
-                but the LC-4 blended model keeps simulations out of active clinical
+                but the self-paced simulation format keeps practice out of active clinical
                 systems. All four items pass constraint compliance.
               </p>
             </div>
@@ -404,8 +404,8 @@
               </div>
               <p class="fb-criterion-analysis">
                 Four items is the ideal volume for a containment-focused module. The
-                items address isolation decisions (SI-03), access revocation (SI-11),
-                leadership notification (SI-15), and evidence handling (SI-09). Each
+                items address isolation decisions (SI-03), network segmentation (SI-09),
+                vendor notification (SI-15), and evidence handling (SI-11). Each
                 represents a distinct containment action, and four items allows enough
                 depth without overloading a single learning session. The expert passes
                 item volume without qualification.
@@ -422,8 +422,8 @@
                 The unified learning challenge in Bucket 2 is: stop the spread of an
                 active cybersecurity incident while preserving evidence and maintaining
                 organizational authority. Every item in Bucket 2 addresses one aspect
-                of that challenge. SI-03 (system isolation), SI-11 (access revocation),
-                SI-15 (leadership escalation), and SI-09 (evidence chain of custody)
+                of that challenge. SI-03 (system isolation), SI-09 (network segmentation),
+                SI-15 (vendor notification), and SI-11 (evidence chain of custody)
                 form a coherent containment workflow. Instructional coherence passes.
               </p>
             </div>
@@ -459,14 +459,14 @@
               </div>
               <p class="fb-criterion-analysis">
                 This is the critical criterion for Bucket 3. Each of the four items
-                is governed by a different combination of constraints. SI-04 (vendor
-                coordination) falls under LC-2 (external partner scheduling) as well
-                as PC-2 (vendor NDA compliance). SI-05 (system recovery sequencing)
-                requires simulation and is bound by PC-1 (IT infrastructure access
-                restrictions). SI-10 (regulatory notification) is governed by LC-5
-                (legal and compliance review cycle) and PC-4 (HIPAA notification
-                timelines). SI-14 (forensic log review) requires specialized tools
-                and falls under PC-1 and LC-1. The expert flags this bucket because
+                is governed by a different combination of constraints. SI-04 (real-time
+                SIEM documentation) falls under PC-4 (real-time SIEM logging requirement)
+                as well as LC-3 (self-paced format, no live observation). SI-05 (clinical
+                leadership communication) is bound by PC-5 (Meridian approved templates).
+                SI-10 (breach notification clock) is governed by the IR-2024 breach timeline
+                and the 45 CFR 164.404 discovery standard. SI-14 (protocol deviation
+                documentation) falls under RC-2 (IR-2024 as adopted) and LC-1 (limited SME
+                access to validate deviations). The expert flags this bucket because
                 the instruction designer must resolve four distinct constraint
                 intersections within one module. This does not make Bucket 3
                 infeasible, but it requires explicit constraint mapping during
@@ -544,8 +544,8 @@
                 <span id="chip-b4-c1"></span>
               </div>
               <p class="fb-criterion-analysis">
-                All three items in Bucket 4 fit within the remaining LC-1 seat time
-                budget. SI-12 (after-action review), SI-07 (remediation tracking), and
+                All three items in Bucket 4 fit within the remaining LC-1 SME access
+                budget. SI-12 (recovery verification), SI-07 (post-incident OCR documentation), and
                 SI-13 (lessons learned documentation) are low-simulation items that
                 can be delivered asynchronously with short reflection tasks. No
                 clinical disruption concerns arise in close-out activities. Constraint
@@ -609,7 +609,7 @@
                   <p class="thin-test-item__q">1. Does the bucket have enough instructional substance to stand alone?</p>
                   <p class="thin-test-item__a">Yes. While three items is below the typical minimum, each of the three
                   close-out items represents a distinct obligatory step in the MRHN incident response lifecycle.
-                  After-action review (SI-12), remediation tracking (SI-07), and lessons learned documentation
+                  Recovery verification (SI-12), post-incident OCR documentation (SI-07), and lessons learned documentation
                   (SI-13) cannot be collapsed into a single task without losing their distinct operational
                   character. The substance is present, even if the item count is low.</p>
                 </li>
@@ -673,7 +673,7 @@
               </li>
               <li class="synthesis-q">
                 <p class="synthesis-q__text">What would have changed in the balance analysis if SI-14 had been placed in Bucket 4 instead of Bucket 3?</p>
-                <p class="synthesis-q__note">Bucket 3 would drop to three items (a thin bucket), and Bucket 4 would rise to four items (standard volume). You would then need to evaluate whether SI-14 (forensic log review) has more instructional coherence with close-out tasks or with active response tasks. Sequence position would also need re-evaluation.</p>
+                <p class="synthesis-q__note">Bucket 3 would drop to three items (a thin bucket), and Bucket 4 would rise to four items (standard volume). You would then need to evaluate whether SI-14 (protocol deviation documentation) has more instructional coherence with close-out tasks or with active response tasks. Sequence position would also need re-evaluation.</p>
               </li>
               <li class="synthesis-q">
                 <p class="synthesis-q__text">What does "instructional coherence" require that "instructional similarity" does not?</p>
