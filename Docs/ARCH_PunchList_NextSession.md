@@ -47,9 +47,10 @@ plus two independent verification sweeps are now logged as **Section H**, at
 the end of this file. **Status (updated 2026-07-13):** H.1 confirmed-fix
 items are all DONE — H1 (812e325), H2/H3 (efe19cd), H4 (f8eec0d), H5
 (25a8bef), H6 (031e1c8), H16 (c4b223e). H7 and H11 are RULED (both e72ac20).
-H.4 (Grade-8 FK drift, nine-screen cluster) is DONE (c45773b). H.2 remains
-Carrie's-call decisions, not commitments (H24 gated on the M2 key-scheme
-decision; H9/H10 governed by the B5 ruling but left for owner review). H.5
+H.4 (Grade-8 FK drift, nine-screen cluster) is DONE (c45773b). H9 is RULED
+(031e1c8) and H10 is RULED (B5, e72ac20); both were reviewed and closed by the
+owner 2026-07-13. H.2 remains Carrie's-call decisions, not commitments (H24
+gated on the M2 key-scheme decision, still open). H.5
 closes out citation and font/icon checks with no action needed. H.6 is
 hypotheses to verify before citing them anywhere public, not settled facts.
 
@@ -1029,28 +1030,45 @@ body. H.2 items remain explicitly Carrie's call, not commitments.
   *future* celebration text; it doesn't touch this existing M1 line despite
   citing it as the problem example. Decide: revise the live M1 text now, or
   leave it and only apply the register caution going forward.
-- **H9. Stage 3 2.3/2.4 callback swap.** Not a new idea — governance already
-  flags this itself (lines 740-747: "possible swap... revisit at build") and
-  already states "do not lock 2.3 and 2.4 callbacks until M2 content exists."
-  Fable's Decision 3 proposes locking the swap *direction* pre-build (2.3 ←
-  decomposition/bucket-to-unit at Evaluation; 2.4 ← calibration/cognitive-load
-  at Evaluation) while still verifying final wording at build. Decide whether
-  locking the direction now is acceptable under the standing rule, or whether
-  it stays genuinely open until Module 2 content exists.
-- **H10. Decision-point architecture for Module 2.** NEW, verified two ways:
-  (a) grepped all built m1-*.html for the `decision-point` class that
-  SRC/decision-point-template.html defines — zero matches; (b) direct
-  screen-type-label audit across all 48 files found Worked Example (11),
-  Guided Practice (10), Faded Example (2), Reflection variants (6), Expert/
-  Compare-to-Expert (2), Intake Document (1) — zero screens labeled "Decision
-  Point." The template exists (and was touched by D16's double-hyphen fix)
-  but was never used to build an M1 screen; guided-practice interactions
-  absorbed that role instead (m1-l2-s3's 8 native selects, m1-l3-s4's radio
-  groups, etc.). Module 2's spec calls for genuine decision-point screens
-  (2.1.4, 2.2.4, "complex branching, build/test first") with no M1 pattern to
-  copy. Decide: build M2's decision points as the never-yet-built Template 4
-  ("Decision Point With Branching"), or continue M1's absorb-into-
-  guided-practice pattern.
+- **H9. Stage 3 2.3/2.4 callback swap. RULED** (031e1c8, 2026-07-09; owner
+  review closed 2026-07-13). The swap direction is locked in governance
+  (Spaced Repetition Map, lines 743-752): 2.3 takes decomposition /
+  bucket-to-unit traceability at Evaluation (the 2.3 topic is unit
+  architecture, which extends decomposition); 2.4 takes calibration /
+  cognitive-load management at Evaluation (the 2.4 topic is learning science,
+  which extends calibration). Both entries carry "Supersedes the prior FLAG."
+  The earlier "do not lock until M2 content exists" language no longer appears
+  anywhere in governance — it was removed by the same ruling, so there is no
+  standing-rule conflict. Locking the *direction* does not lock the *wording*:
+  the IMPORTANT block at governance lines 727-731 still requires every callback
+  to be verified against actual lesson content before building, and revised if
+  the built content differs. That build-time verification is the only residual
+  work, and it belongs to the Module 2 build.
+- **H10. Decision-point architecture for Module 2. RULED** (B5, e72ac20,
+  2026-07-09; owner review closed 2026-07-13). Governed entirely by the B5
+  ruling: Module 2-4 decision interactions continue the Module 1 pattern —
+  embedded in guided practice with per-option branching feedback — there is no
+  discrete Decision Point screen type, and Stage 3 Template 4 ("Decision Point
+  With Branching") is retired unless a future module revives it. Each
+  interaction must implement the Stage 3 Decision Point Catalog's decision
+  question and scoring dimension exactly. The audit that raised H10 is
+  confirmed and stands: the `decision-point` class appears in zero built
+  m1-*.html screens, and the screen-type-label sweep across all 48 files found
+  no screen labeled "Decision Point" — guided-practice interactions absorbed
+  that role (m1-l2-s3's 8 native selects, m1-l3-s4's radio groups). Module 2
+  therefore has a pattern to copy after all: Module 1's.
+  Consequence handled 2026-07-13 (see H10a).
+- **H10a. Retired Template 4 orphan. DONE** (2026-07-13). Surfaced while
+  closing H10. SRC/decision-point-template.html survived the B5 retirement
+  unmarked, so maintenance sweeps kept treating it as live (D16's
+  double-hyphen fix touched it), and decisionHistory.js still documented a
+  localStorage key convention as "written by decision-point-template.html"
+  when nothing writes it. Fixed by marking the template RETIRED in a header
+  comment rather than deleting it (B5 explicitly leaves revival open), by
+  correcting the stale comments in decisionHistory.js and
+  runningDecisionHistory.js, and by adding the template to the maintenance-
+  sweep exclusion list in governance. Note the overlap with H24: the orphaned
+  key convention should not be carried into the Module 2 key scheme.
 - **H11. Decision Point Catalog spec gap. RULED** (B5, 2026-07-09; governance
   "Session Rulings" item 1, ratified in commit e72ac20). Resolved by restating
   the CLAUDE.md rule rather than inventing catalog option counts that the Stage

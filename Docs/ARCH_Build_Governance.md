@@ -1411,6 +1411,32 @@ Docs/ARCH_Credential_Comprehensive_Report.md). Do not reopen.
 
 ---
 
+## Maintenance-Sweep Exclusion List
+
+Files that are retired or non-learner-facing and must be
+SKIPPED by maintenance sweeps (reading-level / FK passes,
+double-hyphen passes, token passes, accessibility scans).
+They are retained for reference, not maintained. Do not
+build from them. Reviving one requires a governance ruling,
+not a build-time decision.
+
+- SRC/decision-point-template.html -- Stage 3 Template 4
+  (Decision Point With Branching). Retired by the B5 ruling
+  (2026-07-09, e72ac20); never used to build a Module 1
+  screen. It was swept by D16's double-hyphen pass before it
+  carried a retirement marker; it now carries one in a header
+  comment. Excluded from all future sweeps.
+
+Related note (2026-07-13): decisionHistory.js documents the
+localStorage convention archMethod_decision_[screenId], which
+the retired template originally wrote. Nothing writes that key
+today. If a Module 2-4 guided-practice screen records a
+decision, it must either write this key shape or the convention
+must be revised deliberately. Do not carry an orphaned key
+convention into the Module 2 key scheme (open item H24).
+
+---
+
 ## Module Pre-Build Checklists
 
 MODULE 2 PRE-BUILD CHECKLIST:
