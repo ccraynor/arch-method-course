@@ -6,9 +6,25 @@
 
 import { SCREEN_MAP } from './trackerRedesign.js';
 
+/* Lesson display names, keyed by MODULE + lesson token.
+
+   Module-scoped by necessity: the bare lesson token is NOT unique across
+   modules. Module 1's l2 is "Lesson 3" (ARCH 1.2) while Module 2's l2 is
+   "Lesson 2" (ARCH 2.2). A bare-token map silently mislabels Module 2.
+   Learner-facing ordinals restart at 1 in each module. */
 const LESSON_NAMES = {
-  'l1a': 'Lesson 1', 'l1b': 'Lesson 2', 'l2': 'Lesson 3',
-  'l3':  'Lesson 4', 'l4a': 'Lesson 5', 'l4b': 'Lesson 6',
+  'm1-l1a': 'Lesson 1', 'm1-l1b': 'Lesson 2', 'm1-l2': 'Lesson 3',
+  'm1-l3':  'Lesson 4', 'm1-l4a': 'Lesson 5', 'm1-l4b': 'Lesson 6',
+  'm2-l1':  'Lesson 1', 'm2-l2':  'Lesson 2', 'm2-l3': 'Lesson 3',
+  'm2-l4':  'Lesson 4',
+};
+
+/* Lesson token -> hub ordinal. Hub files are m[N]-hub-l[ordinal].html, so
+   Module 1's l4b maps to hub 6, while Module 2's l4 maps to hub 4. */
+const LESSON_HUB_NUM = {
+  'm1-l1a': '1', 'm1-l1b': '2', 'm1-l2': '3',
+  'm1-l3':  '4', 'm1-l4a': '5', 'm1-l4b': '6',
+  'm2-l1':  '1', 'm2-l2':  '2', 'm2-l3': '3', 'm2-l4': '4',
 };
 
 function buildCrumbs(filename) {
@@ -21,25 +37,28 @@ function buildCrumbs(filename) {
     ];
   }
 
-  /* Gate screen */
-  if (filename === 'm1-gate-s1') {
+  /* Gate screen, any module */
+  const gateMatch = filename.match(/^m(\d+)-gate-s\d+$/);
+  if (gateMatch) {
+    const moduleNum = gateMatch[1];
     return [
-      { label: 'Module 1', href: 'm1-overview.html' },
+      { label: `Module ${moduleNum}`, href: `m${moduleNum}-overview.html` },
       { label: 'Module Gate', current: true },
     ];
   }
 
-  /* Module 1 lesson screens (including lettered variants s4b, s3b, s5a, s5b).
+  /* Lesson screens, any module (including lettered variants s4b, s3b, s5a, s5b).
      Position is read from SCREEN_MAP so it always matches the header tracker. */
-  const m1Match = filename.match(/^m1-(l\d+[ab]?)-s(\d+[ab]?)$/);
-  if (m1Match) {
-    const lessonKey  = m1Match[1];
-    const lessonName = LESSON_NAMES[lessonKey] || lessonKey.toUpperCase();
-    const lessonHref = `m1-${lessonKey}-s1.html`;
+  const lessonMatch = filename.match(/^m(\d+)-(l\d+[ab]?)-s(\d+[ab]?)$/);
+  if (lessonMatch) {
+    const moduleNum  = lessonMatch[1];
+    const lessonKey  = `m${moduleNum}-${lessonMatch[2]}`;
+    const lessonName = LESSON_NAMES[lessonKey] || lessonMatch[2].toUpperCase();
+    const lessonHref = `${lessonKey}-s1.html`;
     const entry      = SCREEN_MAP[filename];
     const position   = entry ? entry[1] : '';
     return [
-      { label: 'Module 1', href: 'm1-overview.html' },
+      { label: `Module ${moduleNum}`, href: `m${moduleNum}-overview.html` },
       { label: lessonName, href: lessonHref },
       { label: position, current: true },
     ];
@@ -48,15 +67,20 @@ function buildCrumbs(filename) {
   return [];
 }
 
-/* Section 5: Return to Lesson Hub link target per Module 1 unit screen. */
+/* Section 5: Return to Lesson Hub link target per unit screen, any module. */
 function hubFor(filename) {
-  if (filename === 'm1-gate-s1') {
-    return { href: 'm1-hub-gate.html', label: 'Return to Module Gate Hub' };
+  const gateMatch = filename.match(/^m(\d+)-gate-s\d+$/);
+  if (gateMatch) {
+    return {
+      href: `m${gateMatch[1]}-hub-gate.html`,
+      label: 'Return to Module Gate Hub',
+    };
   }
-  const m = filename.match(/^m1-(l1a|l1b|l2|l3|l4a|l4b)-s/);
+  const m = filename.match(/^m(\d+)-(l\d+[ab]?)-s/);
   if (!m) return null;
-  const lessonNum = { l1a: '1', l1b: '2', l2: '3', l3: '4', l4a: '5', l4b: '6' }[m[1]];
-  return { href: 'm1-hub-l' + lessonNum + '.html', label: 'Return to Lesson Hub' };
+  const lessonNum = LESSON_HUB_NUM[`m${m[1]}-${m[2]}`];
+  if (!lessonNum) return null;
+  return { href: `m${m[1]}-hub-l${lessonNum}.html`, label: 'Return to Lesson Hub' };
 }
 
 function initBreadcrumb() {

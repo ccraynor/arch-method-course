@@ -68,13 +68,17 @@
    localStorage key convention:
      archMethod_decision_[screenId]  →  JSON string
 
-   NOTE (2026-07-13): this convention was originally written by
-   decision-point-template.html, which the B5 ruling retired (2026-07-09).
-   No screen currently writes archMethod_decision_[screenId]: Module 1's
-   decision interactions are embedded in guided practice, and Decision
-   History itself is deferred per Accessibility Plan v5.2. Any Module 2-4
-   screen that records a decision must write this key shape, or the
-   convention must be revised deliberately. Do not assume a writer exists.
+   RETIRED CONVENTION (H24, ruled 2026-07-13). Nothing writes
+   archMethod_decision_[screenId] and nothing is expected to. Its only writer
+   was decision-point-template.html, retired by B5 (2026-07-09). Module 1's
+   decision interactions are embedded in guided practice and persist on the
+   normal Tier-2 autosave path; Module 2-4 interactions do the same (B5).
+   Decision History itself is deferred per Accessibility Plan v5.2.
+
+   This module is therefore DORMANT: it is a consumer with no producer. It is
+   retained, not deleted, because reviving Decision History would revive it.
+   Do NOT write this key in a Module 2-4 screen "just in case." Reviving the
+   record requires a governance ruling that also names the writer.
 
    USAGE
    ─────────────────────────────────────────────────────────────────────────────

@@ -82,10 +82,16 @@ const SCREEN_TIME_MAP = {
   'Module Gate':         '20-30',
 };
 
+/* Keyed by MODULE + lesson token. The bare lesson token is NOT unique across
+   modules: Module 1's l2 is "Lesson 3" (ARCH 1.2) while Module 2's l2 is
+   "Lesson 2" (ARCH 2.2). Keep this map in sync with LESSON_NAMES in
+   breadcrumb.js -- the tracker and the breadcrumb must never diverge. */
 const LESSON_LABEL_MAP = {
-  'l1a': 'Lesson 1', 'l1b': 'Lesson 2',
-  'l2':  'Lesson 3', 'l3':  'Lesson 4',
-  'l4a': 'Lesson 5', 'l4b': 'Lesson 6',
+  'm1-l1a': 'Lesson 1', 'm1-l1b': 'Lesson 2',
+  'm1-l2':  'Lesson 3', 'm1-l3':  'Lesson 4',
+  'm1-l4a': 'Lesson 5', 'm1-l4b': 'Lesson 6',
+  'm2-l1':  'Lesson 1', 'm2-l2':  'Lesson 2',
+  'm2-l3':  'Lesson 3', 'm2-l4':  'Lesson 4',
 };
 
 function getScreenKey() {
@@ -101,9 +107,9 @@ function getModuleLabel(key) {
 function getLessonLabel(key) {
   /* Intro screens: suppress lesson -- Row 1 shows only "Introduction" */
   if (key.startsWith('intro-')) return '';
-  if (key === 'm1-gate-s1') return 'Module Gate';
-  const match = key.match(/^m\d+-(l\d+[ab]?)-s\d+[ab]?$/);
-  return match ? (LESSON_LABEL_MAP[match[1]] || '') : '';
+  if (/^m\d+-gate-s\d+$/.test(key)) return 'Module Gate';
+  const match = key.match(/^(m\d+)-(l\d+[ab]?)-s\d+[ab]?$/);
+  return match ? (LESSON_LABEL_MAP[`${match[1]}-${match[2]}`] || '') : '';
 }
 
 export function redesignTracker() {
