@@ -44,13 +44,14 @@ walkthrough. Logged/optional carryovers: **D12** (ARCH-ID plumbing -- verified n
 
 **Update 2026-07-09:** A Fable design-analysis pass (Q1-Q3 + Module 2 spec)
 plus two independent verification sweeps are now logged as **Section H**, at
-the end of this file. Nothing in H has been fixed yet. H.1 (six items) is
-verified and ready to action before the Module 2 build — treat it as
-equivalent in priority to B1-B4 above. H.2 (fourteen items) is Carrie's-call
-decisions, not commitments. H.4 surfaces real Grade-8 FK drift on an
-8-screen cluster, independently confirmed. H.5 closes out citation and
-font/icon checks with no action needed. H.6 is hypotheses to verify before
-citing them anywhere public, not settled facts.
+the end of this file. **Status (updated 2026-07-13):** H.1 confirmed-fix
+items are all DONE — H1 (812e325), H2/H3 (efe19cd), H4 (f8eec0d), H5
+(25a8bef), H6 (031e1c8), H16 (c4b223e). H7 and H11 are RULED (both e72ac20).
+H.4 (Grade-8 FK drift, nine-screen cluster) is DONE (c45773b). H.2 remains
+Carrie's-call decisions, not commitments (H24 gated on the M2 key-scheme
+decision; H9/H10 governed by the B5 ruling but left for owner review). H.5
+closes out citation and font/icon checks with no action needed. H.6 is
+hypotheses to verify before citing them anywhere public, not settled facts.
 
 ---
 
@@ -1139,31 +1140,53 @@ body. H.2 items remain explicitly Carrie's call, not commitments.
   is a wording amendment to protect M2's learning-science content, not a
   behavior change.
 
-### H.4 Grade-8 FK reading-level drift — verified, actionable cluster
+### H.4 Grade-8 FK reading-level drift — DONE (commit c45773b)
 
-Verified two ways: Fable ran DOM-aware extraction (excluding expert-exempt
-containers) across all 40 scoreable M1 screens; I independently recalculated
-FK on 3 of the flagged paragraphs with an offline heuristic method and landed
-in the same range (19.3, 17.7, 21.3 against Fable's claimed 19.3-22.0 for that
-cluster). 21 of 40 screens exceed FK 9.0 on instructional prose; 65 individual
-paragraphs exceed FK 10. Actionable cluster, worst first:
+Fix Pack Prompt 9 executed 2026-07-12 on the fixed nine-screen cluster
+(Session Rulings 2026-07-09 item 3). Sentence-splitting of instructional
+prose only, targeting <=20-word sentences, active voice, second person;
+expert-exempt blocks (think-aloud, fb-*/expert-comp/expert-rationale,
+reference answers, the Riverside governance-record exemplar, the Meridian
+brief) untouched; all DC/SI/RC identifiers and Q1/Q2 criteria names
+preserved (split around them). 16 blocks edited across 8 files; m1-overview
+needed no edits (every sentence already <=20 words). Per-screen FK on the
+instructional-prose extraction basis (before -> after):
 
-| Screen | Aggregate FK | Worst paragraphs |
+| Screen | Block(s) edited | FK before -> after |
 | --- | --- | --- |
-| m1-l4b-s4 (guided practice) | 13.1 | Q1-Teachability/Q2-Assessability task setups, FK 19.3-22.0 |
-| m1-overview | 12.8 | module-overview prose |
-| m1-l1b-s4b (faded example) | 11.6 | scenario-context paragraphs, FK 15.8-20.5 (learner-facing setup, NOT expert-exempt) |
-| m1-l1a-s1, m1-l1b-s1, m1-l3-s1 (lesson intros) | 11.6 each | purpose/step-preview paragraphs |
-| m1-l4a-s4, m1-l4a-s5, m1-l4b-s6 | 10.5-10.6 | instruction/prompt paragraphs, FK 16-19 |
+| m1-l4b-s4 | five opt-q optimization questions | 17.1-23.1 -> 10.9-17.2 |
+| m1-l1b-s4b | scenario paragraph | 14.3 -> 11.8 |
+| m1-overview | (none needed) | already <=20-word sentences |
+| m1-l1a-s1 | purpose-forward | 12.9 -> 7.2 |
+| m1-l1b-s1 | What You Will Produce desc | 13.7 -> 10.7 |
+| m1-l3-s1 | learning objective + 2 calibration lenses | 15.6/18.1/19.5 -> 10.7/12.2/15.0 |
+| m1-l4a-s4 | instructions item 2 + expected evidence | 16.8/19.4 -> 11.5/14.7 |
+| m1-l4a-s5 | prompt-context-note + guidance item 1 | 18.1/13.4 -> 10.3/9.3 |
+| m1-l4b-s6 | item-precision criterion | 11.9 -> 10.2 |
 
-Diagnostic pattern: the worst screens are disproportionately content added
-*after* the Prompt B reading-level rewrite (s4b faded examples from Prompt
-C3, the l4b-s4/l4a-s4 practice tasks, the overview from C5) — Prompt B's
-pass appears not to have been re-run on later additions. When actioned:
-paragraph-level sentence-splitting on the flagged cluster only (the
-≤20-word rule is the cheapest lever), never touching expert-exempt blocks,
-then re-score. m1-l1a-s2's FK 14.3 is the Meridian brief itself — see H18
-for the classification ruling on whether it's exempt by nature.
+Residual-FK stance (owner-confirmed 2026-07-12): the operational target is
+<=20-word sentences plus active voice, NOT an absolute Grade-8 score against
+senior-ID domain vocabulary (assessability, interdependency, decomposition,
+notification, calibration). Several edited blocks land at FK 11-17 because of
+that vocabulary; the sentence-length target is met on every edited block.
+
+Deliberately NOT edited — recorded so future FK sweeps do not re-flag these
+as missed:
+- m1-l4b-s4: the 3 `.opt-item__desc` DC-component definitions (DC-47 FK 22.0,
+  DC-40, DC-32) are decomposition ARTIFACT text (the object of analysis),
+  classified untouchable; DC-32 Q2 (FK 18.5) is already one sentence / 19
+  words, residual is pure domain vocabulary.
+- m1-overview: the 5 artifact-card captions (FK 12.7-17.7) are single
+  sentences <=15 words; FK is domain-noun-bound, not length.
+- m1-l3-s1: the artifact/step captions (FK 13-14) are grammatically sound
+  colon-lists already <=20 words.
+- m1-l4b-s6: crit2 "Uncertainty source" (34-word colon-list) and crit3
+  "Information specificity" (28-word enumeration) resist splitting without
+  restructuring into sub-bullets (markup + meaning risk) — FLAGGED for a
+  manual pass; crit4 (21 words) is marginal and parenthetical-bound.
+- m1-l1a-s2's FK 14.3 is the Meridian brief itself — see H18 for the
+  standing classification question on whether it is exempt by nature (not
+  touched by this pass either way).
 
 ### H.5 Verified clean or already resolved this session — no action needed
 
@@ -1179,8 +1202,11 @@ for the classification ruling on whether it's exempt by nature.
   zero external `<link>`/`@import`/`@font-face`/CDN/icon-font references;
   only `system-ui`, `inherit`, and `monospace` font-family values.
 - **Glossary term count and tagging arithmetic.** Verified by direct read of
-  hoverGlossary.js: exactly 20 terms in TERMS. 14 tagged + 3 untagged
-  violations (H16) + 3 unused (H17) = 20, confirmed.
+  hoverGlossary.js: exactly 20 terms in TERMS. After the 2026-07-09 H16 fix
+  (commit c4b223e): 16 tagged + 4 deferred to Modules 2-4 (CBE, formative
+  assessment, summative assessment, scope creep — none appear verbatim in
+  Module 1 prose) = 20, confirmed. The header comment was corrected to match
+  (8 -> 20 terms, H5 / commit 25a8bef).
 
 ### H.6 Verification flags — treat as hypotheses, not settled facts
 
