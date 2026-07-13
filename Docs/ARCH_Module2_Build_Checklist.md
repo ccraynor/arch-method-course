@@ -76,6 +76,16 @@ template) — this is a build-time gate, not new policy.
 ## Process (build discipline)
 - [ ] Build from the verified-clean `*-template.html` — do NOT copy an older built screen.
 - [ ] Register any new localStorage key in CLAUDE.md + governance before using it.
+- [ ] New keys are MODULE-SCOPED (H12/H24, ruled 2026-07-13): `archMethod_lesson_m2l1_complete`,
+      `archMethod_prediction_m2l1`, `archMethod_transfer_m2l1_q1`, etc. Never extend the
+      Module 1 global counter (no `lesson_7`). Never write `archMethod_decision_[screenId]` — retired.
+- [ ] Adding a Module 2 lesson? Its label must exist in BOTH `LESSON_LABEL_MAP`
+      (trackerRedesign.js) and `LESSON_NAMES` (breadcrumb.js), and its hub ordinal in
+      `LESSON_HUB_NUM` (breadcrumb.js). These are module-scoped (`m2-l1`, not `l1`) and must
+      stay in sync — the tracker and breadcrumb are required never to diverge. m2-l1..m2-l4
+      are pre-registered; verify they render before building further.
+- [ ] Add each new screen to `SCREEN_MAP` (trackerRedesign.js) — it drives both the tracker
+      position and the breadcrumb position.
 - [ ] Diff before commit; code and docs in SEPARATE commits.
 - [ ] Run Lighthouse (Desktop) → 100 before the screen is done.
 

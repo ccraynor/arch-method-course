@@ -1429,11 +1429,59 @@ not a build-time decision.
 
 Related note (2026-07-13): decisionHistory.js documents the
 localStorage convention archMethod_decision_[screenId], which
-the retired template originally wrote. Nothing writes that key
-today. If a Module 2-4 guided-practice screen records a
-decision, it must either write this key shape or the convention
-must be revised deliberately. Do not carry an orphaned key
-convention into the Module 2 key scheme (open item H24).
+the retired template originally wrote. That convention is now
+RETIRED too (see the H24 ruling below). decisionHistory.js is
+dormant: a consumer with no producer, retained because reviving
+Decision History would revive it.
+
+---
+
+## H24 Ruling: Module 2-4 Key Scheme (2026-07-13)
+
+Owner ruling. Do not reopen.
+
+1. NEW KEYS ARE MODULE-SCOPED. Use the m[N]l[N] lesson token,
+   not a global lesson counter:
+   archMethod_lesson_m2l1_complete .. _m2l4_complete;
+   archMethod_prediction_m2l1, archMethod_retrieval_m2l1,
+   archMethod_transfer_m2l1_q1 .. _q4, and so on for m2l2-m2l4.
+   archMethod_aiPractice_m2l1_open is the existing precedent.
+   Rationale: learner-facing lesson ordinals restart each module
+   (Module 2 Lesson 1 = ARCH 2.1 = file m2-l1), so a global
+   counter would name a key "lesson_7" for a lesson that both
+   the learner and the filename call Lesson 1.
+2. MODULE 1 KEYS ARE NOT MIGRATED. archMethod_lesson_[N]_complete
+   (N = 1-6) stays as built. The global-counter form is frozen at
+   Module 1 and is not extended. Consumers (completionSignal.js,
+   lessonHub.js, panelInit.js) read whatever token they are
+   given, so both forms coexist with no migration shim and no
+   loss of existing learner progress.
+3. archMethod_decision_[screenId] IS RETIRED. No writer, no
+   consumer, Decision History deferred (Accessibility Plan v5.2).
+   Module 2-4 decision interactions are embedded in guided
+   practice (B5) and persist on the normal Tier-2 autosave path.
+   Do not write this key. Reviving it requires a governance
+   ruling that also names the writer.
+
+### Module-scoped lesson maps (the defect H24 surfaced)
+
+Three shared-JS lookups were keyed by the BARE lesson token,
+which is not unique across modules: Module 1's l2 is "Lesson 3"
+(ARCH 1.2) while Module 2's l2 is "Lesson 2" (ARCH 2.2). Left
+alone, the first Module 2 screen would have rendered Module 1
+lesson names. Fixed 2026-07-13 by re-keying on module + lesson:
+
+- trackerRedesign.js LESSON_LABEL_MAP + getLessonLabel()
+- breadcrumb.js LESSON_NAMES + buildCrumbs()
+- breadcrumb.js hubFor() (was hard-coded to ^m1-, so Module 2
+  screens would have had no lesson breadcrumb and no Return to
+  Lesson Hub link at all)
+
+LESSON_LABEL_MAP (trackerRedesign.js) and LESSON_NAMES
+(breadcrumb.js) MUST stay in sync. The tracker and the breadcrumb
+are required never to diverge. Verified: 57 Module 1 and intro
+screens produce byte-identical labels, crumbs, and hub links
+before and after the re-key (0 regressions).
 
 ---
 

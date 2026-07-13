@@ -47,10 +47,13 @@ plus two independent verification sweeps are now logged as **Section H**, at
 the end of this file. **Status (updated 2026-07-13):** H.1 confirmed-fix
 items are all DONE — H1 (812e325), H2/H3 (efe19cd), H4 (f8eec0d), H5
 (25a8bef), H6 (031e1c8), H16 (c4b223e). H7 and H11 are RULED (both e72ac20).
-H.4 (Grade-8 FK drift, nine-screen cluster) is DONE (c45773b). H9 is RULED
-(031e1c8) and H10 is RULED (B5, e72ac20); both were reviewed and closed by the
-owner 2026-07-13. H.2 remains Carrie's-call decisions, not commitments (H24
-gated on the M2 key-scheme decision, still open). H.5
+H.4 (Grade-8 FK drift, nine-screen cluster) is DONE (c45773b), including the two
+manual FK items (m1-l4b-s6 crit2/crit3, resolved as prose splits 2026-07-13).
+H9 is RULED (031e1c8) and H10 is RULED (B5, e72ac20); both were reviewed and
+closed by the owner 2026-07-13. H12 is RULED and H24 is DONE (module-scoped M2
+key scheme, 2026-07-13), which surfaced and fixed H12a (module-blind lesson maps
+that would have broken the first Module 2 screen). H.2 remains Carrie's-call
+decisions, not commitments. H.5
 closes out citation and font/icon checks with no action needed. H.6 is
 hypotheses to verify before citing them anywhere public, not settled facts.
 
@@ -1080,9 +1083,32 @@ body. H.2 items remain explicitly Carrie's call, not commitments.
   old "fixed option count per the catalog" rule was superseded in CLAUDE.md.
   This ruling also governs the tied H10 build-pattern question (M1 pattern, not
   Template 4) — H10's entry is left as-is pending the owner's review.
-- **H12. localStorage key scheme for Module 2.** Continue the l7-l10
-  numbering convention, or move to module-scoped keys (e.g.
-  archMethod_aiPractice_m2l1_open, as drafted)? Affects every new M2 key.
+- **H12. localStorage key scheme for Module 2. RULED** (2026-07-13; governance
+  "H24 Ruling: Module 2-4 Key Scheme"). Module-scoped keys win: new Module 2-4
+  keys use the m[N]l[N] lesson token (archMethod_lesson_m2l1_complete,
+  archMethod_prediction_m2l1, archMethod_transfer_m2l1_q1, and so on), matching
+  the archMethod_aiPractice_m2l1_open precedent. The l7-l10 global counter was
+  rejected: learner-facing ordinals restart each module, so "lesson_7" would
+  name a lesson that both the learner and the filename call Lesson 1. Module 1
+  keys are NOT migrated; the global-counter form is frozen at Module 1 and both
+  forms coexist without a shim. archMethod_decision_[screenId] is RETIRED (no
+  writer, no consumer, Decision History deferred): M2-4 decision interactions
+  are embedded in guided practice per B5 and persist on the Tier-2 autosave
+  path. See H12a for the defect this surfaced.
+- **H12a. Module-blind lesson maps. DONE** (2026-07-13). Surfaced while ruling
+  H12, and it would have broken the first Module 2 screen. Three shared-JS
+  lookups were keyed by the BARE lesson token, which is not unique across
+  modules: Module 1's `l2` is "Lesson 3" (ARCH 1.2) while Module 2's `l2` is
+  "Lesson 2" (ARCH 2.2). Consequences under the old code, confirmed by direct
+  simulation: `m2-l2-s1` would have rendered "Lesson 3" in the header tracker,
+  `m2-l1`/`m2-l4` would have rendered a blank lesson label, and every Module 2
+  screen would have had no lesson breadcrumb and no Return to Lesson Hub link
+  (breadcrumb.js `hubFor()` was hard-coded to `^m1-`). Fixed by re-keying on
+  module + lesson in trackerRedesign.js (LESSON_LABEL_MAP + getLessonLabel) and
+  breadcrumb.js (LESSON_NAMES + buildCrumbs + hubFor), and by generalizing the
+  gate match to any module. LESSON_LABEL_MAP and LESSON_NAMES must stay in sync.
+  Verified: all 57 Module 1 and intro screens produce identical labels, crumbs,
+  and hub links before and after (0 regressions).
 - **H13. Reading-card split placement (2.2 / 2.4).** Same-screen (the draft's
   current default) or split across two screens, as Fable's placement
   suggestion proposes? Flagged by Fable itself as [CONFIRM].
@@ -1138,9 +1164,11 @@ body. H.2 items remain explicitly Carrie's call, not commitments.
   retrieval warm-ups + prediction prompts, final callback wording ×4, gate
   governance-record review criteria, and the pilot-disclosure content if H7
   is adopted.
-- **H24. Register all new M2 localStorage keys** (prediction/retrieval/
-  transfer/optReading, plus aiPractice + priyaEmail if H7 is adopted) in
-  CLAUDE.md and governance before use. Depends on H12.
+- **H24. Register all new M2 localStorage keys. DONE** (2026-07-13). The scheme
+  is ruled (H12) and registered in both CLAUDE.md ("Module 2-4 Key Scheme") and
+  governance ("H24 Ruling"). Per-key registration still applies at build time:
+  no new key ships without being listed in both docs first. That standing rule
+  is on the Module 2 build checklist.
 - **H25. Stage 1 audience paragraph revision.** Owner-ruled (senior IDs) in
   the Fable session; needs an actual edit to Stage 1 UBD (1).docx, which is
   outside the Docs/*.md set — flag for manual edit, not a Claude Code task.
@@ -1199,9 +1227,19 @@ as missed:
 - m1-l3-s1: the artifact/step captions (FK 13-14) are grammatically sound
   colon-lists already <=20 words.
 - m1-l4b-s6: crit2 "Uncertainty source" (34-word colon-list) and crit3
-  "Information specificity" (28-word enumeration) resist splitting without
-  restructuring into sub-bullets (markup + meaning risk) — FLAGGED for a
-  manual pass; crit4 (21 words) is marginal and parenthetical-bound.
+  "Information specificity" (28-word enumeration). **DONE 2026-07-13** by the
+  owner's manual pass. Resolved as PROSE SPLITS with no markup change: crit2 is
+  now 7 sentences (longest 14 words), crit3 is 6 sentences (longest 12 words),
+  every sentence <=20 words and active voice. The sub-bullet restructure was
+  REJECTED: `.criteria-item__description` is a `<p>`, so a nested `<ul>` is
+  invalid HTML and would have forced a `.criteria-item__content` change in both
+  m1-l4b-s6.html AND calibration-template.html plus a governance variant, which
+  is a PATTERN change to buy two sentences (two-render-check rule: defer). One
+  meaning-preservation catch worth recording: only the last two uncertainty
+  sources are Part-scoped in the original; the component-description-wording and
+  Q1/Q2 sources apply to BOTH parts. The first rewrite draft wrongly scoped
+  wording to Part 1 and was corrected before landing.
+  crit4 (21 words) is marginal and parenthetical-bound; left as-is.
 - m1-l1a-s2's FK 14.3 is the Meridian brief itself — see H18 for the
   standing classification question on whether it is exempt by nature (not
   touched by this pass either way).

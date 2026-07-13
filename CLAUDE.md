@@ -125,6 +125,29 @@ Collapsible persistence and autosave attributes carry the UNPREFIXED key
 (e.g. data-persist-key="calTable2Open" is stored as archMethod_calTable2Open).
 Never add a key without listing it here and in Docs/ARCH_Build_Governance.md.
 
+#### Module 2-4 Key Scheme (H24, ruled 2026-07-13)
+New keys in Modules 2-4 are MODULE-SCOPED. Use the m[N]l[N] lesson token, not a
+global lesson counter. Build Module 2 keys as:
+- archMethod_lesson_m2l1_complete through archMethod_lesson_m2l4_complete
+- archMethod_prediction_m2l1, archMethod_retrieval_m2l1 (and m2l2 through m2l4)
+- archMethod_transfer_m2l1_q1 through _q4 (and m2l2 through m2l4)
+- archMethod_aiPractice_m2l1_open (already registered; the pattern precedent)
+
+Rationale: learner-facing lesson ordinals RESTART each module (Module 2 Lesson 1
+is ARCH 2.1, file m2-l1), so a global counter would name a key "lesson_7" for a
+lesson the learner and the filename both call Lesson 1. Module-scoped keys match
+the breadcrumb, the tracker, and the filename.
+
+Module 1 keys are NOT migrated. archMethod_lesson_[N]_complete (N = 1 through 6)
+stays as built; the global-counter form is frozen at Module 1 and is not extended.
+Consumers (completionSignal.js, lessonHub.js, panelInit.js) read whatever token
+they are given, so both forms coexist without a shim.
+
+RETIRED: archMethod_decision_[screenId]. Its only writer was the retired Stage 3
+Template 4, Decision History is deferred (Accessibility Plan v5.2), and nothing
+consumes it. Module 2-4 decision interactions are embedded in guided practice
+(B5) and persist on the normal Tier-2 autosave path. Do not write this key.
+
 localStorage keys:
 - archMethod_learnerCommitmentNote
 - archMethod_lesson_[N]_complete
