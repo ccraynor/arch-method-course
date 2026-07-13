@@ -81,9 +81,11 @@
 
    REFRESH BEHAVIOR
    The sidebar reads records once per page load (on init()). Decisions are
-   submitted on decision-point screens, which navigate to the next screen
-   (a new HTML file) after submission. The fresh page load triggers a new
-   init(), which calls load() to pick up the newly recorded decision.
+   submitted on the guided-practice screen that carries the decision
+   interaction (per the B5 ruling, 2026-07-09: there is no discrete Decision
+   Point screen type), and the learner then navigates to the next screen (a
+   new HTML file). The fresh page load triggers a new init(), which calls
+   load() to pick up the newly recorded decision.
    No in-session refresh mechanism is needed for the current course architecture.
 
    DOM CONTRACT

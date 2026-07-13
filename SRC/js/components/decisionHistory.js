@@ -21,7 +21,8 @@
                         { screenId, decision, decisionLabel, rationale,
                           revised, timestamp, module? }
                         Key pattern: archMethod_decision_[screenId]
-   • Timestamp        — ISO date string set by decision-point screens at submit time
+   • Timestamp        — ISO date string set at submit time by the guided-practice
+                        screen that records the decision
    • Module           — optional number (1–4); present when lesson scripts include it
 
    OUTPUTS
@@ -64,8 +65,16 @@
      #decisionHistory .panel-body <div> — populated with content by init()
      #sr-announcer               <div role="status" aria-live="polite" aria-atomic="true">
 
-   localStorage key convention (written by decision-point-template.html):
+   localStorage key convention:
      archMethod_decision_[screenId]  →  JSON string
+
+   NOTE (2026-07-13): this convention was originally written by
+   decision-point-template.html, which the B5 ruling retired (2026-07-09).
+   No screen currently writes archMethod_decision_[screenId]: Module 1's
+   decision interactions are embedded in guided practice, and Decision
+   History itself is deferred per Accessibility Plan v5.2. Any Module 2-4
+   screen that records a decision must write this key shape, or the
+   convention must be revised deliberately. Do not assume a writer exists.
 
    USAGE
    ─────────────────────────────────────────────────────────────────────────────
